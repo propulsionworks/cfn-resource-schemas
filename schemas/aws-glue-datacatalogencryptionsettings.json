@@ -1,0 +1,72 @@
+{
+  "$id": "aws-glue-datacatalogencryptionsettings",
+  "$integrity": "sha512-CW4n7Ic1txeNinNjKetZGLLQb3seHAkeDON+bYZ92dLlasrZczomr8DSqmMGmGekFZoyaQbZpj3gb13aJrlsdQ==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/CatalogId"
+  ],
+  "definitions": {
+    "ConnectionPasswordEncryption": {
+      "additionalProperties": false,
+      "properties": {
+        "KmsKeyId": {
+          "type": "string"
+        },
+        "ReturnConnectionPasswordEncrypted": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "DataCatalogEncryptionSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "ConnectionPasswordEncryption": {
+          "$ref": "#/definitions/ConnectionPasswordEncryption"
+        },
+        "EncryptionAtRest": {
+          "$ref": "#/definitions/EncryptionAtRest"
+        }
+      },
+      "type": "object"
+    },
+    "EncryptionAtRest": {
+      "additionalProperties": false,
+      "properties": {
+        "CatalogEncryptionMode": {
+          "type": "string"
+        },
+        "CatalogEncryptionServiceRole": {
+          "type": "string"
+        },
+        "SseAwsKmsKeyId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "description": "Resource Type definition for AWS::Glue::DataCatalogEncryptionSettings",
+  "primaryIdentifier": [
+    "/properties/Id"
+  ],
+  "properties": {
+    "CatalogId": {
+      "type": "string"
+    },
+    "DataCatalogEncryptionSettings": {
+      "$ref": "#/definitions/DataCatalogEncryptionSettings"
+    },
+    "Id": {
+      "type": "string"
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/Id"
+  ],
+  "required": [
+    "DataCatalogEncryptionSettings",
+    "CatalogId"
+  ],
+  "typeName": "AWS::Glue::DataCatalogEncryptionSettings"
+}

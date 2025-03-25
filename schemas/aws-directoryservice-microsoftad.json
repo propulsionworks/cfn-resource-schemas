@@ -1,0 +1,86 @@
+{
+  "$id": "aws-directoryservice-microsoftad",
+  "$integrity": "sha512-dhfPn/+I1oPiV1I3k1xI2XPvbm4q4RNR+b7L2MWmDnE5JAebirC4rYqLWbuRaIWDlL+HAjWX7iHX3vw+X4l4Ow==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/VpcSettings",
+    "/properties/Edition",
+    "/properties/Name",
+    "/properties/Password",
+    "/properties/ShortName",
+    "/properties/CreateAlias"
+  ],
+  "definitions": {
+    "VpcSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "SubnetIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "VpcId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "VpcId",
+        "SubnetIds"
+      ],
+      "type": "object"
+    }
+  },
+  "description": "Resource Type definition for AWS::DirectoryService::MicrosoftAD",
+  "primaryIdentifier": [
+    "/properties/Id"
+  ],
+  "properties": {
+    "Alias": {
+      "type": "string"
+    },
+    "CreateAlias": {
+      "type": "boolean"
+    },
+    "DnsIpAddresses": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "Edition": {
+      "type": "string"
+    },
+    "EnableSso": {
+      "type": "boolean"
+    },
+    "Id": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "Password": {
+      "type": "string"
+    },
+    "ShortName": {
+      "type": "string"
+    },
+    "VpcSettings": {
+      "$ref": "#/definitions/VpcSettings"
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/Alias",
+    "/properties/DnsIpAddresses",
+    "/properties/Id"
+  ],
+  "required": [
+    "VpcSettings",
+    "Name",
+    "Password"
+  ],
+  "typeName": "AWS::DirectoryService::MicrosoftAD"
+}

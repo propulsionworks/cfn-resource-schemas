@@ -1,0 +1,68 @@
+{
+  "$id": "aws-waf-xssmatchset",
+  "$integrity": "sha512-UG/kW1P2P3mmEJhnsb6gS00F7qeFkqg1/LMbB1fb+Q0Tnkxndi7HLDHaufUjGF93HyK8v0H/o9k+T+pz/T080A==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/Name"
+  ],
+  "definitions": {
+    "FieldToMatch": {
+      "additionalProperties": false,
+      "properties": {
+        "Data": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Type"
+      ],
+      "type": "object"
+    },
+    "XssMatchTuple": {
+      "additionalProperties": false,
+      "properties": {
+        "FieldToMatch": {
+          "$ref": "#/definitions/FieldToMatch"
+        },
+        "TextTransformation": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "TextTransformation",
+        "FieldToMatch"
+      ],
+      "type": "object"
+    }
+  },
+  "description": "Resource Type definition for AWS::WAF::XssMatchSet",
+  "primaryIdentifier": [
+    "/properties/Id"
+  ],
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "XssMatchTuples": {
+      "items": {
+        "$ref": "#/definitions/XssMatchTuple"
+      },
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/Id"
+  ],
+  "required": [
+    "Name",
+    "XssMatchTuples"
+  ],
+  "typeName": "AWS::WAF::XssMatchSet"
+}

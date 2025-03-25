@@ -1,0 +1,101 @@
+{
+  "$id": "aws-events-apidestination",
+  "$integrity": "sha512-r/Y0HJDRoyqXo4fOmZpj1t2pi/DtxJOA6da51GN35UHcPNR/p1FgkZ/7OqdvQXngyIHUWQnPOGa+UyfJ25ro5A==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/Name"
+  ],
+  "description": "Resource Type definition for AWS::Events::ApiDestination.",
+  "handlers": {
+    "create": {
+      "permissions": [
+        "events:CreateApiDestination",
+        "events:DescribeApiDestination"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "events:DeleteApiDestination",
+        "events:DescribeApiDestination"
+      ]
+    },
+    "list": {
+      "permissions": [
+        "events:ListApiDestinations"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "events:DescribeApiDestination"
+      ]
+    },
+    "update": {
+      "permissions": [
+        "events:UpdateApiDestination",
+        "events:DescribeApiDestination"
+      ]
+    }
+  },
+  "primaryIdentifier": [
+    "/properties/Name"
+  ],
+  "properties": {
+    "Arn": {
+      "description": "The arn of the api destination.",
+      "pattern": "^arn:aws([a-z]|\\-)*:events:([a-z]|\\d|\\-)*:([0-9]{12})?:api-destination/[\\.\\-_A-Za-z0-9]+/[\\-A-Za-z0-9]+$",
+      "type": "string"
+    },
+    "ConnectionArn": {
+      "description": "The arn of the connection.",
+      "pattern": "^arn:aws([a-z]|\\-)*:events:([a-z]|\\d|\\-)*:([0-9]{12})?:connection/[\\.\\-_A-Za-z0-9]+/[\\-A-Za-z0-9]+$",
+      "type": "string"
+    },
+    "Description": {
+      "maxLength": 512,
+      "type": "string"
+    },
+    "HttpMethod": {
+      "enum": [
+        "GET",
+        "HEAD",
+        "POST",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "PATCH"
+      ],
+      "type": "string"
+    },
+    "InvocationEndpoint": {
+      "description": "Url endpoint to invoke.",
+      "pattern": "^((%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@\\x26=+$,A-Za-z0-9])+)([).!';/?:,])?$",
+      "type": "string"
+    },
+    "InvocationRateLimitPerSecond": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "Name": {
+      "description": "Name of the apiDestination.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "[\\.\\-_A-Za-z0-9]+",
+      "type": "string"
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/Arn"
+  ],
+  "required": [
+    "ConnectionArn",
+    "InvocationEndpoint",
+    "HttpMethod"
+  ],
+  "tagging": {
+    "cloudFormationSystemTags": false,
+    "tagOnCreate": false,
+    "tagUpdatable": false,
+    "taggable": false
+  },
+  "typeName": "AWS::Events::ApiDestination"
+}

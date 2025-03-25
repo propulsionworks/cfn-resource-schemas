@@ -1,0 +1,67 @@
+{
+  "$id": "aws-inspector-resourcegroup",
+  "$integrity": "sha512-i93oLH8mYhnVjdwLclJ4I05n9jbWZMJ8yuyJLj/yZJrrMBbjGX8mVpkRTbpsZgI3jiPsUE2yK/shrjbEKrSENQ==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/ResourceGroupTags"
+  ],
+  "definitions": {
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Value",
+        "Key"
+      ],
+      "type": "object"
+    }
+  },
+  "description": "Resource Type definition for AWS::Inspector::ResourceGroup",
+  "handlers": {
+    "create": {
+      "permissions": [
+        "inspector:CreateResourceGroup"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "inspector:CreateResourceGroup"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "inspector:CreateResourceGroup"
+      ]
+    }
+  },
+  "primaryIdentifier": [
+    "/properties/Arn"
+  ],
+  "properties": {
+    "Arn": {
+      "type": "string"
+    },
+    "ResourceGroupTags": {
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": false
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/Arn"
+  ],
+  "required": [
+    "ResourceGroupTags"
+  ],
+  "taggable": false,
+  "typeName": "AWS::Inspector::ResourceGroup"
+}

@@ -1,0 +1,63 @@
+{
+  "$id": "aws-dms-replicationsubnetgroup",
+  "$integrity": "sha512-OQsc6+g9+3AgdFdeVKY5KEsSJm+1Cgjn4QDAO3494T3mThUHG9FyB7lgoUdn6jkWHChchNcaYZ9TIMD3VbygCQ==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/ReplicationSubnetGroupIdentifier"
+  ],
+  "definitions": {
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Value",
+        "Key"
+      ],
+      "type": "object"
+    }
+  },
+  "description": "Resource Type definition for AWS::DMS::ReplicationSubnetGroup",
+  "primaryIdentifier": [
+    "/properties/Id"
+  ],
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "ReplicationSubnetGroupDescription": {
+      "type": "string"
+    },
+    "ReplicationSubnetGroupIdentifier": {
+      "type": "string"
+    },
+    "SubnetIds": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "Tags": {
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": false
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/Id"
+  ],
+  "required": [
+    "ReplicationSubnetGroupDescription",
+    "SubnetIds"
+  ],
+  "typeName": "AWS::DMS::ReplicationSubnetGroup"
+}

@@ -1,0 +1,55 @@
+{
+  "$id": "aws-appstream-applicationfleetassociation",
+  "$integrity": "sha512-Wd8uSBq/NAZWacR72aIe90AfRdNhjaH5IWYYvcQO2QfXPAlaC2Fdpzq6CUVwkVvRA5/tFJm0wLTyraBhZsXfbQ==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/FleetName",
+    "/properties/ApplicationArn"
+  ],
+  "definitions": {
+    "Arn": {
+      "type": "string"
+    }
+  },
+  "description": "Resource Type definition for AWS::AppStream::ApplicationFleetAssociation",
+  "handlers": {
+    "create": {
+      "permissions": [
+        "appstream:AssociateApplicationFleet",
+        "appstream:DescribeApplicationFleetAssociations"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "appstream:DisassociateApplicationFleet",
+        "appstream:DescribeApplicationFleetAssociations"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "appstream:DescribeApplicationFleetAssociations"
+      ]
+    }
+  },
+  "primaryIdentifier": [
+    "/properties/FleetName",
+    "/properties/ApplicationArn"
+  ],
+  "properties": {
+    "ApplicationArn": {
+      "$ref": "#/definitions/Arn"
+    },
+    "FleetName": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "FleetName",
+    "ApplicationArn"
+  ],
+  "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-appstream.git",
+  "tagging": {
+    "taggable": false
+  },
+  "typeName": "AWS::AppStream::ApplicationFleetAssociation"
+}

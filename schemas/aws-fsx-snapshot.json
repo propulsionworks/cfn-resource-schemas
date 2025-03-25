@@ -1,0 +1,60 @@
+{
+  "$id": "aws-fsx-snapshot",
+  "$integrity": "sha512-41QxRbk9G4Po6rd+60mNROJTp4a+Bhm9Nw40GMkLdXRDVbBM3H1j8ssSbg9bc2fs1yq+B7kPdBZ15j+A+ORbUw==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/VolumeId"
+  ],
+  "definitions": {
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Value",
+        "Key"
+      ],
+      "type": "object"
+    }
+  },
+  "description": "Resource Type definition for AWS::FSx::Snapshot",
+  "primaryIdentifier": [
+    "/properties/Id"
+  ],
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "ResourceARN": {
+      "type": "string"
+    },
+    "Tags": {
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "VolumeId": {
+      "type": "string"
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/ResourceARN",
+    "/properties/Id"
+  ],
+  "required": [
+    "VolumeId",
+    "Name"
+  ],
+  "typeName": "AWS::FSx::Snapshot"
+}

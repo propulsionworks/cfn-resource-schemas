@@ -1,0 +1,159 @@
+{
+  "$id": "aws-ivs-stage",
+  "$integrity": "sha512-IqOWjB2z41WrGlYEi2JZqfjRvFGV+J77U8rUWWPT0Zw4EQLmetlztXCI/OhftbVJKb8E6eF/eQuI0bsMZ0Sefw==",
+  "additionalProperties": false,
+  "definitions": {
+    "AutoParticipantRecordingConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration object for individual participant recording, to attach to the new stage.",
+      "properties": {
+        "MediaTypes": {
+          "default": [
+            "AUDIO_VIDEO"
+          ],
+          "description": "Types of media to be recorded. Default: AUDIO_VIDEO.",
+          "insertionOrder": false,
+          "items": {
+            "enum": [
+              "AUDIO_VIDEO",
+              "AUDIO_ONLY"
+            ],
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "StorageConfigurationArn": {
+          "description": "ARN of the StorageConfiguration resource to use for individual participant recording.",
+          "maxLength": 128,
+          "minLength": 0,
+          "pattern": "^$|^arn:aws:ivs:[a-z0-9-]+:[0-9]+:storage-configuration/[a-zA-Z0-9-]+$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "StorageConfigurationArn"
+      ],
+      "type": "object"
+    },
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "description": "The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -.",
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Value": {
+          "description": "The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -.",
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        }
+      },
+      "required": [
+        "Value",
+        "Key"
+      ],
+      "type": "object"
+    }
+  },
+  "description": "Resource Definition for type AWS::IVS::Stage.",
+  "handlers": {
+    "create": {
+      "permissions": [
+        "ivs:CreateStage",
+        "ivs:GetStage",
+        "ivs:TagResource",
+        "ivs:ListTagsForResource"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "ivs:DeleteStage",
+        "ivs:UntagResource"
+      ]
+    },
+    "list": {
+      "permissions": [
+        "ivs:ListStages",
+        "ivs:ListTagsForResource"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "ivs:GetStage",
+        "ivs:ListTagsForResource"
+      ]
+    },
+    "update": {
+      "permissions": [
+        "ivs:GetStage",
+        "ivs:UpdateStage",
+        "ivs:TagResource",
+        "ivs:UntagResource",
+        "ivs:ListTagsForResource"
+      ]
+    }
+  },
+  "primaryIdentifier": [
+    "/properties/Arn"
+  ],
+  "properties": {
+    "ActiveSessionId": {
+      "default": "",
+      "description": "ID of the active session within the stage.",
+      "maxLength": 128,
+      "minLength": 0,
+      "type": "string"
+    },
+    "Arn": {
+      "description": "Stage ARN is automatically generated on creation and assigned as the unique identifier.",
+      "maxLength": 128,
+      "minLength": 0,
+      "pattern": "^arn:aws[-a-z]*:ivs:[a-z0-9-]+:[0-9]+:stage/[a-zA-Z0-9-]+$",
+      "type": "string"
+    },
+    "AutoParticipantRecordingConfiguration": {
+      "$ref": "#/definitions/AutoParticipantRecordingConfiguration"
+    },
+    "Name": {
+      "description": "Stage name",
+      "maxLength": 128,
+      "minLength": 0,
+      "pattern": "^[a-zA-Z0-9-_]*$",
+      "type": "string"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "maxItems": 50,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/Arn",
+    "/properties/ActiveSessionId"
+  ],
+  "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
+  "tagging": {
+    "cloudFormationSystemTags": false,
+    "permissions": [
+      "ivs:TagResource",
+      "ivs:UntagResource",
+      "ivs:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
+  "typeName": "AWS::IVS::Stage"
+}

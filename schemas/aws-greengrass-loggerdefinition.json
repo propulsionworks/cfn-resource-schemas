@@ -1,0 +1,86 @@
+{
+  "$id": "aws-greengrass-loggerdefinition",
+  "$integrity": "sha512-pj/nW2e0F/EiXo+0CfpHV3Yz0gro3NPPSd09Zq8H2g/s23qN45y/mRE0QT4C9LWCJRYXNNI5X3WMkNpBZs0C7w==",
+  "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/InitialVersion"
+  ],
+  "definitions": {
+    "Logger": {
+      "additionalProperties": false,
+      "properties": {
+        "Component": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "string"
+        },
+        "Level": {
+          "type": "string"
+        },
+        "Space": {
+          "type": "integer"
+        },
+        "Type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Type",
+        "Level",
+        "Id",
+        "Component"
+      ],
+      "type": "object"
+    },
+    "LoggerDefinitionVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "Loggers": {
+          "items": {
+            "$ref": "#/definitions/Logger"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "Loggers"
+      ],
+      "type": "object"
+    }
+  },
+  "description": "Resource Type definition for AWS::Greengrass::LoggerDefinition",
+  "primaryIdentifier": [
+    "/properties/Id"
+  ],
+  "properties": {
+    "Arn": {
+      "type": "string"
+    },
+    "Id": {
+      "type": "string"
+    },
+    "InitialVersion": {
+      "$ref": "#/definitions/LoggerDefinitionVersion"
+    },
+    "LatestVersionArn": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "Tags": {
+      "type": "object"
+    }
+  },
+  "readOnlyProperties": [
+    "/properties/LatestVersionArn",
+    "/properties/Arn",
+    "/properties/Id"
+  ],
+  "required": [
+    "Name"
+  ],
+  "typeName": "AWS::Greengrass::LoggerDefinition"
+}

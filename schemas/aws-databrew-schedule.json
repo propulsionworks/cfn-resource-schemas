@@ -1,10 +1,9 @@
 {
   "$id": "aws-databrew-schedule",
-  "$integrity": "sha512-UT1vO0fnTVZpvXStfFiOm7Ht/e/acCIs+cexT+zJn0MmBwFkEs1vQsj1tLqQDN6yY7DdlmABfnZEmG/0T+sueQ==",
+  "$integrity": "sha512-SjbWuifl0m02bouephg1aLDEqakVzinP660W9LsRmyfnlslpQQZh8izN1nGI/aMxETU0AEnwNPbuCQCOV56bTQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/Name",
-    "/properties/Tags"
+    "/properties/Name"
   ],
   "definitions": {
     "JobName": {
@@ -61,13 +60,14 @@
     "read": {
       "permissions": [
         "databrew:DescribeSchedule",
-        "databrew:ListTagsForResource",
         "iam:ListRoles"
       ]
     },
     "update": {
       "permissions": [
-        "databrew:UpdateSchedule"
+        "databrew:UpdateSchedule",
+        "databrew:TagResource",
+        "databrew:UntagResource"
       ]
     }
   },
@@ -118,7 +118,7 @@
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::DataBrew::Schedule"

@@ -1,10 +1,9 @@
 {
   "$id": "aws-databrew-dataset",
-  "$integrity": "sha512-sCvCWZac+/QddQAjT6Ys4RmD++adW0G0necWrRYckwmBv7IscW8BZHWfainKX9BnOFDVodhXerKZP8aolzZHHg==",
+  "$integrity": "sha512-VCpIhGmTRX3CaJYK1k/fY+ewMOfmF4fMAXL7prYya3oJasn0D9XiwvGbzKPHiiYEYcJUo/qxbJVfos4YwWcq+g==",
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/Name",
-    "/properties/Tags"
+    "/properties/Name"
   ],
   "definitions": {
     "BucketOwner": {
@@ -415,13 +414,14 @@
     "read": {
       "permissions": [
         "databrew:DescribeDataset",
-        "databrew:ListTagsForResource",
         "iam:ListRoles"
       ]
     },
     "update": {
       "permissions": [
         "databrew:UpdateDataset",
+        "databrew:TagResource",
+        "databrew:UntagResource",
         "glue:GetConnection",
         "glue:GetTable"
       ]
@@ -492,7 +492,7 @@
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::DataBrew::Dataset"

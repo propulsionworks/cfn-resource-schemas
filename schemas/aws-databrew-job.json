@@ -1,11 +1,10 @@
 {
   "$id": "aws-databrew-job",
-  "$integrity": "sha512-zkthAcu/CJK1b5K8taEbx4FSvwJN2yDVPyUiYTJTxgx1C7D9bAYIOF5O7quWoOREoz48oA4QUNi0cBJK/T1QOw==",
+  "$integrity": "sha512-PSJ8SE6b54K8lOK8/JR7qChmfqVjwM9BvGZgyYIIMzs2TifSKu3QfTPIRpwbNrCcO36D80uXrntGgJEp+vp9Bg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
-    "/properties/Type",
-    "/properties/Tags"
+    "/properties/Type"
   ],
   "definitions": {
     "AllowedStatistics": {
@@ -491,7 +490,6 @@
     "read": {
       "permissions": [
         "databrew:DescribeJob",
-        "databrew:ListTagsForResource",
         "iam:ListRoles"
       ]
     },
@@ -499,6 +497,8 @@
       "permissions": [
         "databrew:UpdateProfileJob",
         "databrew:UpdateRecipeJob",
+        "databrew:TagResource",
+        "databrew:UntagResource",
         "iam:PassRole"
       ]
     }
@@ -639,7 +639,7 @@
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::DataBrew::Job"

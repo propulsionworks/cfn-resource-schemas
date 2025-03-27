@@ -1,11 +1,3 @@
-export type JsonValue =
-  | boolean
-  | null
-  | number
-  | string
-  | JsonValue[]
-  | { [key: string]: JsonValue };
-
 export type JsonSchemaObject = Exclude<JsonSchema, boolean>;
 
 export type ResourceTypeSchemaWithMeta = {

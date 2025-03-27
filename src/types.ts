@@ -6,7 +6,7 @@ export type JsonValue =
   | JsonValue[]
   | { [key: string]: JsonValue };
 
-export type JsonSchemaDefinition = JsonSchema | boolean;
+export type JsonSchemaObject = Exclude<JsonSchema, boolean>;
 
 export type ResourceTypeSchemaWithMeta = {
   $id: string;
@@ -14,118 +14,109 @@ export type ResourceTypeSchemaWithMeta = {
 } & ResourceTypeSchema;
 
 /// GENERATED CODE BELOW ///
-export type JsonSchema = {
-  $comment?: string | undefined;
-  $id?: string | undefined;
-  $ref?: string | undefined;
-  $schema?: string | undefined;
-  additionalItems?: JsonSchemaDefinition | undefined;
-  additionalProperties?: JsonSchemaDefinition | undefined;
-  allOf?: JsonSchemaDefinition[] | undefined;
-  anyOf?: JsonSchemaDefinition[] | undefined;
-  const?: JsonValue;
-  contains?: JsonSchemaDefinition | undefined;
-  contentEncoding?: string | undefined;
-  contentMediaType?: string | undefined;
-  default?: JsonValue;
-  /**
-   * @default {}
-   */
-  definitions?: Record<string, JsonSchemaDefinition> | undefined;
-  dependencies?: Record<string, JsonSchemaDefinition | string[]> | undefined;
-  description?: string | undefined;
-  else?: JsonSchemaDefinition | undefined;
-  enum?: JsonValue[] | undefined;
-  examples?: JsonValue[] | undefined;
-  exclusiveMaximum?: number | undefined;
-  exclusiveMinimum?: number | undefined;
-  format?: string | undefined;
-  if?: JsonSchemaDefinition | undefined;
-  /**
-   * @default true
-   */
-  items?: JsonSchemaDefinition | JsonSchemaDefinition[] | undefined;
-  maximum?: number | undefined;
-  /**
-   * @min 0
-   */
-  maxItems?: number | undefined;
-  /**
-   * @min 0
-   */
-  maxLength?: number | undefined;
-  /**
-   * @min 0
-   */
-  maxProperties?: number | undefined;
-  minimum?: number | undefined;
-  /**
-   * @min 0
-   * @default 0
-   */
-  minItems?: number | undefined;
-  /**
-   * @min 0
-   * @default 0
-   */
-  minLength?: number | undefined;
-  /**
-   * @min 0
-   * @default 0
-   */
-  minProperties?: number | undefined;
-  multipleOf?: number | undefined;
-  not?: JsonSchemaDefinition | undefined;
-  oneOf?: JsonSchemaDefinition[] | undefined;
-  pattern?: string | undefined;
-  /**
-   * @default {}
-   */
-  patternProperties?: Record<string, JsonSchemaDefinition> | undefined;
-  /**
-   * @default {}
-   */
-  properties?: Record<string, JsonSchemaDefinition> | undefined;
-  propertyNames?: JsonSchemaDefinition | undefined;
-  /**
-   * @default false
-   */
-  readOnly?: boolean | undefined;
-  /**
-   * @default []
-   */
-  required?: string[] | undefined;
-  then?: JsonSchemaDefinition | undefined;
-  title?: string | undefined;
-  type?:
-    | (
-        | "array"
-        | "boolean"
-        | "integer"
-        | "null"
-        | "number"
-        | "object"
-        | "string"
-      )
-    | (
-        | "array"
-        | "boolean"
-        | "integer"
-        | "null"
-        | "number"
-        | "object"
-        | "string"
-      )[]
-    | undefined;
-  /**
-   * @default false
-   */
-  uniqueItems?: boolean | undefined;
-  /**
-   * @default false
-   */
-  writeOnly?: boolean | undefined;
-};
+export type JsonSchema =
+  | {
+      $comment?: string | undefined;
+      $id?: string | undefined;
+      $ref?: string | undefined;
+      $schema?: string | undefined;
+      additionalItems?: JsonSchema | undefined;
+      additionalProperties?: JsonSchema | undefined;
+      allOf?: JsonSchema[] | undefined;
+      anyOf?: JsonSchema[] | undefined;
+      const?: unknown;
+      contains?: JsonSchema | undefined;
+      contentEncoding?: string | undefined;
+      contentMediaType?: string | undefined;
+      default?: unknown;
+      /**
+       * @default {}
+       */
+      definitions?: Record<string, JsonSchema> | undefined;
+      dependencies?: Record<string, JsonSchema | string[]> | undefined;
+      description?: string | undefined;
+      else?: JsonSchema | undefined;
+      enum?: unknown[] | undefined;
+      examples?: unknown[] | undefined;
+      exclusiveMaximum?: number | undefined;
+      exclusiveMinimum?: number | undefined;
+      format?: string | undefined;
+      if?: JsonSchema | undefined;
+      /**
+       * @default true
+       */
+      items?: JsonSchema | JsonSchema[] | undefined;
+      /**
+       * @min 0
+       */
+      maxItems?: number | undefined;
+      /**
+       * @min 0
+       */
+      maxLength?: number | undefined;
+      /**
+       * @min 0
+       */
+      maxProperties?: number | undefined;
+      maximum?: number | undefined;
+      /**
+       * @min 0
+       * @default 0
+       */
+      minItems?: number | undefined;
+      /**
+       * @min 0
+       * @default 0
+       */
+      minLength?: number | undefined;
+      /**
+       * @min 0
+       * @default 0
+       */
+      minProperties?: number | undefined;
+      minimum?: number | undefined;
+      multipleOf?: number | undefined;
+      not?: JsonSchema | undefined;
+      oneOf?: JsonSchema[] | undefined;
+      pattern?: string | undefined;
+      /**
+       * @default {}
+       */
+      patternProperties?: Record<string, JsonSchema> | undefined;
+      /**
+       * @default {}
+       */
+      properties?: Record<string, JsonSchema> | undefined;
+      propertyNames?: JsonSchema | undefined;
+      /**
+       * @default false
+       */
+      readOnly?: boolean | undefined;
+      /**
+       * @default []
+       */
+      required?: string[] | undefined;
+      then?: JsonSchema | undefined;
+      title?: string | undefined;
+      type?: JsonSchemaType | JsonSchemaType[] | undefined;
+      /**
+       * @default false
+       */
+      uniqueItems?: boolean | undefined;
+      /**
+       * @default false
+       */
+      writeOnly?: boolean | undefined;
+    }
+  | boolean;
+export type JsonSchemaType =
+  | "array"
+  | "boolean"
+  | "integer"
+  | "null"
+  | "number"
+  | "object"
+  | "string";
 /**
  * This schema validates a CloudFormation resource provider definition.
  */
@@ -188,11 +179,7 @@ export type ResourceTypeSchema = {
    * Reserved for CloudFormation use. A namespace to inline remote schemas.
    */
   remote?: Record<string, RemoteSchema> | undefined;
-  /**
-   * The valid replacement strategies are [create_then_delete] and [delete_then_create]. All other inputs are invalid.
-   * @default create_then_delete
-   */
-  replacementStrategy?: "create_then_delete" | "delete_then_create" | undefined;
+  replacementStrategy?: ReplacementStrategy | undefined;
   /**
    * @default []
    */
@@ -245,11 +232,6 @@ export type ResourceTagging = {
   cloudFormationSystemTags?: boolean | undefined;
   permissions?: string[] | undefined;
   /**
-   * A boolean flag indicating whether this resource type supports tagging.
-   * @default true
-   */
-  taggable: boolean;
-  /**
    * A boolean flag indicating whether this resource type supports tagging resources upon creation.
    * @default true
    */
@@ -264,6 +246,11 @@ export type ResourceTagging = {
    * @default true
    */
   tagUpdatable?: boolean | undefined;
+  /**
+   * A boolean flag indicating whether this resource type supports tagging.
+   * @default true
+   */
+  taggable: boolean;
 };
 /**
  * Reserved for CloudFormation use. A inlined remote schema.
@@ -284,13 +271,16 @@ export type PropertySchema = {
    * @default Standard
    */
   arrayType?: "Standard" | "AttributeList" | undefined;
-  const?: JsonSchema["const"] | undefined;
-  contains?: JsonSchemaDefinition | undefined;
-  default?: JsonSchema["default"] | undefined;
+  const?: unknown;
+  /**
+   * @default true
+   */
+  contains?: JsonSchema | undefined;
+  default?: unknown;
   dependencies?: Record<string, PropertySchema | string[]> | undefined;
   description?: string | undefined;
-  enum?: JsonValue[] | undefined;
-  examples?: JsonValue[] | undefined;
+  enum?: unknown[] | undefined;
+  examples?: unknown[] | undefined;
   exclusiveMaximum?: number | undefined;
   exclusiveMinimum?: number | undefined;
   format?: string | undefined;
@@ -303,7 +293,6 @@ export type PropertySchema = {
    * @default {}
    */
   items?: PropertySchema | undefined;
-  maximum?: number | undefined;
   /**
    * @min 0
    */
@@ -316,7 +305,7 @@ export type PropertySchema = {
    * @min 0
    */
   maxProperties?: number | undefined;
-  minimum?: number | undefined;
+  maximum?: number | undefined;
   /**
    * @min 0
    * @default 0
@@ -332,10 +321,11 @@ export type PropertySchema = {
    * @default 0
    */
   minProperties?: number | undefined;
+  minimum?: number | undefined;
   multipleOf?: number | undefined;
   oneOf?: PropertySchema[] | undefined;
   pattern?: string | undefined;
-  patternProperties?: Record<string, JsonValue> | undefined;
+  patternProperties?: Record<string, unknown> | undefined;
   properties?: Record<string, PropertySchema> | undefined;
   relationshipRef?: RelationshipRef | undefined;
   /**
@@ -343,7 +333,7 @@ export type PropertySchema = {
    */
   required?: string[] | undefined;
   title?: string | undefined;
-  type?: JsonSchema["type"] | undefined;
+  type?: JsonSchemaType | JsonSchemaType[] | undefined;
   /**
    * @default false
    */
@@ -387,6 +377,10 @@ export type TypeConfiguration = {
    */
   required?: string[] | undefined;
 };
+/**
+ * The valid replacement strategies are [create_then_delete] and [delete_then_create]. All other inputs are invalid.
+ */
+export type ReplacementStrategy = "create_then_delete" | "delete_then_create";
 export type ResourceLink = {
   $comment?: string | undefined;
   mappings: Record<string, string>;

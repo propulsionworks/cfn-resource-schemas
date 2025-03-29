@@ -1,6 +1,6 @@
 {
   "$id": "aws-wafv2-rulegroup",
-  "$integrity": "sha512-M/Ci6FZ/DUWH/J5qXNR80SxHGB+b76Kb0xhDjRAlwFcqj1tkhGKR03uH3F6LHAVY26jcB8krI1gk7d382bdoRQ==",
+  "$integrity": "sha512-Iyaf4xGKNad8oWy/Qo4WETrhh2xFdLMue1OCmHQ8ITihOLNn4nST8KC7bMLOyfs9ykxvqPRL4UdV9UjZJAiTLQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -376,6 +376,9 @@
             "Name"
           ],
           "type": "object"
+        },
+        "UriFragment": {
+          "$ref": "#/definitions/UriFragment"
         },
         "UriPath": {
           "description": "The path component of the URI of a web request. This is the part of a web request that identifies a resource, for example, /images/daily-ad.jpg.",
@@ -1351,6 +1354,20 @@
         "UTF8_TO_UNICODE"
       ],
       "type": "string"
+    },
+    "UriFragment": {
+      "additionalProperties": false,
+      "description": "The path component of the URI Fragment. This is the part of a web request that identifies a fragment uri, for example, /abcd#introduction",
+      "properties": {
+        "FallbackBehavior": {
+          "enum": [
+            "MATCH",
+            "NO_MATCH"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "VisibilityConfig": {
       "additionalProperties": false,

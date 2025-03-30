@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrock-guardrail",
-  "$integrity": "sha512-3m7aRFSBWZ9V03pz5xYLosWaPRyxld+TojMiDQyo69cAEUwlir7M3KKt26wTIOucWcCiEoBwBwWD4+PEivdnDg==",
+  "$integrity": "sha512-RzO/Yw28+9QgYvKKlanUzKdYqe6zk7ceRIvUcdwBkiqsD/DtywtLrfzdT8RgXO4KZQ+5KBpYyfX0yJ1vV+2AZw==",
   "additionalProperties": false,
   "definitions": {
     "ContentFilter": {
@@ -28,8 +28,24 @@
       "additionalProperties": false,
       "description": "Content filter config in content policy.",
       "properties": {
+        "InputModalities": {
+          "description": "List of modalities",
+          "items": {
+            "$ref": "#/definitions/Modality"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
         "InputStrength": {
           "$ref": "#/definitions/FilterStrength"
+        },
+        "OutputModalities": {
+          "description": "List of modalities",
+          "items": {
+            "$ref": "#/definitions/Modality"
+          },
+          "minItems": 1,
+          "type": "array"
         },
         "OutputStrength": {
           "$ref": "#/definitions/FilterStrength"
@@ -173,6 +189,14 @@
       "description": "Options for managed words.",
       "enum": [
         "PROFANITY"
+      ],
+      "type": "string"
+    },
+    "Modality": {
+      "description": "Modality for filters",
+      "enum": [
+        "TEXT",
+        "IMAGE"
       ],
       "type": "string"
     },

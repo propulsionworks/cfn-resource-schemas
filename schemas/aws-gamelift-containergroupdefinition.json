@@ -1,6 +1,6 @@
 {
   "$id": "aws-gamelift-containergroupdefinition",
-  "$integrity": "sha512-3ny4U/5MjHVFkwNMn+JyXsOfKbaMjXwvh/7JXUuciR8/prxdU+Y0YM9InvslZ6y0laZLbWvFlZGg2R3SbNRcjg==",
+  "$integrity": "sha512-kV2QA/z1BqvoOlApUIWZMi8vUam0wg873mkuqd0BXw/VtyBfEg1Z/c2SP3+wvj4PICotFJU9i/1r2Wtz2Ka1Pw==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
@@ -392,12 +392,12 @@
         "ecr:BatchCheckLayerAvailability",
         "ecr:BatchGetImage",
         "ecr:GetDownloadUrlForLayer",
-        "ecr:DescribeImages"
+        "ecr:DescribeImages",
+        "ecr:GetAuthorizationToken"
       ]
     },
     "delete": {
       "permissions": [
-        "gamelift:DescribeContainerGroupDefinition",
         "gamelift:DeleteContainerGroupDefinition"
       ]
     },
@@ -414,6 +414,7 @@
     },
     "update": {
       "permissions": [
+        "gamelift:DescribeContainerGroupDefinition",
         "gamelift:UpdateContainerGroupDefinition",
         "gamelift:ListTagsForResource",
         "gamelift:TagResource",
@@ -551,5 +552,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::GameLift::ContainerGroupDefinition"
+  "typeName": "AWS::GameLift::ContainerGroupDefinition",
+  "writeOnlyProperties": [
+    "/properties/SourceVersionNumber"
+  ]
 }

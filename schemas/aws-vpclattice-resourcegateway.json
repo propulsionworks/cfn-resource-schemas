@@ -1,6 +1,6 @@
 {
   "$id": "aws-vpclattice-resourcegateway",
-  "$integrity": "sha512-TZOc6Gj2ZH4Bh3cY1dawo8xLh0HHlhaY1JabXay+Qn9a/KEKaiw3N+QxEa6HN8Dgz5BgOlnvjJpc9+ZFbgG1ZQ==",
+  "$integrity": "sha512-IQf8l6POwoUzc+/aN5dqd28R3daJMLmNISSB/UInu6QkrTuWLx3vpziK3ggj6jpI8pmAztovTKMw7c++bN2beA==",
   "additionalIdentifiers": [
     [
       "/properties/Id"
@@ -50,7 +50,8 @@
     "delete": {
       "permissions": [
         "vpc-lattice:DeleteResourceGateway",
-        "vpc-lattice:GetResourceGateway"
+        "vpc-lattice:GetResourceGateway",
+        "vpc-lattice:UntagResource"
       ]
     },
     "list": {
@@ -169,8 +170,13 @@
     "/properties/Id",
     "/properties/Arn"
   ],
+  "required": [
+    "Name",
+    "VpcIdentifier",
+    "SubnetIds"
+  ],
   "tagging": {
-    "cloudFormationSystemTags": false,
+    "cloudFormationSystemTags": true,
     "permissions": [
       "vpc-lattice:UntagResource",
       "vpc-lattice:TagResource",

@@ -34,7 +34,5 @@ export function getDocumentationUrl(
     }
   }
 
-  // https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-accelerateconfiguration.html#cfn-s3-bucket-accelerateconfiguration-accelerationstatus
-
   return `https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/${page}.html${fragment}`;
 }

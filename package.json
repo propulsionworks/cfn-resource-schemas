@@ -26,16 +26,19 @@
   },
   "files": [
     "src/",
+    "!src/build/",
     "out/",
+    "!out/build/",
     "schemas.ndjson.gz"
   ],
   "scripts": {
     "build": "npm run clean && npm run compile",
-    "bundle": "node --experimental-strip-types ./bundle.ts",
+    "bundle": "node --experimental-strip-types ./src/build/bundle.ts",
+    "check": "tsc -p tsconfig.json",
     "clean": "rimraf out/ *.tsbuildinfo",
     "compile": "tsc -p tsconfig.lib.json",
-    "download": "node --experimental-strip-types ./download.ts",
-    "test": "node --enable-source-maps --experimental-strip-types ./test.ts"
+    "download": "node --experimental-strip-types ./src/build/download.ts",
+    "test": "node --enable-source-maps --experimental-strip-types ./src/build/test.ts"
   },
   "devDependencies": {
     "@aws-cdk/aws-service-spec": "^0.1.67",

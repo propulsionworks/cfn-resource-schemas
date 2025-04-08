@@ -5,11 +5,11 @@ export default config(
     ignores: ["node_modules/", "out/"],
   },
   {
-    files: ["**/*.js", "**/*.ts"],
+    files: ["src/**/*.js", "src/**/*.ts"],
     extends: [propulsionworks.configs.js],
   },
   {
-    files: ["**/*.ts"],
+    files: ["src/**/*.ts"],
     extends: [propulsionworks.configs.ts],
   }
 );

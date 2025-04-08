@@ -17,8 +17,8 @@ import { pipeline } from "node:stream/promises";
 import { createDeflate, createGunzip } from "node:zlib";
 import { fromData } from "ssri";
 import { ZipReader } from "zip24/reader";
-import type { PropertySchema, ResourceTypeSchema } from "./src/types.ts";
-import { getDocumentationUrl as makeAwsDocumentationUrl } from "./src/util.ts";
+import type { PropertySchema, ResourceTypeSchema } from "../types.ts";
+import { getDocumentationUrl as makeAwsDocumentationUrl } from "./util.ts";
 
 type SchemaWithDocUrl = PropertySchema & {
   documentationUrl?: string | undefined;

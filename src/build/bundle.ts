@@ -1,11 +1,12 @@
+import { PackageRoot } from "#package";
 import { createWriteStream } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { pipeline } from "node:stream/promises";
 import { createGzip } from "node:zlib";
 
-const SchemaPath = resolve(import.meta.dirname, "./schemas");
-const OutputFile = resolve(import.meta.dirname, "./schemas.ndjson.gz");
+const SchemaPath = resolve(PackageRoot, "./schemas");
+const OutputFile = resolve(PackageRoot, "./schemas.ndjson.gz");
 
 async function* readSchemas(path: string): AsyncIterable<string> {
   const fileNames = await readdir(path);

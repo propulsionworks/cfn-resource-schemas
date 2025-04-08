@@ -1,3 +1,4 @@
+import { PackageRoot } from "#package";
 import { loadAwsServiceSpec } from "@aws-cdk/aws-service-spec";
 import {
   RichSpecDatabase,
@@ -24,36 +25,8 @@ type SchemaWithDocUrl = PropertySchema & {
   documentationUrl?: string | undefined;
 };
 
-const SchemaOutputPath = resolve(import.meta.dirname, "./schemas");
-
-const SchemaUrl =
-  "https://schema.cloudformation.us-east-1.amazonaws.com/CloudformationSchema.zip";
-
-console.log(`Downloading schemas from ${SchemaUrl}`);
-
-const result = await new Promise<Readable>((resolve, reject) => {
-  get(
-    SchemaUrl,
-    {
-      headers: {
-        "accept-encoding": "deflate, gzip",
-      },
-    },
-    (result) => {
-      const encoding = result.headers["content-encoding"];
-
-      if (!encoding) {
-        resolve(result);
-      } else if (encoding === "deflate") {
-        resolve(result.pipe(createDeflate()));
-      } else if (encoding === "gzip") {
-        resolve(result.pipe(createGunzip()));
-      } else {
-        reject(new Error(`can't process encoding ${encoding}`));
-      }
-    }
-  ).end();
-});
+const SchemaOutputPath = resolve(PackageRoot, "./schemas");
+const result = await downloadSchemas();
 
 const tempPath = join(tmpdir(), randomUUID() + ".zip");
 const output = createWriteStream(tempPath);
@@ -67,49 +40,45 @@ const zip = await ZipReader.open(tempPath);
 
 for await (const entry of zip) {
   const schema = JSON.parse(await entry.toText()) as ResourceTypeSchema;
-
-  let resource: Resource | undefined;
-  let definitions: readonly TypeDefinition[];
-
-  try {
-    resource = db.resourceByType(schema.typeName);
-    definitions = db.resourceTypeDefs(schema.typeName);
-  } catch {
-    // there is no specific error type to catch so assume it's be cause the type
-    // is not found
-    definitions = [];
-  }
-
-  if (resource) {
-    enhanceSchema(schema.typeName, schema, undefined, resource);
-  }
-  if (schema.definitions) {
-    for (const [defName, defSchema] of Object.entries(schema.definitions)) {
-      const def = definitions.find((x) => x.name === defName);
-      if (def) {
-        enhanceSchema(schema.typeName, defSchema, defName, def);
-      }
-    }
-  }
-
-  const canonicalJson = canonicalize(schema);
-  assert(canonicalJson);
-
-  const integrity = fromData(canonicalJson, { algorithms: ["sha512"] });
-
-  // in node, the keys will stay in order loaded, so this will end up sorted
-  const sortedSchema = {
-    $id: basename(entry.path, ".json"),
-    $integrity: integrity,
-    ...(JSON.parse(canonicalJson) as object),
-  };
-
-  await writeFile(
-    join(SchemaOutputPath, entry.path),
-    JSON.stringify(sortedSchema, undefined, 2)
-  );
+  await processSchema(schema, basename(entry.path, ".json"));
 }
 
+/**
+ * Download the schemas from source.
+ */
+async function downloadSchemas(
+  schemaUrl = "https://schema.cloudformation.us-east-1.amazonaws.com/CloudformationSchema.zip"
+): Promise<Readable> {
+  console.log(`Downloading schemas from ${schemaUrl}`);
+
+  return await new Promise<Readable>((resolve, reject) => {
+    get(
+      schemaUrl,
+      {
+        headers: {
+          "accept-encoding": "deflate, gzip",
+        },
+      },
+      (result) => {
+        const encoding = result.headers["content-encoding"];
+
+        if (!encoding) {
+          resolve(result);
+        } else if (encoding === "deflate") {
+          resolve(result.pipe(createDeflate()));
+        } else if (encoding === "gzip") {
+          resolve(result.pipe(createGunzip()));
+        } else {
+          reject(new Error(`can't process encoding ${encoding}`));
+        }
+      }
+    ).end();
+  });
+}
+
+/**
+ * Apply documentation improvements to schema.
+ */
 function enhanceSchema(
   typeName: string,
   schema: SchemaWithDocUrl | ResourceTypeSchema,
@@ -147,6 +116,60 @@ function enhanceSchema(
   }
 }
 
+/**
+ * Process a single schema.
+ */
+async function processSchema(
+  schema: ResourceTypeSchema,
+  id: string
+): Promise<void> {
+  let resource: Resource | undefined;
+  let definitions: readonly TypeDefinition[];
+
+  try {
+    resource = db.resourceByType(schema.typeName);
+    definitions = db.resourceTypeDefs(schema.typeName);
+  } catch {
+    // there is no specific error type to catch so assume it's be cause the type
+    // is not found
+    definitions = [];
+  }
+
+  if (resource) {
+    enhanceSchema(schema.typeName, schema, undefined, resource);
+  }
+  if (schema.definitions) {
+    for (const [defName, defSchema] of Object.entries(schema.definitions)) {
+      const def = definitions.find((x) => x.name === defName);
+      if (def) {
+        enhanceSchema(schema.typeName, defSchema, defName, def);
+      }
+    }
+  }
+
+  // apply RFC 8785 canonicalization for stable integrity and nicer diffs
+  const canonicalJson = canonicalize(schema);
+  assert(canonicalJson);
+
+  // calculate the integrity of the schema – this can be used as a version id
+  const integrity = fromData(canonicalJson, { algorithms: ["sha512"] });
+
+  // in node.js, the keys will stay in the order loaded, so this will stay sorted
+  const sortedSchema = {
+    $id: id,
+    $integrity: integrity,
+    ...(JSON.parse(canonicalJson) as object),
+  };
+
+  await writeFile(
+    join(SchemaOutputPath, id + ".json"),
+    JSON.stringify(sortedSchema, undefined, 2)
+  );
+}
+
+/**
+ * Join non-empty lines together with a new line character.
+ */
 function lines(...lines: (string | undefined)[]): string {
   return lines.filter(Boolean).join("\n");
 }

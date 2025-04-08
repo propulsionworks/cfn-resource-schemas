@@ -1,3 +1,4 @@
+import { PackageRoot } from "#package";
 import { loadSchemas } from "@propulsionworks/cfn-resource-schemas";
 import type { ResourceTypeSchemaWithMeta } from "@propulsionworks/cfn-resource-schemas/types";
 import canonicalize from "canonicalize";
@@ -9,7 +10,7 @@ import { checkData } from "ssri";
 // extract all the schemas, compare with local, check the integrity
 
 async function* loadLocalSchemas(
-  path = "./schemas"
+  path = join(PackageRoot, "schemas")
 ): AsyncIterable<string, void, void> {
   const localFileNames = await readdir(path);
   localFileNames.sort();

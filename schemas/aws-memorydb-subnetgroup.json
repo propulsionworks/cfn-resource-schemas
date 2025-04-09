@@ -1,6 +1,6 @@
 {
   "$id": "aws-memorydb-subnetgroup",
-  "$integrity": "sha512-LIZZGGyCeDZILfSWtNXYEckD67epk35MRyaxm1TOtgqnuslYk1WbXZS6qJZCAElUlTVkOPLiOvLKGn0lavpgqQ==",
+  "$integrity": "sha512-Ervull0zsE32xbOzPOqhN2dUt+rzDdtzZ7IK8jR7zdmGtCMT4N2HtRVuxW2wxnGPrzojzItcr8w699C9Q25uKg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/SubnetGroupName"
@@ -39,7 +39,8 @@
         "memorydb:CreateSubnetGroup",
         "memorydb:DescribeSubnetGroups",
         "memorydb:TagResource",
-        "memorydb:ListTags"
+        "memorydb:ListTags",
+        "iam:CreateServiceLinkedRole"
       ]
     },
     "delete": {
@@ -95,6 +96,15 @@
       "type": "array",
       "uniqueItems": true
     },
+    "SupportedNetworkTypes": {
+      "description": "Supported network types would be a list of network types supported by subnet group and can be either [ipv4] or [ipv4, dual_stack] or [ipv6].",
+      "insertionOrder": false,
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
     "Tags": {
       "description": "An array of key-value pairs to apply to this subnet group.",
       "insertionOrder": false,
@@ -107,7 +117,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/ARN"
+    "/properties/ARN",
+    "/properties/SupportedNetworkTypes"
   ],
   "required": [
     "SubnetGroupName",

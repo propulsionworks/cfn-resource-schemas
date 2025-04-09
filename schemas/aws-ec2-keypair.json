@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-keypair",
-  "$integrity": "sha512-botW8AXUBMwS1Y8uzwKgPLyHnFNs6smzlVKyhcwQnnlgoj8qt13nFyMichSirrDiNURRc+fodN7wmfVzulXrMQ==",
+  "$integrity": "sha512-v+SPL+6/X8c9C9QF8zYFbRz0+LhJ4kcGo/Slu+I93FIz78LNhuV1jHm07YMpb5mSsCrO2tMHQQ7GQ2i98UqDMQ==",
   "additionalIdentifiers": [
     [
       "/properties/KeyPairId"
@@ -115,6 +115,9 @@
       "uniqueItems": true
     }
   },
+  "propertyTransform": {
+    "/properties/PublicKeyMaterial": "$join([PublicKeyMaterial, \"\n\"])"
+  },
   "readOnlyProperties": [
     "/properties/KeyPairId",
     "/properties/KeyFingerprint"
@@ -128,6 +131,7 @@
     "permissions": [
       "ec2:CreateTags"
     ],
+    "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": false,
     "taggable": true

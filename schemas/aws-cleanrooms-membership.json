@@ -1,11 +1,30 @@
 {
   "$id": "aws-cleanrooms-membership",
-  "$integrity": "sha512-2csad2+7qoGee5W2COfIDccrq7PEPe054IopaCXW9tW6XnyAh8GikVy5+QEMnc33itWXuM8pMPy3nMtqYs/SFQ==",
+  "$integrity": "sha512-VNyx8p2vhvyJaiEv7ARqR3SCxujLaotZ5gL3YTjiTFjrgnUo2BOOMd93baUBRdqgI3v8e7e2qCBDdYekaV5lgg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/CollaborationIdentifier"
   ],
   "definitions": {
+    "MembershipJobComputePaymentConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "IsResponsible": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "IsResponsible"
+      ],
+      "type": "object"
+    },
+    "MembershipJobLogStatus": {
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "type": "string"
+    },
     "MembershipMLPaymentConfig": {
       "additionalProperties": false,
       "properties": {
@@ -45,6 +64,9 @@
     "MembershipPaymentConfiguration": {
       "additionalProperties": false,
       "properties": {
+        "JobCompute": {
+          "$ref": "#/definitions/MembershipJobComputePaymentConfig"
+        },
         "MachineLearning": {
           "$ref": "#/definitions/MembershipMLPaymentConfig"
         },
@@ -54,6 +76,36 @@
       },
       "required": [
         "QueryCompute"
+      ],
+      "type": "object"
+    },
+    "MembershipProtectedJobOutputConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "S3": {
+          "$ref": "#/definitions/ProtectedJobS3OutputConfigurationInput"
+        }
+      },
+      "required": [
+        "S3"
+      ],
+      "type": "object"
+    },
+    "MembershipProtectedJobResultConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "OutputConfiguration": {
+          "$ref": "#/definitions/MembershipProtectedJobOutputConfiguration"
+        },
+        "RoleArn": {
+          "maxLength": 512,
+          "minLength": 32,
+          "type": "string"
+        }
+      },
+      "required": [
+        "OutputConfiguration",
+        "RoleArn"
       ],
       "type": "object"
     },
@@ -112,6 +164,23 @@
         "COLLABORATION_DELETED"
       ],
       "type": "string"
+    },
+    "ProtectedJobS3OutputConfigurationInput": {
+      "additionalProperties": false,
+      "properties": {
+        "Bucket": {
+          "maxLength": 63,
+          "minLength": 3,
+          "type": "string"
+        },
+        "KeyPrefix": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Bucket"
+      ],
+      "type": "object"
     },
     "ProtectedQueryS3OutputConfiguration": {
       "additionalProperties": false,
@@ -257,8 +326,14 @@
       "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
       "type": "string"
     },
+    "DefaultJobResultConfiguration": {
+      "$ref": "#/definitions/MembershipProtectedJobResultConfiguration"
+    },
     "DefaultResultConfiguration": {
       "$ref": "#/definitions/MembershipProtectedQueryResultConfiguration"
+    },
+    "JobLogStatus": {
+      "$ref": "#/definitions/MembershipJobLogStatus"
     },
     "MembershipIdentifier": {
       "maxLength": 36,

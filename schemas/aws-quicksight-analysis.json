@@ -1,6 +1,6 @@
 {
   "$id": "aws-quicksight-analysis",
-  "$integrity": "sha512-5d/L3f3suQxzSs9D7KKQGEwt8EJa7NBfMPqzrNb3zKb6PN/xfmOVxN8OCiYsW9Wt/I+xUXoO/Nsu8/rZx1jEiQ==",
+  "$integrity": "sha512-oXZx+/djPrOm6WKIMWSi78XyLL9Nc5QrPjlgHuQFuJItdDT7uIAzrODpDUOaIn+ePdz9f3X87rLmH1BayYLspA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AnalysisId",
@@ -11072,6 +11072,14 @@
           "maxItems": 100,
           "minItems": 0,
           "type": "array"
+        },
+        "TransposedTableOptions": {
+          "items": {
+            "$ref": "#/definitions/TransposedTableOption"
+          },
+          "maxItems": 10001,
+          "minItems": 0,
+          "type": "array"
         }
       },
       "type": "object"
@@ -11827,6 +11835,34 @@
           "$ref": "#/definitions/Visibility"
         }
       },
+      "type": "object"
+    },
+    "TransposedColumnType": {
+      "enum": [
+        "ROW_HEADER_COLUMN",
+        "VALUE_COLUMN"
+      ],
+      "type": "string"
+    },
+    "TransposedTableOption": {
+      "additionalProperties": false,
+      "properties": {
+        "ColumnIndex": {
+          "maximum": 9999,
+          "minimum": 0,
+          "type": "number"
+        },
+        "ColumnType": {
+          "$ref": "#/definitions/TransposedColumnType"
+        },
+        "ColumnWidth": {
+          "description": "String based length that is composed of value and unit in px",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ColumnType"
+      ],
       "type": "object"
     },
     "TreeMapAggregatedFieldWells": {

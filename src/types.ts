@@ -5,6 +5,29 @@ export type ResourceTypeSchemaWithMeta = {
   $integrity: string;
 } & ResourceTypeSchema;
 
+export type WellKnownType = "iam-policy";
+
+export type PropertySupplemental = {
+  description?: string | undefined;
+  documentationUrl?: string | undefined;
+  wellKnownType?: WellKnownType | undefined;
+};
+
+export type ObjectSupplemental = {
+  description?: string | undefined;
+  documentationUrl?: string | undefined;
+  properties: Record<string, PropertySupplemental>;
+};
+
+export type ResourceSupplemental = {
+  attributes: ObjectSupplemental;
+  definitions: Record<string, ObjectSupplemental>;
+  description?: string | undefined;
+  documentationUrl?: string | undefined;
+  properties: Record<string, PropertySupplemental>;
+  typeName: string;
+};
+
 /// GENERATED CODE BELOW ///
 export type JsonSchema =
   | {

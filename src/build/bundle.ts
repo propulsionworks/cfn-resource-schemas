@@ -1,26 +1,50 @@
-import { PackageRoot } from "#package";
+/**
+ * This script takes the source data from schemas/ and supplemental/ and bundles
+ * them as new-line-delimited JSON files.
+ */
+
+import assert from "node:assert";
 import { createWriteStream } from "node:fs";
-import { readdir, readFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import {
+  Transform,
+  type TransformCallback,
+  type TransformOptions,
+} from "node:stream";
 import { pipeline } from "node:stream/promises";
 import { createGzip } from "node:zlib";
+import { Bundles } from "../paths.ts";
+import { readSchemaSources, readSupplemental } from "./lib/util.ts";
 
-const SchemaPath = resolve(PackageRoot, "./schemas");
-const OutputFile = resolve(PackageRoot, "./schemas.ndjson.gz");
+class ToNdJsonTransform extends Transform {
+  public constructor(opts?: TransformOptions) {
+    super({
+      ...opts,
+      readableObjectMode: false,
+      writableObjectMode: true,
+    });
+  }
 
-async function* readSchemas(path: string): AsyncIterable<string> {
-  const fileNames = await readdir(path);
-  fileNames.sort();
-
-  for (const fileName of fileNames) {
-    const json = await readFile(join(path, fileName), "utf8");
-    // parse and re-stringify with no formatting
-    yield JSON.stringify(JSON.parse(json)) + "\n";
+  public override _transform(
+    chunk: unknown,
+    encoding: BufferEncoding,
+    callback: TransformCallback
+  ): void {
+    assert(typeof chunk === "object");
+    callback(undefined, JSON.stringify(chunk) + "\n");
   }
 }
 
-await pipeline(
-  readSchemas(SchemaPath),
-  createGzip({ level: 9 }),
-  createWriteStream(OutputFile)
-);
+await Promise.all([
+  pipeline(
+    readSchemaSources(),
+    new ToNdJsonTransform(),
+    createGzip({ level: 9 }),
+    createWriteStream(Bundles.schemas)
+  ),
+  pipeline(
+    readSupplemental(),
+    new ToNdJsonTransform(),
+    createGzip({ level: 9 }),
+    createWriteStream(Bundles.supplemental)
+  ),
+]);

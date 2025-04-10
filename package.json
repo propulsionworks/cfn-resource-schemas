@@ -35,7 +35,8 @@
     "!src/build/",
     "out/",
     "!out/build/",
-    "schemas.ndjson.gz"
+    "schemas.ndjson.gz",
+    "package.*"
   ],
   "scripts": {
     "build": "npm run clean && npm run compile",
@@ -44,6 +45,7 @@
     "clean": "rimraf out/ *.tsbuildinfo",
     "compile": "tsc -p tsconfig.lib.json",
     "download": "node --experimental-strip-types ./src/build/download.ts",
+    "supplemental": "node --experimental-strip-types ./src/build/supplemental.ts",
     "test": "node --enable-source-maps --experimental-strip-types ./src/build/test.ts"
   },
   "devDependencies": {
@@ -54,6 +56,7 @@
     "@types/ssri": "^7.1.5",
     "canonicalize": "^2.1.0",
     "eslint": "^9.23.0",
+    "inquirer": "^12.5.2",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
     "ssri": "^12.0.0",

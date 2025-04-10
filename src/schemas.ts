@@ -1,14 +1,17 @@
 import { createReadStream } from "node:fs";
-import { join } from "node:path";
 import { type TransformCallback, Transform } from "node:stream";
 import { StringDecoder } from "node:string_decoder";
 import { createGunzip } from "node:zlib";
-import type { ResourceTypeSchemaWithMeta } from "./types.ts";
+import { Bundles } from "./paths.ts";
+import type {
+  ResourceSupplemental,
+  ResourceTypeSchemaWithMeta,
+} from "./types.ts";
 
 /**
  * Stream transform to convert the input into a stream of JSON objects.
  */
-class NdJsonTransform extends Transform {
+class FromNdJsonTransform extends Transform {
   readonly #decoder = new StringDecoder();
   #last = "";
 
@@ -47,7 +50,20 @@ export function loadSchemas(): AsyncIterable<
   void,
   void
 > {
-  return createReadStream(join(import.meta.dirname, "../schemas.ndjson.gz"))
+  return createReadStream(Bundles.schemas)
     .pipe(createGunzip())
-    .pipe(new NdJsonTransform());
+    .pipe(new FromNdJsonTransform());
+}
+
+/**
+ * Load the AWS schemas from the bundle.
+ */
+export function loadSupplemental(): AsyncIterable<
+  ResourceSupplemental,
+  void,
+  void
+> {
+  return createReadStream(Bundles.supplemental)
+    .pipe(createGunzip())
+    .pipe(new FromNdJsonTransform());
 }

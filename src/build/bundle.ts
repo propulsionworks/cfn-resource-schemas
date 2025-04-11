@@ -13,7 +13,7 @@ import {
 import { pipeline } from "node:stream/promises";
 import { createGzip } from "node:zlib";
 import { Bundles } from "../paths.ts";
-import { readSchemaSources, readSupplemental } from "./lib/util.ts";
+import { readSchemaSources, readSupplementalSources } from "./lib/util.ts";
 
 class ToNdJsonTransform extends Transform {
   public constructor(opts?: TransformOptions) {
@@ -42,7 +42,7 @@ await Promise.all([
     createWriteStream(Bundles.schemas)
   ),
   pipeline(
-    readSupplemental(),
+    readSupplementalSources(),
     new ToNdJsonTransform(),
     createGzip({ level: 9 }),
     createWriteStream(Bundles.supplemental)

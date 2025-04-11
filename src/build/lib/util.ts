@@ -76,7 +76,7 @@ export async function readPolicyFile(
  */
 export async function* readSchemaSources(
   path = Sources.schemas
-): AsyncIterable<ResourceTypeSchemaWithMeta> {
+): AsyncIterable<ResourceTypeSchemaWithMeta, void, void> {
   const fileNames = await readdir(path);
   fileNames.sort();
 
@@ -89,9 +89,9 @@ export async function* readSchemaSources(
 /**
  * Read all the resource schemas.
  */
-export async function* readSupplemental(
+export async function* readSupplementalSources(
   path = Sources.supplemental
-): AsyncIterable<ResourceSupplemental> {
+): AsyncIterable<ResourceSupplemental, void, void> {
   const fileNames = await readdir(path);
   fileNames.sort();
 
@@ -142,8 +142,7 @@ export async function writeJsonFile(
   await writeFileWithFormatting(
     path,
     JSON.stringify(
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      canonical ? JSON.parse(canonicalize(data)!) : data,
+      canonical ? JSON.parse(canonicalize(data)) : data,
       undefined,
       2
     )

@@ -27,51 +27,15 @@ jobs:
       - name: NPM install
         run: npm ci
 
-      - name: Download latest
-        run: npm run download
-
-      - id: changes
-        continue-on-error: true
-        run: "! git diff-index --quiet HEAD --"
-
-      - id: bundle
-        name: Bundle
-        if: ${{ steps.changes.outcome == 'success' || github.event_name == 'workflow_dispatch' }}
-        run: npm run bundle
-
-      - name: Build
-        if: ${{ steps.bundle.outcome == 'success' }}
-        run: npm run build
-
-      - name: Test
-        if: ${{ steps.bundle.outcome == 'success' }}
-        run: npm run test
-
       - name: Configure Git
-        if: ${{ steps.bundle.outcome == 'success' }}
         shell: bash
         run: |
           git config user.email "actions@github.com"
           git config user.name "Github Actions"
 
-      - id: commit
-        name: Commit changes
-        if: ${{ steps.bundle.outcome == 'success' }}
-        continue-on-error: true
-        run: git add -A && git commit -m "update schemas"
-
-      - name: Bump version
-        if: ${{ steps.bundle.outcome == 'success' }}
-        run: npm version patch
-
-      - name: Push changes
-        if: ${{ steps.bundle.outcome == 'success' }}
-        run: git push --follow-tags
-
-      - name: Publish
-        if: ${{ steps.bundle.outcome == 'success' }}
+      - name: Build and publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
-        run: npm publish
+        run: npm run ci-build

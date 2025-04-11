@@ -11,5 +11,17 @@ export default config(
   {
     files: ["src/**/*.ts"],
     extends: [propulsionworks.configs.ts],
+  },
+  {
+    files: ["src/build/*.ts"],
+    rules: {
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        { allowTaggedTemplates: true }, // zx uses $`` for commands
+      ],
+      "n/no-process-exit": "off",
+      "n/no-process-env": "off",
+      "unicorn/no-process-exit": "off",
+    },
   }
 );

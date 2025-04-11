@@ -34,32 +34,30 @@ $`npm run supplemental`;
 // create the bundle files
 $`npm run bundle`;
 
-// bail early if nothing changed
 if ($nothrow`git diff-index --quiet HEAD --`.ok) {
+  // bail early if nothing changed
   console.log(`No changes, nothing to do!`);
-  process.exit(0);
-}
-
-// build and test
-$`npm run compile`;
-$`npm run test`;
-
-// stop here if we're just building
-if (process.argv.includes("--build-only")) {
-  console.log(`Option --build-only given, stopping early`);
-  process.exit(0);
-}
-
-// commit changes
-$`git add -A && git commit -m "update schemas"`;
-
-// version bump
-$`npm version ${minorIncrement}`;
-
-// publish
-if (process.argv.includes("--dry-run")) {
-  $`npm publish --dry-run`;
 } else {
-  $`git push --follow-tags`;
-  $`npm publish`;
+  // build and test
+  $`npm run compile`;
+  $`npm run test`;
+
+  if (process.argv.includes("--build-only")) {
+    // stop here if we're just building
+    console.log(`Option --build-only given, stopping early`);
+  } else {
+    // commit changes
+    $`git add -A && git commit -m "update schemas"`;
+
+    // version bump
+    $`npm version ${minorIncrement}`;
+
+    // publish
+    if (process.argv.includes("--dry-run")) {
+      $`npm publish --dry-run`;
+    } else {
+      $`git push --follow-tags`;
+      $`npm publish`;
+    }
+  }
 }

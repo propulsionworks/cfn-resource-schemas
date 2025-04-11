@@ -1,0 +1,132 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#aws-resource-cognito-identitypool-return-values",
+    "properties": {
+      "Name": {
+        "description": "The name of the Amazon Cognito identity pool, returned as a string."
+      },
+      "Id": {}
+    }
+  },
+  "definitions": {
+    "CognitoIdentityProvider": {
+      "properties": {
+        "ClientId": {
+          "description": "The client ID for the Amazon Cognito user pool.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-cognitoidentityprovider.html#cfn-cognito-identitypool-cognitoidentityprovider-clientid"
+        },
+        "ProviderName": {
+          "description": "The provider name for an Amazon Cognito user pool. For example: `cognito-idp.us-east-2.amazonaws.com/us-east-2_123456789` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-cognitoidentityprovider.html#cfn-cognito-identitypool-cognitoidentityprovider-providername"
+        },
+        "ServerSideTokenCheck": {
+          "description": "TRUE if server-side token validation is enabled for the identity provider’s token.\n\nAfter you set the `ServerSideTokenCheck` to TRUE for an identity pool, that identity pool checks with the integrated user pools to make sure the user has not been globally signed out or deleted before the identity pool provides an OIDC token or AWS credentials for the user.\n\nIf the user is signed out or deleted, the identity pool returns a 400 Not Authorized error.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-cognitoidentityprovider.html#cfn-cognito-identitypool-cognitoidentityprovider-serversidetokencheck"
+        }
+      },
+      "description": "`CognitoIdentityProvider` is a property of the [AWS::Cognito::IdentityPool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html) resource that represents an Amazon Cognito user pool and its client ID.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-cognitoidentityprovider.html"
+    },
+    "CognitoStreams": {
+      "properties": {
+        "RoleArn": {
+          "description": "The Amazon Resource Name (ARN) of the role Amazon Cognito can assume to publish to the stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke `PutRecord` on your Amazon Cognito stream.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-cognitostreams.html#cfn-cognito-identitypool-cognitostreams-rolearn"
+        },
+        "StreamName": {
+          "description": "The name of the Amazon Cognito stream to receive updates. This stream must be in the developer's account and in the same Region as the identity pool.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-cognitostreams.html#cfn-cognito-identitypool-cognitostreams-streamname"
+        },
+        "StreamingStatus": {
+          "description": "Status of the Amazon Cognito streams. Valid values are: `ENABLED` or `DISABLED` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-cognitostreams.html#cfn-cognito-identitypool-cognitostreams-streamingstatus"
+        }
+      },
+      "description": "`CognitoStreams` is a property of the [AWS::Cognito::IdentityPool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html) resource that defines configuration options for Amazon Cognito streams.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-cognitostreams.html"
+    },
+    "PushSync": {
+      "properties": {
+        "ApplicationArns": {
+          "description": "The ARNs of the Amazon SNS platform applications that could be used by clients.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-pushsync.html#cfn-cognito-identitypool-pushsync-applicationarns"
+        },
+        "RoleArn": {
+          "description": "An IAM role configured to allow Amazon Cognito to call Amazon SNS on behalf of the developer.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-pushsync.html#cfn-cognito-identitypool-pushsync-rolearn"
+        }
+      },
+      "description": "`PushSync` is a property of the [AWS::Cognito::IdentityPool](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html) resource that defines the configuration options to be applied to an Amazon Cognito identity pool.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-pushsync.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-tag.html#cfn-cognito-identitypool-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-tag.html#cfn-cognito-identitypool-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypool-tag.html"
+    }
+  },
+  "description": "The `AWS::Cognito::IdentityPool` resource creates an Amazon Cognito identity pool.\n\nTo avoid deleting the resource accidentally from AWS CloudFormation , use [DeletionPolicy Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html) and the [UpdateReplacePolicy Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html) to retain the resource on deletion or replacement.",
+  "properties": {
+    "AllowClassicFlow": {
+      "description": "Enables the Basic (Classic) authentication flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-allowclassicflow"
+    },
+    "AllowUnauthenticatedIdentities": {
+      "description": "Specifies whether the identity pool supports unauthenticated logins.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-allowunauthenticatedidentities"
+    },
+    "CognitoEvents": {
+      "description": "The events to configure.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-cognitoevents"
+    },
+    "CognitoIdentityProviders": {
+      "description": "The Amazon Cognito user pools and their client IDs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-cognitoidentityproviders"
+    },
+    "CognitoStreams": {
+      "description": "Configuration options for configuring Amazon Cognito streams.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-cognitostreams"
+    },
+    "DeveloperProviderName": {
+      "description": "The \"domain\" Amazon Cognito uses when referencing your users. This name acts as a placeholder that allows your backend and the Amazon Cognito service to communicate about the developer provider. For the `DeveloperProviderName` , you can use letters and periods (.), underscores (_), and dashes (-).\n\n*Minimum length* : 1\n\n*Maximum length* : 100",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-developerprovidername"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-id"
+    },
+    "IdentityPoolName": {
+      "description": "The name of your Amazon Cognito identity pool.\n\n*Minimum length* : 1\n\n*Maximum length* : 128\n\n*Pattern* : `[\\w\\s+=,.@-]+`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-identitypoolname"
+    },
+    "IdentityPoolTags": {
+      "description": "Tags to assign to the identity pool. A tag is a label that you can apply to identity pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-identitypooltags"
+    },
+    "Name": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-name"
+    },
+    "OpenIdConnectProviderARNs": {
+      "description": "The Amazon Resource Names (ARNs) of the OpenID connect providers.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-openidconnectproviderarns"
+    },
+    "PushSync": {
+      "description": "The configuration options to be applied to the identity pool.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-pushsync"
+    },
+    "SamlProviderARNs": {
+      "description": "The Amazon Resource Names (ARNs) of the Security Assertion Markup Language (SAML) providers.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-samlproviderarns"
+    },
+    "SupportedLoginProviders": {
+      "description": "Key-value pairs that map provider names to provider app IDs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-identitypool.html#cfn-cognito-identitypool-supportedloginproviders"
+    }
+  },
+  "typeName": "AWS::Cognito::IdentityPool"
+}

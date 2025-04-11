@@ -1,0 +1,237 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-budgets-budget.html#aws-resource-budgets-budget-return-values",
+    "properties": {
+      "Id": {}
+    }
+  },
+  "definitions": {
+    "AutoAdjustData": {
+      "properties": {
+        "AutoAdjustType": {
+          "description": "The string that defines whether your budget auto-adjusts based on historical or forecasted data.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-autoadjustdata.html#cfn-budgets-budget-autoadjustdata-autoadjusttype"
+        },
+        "HistoricalOptions": {
+          "description": "The parameters that define or describe the historical data that your auto-adjusting budget is based on.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-autoadjustdata.html#cfn-budgets-budget-autoadjustdata-historicaloptions"
+        }
+      },
+      "description": "Determine the budget amount for an auto-adjusting budget.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-autoadjustdata.html"
+    },
+    "BudgetData": {
+      "properties": {
+        "AutoAdjustData": {
+          "description": "Determine the budget amount for an auto-adjusting budget.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-autoadjustdata"
+        },
+        "BudgetLimit": {
+          "description": "The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage that you want to track with your budget.\n\n`BudgetLimit` is required for cost or usage budgets, but optional for RI or Savings Plans utilization or coverage budgets. RI and Savings Plans utilization or coverage budgets default to `100` . This is the only valid value for RI or Savings Plans utilization or coverage budgets. You can't use `BudgetLimit` with `PlannedBudgetLimits` for `CreateBudget` and `UpdateBudget` actions.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-budgetlimit"
+        },
+        "BudgetName": {
+          "description": "The name of a budget. The value must be unique within an account. `BudgetName` can't include `:` and `\\` characters. If you don't include value for `BudgetName` in the template, Billing and Cost Management assigns your budget a randomly generated name.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-budgetname"
+        },
+        "BudgetType": {
+          "description": "Specifies whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-budgettype"
+        },
+        "CostFilters": {
+          "description": "The cost filters, such as `Region` , `Service` , `LinkedAccount` , `Tag` , or `CostCategory` , that are applied to a budget.\n\nAWS Budgets supports the following services as a `Service` filter for RI budgets:\n\n- Amazon EC2\n- Amazon Redshift\n- Amazon Relational Database Service\n- Amazon ElastiCache\n- Amazon OpenSearch Service",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-costfilters"
+        },
+        "CostTypes": {
+          "description": "The types of costs that are included in this `COST` budget.\n\n`USAGE` , `RI_UTILIZATION` , `RI_COVERAGE` , `SAVINGS_PLANS_UTILIZATION` , and `SAVINGS_PLANS_COVERAGE` budgets do not have `CostTypes` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-costtypes"
+        },
+        "PlannedBudgetLimits": {
+          "description": "A map containing multiple `BudgetLimit` , including current or future limits.\n\n`PlannedBudgetLimits` is available for cost or usage budget and supports both monthly and quarterly `TimeUnit` .\n\nFor monthly budgets, provide 12 months of `PlannedBudgetLimits` values. This must start from the current month and include the next 11 months. The `key` is the start of the month, `UTC` in epoch seconds.\n\nFor quarterly budgets, provide four quarters of `PlannedBudgetLimits` value entries in standard calendar quarter increments. This must start from the current quarter and include the next three quarters. The `key` is the start of the quarter, `UTC` in epoch seconds.\n\nIf the planned budget expires before 12 months for monthly or four quarters for quarterly, provide the `PlannedBudgetLimits` values only for the remaining periods.\n\nIf the budget begins at a date in the future, provide `PlannedBudgetLimits` values from the start date of the budget.\n\nAfter all of the `BudgetLimit` values in `PlannedBudgetLimits` are used, the budget continues to use the last limit as the `BudgetLimit` . At that point, the planned budget provides the same experience as a fixed budget.\n\n`DescribeBudget` and `DescribeBudgets` response along with `PlannedBudgetLimits` also contain `BudgetLimit` representing the current month or quarter limit present in `PlannedBudgetLimits` . This only applies to budgets that are created with `PlannedBudgetLimits` . Budgets that are created without `PlannedBudgetLimits` only contain `BudgetLimit` . They don't contain `PlannedBudgetLimits` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-plannedbudgetlimits"
+        },
+        "TimePeriod": {
+          "description": "The period of time that is covered by a budget. The period has a start date and an end date. The start date must come before the end date. There are no restrictions on the end date.\n\nThe start date for a budget. If you created your budget and didn't specify a start date, the start date defaults to the start of the chosen time period (MONTHLY, QUARTERLY, or ANNUALLY). For example, if you create your budget on January 24, 2019, choose `MONTHLY` , and don't set a start date, the start date defaults to `01/01/19 00:00 UTC` . The defaults are the same for the Billing and Cost Management console and the API.\n\nYou can change your start date with the `UpdateBudget` operation.\n\nAfter the end date, AWS deletes the budget and all associated notifications and subscribers.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-timeperiod"
+        },
+        "TimeUnit": {
+          "description": "The length of time until a budget resets the actual and forecasted spend. `DAILY` is available only for `RI_UTILIZATION` and `RI_COVERAGE` budgets.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html#cfn-budgets-budget-budgetdata-timeunit"
+        }
+      },
+      "description": "Represents the output of the `CreateBudget` operation. The content consists of the detailed metadata and data file information, and the current status of the `budget` object.\n\nThis is the Amazon Resource Name (ARN) pattern for a budget:\n\n`arn:aws:budgets::AccountId:budget/budgetName`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-budgetdata.html"
+    },
+    "CostTypes": {
+      "properties": {
+        "IncludeCredit": {
+          "description": "Specifies whether a budget includes credits.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includecredit"
+        },
+        "IncludeDiscount": {
+          "description": "Specifies whether a budget includes discounts.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includediscount"
+        },
+        "IncludeOtherSubscription": {
+          "description": "Specifies whether a budget includes non-RI subscription costs.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includeothersubscription"
+        },
+        "IncludeRecurring": {
+          "description": "Specifies whether a budget includes recurring fees such as monthly RI fees.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includerecurring"
+        },
+        "IncludeRefund": {
+          "description": "Specifies whether a budget includes refunds.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includerefund"
+        },
+        "IncludeSubscription": {
+          "description": "Specifies whether a budget includes subscriptions.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includesubscription"
+        },
+        "IncludeSupport": {
+          "description": "Specifies whether a budget includes support subscription fees.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includesupport"
+        },
+        "IncludeTax": {
+          "description": "Specifies whether a budget includes taxes.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includetax"
+        },
+        "IncludeUpfront": {
+          "description": "Specifies whether a budget includes upfront RI costs.\n\nThe default value is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-includeupfront"
+        },
+        "UseAmortized": {
+          "description": "Specifies whether a budget uses the amortized rate.\n\nThe default value is `false` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-useamortized"
+        },
+        "UseBlended": {
+          "description": "Specifies whether a budget uses a blended rate.\n\nThe default value is `false` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html#cfn-budgets-budget-costtypes-useblended"
+        }
+      },
+      "description": "The types of cost that are included in a `COST` budget, such as tax and subscriptions.\n\n`USAGE` , `RI_UTILIZATION` , `RI_COVERAGE` , `SAVINGS_PLANS_UTILIZATION` , and `SAVINGS_PLANS_COVERAGE` budgets don't have `CostTypes` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-costtypes.html"
+    },
+    "HistoricalOptions": {
+      "properties": {
+        "BudgetAdjustmentPeriod": {
+          "description": "The number of budget periods included in the moving-average calculation that determines your auto-adjusted budget amount. The maximum value depends on the `TimeUnit` granularity of the budget:\n\n- For the `DAILY` granularity, the maximum value is `60` .\n- For the `MONTHLY` granularity, the maximum value is `12` .\n- For the `QUARTERLY` granularity, the maximum value is `4` .\n- For the `ANNUALLY` granularity, the maximum value is `1` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-historicaloptions.html#cfn-budgets-budget-historicaloptions-budgetadjustmentperiod"
+        }
+      },
+      "description": "The parameters that define or describe the historical data that your auto-adjusting budget is based on.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-historicaloptions.html"
+    },
+    "Notification": {
+      "properties": {
+        "ComparisonOperator": {
+          "description": "The comparison that's used for this notification.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-notification.html#cfn-budgets-budget-notification-comparisonoperator"
+        },
+        "NotificationType": {
+          "description": "Specifies whether the notification is for how much you have spent ( `ACTUAL` ) or for how much that you're forecasted to spend ( `FORECASTED` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-notification.html#cfn-budgets-budget-notification-notificationtype"
+        },
+        "Threshold": {
+          "description": "The threshold that's associated with a notification. Thresholds are always a percentage, and many customers find value being alerted between 50% - 200% of the budgeted amount. The maximum limit for your threshold is 1,000,000% above the budgeted amount.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-notification.html#cfn-budgets-budget-notification-threshold"
+        },
+        "ThresholdType": {
+          "description": "The type of threshold for a notification. For `ABSOLUTE_VALUE` thresholds, AWS notifies you when you go over or are forecasted to go over your total cost threshold. For `PERCENTAGE` thresholds, AWS notifies you when you go over or are forecasted to go over a certain percentage of your forecasted spend. For example, if you have a budget for 200 dollars and you have a `PERCENTAGE` threshold of 80%, AWS notifies you when you go over 160 dollars.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-notification.html#cfn-budgets-budget-notification-thresholdtype"
+        }
+      },
+      "description": "A notification that's associated with a budget. A budget can have up to ten notifications.\n\nEach notification must have at least one subscriber. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.\n\nFor example, if you have a budget for 200 dollars and you want to be notified when you go over 160 dollars, create a notification with the following parameters:\n\n- A notificationType of `ACTUAL`\n- A `thresholdType` of `PERCENTAGE`\n- A `comparisonOperator` of `GREATER_THAN`\n- A notification `threshold` of `80`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-notification.html"
+    },
+    "NotificationWithSubscribers": {
+      "properties": {
+        "Notification": {
+          "description": "The notification that's associated with a budget.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-notificationwithsubscribers.html#cfn-budgets-budget-notificationwithsubscribers-notification"
+        },
+        "Subscribers": {
+          "description": "A list of subscribers who are subscribed to this notification.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-notificationwithsubscribers.html#cfn-budgets-budget-notificationwithsubscribers-subscribers"
+        }
+      },
+      "description": "A notification with subscribers. A notification can have one SNS subscriber and up to 10 email subscribers, for a total of 11 subscribers.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-notificationwithsubscribers.html"
+    },
+    "ResourceTag": {
+      "properties": {
+        "Key": {
+          "description": "The key that's associated with the tag.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-resourcetag.html#cfn-budgets-budget-resourcetag-key"
+        },
+        "Value": {
+          "description": "The value that's associated with the tag.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-resourcetag.html#cfn-budgets-budget-resourcetag-value"
+        }
+      },
+      "description": "The tag structure that contains a tag key and value.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-resourcetag.html"
+    },
+    "Spend": {
+      "properties": {
+        "Amount": {
+          "description": "The cost or usage amount that's associated with a budget forecast, actual spend, or budget threshold.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-spend.html#cfn-budgets-budget-spend-amount"
+        },
+        "Unit": {
+          "description": "The unit of measurement that's used for the budget forecast, actual spend, or budget threshold.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-spend.html#cfn-budgets-budget-spend-unit"
+        }
+      },
+      "description": "The amount of cost or usage that's measured for a budget.\n\n*Cost example:* A `Spend` for `3 USD` of costs has the following parameters:\n\n- An `Amount` of `3`\n- A `Unit` of `USD`\n\n*Usage example:* A `Spend` for `3 GB` of S3 usage has the following parameters:\n\n- An `Amount` of `3`\n- A `Unit` of `GB`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-spend.html"
+    },
+    "Subscriber": {
+      "properties": {
+        "Address": {
+          "description": "The address that AWS sends budget notifications to, either an SNS topic or an email.\n\nWhen you create a subscriber, the value of `Address` can't contain line breaks.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-subscriber.html#cfn-budgets-budget-subscriber-address"
+        },
+        "SubscriptionType": {
+          "description": "The type of notification that AWS sends to a subscriber.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-subscriber.html#cfn-budgets-budget-subscriber-subscriptiontype"
+        }
+      },
+      "description": "The `Subscriber` property type specifies who to notify for a Billing and Cost Management budget notification. The subscriber consists of a subscription type, and either an Amazon SNS topic or an email address.\n\nFor example, an email subscriber would have the following parameters:\n\n- A `subscriptionType` of `EMAIL`\n- An `address` of `example@example.com`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-subscriber.html"
+    },
+    "TimePeriod": {
+      "properties": {
+        "End": {
+          "description": "The end date for a budget. If you didn't specify an end date, AWS set your end date to `06/15/87 00:00 UTC` . The defaults are the same for the Billing and Cost Management console and the API.\n\nAfter the end date, AWS deletes the budget and all the associated notifications and subscribers. You can change your end date with the `UpdateBudget` operation.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-timeperiod.html#cfn-budgets-budget-timeperiod-end"
+        },
+        "Start": {
+          "description": "The start date for a budget. If you created your budget and didn't specify a start date, the start date defaults to the start of the chosen time period (MONTHLY, QUARTERLY, or ANNUALLY). For example, if you create your budget on January 24, 2019, choose `MONTHLY` , and don't set a start date, the start date defaults to `01/01/19 00:00 UTC` . The defaults are the same for the Billing and Cost Management console and the API.\n\nYou can change your start date with the `UpdateBudget` operation.\n\nValid values depend on the value of `BudgetType` :\n\n- If `BudgetType` is `COST` or `USAGE` : Valid values are `MONTHLY` , `QUARTERLY` , and `ANNUALLY` .\n- If `BudgetType` is `RI_UTILIZATION` or `RI_COVERAGE` : Valid values are `DAILY` , `MONTHLY` , `QUARTERLY` , and `ANNUALLY` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-timeperiod.html#cfn-budgets-budget-timeperiod-start"
+        }
+      },
+      "description": "The period of time that is covered by a budget. The period has a start date and an end date. The start date must come before the end date. There are no restrictions on the end date.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-budgets-budget-timeperiod.html"
+    }
+  },
+  "description": "The `AWS::Budgets::Budget` resource allows customers to take pre-defined actions that will trigger once a budget threshold has been exceeded. creates, replaces, or deletes budgets for Billing and Cost Management. For more information, see [Managing Your Costs with Budgets](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html) in the *Billing and Cost Management User Guide* .",
+  "properties": {
+    "Budget": {
+      "description": "The budget object that you want to create.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-budgets-budget.html#cfn-budgets-budget-budget"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-budgets-budget.html#cfn-budgets-budget-id"
+    },
+    "NotificationsWithSubscribers": {
+      "description": "A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to 10 email subscribers. If you include notifications and subscribers in your `CreateBudget` call, AWS creates the notifications and subscribers for you.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-budgets-budget.html#cfn-budgets-budget-notificationswithsubscribers"
+    },
+    "ResourceTags": {
+      "description": "An optional list of tags to associate with the specified budget. Each tag consists of a key and a value, and each key must be unique for the resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-budgets-budget.html#cfn-budgets-budget-resourcetags"
+    }
+  },
+  "typeName": "AWS::Budgets::Budget"
+}

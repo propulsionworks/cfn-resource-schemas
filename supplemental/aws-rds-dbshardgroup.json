@@ -1,0 +1,64 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#aws-resource-rds-dbshardgroup-return-values",
+    "properties": {
+      "DBShardGroupResourceId": {
+        "description": "The AWS Region -unique, immutable identifier for the DB shard group."
+      },
+      "Endpoint": {
+        "description": "This data type represents the information you need to connect to an Amazon RDS DB instance. This data type is used as a response element in the following actions:\n\n- `CreateDBInstance`\n- `DescribeDBInstances`\n- `DeleteDBInstance`\n\nFor the data structure that represents Amazon Aurora DB cluster endpoints, see `DBClusterEndpoint` ."
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbshardgroup-tag.html#cfn-rds-dbshardgroup-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbshardgroup-tag.html#cfn-rds-dbshardgroup-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbshardgroup-tag.html"
+    }
+  },
+  "description": "Creates a new DB shard group for Aurora Limitless Database. You must enable Aurora Limitless Database to create a DB shard group.\n\nValid for: Aurora DB clusters only",
+  "properties": {
+    "ComputeRedundancy": {
+      "description": "Specifies whether to create standby DB shard groups for the DB shard group. Valid values are the following:\n\n- 0 - Creates a DB shard group without a standby DB shard group. This is the default value.\n- 1 - Creates a DB shard group with a standby DB shard group in a different Availability Zone (AZ).\n- 2 - Creates a DB shard group with two standby DB shard groups in two different AZs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-computeredundancy"
+    },
+    "DBClusterIdentifier": {
+      "description": "The name of the primary DB cluster for the DB shard group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-dbclusteridentifier"
+    },
+    "DBShardGroupIdentifier": {
+      "description": "The name of the DB shard group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-dbshardgroupidentifier"
+    },
+    "DBShardGroupResourceId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-dbshardgroupresourceid"
+    },
+    "Endpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-endpoint"
+    },
+    "MaxACU": {
+      "description": "The maximum capacity of the DB shard group in Aurora capacity units (ACUs).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-maxacu"
+    },
+    "MinACU": {
+      "description": "The minimum capacity of the DB shard group in Aurora capacity units (ACUs).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-minacu"
+    },
+    "PubliclyAccessible": {
+      "description": "Specifies whether the DB shard group is publicly accessible.\n\nWhen the DB shard group is publicly accessible, its Domain Name System (DNS) endpoint resolves to the private IP address from within the DB shard group's virtual private cloud (VPC). It resolves to the public IP address from outside of the DB shard group's VPC. Access to the DB shard group is ultimately controlled by the security group it uses. That public access is not permitted if the security group assigned to the DB shard group doesn't permit it.\n\nWhen the DB shard group isn't publicly accessible, it is an internal DB shard group with a DNS name that resolves to a private IP address.\n\nDefault: The default behavior varies depending on whether `DBSubnetGroupName` is specified.\n\nIf `DBSubnetGroupName` isn't specified, and `PubliclyAccessible` isn't specified, the following applies:\n\n- If the default VPC in the target Region doesn’t have an internet gateway attached to it, the DB shard group is private.\n- If the default VPC in the target Region has an internet gateway attached to it, the DB shard group is public.\n\nIf `DBSubnetGroupName` is specified, and `PubliclyAccessible` isn't specified, the following applies:\n\n- If the subnets are part of a VPC that doesn’t have an internet gateway attached to it, the DB shard group is private.\n- If the subnets are part of a VPC that has an internet gateway attached to it, the DB shard group is public.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-publiclyaccessible"
+    },
+    "Tags": {
+      "description": "An optional set of key-value pairs to associate arbitrary data of your choosing with the DB shard group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbshardgroup.html#cfn-rds-dbshardgroup-tags"
+    }
+  },
+  "typeName": "AWS::RDS::DBShardGroup"
+}

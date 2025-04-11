@@ -1,0 +1,66 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html#aws-resource-lambda-eventinvokeconfig-return-values",
+    "properties": {}
+  },
+  "definitions": {
+    "DestinationConfig": {
+      "properties": {
+        "OnFailure": {
+          "description": "The destination configuration for failed invocations.\n\n> When using an Amazon SQS queue as a destination, FIFO queues cannot be used.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventinvokeconfig-destinationconfig.html#cfn-lambda-eventinvokeconfig-destinationconfig-onfailure"
+        },
+        "OnSuccess": {
+          "description": "The destination configuration for successful invocations.\n\n> When using an Amazon SQS queue as a destination, FIFO queues cannot be used.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventinvokeconfig-destinationconfig.html#cfn-lambda-eventinvokeconfig-destinationconfig-onsuccess"
+        }
+      },
+      "description": "A configuration object that specifies the destination of an event after Lambda processes it.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventinvokeconfig-destinationconfig.html"
+    },
+    "OnFailure": {
+      "properties": {
+        "Destination": {
+          "description": "The Amazon Resource Name (ARN) of the destination resource.\n\nTo retain records of unsuccessful [asynchronous invocations](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) , you can configure an Amazon SNS topic, Amazon SQS queue, Amazon S3 bucket, Lambda function, or Amazon EventBridge event bus as the destination.\n\nTo retain records of failed invocations from [Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html) , [DynamoDB](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html) , [self-managed Kafka](https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html#services-smaa-onfailure-destination) or [Amazon MSK](https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#services-msk-onfailure-destination) , you can configure an Amazon SNS topic, Amazon SQS queue, or Amazon S3 bucket as the destination.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventinvokeconfig-onfailure.html#cfn-lambda-eventinvokeconfig-onfailure-destination"
+        }
+      },
+      "description": "A destination for events that failed processing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventinvokeconfig-onfailure.html"
+    },
+    "OnSuccess": {
+      "properties": {
+        "Destination": {
+          "description": "The Amazon Resource Name (ARN) of the destination resource.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventinvokeconfig-onsuccess.html#cfn-lambda-eventinvokeconfig-onsuccess-destination"
+        }
+      },
+      "description": "A destination for events that were processed successfully.\n\nTo retain records of successful [asynchronous invocations](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) , you can configure an Amazon SNS topic, Amazon SQS queue, Lambda function, or Amazon EventBridge event bus as the destination.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventinvokeconfig-onsuccess.html"
+    }
+  },
+  "description": "The `AWS::Lambda::EventInvokeConfig` resource configures options for [asynchronous invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html) on a version or an alias.\n\nBy default, Lambda retries an asynchronous invocation twice if the function returns an error. It retains events in a queue for up to six hours. When an event fails all processing attempts or stays in the asynchronous invocation queue for too long, Lambda discards it.",
+  "properties": {
+    "DestinationConfig": {
+      "description": "A destination for events after they have been sent to a function for processing.\n\n**Destinations** - *Function* - The Amazon Resource Name (ARN) of a Lambda function.\n- *Queue* - The ARN of a standard SQS queue.\n- *Bucket* - The ARN of an Amazon S3 bucket.\n- *Topic* - The ARN of a standard SNS topic.\n- *Event Bus* - The ARN of an Amazon EventBridge event bus.\n\n> S3 buckets are supported only for on-failure destinations. To retain records of successful invocations, use another destination type.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html#cfn-lambda-eventinvokeconfig-destinationconfig"
+    },
+    "FunctionName": {
+      "description": "The name of the Lambda function.\n\n*Minimum* : `1`\n\n*Maximum* : `64`\n\n*Pattern* : `([a-zA-Z0-9-_]+)`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html#cfn-lambda-eventinvokeconfig-functionname"
+    },
+    "MaximumEventAgeInSeconds": {
+      "description": "The maximum age of a request that Lambda sends to a function for processing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html#cfn-lambda-eventinvokeconfig-maximumeventageinseconds"
+    },
+    "MaximumRetryAttempts": {
+      "description": "The maximum number of times to retry when the function returns an error.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html#cfn-lambda-eventinvokeconfig-maximumretryattempts"
+    },
+    "Qualifier": {
+      "description": "The identifier of a version or alias.\n\n- *Version* - A version number.\n- *Alias* - An alias name.\n- *Latest* - To specify the unpublished version, use `$LATEST` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html#cfn-lambda-eventinvokeconfig-qualifier"
+    }
+  },
+  "typeName": "AWS::Lambda::EventInvokeConfig"
+}

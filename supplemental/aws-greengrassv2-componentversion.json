@@ -1,0 +1,253 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-greengrassv2-componentversion.html#aws-resource-greengrassv2-componentversion-return-values",
+    "properties": {
+      "ComponentName": {
+        "description": "The name of the component."
+      },
+      "Arn": {
+        "description": "The ARN of the component version."
+      },
+      "ComponentVersion": {
+        "description": "The version of the component."
+      }
+    }
+  },
+  "definitions": {
+    "ComponentDependencyRequirement": {
+      "properties": {
+        "DependencyType": {
+          "description": "The type of this dependency. Choose from the following options:\n\n- `SOFT` – The component doesn't restart if the dependency changes state.\n- `HARD` – The component restarts if the dependency changes state.\n\nDefault: `HARD`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-componentdependencyrequirement.html#cfn-greengrassv2-componentversion-componentdependencyrequirement-dependencytype"
+        },
+        "VersionRequirement": {
+          "description": "The component version requirement for the component dependency.\n\nAWS IoT Greengrass uses semantic version constraints. For more information, see [Semantic Versioning](https://docs.aws.amazon.com/https://semver.org/) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-componentdependencyrequirement.html#cfn-greengrassv2-componentversion-componentdependencyrequirement-versionrequirement"
+        }
+      },
+      "description": "Contains information about a component dependency for a Lambda function component.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-componentdependencyrequirement.html"
+    },
+    "ComponentPlatform": {
+      "properties": {
+        "Attributes": {
+          "description": "A dictionary of attributes for the platform. The AWS IoT Greengrass Core software defines the `os` and `platform` by default. You can specify additional platform attributes for a core device when you deploy the AWS IoT Greengrass nucleus component. For more information, see the [AWS IoT Greengrass nucleus component](https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-nucleus-component.html) in the *AWS IoT Greengrass V2 Developer Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-componentplatform.html#cfn-greengrassv2-componentversion-componentplatform-attributes"
+        },
+        "Name": {
+          "description": "The friendly name of the platform. This name helps you identify the platform.\n\nIf you omit this parameter, AWS IoT Greengrass creates a friendly name from the `os` and `architecture` of the platform.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-componentplatform.html#cfn-greengrassv2-componentversion-componentplatform-name"
+        }
+      },
+      "description": "Contains information about a platform that a component supports.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-componentplatform.html"
+    },
+    "FilesystemPath": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-filesystempath.html"
+    },
+    "LambdaAddGroupOwnerBoolean": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaaddgroupownerboolean.html"
+    },
+    "LambdaContainerParams": {
+      "properties": {
+        "Devices": {
+          "description": "The list of system devices that the container can access.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdacontainerparams.html#cfn-greengrassv2-componentversion-lambdacontainerparams-devices"
+        },
+        "MemorySizeInKB": {
+          "description": "The memory size of the container, expressed in kilobytes.\n\nDefault: `16384` (16 MB)",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdacontainerparams.html#cfn-greengrassv2-componentversion-lambdacontainerparams-memorysizeinkb"
+        },
+        "MountROSysfs": {
+          "description": "Whether or not the container can read information from the device's `/sys` folder.\n\nDefault: `false`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdacontainerparams.html#cfn-greengrassv2-componentversion-lambdacontainerparams-mountrosysfs"
+        },
+        "Volumes": {
+          "description": "The list of volumes that the container can access.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdacontainerparams.html#cfn-greengrassv2-componentversion-lambdacontainerparams-volumes"
+        }
+      },
+      "description": "Contains information about a container in which AWS Lambda functions run on AWS IoT Greengrass core devices.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdacontainerparams.html"
+    },
+    "LambdaDeviceMount": {
+      "properties": {
+        "AddGroupOwner": {
+          "description": "Whether or not to add the component's system user as an owner of the device.\n\nDefault: `false`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdadevicemount.html#cfn-greengrassv2-componentversion-lambdadevicemount-addgroupowner"
+        },
+        "Path": {
+          "description": "The mount path for the device in the file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdadevicemount.html#cfn-greengrassv2-componentversion-lambdadevicemount-path"
+        },
+        "Permission": {
+          "description": "The permission to access the device: read/only ( `ro` ) or read/write ( `rw` ).\n\nDefault: `ro`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdadevicemount.html#cfn-greengrassv2-componentversion-lambdadevicemount-permission"
+        }
+      },
+      "description": "Contains information about a device that Linux processes in a container can access.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdadevicemount.html"
+    },
+    "LambdaEventSource": {
+      "properties": {
+        "Topic": {
+          "description": "The topic to which to subscribe to receive event messages.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaeventsource.html#cfn-greengrassv2-componentversion-lambdaeventsource-topic"
+        },
+        "Type": {
+          "description": "The type of event source. Choose from the following options:\n\n- `PUB_SUB` – Subscribe to local publish/subscribe messages. This event source type doesn't support MQTT wildcards ( `+` and `#` ) in the event source topic.\n- `IOT_CORE` – Subscribe to AWS IoT Core MQTT messages. This event source type supports MQTT wildcards ( `+` and `#` ) in the event source topic.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaeventsource.html#cfn-greengrassv2-componentversion-lambdaeventsource-type"
+        }
+      },
+      "description": "Contains information about an event source for an AWS Lambda function. The event source defines the topics on which this Lambda function subscribes to receive messages that run the function.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaeventsource.html"
+    },
+    "LambdaExecutionParameters": {
+      "properties": {
+        "EnvironmentVariables": {
+          "description": "The map of environment variables that are available to the Lambda function when it runs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-environmentvariables"
+        },
+        "EventSources": {
+          "description": "The list of event sources to which to subscribe to receive work messages. The Lambda function runs when it receives a message from an event source. You can subscribe this function to local publish/subscribe messages and AWS IoT Core MQTT messages.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-eventsources"
+        },
+        "ExecArgs": {
+          "description": "The list of arguments to pass to the Lambda function when it runs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-execargs"
+        },
+        "InputPayloadEncodingType": {
+          "description": "The encoding type that the Lambda function supports.\n\nDefault: `json`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-inputpayloadencodingtype"
+        },
+        "LinuxProcessParams": {
+          "description": "The parameters for the Linux process that contains the Lambda function.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-linuxprocessparams"
+        },
+        "MaxIdleTimeInSeconds": {
+          "description": "The maximum amount of time in seconds that a non-pinned Lambda function can idle before the AWS IoT Greengrass Core software stops its process.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-maxidletimeinseconds"
+        },
+        "MaxInstancesCount": {
+          "description": "The maximum number of instances that a non-pinned Lambda function can run at the same time.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-maxinstancescount"
+        },
+        "MaxQueueSize": {
+          "description": "The maximum size of the message queue for the Lambda function component. The AWS IoT Greengrass core device stores messages in a FIFO (first-in-first-out) queue until it can run the Lambda function to consume each message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-maxqueuesize"
+        },
+        "Pinned": {
+          "description": "Whether or not the Lambda function is pinned, or long-lived.\n\n- A pinned Lambda function starts when the AWS IoT Greengrass Core starts and keeps running in its own container.\n- A non-pinned Lambda function starts only when it receives a work item and exists after it idles for `maxIdleTimeInSeconds` . If the function has multiple work items, the AWS IoT Greengrass Core software creates multiple instances of the function.\n\nDefault: `true`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-pinned"
+        },
+        "StatusTimeoutInSeconds": {
+          "description": "The interval in seconds at which a pinned (also known as long-lived) Lambda function component sends status updates to the Lambda manager component.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-statustimeoutinseconds"
+        },
+        "TimeoutInSeconds": {
+          "description": "The maximum amount of time in seconds that the Lambda function can process a work item.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html#cfn-greengrassv2-componentversion-lambdaexecutionparameters-timeoutinseconds"
+        }
+      },
+      "description": "Contains parameters for a Lambda function that runs on AWS IoT Greengrass .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdaexecutionparameters.html"
+    },
+    "LambdaFilesystemPermission": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdafilesystempermission.html"
+    },
+    "LambdaFunctionRecipeSource": {
+      "properties": {
+        "ComponentDependencies": {
+          "description": "The component versions on which this Lambda function component depends.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdafunctionrecipesource.html#cfn-greengrassv2-componentversion-lambdafunctionrecipesource-componentdependencies"
+        },
+        "ComponentLambdaParameters": {
+          "description": "The system and runtime parameters for the Lambda function as it runs on the AWS IoT Greengrass core device.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdafunctionrecipesource.html#cfn-greengrassv2-componentversion-lambdafunctionrecipesource-componentlambdaparameters"
+        },
+        "ComponentName": {
+          "description": "The name of the component.\n\nDefaults to the name of the Lambda function.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdafunctionrecipesource.html#cfn-greengrassv2-componentversion-lambdafunctionrecipesource-componentname"
+        },
+        "ComponentPlatforms": {
+          "description": "The platforms that the component version supports.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdafunctionrecipesource.html#cfn-greengrassv2-componentversion-lambdafunctionrecipesource-componentplatforms"
+        },
+        "ComponentVersion": {
+          "description": "The version of the component.\n\nDefaults to the version of the Lambda function as a semantic version. For example, if your function version is `3` , the component version becomes `3.0.0` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdafunctionrecipesource.html#cfn-greengrassv2-componentversion-lambdafunctionrecipesource-componentversion"
+        },
+        "LambdaArn": {
+          "description": "The ARN of the Lambda function. The ARN must include the version of the function to import. You can't use version aliases like `$LATEST` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdafunctionrecipesource.html#cfn-greengrassv2-componentversion-lambdafunctionrecipesource-lambdaarn"
+        }
+      },
+      "description": "Contains information about an AWS Lambda function to import to create a component.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdafunctionrecipesource.html"
+    },
+    "LambdaLinuxProcessParams": {
+      "properties": {
+        "ContainerParams": {
+          "description": "The parameters for the container in which the Lambda function runs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdalinuxprocessparams.html#cfn-greengrassv2-componentversion-lambdalinuxprocessparams-containerparams"
+        },
+        "IsolationMode": {
+          "description": "The isolation mode for the process that contains the Lambda function. The process can run in an isolated runtime environment inside the AWS IoT Greengrass container, or as a regular process outside any container.\n\nDefault: `GreengrassContainer`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdalinuxprocessparams.html#cfn-greengrassv2-componentversion-lambdalinuxprocessparams-isolationmode"
+        }
+      },
+      "description": "Contains parameters for a Linux process that contains an AWS Lambda function.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdalinuxprocessparams.html"
+    },
+    "LambdaVolumeMount": {
+      "properties": {
+        "AddGroupOwner": {
+          "description": "Whether or not to add the AWS IoT Greengrass user group as an owner of the volume.\n\nDefault: `false`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdavolumemount.html#cfn-greengrassv2-componentversion-lambdavolumemount-addgroupowner"
+        },
+        "DestinationPath": {
+          "description": "The path to the logical volume in the file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdavolumemount.html#cfn-greengrassv2-componentversion-lambdavolumemount-destinationpath"
+        },
+        "Permission": {
+          "description": "The permission to access the volume: read/only ( `ro` ) or read/write ( `rw` ).\n\nDefault: `ro`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdavolumemount.html#cfn-greengrassv2-componentversion-lambdavolumemount-permission"
+        },
+        "SourcePath": {
+          "description": "The path to the physical volume in the file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdavolumemount.html#cfn-greengrassv2-componentversion-lambdavolumemount-sourcepath"
+        }
+      },
+      "description": "Contains information about a volume that Linux processes in a container can access. When you define a volume, the AWS IoT Greengrass Core software mounts the source files to the destination inside the container.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrassv2-componentversion-lambdavolumemount.html"
+    }
+  },
+  "description": "Creates a component. Components are software that run on AWS IoT Greengrass core devices. After you develop and test a component on your core device, you can use this operation to upload your component to AWS IoT Greengrass . Then, you can deploy the component to other core devices.\n\nYou can use this operation to do the following:\n\n- *Create components from recipes*\n\nCreate a component from a recipe, which is a file that defines the component's metadata, parameters, dependencies, lifecycle, artifacts, and platform capability. For more information, see [AWS IoT Greengrass component recipe reference](https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html) in the *AWS IoT Greengrass V2 Developer Guide* .\n\nTo create a component from a recipe, specify `inlineRecipe` when you call this operation.\n- *Create components from Lambda functions*\n\nCreate a component from an AWS Lambda function that runs on AWS IoT Greengrass . This creates a recipe and artifacts from the Lambda function's deployment package. You can use this operation to migrate Lambda functions from AWS IoT Greengrass V1 to AWS IoT Greengrass V2 .\n\nThis function accepts Lambda functions in all supported versions of Python, Node.js, and Java runtimes. AWS IoT Greengrass doesn't apply any additional restrictions on deprecated Lambda runtime versions.\n\nTo create a component from a Lambda function, specify `lambdaFunction` when you call this operation.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-greengrassv2-componentversion.html#cfn-greengrassv2-componentversion-arn"
+    },
+    "ComponentName": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-greengrassv2-componentversion.html#cfn-greengrassv2-componentversion-componentname"
+    },
+    "ComponentVersion": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-greengrassv2-componentversion.html#cfn-greengrassv2-componentversion-componentversion"
+    },
+    "InlineRecipe": {
+      "description": "The recipe to use to create the component. The recipe defines the component's metadata, parameters, dependencies, lifecycle, artifacts, and platform compatibility.\n\nYou must specify either `InlineRecipe` or `LambdaFunction` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-greengrassv2-componentversion.html#cfn-greengrassv2-componentversion-inlinerecipe"
+    },
+    "LambdaFunction": {
+      "description": "The parameters to create a component from a Lambda function.\n\nYou must specify either `InlineRecipe` or `LambdaFunction` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-greengrassv2-componentversion.html#cfn-greengrassv2-componentversion-lambdafunction"
+    },
+    "Tags": {
+      "description": "Application-specific metadata to attach to the component version. You can use tags in IAM policies to control access to AWS IoT Greengrass resources. You can also use tags to categorize your resources. For more information, see [Tag your AWS IoT Greengrass Version 2 resources](https://docs.aws.amazon.com/greengrass/v2/developerguide/tag-resources.html) in the *AWS IoT Greengrass V2 Developer Guide* .\n\nThis `Json` property type is processed as a map of key-value pairs. It uses the following format, which is different from most `Tags` implementations in AWS CloudFormation templates.\n\n```json\n\"Tags\": { \"KeyName0\": \"value\", \"KeyName1\": \"value\", \"KeyName2\": \"value\"\n}\n```",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-greengrassv2-componentversion.html#cfn-greengrassv2-componentversion-tags"
+    }
+  },
+  "typeName": "AWS::GreengrassV2::ComponentVersion"
+}

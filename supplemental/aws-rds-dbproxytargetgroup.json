@@ -1,0 +1,65 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxytargetgroup.html#aws-resource-rds-dbproxytargetgroup-return-values",
+    "properties": {
+      "TargetGroupArn": {
+        "description": "The Amazon Resource Name (ARN) representing the target group."
+      }
+    }
+  },
+  "definitions": {
+    "ConnectionPoolConfigurationInfoFormat": {
+      "properties": {
+        "ConnectionBorrowTimeout": {
+          "description": "The number of seconds for a proxy to wait for a connection to become available in the connection pool. This setting only applies when the proxy has opened its maximum number of connections and all connections are busy with client sessions.\n\nDefault: `120`\n\nConstraints:\n\n- Must be between 0 and 3600.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat.html#cfn-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat-connectionborrowtimeout"
+        },
+        "InitQuery": {
+          "description": "Add an initialization query, or modify the current one. You can specify one or more SQL statements for the proxy to run when opening each new database connection. The setting is typically used with `SET` statements to make sure that each connection has identical settings. Make sure that the query you add is valid. To include multiple variables in a single `SET` statement, use comma separators.\n\nFor example: `SET variable1=value1, variable2=value2`\n\nFor multiple statements, use semicolons as the separator.\n\nDefault: no initialization query",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat.html#cfn-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat-initquery"
+        },
+        "MaxConnectionsPercent": {
+          "description": "The maximum size of the connection pool for each target in a target group. The value is expressed as a percentage of the `max_connections` setting for the RDS DB instance or Aurora DB cluster used by the target group.\n\nIf you specify `MaxIdleConnectionsPercent` , then you must also include a value for this parameter.\n\nDefault: `10` for RDS for Microsoft SQL Server, and `100` for all other engines\n\nConstraints:\n\n- Must be between 1 and 100.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat.html#cfn-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat-maxconnectionspercent"
+        },
+        "MaxIdleConnectionsPercent": {
+          "description": "A value that controls how actively the proxy closes idle database connections in the connection pool. The value is expressed as a percentage of the `max_connections` setting for the RDS DB instance or Aurora DB cluster used by the target group. With a high value, the proxy leaves a high percentage of idle database connections open. A low value causes the proxy to close more idle connections and return them to the database.\n\nIf you specify this parameter, then you must also include a value for `MaxConnectionsPercent` .\n\nDefault: The default value is half of the value of `MaxConnectionsPercent` . For example, if `MaxConnectionsPercent` is 80, then the default value of `MaxIdleConnectionsPercent` is 40. If the value of `MaxConnectionsPercent` isn't specified, then for SQL Server, `MaxIdleConnectionsPercent` is `5` , and for all other engines, the default is `50` .\n\nConstraints:\n\n- Must be between 0 and the value of `MaxConnectionsPercent` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat.html#cfn-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat-maxidleconnectionspercent"
+        },
+        "SessionPinningFilters": {
+          "description": "Each item in the list represents a class of SQL operations that normally cause all later statements in a session using a proxy to be pinned to the same underlying database connection. Including an item in the list exempts that class of SQL operations from the pinning behavior.\n\nDefault: no session pinning filters",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat.html#cfn-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat-sessionpinningfilters"
+        }
+      },
+      "description": "Specifies the settings that control the size and behavior of the connection pool associated with a `DBProxyTargetGroup` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbproxytargetgroup-connectionpoolconfigurationinfoformat.html"
+    }
+  },
+  "description": "The `AWS::RDS::DBProxyTargetGroup` resource represents a set of RDS DB instances, Aurora DB clusters, or both that a proxy can connect to. Currently, each target group is associated with exactly one RDS DB instance or Aurora DB cluster.\n\nThis data type is used as a response element in the `DescribeDBProxyTargetGroups` action.\n\nFor information about RDS Proxy for Amazon RDS, see [Managing Connections with Amazon RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html) in the *Amazon RDS User Guide* .\n\nFor information about RDS Proxy for Amazon Aurora, see [Managing Connections with Amazon RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-proxy.html) in the *Amazon Aurora User Guide* .\n\nFor a sample template that creates a DB proxy and registers a DB instance, see [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxy.html#aws-resource-rds-dbproxy--examples) in AWS::RDS::DBProxy.\n\n> Limitations apply to RDS Proxy, including DB engine version limitations and AWS Region limitations.\n> \n> For information about limitations that apply to RDS Proxy for Amazon RDS, see [Limitations for RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html#rds-proxy.limitations) in the *Amazon RDS User Guide* .\n> \n> For information about that apply to RDS Proxy for Amazon Aurora, see [Limitations for RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-proxy.html#rds-proxy.limitations) in the *Amazon Aurora User Guide* .",
+  "properties": {
+    "ConnectionPoolConfigurationInfo": {
+      "description": "Displays the settings that control the size and behavior of the connection pool associated with a `DBProxyTarget` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxytargetgroup.html#cfn-rds-dbproxytargetgroup-connectionpoolconfigurationinfo"
+    },
+    "DBClusterIdentifiers": {
+      "description": "One or more DB cluster identifiers.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxytargetgroup.html#cfn-rds-dbproxytargetgroup-dbclusteridentifiers"
+    },
+    "DBInstanceIdentifiers": {
+      "description": "One or more DB instance identifiers.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxytargetgroup.html#cfn-rds-dbproxytargetgroup-dbinstanceidentifiers"
+    },
+    "DBProxyName": {
+      "description": "The identifier of the `DBProxy` that is associated with the `DBProxyTargetGroup` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxytargetgroup.html#cfn-rds-dbproxytargetgroup-dbproxyname"
+    },
+    "TargetGroupArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxytargetgroup.html#cfn-rds-dbproxytargetgroup-targetgrouparn"
+    },
+    "TargetGroupName": {
+      "description": "The identifier for the target group.\n\n> Currently, this property must be set to `default` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxytargetgroup.html#cfn-rds-dbproxytargetgroup-targetgroupname"
+    }
+  },
+  "typeName": "AWS::RDS::DBProxyTargetGroup"
+}

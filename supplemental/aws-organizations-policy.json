@@ -1,0 +1,66 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#aws-resource-organizations-policy-return-values",
+    "properties": {
+      "Id": {
+        "description": "Returns the unique identifier (ID) of the policy. For example: `p-examplepolicyid111` ."
+      },
+      "Arn": {
+        "description": "Returns the Amazon Resource Name (ARN) of the policy. For example: `arn:aws:organizations::111111111111:policy/o-exampleorgid/service_control_policy/p-examplepolicyid111` ."
+      },
+      "AwsManaged": {
+        "description": "Returns a boolean value that indicates whether the specified policy is an AWS managed policy. If true, then you can attach the policy to roots, OUs, or accounts, but you cannot edit it. For example: `true | false` ."
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-organizations-policy-tag.html#cfn-organizations-policy-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-organizations-policy-tag.html#cfn-organizations-policy-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-organizations-policy-tag.html"
+    }
+  },
+  "description": "Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account .\n\nFor more information about policies and their use, see [Managing AWS Organizations policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html) .\n\nIf the request includes tags, then the requester must have the `organizations:TagResource` permission.\n\nThis operation can be called only from the organization's management account or a member account designated as a delegated administrator.\n\n> Before you can create a policy of a given type, you must first [enable that policy type](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_enable-disable.html) in your organization.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-arn"
+    },
+    "AwsManaged": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-awsmanaged"
+    },
+    "Content": {
+      "description": "The policy text content. You can specify the policy content as a JSON object or a JSON string.\n\n> When you specify the policy content as a JSON string, you can't perform drift detection on the CloudFormation stack. For this reason, we recommend specifying the policy content as a JSON object instead. \n\nThe text that you supply must adhere to the rules of the policy type you specify in the `Type` parameter. The following AWS Organizations quotas are enforced for the maximum size of a policy document:\n\n- Service control policies: 5,120 characters\n- Resource control policies: 5,120 characters\n- Declarative policies: 10,000 characters\n- Backup policies: 10,000 characters\n- Tag policies: 10,000 characters\n- Chat applications policies: 10,000 characters\n- AI services opt-out policies: 2,500 characters\n\nFor more information about Organizations service quotas, see [Quotas for AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html) in the *AWS Organizations User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-content"
+    },
+    "Description": {
+      "description": "Human readable description of the policy.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-description"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-id"
+    },
+    "Name": {
+      "description": "Name of the policy.\n\nThe [regex pattern](https://docs.aws.amazon.com/http://wikipedia.org/wiki/regex) that is used to validate this parameter is a string of any of the characters in the ASCII character range.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-name"
+    },
+    "Tags": {
+      "description": "A list of tags that you want to attach to the newly created policy. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to `null` . For more information about tagging, see [Tagging AWS Organizations resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html) in the AWS Organizations User Guide.\n\n> If any one of the tags is not valid or if you exceed the allowed number of tags for a policy, then the entire request fails and the policy is not created.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-tags"
+    },
+    "TargetIds": {
+      "description": "List of unique identifiers (IDs) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the [ListRoots](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListRoots.html) , [ListOrganizationalUnitsForParent](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListOrganizationalUnitsForParent.html) , or [ListAccounts](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListAccounts.html) operations. If you don't specify this parameter, the policy is created but not attached to any organization resource.\n\nThe [regex pattern](https://docs.aws.amazon.com/http://wikipedia.org/wiki/regex) for a target ID string requires one of the following:\n\n- *Root* - A string that begins with \"r-\" followed by from 4 to 32 lowercase letters or digits.\n- *Account* - A string that consists of exactly 12 digits.\n- *Organizational unit (OU)* - A string that begins with \"ou-\" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second \"-\" dash and from 8 to 32 additional lowercase letters or digits.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-targetids"
+    },
+    "Type": {
+      "description": "The type of policy to create.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-policy.html#cfn-organizations-policy-type"
+    }
+  },
+  "typeName": "AWS::Organizations::Policy"
+}

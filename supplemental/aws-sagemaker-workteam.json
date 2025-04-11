@@ -1,0 +1,106 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html#aws-resource-sagemaker-workteam-return-values",
+    "properties": {
+      "WorkteamName": {
+        "description": "The name of the work team."
+      },
+      "Id": {}
+    }
+  },
+  "definitions": {
+    "CognitoMemberDefinition": {
+      "properties": {
+        "CognitoClientId": {
+          "description": "An identifier for an application client. You must create the app client ID using Amazon Cognito .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-cognitomemberdefinition.html#cfn-sagemaker-workteam-cognitomemberdefinition-cognitoclientid"
+        },
+        "CognitoUserGroup": {
+          "description": "An identifier for a user group.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-cognitomemberdefinition.html#cfn-sagemaker-workteam-cognitomemberdefinition-cognitousergroup"
+        },
+        "CognitoUserPool": {
+          "description": "An identifier for a user pool. The user pool must be in the same region as the service that you are calling.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-cognitomemberdefinition.html#cfn-sagemaker-workteam-cognitomemberdefinition-cognitouserpool"
+        }
+      },
+      "description": "Identifies a Amazon Cognito user group. A user group can be used in on or more work teams.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-cognitomemberdefinition.html"
+    },
+    "MemberDefinition": {
+      "properties": {
+        "CognitoMemberDefinition": {
+          "description": "The Amazon Cognito user group that is part of the work team.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-memberdefinition.html#cfn-sagemaker-workteam-memberdefinition-cognitomemberdefinition"
+        },
+        "OidcMemberDefinition": {
+          "description": "A list user groups that exist in your OIDC Identity Provider (IdP). One to ten groups can be used to create a single private work team. When you add a user group to the list of `Groups` , you can add that user group to one or more private work teams. If you add a user group to a private work team, all workers in that user group are added to the work team.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-memberdefinition.html#cfn-sagemaker-workteam-memberdefinition-oidcmemberdefinition"
+        }
+      },
+      "description": "Defines an Amazon Cognito or your own OIDC IdP user group that is part of a work team.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-memberdefinition.html"
+    },
+    "NotificationConfiguration": {
+      "properties": {
+        "NotificationTopicArn": {
+          "description": "The ARN for the Amazon SNS topic to which notifications should be published.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-notificationconfiguration.html#cfn-sagemaker-workteam-notificationconfiguration-notificationtopicarn"
+        }
+      },
+      "description": "Configures Amazon SNS notifications of available or expiring work items for work teams.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-notificationconfiguration.html"
+    },
+    "OidcMemberDefinition": {
+      "properties": {
+        "OidcGroups": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-oidcmemberdefinition.html#cfn-sagemaker-workteam-oidcmemberdefinition-oidcgroups"
+        }
+      },
+      "description": "A list of user groups that exist in your OIDC Identity Provider (IdP). One to ten groups can be used to create a single private work team. When you add a user group to the list of `Groups` , you can add that user group to one or more private work teams. If you add a user group to a private work team, all workers in that user group are added to the work team.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-oidcmemberdefinition.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-tag.html#cfn-sagemaker-workteam-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-tag.html#cfn-sagemaker-workteam-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-workteam-tag.html"
+    }
+  },
+  "description": "Creates a new work team for labeling your data. A work team is defined by one or more Amazon Cognito user pools. You must first create the user pools before you can create a work team.\n\nYou cannot create more than 25 work teams in an account and region.",
+  "properties": {
+    "Description": {
+      "description": "A description of the work team.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html#cfn-sagemaker-workteam-description"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html#cfn-sagemaker-workteam-id"
+    },
+    "MemberDefinitions": {
+      "description": "A list of `MemberDefinition` objects that contains objects that identify the workers that make up the work team.\n\nWorkforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP). For private workforces created using Amazon Cognito use `CognitoMemberDefinition` . For workforces created using your own OIDC identity provider (IdP) use `OidcMemberDefinition` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html#cfn-sagemaker-workteam-memberdefinitions"
+    },
+    "NotificationConfiguration": {
+      "description": "Configures SNS notifications of available or expiring work items for work teams.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html#cfn-sagemaker-workteam-notificationconfiguration"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html#cfn-sagemaker-workteam-tags"
+    },
+    "WorkforceName": {
+      "description": "The name of the workforce.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html#cfn-sagemaker-workteam-workforcename"
+    },
+    "WorkteamName": {
+      "description": "The name of the work team.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html#cfn-sagemaker-workteam-workteamname"
+    }
+  },
+  "typeName": "AWS::SageMaker::Workteam"
+}

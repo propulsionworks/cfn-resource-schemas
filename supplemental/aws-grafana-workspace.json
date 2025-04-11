@@ -1,0 +1,266 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#aws-resource-grafana-workspace-return-values",
+    "properties": {
+      "Status": {
+        "description": "The current status of the workspace.\n\nValid values: `ACTIVE | CREATING | DELETING | FAILED | UPDATING | UPGRADING | DELETION_FAILED | CREATION_FAILED | UPDATE_FAILED | UPGRADE_FAILED | LICENSE_REMOVAL_FAILED`\n\nType: String"
+      },
+      "GrafanaVersion": {
+        "description": "Specifies the version of Grafana supported by this workspace.\n\nType: String"
+      },
+      "CreationTimestamp": {
+        "description": "The date that the workspace was created.\n\nType: Timestamp"
+      },
+      "Endpoint": {
+        "description": "The URL that users can use to access the Grafana console in the workspace.\n\nType: String"
+      },
+      "SsoClientId": {
+        "description": "The ID of the IAM Identity Center-managed application that is created by Amazon Managed Grafana .\n\nType: String"
+      },
+      "Id": {
+        "description": "The unique ID of this workspace.\n\nType: String"
+      },
+      "SamlConfigurationStatus": {
+        "description": "Specifies whether the workspace's SAML configuration is complete.\n\nValid values: `CONFIGURED | NOT_CONFIGURED`\n\nType: String"
+      },
+      "ModificationTimestamp": {
+        "description": "The most recent date that the workspace was modified.\n\nType: Timestamp"
+      }
+    }
+  },
+  "definitions": {
+    "AccountAccessType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-accountaccesstype.html"
+    },
+    "AssertionAttributes": {
+      "properties": {
+        "Email": {
+          "description": "The name of the attribute within the SAML assertion to use as the email names for SAML users.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-assertionattributes.html#cfn-grafana-workspace-assertionattributes-email"
+        },
+        "Groups": {
+          "description": "The name of the attribute within the SAML assertion to use as the user full \"friendly\" names for user groups.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-assertionattributes.html#cfn-grafana-workspace-assertionattributes-groups"
+        },
+        "Login": {
+          "description": "The name of the attribute within the SAML assertion to use as the login names for SAML users.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-assertionattributes.html#cfn-grafana-workspace-assertionattributes-login"
+        },
+        "Name": {
+          "description": "The name of the attribute within the SAML assertion to use as the user full \"friendly\" names for SAML users.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-assertionattributes.html#cfn-grafana-workspace-assertionattributes-name"
+        },
+        "Org": {
+          "description": "The name of the attribute within the SAML assertion to use as the user full \"friendly\" names for the users' organizations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-assertionattributes.html#cfn-grafana-workspace-assertionattributes-org"
+        },
+        "Role": {
+          "description": "The name of the attribute within the SAML assertion to use as the user roles.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-assertionattributes.html#cfn-grafana-workspace-assertionattributes-role"
+        }
+      },
+      "description": "A structure that defines which attributes in the IdP assertion are to be used to define information about the users authenticated by the IdP to use the workspace.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-assertionattributes.html"
+    },
+    "AuthenticationProviderTypes": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-authenticationprovidertypes.html"
+    },
+    "DataSourceType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-datasourcetype.html"
+    },
+    "IdpMetadata": {
+      "properties": {
+        "Url": {
+          "description": "The URL of the location containing the IdP metadata.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-idpmetadata.html#cfn-grafana-workspace-idpmetadata-url"
+        },
+        "Xml": {
+          "description": "The full IdP metadata, in XML format.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-idpmetadata.html#cfn-grafana-workspace-idpmetadata-xml"
+        }
+      },
+      "description": "A structure containing the identity provider (IdP) metadata used to integrate the identity provider with this workspace. You can specify the metadata either by providing a URL to its location in the `url` parameter, or by specifying the full metadata in XML format in the `xml` parameter. Specifying both will cause an error.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-idpmetadata.html"
+    },
+    "NetworkAccessControl": {
+      "properties": {
+        "PrefixListIds": {
+          "description": "An array of prefix list IDs. A prefix list is a list of CIDR ranges of IP addresses. The IP addresses specified are allowed to access your workspace. If the list is not included in the configuration (passed an empty array) then no IP addresses are allowed to access the workspace. You create a prefix list using the Amazon VPC console.\n\nPrefix list IDs have the format `pl- *1a2b3c4d*` .\n\nFor more information about prefix lists, see [Group CIDR blocks using managed prefix lists](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) in the *Amazon Virtual Private Cloud User Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-networkaccesscontrol.html#cfn-grafana-workspace-networkaccesscontrol-prefixlistids"
+        },
+        "VpceIds": {
+          "description": "An array of Amazon VPC endpoint IDs for the workspace. You can create VPC endpoints to your Amazon Managed Grafana workspace for access from within a VPC. If a `NetworkAccessConfiguration` is specified then only VPC endpoints specified here are allowed to access the workspace. If you pass in an empty array of strings, then no VPCs are allowed to access the workspace.\n\nVPC endpoint IDs have the format `vpce- *1a2b3c4d*` .\n\nFor more information about creating an interface VPC endpoint, see [Interface VPC endpoints](https://docs.aws.amazon.com/grafana/latest/userguide/VPC-endpoints) in the *Amazon Managed Grafana User Guide* .\n\n> The only VPC endpoints that can be specified here are interface VPC endpoints for Grafana workspaces (using the `com.amazonaws.[region].grafana-workspace` service endpoint). Other VPC endpoints are ignored.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-networkaccesscontrol.html#cfn-grafana-workspace-networkaccesscontrol-vpceids"
+        }
+      },
+      "description": "The configuration settings for in-bound network access to your workspace.\n\nWhen this is configured, only listed IP addresses and VPC endpoints will be able to access your workspace. Standard Grafana authentication and authorization are still required.\n\nAccess is granted to a caller that is in either the IP address list or the VPC endpoint list - they do not need to be in both.\n\nIf this is not configured, or is removed, then all IP addresses and VPC endpoints are allowed. Standard Grafana authentication and authorization are still required.\n\n> While both `prefixListIds` and `vpceIds` are required, you can pass in an empty array of strings for either parameter if you do not want to allow any of that type.\n> \n> If both are passed as empty arrays, no traffic is allowed to the workspace, because only *explicitly* allowed connections are accepted.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-networkaccesscontrol.html"
+    },
+    "NotificationDestinationType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-notificationdestinationtype.html"
+    },
+    "PermissionType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-permissiontype.html"
+    },
+    "RoleValues": {
+      "properties": {
+        "Admin": {
+          "description": "A list of groups from the SAML assertion attribute to grant the Grafana `Admin` role to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-rolevalues.html#cfn-grafana-workspace-rolevalues-admin"
+        },
+        "Editor": {
+          "description": "A list of groups from the SAML assertion attribute to grant the Grafana `Editor` role to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-rolevalues.html#cfn-grafana-workspace-rolevalues-editor"
+        }
+      },
+      "description": "This structure defines which groups defined in the SAML assertion attribute are to be mapped to the Grafana `Admin` and `Editor` roles in the workspace. SAML authenticated users not part of `Admin` or `Editor` role groups have `Viewer` permission over the workspace.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-rolevalues.html"
+    },
+    "SamlConfiguration": {
+      "properties": {
+        "AllowedOrganizations": {
+          "description": "Lists which organizations defined in the SAML assertion are allowed to use the Amazon Managed Grafana workspace. If this is empty, all organizations in the assertion attribute have access.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-samlconfiguration.html#cfn-grafana-workspace-samlconfiguration-allowedorganizations"
+        },
+        "AssertionAttributes": {
+          "description": "A structure that defines which attributes in the SAML assertion are to be used to define information about the users authenticated by that IdP to use the workspace.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-samlconfiguration.html#cfn-grafana-workspace-samlconfiguration-assertionattributes"
+        },
+        "IdpMetadata": {
+          "description": "A structure containing the identity provider (IdP) metadata used to integrate the identity provider with this workspace.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-samlconfiguration.html#cfn-grafana-workspace-samlconfiguration-idpmetadata"
+        },
+        "LoginValidityDuration": {
+          "description": "How long a sign-on session by a SAML user is valid, before the user has to sign on again.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-samlconfiguration.html#cfn-grafana-workspace-samlconfiguration-loginvalidityduration"
+        },
+        "RoleValues": {
+          "description": "A structure containing arrays that map group names in the SAML assertion to the Grafana `Admin` and `Editor` roles in the workspace.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-samlconfiguration.html#cfn-grafana-workspace-samlconfiguration-rolevalues"
+        }
+      },
+      "description": "A structure containing information about how this workspace works with SAML.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-samlconfiguration.html"
+    },
+    "SamlConfigurationStatus": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-samlconfigurationstatus.html"
+    },
+    "VpcConfiguration": {
+      "properties": {
+        "SecurityGroupIds": {
+          "description": "The list of Amazon EC2 security group IDs attached to the Amazon VPC for your Grafana workspace to connect. Duplicates not allowed.\n\n*Array Members* : Minimum number of 1 items. Maximum number of 5 items.\n\n*Length* : Minimum length of 0. Maximum length of 255.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-vpcconfiguration.html#cfn-grafana-workspace-vpcconfiguration-securitygroupids"
+        },
+        "SubnetIds": {
+          "description": "The list of Amazon EC2 subnet IDs created in the Amazon VPC for your Grafana workspace to connect. Duplicates not allowed.\n\n*Array Members* : Minimum number of 2 items. Maximum number of 6 items.\n\n*Length* : Minimum length of 0. Maximum length of 255.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-vpcconfiguration.html#cfn-grafana-workspace-vpcconfiguration-subnetids"
+        }
+      },
+      "description": "The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to.\n\n> Provided `securityGroupIds` and `subnetIds` must be part of the same VPC.\n> \n> Connecting to a private VPC is not yet available in the Asia Pacific (Seoul) Region (ap-northeast-2).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-vpcconfiguration.html"
+    },
+    "WorkspaceStatus": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-grafana-workspace-workspacestatus.html"
+    }
+  },
+  "description": "Specifies a *workspace* . In a workspace, you can create Grafana dashboards and visualizations to analyze your metrics, logs, and traces. You don't have to build, package, or deploy any hardware to run the Grafana server.",
+  "properties": {
+    "AccountAccessType": {
+      "description": "Specifies whether the workspace can access AWS resources in this AWS account only, or whether it can also access AWS resources in other accounts in the same organization. If this is `ORGANIZATION` , the `OrganizationalUnits` parameter specifies which organizational units the workspace can access.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-accountaccesstype"
+    },
+    "AuthenticationProviders": {
+      "description": "Specifies whether this workspace uses SAML 2.0, AWS IAM Identity Center , or both to authenticate users for using the Grafana console within a workspace. For more information, see [User authentication in Amazon Managed Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html) .\n\n*Allowed Values* : `AWS_SSO | SAML`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-authenticationproviders"
+    },
+    "ClientToken": {
+      "description": "A unique, case-sensitive, user-provided identifier to ensure the idempotency of the request.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-clienttoken"
+    },
+    "CreationTimestamp": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-creationtimestamp"
+    },
+    "DataSources": {
+      "description": "Specifies the AWS data sources that have been configured to have IAM roles and permissions created to allow Amazon Managed Grafana to read data from these sources.\n\nThis list is only used when the workspace was created through the AWS console, and the `permissionType` is `SERVICE_MANAGED` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-datasources"
+    },
+    "Description": {
+      "description": "The user-defined description of the workspace.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-description"
+    },
+    "Endpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-endpoint"
+    },
+    "GrafanaVersion": {
+      "description": "Specifies the version of Grafana to support in the workspace. Defaults to the latest version on create (for example, 9.4), or the current version of the workspace on update.\n\nCan only be used to upgrade (for example, from 8.4 to 9.4), not downgrade (for example, from 9.4 to 8.4).\n\nTo know what versions are available to upgrade to for a specific workspace, see the [ListVersions](https://docs.aws.amazon.com/grafana/latest/APIReference/API_ListVersions.html) operation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-grafanaversion"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-id"
+    },
+    "ModificationTimestamp": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-modificationtimestamp"
+    },
+    "Name": {
+      "description": "The name of the workspace.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-name"
+    },
+    "NetworkAccessControl": {
+      "description": "The configuration settings for network access to your workspace.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-networkaccesscontrol"
+    },
+    "NotificationDestinations": {
+      "description": "The AWS notification channels that Amazon Managed Grafana can automatically create IAM roles and permissions for, to allow Amazon Managed Grafana to use these channels.\n\n*AllowedValues* : `SNS`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-notificationdestinations"
+    },
+    "OrganizationRoleName": {
+      "description": "The name of the IAM role that is used to access resources through Organizations.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-organizationrolename"
+    },
+    "OrganizationalUnits": {
+      "description": "Specifies the organizational units that this workspace is allowed to use data sources from, if this workspace is in an account that is part of an organization.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-organizationalunits"
+    },
+    "PermissionType": {
+      "description": "If this is `SERVICE_MANAGED` , and the workplace was created through the Amazon Managed Grafana console, then Amazon Managed Grafana automatically creates the IAM roles and provisions the permissions that the workspace needs to use AWS data sources and notification channels.\n\nIf this is `CUSTOMER_MANAGED` , you must manage those roles and permissions yourself.\n\nIf you are working with a workspace in a member account of an organization and that account is not a delegated administrator account, and you want the workspace to access data sources in other AWS accounts in the organization, this parameter must be set to `CUSTOMER_MANAGED` .\n\nFor more information about converting between customer and service managed, see [Managing permissions for data sources and notification channels](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-datasource-and-notification.html) . For more information about the roles and permissions that must be managed for customer managed workspaces, see [Amazon Managed Grafana permissions and policies for AWS data sources and notification channels](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-permissions.html)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-permissiontype"
+    },
+    "PluginAdminEnabled": {
+      "description": "Whether plugin administration is enabled in the workspace. Setting to `true` allows workspace admins to install, uninstall, and update plugins from within the Grafana workspace.\n\n> This option is only valid for workspaces that support Grafana version 9 or newer.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-pluginadminenabled"
+    },
+    "RoleArn": {
+      "description": "The IAM role that grants permissions to the AWS resources that the workspace will view data from. This role must already exist.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-rolearn"
+    },
+    "SamlConfiguration": {
+      "description": "If the workspace uses SAML, use this structure to map SAML assertion attributes to workspace user information and define which groups in the assertion attribute are to have the `Admin` and `Editor` roles in the workspace.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-samlconfiguration"
+    },
+    "SamlConfigurationStatus": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-samlconfigurationstatus"
+    },
+    "SsoClientId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-ssoclientid"
+    },
+    "StackSetName": {
+      "description": "The name of the AWS CloudFormation stack set that is used to generate IAM roles to be used for this workspace.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-stacksetname"
+    },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-status"
+    },
+    "VpcConfiguration": {
+      "description": "The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to.\n\n> Connecting to a private VPC is not yet available in the Asia Pacific (Seoul) Region (ap-northeast-2).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-vpcconfiguration"
+    }
+  },
+  "typeName": "AWS::Grafana::Workspace"
+}

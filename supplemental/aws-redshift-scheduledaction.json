@@ -1,0 +1,112 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#aws-resource-redshift-scheduledaction-return-values",
+    "properties": {
+      "State": {
+        "description": "The state of the scheduled action. For example, `DISABLED` ."
+      },
+      "NextInvocations": {
+        "description": "List of times when the scheduled action will run."
+      }
+    }
+  },
+  "definitions": {
+    "PauseClusterMessage": {
+      "properties": {
+        "ClusterIdentifier": {
+          "description": "The identifier of the cluster to be paused.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-pauseclustermessage.html#cfn-redshift-scheduledaction-pauseclustermessage-clusteridentifier"
+        }
+      },
+      "description": "Describes a pause cluster operation. For example, a scheduled action to run the `PauseCluster` API operation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-pauseclustermessage.html"
+    },
+    "ResizeClusterMessage": {
+      "properties": {
+        "Classic": {
+          "description": "A boolean value indicating whether the resize operation is using the classic resize process. If you don't provide this parameter or set the value to `false` , the resize type is elastic.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-resizeclustermessage.html#cfn-redshift-scheduledaction-resizeclustermessage-classic"
+        },
+        "ClusterIdentifier": {
+          "description": "The unique identifier for the cluster to resize.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-resizeclustermessage.html#cfn-redshift-scheduledaction-resizeclustermessage-clusteridentifier"
+        },
+        "ClusterType": {
+          "description": "The new cluster type for the specified cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-resizeclustermessage.html#cfn-redshift-scheduledaction-resizeclustermessage-clustertype"
+        },
+        "NodeType": {
+          "description": "The new node type for the nodes you are adding. If not specified, the cluster's current node type is used.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-resizeclustermessage.html#cfn-redshift-scheduledaction-resizeclustermessage-nodetype"
+        },
+        "NumberOfNodes": {
+          "description": "The new number of nodes for the cluster. If not specified, the cluster's current number of nodes is used.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-resizeclustermessage.html#cfn-redshift-scheduledaction-resizeclustermessage-numberofnodes"
+        }
+      },
+      "description": "Describes a resize cluster operation. For example, a scheduled action to run the `ResizeCluster` API operation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-resizeclustermessage.html"
+    },
+    "ResumeClusterMessage": {
+      "properties": {
+        "ClusterIdentifier": {
+          "description": "The identifier of the cluster to be resumed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-resumeclustermessage.html#cfn-redshift-scheduledaction-resumeclustermessage-clusteridentifier"
+        }
+      },
+      "description": "Describes a resume cluster operation. For example, a scheduled action to run the `ResumeCluster` API operation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-resumeclustermessage.html"
+    },
+    "ScheduledActionType": {
+      "properties": {},
+      "description": "The action type that specifies an Amazon Redshift API operation that is supported by the Amazon Redshift scheduler.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-scheduledactiontype.html"
+    },
+    "timestamp": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-redshift-scheduledaction-timestamp.html"
+    }
+  },
+  "description": "Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action. For example, you can create a schedule of when to run the `ResizeCluster` API operation.",
+  "properties": {
+    "Enable": {
+      "description": "If true, the schedule is enabled. If false, the scheduled action does not trigger. For more information about `state` of the scheduled action, see `ScheduledAction` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-enable"
+    },
+    "EndTime": {
+      "description": "The end time in UTC when the schedule is no longer active. After this time, the scheduled action does not trigger.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-endtime"
+    },
+    "IamRole": {
+      "description": "The IAM role to assume to run the scheduled action. This IAM role must have permission to run the Amazon Redshift API operation in the scheduled action. This IAM role must allow the Amazon Redshift scheduler (Principal scheduler.redshift.amazonaws.com) to assume permissions on your behalf. For more information about the IAM role to use with the Amazon Redshift scheduler, see [Using Identity-Based Policies for Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html) in the *Amazon Redshift Cluster Management Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-iamrole"
+    },
+    "NextInvocations": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-nextinvocations"
+    },
+    "Schedule": {
+      "description": "The schedule for a one-time (at format) or recurring (cron format) scheduled action. Schedule invocations must be separated by at least one hour.\n\nFormat of at expressions is \" `at(yyyy-mm-ddThh:mm:ss)` \". For example, \" `at(2016-03-04T17:27:00)` \".\n\nFormat of cron expressions is \" `cron(Minutes Hours Day-of-month Month Day-of-week Year)` \". For example, \" `cron(0 10 ? * MON *)` \". For more information, see [Cron Expressions](https://docs.aws.amazon.com//AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions) in the *Amazon CloudWatch Events User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-schedule"
+    },
+    "ScheduledActionDescription": {
+      "description": "The description of the scheduled action.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-scheduledactiondescription"
+    },
+    "ScheduledActionName": {
+      "description": "The name of the scheduled action.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-scheduledactionname"
+    },
+    "StartTime": {
+      "description": "The start time in UTC when the schedule is active. Before this time, the scheduled action does not trigger.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-starttime"
+    },
+    "State": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-state"
+    },
+    "TargetAction": {
+      "description": "A JSON format string of the Amazon Redshift API operation with input parameters.\n\n\" `{\\\"ResizeCluster\\\":{\\\"NodeType\\\":\\\"ra3.4xlarge\\\",\\\"ClusterIdentifier\\\":\\\"my-test-cluster\\\",\\\"NumberOfNodes\\\":3}}` \".",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-scheduledaction.html#cfn-redshift-scheduledaction-targetaction"
+    }
+  },
+  "typeName": "AWS::Redshift::ScheduledAction"
+}

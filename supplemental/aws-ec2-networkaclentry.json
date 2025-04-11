@@ -1,0 +1,83 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#aws-resource-ec2-networkaclentry-return-values",
+    "properties": {
+      "Id": {
+        "description": "The ID of the network ACL entry."
+      }
+    }
+  },
+  "definitions": {
+    "Icmp": {
+      "properties": {
+        "Code": {
+          "description": "The Internet Control Message Protocol (ICMP) code. You can use -1 to specify all ICMP codes for the given ICMP type. Required if you specify 1 (ICMP) for the protocol parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkaclentry-icmp.html#cfn-ec2-networkaclentry-icmp-code"
+        },
+        "Type": {
+          "description": "The Internet Control Message Protocol (ICMP) type. You can use -1 to specify all ICMP types. Conditional requirement: Required if you specify 1 (ICMP) for the `CreateNetworkAclEntry` protocol parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkaclentry-icmp.html#cfn-ec2-networkaclentry-icmp-type"
+        }
+      },
+      "description": "Describes the ICMP type and code.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkaclentry-icmp.html"
+    },
+    "PortRange": {
+      "properties": {
+        "From": {
+          "description": "The first port in the range. Required if you specify 6 (TCP) or 17 (UDP) for the protocol parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkaclentry-portrange.html#cfn-ec2-networkaclentry-portrange-from"
+        },
+        "To": {
+          "description": "The last port in the range. Required if you specify 6 (TCP) or 17 (UDP) for the protocol parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkaclentry-portrange.html#cfn-ec2-networkaclentry-portrange-to"
+        }
+      },
+      "description": "Describes a range of ports.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkaclentry-portrange.html"
+    }
+  },
+  "description": "Specifies an entry, known as a rule, in a network ACL with a rule number you specify. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules.\n\nTo create the network ACL, see [AWS::EC2::NetworkAcl](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkacl.html) .\n\nFor information about the protocol value, see [Protocol Numbers](https://docs.aws.amazon.com/https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) on the Internet Assigned Numbers Authority (IANA) website.",
+  "properties": {
+    "CidrBlock": {
+      "description": "The IPv4 CIDR range to allow or deny, in CIDR notation (for example, 172.16.0.0/24). You must specify an IPv4 CIDR block or an IPv6 CIDR block.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-cidrblock"
+    },
+    "Egress": {
+      "description": "Whether this rule applies to egress traffic from the subnet ( `true` ) or ingress traffic to the subnet ( `false` ). By default, AWS CloudFormation specifies `false` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-egress"
+    },
+    "Icmp": {
+      "description": "The Internet Control Message Protocol (ICMP) code and type. Required if specifying 1 (ICMP) for the protocol parameter.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-icmp"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-id"
+    },
+    "Ipv6CidrBlock": {
+      "description": "The IPv6 network range to allow or deny, in CIDR notation. You must specify an IPv4 CIDR block or an IPv6 CIDR block.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-ipv6cidrblock"
+    },
+    "NetworkAclId": {
+      "description": "The ID of the ACL for the entry.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-networkaclid"
+    },
+    "PortRange": {
+      "description": "The range of port numbers for the UDP/TCP protocol. Required if specifying 6 (TCP) or 17 (UDP) for the protocol parameter.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-portrange"
+    },
+    "Protocol": {
+      "description": "The IP protocol that the rule applies to. You must specify -1 or a protocol number. You can specify -1 for all protocols.\n\n> If you specify -1, all ports are opened and the `PortRange` property is ignored.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-protocol"
+    },
+    "RuleAction": {
+      "description": "Whether to allow or deny traffic that matches the rule; valid values are \"allow\" or \"deny\".",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-ruleaction"
+    },
+    "RuleNumber": {
+      "description": "Rule number to assign to the entry, such as 100. ACL entries are processed in ascending order by rule number. Entries can't use the same rule number unless one is an egress rule and the other is an ingress rule.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkaclentry.html#cfn-ec2-networkaclentry-rulenumber"
+    }
+  },
+  "typeName": "AWS::EC2::NetworkAclEntry"
+}

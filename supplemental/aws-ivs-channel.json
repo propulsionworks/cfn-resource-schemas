@@ -1,0 +1,100 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#aws-resource-ivs-channel-return-values",
+    "properties": {
+      "PlaybackUrl": {
+        "description": "Channel playback URL. For example: `https://a1b2c3d4e5f6.us-west-2.playback.live-video.net/api/video/v1/us-west-2.123456789012.channel.abcdEFGH.m3u8`"
+      },
+      "IngestEndpoint": {
+        "description": "Channel ingest endpoint, part of the definition of an ingest server, used when you set up streaming software.\n\nFor example: `a1b2c3d4e5f6.global-contribute.live-video.net`"
+      },
+      "Arn": {
+        "description": "The channel ARN. For example: `arn:aws:ivs:us-west-2:123456789012:channel/abcdABCDefgh`"
+      }
+    }
+  },
+  "definitions": {
+    "MultitrackInputConfiguration": {
+      "properties": {
+        "Enabled": {
+          "description": "Indicates whether multitrack input is enabled. Can be set to `true` only if channel type is `STANDARD` . Setting `enabled` to `true` with any other channel type will cause an exception. If `true` , then `policy` , `maximumResolution` , and `containerFormat` are required, and `containerFormat` must be set to `FRAGMENTED_MP4` . Default: `false` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-channel-multitrackinputconfiguration.html#cfn-ivs-channel-multitrackinputconfiguration-enabled"
+        },
+        "MaximumResolution": {
+          "description": "Maximum resolution for multitrack input. Required if `enabled` is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-channel-multitrackinputconfiguration.html#cfn-ivs-channel-multitrackinputconfiguration-maximumresolution"
+        },
+        "Policy": {
+          "description": "Indicates whether multitrack input is allowed or required. Required if `enabled` is `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-channel-multitrackinputconfiguration.html#cfn-ivs-channel-multitrackinputconfiguration-policy"
+        }
+      },
+      "description": "A complex type that specifies multitrack input configuration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-channel-multitrackinputconfiguration.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-channel-tag.html#cfn-ivs-channel-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-channel-tag.html#cfn-ivs-channel-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-channel-tag.html"
+    }
+  },
+  "description": "The `AWS::IVS::Channel` resource specifies an  channel. A channel stores configuration information related to your live stream. For more information, see [CreateChannel](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/API_CreateChannel.html) in the *Amazon IVS Low-Latency Streaming API Reference* .\n\n> By default, the IVS API CreateChannel endpoint creates a stream key in addition to a channel. The  Channel resource *does not* create a stream key; to create a stream key, use the StreamKey resource instead.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-arn"
+    },
+    "Authorized": {
+      "description": "Whether the channel is authorized.\n\n*Default* : `false`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-authorized"
+    },
+    "ContainerFormat": {
+      "description": "Indicates which content-packaging format is used (MPEG-TS or fMP4). If `multitrackInputConfiguration` is specified and `enabled` is `true` , then `containerFormat` is required and must be set to `FRAGMENTED_MP4` . Otherwise, `containerFormat` may be set to `TS` or `FRAGMENTED_MP4` . Default: `TS` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-containerformat"
+    },
+    "IngestEndpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-ingestendpoint"
+    },
+    "InsecureIngest": {
+      "description": "Whether the channel allows insecure RTMP ingest.\n\n*Default* : `false`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-insecureingest"
+    },
+    "LatencyMode": {
+      "description": "Channel latency mode. Valid values:\n\n- `NORMAL` : Use NORMAL to broadcast and deliver live video up to Full HD.\n- `LOW` : Use LOW for near real-time interactions with viewers.\n\n> In the  console, `LOW` and `NORMAL` correspond to `Ultra-low` and `Standard` , respectively. \n\n*Default* : `LOW`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-latencymode"
+    },
+    "MultitrackInputConfiguration": {
+      "description": "Object specifying multitrack input configuration. Default: no multitrack input configuration is specified.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-multitrackinputconfiguration"
+    },
+    "Name": {
+      "description": "Channel name.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-name"
+    },
+    "PlaybackUrl": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-playbackurl"
+    },
+    "Preset": {
+      "description": "An optional transcode preset for the channel. This is selectable only for `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types, the default preset is `HIGHER_BANDWIDTH_DELIVERY` . For other channel types ( `BASIC` and `STANDARD` ), `preset` is the empty string (\"\").",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-preset"
+    },
+    "RecordingConfigurationArn": {
+      "description": "The ARN of a RecordingConfiguration resource. An empty string indicates that recording is disabled for the channel. A RecordingConfiguration ARN indicates that recording is enabled using the specified recording configuration. See the [RecordingConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-recordingconfiguration.html) resource for more information and an example.\n\n*Default* : \"\" (empty string, recording is disabled)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-recordingconfigurationarn"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-channel-tag.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-tags"
+    },
+    "Type": {
+      "description": "The channel type, which determines the allowable resolution and bitrate. *If you exceed the allowable resolution or bitrate, the stream probably will disconnect immediately.* For details, see [Channel Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html) .\n\n*Default* : `STANDARD`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivs-channel.html#cfn-ivs-channel-type"
+    }
+  },
+  "typeName": "AWS::IVS::Channel"
+}

@@ -1,0 +1,128 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#aws-resource-datasync-locationfsxontap-return-values",
+    "properties": {
+      "LocationUri": {
+        "description": "The URI of the specified location."
+      },
+      "FsxFilesystemArn": {
+        "description": "The ARN of the FSx for ONTAP file system in the specified location."
+      },
+      "LocationArn": {
+        "description": "The ARN of the specified location."
+      }
+    }
+  },
+  "definitions": {
+    "NFS": {
+      "properties": {
+        "MountOptions": {
+          "description": "Specifies how DataSync can access a location using the NFS protocol.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-nfs.html#cfn-datasync-locationfsxontap-nfs-mountoptions"
+        }
+      },
+      "description": "Specifies the Network File System (NFS) protocol configuration that AWS DataSync uses to access a storage virtual machine (SVM) on your Amazon FSx for NetApp ONTAP file system. For more information, see [Accessing FSx for ONTAP file systems](https://docs.aws.amazon.com/datasync/latest/userguide/create-ontap-location.html#create-ontap-location-access) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-nfs.html"
+    },
+    "NfsMountOptions": {
+      "properties": {
+        "Version": {
+          "description": "Specifies the NFS version that you want DataSync to use when mounting your NFS share. If the server refuses to use the version specified, the task fails.\n\nYou can specify the following options:\n\n- `AUTOMATIC` (default): DataSync chooses NFS version 4.1.\n- `NFS3` : Stateless protocol version that allows for asynchronous writes on the server.\n- `NFSv4_0` : Stateful, firewall-friendly protocol version that supports delegations and pseudo file systems.\n- `NFSv4_1` : Stateful protocol version that supports sessions, directory delegations, and parallel data processing. NFS version 4.1 also includes all features available in version 4.0.\n\n> DataSync currently only supports NFS version 3 with Amazon FSx for NetApp ONTAP locations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-nfsmountoptions.html#cfn-datasync-locationfsxontap-nfsmountoptions-version"
+        }
+      },
+      "description": "Specifies how DataSync can access a location using the NFS protocol.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-nfsmountoptions.html"
+    },
+    "Protocol": {
+      "properties": {
+        "NFS": {
+          "description": "Specifies the Network File System (NFS) protocol configuration that DataSync uses to access your FSx for ONTAP file system's storage virtual machine (SVM).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-protocol.html#cfn-datasync-locationfsxontap-protocol-nfs"
+        },
+        "SMB": {
+          "description": "Specifies the Server Message Block (SMB) protocol configuration that DataSync uses to access your FSx for ONTAP file system's SVM.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-protocol.html#cfn-datasync-locationfsxontap-protocol-smb"
+        }
+      },
+      "description": "Specifies the data transfer protocol that AWS DataSync uses to access your Amazon FSx file system.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-protocol.html"
+    },
+    "SMB": {
+      "properties": {
+        "Domain": {
+          "description": "Specifies the name of the Windows domain that your storage virtual machine (SVM) belongs to.\n\nIf you have multiple domains in your environment, configuring this setting makes sure that DataSync connects to the right SVM.\n\nIf you have multiple Active Directory domains in your environment, configuring this parameter makes sure that DataSync connects to the right SVM.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-smb.html#cfn-datasync-locationfsxontap-smb-domain"
+        },
+        "MountOptions": {
+          "description": "Specifies how DataSync can access a location using the SMB protocol.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-smb.html#cfn-datasync-locationfsxontap-smb-mountoptions"
+        },
+        "Password": {
+          "description": "Specifies the password of a user who has permission to access your SVM.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-smb.html#cfn-datasync-locationfsxontap-smb-password"
+        },
+        "User": {
+          "description": "Specifies a user name that can mount the location and access the files, folders, and metadata that you need in the SVM.\n\nIf you provide a user in your Active Directory, note the following:\n\n- If you're using AWS Directory Service for Microsoft Active Directory , the user must be a member of the AWS Delegated FSx Administrators group.\n- If you're using a self-managed Active Directory, the user must be a member of either the Domain Admins group or a custom group that you specified for file system administration when you created your file system.\n\nMake sure that the user has the permissions it needs to copy the data you want:\n\n- `SE_TCB_NAME` : Required to set object ownership and file metadata. With this privilege, you also can copy NTFS discretionary access lists (DACLs).\n- `SE_SECURITY_NAME` : May be needed to copy NTFS system access control lists (SACLs). This operation specifically requires the Windows privilege, which is granted to members of the Domain Admins group. If you configure your task to copy SACLs, make sure that the user has the required privileges. For information about copying SACLs, see [Ownership and permissions-related options](https://docs.aws.amazon.com/datasync/latest/userguide/create-task.html#configure-ownership-and-permissions) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-smb.html#cfn-datasync-locationfsxontap-smb-user"
+        }
+      },
+      "description": "Specifies the Server Message Block (SMB) protocol configuration that AWS DataSync uses to access a storage virtual machine (SVM) on your Amazon FSx for NetApp ONTAP file system. For more information, see [Accessing FSx for ONTAP file systems](https://docs.aws.amazon.com/datasync/latest/userguide/create-ontap-location.html#create-ontap-location-access) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-smb.html"
+    },
+    "SmbMountOptions": {
+      "properties": {
+        "Version": {
+          "description": "By default, DataSync automatically chooses an SMB protocol version based on negotiation with your SMB file server. You also can configure DataSync to use a specific SMB version, but we recommend doing this only if DataSync has trouble negotiating with the SMB file server automatically.\n\nThese are the following options for configuring the SMB version:\n\n- `AUTOMATIC` (default): DataSync and the SMB file server negotiate the highest version of SMB that they mutually support between 2.1 and 3.1.1.\n\nThis is the recommended option. If you instead choose a specific version that your file server doesn't support, you may get an `Operation Not Supported` error.\n- `SMB3` : Restricts the protocol negotiation to only SMB version 3.0.2.\n- `SMB2` : Restricts the protocol negotiation to only SMB version 2.1.\n- `SMB2_0` : Restricts the protocol negotiation to only SMB version 2.0.\n- `SMB1` : Restricts the protocol negotiation to only SMB version 1.0.\n\n> The `SMB1` option isn't available when [creating an Amazon FSx for NetApp ONTAP location](https://docs.aws.amazon.com/datasync/latest/userguide/API_CreateLocationFsxOntap.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-smbmountoptions.html#cfn-datasync-locationfsxontap-smbmountoptions-version"
+        }
+      },
+      "description": "Specifies the version of the Server Message Block (SMB) protocol that AWS DataSync uses to access an SMB file server.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-smbmountoptions.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-tag.html#cfn-datasync-locationfsxontap-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-tag.html#cfn-datasync-locationfsxontap-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-locationfsxontap-tag.html"
+    }
+  },
+  "description": "The `AWS::DataSync::LocationFSxONTAP` resource creates an endpoint for an Amazon FSx for NetApp ONTAP file system. AWS DataSync can access this endpoint as a source or destination location.",
+  "properties": {
+    "FsxFilesystemArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#cfn-datasync-locationfsxontap-fsxfilesystemarn"
+    },
+    "LocationArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#cfn-datasync-locationfsxontap-locationarn"
+    },
+    "LocationUri": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#cfn-datasync-locationfsxontap-locationuri"
+    },
+    "Protocol": {
+      "description": "Specifies the data transfer protocol that DataSync uses to access your Amazon FSx file system.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#cfn-datasync-locationfsxontap-protocol"
+    },
+    "SecurityGroupArns": {
+      "description": "Specifies the Amazon Resource Names (ARNs) of the security groups that DataSync can use to access your FSx for ONTAP file system. You must configure the security groups to allow outbound traffic on the following ports (depending on the protocol that you're using):\n\n- *Network File System (NFS)* : TCP ports 111, 635, and 2049\n- *Server Message Block (SMB)* : TCP port 445\n\nYour file system's security groups must also allow inbound traffic on the same port.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#cfn-datasync-locationfsxontap-securitygrouparns"
+    },
+    "StorageVirtualMachineArn": {
+      "description": "Specifies the ARN of the storage virtual machine (SVM) in your file system where you want to copy data to or from.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#cfn-datasync-locationfsxontap-storagevirtualmachinearn"
+    },
+    "Subdirectory": {
+      "description": "Specifies a path to the file share in the SVM where you want to transfer data to or from.\n\nYou can specify a junction path (also known as a mount point), qtree path (for NFS file shares), or share name (for SMB file shares). For example, your mount path might be `/vol1` , `/vol1/tree1` , or `/share1` .\n\n> Don't specify a junction path in the SVM's root volume. For more information, see [Managing FSx for ONTAP storage virtual machines](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-svms.html) in the *Amazon FSx for NetApp ONTAP User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#cfn-datasync-locationfsxontap-subdirectory"
+    },
+    "Tags": {
+      "description": "Specifies labels that help you categorize, filter, and search for your AWS resources. We recommend creating at least a name tag for your location.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxontap.html#cfn-datasync-locationfsxontap-tags"
+    }
+  },
+  "typeName": "AWS::DataSync::LocationFSxONTAP"
+}

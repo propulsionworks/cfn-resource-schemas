@@ -1,0 +1,150 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-mitigationaction.html#aws-resource-iot-mitigationaction-return-values",
+    "properties": {
+      "MitigationActionArn": {
+        "description": "The Amazon Resource Name (ARN) of the mitigation action."
+      },
+      "MitigationActionId": {
+        "description": "The ID of the mitigation action."
+      }
+    }
+  },
+  "definitions": {
+    "ActionParams": {
+      "properties": {
+        "AddThingsToThingGroupParams": {
+          "description": "Specifies the group to which you want to add the devices.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-actionparams.html#cfn-iot-mitigationaction-actionparams-addthingstothinggroupparams"
+        },
+        "EnableIoTLoggingParams": {
+          "description": "Specifies the logging level and the role with permissions for logging. You cannot specify a logging level of `DISABLED` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-actionparams.html#cfn-iot-mitigationaction-actionparams-enableiotloggingparams"
+        },
+        "PublishFindingToSnsParams": {
+          "description": "Specifies the topic to which the finding should be published.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-actionparams.html#cfn-iot-mitigationaction-actionparams-publishfindingtosnsparams"
+        },
+        "ReplaceDefaultPolicyVersionParams": {
+          "description": "Replaces the policy version with a default or blank policy. You specify the template name. Only a value of `BLANK_POLICY` is currently supported.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-actionparams.html#cfn-iot-mitigationaction-actionparams-replacedefaultpolicyversionparams"
+        },
+        "UpdateCACertificateParams": {
+          "description": "Specifies the new state for the CA certificate. Only a value of `DEACTIVATE` is currently supported.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-actionparams.html#cfn-iot-mitigationaction-actionparams-updatecacertificateparams"
+        },
+        "UpdateDeviceCertificateParams": {
+          "description": "Specifies the new state for a device certificate. Only a value of `DEACTIVATE` is currently supported.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-actionparams.html#cfn-iot-mitigationaction-actionparams-updatedevicecertificateparams"
+        }
+      },
+      "description": "Defines the type of action and the parameters for that action.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-actionparams.html"
+    },
+    "AddThingsToThingGroupParams": {
+      "properties": {
+        "OverrideDynamicGroups": {
+          "description": "Specifies if this mitigation action can move the things that triggered the mitigation action even if they are part of one or more dynamic thing groups.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-addthingstothinggroupparams.html#cfn-iot-mitigationaction-addthingstothinggroupparams-overridedynamicgroups"
+        },
+        "ThingGroupNames": {
+          "description": "The list of groups to which you want to add the things that triggered the mitigation action. You can add a thing to a maximum of 10 groups, but you can't add a thing to more than one group in the same hierarchy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-addthingstothinggroupparams.html#cfn-iot-mitigationaction-addthingstothinggroupparams-thinggroupnames"
+        }
+      },
+      "description": "Parameters used when defining a mitigation action that move a set of things to a thing group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-addthingstothinggroupparams.html"
+    },
+    "EnableIoTLoggingParams": {
+      "properties": {
+        "LogLevel": {
+          "description": "Specifies the type of information to be logged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-enableiotloggingparams.html#cfn-iot-mitigationaction-enableiotloggingparams-loglevel"
+        },
+        "RoleArnForLogging": {
+          "description": "The Amazon Resource Name (ARN) of the IAM role used for logging.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-enableiotloggingparams.html#cfn-iot-mitigationaction-enableiotloggingparams-rolearnforlogging"
+        }
+      },
+      "description": "Parameters used when defining a mitigation action that enable AWS IoT Core logging.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-enableiotloggingparams.html"
+    },
+    "PublishFindingToSnsParams": {
+      "properties": {
+        "TopicArn": {
+          "description": "The ARN of the topic to which you want to publish the findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-publishfindingtosnsparams.html#cfn-iot-mitigationaction-publishfindingtosnsparams-topicarn"
+        }
+      },
+      "description": "Parameters to define a mitigation action that publishes findings to Amazon SNS. You can implement your own custom actions in response to the Amazon SNS messages.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-publishfindingtosnsparams.html"
+    },
+    "ReplaceDefaultPolicyVersionParams": {
+      "properties": {
+        "TemplateName": {
+          "description": "The name of the template to be applied. The only supported value is `BLANK_POLICY` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-replacedefaultpolicyversionparams.html#cfn-iot-mitigationaction-replacedefaultpolicyversionparams-templatename"
+        }
+      },
+      "description": "Parameters to define a mitigation action that adds a blank policy to restrict permissions.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-replacedefaultpolicyversionparams.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-tag.html#cfn-iot-mitigationaction-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-tag.html#cfn-iot-mitigationaction-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-tag.html"
+    },
+    "UpdateCACertificateParams": {
+      "properties": {
+        "Action": {
+          "description": "The action that you want to apply to the CA certificate. The only supported value is `DEACTIVATE` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-updatecacertificateparams.html#cfn-iot-mitigationaction-updatecacertificateparams-action"
+        }
+      },
+      "description": "Parameters to define a mitigation action that changes the state of the CA certificate to inactive.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-updatecacertificateparams.html"
+    },
+    "UpdateDeviceCertificateParams": {
+      "properties": {
+        "Action": {
+          "description": "The action that you want to apply to the device certificate. The only supported value is `DEACTIVATE` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-updatedevicecertificateparams.html#cfn-iot-mitigationaction-updatedevicecertificateparams-action"
+        }
+      },
+      "description": "Parameters to define a mitigation action that changes the state of the device certificate to inactive.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-mitigationaction-updatedevicecertificateparams.html"
+    }
+  },
+  "description": "Defines an action that can be applied to audit findings by using StartAuditMitigationActionsTask. For API reference, see [CreateMitigationAction](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateMitigationAction.html) and for general information, see [Mitigation actions](https://docs.aws.amazon.com/iot/latest/developerguide/dd-mitigation-actions.html) .",
+  "properties": {
+    "ActionName": {
+      "description": "The friendly name of the mitigation action.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-mitigationaction.html#cfn-iot-mitigationaction-actionname"
+    },
+    "ActionParams": {
+      "description": "The set of parameters for this mitigation action. The parameters vary, depending on the kind of action you apply.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-mitigationaction.html#cfn-iot-mitigationaction-actionparams"
+    },
+    "MitigationActionArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-mitigationaction.html#cfn-iot-mitigationaction-mitigationactionarn"
+    },
+    "MitigationActionId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-mitigationaction.html#cfn-iot-mitigationaction-mitigationactionid"
+    },
+    "RoleArn": {
+      "description": "The IAM role ARN used to apply this mitigation action.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-mitigationaction.html#cfn-iot-mitigationaction-rolearn"
+    },
+    "Tags": {
+      "description": "Metadata that can be used to manage the mitigation action.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-mitigationaction.html#cfn-iot-mitigationaction-tags"
+    }
+  },
+  "typeName": "AWS::IoT::MitigationAction"
+}

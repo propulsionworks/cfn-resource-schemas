@@ -1,0 +1,372 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#aws-resource-apprunner-service-return-values",
+    "properties": {
+      "Status": {
+        "description": "The current state of the App Runner service. These particular values mean the following.\n\n- `CREATE_FAILED` – The service failed to create. The failed service isn't usable, and still counts towards your service quota. To troubleshoot this failure, read the failure events and logs, change any parameters that need to be fixed, and rebuild your service using `UpdateService` .\n- `DELETE_FAILED` – The service failed to delete and can't be successfully recovered. Retry the service deletion call to ensure that all related resources are removed."
+      },
+      "ServiceUrl": {
+        "description": "A subdomain URL that App Runner generated for this service. You can use this URL to access your service web application."
+      },
+      "ServiceArn": {
+        "description": "The Amazon Resource Name (ARN) of this service."
+      },
+      "ServiceId": {
+        "description": "An ID that App Runner generated for this service. It's unique within the AWS Region ."
+      }
+    }
+  },
+  "definitions": {
+    "AuthenticationConfiguration": {
+      "properties": {
+        "AccessRoleArn": {
+          "description": "The Amazon Resource Name (ARN) of the IAM role that grants the App Runner service access to a source repository. It's required for ECR image repositories (but not for ECR Public repositories).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-authenticationconfiguration.html#cfn-apprunner-service-authenticationconfiguration-accessrolearn"
+        },
+        "ConnectionArn": {
+          "description": "The Amazon Resource Name (ARN) of the App Runner connection that enables the App Runner service to connect to a source repository. It's required for GitHub code repositories.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-authenticationconfiguration.html#cfn-apprunner-service-authenticationconfiguration-connectionarn"
+        }
+      },
+      "description": "Describes resources needed to authenticate access to some source repositories. The specific resource depends on the repository provider.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-authenticationconfiguration.html"
+    },
+    "CodeConfiguration": {
+      "properties": {
+        "CodeConfigurationValues": {
+          "description": "The basic configuration for building and running the App Runner service. Use it to quickly launch an App Runner service without providing a `apprunner.yaml` file in the source code repository (or ignoring the file if it exists).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfiguration.html#cfn-apprunner-service-codeconfiguration-codeconfigurationvalues"
+        },
+        "ConfigurationSource": {
+          "description": "The source of the App Runner configuration. Values are interpreted as follows:\n\n- `REPOSITORY` – App Runner reads configuration values from the `apprunner.yaml` file in the source code repository and ignores `CodeConfigurationValues` .\n- `API` – App Runner uses configuration values provided in `CodeConfigurationValues` and ignores the `apprunner.yaml` file in the source code repository.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfiguration.html#cfn-apprunner-service-codeconfiguration-configurationsource"
+        }
+      },
+      "description": "Describes the configuration that AWS App Runner uses to build and run an App Runner service from a source code repository.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfiguration.html"
+    },
+    "CodeConfigurationValues": {
+      "properties": {
+        "BuildCommand": {
+          "description": "The command App Runner runs to build your application.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfigurationvalues.html#cfn-apprunner-service-codeconfigurationvalues-buildcommand"
+        },
+        "Port": {
+          "description": "The port that your application listens to in the container.\n\nDefault: `8080`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfigurationvalues.html#cfn-apprunner-service-codeconfigurationvalues-port"
+        },
+        "Runtime": {
+          "description": "A runtime environment type for building and running an App Runner service. It represents a programming language runtime.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfigurationvalues.html#cfn-apprunner-service-codeconfigurationvalues-runtime"
+        },
+        "RuntimeEnvironmentSecrets": {
+          "description": "An array of key-value pairs representing the secrets and parameters that get referenced to your service as an environment variable. The supported values are either the full Amazon Resource Name (ARN) of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store.\n\n> - If the AWS Systems Manager Parameter Store parameter exists in the same AWS Region as the service that you're launching, you can use either the full ARN or name of the secret. If the parameter exists in a different Region, then the full ARN must be specified.\n> - Currently, cross account referencing of AWS Systems Manager Parameter Store parameter is not supported.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfigurationvalues.html#cfn-apprunner-service-codeconfigurationvalues-runtimeenvironmentsecrets"
+        },
+        "RuntimeEnvironmentVariables": {
+          "description": "The environment variables that are available to your running AWS App Runner service. An array of key-value pairs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfigurationvalues.html#cfn-apprunner-service-codeconfigurationvalues-runtimeenvironmentvariables"
+        },
+        "StartCommand": {
+          "description": "The command App Runner runs to start your application.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfigurationvalues.html#cfn-apprunner-service-codeconfigurationvalues-startcommand"
+        }
+      },
+      "description": "Describes the basic configuration needed for building and running an AWS App Runner service. This type doesn't support the full set of possible configuration options. Fur full configuration capabilities, use a `apprunner.yaml` file in the source code repository.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-codeconfigurationvalues.html"
+    },
+    "CodeRepository": {
+      "properties": {
+        "CodeConfiguration": {
+          "description": "Configuration for building and running the service from a source code repository.\n\n> `CodeConfiguration` is required only for `CreateService` request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-coderepository.html#cfn-apprunner-service-coderepository-codeconfiguration"
+        },
+        "RepositoryUrl": {
+          "description": "The location of the repository that contains the source code.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-coderepository.html#cfn-apprunner-service-coderepository-repositoryurl"
+        },
+        "SourceCodeVersion": {
+          "description": "The version that should be used within the source code repository.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-coderepository.html#cfn-apprunner-service-coderepository-sourcecodeversion"
+        },
+        "SourceDirectory": {
+          "description": "The path of the directory that stores source code and configuration files. The build and start commands also execute from here. The path is absolute from root and, if not specified, defaults to the repository root.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-coderepository.html#cfn-apprunner-service-coderepository-sourcedirectory"
+        }
+      },
+      "description": "Describes a source code repository.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-coderepository.html"
+    },
+    "EgressConfiguration": {
+      "properties": {
+        "EgressType": {
+          "description": "The type of egress configuration.\n\nSet to `DEFAULT` for access to resources hosted on public networks.\n\nSet to `VPC` to associate your service to a custom VPC specified by `VpcConnectorArn` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-egressconfiguration.html#cfn-apprunner-service-egressconfiguration-egresstype"
+        },
+        "VpcConnectorArn": {
+          "description": "The Amazon Resource Name (ARN) of the App Runner VPC connector that you want to associate with your App Runner service. Only valid when `EgressType = VPC` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-egressconfiguration.html#cfn-apprunner-service-egressconfiguration-vpcconnectorarn"
+        }
+      },
+      "description": "Describes configuration settings related to outbound network traffic of an AWS App Runner service.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-egressconfiguration.html"
+    },
+    "EncryptionConfiguration": {
+      "properties": {
+        "KmsKey": {
+          "description": "The ARN of the KMS key that's used for encryption.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-encryptionconfiguration.html#cfn-apprunner-service-encryptionconfiguration-kmskey"
+        }
+      },
+      "description": "Describes a custom encryption key that AWS App Runner uses to encrypt copies of the source repository and service logs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-encryptionconfiguration.html"
+    },
+    "HealthCheckConfiguration": {
+      "properties": {
+        "HealthyThreshold": {
+          "description": "The number of consecutive checks that must succeed before App Runner decides that the service is healthy.\n\nDefault: `1`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-healthcheckconfiguration.html#cfn-apprunner-service-healthcheckconfiguration-healthythreshold"
+        },
+        "Interval": {
+          "description": "The time interval, in seconds, between health checks.\n\nDefault: `5`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-healthcheckconfiguration.html#cfn-apprunner-service-healthcheckconfiguration-interval"
+        },
+        "Path": {
+          "description": "The URL that health check requests are sent to.\n\n`Path` is only applicable when you set `Protocol` to `HTTP` .\n\nDefault: `\"/\"`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-healthcheckconfiguration.html#cfn-apprunner-service-healthcheckconfiguration-path"
+        },
+        "Protocol": {
+          "description": "The IP protocol that App Runner uses to perform health checks for your service.\n\nIf you set `Protocol` to `HTTP` , App Runner sends health check requests to the HTTP path specified by `Path` .\n\nDefault: `TCP`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-healthcheckconfiguration.html#cfn-apprunner-service-healthcheckconfiguration-protocol"
+        },
+        "Timeout": {
+          "description": "The time, in seconds, to wait for a health check response before deciding it failed.\n\nDefault: `2`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-healthcheckconfiguration.html#cfn-apprunner-service-healthcheckconfiguration-timeout"
+        },
+        "UnhealthyThreshold": {
+          "description": "The number of consecutive checks that must fail before App Runner decides that the service is unhealthy.\n\nDefault: `5`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-healthcheckconfiguration.html#cfn-apprunner-service-healthcheckconfiguration-unhealthythreshold"
+        }
+      },
+      "description": "Describes the settings for the health check that AWS App Runner performs to monitor the health of a service.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-healthcheckconfiguration.html"
+    },
+    "ImageConfiguration": {
+      "properties": {
+        "Port": {
+          "description": "The port that your application listens to in the container.\n\nDefault: `8080`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imageconfiguration.html#cfn-apprunner-service-imageconfiguration-port"
+        },
+        "RuntimeEnvironmentSecrets": {
+          "description": "An array of key-value pairs representing the secrets and parameters that get referenced to your service as an environment variable. The supported values are either the full Amazon Resource Name (ARN) of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store.\n\n> - If the AWS Systems Manager Parameter Store parameter exists in the same AWS Region as the service that you're launching, you can use either the full ARN or name of the secret. If the parameter exists in a different Region, then the full ARN must be specified.\n> - Currently, cross account referencing of AWS Systems Manager Parameter Store parameter is not supported.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imageconfiguration.html#cfn-apprunner-service-imageconfiguration-runtimeenvironmentsecrets"
+        },
+        "RuntimeEnvironmentVariables": {
+          "description": "Environment variables that are available to your running App Runner service. An array of key-value pairs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imageconfiguration.html#cfn-apprunner-service-imageconfiguration-runtimeenvironmentvariables"
+        },
+        "StartCommand": {
+          "description": "An optional command that App Runner runs to start the application in the source image. If specified, this command overrides the Docker image’s default start command.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imageconfiguration.html#cfn-apprunner-service-imageconfiguration-startcommand"
+        }
+      },
+      "description": "Describes the configuration that AWS App Runner uses to run an App Runner service using an image pulled from a source image repository.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imageconfiguration.html"
+    },
+    "ImageRepository": {
+      "properties": {
+        "ImageConfiguration": {
+          "description": "Configuration for running the identified image.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imagerepository.html#cfn-apprunner-service-imagerepository-imageconfiguration"
+        },
+        "ImageIdentifier": {
+          "description": "The identifier of an image.\n\nFor an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the image name format, see [Pulling an image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html) in the *Amazon ECR User Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imagerepository.html#cfn-apprunner-service-imagerepository-imageidentifier"
+        },
+        "ImageRepositoryType": {
+          "description": "The type of the image repository. This reflects the repository provider and whether the repository is private or public.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imagerepository.html#cfn-apprunner-service-imagerepository-imagerepositorytype"
+        }
+      },
+      "description": "Describes a source image repository.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-imagerepository.html"
+    },
+    "IngressConfiguration": {
+      "properties": {
+        "IsPubliclyAccessible": {
+          "description": "Specifies whether your App Runner service is publicly accessible. To make the service publicly accessible set it to `True` . To make the service privately accessible, from only within an Amazon VPC set it to `False` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-ingressconfiguration.html#cfn-apprunner-service-ingressconfiguration-ispubliclyaccessible"
+        }
+      },
+      "description": "Network configuration settings for inbound network traffic.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-ingressconfiguration.html"
+    },
+    "InstanceConfiguration": {
+      "properties": {
+        "Cpu": {
+          "description": "The number of CPU units reserved for each instance of your App Runner service.\n\nDefault: `1 vCPU`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-instanceconfiguration.html#cfn-apprunner-service-instanceconfiguration-cpu"
+        },
+        "InstanceRoleArn": {
+          "description": "The Amazon Resource Name (ARN) of an IAM role that provides permissions to your App Runner service. These are permissions that your code needs when it calls any AWS APIs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-instanceconfiguration.html#cfn-apprunner-service-instanceconfiguration-instancerolearn"
+        },
+        "Memory": {
+          "description": "The amount of memory, in MB or GB, reserved for each instance of your App Runner service.\n\nDefault: `2 GB`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-instanceconfiguration.html#cfn-apprunner-service-instanceconfiguration-memory"
+        }
+      },
+      "description": "Describes the runtime configuration of an AWS App Runner service instance (scaling unit).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-instanceconfiguration.html"
+    },
+    "KeyValuePair": {
+      "properties": {
+        "Name": {
+          "description": "The key name string to map to a value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-keyvaluepair.html#cfn-apprunner-service-keyvaluepair-name"
+        },
+        "Value": {
+          "description": "The value string to which the key name is mapped.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-keyvaluepair.html#cfn-apprunner-service-keyvaluepair-value"
+        }
+      },
+      "description": "Describes a key-value pair, which is a string-to-string mapping.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-keyvaluepair.html"
+    },
+    "NetworkConfiguration": {
+      "properties": {
+        "EgressConfiguration": {
+          "description": "Network configuration settings for outbound message traffic.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-networkconfiguration.html#cfn-apprunner-service-networkconfiguration-egressconfiguration"
+        },
+        "IngressConfiguration": {
+          "description": "Network configuration settings for inbound message traffic.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-networkconfiguration.html#cfn-apprunner-service-networkconfiguration-ingressconfiguration"
+        },
+        "IpAddressType": {
+          "description": "App Runner provides you with the option to choose between *Internet Protocol version 4 (IPv4)* and *dual stack* (IPv4 and IPv6) for your incoming public network configuration. This is an optional parameter. If you do not specify an `IpAddressType` , it defaults to select IPv4.\n\n> Currently, App Runner supports dual stack for only Public endpoint. Only IPv4 is supported for Private endpoint. If you update a service that's using dual-stack Public endpoint to a Private endpoint, your App Runner service will default to support only IPv4 for Private endpoint and fail to receive traffic originating from IPv6 endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-networkconfiguration.html#cfn-apprunner-service-networkconfiguration-ipaddresstype"
+        }
+      },
+      "description": "Describes configuration settings related to network traffic of an AWS App Runner service. Consists of embedded objects for each configurable network feature.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-networkconfiguration.html"
+    },
+    "RoleArn": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-rolearn.html"
+    },
+    "ServiceObservabilityConfiguration": {
+      "properties": {
+        "ObservabilityConfigurationArn": {
+          "description": "The Amazon Resource Name (ARN) of the observability configuration that is associated with the service. Specified only when `ObservabilityEnabled` is `true` .\n\nSpecify an ARN with a name and a revision number to associate that revision. For example: `arn:aws:apprunner:us-east-1:123456789012:observabilityconfiguration/xray-tracing/3`\n\nSpecify just the name to associate the latest revision. For example: `arn:aws:apprunner:us-east-1:123456789012:observabilityconfiguration/xray-tracing`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-serviceobservabilityconfiguration.html#cfn-apprunner-service-serviceobservabilityconfiguration-observabilityconfigurationarn"
+        },
+        "ObservabilityEnabled": {
+          "description": "When `true` , an observability configuration resource is associated with the service, and an `ObservabilityConfigurationArn` is specified.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-serviceobservabilityconfiguration.html#cfn-apprunner-service-serviceobservabilityconfiguration-observabilityenabled"
+        }
+      },
+      "description": "Describes the observability configuration of an AWS App Runner service. These are additional observability features, like tracing, that you choose to enable. They're configured in a separate resource that you associate with your service.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-serviceobservabilityconfiguration.html"
+    },
+    "SourceCodeVersion": {
+      "properties": {
+        "Type": {
+          "description": "The type of version identifier.\n\nFor a git-based repository, branches represent versions.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-sourcecodeversion.html#cfn-apprunner-service-sourcecodeversion-type"
+        },
+        "Value": {
+          "description": "A source code version.\n\nFor a git-based repository, a branch name maps to a specific version. App Runner uses the most recent commit to the branch.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-sourcecodeversion.html#cfn-apprunner-service-sourcecodeversion-value"
+        }
+      },
+      "description": "Identifies a version of code that AWS App Runner refers to within a source code repository.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-sourcecodeversion.html"
+    },
+    "SourceConfiguration": {
+      "properties": {
+        "AuthenticationConfiguration": {
+          "description": "Describes the resources that are needed to authenticate access to some source repositories.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-sourceconfiguration.html#cfn-apprunner-service-sourceconfiguration-authenticationconfiguration"
+        },
+        "AutoDeploymentsEnabled": {
+          "description": "If `true` , continuous integration from the source repository is enabled for the App Runner service. Each repository change (including any source code commit or new image version) starts a deployment.\n\nDefault: App Runner sets to `false` for a source image that uses an ECR Public repository or an ECR repository that's in an AWS account other than the one that the service is in. App Runner sets to `true` in all other cases (which currently include a source code repository or a source image using a same-account ECR repository).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-sourceconfiguration.html#cfn-apprunner-service-sourceconfiguration-autodeploymentsenabled"
+        },
+        "CodeRepository": {
+          "description": "The description of a source code repository.\n\nYou must provide either this member or `ImageRepository` (but not both).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-sourceconfiguration.html#cfn-apprunner-service-sourceconfiguration-coderepository"
+        },
+        "ImageRepository": {
+          "description": "The description of a source image repository.\n\nYou must provide either this member or `CodeRepository` (but not both).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-sourceconfiguration.html#cfn-apprunner-service-sourceconfiguration-imagerepository"
+        }
+      },
+      "description": "Describes the source deployed to an AWS App Runner service. It can be a code or an image repository.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-sourceconfiguration.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-tag.html#cfn-apprunner-service-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-tag.html#cfn-apprunner-service-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-service-tag.html"
+    }
+  },
+  "description": "Specify an AWS App Runner service by using the `AWS::AppRunner::Service` resource in an AWS CloudFormation template. \n\nThe `AWS::AppRunner::Service` resource is an AWS App Runner resource type that specifies an App Runner service.",
+  "properties": {
+    "AutoScalingConfigurationArn": {
+      "description": "The Amazon Resource Name (ARN) of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner associates the latest revision of a default auto scaling configuration.\n\nSpecify an ARN with a name and a revision number to associate that revision. For example: `arn:aws:apprunner:us-east-1:123456789012:autoscalingconfiguration/high-availability/3`\n\nSpecify just the name to associate the latest revision. For example: `arn:aws:apprunner:us-east-1:123456789012:autoscalingconfiguration/high-availability`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-autoscalingconfigurationarn"
+    },
+    "EncryptionConfiguration": {
+      "description": "An optional custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed key .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-encryptionconfiguration"
+    },
+    "HealthCheckConfiguration": {
+      "description": "The settings for the health check that AWS App Runner performs to monitor the health of the App Runner service.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-healthcheckconfiguration"
+    },
+    "InstanceConfiguration": {
+      "description": "The runtime configuration of instances (scaling units) of your service.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-instanceconfiguration"
+    },
+    "NetworkConfiguration": {
+      "description": "Configuration settings related to network traffic of the web application that the App Runner service runs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-networkconfiguration"
+    },
+    "ObservabilityConfiguration": {
+      "description": "The observability configuration of your service.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-observabilityconfiguration"
+    },
+    "ServiceArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-servicearn"
+    },
+    "ServiceId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-serviceid"
+    },
+    "ServiceName": {
+      "description": "A name for the App Runner service. It must be unique across all the running App Runner services in your AWS account in the AWS Region .\n\nIf you don't specify a name, AWS CloudFormation generates a name for your service.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-servicename"
+    },
+    "ServiceUrl": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-serviceurl"
+    },
+    "SourceConfiguration": {
+      "description": "The source to deploy to the App Runner service. It can be a code or an image repository.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-sourceconfiguration"
+    },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-status"
+    },
+    "Tags": {
+      "description": "An optional list of metadata items that you can associate with the App Runner service resource. A tag is a key-value pair.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-service.html#cfn-apprunner-service-tags"
+    }
+  },
+  "typeName": "AWS::AppRunner::Service"
+}

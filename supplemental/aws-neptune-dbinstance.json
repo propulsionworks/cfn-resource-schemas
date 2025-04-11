@@ -1,0 +1,84 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#aws-resource-neptune-dbinstance-return-values",
+    "properties": {
+      "Endpoint": {
+        "description": "The connection endpoint for the database. For example: `mystack-mydb-1apw1j4phylrk.cg034hpkmmjt.us-east-2.rds.amazonaws.com` ."
+      },
+      "Port": {
+        "description": "The port number on which the database accepts connections. For example: `8182` ."
+      },
+      "Id": {}
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbinstance-tag.html#cfn-neptune-dbinstance-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbinstance-tag.html#cfn-neptune-dbinstance-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbinstance-tag.html"
+    }
+  },
+  "description": "The `AWS::Neptune::DBInstance` type creates an Amazon Neptune DB instance.\n\n*Updating DB Instances*\n\nYou can set a deletion policy for your DB instance to control how AWS CloudFormation handles the instance when the stack is deleted. For Neptune DB instances, you can choose to *retain* the instance, to *delete* the instance, or to *create a snapshot* of the instance. The default AWS CloudFormation behavior depends on the `DBClusterIdentifier` property:\n\n- For `AWS::Neptune::DBInstance` resources that don't specify the `DBClusterIdentifier` property, AWS CloudFormation saves a snapshot of the DB instance.\n- For `AWS::Neptune::DBInstance` resources that do specify the `DBClusterIdentifier` property, AWS CloudFormation deletes the DB instance.\n\n*Deleting DB Instances*\n\n> If a DB instance is deleted or replaced during an update, AWS CloudFormation deletes all automated snapshots. However, it retains manual DB snapshots. During an update that requires replacement, you can apply a stack policy to prevent DB instances from being replaced. \n\nWhen properties labeled *Update requires: Replacement* are updated, AWS CloudFormation first creates a replacement DB instance, changes references from other dependent resources to point to the replacement DB instance, and finally deletes the old DB instance.\n\n> We highly recommend that you take a snapshot of the database before updating the stack. If you don't, you lose the data when AWS CloudFormation replaces your DB instance. To preserve your data, perform the following procedure:\n> \n> - Deactivate any applications that are using the DB instance so that there's no activity on the DB instance.\n> - Create a snapshot of the DB instance.\n> - If you want to restore your instance using a DB snapshot, modify the updated template with your DB instance changes and add the `DBSnapshotIdentifier` property with the ID of the DB snapshot that you want to use.\n> - Update the stack.",
+  "properties": {
+    "AllowMajorVersionUpgrade": {
+      "description": "Indicates that major version upgrades are allowed. Changing this parameter doesn't result in an outage and the change is asynchronously applied as soon as possible. This parameter must be set to true when specifying a value for the EngineVersion parameter that is a different major version than the DB instance's current version.\n\nWhen you change this parameter for an existing DB cluster, CloudFormation will replace your existing DB cluster with a new, empty one that uses the engine version you specified.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-allowmajorversionupgrade"
+    },
+    "AutoMinorVersionUpgrade": {
+      "description": "Indicates that minor version patches are applied automatically.\n\nWhen updating this property, some interruptions may occur.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-autominorversionupgrade"
+    },
+    "AvailabilityZone": {
+      "description": "Specifies the name of the Availability Zone the DB instance is located in.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-availabilityzone"
+    },
+    "DBClusterIdentifier": {
+      "description": "If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance is a member of.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-dbclusteridentifier"
+    },
+    "DBInstanceClass": {
+      "description": "Contains the name of the compute and memory capacity class of the DB instance.\n\nIf you update this property, some interruptions may occur.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-dbinstanceclass"
+    },
+    "DBInstanceIdentifier": {
+      "description": "Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-dbinstanceidentifier"
+    },
+    "DBParameterGroupName": {
+      "description": "The name of an existing DB parameter group or a reference to an AWS::Neptune::DBParameterGroup resource created in the template. If any of the data members of the referenced parameter group are changed during an update, the DB instance might need to be restarted, which causes some interruption. If the parameter group contains static parameters, whether they were changed or not, an update triggers a reboot.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-dbparametergroupname"
+    },
+    "DBSnapshotIdentifier": {
+      "description": "This parameter is not supported.\n\n`AWS::Neptune::DBInstance` does not support restoring from snapshots.\n\n`AWS::Neptune::DBCluster` does support restoring from snapshots.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-dbsnapshotidentifier"
+    },
+    "DBSubnetGroupName": {
+      "description": "A DB subnet group to associate with the DB instance. If you update this value, the new subnet group must be a subnet group in a new virtual private cloud (VPC).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-dbsubnetgroupname"
+    },
+    "Endpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-endpoint"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-id"
+    },
+    "Port": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-port"
+    },
+    "PreferredMaintenanceWindow": {
+      "description": "Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-preferredmaintenancewindow"
+    },
+    "Tags": {
+      "description": "An arbitrary set of tags (key-value pairs) for this DB instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbinstance.html#cfn-neptune-dbinstance-tags"
+    }
+  },
+  "typeName": "AWS::Neptune::DBInstance"
+}

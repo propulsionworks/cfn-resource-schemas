@@ -1,0 +1,484 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#aws-resource-bedrock-flowversion-return-values",
+    "properties": {
+      "CreatedAt": {
+        "description": "The time at the version was created."
+      },
+      "Definition": {
+        "description": "Flow definition"
+      },
+      "ExecutionRoleArn": {
+        "description": "The Amazon Resource Name (ARN) of the service role with permissions to create a flow. For more information, see [Create a service row for flows](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html) in the Amazon Bedrock User Guide."
+      },
+      "FlowId": {
+        "description": "The unique identifier of the flow."
+      },
+      "Name": {
+        "description": "The name of the flow."
+      },
+      "Status": {
+        "description": "The status of the flow."
+      },
+      "Version": {
+        "description": "The version of the flow."
+      },
+      "CustomerEncryptionKeyArn": {
+        "description": "The Amazon Resource Name (ARN) of the KMS key that the flow version is encrypted with."
+      }
+    }
+  },
+  "definitions": {
+    "AgentFlowNodeConfiguration": {
+      "properties": {
+        "AgentAliasArn": {
+          "description": "The Amazon Resource Name (ARN) of the alias of the agent to invoke.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-agentflownodeconfiguration.html#cfn-bedrock-flowversion-agentflownodeconfiguration-agentaliasarn"
+        }
+      },
+      "description": "Defines an agent node in your flow. You specify the agent to invoke at this point in the flow. For more information, see [Node types in Amazon Bedrock works](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-nodes.html) in the Amazon Bedrock User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-agentflownodeconfiguration.html"
+    },
+    "CollectorFlowNodeConfiguration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-collectorflownodeconfiguration.html"
+    },
+    "ConditionFlowNodeConfiguration": {
+      "properties": {
+        "Conditions": {
+          "description": "An array of conditions. Each member contains the name of a condition and an expression that defines the condition.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-conditionflownodeconfiguration.html#cfn-bedrock-flowversion-conditionflownodeconfiguration-conditions"
+        }
+      },
+      "description": "Defines a condition node in your flow. You can specify conditions that determine which node comes next in the flow. For more information, see [Node types in Amazon Bedrock works](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-nodes.html) in the Amazon Bedrock User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-conditionflownodeconfiguration.html"
+    },
+    "FlowCondition": {
+      "properties": {
+        "Expression": {
+          "description": "Defines the condition. You must refer to at least one of the inputs in the condition. For more information, expand the Condition node section in [Node types in prompt flows](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-how-it-works.html#flows-nodes) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowcondition.html#cfn-bedrock-flowversion-flowcondition-expression"
+        },
+        "Name": {
+          "description": "A name for the condition that you can reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowcondition.html#cfn-bedrock-flowversion-flowcondition-name"
+        }
+      },
+      "description": "Defines a condition in the condition node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowcondition.html"
+    },
+    "FlowConditionalConnectionConfiguration": {
+      "properties": {
+        "Condition": {
+          "description": "The condition that triggers this connection. For more information about how to write conditions, see the *Condition* node type in the [Node types](https://docs.aws.amazon.com/bedrock/latest/userguide/node-types.html) topic in the Amazon Bedrock User Guide.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconditionalconnectionconfiguration.html#cfn-bedrock-flowversion-flowconditionalconnectionconfiguration-condition"
+        }
+      },
+      "description": "The configuration of a connection between a condition node and another node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconditionalconnectionconfiguration.html"
+    },
+    "FlowConnection": {
+      "properties": {
+        "Configuration": {
+          "description": "The configuration of the connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconnection.html#cfn-bedrock-flowversion-flowconnection-configuration"
+        },
+        "Name": {
+          "description": "A name for the connection that you can reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconnection.html#cfn-bedrock-flowversion-flowconnection-name"
+        },
+        "Source": {
+          "description": "The node that the connection starts at.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconnection.html#cfn-bedrock-flowversion-flowconnection-source"
+        },
+        "Target": {
+          "description": "The node that the connection ends at.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconnection.html#cfn-bedrock-flowversion-flowconnection-target"
+        },
+        "Type": {
+          "description": "Whether the source node that the connection begins from is a condition node ( `Conditional` ) or not ( `Data` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconnection.html#cfn-bedrock-flowversion-flowconnection-type"
+        }
+      },
+      "description": "Contains information about a connection between two nodes in the flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconnection.html"
+    },
+    "FlowConnectionConfiguration": {
+      "properties": {},
+      "description": "The configuration of the connection.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconnectionconfiguration.html"
+    },
+    "FlowConnectionType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowconnectiontype.html"
+    },
+    "FlowDataConnectionConfiguration": {
+      "properties": {
+        "SourceOutput": {
+          "description": "The name of the output in the source node that the connection begins from.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowdataconnectionconfiguration.html#cfn-bedrock-flowversion-flowdataconnectionconfiguration-sourceoutput"
+        },
+        "TargetInput": {
+          "description": "The name of the input in the target node that the connection ends at.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowdataconnectionconfiguration.html#cfn-bedrock-flowversion-flowdataconnectionconfiguration-targetinput"
+        }
+      },
+      "description": "The configuration of a connection originating from a node that isn't a Condition node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowdataconnectionconfiguration.html"
+    },
+    "FlowDefinition": {
+      "properties": {
+        "Connections": {
+          "description": "An array of connection definitions in the flow.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowdefinition.html#cfn-bedrock-flowversion-flowdefinition-connections"
+        },
+        "Nodes": {
+          "description": "An array of node definitions in the flow.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowdefinition.html#cfn-bedrock-flowversion-flowdefinition-nodes"
+        }
+      },
+      "description": "The definition of the nodes and connections between nodes in the flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowdefinition.html"
+    },
+    "FlowNode": {
+      "properties": {
+        "Configuration": {
+          "description": "Contains configurations for the node.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownode.html#cfn-bedrock-flowversion-flownode-configuration"
+        },
+        "Inputs": {
+          "description": "An array of objects, each of which contains information about an input into the node.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownode.html#cfn-bedrock-flowversion-flownode-inputs"
+        },
+        "Name": {
+          "description": "A name for the node.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownode.html#cfn-bedrock-flowversion-flownode-name"
+        },
+        "Outputs": {
+          "description": "A list of objects, each of which contains information about an output from the node.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownode.html#cfn-bedrock-flowversion-flownode-outputs"
+        },
+        "Type": {
+          "description": "The type of node. This value must match the name of the key that you provide in the configuration you provide in the `FlowNodeConfiguration` field.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownode.html#cfn-bedrock-flowversion-flownode-type"
+        }
+      },
+      "description": "Contains configurations about a node in the flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownode.html"
+    },
+    "FlowNodeConfiguration": {
+      "properties": {},
+      "description": "Contains configurations for a node in your flow. For more information, see [Node types in Amazon Bedrock works](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-nodes.html) in the Amazon Bedrock User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeconfiguration.html"
+    },
+    "FlowNodeIODataType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeiodatatype.html"
+    },
+    "FlowNodeInput": {
+      "properties": {
+        "Expression": {
+          "description": "An expression that formats the input for the node. For an explanation of how to create expressions, see [Expressions in Prompt flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-expressions.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeinput.html#cfn-bedrock-flowversion-flownodeinput-expression"
+        },
+        "Name": {
+          "description": "A name for the input that you can reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeinput.html#cfn-bedrock-flowversion-flownodeinput-name"
+        },
+        "Type": {
+          "description": "The data type of the input. If the input doesn't match this type at runtime, a validation error will be thrown.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeinput.html#cfn-bedrock-flowversion-flownodeinput-type"
+        }
+      },
+      "description": "Contains configurations for an input to a node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeinput.html"
+    },
+    "FlowNodeOutput": {
+      "properties": {
+        "Name": {
+          "description": "A name for the output that you can reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeoutput.html#cfn-bedrock-flowversion-flownodeoutput-name"
+        },
+        "Type": {
+          "description": "The data type of the output. If the output doesn't match this type at runtime, a validation error will be thrown.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeoutput.html#cfn-bedrock-flowversion-flownodeoutput-type"
+        }
+      },
+      "description": "Contains configurations for an output from a node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodeoutput.html"
+    },
+    "FlowNodeType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flownodetype.html"
+    },
+    "FlowStatus": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-flowstatus.html"
+    },
+    "GuardrailConfiguration": {
+      "properties": {
+        "GuardrailIdentifier": {
+          "description": "The identifier for the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-guardrailconfiguration.html#cfn-bedrock-flowversion-guardrailconfiguration-guardrailidentifier"
+        },
+        "GuardrailVersion": {
+          "description": "The version of the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-guardrailconfiguration.html#cfn-bedrock-flowversion-guardrailconfiguration-guardrailversion"
+        }
+      },
+      "description": "Configuration information for a guardrail that you use with the [Converse](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html) operation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-guardrailconfiguration.html"
+    },
+    "InputFlowNodeConfiguration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-inputflownodeconfiguration.html"
+    },
+    "IteratorFlowNodeConfiguration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-iteratorflownodeconfiguration.html"
+    },
+    "KnowledgeBaseFlowNodeConfiguration": {
+      "properties": {
+        "GuardrailConfiguration": {
+          "description": "Contains configurations for a guardrail to apply during query and response generation for the knowledge base in this configuration.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-knowledgebaseflownodeconfiguration.html#cfn-bedrock-flowversion-knowledgebaseflownodeconfiguration-guardrailconfiguration"
+        },
+        "KnowledgeBaseId": {
+          "description": "The unique identifier of the knowledge base to query.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-knowledgebaseflownodeconfiguration.html#cfn-bedrock-flowversion-knowledgebaseflownodeconfiguration-knowledgebaseid"
+        },
+        "ModelId": {
+          "description": "The unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to use to generate a response from the query results. Omit this field if you want to return the retrieved results as an array.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-knowledgebaseflownodeconfiguration.html#cfn-bedrock-flowversion-knowledgebaseflownodeconfiguration-modelid"
+        }
+      },
+      "description": "Contains configurations for a knowledge base node in a flow. This node takes a query as the input and returns, as the output, the retrieved responses directly (as an array) or a response generated based on the retrieved responses. For more information, see [Node types in Amazon Bedrock works](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-nodes.html) in the Amazon Bedrock User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-knowledgebaseflownodeconfiguration.html"
+    },
+    "LambdaFunctionFlowNodeConfiguration": {
+      "properties": {
+        "LambdaArn": {
+          "description": "The Amazon Resource Name (ARN) of the Lambda function to invoke.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-lambdafunctionflownodeconfiguration.html#cfn-bedrock-flowversion-lambdafunctionflownodeconfiguration-lambdaarn"
+        }
+      },
+      "description": "Contains configurations for a Lambda function node in the flow. You specify the Lambda function to invoke and the inputs into the function. The output is the response that is defined in the Lambda function. For more information, see [Node types in Amazon Bedrock works](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-nodes.html) in the Amazon Bedrock User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-lambdafunctionflownodeconfiguration.html"
+    },
+    "LexFlowNodeConfiguration": {
+      "properties": {
+        "BotAliasArn": {
+          "description": "The Amazon Resource Name (ARN) of the Amazon Lex bot alias to invoke.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-lexflownodeconfiguration.html#cfn-bedrock-flowversion-lexflownodeconfiguration-botaliasarn"
+        },
+        "LocaleId": {
+          "description": "The Region to invoke the Amazon Lex bot in.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-lexflownodeconfiguration.html#cfn-bedrock-flowversion-lexflownodeconfiguration-localeid"
+        }
+      },
+      "description": "Contains configurations for a Lex node in the flow. You specify a Amazon Lex bot to invoke. This node takes an utterance as the input and returns as the output the intent identified by the Amazon Lex bot. For more information, see [Node types in Amazon Bedrock works](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-nodes.html) in the Amazon Bedrock User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-lexflownodeconfiguration.html"
+    },
+    "OutputFlowNodeConfiguration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-outputflownodeconfiguration.html"
+    },
+    "PromptFlowNodeConfiguration": {
+      "properties": {
+        "GuardrailConfiguration": {
+          "description": "Contains configurations for a guardrail to apply to the prompt in this node and the response generated from it.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodeconfiguration.html#cfn-bedrock-flowversion-promptflownodeconfiguration-guardrailconfiguration"
+        },
+        "SourceConfiguration": {
+          "description": "Specifies whether the prompt is from Prompt management or defined inline.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodeconfiguration.html#cfn-bedrock-flowversion-promptflownodeconfiguration-sourceconfiguration"
+        }
+      },
+      "description": "Contains configurations for a prompt node in the flow. You can use a prompt from Prompt management or you can define one in this node. If the prompt contains variables, the inputs into this node will fill in the variables. The output from this node is the response generated by the model. For more information, see [Node types in Amazon Bedrock works](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-nodes.html) in the Amazon Bedrock User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodeconfiguration.html"
+    },
+    "PromptFlowNodeInlineConfiguration": {
+      "properties": {
+        "InferenceConfiguration": {
+          "description": "Contains inference configurations for the prompt.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodeinlineconfiguration.html#cfn-bedrock-flowversion-promptflownodeinlineconfiguration-inferenceconfiguration"
+        },
+        "ModelId": {
+          "description": "The unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodeinlineconfiguration.html#cfn-bedrock-flowversion-promptflownodeinlineconfiguration-modelid"
+        },
+        "TemplateConfiguration": {
+          "description": "Contains a prompt and variables in the prompt that can be replaced with values at runtime.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodeinlineconfiguration.html#cfn-bedrock-flowversion-promptflownodeinlineconfiguration-templateconfiguration"
+        },
+        "TemplateType": {
+          "description": "The type of prompt template.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodeinlineconfiguration.html#cfn-bedrock-flowversion-promptflownodeinlineconfiguration-templatetype"
+        }
+      },
+      "description": "Contains configurations for a prompt defined inline in the node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodeinlineconfiguration.html"
+    },
+    "PromptFlowNodeResourceConfiguration": {
+      "properties": {
+        "PromptArn": {
+          "description": "The Amazon Resource Name (ARN) of the prompt from Prompt management.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownoderesourceconfiguration.html#cfn-bedrock-flowversion-promptflownoderesourceconfiguration-promptarn"
+        }
+      },
+      "description": "Contains configurations for a prompt from Prompt management to use in a node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownoderesourceconfiguration.html"
+    },
+    "PromptFlowNodeSourceConfiguration": {
+      "properties": {},
+      "description": "Contains configurations for a prompt and whether it is from Prompt management or defined inline.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptflownodesourceconfiguration.html"
+    },
+    "PromptInferenceConfiguration": {
+      "properties": {},
+      "description": "Contains inference configurations for the prompt.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptinferenceconfiguration.html"
+    },
+    "PromptInputVariable": {
+      "properties": {
+        "Name": {
+          "description": "The name of the variable.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptinputvariable.html#cfn-bedrock-flowversion-promptinputvariable-name"
+        }
+      },
+      "description": "Contains information about a variable in the prompt.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptinputvariable.html"
+    },
+    "PromptModelInferenceConfiguration": {
+      "properties": {
+        "MaxTokens": {
+          "description": "The maximum number of tokens to return in the response.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptmodelinferenceconfiguration.html#cfn-bedrock-flowversion-promptmodelinferenceconfiguration-maxtokens"
+        },
+        "StopSequences": {
+          "description": "A list of strings that define sequences after which the model will stop generating.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptmodelinferenceconfiguration.html#cfn-bedrock-flowversion-promptmodelinferenceconfiguration-stopsequences"
+        },
+        "Temperature": {
+          "description": "Controls the randomness of the response. Choose a lower value for more predictable outputs and a higher value for more surprising outputs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptmodelinferenceconfiguration.html#cfn-bedrock-flowversion-promptmodelinferenceconfiguration-temperature"
+        },
+        "TopP": {
+          "description": "The percentage of most-likely candidates that the model considers for the next token.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptmodelinferenceconfiguration.html#cfn-bedrock-flowversion-promptmodelinferenceconfiguration-topp"
+        }
+      },
+      "description": "Contains inference configurations related to model inference for a prompt. For more information, see [Inference parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-parameters.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-promptmodelinferenceconfiguration.html"
+    },
+    "PromptTemplateConfiguration": {
+      "properties": {},
+      "description": "Contains the message for a prompt. For more information, see [Construct and store reusable prompts with Prompt management in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-prompttemplateconfiguration.html"
+    },
+    "PromptTemplateType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-prompttemplatetype.html"
+    },
+    "RetrievalFlowNodeConfiguration": {
+      "properties": {
+        "ServiceConfiguration": {
+          "description": "Contains configurations for the service to use for retrieving data to return as the output from the node.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-retrievalflownodeconfiguration.html#cfn-bedrock-flowversion-retrievalflownodeconfiguration-serviceconfiguration"
+        }
+      },
+      "description": "Contains configurations for a Retrieval node in a flow. This node retrieves data from the Amazon S3 location that you specify and returns it as the output.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-retrievalflownodeconfiguration.html"
+    },
+    "RetrievalFlowNodeS3Configuration": {
+      "properties": {
+        "BucketName": {
+          "description": "The name of the Amazon S3 bucket from which to retrieve data.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-retrievalflownodes3configuration.html#cfn-bedrock-flowversion-retrievalflownodes3configuration-bucketname"
+        }
+      },
+      "description": "Contains configurations for the Amazon S3 location from which to retrieve data to return as the output from the node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-retrievalflownodes3configuration.html"
+    },
+    "RetrievalFlowNodeServiceConfiguration": {
+      "properties": {},
+      "description": "Contains configurations for the service to use for retrieving data to return as the output from the node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-retrievalflownodeserviceconfiguration.html"
+    },
+    "StorageFlowNodeConfiguration": {
+      "properties": {
+        "ServiceConfiguration": {
+          "description": "Contains configurations for the service to use for storing the input into the node.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-storageflownodeconfiguration.html#cfn-bedrock-flowversion-storageflownodeconfiguration-serviceconfiguration"
+        }
+      },
+      "description": "Contains configurations for a Storage node in a flow. This node stores the input in an Amazon S3 location that you specify.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-storageflownodeconfiguration.html"
+    },
+    "StorageFlowNodeS3Configuration": {
+      "properties": {
+        "BucketName": {
+          "description": "The name of the Amazon S3 bucket in which to store the input into the node.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-storageflownodes3configuration.html#cfn-bedrock-flowversion-storageflownodes3configuration-bucketname"
+        }
+      },
+      "description": "Contains configurations for the Amazon S3 location in which to store the input into the node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-storageflownodes3configuration.html"
+    },
+    "StorageFlowNodeServiceConfiguration": {
+      "properties": {},
+      "description": "Contains configurations for the service to use for storing the input into the node.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-storageflownodeserviceconfiguration.html"
+    },
+    "TextPromptTemplateConfiguration": {
+      "properties": {
+        "InputVariables": {
+          "description": "An array of the variables in the prompt template.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-textprompttemplateconfiguration.html#cfn-bedrock-flowversion-textprompttemplateconfiguration-inputvariables"
+        },
+        "Text": {
+          "description": "The message for the prompt.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-textprompttemplateconfiguration.html#cfn-bedrock-flowversion-textprompttemplateconfiguration-text"
+        }
+      },
+      "description": "Contains configurations for a text prompt template. To include a variable, enclose a word in double curly braces as in `{{variable}}` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-textprompttemplateconfiguration.html"
+    }
+  },
+  "description": "Creates a version of the flow that you can deploy. For more information, see [Deploy a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-deploy.html) in the Amazon Bedrock User Guide.",
+  "properties": {
+    "CreatedAt": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-createdat"
+    },
+    "CustomerEncryptionKeyArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-customerencryptionkeyarn"
+    },
+    "Definition": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-definition"
+    },
+    "Description": {
+      "description": "The description of the flow version.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-description"
+    },
+    "ExecutionRoleArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-executionrolearn"
+    },
+    "FlowArn": {
+      "description": "The Amazon Resource Name (ARN) of the flow that the version belongs to.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-flowarn"
+    },
+    "FlowId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-flowid"
+    },
+    "Name": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-name"
+    },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-status"
+    },
+    "Version": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html#cfn-bedrock-flowversion-version"
+    }
+  },
+  "typeName": "AWS::Bedrock::FlowVersion"
+}

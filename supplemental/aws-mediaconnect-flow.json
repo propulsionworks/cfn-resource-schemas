@@ -1,0 +1,564 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#aws-resource-mediaconnect-flow-return-values",
+    "properties": {
+      "FlowAvailabilityZone": {
+        "description": "The Availability Zone that the flow was created in. These options are limited to the Availability Zones within the current AWS Region."
+      },
+      "Source.SourceIngestPort": {
+        "description": "The port that the flow listens on for incoming content. If the protocol of the source is Zixi, the port must be set to 2088."
+      },
+      "Source.IngestIp": {
+        "description": "The IP address that the flow listens on for incoming content."
+      },
+      "Source.SourceArn": {
+        "description": "The ARN of the source."
+      },
+      "FlowArn": {
+        "description": "The Amazon Resource Name (ARN) of the flow."
+      },
+      "EgressIp": {
+        "description": "The IP address from which video will be sent to output destinations."
+      },
+      "FlowNdiMachineName": {
+        "description": "This read-only value represents the automatically-generated NDI machine name that MediaConnect generated for this flow. These NDI machine names are only generated when you don't specify your own custom name."
+      }
+    }
+  },
+  "definitions": {
+    "AudioMonitoringSetting": {
+      "properties": {
+        "SilentAudio": {
+          "description": "Detects periods of silence.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-audiomonitoringsetting.html#cfn-mediaconnect-flow-audiomonitoringsetting-silentaudio"
+        }
+      },
+      "description": "Specifies the configuration for audio stream metrics monitoring.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-audiomonitoringsetting.html"
+    },
+    "BlackFrames": {
+      "properties": {
+        "State": {
+          "description": "Indicates whether the `BlackFrames` metric is enabled or disabled..",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-blackframes.html#cfn-mediaconnect-flow-blackframes-state"
+        },
+        "ThresholdSeconds": {
+          "description": "Specifies the number of consecutive seconds of black frames that triggers an event or alert.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-blackframes.html#cfn-mediaconnect-flow-blackframes-thresholdseconds"
+        }
+      },
+      "description": "Configures settings for the `BlackFrames` metric.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-blackframes.html"
+    },
+    "Encryption": {
+      "properties": {
+        "Algorithm": {
+          "description": "The type of algorithm that is used for static key encryption (such as aes128, aes192, or aes256). If you are using SPEKE or SRT-password encryption, this property must be left blank.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-algorithm"
+        },
+        "ConstantInitializationVector": {
+          "description": "A 128-bit, 16-byte hex value represented by a 32-character string, to be used with the key for encrypting content. This parameter is not valid for static key encryption.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-constantinitializationvector"
+        },
+        "DeviceId": {
+          "description": "The value of one of the devices that you configured with your digital rights management (DRM) platform key provider. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-deviceid"
+        },
+        "KeyType": {
+          "description": "The type of key that is used for the encryption. If you don't specify a `keyType` value, the service uses the default setting ( `static-key` ). Valid key types are: `static-key` , `speke` , and `srt-password` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-keytype"
+        },
+        "Region": {
+          "description": "The AWS Region that the API Gateway proxy endpoint was created in. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-region"
+        },
+        "ResourceId": {
+          "description": "An identifier for the content. The service sends this value to the key server to identify the current endpoint. The resource ID is also known as the content ID. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-resourceid"
+        },
+        "RoleArn": {
+          "description": "The ARN of the role that you created during setup (when you set up MediaConnect as a trusted entity).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-rolearn"
+        },
+        "SecretArn": {
+          "description": "The ARN of the secret that you created in AWS Secrets Manager to store the encryption key. This parameter is required for static key encryption and is not valid for SPEKE encryption.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-secretarn"
+        },
+        "Url": {
+          "description": "The URL from the API Gateway proxy that you set up to talk to your key server. This parameter is required for SPEKE encryption and is not valid for static key encryption.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html#cfn-mediaconnect-flow-encryption-url"
+        }
+      },
+      "description": "Information about the encryption of the flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-encryption.html"
+    },
+    "FailoverConfig": {
+      "properties": {
+        "FailoverMode": {
+          "description": "The type of failover you choose for this flow. MERGE combines the source streams into a single stream, allowing graceful recovery from any single-source loss. FAILOVER allows switching between different streams. The string for this property must be entered as MERGE or FAILOVER. No other string entry is valid.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-failoverconfig.html#cfn-mediaconnect-flow-failoverconfig-failovermode"
+        },
+        "RecoveryWindow": {
+          "description": "Search window time to look for dash-7 packets.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-failoverconfig.html#cfn-mediaconnect-flow-failoverconfig-recoverywindow"
+        },
+        "SourcePriority": {
+          "description": "The priority you want to assign to a source. You can have a primary stream and a backup stream or two equally prioritized streams.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-failoverconfig.html#cfn-mediaconnect-flow-failoverconfig-sourcepriority"
+        },
+        "State": {
+          "description": "The state of source failover on the flow. If the state is inactive, the flow can have only one source. If the state is active, the flow can have one or two sources.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-failoverconfig.html#cfn-mediaconnect-flow-failoverconfig-state"
+        }
+      },
+      "description": "The settings for source failover.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-failoverconfig.html"
+    },
+    "Fmtp": {
+      "properties": {
+        "ChannelOrder": {
+          "description": "The format of the audio channel.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-fmtp.html#cfn-mediaconnect-flow-fmtp-channelorder"
+        },
+        "Colorimetry": {
+          "description": "The format used for the representation of color.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-fmtp.html#cfn-mediaconnect-flow-fmtp-colorimetry"
+        },
+        "ExactFramerate": {
+          "description": "The frame rate for the video stream, in frames/second. For example: 60000/1001.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-fmtp.html#cfn-mediaconnect-flow-fmtp-exactframerate"
+        },
+        "Par": {
+          "description": "The pixel aspect ratio (PAR) of the video.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-fmtp.html#cfn-mediaconnect-flow-fmtp-par"
+        },
+        "Range": {
+          "description": "The encoding range of the video.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-fmtp.html#cfn-mediaconnect-flow-fmtp-range"
+        },
+        "ScanMode": {
+          "description": "The type of compression that was used to smooth the video’s appearance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-fmtp.html#cfn-mediaconnect-flow-fmtp-scanmode"
+        },
+        "Tcs": {
+          "description": "The transfer characteristic system (TCS) that is used in the video.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-fmtp.html#cfn-mediaconnect-flow-fmtp-tcs"
+        }
+      },
+      "description": "A set of parameters that define the media stream.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-fmtp.html"
+    },
+    "FrozenFrames": {
+      "properties": {
+        "State": {
+          "description": "Indicates whether the `FrozenFrames` metric is enabled or disabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-frozenframes.html#cfn-mediaconnect-flow-frozenframes-state"
+        },
+        "ThresholdSeconds": {
+          "description": "Specifies the number of consecutive seconds of a static image that triggers an event or alert.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-frozenframes.html#cfn-mediaconnect-flow-frozenframes-thresholdseconds"
+        }
+      },
+      "description": "Configures settings for the `FrozenFrames` metric.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-frozenframes.html"
+    },
+    "GatewayBridgeSource": {
+      "properties": {
+        "BridgeArn": {
+          "description": "The ARN of the bridge feeding this flow.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-gatewaybridgesource.html#cfn-mediaconnect-flow-gatewaybridgesource-bridgearn"
+        },
+        "VpcInterfaceAttachment": {
+          "description": "The name of the VPC interface attachment to use for this bridge source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-gatewaybridgesource.html#cfn-mediaconnect-flow-gatewaybridgesource-vpcinterfaceattachment"
+        }
+      },
+      "description": "The source configuration for cloud flows receiving a stream from a bridge.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-gatewaybridgesource.html"
+    },
+    "InputConfiguration": {
+      "properties": {
+        "InputPort": {
+          "description": "The port that the flow listens on for an incoming media stream.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-inputconfiguration.html#cfn-mediaconnect-flow-inputconfiguration-inputport"
+        },
+        "Interface": {
+          "description": "The VPC interface where the media stream comes in from.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-inputconfiguration.html#cfn-mediaconnect-flow-inputconfiguration-interface"
+        }
+      },
+      "description": "The transport parameters that are associated with an incoming media stream.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-inputconfiguration.html"
+    },
+    "Interface": {
+      "properties": {
+        "Name": {
+          "description": "The name of the VPC interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-interface.html#cfn-mediaconnect-flow-interface-name"
+        }
+      },
+      "description": "The VPC interface that is used for the media stream associated with the source or output.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-interface.html"
+    },
+    "Maintenance": {
+      "properties": {
+        "MaintenanceDay": {
+          "description": "A day of a week when the maintenance will happen. Use Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-maintenance.html#cfn-mediaconnect-flow-maintenance-maintenanceday"
+        },
+        "MaintenanceStartHour": {
+          "description": "UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes must be 00. Example: 13:00. The default value is 02:00.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-maintenance.html#cfn-mediaconnect-flow-maintenance-maintenancestarthour"
+        }
+      },
+      "description": "The maintenance setting of a flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-maintenance.html"
+    },
+    "MediaStream": {
+      "properties": {
+        "Attributes": {
+          "description": "Attributes that are related to the media stream.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html#cfn-mediaconnect-flow-mediastream-attributes"
+        },
+        "ClockRate": {
+          "description": "The sample rate for the stream. This value is measured in Hz.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html#cfn-mediaconnect-flow-mediastream-clockrate"
+        },
+        "Description": {
+          "description": "A description that can help you quickly identify what your media stream is used for.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html#cfn-mediaconnect-flow-mediastream-description"
+        },
+        "Fmt": {
+          "description": "The format type number (sometimes referred to as RTP payload type) of the media stream. MediaConnect assigns this value to the media stream. For ST 2110 JPEG XS outputs, you need to provide this value to the receiver.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html#cfn-mediaconnect-flow-mediastream-fmt"
+        },
+        "MediaStreamId": {
+          "description": "A unique identifier for the media stream.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html#cfn-mediaconnect-flow-mediastream-mediastreamid"
+        },
+        "MediaStreamName": {
+          "description": "A name that helps you distinguish one media stream from another.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html#cfn-mediaconnect-flow-mediastream-mediastreamname"
+        },
+        "MediaStreamType": {
+          "description": "The type of media stream.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html#cfn-mediaconnect-flow-mediastream-mediastreamtype"
+        },
+        "VideoFormat": {
+          "description": "The resolution of the video.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html#cfn-mediaconnect-flow-mediastream-videoformat"
+        }
+      },
+      "description": "A media stream represents one component of your content, such as video, audio, or ancillary data. After you add a media stream to your flow, you can associate it with sources and outputs that use the ST 2110 JPEG XS or CDI protocol.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastream.html"
+    },
+    "MediaStreamAttributes": {
+      "properties": {
+        "Fmtp": {
+          "description": "The settings that you want to use to define the media stream.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastreamattributes.html#cfn-mediaconnect-flow-mediastreamattributes-fmtp"
+        },
+        "Lang": {
+          "description": "The audio language, in a format that is recognized by the receiver.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastreamattributes.html#cfn-mediaconnect-flow-mediastreamattributes-lang"
+        }
+      },
+      "description": "Attributes that are related to the media stream.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastreamattributes.html"
+    },
+    "MediaStreamSourceConfiguration": {
+      "properties": {
+        "EncodingName": {
+          "description": "The format that was used to encode the data. For ancillary data streams, set the encoding name to smpte291. For audio streams, set the encoding name to pcm. For video, 2110 streams, set the encoding name to raw. For video, JPEG XS streams, set the encoding name to jxsv.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastreamsourceconfiguration.html#cfn-mediaconnect-flow-mediastreamsourceconfiguration-encodingname"
+        },
+        "InputConfigurations": {
+          "description": "The media streams that you want to associate with the source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastreamsourceconfiguration.html#cfn-mediaconnect-flow-mediastreamsourceconfiguration-inputconfigurations"
+        },
+        "MediaStreamName": {
+          "description": "A name that helps you distinguish one media stream from another.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastreamsourceconfiguration.html#cfn-mediaconnect-flow-mediastreamsourceconfiguration-mediastreamname"
+        }
+      },
+      "description": "The media stream that is associated with the source, and the parameters for that association.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-mediastreamsourceconfiguration.html"
+    },
+    "NdiConfig": {
+      "properties": {
+        "MachineName": {
+          "description": "A prefix for the names of the NDI sources that the flow creates. If a custom name isn't specified, MediaConnect generates a unique 12-character ID as the prefix.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndiconfig.html#cfn-mediaconnect-flow-ndiconfig-machinename"
+        },
+        "NdiDiscoveryServers": {
+          "description": "A list of up to three NDI discovery server configurations. While not required by the API, this configuration is necessary for NDI functionality to work properly.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndiconfig.html#cfn-mediaconnect-flow-ndiconfig-ndidiscoveryservers"
+        },
+        "NdiState": {
+          "description": "A setting that controls whether NDI outputs can be used in the flow. Must be ENABLED to add NDI outputs. Default is DISABLED.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndiconfig.html#cfn-mediaconnect-flow-ndiconfig-ndistate"
+        }
+      },
+      "description": "Specifies the configuration settings for NDI outputs. Required when the flow includes NDI outputs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndiconfig.html"
+    },
+    "NdiDiscoveryServerConfig": {
+      "properties": {
+        "DiscoveryServerAddress": {
+          "description": "The unique network address of the NDI discovery server.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndidiscoveryserverconfig.html#cfn-mediaconnect-flow-ndidiscoveryserverconfig-discoveryserveraddress"
+        },
+        "DiscoveryServerPort": {
+          "description": "The port for the NDI discovery server. Defaults to 5959 if a custom port isn't specified.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndidiscoveryserverconfig.html#cfn-mediaconnect-flow-ndidiscoveryserverconfig-discoveryserverport"
+        },
+        "VpcInterfaceAdapter": {
+          "description": "The identifier for the Virtual Private Cloud (VPC) network interface used by the flow.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndidiscoveryserverconfig.html#cfn-mediaconnect-flow-ndidiscoveryserverconfig-vpcinterfaceadapter"
+        }
+      },
+      "description": "Specifies the configuration settings for individual NDI discovery servers. A maximum of 3 servers is allowed.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndidiscoveryserverconfig.html"
+    },
+    "SilentAudio": {
+      "properties": {
+        "State": {
+          "description": "Indicates whether the `SilentAudio` metric is enabled or disabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-silentaudio.html#cfn-mediaconnect-flow-silentaudio-state"
+        },
+        "ThresholdSeconds": {
+          "description": "Specifies the number of consecutive seconds of silence that triggers an event or alert.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-silentaudio.html#cfn-mediaconnect-flow-silentaudio-thresholdseconds"
+        }
+      },
+      "description": "Configures settings for the `SilentAudio` metric.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-silentaudio.html"
+    },
+    "Source": {
+      "properties": {
+        "Decryption": {
+          "description": "The type of encryption that is used on the content ingested from this source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-decryption"
+        },
+        "Description": {
+          "description": "A description for the source. This value is not used or seen outside of the current MediaConnect account.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-description"
+        },
+        "EntitlementArn": {
+          "description": "The ARN of the entitlement that allows you to subscribe to content that comes from another AWS account. The entitlement is set by the content originator and the ARN is generated as part of the originator's flow.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-entitlementarn"
+        },
+        "GatewayBridgeSource": {
+          "description": "The source configuration for cloud flows receiving a stream from a bridge.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-gatewaybridgesource"
+        },
+        "IngestIp": {
+          "description": "The IP address that the flow will be listening on for incoming content.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-ingestip"
+        },
+        "IngestPort": {
+          "description": "The port that the flow will be listening on for incoming content.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-ingestport"
+        },
+        "MaxBitrate": {
+          "description": "The maximum bitrate for RIST, RTP, and RTP-FEC streams.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-maxbitrate"
+        },
+        "MaxLatency": {
+          "description": "The maximum latency in milliseconds for a RIST or Zixi-based source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-maxlatency"
+        },
+        "MaxSyncBuffer": {
+          "description": "The size of the buffer (in milliseconds) to use to sync incoming source data.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-maxsyncbuffer"
+        },
+        "MediaStreamSourceConfigurations": {
+          "description": "The media streams that are associated with the source, and the parameters for those associations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-mediastreamsourceconfigurations"
+        },
+        "MinLatency": {
+          "description": "The minimum latency in milliseconds for SRT-based streams. In streams that use the SRT protocol, this value that you set on your MediaConnect source or output represents the minimal potential latency of that connection. The latency of the stream is set to the highest number between the sender’s minimum latency and the receiver’s minimum latency.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-minlatency"
+        },
+        "Name": {
+          "description": "The name of the source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-name"
+        },
+        "Protocol": {
+          "description": "The protocol that is used by the source. AWS CloudFormation does not currently support CDI or ST 2110 JPEG XS source protocols.\n\n> AWS Elemental MediaConnect no longer supports the Fujitsu QoS protocol. This reference is maintained for legacy purposes only.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-protocol"
+        },
+        "SenderControlPort": {
+          "description": "The port that the flow uses to send outbound requests to initiate connection with the sender.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-sendercontrolport"
+        },
+        "SenderIpAddress": {
+          "description": "The IP address that the flow communicates with to initiate connection with the sender.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-senderipaddress"
+        },
+        "SourceArn": {
+          "description": "The ARN of the source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-sourcearn"
+        },
+        "SourceIngestPort": {
+          "description": "The port that the flow listens on for incoming content. If the protocol of the source is Zixi, the port must be set to 2088.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-sourceingestport"
+        },
+        "SourceListenerAddress": {
+          "description": "Source IP or domain name for SRT-caller protocol.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-sourcelisteneraddress"
+        },
+        "SourceListenerPort": {
+          "description": "Source port for SRT-caller protocol.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-sourcelistenerport"
+        },
+        "StreamId": {
+          "description": "The stream ID that you want to use for the transport. This parameter applies only to Zixi-based streams.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-streamid"
+        },
+        "VpcInterfaceName": {
+          "description": "The name of the VPC interface that is used for this source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-vpcinterfacename"
+        },
+        "WhitelistCidr": {
+          "description": "The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-whitelistcidr"
+        }
+      },
+      "description": "The details of the sources of the flow.\n\nIf you are creating a flow with a VPC source, you must first create the flow with a temporary standard source by doing the following:\n\n- Use CloudFormation to create a flow with a standard source that uses the flow’s public IP address.\n- Use CloudFormation to create the VPC interface to add to this flow. This can also be done as part of the previous step.\n- After CloudFormation has created the flow and the VPC interface, update the source to point to the VPC interface that you created.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html"
+    },
+    "SourceMonitoringConfig": {
+      "properties": {
+        "AudioMonitoringSettings": {
+          "description": "Contains the settings for audio stream metrics monitoring.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-sourcemonitoringconfig.html#cfn-mediaconnect-flow-sourcemonitoringconfig-audiomonitoringsettings"
+        },
+        "ContentQualityAnalysisState": {
+          "description": "Indicates whether content quality analysis is enabled or disabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-sourcemonitoringconfig.html#cfn-mediaconnect-flow-sourcemonitoringconfig-contentqualityanalysisstate"
+        },
+        "ThumbnailState": {
+          "description": "The current state of the thumbnail monitoring.\n\n- If you don't explicitly specify a value when creating a flow, no thumbnail state will be set.\n- If you update an existing flow and remove a previously set thumbnail state, the value will change to `DISABLED` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-sourcemonitoringconfig.html#cfn-mediaconnect-flow-sourcemonitoringconfig-thumbnailstate"
+        },
+        "VideoMonitoringSettings": {
+          "description": "Contains the settings for video stream metrics monitoring.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-sourcemonitoringconfig.html#cfn-mediaconnect-flow-sourcemonitoringconfig-videomonitoringsettings"
+        }
+      },
+      "description": "The `SourceMonitoringConfig` property type specifies the source monitoring settings for an `AWS::MediaConnect::Flow` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-sourcemonitoringconfig.html"
+    },
+    "VideoMonitoringSetting": {
+      "properties": {
+        "BlackFrames": {
+          "description": "Detects video frames that are black.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-videomonitoringsetting.html#cfn-mediaconnect-flow-videomonitoringsetting-blackframes"
+        },
+        "FrozenFrames": {
+          "description": "Detects video frames that have not changed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-videomonitoringsetting.html#cfn-mediaconnect-flow-videomonitoringsetting-frozenframes"
+        }
+      },
+      "description": "Specifies the configuration for video stream metrics monitoring.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-videomonitoringsetting.html"
+    },
+    "VpcInterface": {
+      "properties": {
+        "Name": {
+          "description": "Immutable and has to be a unique against other VpcInterfaces in this Flow.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterface.html#cfn-mediaconnect-flow-vpcinterface-name"
+        },
+        "NetworkInterfaceIds": {
+          "description": "IDs of the network interfaces created in customer's account by MediaConnect .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterface.html#cfn-mediaconnect-flow-vpcinterface-networkinterfaceids"
+        },
+        "NetworkInterfaceType": {
+          "description": "The type of network interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterface.html#cfn-mediaconnect-flow-vpcinterface-networkinterfacetype"
+        },
+        "RoleArn": {
+          "description": "A role Arn MediaConnect can assume to create ENIs in your account.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterface.html#cfn-mediaconnect-flow-vpcinterface-rolearn"
+        },
+        "SecurityGroupIds": {
+          "description": "Security Group IDs to be used on ENI.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterface.html#cfn-mediaconnect-flow-vpcinterface-securitygroupids"
+        },
+        "SubnetId": {
+          "description": "Subnet must be in the AZ of the Flow.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterface.html#cfn-mediaconnect-flow-vpcinterface-subnetid"
+        }
+      },
+      "description": "The details of a VPC interface.\n\n> When configuring VPC interfaces for NDI outputs, keep in mind the following:\n> \n> - VPC interfaces must be defined as nested attributes within the `AWS::MediaConnect::Flow` resource, and not within the top-level `AWS::MediaConnect::FlowVpcInterface` resource.\n> - There's a maximum limit of three VPC interfaces for each flow. If you've already reached this limit, you can't update the flow to use a different VPC interface without first removing an existing one.\n> \n> To update your VPC interfaces in this scenario, you must first remove the VPC interface that’s not being used. Next, add the new VPC interfaces. Lastly, update the `VpcInterfaceAdapter` in the `NDIConfig` property. These changes must be performed as separate manual operations and cannot be done through a single template update.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterface.html"
+    },
+    "VpcInterfaceAttachment": {
+      "properties": {
+        "VpcInterfaceName": {
+          "description": "The name of the VPC interface to use for this resource.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterfaceattachment.html#cfn-mediaconnect-flow-vpcinterfaceattachment-vpcinterfacename"
+        }
+      },
+      "description": "The settings for attaching a VPC interface to an resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-vpcinterfaceattachment.html"
+    }
+  },
+  "description": "The `AWS::MediaConnect::Flow` resource defines a connection between one or more video sources and one or more outputs. For each flow, you specify the transport protocol to use, encryption information, and details for any outputs or entitlements that you want. AWS Elemental MediaConnect returns an ingest endpoint where you can send your live video as a single unicast stream. The service replicates and distributes the video to every output that you specify, whether inside or outside the AWS Cloud. You can also set up entitlements on a flow to allow other AWS accounts to access your content.",
+  "properties": {
+    "AvailabilityZone": {
+      "description": "The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS Region.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-availabilityzone"
+    },
+    "EgressIp": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-egressip"
+    },
+    "FlowArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-flowarn"
+    },
+    "FlowAvailabilityZone": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-flowavailabilityzone"
+    },
+    "FlowNdiMachineName": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-flowndimachinename"
+    },
+    "FlowSize": {
+      "description": "Determines the processing capacity and feature set of the flow. Set this optional parameter to LARGE if you want to enable NDI outputs on the flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-flowsize"
+    },
+    "Maintenance": {
+      "description": "The maintenance settings you want to use for the flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-maintenance"
+    },
+    "MediaStreams": {
+      "description": "The media streams that are associated with the flow. After you associate a media stream with a source, you can also associate it with outputs on the flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-mediastreams"
+    },
+    "Name": {
+      "description": "The name of the flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-name"
+    },
+    "NdiConfig": {
+      "description": "Specifies the configuration settings for NDI outputs. Required when the flow includes NDI outputs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-ndiconfig"
+    },
+    "Source": {
+      "description": "The settings for the source that you want to use for the new flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-source"
+    },
+    "SourceFailoverConfig": {
+      "description": "The settings for source failover.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-sourcefailoverconfig"
+    },
+    "SourceMonitoringConfig": {
+      "description": "The settings for source monitoring.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-sourcemonitoringconfig"
+    },
+    "VpcInterfaces": {
+      "description": "The VPC Interfaces for this flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html#cfn-mediaconnect-flow-vpcinterfaces"
+    }
+  },
+  "typeName": "AWS::MediaConnect::Flow"
+}

@@ -1,0 +1,79 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#aws-resource-cloudformation-resourceversion-return-values",
+    "properties": {
+      "VersionId": {
+        "description": "The ID of a specific version of the resource. The version ID is the value at the end of the Amazon Resource Name (ARN) assigned to the resource version when it is registered."
+      },
+      "ProvisioningType": {
+        "description": "For resource type extensions, the provisioning behavior of the resource type. CloudFormation determines the provisioning type during registration, based on the types of handlers in the schema handler package submitted.\n\nValid values include:\n\n- `FULLY_MUTABLE` : The resource type includes an update handler to process updates to the type during stack update operations.\n- `IMMUTABLE` : The resource type doesn't include an update handler, so the type can't be updated and must instead be replaced during stack update operations.\n- `NON_PROVISIONABLE` : The resource type doesn't include all the following handlers, and therefore can't actually be provisioned.\n\n- create\n- read\n- delete"
+      },
+      "IsDefaultVersion": {
+        "description": "Whether the specified resource version is set as the default version.\n\nThis applies only to private extensions you have registered in your account, and extensions published by AWS . For public third-party extensions, whether they are activated in your account, CloudFormation returns `null` ."
+      },
+      "Visibility": {
+        "description": "The scope at which the resource is visible and usable in CloudFormation operations.\n\nValid values include:\n\n- `PRIVATE` : The extension (resource) is only visible and usable within the account in which it is registered. CloudFormation marks any extensions you register as `PRIVATE` .\n- `PUBLIC` : The extension (resource) is publicly visible and usable within any AWS account."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the resource."
+      },
+      "TypeArn": {
+        "description": "The Amazon Resource Name (ARN) for the extension."
+      }
+    }
+  },
+  "definitions": {
+    "LoggingConfig": {
+      "properties": {
+        "LogGroupName": {
+          "description": "The Amazon CloudWatch logs group to which CloudFormation sends error logging information when invoking the type's handlers.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-resourceversion-loggingconfig.html#cfn-cloudformation-resourceversion-loggingconfig-loggroupname"
+        },
+        "LogRoleArn": {
+          "description": "The ARN of the role that CloudFormation should assume when sending log entries to CloudWatch logs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-resourceversion-loggingconfig.html#cfn-cloudformation-resourceversion-loggingconfig-logrolearn"
+        }
+      },
+      "description": "Logging configuration information for a resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-resourceversion-loggingconfig.html"
+    }
+  },
+  "description": "The `AWS::CloudFormation::ResourceVersion` resource registers a resource version with the CloudFormation registry. Registering a resource version makes it available for use in CloudFormation templates in your AWS account , and includes:\n\n- Validating the resource schema.\n- Determining which handlers, if any, have been specified for the resource.\n- Making the resource available for use in your account.\n\nFor information about the CloudFormation registry, see [Managing extensions with the CloudFormation registry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html) in the *AWS CloudFormation User Guide* .\n\nYou can have a maximum of 50 resource versions registered at a time. This maximum is per account and per Region.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-arn"
+    },
+    "ExecutionRoleArn": {
+      "description": "The Amazon Resource Name (ARN) of the IAM role for CloudFormation to assume when invoking the resource. If your resource calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the resource type handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-executionrolearn"
+    },
+    "IsDefaultVersion": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-isdefaultversion"
+    },
+    "LoggingConfig": {
+      "description": "Logging configuration information for a resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-loggingconfig"
+    },
+    "ProvisioningType": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-provisioningtype"
+    },
+    "SchemaHandlerPackage": {
+      "description": "A URL to the S3 bucket containing the resource project package that contains the necessary files for the resource you want to register.\n\nFor information on generating a schema handler package, see [Modeling resource types to use with AWS CloudFormation](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html) in the *AWS CloudFormation Command Line Interface (CLI) User Guide* .\n\n> To register the resource version, you must have `s3:GetObject` permissions to access the S3 objects.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-schemahandlerpackage"
+    },
+    "TypeArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-typearn"
+    },
+    "TypeName": {
+      "description": "The name of the resource being registered.\n\nWe recommend that resource names adhere to the following pattern: *company_or_organization* :: *service* :: *type* .\n\n> The following organization namespaces are reserved and can't be used in your resource names:\n> \n> - `Alexa`\n> - `AMZN`\n> - `Amazon`\n> - `AWS`\n> - `Custom`\n> - `Dev`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-typename"
+    },
+    "VersionId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-versionid"
+    },
+    "Visibility": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-resourceversion.html#cfn-cloudformation-resourceversion-visibility"
+    }
+  },
+  "typeName": "AWS::CloudFormation::ResourceVersion"
+}

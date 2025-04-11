@@ -1,0 +1,101 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#aws-resource-pinpointemail-identity-return-values",
+    "properties": {
+      "IdentityDNSRecordName3": {
+        "description": "The host name for the third token that you have to add to the DNS configuration for your domain."
+      },
+      "IdentityDNSRecordName1": {
+        "description": "The host name for the first token that you have to add to the DNS configuration for your domain.\n\nFor more information, see [Verifying a Domain](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-manage-verify.html#channels-email-manage-verify-domain) in the Amazon Pinpoint User Guide."
+      },
+      "IdentityDNSRecordName2": {
+        "description": "The host name for the second token that you have to add to the DNS configuration for your domain."
+      },
+      "IdentityDNSRecordValue3": {
+        "description": "The record value for the third token that you have to add to the DNS configuration for your domain."
+      },
+      "IdentityDNSRecordValue2": {
+        "description": "The record value for the second token that you have to add to the DNS configuration for your domain."
+      },
+      "IdentityDNSRecordValue1": {
+        "description": "The record value for the first token that you have to add to the DNS configuration for your domain."
+      },
+      "Id": {}
+    }
+  },
+  "definitions": {
+    "MailFromAttributes": {
+      "properties": {
+        "BehaviorOnMxFailure": {
+          "description": "The action that Amazon Pinpoint to takes if it can't read the required MX record for a custom MAIL FROM domain. When you set this value to `UseDefaultValue` , Amazon Pinpoint uses *amazonses.com* as the MAIL FROM domain. When you set this value to `RejectMessage` , Amazon Pinpoint returns a `MailFromDomainNotVerified` error, and doesn't attempt to deliver the email.\n\nThese behaviors are taken when the custom MAIL FROM domain configuration is in the `Pending` , `Failed` , and `TemporaryFailure` states.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpointemail-identity-mailfromattributes.html#cfn-pinpointemail-identity-mailfromattributes-behavioronmxfailure"
+        },
+        "MailFromDomain": {
+          "description": "The name of a domain that an email identity uses as a custom MAIL FROM domain.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpointemail-identity-mailfromattributes.html#cfn-pinpointemail-identity-mailfromattributes-mailfromdomain"
+        }
+      },
+      "description": "A list of attributes that are associated with a MAIL FROM domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpointemail-identity-mailfromattributes.html"
+    },
+    "Tags": {
+      "properties": {
+        "Key": {
+          "description": "One part of a key-value pair that defines a tag. The maximum length of a tag key is 128 characters. The minimum length is 1 character.\n\nIf you specify tags for the identity, then this value is required.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpointemail-identity-tags.html#cfn-pinpointemail-identity-tags-key"
+        },
+        "Value": {
+          "description": "The optional part of a key-value pair that defines a tag. The maximum length of a tag value is 256 characters. The minimum length is 0 characters. If you don’t want a resource to have a specific tag value, don’t specify a value for this parameter. Amazon Pinpoint will set the value to an empty string.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpointemail-identity-tags.html#cfn-pinpointemail-identity-tags-value"
+        }
+      },
+      "description": "An object that defines the tags (keys and values) that you want to associate with the identity.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpointemail-identity-tags.html"
+    }
+  },
+  "description": "Specifies an identity to use for sending email through Amazon Pinpoint. In Amazon Pinpoint, an *identity* is an email address or domain that you use when you send email. Before you can use Amazon Pinpoint to send an email from an identity, you first have to verify it. By verifying an identity, you demonstrate that you're the owner of the address or domain, and that you've given Amazon Pinpoint permission to send email from that identity.\n\nWhen you verify an email address, Amazon Pinpoint sends an email to the address. Your email address is verified as soon as you follow the link in the verification email.\n\nWhen you verify a domain, this operation provides a set of DKIM tokens, which you can convert into CNAME tokens. You add these CNAME tokens to the DNS configuration for your domain. Your domain is verified when Amazon Pinpoint detects these records in the DNS configuration for your domain. It usually takes around 72 hours to complete the domain verification process.\n\n> When you use CloudFormation to specify an identity, CloudFormation might indicate that the identity was created successfully. However, you have to verify the identity before you can use it to send email.",
+  "properties": {
+    "DkimSigningEnabled": {
+      "description": "For domain identities, this attribute is used to enable or disable DomainKeys Identified Mail (DKIM) signing for the domain.\n\nIf the value is `true` , then the messages that you send from the domain are signed using both the DKIM keys for your domain, as well as the keys for the `amazonses.com` domain. If the value is `false` , then the messages that you send are only signed using the DKIM keys for the `amazonses.com` domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-dkimsigningenabled"
+    },
+    "FeedbackForwardingEnabled": {
+      "description": "Used to enable or disable feedback forwarding for an identity. This setting determines what happens when an identity is used to send an email that results in a bounce or complaint event.\n\nWhen you enable feedback forwarding, Amazon Pinpoint sends you email notifications when bounce or complaint events occur. Amazon Pinpoint sends this notification to the address that you specified in the Return-Path header of the original email.\n\nWhen you disable feedback forwarding, Amazon Pinpoint sends notifications through other mechanisms, such as by notifying an Amazon SNS topic. You're required to have a method of tracking bounces and complaints. If you haven't set up another mechanism for receiving bounce or complaint notifications, Amazon Pinpoint sends an email notification when these events occur (even if this setting is disabled).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-feedbackforwardingenabled"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-id"
+    },
+    "IdentityDNSRecordName1": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-identitydnsrecordname1"
+    },
+    "IdentityDNSRecordName2": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-identitydnsrecordname2"
+    },
+    "IdentityDNSRecordName3": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-identitydnsrecordname3"
+    },
+    "IdentityDNSRecordValue1": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-identitydnsrecordvalue1"
+    },
+    "IdentityDNSRecordValue2": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-identitydnsrecordvalue2"
+    },
+    "IdentityDNSRecordValue3": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-identitydnsrecordvalue3"
+    },
+    "MailFromAttributes": {
+      "description": "Used to enable or disable the custom Mail-From domain configuration for an email identity.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-mailfromattributes"
+    },
+    "Name": {
+      "description": "The address or domain of the identity, such as *sender@example.com* or *example.co.uk* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-name"
+    },
+    "Tags": {
+      "description": "An object that defines the tags (keys and values) that you want to associate with the email identity.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpointemail-identity.html#cfn-pinpointemail-identity-tags"
+    }
+  },
+  "typeName": "AWS::PinpointEmail::Identity"
+}

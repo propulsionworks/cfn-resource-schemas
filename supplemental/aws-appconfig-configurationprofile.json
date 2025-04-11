@@ -1,0 +1,93 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#aws-resource-appconfig-configurationprofile-return-values",
+    "properties": {
+      "ConfigurationProfileId": {
+        "description": "The configuration profile ID."
+      },
+      "KmsKeyArn": {
+        "description": "The Amazon Resource Name of the AWS Key Management Service key to encrypt new configuration data versions in the AWS AppConfig hosted configuration store. This attribute is only used for `hosted` configuration types. To encrypt data managed in other configuration stores, see the documentation for how to specify an AWS KMS key for that particular service."
+      }
+    }
+  },
+  "definitions": {
+    "Tags": {
+      "properties": {
+        "Key": {
+          "description": "The key-value string map. The valid character set is `[a-zA-Z+-=._:/]` . The tag key can be up to 128 characters and must not start with `aws:` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appconfig-configurationprofile-tags.html#cfn-appconfig-configurationprofile-tags-key"
+        },
+        "Value": {
+          "description": "The tag value can be up to 256 characters.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appconfig-configurationprofile-tags.html#cfn-appconfig-configurationprofile-tags-value"
+        }
+      },
+      "description": "Metadata to assign to the configuration profile. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which you define.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appconfig-configurationprofile-tags.html"
+    },
+    "Validators": {
+      "properties": {
+        "Content": {
+          "description": "Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda function.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appconfig-configurationprofile-validators.html#cfn-appconfig-configurationprofile-validators-content"
+        },
+        "Type": {
+          "description": "AWS AppConfig supports validators of type `JSON_SCHEMA` and `LAMBDA`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appconfig-configurationprofile-validators.html#cfn-appconfig-configurationprofile-validators-type"
+        }
+      },
+      "description": "A validator provides a syntactic or semantic check to ensure the configuration that you want to deploy functions as intended. To validate your application configuration data, you provide a schema or an AWS Lambda function that runs against the configuration. The configuration deployment or update can only proceed when the configuration data is valid. For more information, see [About validators](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-profile.html#appconfig-creating-configuration-and-profile-validators) in the *AWS AppConfig User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appconfig-configurationprofile-validators.html"
+    }
+  },
+  "description": "The `AWS::AppConfig::ConfigurationProfile` resource creates a configuration profile that enables AWS AppConfig to access the configuration source. Valid configuration sources include AWS Systems Manager (SSM) documents, SSM Parameter Store parameters, and Amazon S3 . A configuration profile includes the following information.\n\n- The Uri location of the configuration data.\n- The AWS Identity and Access Management ( IAM ) role that provides access to the configuration data.\n- A validator for the configuration data. Available validators include either a JSON Schema or the Amazon Resource Name (ARN) of an AWS Lambda function.\n\nAWS AppConfig requires that you create resources and deploy a configuration in the following order:\n\n- Create an application\n- Create an environment\n- Create a configuration profile\n- Choose a pre-defined deployment strategy or create your own\n- Deploy the configuration\n\nFor more information, see [AWS AppConfig](https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html) in the *AWS AppConfig User Guide* .",
+  "properties": {
+    "ApplicationId": {
+      "description": "The application ID.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-applicationid"
+    },
+    "ConfigurationProfileId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-configurationprofileid"
+    },
+    "DeletionProtectionCheck": {
+      "description": "A parameter to configure deletion protection. Deletion protection prevents a user from deleting a configuration profile if your application has called either [GetLatestConfiguration](https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html) or [GetConfiguration](https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_GetConfiguration.html) for the configuration profile during the specified interval.\n\nThis parameter supports the following values:\n\n- `BYPASS` : Instructs AWS AppConfig to bypass the deletion protection check and delete a configuration profile even if deletion protection would have otherwise prevented it.\n- `APPLY` : Instructs the deletion protection check to run, even if deletion protection is disabled at the account level. `APPLY` also forces the deletion protection check to run against resources created in the past hour, which are normally excluded from deletion protection checks.\n- `ACCOUNT_DEFAULT` : The default setting, which instructs AWS AppConfig to implement the deletion protection value specified in the `UpdateAccountSettings` API.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-deletionprotectioncheck"
+    },
+    "Description": {
+      "description": "A description of the configuration profile.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-description"
+    },
+    "KmsKeyArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-kmskeyarn"
+    },
+    "KmsKeyIdentifier": {
+      "description": "The AWS Key Management Service key identifier (key ID, key alias, or key ARN) provided when the resource was created or updated.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-kmskeyidentifier"
+    },
+    "LocationUri": {
+      "description": "A URI to locate the configuration. You can specify the following:\n\n- For the AWS AppConfig hosted configuration store and for feature flags, specify `hosted` .\n- For an AWS Systems Manager Parameter Store parameter, specify either the parameter name in the format `ssm-parameter://<parameter name>` or the ARN.\n- For an AWS CodePipeline pipeline, specify the URI in the following format: `codepipeline` ://<pipeline name>.\n- For an AWS Secrets Manager secret, specify the URI in the following format: `secretsmanager` ://<secret name>.\n- For an Amazon S3 object, specify the URI in the following format: `s3://<bucket>/<objectKey>` . Here is an example: `s3://amzn-s3-demo-bucket/my-app/us-east-1/my-config.json`\n- For an SSM document, specify either the document name in the format `ssm-document://<document name>` or the Amazon Resource Name (ARN).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-locationuri"
+    },
+    "Name": {
+      "description": "A name for the configuration profile.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-name"
+    },
+    "RetrievalRoleArn": {
+      "description": "The ARN of an IAM role with permission to access the configuration at the specified `LocationUri` .\n\n> A retrieval role ARN is not required for configurations stored in AWS CodePipeline or the AWS AppConfig hosted configuration store. It is required for all other sources that store your configuration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-retrievalrolearn"
+    },
+    "Tags": {
+      "description": "Metadata to assign to the configuration profile. Tags help organize and categorize your AWS AppConfig resources. Each tag consists of a key and an optional value, both of which you define.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-tags"
+    },
+    "Type": {
+      "description": "The type of configurations contained in the profile. AWS AppConfig supports `feature flags` and `freeform` configurations. We recommend you create feature flag configurations to enable or disable new features and freeform configurations to distribute configurations to an application. When calling this API, enter one of the following values for `Type` :\n\n`AWS.AppConfig.FeatureFlags`\n\n`AWS.Freeform`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-type"
+    },
+    "Validators": {
+      "description": "A list of methods for validating the configuration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-configurationprofile.html#cfn-appconfig-configurationprofile-validators"
+    }
+  },
+  "typeName": "AWS::AppConfig::ConfigurationProfile"
+}

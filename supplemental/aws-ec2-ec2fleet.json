@@ -1,0 +1,633 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#aws-resource-ec2-ec2fleet-return-values",
+    "properties": {
+      "FleetId": {
+        "description": "The ID of the EC2 Fleet."
+      }
+    }
+  },
+  "definitions": {
+    "AcceleratorCountRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum number of accelerators. To specify no maximum limit, omit this parameter. To exclude accelerator-enabled instance types, set `Max` to `0` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-acceleratorcountrequest.html#cfn-ec2-ec2fleet-acceleratorcountrequest-max"
+        },
+        "Min": {
+          "description": "The minimum number of accelerators. To specify no minimum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-acceleratorcountrequest.html#cfn-ec2-ec2fleet-acceleratorcountrequest-min"
+        }
+      },
+      "description": "The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on an instance. To exclude accelerator-enabled instance types, set `Max` to `0` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-acceleratorcountrequest.html"
+    },
+    "AcceleratorTotalMemoryMiBRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum amount of accelerator memory, in MiB. To specify no maximum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-acceleratortotalmemorymibrequest.html#cfn-ec2-ec2fleet-acceleratortotalmemorymibrequest-max"
+        },
+        "Min": {
+          "description": "The minimum amount of accelerator memory, in MiB. To specify no minimum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-acceleratortotalmemorymibrequest.html#cfn-ec2-ec2fleet-acceleratortotalmemorymibrequest-min"
+        }
+      },
+      "description": "The minimum and maximum amount of total accelerator memory, in MiB.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-acceleratortotalmemorymibrequest.html"
+    },
+    "BaselineEbsBandwidthMbpsRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-baselineebsbandwidthmbpsrequest.html#cfn-ec2-ec2fleet-baselineebsbandwidthmbpsrequest-max"
+        },
+        "Min": {
+          "description": "The minimum baseline bandwidth, in Mbps. To specify no minimum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-baselineebsbandwidthmbpsrequest.html#cfn-ec2-ec2fleet-baselineebsbandwidthmbpsrequest-min"
+        }
+      },
+      "description": "The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see [Amazon EBS–optimized instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-baselineebsbandwidthmbpsrequest.html"
+    },
+    "BaselinePerformanceFactorsRequest": {
+      "properties": {
+        "Cpu": {
+          "description": "The CPU performance to consider, using an instance family as the baseline reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-baselineperformancefactorsrequest.html#cfn-ec2-ec2fleet-baselineperformancefactorsrequest-cpu"
+        }
+      },
+      "description": "The baseline performance to consider, using an instance family as a baseline reference. The instance family establishes the lowest acceptable level of performance. Amazon EC2 uses this baseline to guide instance type selection, but there is no guarantee that the selected instance types will always exceed the baseline for every application.\n\nCurrently, this parameter only supports CPU performance as a baseline performance factor. For example, specifying `c6i` would use the CPU performance of the `c6i` family as the baseline reference.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-baselineperformancefactorsrequest.html"
+    },
+    "BlockDeviceMapping": {
+      "properties": {
+        "DeviceName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-blockdevicemapping.html#cfn-ec2-ec2fleet-blockdevicemapping-devicename"
+        },
+        "Ebs": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-blockdevicemapping.html#cfn-ec2-ec2fleet-blockdevicemapping-ebs"
+        },
+        "NoDevice": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-blockdevicemapping.html#cfn-ec2-ec2fleet-blockdevicemapping-nodevice"
+        },
+        "VirtualName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-blockdevicemapping.html#cfn-ec2-ec2fleet-blockdevicemapping-virtualname"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-blockdevicemapping.html"
+    },
+    "CapacityRebalance": {
+      "properties": {
+        "ReplacementStrategy": {
+          "description": "The replacement strategy to use. Only available for fleets of type `maintain` .\n\n`launch` - EC2 Fleet launches a replacement Spot Instance when a rebalance notification is emitted for an existing Spot Instance in the fleet. EC2 Fleet does not terminate the instances that receive a rebalance notification. You can terminate the old instances, or you can leave them running. You are charged for all instances while they are running.\n\n`launch-before-terminate` - EC2 Fleet launches a replacement Spot Instance when a rebalance notification is emitted for an existing Spot Instance in the fleet, and then, after a delay that you specify (in `TerminationDelay` ), terminates the instances that received a rebalance notification.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-capacityrebalance.html#cfn-ec2-ec2fleet-capacityrebalance-replacementstrategy"
+        },
+        "TerminationDelay": {
+          "description": "The amount of time (in seconds) that Amazon EC2 waits before terminating the old Spot Instance after launching a new replacement Spot Instance.\n\nRequired when `ReplacementStrategy` is set to `launch-before-terminate` .\n\nNot valid when `ReplacementStrategy` is set to `launch` .\n\nValid values: Minimum value of `120` seconds. Maximum value of `7200` seconds.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-capacityrebalance.html#cfn-ec2-ec2fleet-capacityrebalance-terminationdelay"
+        }
+      },
+      "description": "The Spot Instance replacement strategy to use when Amazon EC2 emits a rebalance notification signal that your Spot Instance is at an elevated risk of being interrupted. For more information, see [Capacity rebalancing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-capacity-rebalance.html) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-capacityrebalance.html"
+    },
+    "CapacityReservationOptionsRequest": {
+      "properties": {
+        "UsageStrategy": {
+          "description": "Indicates whether to use unused Capacity Reservations for fulfilling On-Demand capacity.\n\nIf you specify `use-capacity-reservations-first` , the fleet uses unused Capacity Reservations to fulfill On-Demand capacity up to the target On-Demand capacity. If multiple instance pools have unused Capacity Reservations, the On-Demand allocation strategy ( `lowest-price` or `prioritized` ) is applied. If the number of unused Capacity Reservations is less than the On-Demand target capacity, the remaining On-Demand target capacity is launched according to the On-Demand allocation strategy ( `lowest-price` or `prioritized` ).\n\nIf you do not specify a value, the fleet fulfils the On-Demand capacity according to the chosen On-Demand allocation strategy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-capacityreservationoptionsrequest.html#cfn-ec2-ec2fleet-capacityreservationoptionsrequest-usagestrategy"
+        }
+      },
+      "description": "Describes the strategy for using unused Capacity Reservations for fulfilling On-Demand capacity.\n\n> This strategy can only be used if the EC2 Fleet is of type `instant` . \n\nFor more information about Capacity Reservations, see [On-Demand Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html) in the *Amazon EC2 User Guide* . For examples of using Capacity Reservations in an EC2 Fleet, see [EC2 Fleet example configurations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-examples.html) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-capacityreservationoptionsrequest.html"
+    },
+    "CpuPerformanceFactorRequest": {
+      "properties": {
+        "References": {
+          "description": "Specify an instance family to use as the baseline reference for CPU performance. All instance types that match your specified attributes will be compared against the CPU performance of the referenced instance family, regardless of CPU manufacturer or architecture differences.\n\n> Currently, only one instance family can be specified in the list.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-cpuperformancefactorrequest.html#cfn-ec2-ec2fleet-cpuperformancefactorrequest-references"
+        }
+      },
+      "description": "The CPU performance to consider, using an instance family as the baseline reference.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-cpuperformancefactorrequest.html"
+    },
+    "EbsBlockDevice": {
+      "properties": {
+        "DeleteOnTermination": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ebsblockdevice.html#cfn-ec2-ec2fleet-ebsblockdevice-deleteontermination"
+        },
+        "Encrypted": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ebsblockdevice.html#cfn-ec2-ec2fleet-ebsblockdevice-encrypted"
+        },
+        "Iops": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ebsblockdevice.html#cfn-ec2-ec2fleet-ebsblockdevice-iops"
+        },
+        "KmsKeyId": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ebsblockdevice.html#cfn-ec2-ec2fleet-ebsblockdevice-kmskeyid"
+        },
+        "SnapshotId": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ebsblockdevice.html#cfn-ec2-ec2fleet-ebsblockdevice-snapshotid"
+        },
+        "VolumeSize": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ebsblockdevice.html#cfn-ec2-ec2fleet-ebsblockdevice-volumesize"
+        },
+        "VolumeType": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ebsblockdevice.html#cfn-ec2-ec2fleet-ebsblockdevice-volumetype"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ebsblockdevice.html"
+    },
+    "FleetLaunchTemplateConfigRequest": {
+      "properties": {
+        "LaunchTemplateSpecification": {
+          "description": "The launch template to use. You must specify either the launch template ID or launch template name in the request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateconfigrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateconfigrequest-launchtemplatespecification"
+        },
+        "Overrides": {
+          "description": "Any parameters that you specify override the same parameters in the launch template.\n\nFor fleets of type `request` and `maintain` , a maximum of 300 items is allowed across all launch templates.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateconfigrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateconfigrequest-overrides"
+        }
+      },
+      "description": "Specifies a launch template and overrides for an EC2 Fleet.\n\n`FleetLaunchTemplateConfigRequest` is a property of the [AWS::EC2::EC2Fleet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html) resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateconfigrequest.html"
+    },
+    "FleetLaunchTemplateOverridesRequest": {
+      "properties": {
+        "AvailabilityZone": {
+          "description": "The Availability Zone in which to launch the instances.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-availabilityzone"
+        },
+        "InstanceRequirements": {
+          "description": "The attributes for the instance types. When you specify instance attributes, Amazon EC2 will identify instance types with those attributes.\n\n> If you specify `InstanceRequirements` , you can't specify `InstanceType` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-instancerequirements"
+        },
+        "InstanceType": {
+          "description": "The instance type.\n\n`mac1.metal` is not supported as a launch template override.\n\n> If you specify `InstanceType` , you can't specify `InstanceRequirements` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-instancetype"
+        },
+        "MaxPrice": {
+          "description": "The maximum price per unit hour that you are willing to pay for a Spot Instance. We do not recommend using this parameter because it can lead to increased interruptions. If you do not specify this parameter, you will pay the current Spot price.\n\n> If you specify a maximum price, your instances will be interrupted more frequently than if you do not specify this parameter.\n> \n> If you specify a maximum price, it must be more than USD $0.001. Specifying a value below USD $0.001 will result in an `InvalidParameterValue` error message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-maxprice"
+        },
+        "Placement": {
+          "description": "The location where the instance launched, if applicable.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-placement"
+        },
+        "Priority": {
+          "description": "The priority for the launch template override. The highest priority is launched first.\n\nIf the On-Demand `AllocationStrategy` is set to `prioritized` , EC2 Fleet uses priority to determine which launch template override to use first in fulfilling On-Demand capacity.\n\nIf the Spot `AllocationStrategy` is set to `capacity-optimized-prioritized` , EC2 Fleet uses priority on a best-effort basis to determine which launch template override to use in fulfilling Spot capacity, but optimizes for capacity first.\n\nValid values are whole numbers starting at `0` . The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority. You can set the same priority for different launch template overrides.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-priority"
+        },
+        "SubnetId": {
+          "description": "The IDs of the subnets in which to launch the instances. Separate multiple subnet IDs using commas (for example, `subnet-1234abcdeexample1, subnet-0987cdef6example2` ). A request of type `instant` can have only one subnet ID.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-subnetid"
+        },
+        "WeightedCapacity": {
+          "description": "The number of units provided by the specified instance type. These are the same units that you chose to set the target capacity in terms of instances, or a performance characteristic such as vCPUs, memory, or I/O.\n\nIf the target capacity divided by this value is not a whole number, Amazon EC2 rounds the number of instances to the next whole number. If this value is not specified, the default is 1.\n\n> When specifying weights, the price used in the `lowest-price` and `price-capacity-optimized` allocation strategies is per *unit* hour (where the instance price is divided by the specified weight). However, if all the specified weights are above the requested `TargetCapacity` , resulting in only 1 instance being launched, the price used is per *instance* hour.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-weightedcapacity"
+        }
+      },
+      "description": "Specifies overrides for a launch template for an EC2 Fleet.\n\n`FleetLaunchTemplateOverridesRequest` is a property of the [FleetLaunchTemplateConfigRequest](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateconfigrequest.html) property type.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html"
+    },
+    "FleetLaunchTemplateSpecificationRequest": {
+      "properties": {
+        "LaunchTemplateId": {
+          "description": "The ID of the launch template.\n\nYou must specify the `LaunchTemplateId` or the `LaunchTemplateName` , but not both.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest-launchtemplateid"
+        },
+        "LaunchTemplateName": {
+          "description": "The name of the launch template.\n\nYou must specify the `LaunchTemplateName` or the `LaunchTemplateId` , but not both.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest-launchtemplatename"
+        },
+        "Version": {
+          "description": "The launch template version number, `$Latest` , or `$Default` . You must specify a value, otherwise the request fails.\n\nIf the value is `$Latest` , Amazon EC2 uses the latest version of the launch template.\n\nIf the value is `$Default` , Amazon EC2 uses the default version of the launch template.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest-version"
+        }
+      },
+      "description": "Specifies the launch template to be used by the EC2 Fleet for configuring Amazon EC2 instances.\n\nYou must specify the following:\n\n- The ID or the name of the launch template, but not both.\n- The version of the launch template.\n\n`FleetLaunchTemplateSpecificationRequest` is a property of the [FleetLaunchTemplateConfigRequest](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateconfigrequest.html) property type.\n\nFor information about creating a launch template, see [AWS::EC2::LaunchTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html) and [Create a launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template) in the *Amazon EC2 User Guide* .\n\nFor examples of launch templates, see [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html#aws-resource-ec2-launchtemplate--examples) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest.html"
+    },
+    "InstanceRequirementsRequest": {
+      "properties": {
+        "AcceleratorCount": {
+          "description": "The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on an instance.\n\nTo exclude accelerator-enabled instance types, set `Max` to `0` .\n\nDefault: No minimum or maximum limits",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-acceleratorcount"
+        },
+        "AcceleratorManufacturers": {
+          "description": "Indicates whether instance types must have accelerators by specific manufacturers.\n\n- For instance types with AWS devices, specify `amazon-web-services` .\n- For instance types with AMD devices, specify `amd` .\n- For instance types with Habana devices, specify `habana` .\n- For instance types with NVIDIA devices, specify `nvidia` .\n- For instance types with Xilinx devices, specify `xilinx` .\n\nDefault: Any manufacturer",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-acceleratormanufacturers"
+        },
+        "AcceleratorNames": {
+          "description": "The accelerators that must be on the instance type.\n\n- For instance types with NVIDIA A10G GPUs, specify `a10g` .\n- For instance types with NVIDIA A100 GPUs, specify `a100` .\n- For instance types with NVIDIA H100 GPUs, specify `h100` .\n- For instance types with AWS Inferentia chips, specify `inferentia` .\n- For instance types with NVIDIA GRID K520 GPUs, specify `k520` .\n- For instance types with NVIDIA K80 GPUs, specify `k80` .\n- For instance types with NVIDIA M60 GPUs, specify `m60` .\n- For instance types with AMD Radeon Pro V520 GPUs, specify `radeon-pro-v520` .\n- For instance types with NVIDIA T4 GPUs, specify `t4` .\n- For instance types with NVIDIA T4G GPUs, specify `t4g` .\n- For instance types with Xilinx VU9P FPGAs, specify `vu9p` .\n- For instance types with NVIDIA V100 GPUs, specify `v100` .\n\nDefault: Any accelerator",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-acceleratornames"
+        },
+        "AcceleratorTotalMemoryMiB": {
+          "description": "The minimum and maximum amount of total accelerator memory, in MiB.\n\nDefault: No minimum or maximum limits",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-acceleratortotalmemorymib"
+        },
+        "AcceleratorTypes": {
+          "description": "The accelerator types that must be on the instance type.\n\n- For instance types with FPGA accelerators, specify `fpga` .\n- For instance types with GPU accelerators, specify `gpu` .\n\nDefault: Any accelerator type",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-acceleratortypes"
+        },
+        "AllowedInstanceTypes": {
+          "description": "The instance types to apply your specified attributes against. All other instance types are ignored, even if they match your specified attributes.\n\nYou can use strings with one or more wild cards, represented by an asterisk ( `*` ), to allow an instance type, size, or generation. The following are examples: `m5.8xlarge` , `c5*.*` , `m5a.*` , `r*` , `*3*` .\n\nFor example, if you specify `c5*` ,Amazon EC2 will allow the entire C5 instance family, which includes all C5a and C5n instance types. If you specify `m5a.*` , Amazon EC2 will allow all the M5a instance types, but not the M5n instance types.\n\n> If you specify `AllowedInstanceTypes` , you can't specify `ExcludedInstanceTypes` . \n\nDefault: All instance types",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-allowedinstancetypes"
+        },
+        "BareMetal": {
+          "description": "Indicates whether bare metal instance types must be included, excluded, or required.\n\n- To include bare metal instance types, specify `included` .\n- To require only bare metal instance types, specify `required` .\n- To exclude bare metal instance types, specify `excluded` .\n\nDefault: `excluded`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-baremetal"
+        },
+        "BaselineEbsBandwidthMbps": {
+          "description": "The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps. For more information, see [Amazon EBS–optimized instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html) in the *Amazon EC2 User Guide* .\n\nDefault: No minimum or maximum limits",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-baselineebsbandwidthmbps"
+        },
+        "BaselinePerformanceFactors": {
+          "description": "The baseline performance to consider, using an instance family as a baseline reference. The instance family establishes the lowest acceptable level of performance. Amazon EC2 uses this baseline to guide instance type selection, but there is no guarantee that the selected instance types will always exceed the baseline for every application. Currently, this parameter only supports CPU performance as a baseline performance factor. For more information, see [Performance protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-attribute-based-instance-type-selection.html#ec2fleet-abis-performance-protection) in the *Amazon EC2 User Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-baselineperformancefactors"
+        },
+        "BurstablePerformance": {
+          "description": "Indicates whether burstable performance T instance types are included, excluded, or required. For more information, see [Burstable performance instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html) .\n\n- To include burstable performance instance types, specify `included` .\n- To require only burstable performance instance types, specify `required` .\n- To exclude burstable performance instance types, specify `excluded` .\n\nDefault: `excluded`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-burstableperformance"
+        },
+        "CpuManufacturers": {
+          "description": "The CPU manufacturers to include.\n\n- For instance types with Intel CPUs, specify `intel` .\n- For instance types with AMD CPUs, specify `amd` .\n- For instance types with AWS CPUs, specify `amazon-web-services` .\n- For instance types with Apple CPUs, specify `apple` .\n\n> Don't confuse the CPU manufacturer with the CPU architecture. Instances will be launched with a compatible CPU architecture based on the Amazon Machine Image (AMI) that you specify in your launch template. \n\nDefault: Any manufacturer",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-cpumanufacturers"
+        },
+        "ExcludedInstanceTypes": {
+          "description": "The instance types to exclude.\n\nYou can use strings with one or more wild cards, represented by an asterisk ( `*` ), to exclude an instance family, type, size, or generation. The following are examples: `m5.8xlarge` , `c5*.*` , `m5a.*` , `r*` , `*3*` .\n\nFor example, if you specify `c5*` ,Amazon EC2 will exclude the entire C5 instance family, which includes all C5a and C5n instance types. If you specify `m5a.*` , Amazon EC2 will exclude all the M5a instance types, but not the M5n instance types.\n\n> If you specify `ExcludedInstanceTypes` , you can't specify `AllowedInstanceTypes` . \n\nDefault: No excluded instance types",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-excludedinstancetypes"
+        },
+        "InstanceGenerations": {
+          "description": "Indicates whether current or previous generation instance types are included. The current generation instance types are recommended for use. Current generation instance types are typically the latest two to three generations in each instance family. For more information, see [Instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon EC2 User Guide* .\n\nFor current generation instance types, specify `current` .\n\nFor previous generation instance types, specify `previous` .\n\nDefault: Current and previous generation instance types",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-instancegenerations"
+        },
+        "LocalStorage": {
+          "description": "Indicates whether instance types with instance store volumes are included, excluded, or required. For more information, [Amazon EC2 instance store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html) in the *Amazon EC2 User Guide* .\n\n- To include instance types with instance store volumes, specify `included` .\n- To require only instance types with instance store volumes, specify `required` .\n- To exclude instance types with instance store volumes, specify `excluded` .\n\nDefault: `included`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-localstorage"
+        },
+        "LocalStorageTypes": {
+          "description": "The type of local storage that is required.\n\n- For instance types with hard disk drive (HDD) storage, specify `hdd` .\n- For instance types with solid state drive (SSD) storage, specify `ssd` .\n\nDefault: `hdd` and `ssd`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-localstoragetypes"
+        },
+        "MaxSpotPriceAsPercentageOfOptimalOnDemandPrice": {
+          "description": "[Price protection] The price protection threshold for Spot Instances, as a percentage of an identified On-Demand price. The identified On-Demand price is the price of the lowest priced current generation C, M, or R instance type with your specified attributes. If no current generation C, M, or R instance type matches your attributes, then the identified price is from the lowest priced current generation instance types, and failing that, from the lowest priced previous generation instance types that match your attributes. When Amazon EC2 selects instance types with your attributes, it will exclude instance types whose price exceeds your specified threshold.\n\nThe parameter accepts an integer, which Amazon EC2 interprets as a percentage.\n\nIf you set `TargetCapacityUnitType` to `vcpu` or `memory-mib` , the price protection threshold is based on the per vCPU or per memory price instead of the per instance price.\n\n> Only one of `SpotMaxPricePercentageOverLowestPrice` or `MaxSpotPriceAsPercentageOfOptimalOnDemandPrice` can be specified. If you don't specify either, Amazon EC2 will automatically apply optimal price protection to consistently select from a wide range of instance types. To indicate no price protection threshold for Spot Instances, meaning you want to consider all instance types that match your attributes, include one of these parameters and specify a high value, such as `999999` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-maxspotpriceaspercentageofoptimalondemandprice"
+        },
+        "MemoryGiBPerVCpu": {
+          "description": "The minimum and maximum amount of memory per vCPU, in GiB.\n\nDefault: No minimum or maximum limits",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-memorygibpervcpu"
+        },
+        "MemoryMiB": {
+          "description": "The minimum and maximum amount of memory, in MiB.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-memorymib"
+        },
+        "NetworkBandwidthGbps": {
+          "description": "The minimum and maximum amount of baseline network bandwidth, in gigabits per second (Gbps). For more information, see [Amazon EC2 instance network bandwidth](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-network-bandwidth.html) in the *Amazon EC2 User Guide* .\n\nDefault: No minimum or maximum limits",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-networkbandwidthgbps"
+        },
+        "NetworkInterfaceCount": {
+          "description": "The minimum and maximum number of network interfaces.\n\nDefault: No minimum or maximum limits",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-networkinterfacecount"
+        },
+        "OnDemandMaxPricePercentageOverLowestPrice": {
+          "description": "[Price protection] The price protection threshold for On-Demand Instances, as a percentage higher than an identified On-Demand price. The identified On-Demand price is the price of the lowest priced current generation C, M, or R instance type with your specified attributes. When Amazon EC2 selects instance types with your attributes, it will exclude instance types whose price exceeds your specified threshold.\n\nThe parameter accepts an integer, which Amazon EC2 interprets as a percentage.\n\nTo indicate no price protection threshold, specify a high value, such as `999999` .\n\nThis parameter is not supported for [GetSpotPlacementScores](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetSpotPlacementScores.html) and [GetInstanceTypesFromInstanceRequirements](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetInstanceTypesFromInstanceRequirements.html) .\n\n> If you set `TargetCapacityUnitType` to `vcpu` or `memory-mib` , the price protection threshold is applied based on the per-vCPU or per-memory price instead of the per-instance price. \n\nDefault: `20`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-ondemandmaxpricepercentageoverlowestprice"
+        },
+        "RequireHibernateSupport": {
+          "description": "Indicates whether instance types must support hibernation for On-Demand Instances.\n\nThis parameter is not supported for [GetSpotPlacementScores](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetSpotPlacementScores.html) .\n\nDefault: `false`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-requirehibernatesupport"
+        },
+        "SpotMaxPricePercentageOverLowestPrice": {
+          "description": "[Price protection] The price protection threshold for Spot Instances, as a percentage higher than an identified Spot price. The identified Spot price is the Spot price of the lowest priced current generation C, M, or R instance type with your specified attributes. If no current generation C, M, or R instance type matches your attributes, then the identified Spot price is from the lowest priced current generation instance types, and failing that, from the lowest priced previous generation instance types that match your attributes. When Amazon EC2 selects instance types with your attributes, it will exclude instance types whose Spot price exceeds your specified threshold.\n\nThe parameter accepts an integer, which Amazon EC2 interprets as a percentage.\n\nIf you set `TargetCapacityUnitType` to `vcpu` or `memory-mib` , the price protection threshold is applied based on the per-vCPU or per-memory price instead of the per-instance price.\n\nThis parameter is not supported for [GetSpotPlacementScores](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetSpotPlacementScores.html) and [GetInstanceTypesFromInstanceRequirements](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetInstanceTypesFromInstanceRequirements.html) .\n\n> Only one of `SpotMaxPricePercentageOverLowestPrice` or `MaxSpotPriceAsPercentageOfOptimalOnDemandPrice` can be specified. If you don't specify either, Amazon EC2 will automatically apply optimal price protection to consistently select from a wide range of instance types. To indicate no price protection threshold for Spot Instances, meaning you want to consider all instance types that match your attributes, include one of these parameters and specify a high value, such as `999999` . \n\nDefault: `100`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-spotmaxpricepercentageoverlowestprice"
+        },
+        "TotalLocalStorageGB": {
+          "description": "The minimum and maximum amount of total local storage, in GB.\n\nDefault: No minimum or maximum limits",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-totallocalstoragegb"
+        },
+        "VCpuCount": {
+          "description": "The minimum and maximum number of vCPUs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html#cfn-ec2-ec2fleet-instancerequirementsrequest-vcpucount"
+        }
+      },
+      "description": "The attributes for the instance types. When you specify instance attributes, Amazon EC2 will identify instance types with these attributes.\n\nYou must specify `VCpuCount` and `MemoryMiB` . All other attributes are optional. Any unspecified optional attribute is set to its default.\n\nWhen you specify multiple attributes, you get instance types that satisfy all of the specified attributes. If you specify multiple values for an attribute, you get instance types that satisfy any of the specified values.\n\nTo limit the list of instance types from which Amazon EC2 can identify matching instance types, you can use one of the following parameters, but not both in the same request:\n\n- `AllowedInstanceTypes` - The instance types to include in the list. All other instance types are ignored, even if they match your specified attributes.\n- `ExcludedInstanceTypes` - The instance types to exclude from the list, even if they match your specified attributes.\n\n> If you specify `InstanceRequirements` , you can't specify `InstanceType` .\n> \n> Attribute-based instance type selection is only supported when using Auto Scaling groups, EC2 Fleet, and Spot Fleet to launch instances. If you plan to use the launch template in the [launch instance wizard](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-instance-wizard.html) , or with the [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) API or [AWS::EC2::Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html) AWS CloudFormation resource, you can't specify `InstanceRequirements` . \n\nFor more information, see [Specify attributes for instance type selection for EC2 Fleet or Spot Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-attribute-based-instance-type-selection.html) and [Spot placement score](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html"
+    },
+    "MaintenanceStrategies": {
+      "properties": {
+        "CapacityRebalance": {
+          "description": "The strategy to use when Amazon EC2 emits a signal that your Spot Instance is at an elevated risk of being interrupted.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-maintenancestrategies.html#cfn-ec2-ec2fleet-maintenancestrategies-capacityrebalance"
+        }
+      },
+      "description": "The strategies for managing your Spot Instances that are at an elevated risk of being interrupted.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-maintenancestrategies.html"
+    },
+    "MemoryGiBPerVCpuRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum amount of memory per vCPU, in GiB. To specify no maximum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-memorygibpervcpurequest.html#cfn-ec2-ec2fleet-memorygibpervcpurequest-max"
+        },
+        "Min": {
+          "description": "The minimum amount of memory per vCPU, in GiB. To specify no minimum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-memorygibpervcpurequest.html#cfn-ec2-ec2fleet-memorygibpervcpurequest-min"
+        }
+      },
+      "description": "The minimum and maximum amount of memory per vCPU, in GiB.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-memorygibpervcpurequest.html"
+    },
+    "MemoryMiBRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum amount of memory, in MiB. To specify no maximum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-memorymibrequest.html#cfn-ec2-ec2fleet-memorymibrequest-max"
+        },
+        "Min": {
+          "description": "The minimum amount of memory, in MiB. To specify no minimum limit, specify `0` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-memorymibrequest.html#cfn-ec2-ec2fleet-memorymibrequest-min"
+        }
+      },
+      "description": "The minimum and maximum amount of memory, in MiB.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-memorymibrequest.html"
+    },
+    "NetworkBandwidthGbpsRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum amount of network bandwidth, in Gbps. To specify no maximum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkbandwidthgbpsrequest.html#cfn-ec2-ec2fleet-networkbandwidthgbpsrequest-max"
+        },
+        "Min": {
+          "description": "The minimum amount of network bandwidth, in Gbps. To specify no minimum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkbandwidthgbpsrequest.html#cfn-ec2-ec2fleet-networkbandwidthgbpsrequest-min"
+        }
+      },
+      "description": "The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).\n\n> Setting the minimum bandwidth does not guarantee that your instance will achieve the minimum bandwidth. Amazon EC2 will identify instance types that support the specified minimum bandwidth, but the actual bandwidth of your instance might go below the specified minimum at times. For more information, see [Available instance bandwidth](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-network-bandwidth.html#available-instance-bandwidth) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkbandwidthgbpsrequest.html"
+    },
+    "NetworkInterfaceCountRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum number of network interfaces. To specify no maximum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacecountrequest.html#cfn-ec2-ec2fleet-networkinterfacecountrequest-max"
+        },
+        "Min": {
+          "description": "The minimum number of network interfaces. To specify no minimum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacecountrequest.html#cfn-ec2-ec2fleet-networkinterfacecountrequest-min"
+        }
+      },
+      "description": "The minimum and maximum number of network interfaces.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacecountrequest.html"
+    },
+    "OnDemandOptionsRequest": {
+      "properties": {
+        "AllocationStrategy": {
+          "description": "The strategy that determines the order of the launch template overrides to use in fulfilling On-Demand capacity.\n\n`lowest-price` - EC2 Fleet uses price to determine the order, launching the lowest price first.\n\n`prioritized` - EC2 Fleet uses the priority that you assigned to each launch template override, launching the highest priority first.\n\nDefault: `lowest-price`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ondemandoptionsrequest.html#cfn-ec2-ec2fleet-ondemandoptionsrequest-allocationstrategy"
+        },
+        "CapacityReservationOptions": {
+          "description": "The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity.\n\nSupported only for fleets of type `instant` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ondemandoptionsrequest.html#cfn-ec2-ec2fleet-ondemandoptionsrequest-capacityreservationoptions"
+        },
+        "MaxTotalPrice": {
+          "description": "The maximum amount per hour for On-Demand Instances that you're willing to pay.\n\n> If your fleet includes T instances that are configured as `unlimited` , and if their average CPU usage exceeds the baseline utilization, you will incur a charge for surplus credits. The `MaxTotalPrice` does not account for surplus credits, and, if you use surplus credits, your final cost might be higher than what you specified for `MaxTotalPrice` . For more information, see [Surplus credits can incur charges](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances-unlimited-mode-concepts.html#unlimited-mode-surplus-credits) in the *Amazon EC2 User Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ondemandoptionsrequest.html#cfn-ec2-ec2fleet-ondemandoptionsrequest-maxtotalprice"
+        },
+        "MinTargetCapacity": {
+          "description": "The minimum target capacity for On-Demand Instances in the fleet. If this minimum capacity isn't reached, no instances are launched.\n\nConstraints: Maximum value of `1000` . Supported only for fleets of type `instant` .\n\nAt least one of the following must be specified: `SingleAvailabilityZone` | `SingleInstanceType`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ondemandoptionsrequest.html#cfn-ec2-ec2fleet-ondemandoptionsrequest-mintargetcapacity"
+        },
+        "SingleAvailabilityZone": {
+          "description": "Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.\n\nSupported only for fleets of type `instant` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ondemandoptionsrequest.html#cfn-ec2-ec2fleet-ondemandoptionsrequest-singleavailabilityzone"
+        },
+        "SingleInstanceType": {
+          "description": "Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.\n\nSupported only for fleets of type `instant` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ondemandoptionsrequest.html#cfn-ec2-ec2fleet-ondemandoptionsrequest-singleinstancetype"
+        }
+      },
+      "description": "Specifies the allocation strategy of On-Demand Instances in an EC2 Fleet.\n\n`OnDemandOptionsRequest` is a property of the [AWS::EC2::EC2Fleet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html) resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ondemandoptionsrequest.html"
+    },
+    "PerformanceFactorReferenceRequest": {
+      "properties": {
+        "InstanceFamily": {
+          "description": "The instance family to use as a baseline reference.\n\n> Ensure that you specify the correct value for the instance family. The instance family is everything before the period ( `.` ) in the instance type name. For example, in the instance type `c6i.large` , the instance family is `c6i` , not `c6` . For more information, see [Amazon EC2 instance type naming conventions](https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-type-names.html) in *Amazon EC2 Instance Types* . \n\nThe following instance families are *not supported* for performance protection:\n\n- `c1`\n- `g3` | `g3s`\n- `hpc7g`\n- `m1` | `m2`\n- `mac1` | `mac2` | `mac2-m1ultra` | `mac2-m2` | `mac2-m2pro`\n- `p3dn` | `p4d` | `p5`\n- `t1`\n- `u-12tb1` | `u-18tb1` | `u-24tb1` | `u-3tb1` | `u-6tb1` | `u-9tb1` | `u7i-12tb` | `u7in-16tb` | `u7in-24tb` | `u7in-32tb`\n\nIf you enable performance protection by specifying a supported instance family, the returned instance types will exclude the above unsupported instance families.\n\nIf you specify an unsupported instance family as a value for baseline performance, the API returns an empty response response for [GetInstanceTypesFromInstanceRequirements](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetInstanceTypesFromInstanceRequirements.html) and an exception for [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet.html) , [RequestSpotFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html) , [ModifyFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyFleet.html) , and [ModifySpotFleetRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySpotFleetRequest.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-performancefactorreferencerequest.html#cfn-ec2-ec2fleet-performancefactorreferencerequest-instancefamily"
+        }
+      },
+      "description": "Specify an instance family to use as the baseline reference for CPU performance. All instance types that match your specified attributes will be compared against the CPU performance of the referenced instance family, regardless of CPU manufacturer or architecture.\n\n> Currently, only one instance family can be specified in the list.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-performancefactorreferencerequest.html"
+    },
+    "Placement": {
+      "properties": {
+        "Affinity": {
+          "description": "The affinity setting for the instance on the Dedicated Host.\n\nThis parameter is not supported for [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) or [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html#cfn-ec2-ec2fleet-placement-affinity"
+        },
+        "AvailabilityZone": {
+          "description": "The Availability Zone of the instance.\n\nIf not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria for the Region.\n\nThis parameter is not supported for [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html#cfn-ec2-ec2fleet-placement-availabilityzone"
+        },
+        "GroupName": {
+          "description": "The name of the placement group that the instance is in. If you specify `GroupName` , you can't specify `GroupId` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html#cfn-ec2-ec2fleet-placement-groupname"
+        },
+        "HostId": {
+          "description": "The ID of the Dedicated Host on which the instance resides.\n\nThis parameter is not supported for [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) or [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html#cfn-ec2-ec2fleet-placement-hostid"
+        },
+        "HostResourceGroupArn": {
+          "description": "The ARN of the host resource group in which to launch the instances.\n\nIf you specify this parameter, either omit the *Tenancy* parameter or set it to `host` .\n\nThis parameter is not supported for [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html#cfn-ec2-ec2fleet-placement-hostresourcegrouparn"
+        },
+        "PartitionNumber": {
+          "description": "The number of the partition that the instance is in. Valid only if the placement group strategy is set to `partition` .\n\nThis parameter is not supported for [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html#cfn-ec2-ec2fleet-placement-partitionnumber"
+        },
+        "SpreadDomain": {
+          "description": "Reserved for future use.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html#cfn-ec2-ec2fleet-placement-spreaddomain"
+        },
+        "Tenancy": {
+          "description": "The tenancy of the instance. An instance with a tenancy of `dedicated` runs on single-tenant hardware.\n\nThis parameter is not supported for [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) . The `host` tenancy is not supported for [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) or for T3 instances that are configured for the `unlimited` CPU credit option.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html#cfn-ec2-ec2fleet-placement-tenancy"
+        }
+      },
+      "description": "Describes the placement of an instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html"
+    },
+    "SpotOptionsRequest": {
+      "properties": {
+        "AllocationStrategy": {
+          "description": "Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by the EC2 Fleet.\n\nIf the allocation strategy is `lowestPrice` , EC2 Fleet launches instances from the Spot Instance pools with the lowest price. This is the default allocation strategy.\n\nIf the allocation strategy is `diversified` , EC2 Fleet launches instances from all the Spot Instance pools that you specify.\n\nIf the allocation strategy is `capacityOptimized` , EC2 Fleet launches instances from Spot Instance pools that are optimally chosen based on the available Spot Instance capacity.\n\n*Allowed Values* : `lowestPrice` | `diversified` | `capacityOptimized` | `capacityOptimizedPrioritized`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html#cfn-ec2-ec2fleet-spotoptionsrequest-allocationstrategy"
+        },
+        "InstanceInterruptionBehavior": {
+          "description": "The behavior when a Spot Instance is interrupted.\n\nDefault: `terminate`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html#cfn-ec2-ec2fleet-spotoptionsrequest-instanceinterruptionbehavior"
+        },
+        "InstancePoolsToUseCount": {
+          "description": "The number of Spot pools across which to allocate your target Spot capacity. Supported only when Spot `AllocationStrategy` is set to `lowest-price` . EC2 Fleet selects the cheapest Spot pools and evenly allocates your target Spot capacity across the number of Spot pools that you specify.\n\nNote that EC2 Fleet attempts to draw Spot Instances from the number of pools that you specify on a best effort basis. If a pool runs out of Spot capacity before fulfilling your target capacity, EC2 Fleet will continue to fulfill your request by drawing from the next cheapest pool. To ensure that your target capacity is met, you might receive Spot Instances from more than the number of pools that you specified. Similarly, if most of the pools have no Spot capacity, you might receive your full target capacity from fewer than the number of pools that you specified.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html#cfn-ec2-ec2fleet-spotoptionsrequest-instancepoolstousecount"
+        },
+        "MaintenanceStrategies": {
+          "description": "The strategies for managing your Spot Instances that are at an elevated risk of being interrupted.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html#cfn-ec2-ec2fleet-spotoptionsrequest-maintenancestrategies"
+        },
+        "MaxTotalPrice": {
+          "description": "The maximum amount per hour for Spot Instances that you're willing to pay. We do not recommend using this parameter because it can lead to increased interruptions. If you do not specify this parameter, you will pay the current Spot price.\n\n> If you specify a maximum price, your Spot Instances will be interrupted more frequently than if you do not specify this parameter. > If your fleet includes T instances that are configured as `unlimited` , and if their average CPU usage exceeds the baseline utilization, you will incur a charge for surplus credits. The `MaxTotalPrice` does not account for surplus credits, and, if you use surplus credits, your final cost might be higher than what you specified for `MaxTotalPrice` . For more information, see [Surplus credits can incur charges](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances-unlimited-mode-concepts.html#unlimited-mode-surplus-credits) in the *Amazon EC2 User Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html#cfn-ec2-ec2fleet-spotoptionsrequest-maxtotalprice"
+        },
+        "MinTargetCapacity": {
+          "description": "The minimum target capacity for Spot Instances in the fleet. If this minimum capacity isn't reached, no instances are launched.\n\nConstraints: Maximum value of `1000` . Supported only for fleets of type `instant` .\n\nAt least one of the following must be specified: `SingleAvailabilityZone` | `SingleInstanceType`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html#cfn-ec2-ec2fleet-spotoptionsrequest-mintargetcapacity"
+        },
+        "SingleAvailabilityZone": {
+          "description": "Indicates that the fleet launches all Spot Instances into a single Availability Zone.\n\nSupported only for fleets of type `instant` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html#cfn-ec2-ec2fleet-spotoptionsrequest-singleavailabilityzone"
+        },
+        "SingleInstanceType": {
+          "description": "Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.\n\nSupported only for fleets of type `instant` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html#cfn-ec2-ec2fleet-spotoptionsrequest-singleinstancetype"
+        }
+      },
+      "description": "Specifies the configuration of Spot Instances for an EC2 Fleet.\n\n`SpotOptionsRequest` is a property of the [AWS::EC2::EC2Fleet](https://docs.aws.amazon.com//AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html) resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-spotoptionsrequest.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-tag.html#cfn-ec2-ec2fleet-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-tag.html#cfn-ec2-ec2fleet-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-tag.html"
+    },
+    "TagSpecification": {
+      "properties": {
+        "ResourceType": {
+          "description": "The type of resource to tag.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-tagspecification.html#cfn-ec2-ec2fleet-tagspecification-resourcetype"
+        },
+        "Tags": {
+          "description": "The tags to apply to the resource.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-tagspecification.html#cfn-ec2-ec2fleet-tagspecification-tags"
+        }
+      },
+      "description": "Specifies the tags to apply to a resource when the resource is being created for an EC2 Fleet.\n\n`TagSpecification` is a property of the [AWS::EC2::EC2Fleet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html) resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-tagspecification.html"
+    },
+    "TargetCapacitySpecificationRequest": {
+      "properties": {
+        "DefaultTargetCapacityType": {
+          "description": "The default target capacity type.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-targetcapacityspecificationrequest.html#cfn-ec2-ec2fleet-targetcapacityspecificationrequest-defaulttargetcapacitytype"
+        },
+        "OnDemandTargetCapacity": {
+          "description": "The number of On-Demand units to request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-targetcapacityspecificationrequest.html#cfn-ec2-ec2fleet-targetcapacityspecificationrequest-ondemandtargetcapacity"
+        },
+        "SpotTargetCapacity": {
+          "description": "The number of Spot units to request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-targetcapacityspecificationrequest.html#cfn-ec2-ec2fleet-targetcapacityspecificationrequest-spottargetcapacity"
+        },
+        "TargetCapacityUnitType": {
+          "description": "The unit for the target capacity. You can specify this parameter only when using attributed-based instance type selection.\n\nDefault: `units` (the number of instances)",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-targetcapacityspecificationrequest.html#cfn-ec2-ec2fleet-targetcapacityspecificationrequest-targetcapacityunittype"
+        },
+        "TotalTargetCapacity": {
+          "description": "The number of units to request, filled using the default target capacity type.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-targetcapacityspecificationrequest.html#cfn-ec2-ec2fleet-targetcapacityspecificationrequest-totaltargetcapacity"
+        }
+      },
+      "description": "Specifies the number of units to request for an EC2 Fleet. You can choose to set the target capacity in terms of instances or a performance characteristic that is important to your application workload, such as vCPUs, memory, or I/O. If the request type is `maintain` , you can specify a target capacity of `0` and add capacity later.\n\n`TargetCapacitySpecificationRequest` is a property of the [AWS::EC2::EC2Fleet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html) resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-targetcapacityspecificationrequest.html"
+    },
+    "TotalLocalStorageGBRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum amount of total local storage, in GB. To specify no maximum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-totallocalstoragegbrequest.html#cfn-ec2-ec2fleet-totallocalstoragegbrequest-max"
+        },
+        "Min": {
+          "description": "The minimum amount of total local storage, in GB. To specify no minimum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-totallocalstoragegbrequest.html#cfn-ec2-ec2fleet-totallocalstoragegbrequest-min"
+        }
+      },
+      "description": "The minimum and maximum amount of total local storage, in GB.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-totallocalstoragegbrequest.html"
+    },
+    "VCpuCountRangeRequest": {
+      "properties": {
+        "Max": {
+          "description": "The maximum number of vCPUs. To specify no maximum limit, omit this parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-vcpucountrangerequest.html#cfn-ec2-ec2fleet-vcpucountrangerequest-max"
+        },
+        "Min": {
+          "description": "The minimum number of vCPUs. To specify no minimum limit, specify `0` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-vcpucountrangerequest.html#cfn-ec2-ec2fleet-vcpucountrangerequest-min"
+        }
+      },
+      "description": "The minimum and maximum number of vCPUs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-vcpucountrangerequest.html"
+    }
+  },
+  "description": "Specifies the configuration information to launch a fleet--or group--of instances. An EC2 Fleet can launch multiple instance types across multiple Availability Zones, using the On-Demand Instance, Reserved Instance, and Spot Instance purchasing models together. Using EC2 Fleet, you can define separate On-Demand and Spot capacity targets, specify the instance types that work best for your applications, and specify how Amazon EC2 should distribute your fleet capacity within each purchasing model. For more information, see [Launching an EC2 Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html) in the *Amazon EC2 User Guide* .",
+  "properties": {
+    "Context": {
+      "description": "Reserved.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-context"
+    },
+    "ExcessCapacityTerminationPolicy": {
+      "description": "Indicates whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2 Fleet.\n\nSupported only for fleets of type `maintain` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-excesscapacityterminationpolicy"
+    },
+    "FleetId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-fleetid"
+    },
+    "LaunchTemplateConfigs": {
+      "description": "The configuration for the EC2 Fleet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-launchtemplateconfigs"
+    },
+    "OnDemandOptions": {
+      "description": "Describes the configuration of On-Demand Instances in an EC2 Fleet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-ondemandoptions"
+    },
+    "ReplaceUnhealthyInstances": {
+      "description": "Indicates whether EC2 Fleet should replace unhealthy Spot Instances. Supported only for fleets of type `maintain` . For more information, see [EC2 Fleet health checks](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#ec2-fleet-health-checks) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-replaceunhealthyinstances"
+    },
+    "SpotOptions": {
+      "description": "Describes the configuration of Spot Instances in an EC2 Fleet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-spotoptions"
+    },
+    "TagSpecifications": {
+      "description": "The key-value pair for tagging the EC2 Fleet request on creation. For more information, see [Tag your resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources) .\n\nIf the fleet type is `instant` , specify a resource type of `fleet` to tag the fleet or `instance` to tag the instances at launch.\n\nIf the fleet type is `maintain` or `request` , specify a resource type of `fleet` to tag the fleet. You cannot specify a resource type of `instance` . To tag instances at launch, specify the tags in a [launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-tagspecifications"
+    },
+    "TargetCapacitySpecification": {
+      "description": "The number of units to request.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-targetcapacityspecification"
+    },
+    "TerminateInstancesWithExpiration": {
+      "description": "Indicates whether running instances should be terminated when the EC2 Fleet expires.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-terminateinstanceswithexpiration"
+    },
+    "Type": {
+      "description": "The fleet type. The default value is `maintain` .\n\n- `maintain` - The EC2 Fleet places an asynchronous request for your desired capacity, and continues to maintain your desired Spot capacity by replenishing interrupted Spot Instances.\n- `request` - The EC2 Fleet places an asynchronous one-time request for your desired capacity, but does submit Spot requests in alternative capacity pools if Spot capacity is unavailable, and does not maintain Spot capacity if Spot Instances are interrupted.\n- `instant` - The EC2 Fleet places a synchronous one-time request for your desired capacity, and returns errors for any instances that could not be launched.\n\nFor more information, see [EC2 Fleet request types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-request-type.html) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-type"
+    },
+    "ValidFrom": {
+      "description": "The start date and time of the request, in UTC format (for example, *YYYY* - *MM* - *DD* T *HH* : *MM* : *SS* Z). The default is to start fulfilling the request immediately.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-validfrom"
+    },
+    "ValidUntil": {
+      "description": "The end date and time of the request, in UTC format (for example, *YYYY* - *MM* - *DD* T *HH* : *MM* : *SS* Z). At this point, no new EC2 Fleet requests are placed or able to fulfill the request. If no value is specified, the request remains until you cancel it.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ec2fleet.html#cfn-ec2-ec2fleet-validuntil"
+    }
+  },
+  "typeName": "AWS::EC2::EC2Fleet"
+}

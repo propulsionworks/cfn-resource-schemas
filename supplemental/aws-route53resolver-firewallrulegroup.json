@@ -1,0 +1,150 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#aws-resource-route53resolver-firewallrulegroup-return-values",
+    "properties": {
+      "RuleCount": {
+        "description": "The number of rules in the rule group."
+      },
+      "Status": {
+        "description": "The status of the domain list."
+      },
+      "OwnerId": {
+        "description": "The AWS account ID for the account that created the rule group. When a rule group is shared with your account, this is the account that has shared the rule group with you."
+      },
+      "CreationTime": {
+        "description": "The date and time that the rule group was created, in Unix time format and Coordinated Universal Time (UTC)."
+      },
+      "ShareStatus": {
+        "description": "Whether the rule group is shared with other AWS accounts , or was shared with the current account by another AWS account . Sharing is configured through AWS Resource Access Manager ( AWS RAM )."
+      },
+      "ModificationTime": {
+        "description": "The date and time that the rule group was last modified, in Unix time format and Coordinated Universal Time (UTC)."
+      },
+      "Id": {
+        "description": "The ID of the rule group."
+      },
+      "Arn": {
+        "description": "The ARN (Amazon Resource Name) of the rule group."
+      },
+      "CreatorRequestId": {
+        "description": "A unique string defined by you to identify the request. This allows you to retry failed requests without the risk of running the operation twice. This can be any unique string, for example, a timestamp."
+      },
+      "StatusMessage": {
+        "description": "Additional information about the status of the rule group, if available."
+      }
+    }
+  },
+  "definitions": {
+    "FirewallRule": {
+      "properties": {
+        "Action": {
+          "description": "The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list, or a threat in a DNS Firewall Advvanced rule:\n\n- `ALLOW` - Permit the request to go through. Not available for DNS Firewall Advanced rules.\n- `ALERT` - Permit the request to go through but send an alert to the logs.\n- `BLOCK` - Disallow the request. If this is specified,then `BlockResponse` must also be specified.\n\nif `BlockResponse` is `OVERRIDE` , then all of the following `OVERRIDE` attributes must be specified:\n\n- `BlockOverrideDnsType`\n- `BlockOverrideDomain`\n- `BlockOverrideTtl`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-action"
+        },
+        "BlockOverrideDnsType": {
+          "description": "The DNS record's type. This determines the format of the record value that you provided in `BlockOverrideDomain` . Used for the rule action `BLOCK` with a `BlockResponse` setting of `OVERRIDE` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-blockoverridednstype"
+        },
+        "BlockOverrideDomain": {
+          "description": "The custom DNS record to send back in response to the query. Used for the rule action `BLOCK` with a `BlockResponse` setting of `OVERRIDE` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-blockoverridedomain"
+        },
+        "BlockOverrideTtl": {
+          "description": "The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Used for the rule action `BLOCK` with a `BlockResponse` setting of `OVERRIDE` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-blockoverridettl"
+        },
+        "BlockResponse": {
+          "description": "The way that you want DNS Firewall to block the request. Used for the rule action setting `BLOCK` .\n\n- `NODATA` - Respond indicating that the query was successful, but no response is available for it.\n- `NXDOMAIN` - Respond indicating that the domain name that's in the query doesn't exist.\n- `OVERRIDE` - Provide a custom override in the response. This option requires custom handling details in the rule's `BlockOverride*` settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-blockresponse"
+        },
+        "ConfidenceThreshold": {
+          "description": "The confidence threshold for DNS Firewall Advanced. You must provide this value when you create a DNS Firewall Advanced rule. The confidence level values mean:\n\n- `LOW` : Provides the highest detection rate for threats, but also increases false positives.\n- `MEDIUM` : Provides a balance between detecting threats and false positives.\n- `HIGH` : Detects only the most well corroborated threats with a low rate of false positives.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-confidencethreshold"
+        },
+        "DnsThreatProtection": {
+          "description": "The type of the DNS Firewall Advanced rule. Valid values are:\n\n- `DGA` : Domain generation algorithms detection. DGAs are used by attackers to generate a large number of domains to to launch malware attacks.\n- `DNS_TUNNELING` : DNS tunneling detection. DNS tunneling is used by attackers to exfiltrate data from the client by using the DNS tunnel without making a network connection to the client.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-dnsthreatprotection"
+        },
+        "FirewallDomainListId": {
+          "description": "The ID of the domain list that's used in the rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-firewalldomainlistid"
+        },
+        "FirewallDomainRedirectionAction": {
+          "description": "How you want the the rule to evaluate DNS redirection in the DNS redirection chain, such as CNAME, or DNAME.\n\n`Inspect_Redirection_Domain` (Default) inspects all domains in the redirection chain. The individual domains in the redirection chain must be added to the domain list.\n\n`Trust_Redirection_Domain` inspects only the first domain in the redirection chain. You don't need to add the subsequent domains in the domain in the redirection list to the domain list.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-firewalldomainredirectionaction"
+        },
+        "FirewallThreatProtectionId": {
+          "description": "ID of the DNS Firewall Advanced rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-firewallthreatprotectionid"
+        },
+        "Priority": {
+          "description": "The priority of the rule in the rule group. This value must be unique within the rule group. DNS Firewall processes the rules in a rule group by order of priority, starting from the lowest setting.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-priority"
+        },
+        "Qtype": {
+          "description": "The DNS query type you want the rule to evaluate. Allowed values are;\n\n- A: Returns an IPv4 address.\n- AAAA: Returns an Ipv6 address.\n- CAA: Restricts CAs that can create SSL/TLS certifications for the domain.\n- CNAME: Returns another domain name.\n- DS: Record that identifies the DNSSEC signing key of a delegated zone.\n- MX: Specifies mail servers.\n- NAPTR: Regular-expression-based rewriting of domain names.\n- NS: Authoritative name servers.\n- PTR: Maps an IP address to a domain name.\n- SOA: Start of authority record for the zone.\n- SPF: Lists the servers authorized to send emails from a domain.\n- SRV: Application specific values that identify servers.\n- TXT: Verifies email senders and application-specific values.\n- A query type you define by using the DNS type ID, for example 28 for AAAA. The values must be defined as TYPE NUMBER , where the NUMBER can be 1-65334, for example, TYPE28. For more information, see [List of DNS record types](https://docs.aws.amazon.com/https://en.wikipedia.org/wiki/List_of_DNS_record_types) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html#cfn-route53resolver-firewallrulegroup-firewallrule-qtype"
+        }
+      },
+      "description": "A single firewall rule in a rule group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-firewallrule.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-tag.html#cfn-route53resolver-firewallrulegroup-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-tag.html#cfn-route53resolver-firewallrulegroup-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53resolver-firewallrulegroup-tag.html"
+    }
+  },
+  "description": "High-level information for a firewall rule group. A firewall rule group is a collection of rules that DNS Firewall uses to filter DNS network traffic for a VPC. To retrieve the rules for the rule group, call [ListFirewallRules](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListFirewallRules.html) .",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-arn"
+    },
+    "CreationTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-creationtime"
+    },
+    "CreatorRequestId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-creatorrequestid"
+    },
+    "FirewallRules": {
+      "description": "A list of the rules that you have defined.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-firewallrules"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-id"
+    },
+    "ModificationTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-modificationtime"
+    },
+    "Name": {
+      "description": "The name of the rule group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-name"
+    },
+    "OwnerId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-ownerid"
+    },
+    "RuleCount": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-rulecount"
+    },
+    "ShareStatus": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-sharestatus"
+    },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-status"
+    },
+    "StatusMessage": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-statusmessage"
+    },
+    "Tags": {
+      "description": "A list of the tag keys and values that you want to associate with the rule group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-firewallrulegroup.html#cfn-route53resolver-firewallrulegroup-tags"
+    }
+  },
+  "typeName": "AWS::Route53Resolver::FirewallRuleGroup"
+}

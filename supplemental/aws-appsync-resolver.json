@@ -1,0 +1,159 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#aws-resource-appsync-resolver-return-values",
+    "properties": {
+      "TypeName": {
+        "description": "The GraphQL type that invokes this resolver."
+      },
+      "ResolverArn": {
+        "description": "ARN of the resolver, such as `arn:aws:appsync:us-east-1:123456789012:apis/graphqlapiid/types/typename/resolvers/resolvername` ."
+      },
+      "FieldName": {
+        "description": "The GraphQL field on a type that invokes the resolver."
+      }
+    }
+  },
+  "definitions": {
+    "AppSyncRuntime": {
+      "properties": {
+        "Name": {
+          "description": "The `name` of the runtime to use. Currently, the only allowed value is `APPSYNC_JS` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-appsyncruntime.html#cfn-appsync-resolver-appsyncruntime-name"
+        },
+        "RuntimeVersion": {
+          "description": "The `version` of the runtime to use. Currently, the only allowed version is `1.0.0` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-appsyncruntime.html#cfn-appsync-resolver-appsyncruntime-runtimeversion"
+        }
+      },
+      "description": "Describes a runtime used by an AWS AppSync resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-appsyncruntime.html"
+    },
+    "CachingConfig": {
+      "properties": {
+        "CachingKeys": {
+          "description": "The caching keys for a resolver that has caching activated.\n\nValid values are entries from the `$context.arguments` , `$context.source` , and `$context.identity` maps.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-cachingconfig.html#cfn-appsync-resolver-cachingconfig-cachingkeys"
+        },
+        "Ttl": {
+          "description": "The TTL in seconds for a resolver that has caching activated.\n\nValid values are 1–3,600 seconds.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-cachingconfig.html#cfn-appsync-resolver-cachingconfig-ttl"
+        }
+      },
+      "description": "The caching configuration for a resolver that has caching activated.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-cachingconfig.html"
+    },
+    "LambdaConflictHandlerConfig": {
+      "properties": {
+        "LambdaConflictHandlerArn": {
+          "description": "The Amazon Resource Name (ARN) for the Lambda function to use as the Conflict Handler.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-lambdaconflicthandlerconfig.html#cfn-appsync-resolver-lambdaconflicthandlerconfig-lambdaconflicthandlerarn"
+        }
+      },
+      "description": "The `LambdaConflictHandlerConfig` when configuring LAMBDA as the Conflict Handler.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-lambdaconflicthandlerconfig.html"
+    },
+    "PipelineConfig": {
+      "properties": {
+        "Functions": {
+          "description": "A list of `Function` objects.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-pipelineconfig.html#cfn-appsync-resolver-pipelineconfig-functions"
+        }
+      },
+      "description": "Use the `PipelineConfig` property type to specify `PipelineConfig` for an AWS AppSync resolver.\n\n`PipelineConfig` is a property of the [AWS::AppSync::Resolver](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html) resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-pipelineconfig.html"
+    },
+    "SyncConfig": {
+      "properties": {
+        "ConflictDetection": {
+          "description": "The Conflict Detection strategy to use.\n\n- *VERSION* : Detect conflicts based on object versions for this resolver.\n- *NONE* : Do not detect conflicts when invoking this resolver.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-syncconfig.html#cfn-appsync-resolver-syncconfig-conflictdetection"
+        },
+        "ConflictHandler": {
+          "description": "The Conflict Resolution strategy to perform in the event of a conflict.\n\n- *OPTIMISTIC_CONCURRENCY* : Resolve conflicts by rejecting mutations when versions don't match the latest version at the server.\n- *AUTOMERGE* : Resolve conflicts with the Automerge conflict resolution strategy.\n- *LAMBDA* : Resolve conflicts with an AWS Lambda function supplied in the `LambdaConflictHandlerConfig` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-syncconfig.html#cfn-appsync-resolver-syncconfig-conflicthandler"
+        },
+        "LambdaConflictHandlerConfig": {
+          "description": "The `LambdaConflictHandlerConfig` when configuring `LAMBDA` as the Conflict Handler.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-syncconfig.html#cfn-appsync-resolver-syncconfig-lambdaconflicthandlerconfig"
+        }
+      },
+      "description": "Describes a Sync configuration for a resolver.\n\nSpecifies which Conflict Detection strategy and Resolution strategy to use when the resolver is invoked.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-resolver-syncconfig.html"
+    }
+  },
+  "description": "The `AWS::AppSync::Resolver` resource defines the logical GraphQL resolver that you attach to fields in a schema. Request and response templates for resolvers are written in Apache Velocity Template Language (VTL) format. For more information about resolvers, see [Resolver Mapping Template Reference](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference.html) .\n\n> When you submit an update, AWS CloudFormation updates resources based on differences between what you submit and the stack's current template. To cause this resource to be updated you must change a property value for this resource in the CloudFormation template. Changing the Amazon S3 file content without changing a property value will not result in an update operation.\n> \n> See [Update Behaviors of Stack Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html) in the *AWS CloudFormation User Guide* .",
+  "properties": {
+    "ApiId": {
+      "description": "The AWS AppSync GraphQL API to which you want to attach this resolver.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-apiid"
+    },
+    "CachingConfig": {
+      "description": "The caching configuration for the resolver.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-cachingconfig"
+    },
+    "Code": {
+      "description": "The `resolver` code that contains the request and response functions. When code is used, the `runtime` is required. The runtime value must be `APPSYNC_JS` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-code"
+    },
+    "CodeS3Location": {
+      "description": "The Amazon S3 endpoint.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-codes3location"
+    },
+    "DataSourceName": {
+      "description": "The resolver data source name.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-datasourcename"
+    },
+    "FieldName": {
+      "description": "The GraphQL field on a type that invokes the resolver.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-fieldname"
+    },
+    "Kind": {
+      "description": "The resolver type.\n\n- *UNIT* : A UNIT resolver type. A UNIT resolver is the default resolver type. You can use a UNIT resolver to run a GraphQL query against a single data source.\n- *PIPELINE* : A PIPELINE resolver type. You can use a PIPELINE resolver to invoke a series of `Function` objects in a serial manner. You can use a pipeline resolver to run a GraphQL query against multiple data sources.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-kind"
+    },
+    "MaxBatchSize": {
+      "description": "The maximum number of resolver request inputs that will be sent to a single AWS Lambda function in a `BatchInvoke` operation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-maxbatchsize"
+    },
+    "MetricsConfig": {
+      "description": "Enables or disables enhanced resolver metrics for specified resolvers. Note that `MetricsConfig` won't be used unless the `resolverLevelMetricsBehavior` value is set to `PER_RESOLVER_METRICS` . If the `resolverLevelMetricsBehavior` is set to `FULL_REQUEST_RESOLVER_METRICS` instead, `MetricsConfig` will be ignored. However, you can still set its value.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-metricsconfig"
+    },
+    "PipelineConfig": {
+      "description": "Functions linked with the pipeline resolver.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-pipelineconfig"
+    },
+    "RequestMappingTemplate": {
+      "description": "The request mapping template.\n\nRequest mapping templates are optional when using a Lambda data source. For all other data sources, a request mapping template is required.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-requestmappingtemplate"
+    },
+    "RequestMappingTemplateS3Location": {
+      "description": "The location of a request mapping template in an Amazon S3 bucket. Use this if you want to provision with a template file in Amazon S3 rather than embedding it in your CloudFormation template.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-requestmappingtemplates3location"
+    },
+    "ResolverArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-resolverarn"
+    },
+    "ResponseMappingTemplate": {
+      "description": "The response mapping template.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-responsemappingtemplate"
+    },
+    "ResponseMappingTemplateS3Location": {
+      "description": "The location of a response mapping template in an Amazon S3 bucket. Use this if you want to provision with a template file in Amazon S3 rather than embedding it in your CloudFormation template.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-responsemappingtemplates3location"
+    },
+    "Runtime": {
+      "description": "Describes a runtime used by an AWS AppSync resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-runtime"
+    },
+    "SyncConfig": {
+      "description": "The `SyncConfig` for a resolver attached to a versioned data source.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-syncconfig"
+    },
+    "TypeName": {
+      "description": "The GraphQL type that invokes this resolver.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-resolver.html#cfn-appsync-resolver-typename"
+    }
+  },
+  "typeName": "AWS::AppSync::Resolver"
+}

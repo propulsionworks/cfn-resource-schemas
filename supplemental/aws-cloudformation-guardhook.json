@@ -1,0 +1,119 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#aws-resource-cloudformation-guardhook-return-values",
+    "properties": {
+      "HookArn": {
+        "description": "Returns the ARN of a Guard Hook."
+      }
+    }
+  },
+  "definitions": {
+    "Action": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-action.html"
+    },
+    "HookTarget": {
+      "properties": {
+        "Action": {
+          "description": "Target actions are the type of operation hooks will be executed at.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-hooktarget.html#cfn-cloudformation-guardhook-hooktarget-action"
+        },
+        "InvocationPoint": {
+          "description": "Invocation points are the point in provisioning workflow where hooks will be executed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-hooktarget.html#cfn-cloudformation-guardhook-hooktarget-invocationpoint"
+        },
+        "TargetName": {
+          "description": "Type name of hook target. Hook targets are the destination where hooks will be invoked against.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-hooktarget.html#cfn-cloudformation-guardhook-hooktarget-targetname"
+        }
+      },
+      "description": "Hook targets are the destination where hooks will be invoked against.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-hooktarget.html"
+    },
+    "InvocationPoint": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-invocationpoint.html"
+    },
+    "Role": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-role.html"
+    },
+    "S3Location": {
+      "properties": {
+        "Uri": {
+          "description": "Specifies the S3 path to the file containing your Guard rules or input parameters (in the form `s3://<bucket name>/<file name>` ).\n\nFor Guard rules, the object stored in S3 must have one of the following file extensions: `.guard` , `.zip` , or `.tar.gz` .\n\nFor input parameters, the object stored in S3 must have one of the following file extensions: `.yaml` , `.json` , `.zip` , or `.tar.gz` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-s3location.html#cfn-cloudformation-guardhook-s3location-uri"
+        },
+        "VersionId": {
+          "description": "For S3 buckets with versioning enabled, specifies the unique ID of the S3 object version to download your Guard rules or input parameters from.\n\nThe Guard Hook downloads files from S3 every time the Hook is invoked. To prevent accidental changes or deletions, we recommend using a version when configuring your Guard Hook.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-s3location.html#cfn-cloudformation-guardhook-s3location-versionid"
+        }
+      },
+      "description": "Specifies the S3 location where your Guard rules or input parameters are located.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-s3location.html"
+    },
+    "StackName": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-stackname.html"
+    },
+    "StackRole": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-stackrole.html"
+    },
+    "TargetName": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-targetname.html"
+    },
+    "TargetOperation": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-guardhook-targetoperation.html"
+    }
+  },
+  "description": "The `AWS::CloudFormation::GuardHook` resource creates and activates a Guard Hook. Using the Guard domain specific language (DSL), you can author Guard Hooks to evaluate your resources before allowing stack operations.\n\nFor more information, see [Guard Hooks](https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/guard-hooks.html) in the *AWS CloudFormation Hooks User Guide* .",
+  "properties": {
+    "Alias": {
+      "description": "The type name alias for the Hook. This alias must be unique per account and Region.\n\nThe alias must be in the form `Name1::Name2::Name3` and must not begin with `AWS` . For example, `Private::Guard::MyTestHook` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-alias"
+    },
+    "ExecutionRole": {
+      "description": "The IAM role that the Hook assumes to retrieve your Guard rules from S3 and optionally write a detailed Guard output report back.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-executionrole"
+    },
+    "FailureMode": {
+      "description": "Specifies how the Hook responds when rules fail their evaluation.\n\n- `FAIL` : Prevents the action from proceeding. This is helpful for enforcing strict compliance or security policies.\n- `WARN` : Issues warnings to users but allows actions to continue. This is useful for non-critical validations or informational checks.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-failuremode"
+    },
+    "HookArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-hookarn"
+    },
+    "HookStatus": {
+      "description": "Specifies if the Hook is `ENABLED` or `DISABLED` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-hookstatus"
+    },
+    "LogBucket": {
+      "description": "Specifies the name of an S3 bucket to store the Guard output report. This report contains the results of your Guard rule validations.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-logbucket"
+    },
+    "Options": {
+      "description": "Specifies the S3 location of your input parameters.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-options"
+    },
+    "RuleLocation": {
+      "description": "Specifies the S3 location of your Guard rules.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-rulelocation"
+    },
+    "StackFilters": {
+      "description": "Specifies the stack level filters for the Hook.\n\nExample stack level filter in JSON:\n\n`\"StackFilters\": {\"FilteringCriteria\": \"ALL\", \"StackNames\": {\"Exclude\": [ \"stack-1\", \"stack-2\"]}}` \n\nExample stack level filter in YAML:\n\n`StackFilters: FilteringCriteria: ALL StackNames: Exclude: - stack-1 - stack-2`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-stackfilters"
+    },
+    "TargetFilters": {
+      "description": "Specifies the target filters for the Hook.\n\nExample target filter in JSON:\n\n`\"TargetFilters\": {\"Actions\": [ \"Create\", \"Update\", \"Delete\" ]}` \n\nExample target filter in YAML:\n\n`TargetFilters: Actions: - CREATE - UPDATE - DELETE`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-targetfilters"
+    },
+    "TargetOperations": {
+      "description": "Specifies the list of operations the Hook is run against. For more information, see [Hook targets](https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/hooks-concepts.html#hook-terms-hook-target) in the *AWS CloudFormation Hooks User Guide* .\n\nValid values: `STACK` | `RESOURCE` | `CHANGE_SET` | `CLOUD_CONTROL`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-guardhook.html#cfn-cloudformation-guardhook-targetoperations"
+    }
+  },
+  "typeName": "AWS::CloudFormation::GuardHook"
+}

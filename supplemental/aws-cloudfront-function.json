@@ -1,0 +1,86 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html#aws-resource-cloudfront-function-return-values",
+    "properties": {
+      "FunctionARN": {
+        "description": "The ARN of the function. For example:\n\n`arn:aws:cloudfront::123456789012:function/ExampleFunction` .\n\nTo get the function ARN, use the following syntax:\n\n`!GetAtt *Function_Logical_ID* .FunctionMetadata.FunctionARN`"
+      },
+      "FunctionMetadata.FunctionARN": {
+        "description": "The Amazon Resource Name (ARN) of the function. The ARN uniquely identifies the function."
+      },
+      "Stage": {
+        "description": ""
+      }
+    }
+  },
+  "definitions": {
+    "FunctionConfig": {
+      "properties": {
+        "Comment": {
+          "description": "A comment to describe the function.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-functionconfig.html#cfn-cloudfront-function-functionconfig-comment"
+        },
+        "KeyValueStoreAssociations": {
+          "description": "The configuration for the key value store associations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-functionconfig.html#cfn-cloudfront-function-functionconfig-keyvaluestoreassociations"
+        },
+        "Runtime": {
+          "description": "The function's runtime environment version.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-functionconfig.html#cfn-cloudfront-function-functionconfig-runtime"
+        }
+      },
+      "description": "Contains configuration information about a CloudFront function.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-functionconfig.html"
+    },
+    "FunctionMetadata": {
+      "properties": {
+        "FunctionARN": {
+          "description": "The Amazon Resource Name (ARN) of the function. The ARN uniquely identifies the function.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-functionmetadata.html#cfn-cloudfront-function-functionmetadata-functionarn"
+        }
+      },
+      "description": "Contains metadata about a CloudFront function.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-functionmetadata.html"
+    },
+    "KeyValueStoreAssociation": {
+      "properties": {
+        "KeyValueStoreARN": {
+          "description": "The Amazon Resource Name (ARN) of the key value store association.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-keyvaluestoreassociation.html#cfn-cloudfront-function-keyvaluestoreassociation-keyvaluestorearn"
+        }
+      },
+      "description": "The key value store association.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-function-keyvaluestoreassociation.html"
+    }
+  },
+  "description": "Creates a CloudFront function.\n\nTo create a function, you provide the function code and some configuration information about the function. The response contains an Amazon Resource Name (ARN) that uniquely identifies the function, and the function’s stage.\n\nBy default, when you create a function, it’s in the `DEVELOPMENT` stage. In this stage, you can [test the function](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/test-function.html) in the CloudFront console (or with `TestFunction` in the CloudFront API).\n\nWhen you’re ready to use your function with a CloudFront distribution, publish the function to the `LIVE` stage. You can do this in the CloudFront console, with `PublishFunction` in the CloudFront API, or by updating the `AWS::CloudFront::Function` resource with the `AutoPublish` property set to `true` . When the function is published to the `LIVE` stage, you can attach it to a distribution’s cache behavior, using the function’s ARN.\n\nTo automatically publish the function to the `LIVE` stage when it’s created, set the `AutoPublish` property to `true` .",
+  "properties": {
+    "AutoPublish": {
+      "description": "A flag that determines whether to automatically publish the function to the `LIVE` stage when it’s created. To automatically publish to the `LIVE` stage, set this property to `true` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html#cfn-cloudfront-function-autopublish"
+    },
+    "FunctionARN": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html#cfn-cloudfront-function-functionarn"
+    },
+    "FunctionCode": {
+      "description": "The function code. For more information about writing a CloudFront function, see [Writing function code for CloudFront Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html) in the *Amazon CloudFront Developer Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html#cfn-cloudfront-function-functioncode"
+    },
+    "FunctionConfig": {
+      "description": "Contains configuration information about a CloudFront function.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html#cfn-cloudfront-function-functionconfig"
+    },
+    "FunctionMetadata": {
+      "description": "Contains metadata about a CloudFront function.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html#cfn-cloudfront-function-functionmetadata"
+    },
+    "Name": {
+      "description": "A name to identify the function.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html#cfn-cloudfront-function-name"
+    },
+    "Stage": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html#cfn-cloudfront-function-stage"
+    }
+  },
+  "typeName": "AWS::CloudFront::Function"
+}

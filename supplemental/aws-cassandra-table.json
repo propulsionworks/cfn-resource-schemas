@@ -1,0 +1,243 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#aws-resource-cassandra-table-return-values",
+    "properties": {}
+  },
+  "definitions": {
+    "AutoScalingSetting": {
+      "properties": {
+        "AutoScalingDisabled": {
+          "description": "This optional parameter enables auto scaling for the table if set to `false` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-autoscalingsetting.html#cfn-cassandra-table-autoscalingsetting-autoscalingdisabled"
+        },
+        "MaximumUnits": {
+          "description": "Manage costs by specifying the maximum amount of throughput to provision. The value must be between 1 and the max throughput per second quota for your account (40,000 by default).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-autoscalingsetting.html#cfn-cassandra-table-autoscalingsetting-maximumunits"
+        },
+        "MinimumUnits": {
+          "description": "The minimum level of throughput the table should always be ready to support. The value must be between 1 and the max throughput per second quota for your account (40,000 by default).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-autoscalingsetting.html#cfn-cassandra-table-autoscalingsetting-minimumunits"
+        },
+        "ScalingPolicy": {
+          "description": "Amazon Keyspaces supports the `target tracking` auto scaling policy. With this policy, Amazon Keyspaces auto scaling ensures that the table's ratio of consumed to provisioned capacity stays at or near the target value that you specify. You define the target value as a percentage between 20 and 90.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-autoscalingsetting.html#cfn-cassandra-table-autoscalingsetting-scalingpolicy"
+        }
+      },
+      "description": "The optional auto scaling settings for a table with provisioned throughput capacity.\n\nTo turn on auto scaling for a table in `throughputMode:PROVISIONED` , you must specify the following parameters.\n\nConfigure the minimum and maximum capacity units. The auto scaling policy ensures that capacity never goes below the minimum or above the maximum range.\n\n- `minimumUnits` : The minimum level of throughput the table should always be ready to support. The value must be between 1 and the max throughput per second quota for your account (40,000 by default).\n- `maximumUnits` : The maximum level of throughput the table should always be ready to support. The value must be between 1 and the max throughput per second quota for your account (40,000 by default).\n- `scalingPolicy` : Amazon Keyspaces supports the `target tracking` scaling policy. The auto scaling target is a percentage of the provisioned capacity of the table.\n\nFor more information, see [Managing throughput capacity automatically with Amazon Keyspaces auto scaling](https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html) in the *Amazon Keyspaces Developer Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-autoscalingsetting.html"
+    },
+    "AutoScalingSpecification": {
+      "properties": {
+        "ReadCapacityAutoScaling": {
+          "description": "The auto scaling settings for the table's read capacity.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-autoscalingspecification.html#cfn-cassandra-table-autoscalingspecification-readcapacityautoscaling"
+        },
+        "WriteCapacityAutoScaling": {
+          "description": "The auto scaling settings for the table's write capacity.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-autoscalingspecification.html#cfn-cassandra-table-autoscalingspecification-writecapacityautoscaling"
+        }
+      },
+      "description": "The optional auto scaling capacity settings for a table in provisioned capacity mode.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-autoscalingspecification.html"
+    },
+    "BillingMode": {
+      "properties": {
+        "Mode": {
+          "description": "The billing mode for the table:\n\n- On-demand mode - `ON_DEMAND`\n- Provisioned mode - `PROVISIONED`\n\n> If you choose `PROVISIONED` mode, then you also need to specify provisioned throughput (read and write capacity) for the table.\n\nValid values: `ON_DEMAND` | `PROVISIONED`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-billingmode.html#cfn-cassandra-table-billingmode-mode"
+        },
+        "ProvisionedThroughput": {
+          "description": "The provisioned read capacity and write capacity for the table. For more information, see [Provisioned throughput capacity mode](https://docs.aws.amazon.com/keyspaces/latest/devguide/ReadWriteCapacityMode.html#ReadWriteCapacityMode.Provisioned) in the *Amazon Keyspaces Developer Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-billingmode.html#cfn-cassandra-table-billingmode-provisionedthroughput"
+        }
+      },
+      "description": "Determines the billing mode for the table - on-demand or provisioned.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-billingmode.html"
+    },
+    "ClusteringKeyColumn": {
+      "properties": {
+        "Column": {
+          "description": "The name and data type of this clustering key column.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-clusteringkeycolumn.html#cfn-cassandra-table-clusteringkeycolumn-column"
+        },
+        "OrderBy": {
+          "description": "The order in which this column's data is stored:\n\n- `ASC` (default) - The column's data is stored in ascending order.\n- `DESC` - The column's data is stored in descending order.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-clusteringkeycolumn.html#cfn-cassandra-table-clusteringkeycolumn-orderby"
+        }
+      },
+      "description": "Defines an individual column within the clustering key.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-clusteringkeycolumn.html"
+    },
+    "Column": {
+      "properties": {
+        "ColumnName": {
+          "description": "The name of the column. For more information, see [Identifiers](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.elements.identifier) in the *Amazon Keyspaces Developer Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-column.html#cfn-cassandra-table-column-columnname"
+        },
+        "ColumnType": {
+          "description": "The data type of the column. For more information, see [Data types](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types) in the *Amazon Keyspaces Developer Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-column.html#cfn-cassandra-table-column-columntype"
+        }
+      },
+      "description": "The name and data type of an individual column in a table. In addition to the data type, you can also use the following two keywords:\n\n- `STATIC` if the table has a clustering column. Static columns store values that are shared by all rows in the same partition.\n- `FROZEN` for collection data types. In frozen collections the values of the collection are serialized into a single immutable value, and Amazon Keyspaces treats them like a `BLOB` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-column.html"
+    },
+    "EncryptionSpecification": {
+      "properties": {
+        "EncryptionType": {
+          "description": "The encryption at rest options for the table.\n\n- *AWS owned key* (default) - `AWS_OWNED_KMS_KEY`\n- *Customer managed key* - `CUSTOMER_MANAGED_KMS_KEY`\n\n> If you choose `CUSTOMER_MANAGED_KMS_KEY` , a `kms_key_identifier` in the format of a key ARN is required.\n\nValid values: `CUSTOMER_MANAGED_KMS_KEY` | `AWS_OWNED_KMS_KEY` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-encryptionspecification.html#cfn-cassandra-table-encryptionspecification-encryptiontype"
+        },
+        "KmsKeyIdentifier": {
+          "description": "Requires a `kms_key_identifier` in the format of a key ARN.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-encryptionspecification.html#cfn-cassandra-table-encryptionspecification-kmskeyidentifier"
+        }
+      },
+      "description": "Specifies the encryption at rest option selected for the table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-encryptionspecification.html"
+    },
+    "EncryptionType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-encryptiontype.html"
+    },
+    "KmsKeyIdentifier": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-kmskeyidentifier.html"
+    },
+    "Mode": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-mode.html"
+    },
+    "ProvisionedThroughput": {
+      "properties": {
+        "ReadCapacityUnits": {
+          "description": "The amount of read capacity that's provisioned for the table. For more information, see [Read/write capacity mode](https://docs.aws.amazon.com/keyspaces/latest/devguide/ReadWriteCapacityMode.html) in the *Amazon Keyspaces Developer Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-provisionedthroughput.html#cfn-cassandra-table-provisionedthroughput-readcapacityunits"
+        },
+        "WriteCapacityUnits": {
+          "description": "The amount of write capacity that's provisioned for the table. For more information, see [Read/write capacity mode](https://docs.aws.amazon.com/keyspaces/latest/devguide/ReadWriteCapacityMode.html) in the *Amazon Keyspaces Developer Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-provisionedthroughput.html#cfn-cassandra-table-provisionedthroughput-writecapacityunits"
+        }
+      },
+      "description": "The provisioned throughput for the table, which consists of `ReadCapacityUnits` and `WriteCapacityUnits` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-provisionedthroughput.html"
+    },
+    "ReplicaSpecification": {
+      "properties": {
+        "ReadCapacityAutoScaling": {
+          "description": "The read capacity auto scaling settings for the multi-Region table in the specified AWS Region.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-replicaspecification.html#cfn-cassandra-table-replicaspecification-readcapacityautoscaling"
+        },
+        "ReadCapacityUnits": {
+          "description": "The provisioned read capacity units for the multi-Region table in the specified AWS Region.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-replicaspecification.html#cfn-cassandra-table-replicaspecification-readcapacityunits"
+        },
+        "Region": {
+          "description": "The AWS Region.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-replicaspecification.html#cfn-cassandra-table-replicaspecification-region"
+        }
+      },
+      "description": "The AWS Region specific settings of a multi-Region table.\n\nFor a multi-Region table, you can configure the table's read capacity differently per AWS Region. You can do this by configuring the following parameters.\n\n- `region` : The Region where these settings are applied. (Required)\n- `readCapacityUnits` : The provisioned read capacity units. (Optional)\n- `readCapacityAutoScaling` : The read capacity auto scaling settings for the table. (Optional)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-replicaspecification.html"
+    },
+    "ScalingPolicy": {
+      "properties": {
+        "TargetTrackingScalingPolicyConfiguration": {
+          "description": "The auto scaling policy that scales a table based on the ratio of consumed to provisioned capacity.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-scalingpolicy.html#cfn-cassandra-table-scalingpolicy-targettrackingscalingpolicyconfiguration"
+        }
+      },
+      "description": "Amazon Keyspaces supports the `target tracking` auto scaling policy. With this policy, Amazon Keyspaces auto scaling ensures that the table's ratio of consumed to provisioned capacity stays at or near the target value that you specify. You define the target value as a percentage between 20 and 90.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-scalingpolicy.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-tag.html#cfn-cassandra-table-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-tag.html#cfn-cassandra-table-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-tag.html"
+    },
+    "TargetTrackingScalingPolicyConfiguration": {
+      "properties": {
+        "DisableScaleIn": {
+          "description": "Specifies if `scale-in` is enabled.\n\nWhen auto scaling automatically decreases capacity for a table, the table *scales in* . When scaling policies are set, they can't scale in the table lower than its minimum capacity.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-targettrackingscalingpolicyconfiguration.html#cfn-cassandra-table-targettrackingscalingpolicyconfiguration-disablescalein"
+        },
+        "ScaleInCooldown": {
+          "description": "Specifies a `scale-in` cool down period.\n\nA cooldown period in seconds between scaling activities that lets the table stabilize before another scaling activity starts.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-targettrackingscalingpolicyconfiguration.html#cfn-cassandra-table-targettrackingscalingpolicyconfiguration-scaleincooldown"
+        },
+        "ScaleOutCooldown": {
+          "description": "Specifies a scale out cool down period.\n\nA cooldown period in seconds between scaling activities that lets the table stabilize before another scaling activity starts.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-targettrackingscalingpolicyconfiguration.html#cfn-cassandra-table-targettrackingscalingpolicyconfiguration-scaleoutcooldown"
+        },
+        "TargetValue": {
+          "description": "Specifies the target value for the target tracking auto scaling policy.\n\nAmazon Keyspaces auto scaling scales up capacity automatically when traffic exceeds this target utilization rate, and then back down when it falls below the target. This ensures that the ratio of consumed capacity to provisioned capacity stays at or near this value. You define `targetValue` as a percentage. An `integer` between 20 and 90.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-targettrackingscalingpolicyconfiguration.html#cfn-cassandra-table-targettrackingscalingpolicyconfiguration-targetvalue"
+        }
+      },
+      "description": "Amazon Keyspaces supports the `target tracking` auto scaling policy for a provisioned table. This policy scales a table based on the ratio of consumed to provisioned capacity. The auto scaling target is a percentage of the provisioned capacity of the table.\n\n- `targetTrackingScalingPolicyConfiguration` : To define the target tracking policy, you must define the target value.\n\n- `targetValue` : The target utilization rate of the table. Amazon Keyspaces auto scaling ensures that the ratio of consumed capacity to provisioned capacity stays at or near this value. You define `targetValue` as a percentage. A `double` between 20 and 90. (Required)\n- `disableScaleIn` : A `boolean` that specifies if `scale-in` is disabled or enabled for the table. This parameter is disabled by default. To turn on `scale-in` , set the `boolean` value to `FALSE` . This means that capacity for a table can be automatically scaled down on your behalf. (Optional)\n- `scaleInCooldown` : A cooldown period in seconds between scaling activities that lets the table stabilize before another scale in activity starts. If no value is provided, the default is 0. (Optional)\n- `scaleOutCooldown` : A cooldown period in seconds between scaling activities that lets the table stabilize before another scale out activity starts. If no value is provided, the default is 0. (Optional)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cassandra-table-targettrackingscalingpolicyconfiguration.html"
+    }
+  },
+  "description": "You can use the `AWS::Cassandra::Table` resource to create a new table in Amazon Keyspaces (for Apache Cassandra). For more information, see [Create a table](https://docs.aws.amazon.com/keyspaces/latest/devguide/getting-started.tables.html) in the *Amazon Keyspaces Developer Guide* .",
+  "properties": {
+    "AutoScalingSpecifications": {
+      "description": "The optional auto scaling capacity settings for a table in provisioned capacity mode.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-autoscalingspecifications"
+    },
+    "BillingMode": {
+      "description": "The billing mode for the table, which determines how you'll be charged for reads and writes:\n\n- *On-demand mode* (default) - You pay based on the actual reads and writes your application performs.\n- *Provisioned mode* - Lets you specify the number of reads and writes per second that you need for your application.\n\nIf you don't specify a value for this property, then the table will use on-demand mode.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-billingmode"
+    },
+    "ClientSideTimestampsEnabled": {
+      "description": "Enables client-side timestamps for the table. By default, the setting is disabled. You can enable client-side timestamps with the following option:\n\n- `status: \"enabled\"`\n\nAfter client-side timestamps are enabled for a table, you can't disable this setting.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-clientsidetimestampsenabled"
+    },
+    "ClusteringKeyColumns": {
+      "description": "One or more columns that determine how the table data is sorted.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-clusteringkeycolumns"
+    },
+    "DefaultTimeToLive": {
+      "description": "The default Time To Live (TTL) value for all rows in a table in seconds. The maximum configurable value is 630,720,000 seconds, which is the equivalent of 20 years. By default, the TTL value for a table is 0, which means data does not expire.\n\nFor more information, see [Setting the default TTL value for a table](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl) in the *Amazon Keyspaces Developer Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-defaulttimetolive"
+    },
+    "EncryptionSpecification": {
+      "description": "The encryption at rest options for the table.\n\n- *AWS owned key* (default) - The key is owned by Amazon Keyspaces .\n- *Customer managed key* - The key is stored in your account and is created, owned, and managed by you.\n\n> If you choose encryption with a customer managed key, you must specify a valid customer managed KMS key with permissions granted to Amazon Keyspaces.\n\nFor more information, see [Encryption at rest in Amazon Keyspaces](https://docs.aws.amazon.com/keyspaces/latest/devguide/EncryptionAtRest.html) in the *Amazon Keyspaces Developer Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-encryptionspecification"
+    },
+    "KeyspaceName": {
+      "description": "The name of the keyspace to create the table in. The keyspace must already exist.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-keyspacename"
+    },
+    "PartitionKeyColumns": {
+      "description": "One or more columns that uniquely identify every row in the table. Every table must have a partition key.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-partitionkeycolumns"
+    },
+    "PointInTimeRecoveryEnabled": {
+      "description": "Specifies if point-in-time recovery is enabled or disabled for the table. The options are `PointInTimeRecoveryEnabled=true` and `PointInTimeRecoveryEnabled=false` . If not specified, the default is `PointInTimeRecoveryEnabled=false` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-pointintimerecoveryenabled"
+    },
+    "RegularColumns": {
+      "description": "One or more columns that are not part of the primary key - that is, columns that are *not* defined as partition key columns or clustering key columns.\n\nYou can add regular columns to existing tables by adding them to the template.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-regularcolumns"
+    },
+    "ReplicaSpecifications": {
+      "description": "The AWS Region specific settings of a multi-Region table.\n\nFor a multi-Region table, you can configure the table's read capacity differently per AWS Region. You can do this by configuring the following parameters.\n\n- `region` : The Region where these settings are applied. (Required)\n- `readCapacityUnits` : The provisioned read capacity units. (Optional)\n- `readCapacityAutoScaling` : The read capacity auto scaling settings for the table. (Optional)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-replicaspecifications"
+    },
+    "TableName": {
+      "description": "The name of the table to be created. The table name is case sensitive. If you don't specify a name, AWS CloudFormation generates a unique ID and uses that ID for the table name. For more information, see [Name type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html) .\n\n> If you specify a name, you can't perform updates that require replacing this resource. You can perform updates that require no interruption or some interruption. If you must replace the resource, specify a new name. \n\n*Length constraints:* Minimum length of 3. Maximum length of 255.\n\n*Pattern:* `^[a-zA-Z0-9][a-zA-Z0-9_]{1,47}$`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-tablename"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cassandra-table.html#cfn-cassandra-table-tags"
+    }
+  },
+  "typeName": "AWS::Cassandra::Table"
+}

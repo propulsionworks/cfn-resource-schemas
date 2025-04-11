@@ -1,0 +1,97 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#aws-resource-cloudformation-lambdahook-return-values",
+    "properties": {
+      "HookArn": {
+        "description": "Returns the ARN of a Lambda Hook."
+      }
+    }
+  },
+  "definitions": {
+    "Action": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-action.html"
+    },
+    "HookTarget": {
+      "properties": {
+        "Action": {
+          "description": "Target actions are the type of operation hooks will be executed at.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-hooktarget.html#cfn-cloudformation-lambdahook-hooktarget-action"
+        },
+        "InvocationPoint": {
+          "description": "Invocation points are the point in provisioning workflow where hooks will be executed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-hooktarget.html#cfn-cloudformation-lambdahook-hooktarget-invocationpoint"
+        },
+        "TargetName": {
+          "description": "Type name of hook target. Hook targets are the destination where hooks will be invoked against.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-hooktarget.html#cfn-cloudformation-lambdahook-hooktarget-targetname"
+        }
+      },
+      "description": "Hook targets are the destination where hooks will be invoked against.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-hooktarget.html"
+    },
+    "InvocationPoint": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-invocationpoint.html"
+    },
+    "Role": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-role.html"
+    },
+    "StackName": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-stackname.html"
+    },
+    "StackRole": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-stackrole.html"
+    },
+    "TargetName": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-targetname.html"
+    },
+    "TargetOperation": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-lambdahook-targetoperation.html"
+    }
+  },
+  "description": "The `AWS::CloudFormation::LambdaHook` resource creates and activates a Lambda Hook. You can use a Lambda Hook to evaluate your resources before allowing stack operations. This resource forwards requests for resource evaluation to a Lambda function.\n\nFor more information, see [Lambda Hooks](https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/lambda-hooks.html) in the *AWS CloudFormation Hooks User Guide* .",
+  "properties": {
+    "Alias": {
+      "description": "The type name alias for the Hook. This alias must be unique per account and Region.\n\nThe alias must be in the form `Name1::Name2::Name3` and must not begin with `AWS` . For example, `Private::Lambda::MyTestHook` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-alias"
+    },
+    "ExecutionRole": {
+      "description": "The IAM role that the Hook assumes to invoke your Lambda function.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-executionrole"
+    },
+    "FailureMode": {
+      "description": "Specifies how the Hook responds when the Lambda function invoked by the Hook returns a `FAILED` response.\n\n- `FAIL` : Prevents the action from proceeding. This is helpful for enforcing strict compliance or security policies.\n- `WARN` : Issues warnings to users but allows actions to continue. This is useful for non-critical validations or informational checks.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-failuremode"
+    },
+    "HookArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-hookarn"
+    },
+    "HookStatus": {
+      "description": "Specifies if the Hook is `ENABLED` or `DISABLED` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-hookstatus"
+    },
+    "LambdaFunction": {
+      "description": "Specifies the Lambda function for the Hook. You can use:\n\n- The full Amazon Resource Name (ARN) without a suffix.\n- A qualified ARN with a version or alias suffix.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-lambdafunction"
+    },
+    "StackFilters": {
+      "description": "Specifies the stack level filters for the Hook.\n\nExample stack level filter in JSON:\n\n`\"StackFilters\": {\"FilteringCriteria\": \"ALL\", \"StackNames\": {\"Exclude\": [ \"stack-1\", \"stack-2\"]}}` \n\nExample stack level filter in YAML:\n\n`StackFilters: FilteringCriteria: ALL StackNames: Exclude: - stack-1 - stack-2`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-stackfilters"
+    },
+    "TargetFilters": {
+      "description": "Specifies the target filters for the Hook.\n\nExample target filter in JSON:\n\n`\"TargetFilters\": {\"Actions\": [ \"Create\", \"Update\", \"Delete\" ]}` \n\nExample target filter in YAML:\n\n`TargetFilters: Actions: - CREATE - UPDATE - DELETE`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-targetfilters"
+    },
+    "TargetOperations": {
+      "description": "Specifies the list of operations the Hook is run against. For more information, see [Hook targets](https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/hooks-concepts.html#hook-terms-hook-target) in the *AWS CloudFormation Hooks User Guide* .\n\nValid values: `STACK` | `RESOURCE` | `CHANGE_SET` | `CLOUD_CONTROL`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-lambdahook.html#cfn-cloudformation-lambdahook-targetoperations"
+    }
+  },
+  "typeName": "AWS::CloudFormation::LambdaHook"
+}

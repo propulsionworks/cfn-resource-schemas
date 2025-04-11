@@ -1,0 +1,96 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#aws-resource-ec2-routeserverpeer-return-values",
+    "properties": {
+      "Arn": {
+        "description": "The ARN of the route server peer."
+      },
+      "Id": {
+        "description": "The ID of the route server peer."
+      },
+      "RouteServerId": {
+        "description": "The ID of the route server associated with this peer."
+      },
+      "EndpointEniId": {
+        "description": "The ID of the Elastic network interface for the route server endpoint."
+      },
+      "EndpointEniAddress": {
+        "description": "The IP address of the Elastic network interface for the route server endpoint."
+      },
+      "SubnetId": {
+        "description": "The ID of the subnet containing the route server peer."
+      },
+      "VpcId": {
+        "description": "The ID of the VPC containing the route server peer."
+      }
+    }
+  },
+  "definitions": {
+    "BgpOptions": {
+      "properties": {
+        "PeerAsn": {
+          "description": "The Border Gateway Protocol (BGP) Autonomous System Number (ASN) for the appliance. Valid values are from 1 to 4294967295. We recommend using a private ASN in the 64512–65534 (16-bit ASN) or 4200000000–4294967294 (32-bit ASN) range.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-routeserverpeer-bgpoptions.html#cfn-ec2-routeserverpeer-bgpoptions-peerasn"
+        },
+        "PeerLivenessDetection": {
+          "description": "The liveness detection protocol used for the BGP peer.\n\nThe requested liveness detection protocol for the BGP peer.\n\n- `bgp-keepalive` : The standard BGP keep alive mechanism ( [RFC4271](https://docs.aws.amazon.com/https://www.rfc-editor.org/rfc/rfc4271#page-21) ) that is stable but may take longer to fail-over in cases of network impact or router failure.\n- `bfd` : An additional Bidirectional Forwarding Detection (BFD) protocol ( [RFC5880](https://docs.aws.amazon.com/https://www.rfc-editor.org/rfc/rfc5880) ) that enables fast failover by using more sensitive liveness detection.\n\nDefaults to `bgp-keepalive` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-routeserverpeer-bgpoptions.html#cfn-ec2-routeserverpeer-bgpoptions-peerlivenessdetection"
+        }
+      },
+      "description": "The BGP configuration options for this peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-routeserverpeer-bgpoptions.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-routeserverpeer-tag.html#cfn-ec2-routeserverpeer-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-routeserverpeer-tag.html#cfn-ec2-routeserverpeer-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-routeserverpeer-tag.html"
+    }
+  },
+  "description": "Specifies a BGP peer configuration for a route server endpoint.\n\nA route server peer is a session between a route server endpoint and the device deployed in AWS (such as a firewall appliance or other network security function running on an EC2 instance).",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-arn"
+    },
+    "BgpOptions": {
+      "description": "The BGP configuration options for this peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-bgpoptions"
+    },
+    "EndpointEniAddress": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-endpointeniaddress"
+    },
+    "EndpointEniId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-endpointeniid"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-id"
+    },
+    "PeerAddress": {
+      "description": "The IPv4 address of the peer device.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-peeraddress"
+    },
+    "RouteServerEndpointId": {
+      "description": "The ID of the route server endpoint associated with this peer.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-routeserverendpointid"
+    },
+    "RouteServerId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-routeserverid"
+    },
+    "SubnetId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-subnetid"
+    },
+    "Tags": {
+      "description": "Any tags assigned to the route server peer.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-tags"
+    },
+    "VpcId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserverpeer.html#cfn-ec2-routeserverpeer-vpcid"
+    }
+  },
+  "typeName": "AWS::EC2::RouteServerPeer"
+}

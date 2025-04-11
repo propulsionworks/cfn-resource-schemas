@@ -1,0 +1,194 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#aws-resource-cloudtrail-trail-return-values",
+    "properties": {
+      "SnsTopicArn": {
+        "description": "`Ref` returns the ARN of the Amazon SNS topic that's associated with the CloudTrail trail, such as `arn:aws:sns:us-east-2:123456789012:mySNSTopic` ."
+      },
+      "Arn": {
+        "description": "`Ref` returns the ARN of the CloudTrail trail, such as `arn:aws:cloudtrail:us-east-2:123456789012:trail/myCloudTrail` ."
+      }
+    }
+  },
+  "definitions": {
+    "AdvancedEventSelector": {
+      "properties": {
+        "FieldSelectors": {
+          "description": "Contains all selector statements in an advanced event selector.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedeventselector.html#cfn-cloudtrail-trail-advancedeventselector-fieldselectors"
+        },
+        "Name": {
+          "description": "An optional, descriptive name for an advanced event selector, such as \"Log data events for only two S3 buckets\".",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedeventselector.html#cfn-cloudtrail-trail-advancedeventselector-name"
+        }
+      },
+      "description": "Advanced event selectors let you create fine-grained selectors for AWS CloudTrail management, data, and network activity events. They help you control costs by logging only those events that are important to you. For more information about configuring advanced event selectors, see the [Logging data events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html) , [Logging network activity events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html) , and [Logging management events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html) topics in the *AWS CloudTrail User Guide* .\n\nYou cannot apply both event selectors and advanced event selectors to a trail.\n\n*Supported CloudTrail event record fields for management events*\n\n- `eventCategory` (required)\n- `eventSource`\n- `readOnly`\n\nThe following additional fields are available for event data stores:\n\n- `eventName`\n- `eventType`\n- `sessionCredentialFromConsole`\n- `userIdentity.arn`\n\n*Supported CloudTrail event record fields for data events*\n\n- `eventCategory` (required)\n- `resources.type` (required)\n- `readOnly`\n- `eventName`\n- `resources.ARN`\n\nThe following additional fields are available for event data stores:\n\n- `eventSource`\n- `eventType`\n- `sessionCredentialFromConsole`\n- `userIdentity.arn`\n\n*Supported CloudTrail event record fields for network activity events*\n\n- `eventCategory` (required)\n- `eventSource` (required)\n- `eventName`\n- `errorCode` - The only valid value for `errorCode` is `VpceAccessDenied` .\n- `vpcEndpointId`\n\n> For event data stores for CloudTrail Insights events, AWS Config configuration items, Audit Manager evidence, or events outside of AWS , the only supported field is `eventCategory` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedeventselector.html"
+    },
+    "AdvancedFieldSelector": {
+      "properties": {
+        "EndsWith": {
+          "description": "An operator that includes events that match the last few characters of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedfieldselector.html#cfn-cloudtrail-trail-advancedfieldselector-endswith"
+        },
+        "Equals": {
+          "description": "An operator that includes events that match the exact value of the event record field specified as the value of `Field` . This is the only valid operator that you can use with the `readOnly` , `eventCategory` , and `resources.type` fields.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedfieldselector.html#cfn-cloudtrail-trail-advancedfieldselector-equals"
+        },
+        "Field": {
+          "description": "A field in a CloudTrail event record on which to filter events to be logged. For event data stores for CloudTrail Insights events, AWS Config configuration items, Audit Manager evidence, or events outside of AWS , the field is used only for selecting events as filtering is not supported.\n\nFor CloudTrail management events, supported fields include `eventCategory` (required), `eventSource` , and `readOnly` . The following additional fields are available for event data stores: `eventName` , `eventType` , `sessionCredentialFromConsole` , and `userIdentity.arn` .\n\nFor CloudTrail data events, supported fields include `eventCategory` (required), `resources.type` (required), `eventName` , `readOnly` , and `resources.ARN` . The following additional fields are available for event data stores: `eventSource` , `eventType` , `sessionCredentialFromConsole` , and `userIdentity.arn` .\n\nFor CloudTrail network activity events, supported fields include `eventCategory` (required), `eventSource` (required), `eventName` , `errorCode` , and `vpcEndpointId` .\n\nFor event data stores for CloudTrail Insights events, AWS Config configuration items, Audit Manager evidence, or events outside of AWS , the only supported field is `eventCategory` .\n\n> Selectors don't support the use of wildcards like `*` . To match multiple values with a single condition, you may use `StartsWith` , `EndsWith` , `NotStartsWith` , or `NotEndsWith` to explicitly match the beginning or end of the event field. \n\n- *`readOnly`* - This is an optional field that is only used for management events and data events. This field can be set to `Equals` with a value of `true` or `false` . If you do not add this field, CloudTrail logs both `read` and `write` events. A value of `true` logs only `read` events. A value of `false` logs only `write` events.\n- *`eventSource`* - This field is only used for management events, data events (for event data stores only), and network activity events.\n\nFor management events for trails, this is an optional field that can be set to `NotEquals` `kms.amazonaws.com` to exclude KMS management events, or `NotEquals` `rdsdata.amazonaws.com` to exclude RDS management events.\n\nFor management and data events for event data stores, you can use it to include or exclude any event source and can use any operator.\n\nFor network activity events, this is a required field that only uses the `Equals` operator. Set this field to the event source for which you want to log network activity events. If you want to log network activity events for multiple event sources, you must create a separate field selector for each event source. For a list of services supporting network activity events, see [Logging network activity events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html) in the *AWS CloudTrail User Guide* .\n- *`eventName`* - This is an optional field that is only used for data events, management events (for event data stores only), and network activity events. You can use any operator with `eventName` . You can use it to ﬁlter in or ﬁlter out specific events. You can have multiple values for this ﬁeld, separated by commas.\n- *`eventCategory`* - This field is required and must be set to `Equals` .\n\n- For CloudTrail management events, the value must be `Management` .\n- For CloudTrail data events, the value must be `Data` .\n- For CloudTrail network activity events, the value must be `NetworkActivity` .\n\nThe following are used only for event data stores:\n\n- For CloudTrail Insights events, the value must be `Insight` .\n- For AWS Config configuration items, the value must be `ConfigurationItem` .\n- For Audit Manager evidence, the value must be `Evidence` .\n- For events outside of AWS , the value must be `ActivityAuditLog` .\n- *`eventType`* - This is an optional field available only for event data stores, which is used to filter management and data events on the event type. For information about available event types, see [CloudTrail record contents](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html#ct-event-type) in the *AWS CloudTrail user guide* .\n- *`errorCode`* - This ﬁeld is only used to filter CloudTrail network activity events and is optional. This is the error code to filter on. Currently, the only valid `errorCode` is `VpceAccessDenied` . `errorCode` can only use the `Equals` operator.\n- *`sessionCredentialFromConsole`* - This is an optional field available only for event data stores, which is used to filter management and data events based on whether the events originated from an AWS Management Console session. `sessionCredentialFromConsole` can only use the `Equals` and `NotEquals` operators.\n- *`resources.type`* - This ﬁeld is required for CloudTrail data events. `resources.type` can only use the `Equals` operator.\n\nFor a list of available resource types for data events, see [Data events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events) in the *AWS CloudTrail User Guide* .\n\nYou can have only one `resources.type` ﬁeld per selector. To log events on more than one resource type, add another selector.\n- *`resources.ARN`* - The `resources.ARN` is an optional field for data events. You can use any operator with `resources.ARN` , but if you use `Equals` or `NotEquals` , the value must exactly match the ARN of a valid resource of the type you've speciﬁed in the template as the value of resources.type. To log all data events for all objects in a specific S3 bucket, use the `StartsWith` operator, and include only the bucket ARN as the matching value.\n\nFor more information about the ARN formats of data event resources, see [Actions, resources, and condition keys for AWS services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html) in the *Service Authorization Reference* .\n\n> You can't use the `resources.ARN` field to filter resource types that do not have ARNs.\n- *`userIdentity.arn`* - This is an optional field available only for event data stores, which is used to filter management and data events on the userIdentity ARN. You can use any operator with `userIdentity.arn` . For more information on the userIdentity element, see [CloudTrail userIdentity element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html) in the *AWS CloudTrail User Guide* .\n- *`vpcEndpointId`* - This ﬁeld is only used to filter CloudTrail network activity events and is optional. This field identifies the VPC endpoint that the request passed through. You can use any operator with `vpcEndpointId` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedfieldselector.html#cfn-cloudtrail-trail-advancedfieldselector-field"
+        },
+        "NotEndsWith": {
+          "description": "An operator that excludes events that match the last few characters of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedfieldselector.html#cfn-cloudtrail-trail-advancedfieldselector-notendswith"
+        },
+        "NotEquals": {
+          "description": "An operator that excludes events that match the exact value of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedfieldselector.html#cfn-cloudtrail-trail-advancedfieldselector-notequals"
+        },
+        "NotStartsWith": {
+          "description": "An operator that excludes events that match the first few characters of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedfieldselector.html#cfn-cloudtrail-trail-advancedfieldselector-notstartswith"
+        },
+        "StartsWith": {
+          "description": "An operator that includes events that match the first few characters of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedfieldselector.html#cfn-cloudtrail-trail-advancedfieldselector-startswith"
+        }
+      },
+      "description": "A single selector statement in an advanced event selector.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedfieldselector.html"
+    },
+    "DataResource": {
+      "properties": {
+        "Type": {
+          "description": "The resource type in which you want to log data events. You can specify the following *basic* event selector resource types:\n\n- `AWS::DynamoDB::Table`\n- `AWS::Lambda::Function`\n- `AWS::S3::Object`\n\nAdditional resource types are available through *advanced* event selectors. For more information, see [AdvancedEventSelector](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-dataresource.html#cfn-cloudtrail-trail-dataresource-type"
+        },
+        "Values": {
+          "description": "An array of Amazon Resource Name (ARN) strings or partial ARN strings for the specified resource type.\n\n- To log data events for all objects in all S3 buckets in your AWS account , specify the prefix as `arn:aws:s3` .\n\n> This also enables logging of data event activity performed by any user or role in your AWS account , even if that activity is performed on a bucket that belongs to another AWS account .\n- To log data events for all objects in an S3 bucket, specify the bucket and an empty object prefix such as `arn:aws:s3:::amzn-s3-demo-bucket1/` . The trail logs data events for all objects in this S3 bucket.\n- To log data events for specific objects, specify the S3 bucket and object prefix such as `arn:aws:s3:::amzn-s3-demo-bucket1/example-images` . The trail logs data events for objects in this S3 bucket that match the prefix.\n- To log data events for all Lambda functions in your AWS account , specify the prefix as `arn:aws:lambda` .\n\n> This also enables logging of `Invoke` activity performed by any user or role in your AWS account , even if that activity is performed on a function that belongs to another AWS account .\n- To log data events for a specific Lambda function, specify the function ARN.\n\n> Lambda function ARNs are exact. For example, if you specify a function ARN *arn:aws:lambda:us-west-2:111111111111:function:helloworld* , data events will only be logged for *arn:aws:lambda:us-west-2:111111111111:function:helloworld* . They will not be logged for *arn:aws:lambda:us-west-2:111111111111:function:helloworld2* .\n- To log data events for all DynamoDB tables in your AWS account , specify the prefix as `arn:aws:dynamodb` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-dataresource.html#cfn-cloudtrail-trail-dataresource-values"
+        }
+      },
+      "description": "You can configure the `DataResource` in an `EventSelector` to log data events for the following three resource types:\n\n- `AWS::DynamoDB::Table`\n- `AWS::Lambda::Function`\n- `AWS::S3::Object`\n\nTo log data events for all other resource types including objects stored in [directory buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-overview.html) , you must use [AdvancedEventSelectors](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html) . You must also use `AdvancedEventSelectors` if you want to filter on the `eventName` field.\n\nConfigure the `DataResource` to specify the resource type and resource ARNs for which you want to log data events.\n\n> The total number of allowed data resources is 250. This number can be distributed between 1 and 5 event selectors, but the total cannot exceed 250 across all selectors for the trail. \n\nThe following example demonstrates how logging works when you configure logging of all data events for a general purpose bucket named `amzn-s3-demo-bucket1` . In this example, the CloudTrail user specified an empty prefix, and the option to log both `Read` and `Write` data events.\n\n- A user uploads an image file to `amzn-s3-demo-bucket1` .\n- The `PutObject` API operation is an Amazon S3 object-level API. It is recorded as a data event in CloudTrail. Because the CloudTrail user specified an S3 bucket with an empty prefix, events that occur on any object in that bucket are logged. The trail processes and logs the event.\n- A user uploads an object to an Amazon S3 bucket named `arn:aws:s3:::amzn-s3-demo-bucket1` .\n- The `PutObject` API operation occurred for an object in an S3 bucket that the CloudTrail user didn't specify for the trail. The trail doesn’t log the event.\n\nThe following example demonstrates how logging works when you configure logging of AWS Lambda data events for a Lambda function named *MyLambdaFunction* , but not for all Lambda functions.\n\n- A user runs a script that includes a call to the *MyLambdaFunction* function and the *MyOtherLambdaFunction* function.\n- The `Invoke` API operation on *MyLambdaFunction* is an Lambda API. It is recorded as a data event in CloudTrail. Because the CloudTrail user specified logging data events for *MyLambdaFunction* , any invocations of that function are logged. The trail processes and logs the event.\n- The `Invoke` API operation on *MyOtherLambdaFunction* is an Lambda API. Because the CloudTrail user did not specify logging data events for all Lambda functions, the `Invoke` operation for *MyOtherLambdaFunction* does not match the function specified for the trail. The trail doesn’t log the event.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-dataresource.html"
+    },
+    "EventSelector": {
+      "properties": {
+        "DataResources": {
+          "description": "CloudTrail supports data event logging for Amazon S3 objects in standard S3 buckets, AWS Lambda functions, and Amazon DynamoDB tables with basic event selectors. You can specify up to 250 resources for an individual event selector, but the total number of data resources cannot exceed 250 across all event selectors in a trail. This limit does not apply if you configure resource logging for all data events.\n\nFor more information, see [Data Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html) and [Limits in AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) in the *AWS CloudTrail User Guide* .\n\n> To log data events for all other resource types including objects stored in [directory buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-overview.html) , you must use [AdvancedEventSelectors](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html) . You must also use `AdvancedEventSelectors` if you want to filter on the `eventName` field.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-eventselector.html#cfn-cloudtrail-trail-eventselector-dataresources"
+        },
+        "ExcludeManagementEventSources": {
+          "description": "An optional list of service event sources from which you do not want management events to be logged on your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management Service or Amazon RDS Data API events by containing `kms.amazonaws.com` or `rdsdata.amazonaws.com` . By default, `ExcludeManagementEventSources` is empty, and AWS KMS and Amazon RDS Data API events are logged to your trail. You can exclude management event sources only in Regions that support the event source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-eventselector.html#cfn-cloudtrail-trail-eventselector-excludemanagementeventsources"
+        },
+        "IncludeManagementEvents": {
+          "description": "Specify if you want your event selector to include management events for your trail.\n\nFor more information, see [Management Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html) in the *AWS CloudTrail User Guide* .\n\nBy default, the value is `true` .\n\nThe first copy of management events is free. You are charged for additional copies of management events that you are logging on any subsequent trail in the same Region. For more information about CloudTrail pricing, see [AWS CloudTrail Pricing](https://docs.aws.amazon.com/cloudtrail/pricing/) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-eventselector.html#cfn-cloudtrail-trail-eventselector-includemanagementevents"
+        },
+        "ReadWriteType": {
+          "description": "Specify if you want your trail to log read-only events, write-only events, or all. For example, the EC2 `GetConsoleOutput` is a read-only API operation and `RunInstances` is a write-only API operation.\n\nBy default, the value is `All` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-eventselector.html#cfn-cloudtrail-trail-eventselector-readwritetype"
+        }
+      },
+      "description": "Use event selectors to further specify the management and data event settings for your trail. By default, trails created without specific event selectors will be configured to log all read and write management events, and no data events. When an event occurs in your account, CloudTrail evaluates the event selector for all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If the event doesn't match any event selector, the trail doesn't log the event.\n\nYou can configure up to five event selectors for a trail.\n\nYou cannot apply both event selectors and advanced event selectors to a trail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-eventselector.html"
+    },
+    "InsightSelector": {
+      "properties": {
+        "InsightType": {
+          "description": "The type of Insights events to log on a trail. `ApiCallRateInsight` and `ApiErrorRateInsight` are valid Insight types.\n\nThe `ApiCallRateInsight` Insights type analyzes write-only management API calls that are aggregated per minute against a baseline API call volume.\n\nThe `ApiErrorRateInsight` Insights type analyzes management API calls that result in error codes. The error is shown if the API call is unsuccessful.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-insightselector.html#cfn-cloudtrail-trail-insightselector-insighttype"
+        }
+      },
+      "description": "A JSON string that contains a list of Insights types that are logged on a trail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-insightselector.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-tag.html#cfn-cloudtrail-trail-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-tag.html#cfn-cloudtrail-trail-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-tag.html"
+    }
+  },
+  "description": "Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket.",
+  "properties": {
+    "AdvancedEventSelectors": {
+      "description": "Specifies the settings for advanced event selectors. You can use advanced event selectors to log management events, data events for all resource types, and network activity events.\n\nYou can add advanced event selectors, and conditions for your advanced event selectors, up to a maximum of 500 values for all conditions and selectors on a trail. You can use either `AdvancedEventSelectors` or `EventSelectors` , but not both. If you apply `AdvancedEventSelectors` to a trail, any existing `EventSelectors` are overwritten. For more information about advanced event selectors, see [Logging data events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html) and [Logging network activity events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html) in the *AWS CloudTrail User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-advancedeventselectors"
+    },
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-arn"
+    },
+    "CloudWatchLogsLogGroupArn": {
+      "description": "Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs are delivered. You must use a log group that exists in your account.\n\nTo enable CloudWatch Logs delivery, you must provide values for `CloudWatchLogsLogGroupArn` and `CloudWatchLogsRoleArn` .\n\n> If you previously enabled CloudWatch Logs delivery and want to disable CloudWatch Logs delivery, you must set the values of the `CloudWatchLogsRoleArn` and `CloudWatchLogsLogGroupArn` fields to `\"\"` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-cloudwatchlogsloggrouparn"
+    },
+    "CloudWatchLogsRoleArn": {
+      "description": "Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group. You must use a role that exists in your account.\n\nTo enable CloudWatch Logs delivery, you must provide values for `CloudWatchLogsLogGroupArn` and `CloudWatchLogsRoleArn` .\n\n> If you previously enabled CloudWatch Logs delivery and want to disable CloudWatch Logs delivery, you must set the values of the `CloudWatchLogsRoleArn` and `CloudWatchLogsLogGroupArn` fields to `\"\"` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-cloudwatchlogsrolearn"
+    },
+    "EnableLogFileValidation": {
+      "description": "Specifies whether log file validation is enabled. The default is false.\n\n> When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail does not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-enablelogfilevalidation"
+    },
+    "EventSelectors": {
+      "description": "Use event selectors to further specify the management and data event settings for your trail. By default, trails created without specific event selectors will be configured to log all read and write management events, and no data events. When an event occurs in your account, CloudTrail evaluates the event selector for all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If the event doesn't match any event selector, the trail doesn't log the event.\n\nYou can configure up to five event selectors for a trail.\n\nYou cannot apply both event selectors and advanced event selectors to a trail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-eventselectors"
+    },
+    "IncludeGlobalServiceEvents": {
+      "description": "Specifies whether the trail is publishing events from global services such as IAM to the log files.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-includeglobalserviceevents"
+    },
+    "InsightSelectors": {
+      "description": "A JSON string that contains the Insights types you want to log on a trail. `ApiCallRateInsight` and `ApiErrorRateInsight` are valid Insight types.\n\nThe `ApiCallRateInsight` Insights type analyzes write-only management API calls that are aggregated per minute against a baseline API call volume.\n\nThe `ApiErrorRateInsight` Insights type analyzes management API calls that result in error codes. The error is shown if the API call is unsuccessful.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-insightselectors"
+    },
+    "IsLogging": {
+      "description": "Whether the CloudTrail trail is currently logging AWS API calls.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-islogging"
+    },
+    "IsMultiRegionTrail": {
+      "description": "Specifies whether the trail applies only to the current Region or to all Regions. The default is false. If the trail exists only in the current Region and this value is set to true, shadow trails (replications of the trail) will be created in the other Regions. If the trail exists in all Regions and this value is set to false, the trail will remain in the Region where it was created, and its shadow trails in other Regions will be deleted. As a best practice, consider using trails that log events in all Regions.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-ismultiregiontrail"
+    },
+    "IsOrganizationTrail": {
+      "description": "Specifies whether the trail is applied to all accounts in an organization in AWS Organizations , or only for the current AWS account . The default is false, and cannot be true unless the call is made on behalf of an AWS account that is the management account for an organization in AWS Organizations . If the trail is not an organization trail and this is set to `true` , the trail will be created in all AWS accounts that belong to the organization. If the trail is an organization trail and this is set to `false` , the trail will remain in the current AWS account but be deleted from all member accounts in the organization.\n\n> Only the management account for the organization can convert an organization trail to a non-organization trail, or convert a non-organization trail to an organization trail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-isorganizationtrail"
+    },
+    "KMSKeyId": {
+      "description": "Specifies the AWS KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by \"alias/\", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.\n\nCloudTrail also supports AWS KMS multi-Region keys. For more information about multi-Region keys, see [Using multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *AWS Key Management Service Developer Guide* .\n\nExamples:\n\n- alias/MyAliasName\n- arn:aws:kms:us-east-2:123456789012:alias/MyAliasName\n- arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012\n- 12345678-1234-1234-1234-123456789012",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-kmskeyid"
+    },
+    "S3BucketName": {
+      "description": "Specifies the name of the Amazon S3 bucket designated for publishing log files. See [Amazon S3 Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-s3bucketname"
+    },
+    "S3KeyPrefix": {
+      "description": "Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see [Finding Your CloudTrail Log Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files) . The maximum length is 200 characters.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-s3keyprefix"
+    },
+    "SnsTopicArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-snstopicarn"
+    },
+    "SnsTopicName": {
+      "description": "Specifies the name or ARN of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-snstopicname"
+    },
+    "Tags": {
+      "description": "A custom set of tags (key-value pairs) for this trail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-tags"
+    },
+    "TrailName": {
+      "description": "Specifies the name of the trail. The name must meet the following requirements:\n\n- Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)\n- Start with a letter or number, and end with a letter or number\n- Be between 3 and 128 characters\n- Have no adjacent periods, underscores or dashes. Names like `my-_namespace` and `my--namespace` are not valid.\n- Not be in IP address format (for example, 192.168.5.4)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-trailname"
+    }
+  },
+  "typeName": "AWS::CloudTrail::Trail"
+}

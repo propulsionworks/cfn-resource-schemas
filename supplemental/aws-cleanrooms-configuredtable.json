@@ -1,0 +1,388 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#aws-resource-cleanrooms-configuredtable-return-values",
+    "properties": {
+      "ConfiguredTableIdentifier": {
+        "description": "Returns the unique identifier of the specified configured table.\n\nExample: `a1b2c3d4-5678-90ab-cdef-EXAMPLE33333`"
+      },
+      "Arn": {
+        "description": "Returns the Amazon Resource Name (ARN) of the specified configured table.\n\nExample: `arn:aws:cleanrooms:us-east-1:111122223333:configuredtable/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111`"
+      }
+    }
+  },
+  "definitions": {
+    "AdditionalAnalyses": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-additionalanalyses.html"
+    },
+    "AggregateColumn": {
+      "properties": {
+        "ColumnNames": {
+          "description": "Column names in configured table of aggregate columns.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregatecolumn.html#cfn-cleanrooms-configuredtable-aggregatecolumn-columnnames"
+        },
+        "Function": {
+          "description": "Aggregation function that can be applied to aggregate column in query.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregatecolumn.html#cfn-cleanrooms-configuredtable-aggregatecolumn-function"
+        }
+      },
+      "description": "Column in configured table that can be used in aggregate function in query.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregatecolumn.html"
+    },
+    "AggregateFunctionName": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregatefunctionname.html"
+    },
+    "AggregationConstraint": {
+      "properties": {
+        "ColumnName": {
+          "description": "Column in aggregation constraint for which there must be a minimum number of distinct values in an output row for it to be in the query output.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregationconstraint.html#cfn-cleanrooms-configuredtable-aggregationconstraint-columnname"
+        },
+        "Minimum": {
+          "description": "The minimum number of distinct values that an output row must be an aggregation of. Minimum threshold of distinct values for a specified column that must exist in an output row for it to be in the query output.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregationconstraint.html#cfn-cleanrooms-configuredtable-aggregationconstraint-minimum"
+        },
+        "Type": {
+          "description": "The type of aggregation the constraint allows. The only valid value is currently `COUNT_DISTINCT`.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregationconstraint.html#cfn-cleanrooms-configuredtable-aggregationconstraint-type"
+        }
+      },
+      "description": "Constraint on query output removing output rows that do not meet a minimum number of distinct values of a specified column.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregationconstraint.html"
+    },
+    "AggregationType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-aggregationtype.html"
+    },
+    "AllowedAnalyses": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-allowedanalyses.html"
+    },
+    "AllowedAnalysis": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-allowedanalysis.html"
+    },
+    "AllowedAnalysisProvider": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-allowedanalysisprovider.html"
+    },
+    "AllowedAnalysisProviders": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-allowedanalysisproviders.html"
+    },
+    "AnalysisMethod": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysismethod.html"
+    },
+    "AnalysisRule": {
+      "properties": {
+        "Policy": {
+          "description": "A policy that describes the associated data usage limitations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrule.html#cfn-cleanrooms-configuredtable-analysisrule-policy"
+        },
+        "Type": {
+          "description": "The type of analysis rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrule.html#cfn-cleanrooms-configuredtable-analysisrule-type"
+        }
+      },
+      "description": "A specification about how data from the configured table can be used in a query.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrule.html"
+    },
+    "AnalysisRuleAggregation": {
+      "properties": {
+        "AdditionalAnalyses": {
+          "description": "An indicator as to whether additional analyses (such as AWS Clean Rooms ML) can be applied to the output of the direct query.\n\nThe `additionalAnalyses` parameter is currently supported for the list analysis rule ( `AnalysisRuleList` ) and the custom analysis rule ( `AnalysisRuleCustom` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html#cfn-cleanrooms-configuredtable-analysisruleaggregation-additionalanalyses"
+        },
+        "AggregateColumns": {
+          "description": "The columns that query runners are allowed to use in aggregation queries.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html#cfn-cleanrooms-configuredtable-analysisruleaggregation-aggregatecolumns"
+        },
+        "AllowedJoinOperators": {
+          "description": "Which logical operators (if any) are to be used in an INNER JOIN match condition. Default is `AND` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html#cfn-cleanrooms-configuredtable-analysisruleaggregation-allowedjoinoperators"
+        },
+        "DimensionColumns": {
+          "description": "The columns that query runners are allowed to select, group by, or filter by.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html#cfn-cleanrooms-configuredtable-analysisruleaggregation-dimensioncolumns"
+        },
+        "JoinColumns": {
+          "description": "Columns in configured table that can be used in join statements and/or as aggregate columns. They can never be outputted directly.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html#cfn-cleanrooms-configuredtable-analysisruleaggregation-joincolumns"
+        },
+        "JoinRequired": {
+          "description": "Control that requires member who runs query to do a join with their configured table and/or other configured table in query.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html#cfn-cleanrooms-configuredtable-analysisruleaggregation-joinrequired"
+        },
+        "OutputConstraints": {
+          "description": "Columns that must meet a specific threshold value (after an aggregation function is applied to it) for each output row to be returned.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html#cfn-cleanrooms-configuredtable-analysisruleaggregation-outputconstraints"
+        },
+        "ScalarFunctions": {
+          "description": "Set of scalar functions that are allowed to be used on dimension columns and the output of aggregation of metrics.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html#cfn-cleanrooms-configuredtable-analysisruleaggregation-scalarfunctions"
+        }
+      },
+      "description": "A type of analysis rule that enables query structure and specified queries that produce aggregate statistics.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisruleaggregation.html"
+    },
+    "AnalysisRuleColumnName": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulecolumnname.html"
+    },
+    "AnalysisRuleCustom": {
+      "properties": {
+        "AdditionalAnalyses": {
+          "description": "An indicator as to whether additional analyses (such as AWS Clean Rooms ML) can be applied to the output of the direct query.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulecustom.html#cfn-cleanrooms-configuredtable-analysisrulecustom-additionalanalyses"
+        },
+        "AllowedAnalyses": {
+          "description": "The ARN of the analysis templates that are allowed by the custom analysis rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulecustom.html#cfn-cleanrooms-configuredtable-analysisrulecustom-allowedanalyses"
+        },
+        "AllowedAnalysisProviders": {
+          "description": "The IDs of the AWS accounts that are allowed to query by the custom analysis rule. Required when `allowedAnalyses` is `ANY_QUERY` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulecustom.html#cfn-cleanrooms-configuredtable-analysisrulecustom-allowedanalysisproviders"
+        },
+        "DifferentialPrivacy": {
+          "description": "The differential privacy configuration.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulecustom.html#cfn-cleanrooms-configuredtable-analysisrulecustom-differentialprivacy"
+        },
+        "DisallowedOutputColumns": {
+          "description": "A list of columns that aren't allowed to be shown in the query output.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulecustom.html#cfn-cleanrooms-configuredtable-analysisrulecustom-disallowedoutputcolumns"
+        }
+      },
+      "description": "A type of analysis rule that enables the table owner to approve custom SQL queries on their configured tables. It supports differential privacy.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulecustom.html"
+    },
+    "AnalysisRuleList": {
+      "properties": {
+        "AdditionalAnalyses": {
+          "description": "An indicator as to whether additional analyses (such as AWS Clean Rooms ML) can be applied to the output of the direct query.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulelist.html#cfn-cleanrooms-configuredtable-analysisrulelist-additionalanalyses"
+        },
+        "AllowedJoinOperators": {
+          "description": "The logical operators (if any) that are to be used in an INNER JOIN match condition. Default is `AND` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulelist.html#cfn-cleanrooms-configuredtable-analysisrulelist-allowedjoinoperators"
+        },
+        "JoinColumns": {
+          "description": "Columns that can be used to join a configured table with the table of the member who can query and other members' configured tables.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulelist.html#cfn-cleanrooms-configuredtable-analysisrulelist-joincolumns"
+        },
+        "ListColumns": {
+          "description": "Columns that can be listed in the output.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulelist.html#cfn-cleanrooms-configuredtable-analysisrulelist-listcolumns"
+        }
+      },
+      "description": "A type of analysis rule that enables row-level analysis.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-analysisrulelist.html"
+    },
+    "AthenaTableReference": {
+      "properties": {
+        "DatabaseName": {
+          "description": "The database name.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-athenatablereference.html#cfn-cleanrooms-configuredtable-athenatablereference-databasename"
+        },
+        "OutputLocation": {
+          "description": "The output location for the Athena table.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-athenatablereference.html#cfn-cleanrooms-configuredtable-athenatablereference-outputlocation"
+        },
+        "TableName": {
+          "description": "The table reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-athenatablereference.html#cfn-cleanrooms-configuredtable-athenatablereference-tablename"
+        },
+        "WorkGroup": {
+          "description": "The workgroup of the Athena table reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-athenatablereference.html#cfn-cleanrooms-configuredtable-athenatablereference-workgroup"
+        }
+      },
+      "description": "A reference to a table within Athena.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-athenatablereference.html"
+    },
+    "ConfiguredTableAnalysisRulePolicy": {
+      "properties": {
+        "V1": {
+          "description": "Controls on the query specifications that can be run on a configured table.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-configuredtableanalysisrulepolicy.html#cfn-cleanrooms-configuredtable-configuredtableanalysisrulepolicy-v1"
+        }
+      },
+      "description": "Controls on the query specifications that can be run on a configured table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-configuredtableanalysisrulepolicy.html"
+    },
+    "ConfiguredTableAnalysisRulePolicyV1": {
+      "properties": {},
+      "description": "Controls on the query specifications that can be run on a configured table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-configuredtableanalysisrulepolicyv1.html"
+    },
+    "ConfiguredTableAnalysisRuleType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-configuredtableanalysisruletype.html"
+    },
+    "DifferentialPrivacy": {
+      "properties": {
+        "Columns": {
+          "description": "The name of the column, such as user_id, that contains the unique identifier of your users, whose privacy you want to protect. If you want to turn on differential privacy for two or more tables in a collaboration, you must configure the same column as the user identifier column in both analysis rules.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-differentialprivacy.html#cfn-cleanrooms-configuredtable-differentialprivacy-columns"
+        }
+      },
+      "description": "The analysis method allowed for the configured tables.\n\n`DIRECT_QUERY` allows SQL queries to be run directly on this table.\n\n`DIRECT_JOB` allows PySpark jobs to be run directly on this table.\n\n`MULTIPLE` allows both SQL queries and PySpark jobs to be run directly on this table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-differentialprivacy.html"
+    },
+    "DifferentialPrivacyColumn": {
+      "properties": {
+        "Name": {
+          "description": "The name of the column, such as user_id, that contains the unique identifier of your users, whose privacy you want to protect. If you want to turn on differential privacy for two or more tables in a collaboration, you must configure the same column as the user identifier column in both analysis rules.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-differentialprivacycolumn.html#cfn-cleanrooms-configuredtable-differentialprivacycolumn-name"
+        }
+      },
+      "description": "Specifies the name of the column that contains the unique identifier of your users, whose privacy you want to protect.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-differentialprivacycolumn.html"
+    },
+    "DisallowedOutputColumns": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-disallowedoutputcolumns.html"
+    },
+    "GlueTableReference": {
+      "properties": {
+        "DatabaseName": {
+          "description": "The name of the database the AWS Glue table belongs to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-gluetablereference.html#cfn-cleanrooms-configuredtable-gluetablereference-databasename"
+        },
+        "TableName": {
+          "description": "The name of the AWS Glue table.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-gluetablereference.html#cfn-cleanrooms-configuredtable-gluetablereference-tablename"
+        }
+      },
+      "description": "A reference to a table within an AWS Glue data catalog.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-gluetablereference.html"
+    },
+    "JoinOperator": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-joinoperator.html"
+    },
+    "JoinRequiredOption": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-joinrequiredoption.html"
+    },
+    "ScalarFunctions": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-scalarfunctions.html"
+    },
+    "SelectedAnalysisMethod": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-selectedanalysismethod.html"
+    },
+    "SelectedAnalysisMethods": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-selectedanalysismethods.html"
+    },
+    "SnowflakeTableReference": {
+      "properties": {
+        "AccountIdentifier": {
+          "description": "The account identifier for the Snowflake table reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketablereference.html#cfn-cleanrooms-configuredtable-snowflaketablereference-accountidentifier"
+        },
+        "DatabaseName": {
+          "description": "The name of the database the Snowflake table belongs to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketablereference.html#cfn-cleanrooms-configuredtable-snowflaketablereference-databasename"
+        },
+        "SchemaName": {
+          "description": "The schema name of the Snowflake table reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketablereference.html#cfn-cleanrooms-configuredtable-snowflaketablereference-schemaname"
+        },
+        "SecretArn": {
+          "description": "The secret ARN of the Snowflake table reference.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketablereference.html#cfn-cleanrooms-configuredtable-snowflaketablereference-secretarn"
+        },
+        "TableName": {
+          "description": "The name of the Snowflake table.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketablereference.html#cfn-cleanrooms-configuredtable-snowflaketablereference-tablename"
+        },
+        "TableSchema": {
+          "description": "The schema of the Snowflake table.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketablereference.html#cfn-cleanrooms-configuredtable-snowflaketablereference-tableschema"
+        }
+      },
+      "description": "A reference to a table within Snowflake.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketablereference.html"
+    },
+    "SnowflakeTableSchema": {
+      "properties": {},
+      "description": "The schema of a Snowflake table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketableschema.html"
+    },
+    "SnowflakeTableSchemaV1": {
+      "properties": {
+        "ColumnName": {
+          "description": "The column name.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketableschemav1.html#cfn-cleanrooms-configuredtable-snowflaketableschemav1-columnname"
+        },
+        "ColumnType": {
+          "description": "The column's data type. Supported data types: `ARRAY` , `BIGINT` , `BOOLEAN` , `CHAR` , `DATE` , `DECIMAL` , `DOUBLE` , `DOUBLE PRECISION` , `FLOAT` , `FLOAT4` , `INT` , `INTEGER` , `MAP` , `NUMERIC` , `NUMBER` , `REAL` , `SMALLINT` , `STRING` , `TIMESTAMP` , `TIMESTAMP_LTZ` , `TIMESTAMP_NTZ` , `DATETIME` , `TINYINT` , `VARCHAR` , `TEXT` , `CHARACTER` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketableschemav1.html#cfn-cleanrooms-configuredtable-snowflaketableschemav1-columntype"
+        }
+      },
+      "description": "The Snowflake table schema.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-snowflaketableschemav1.html"
+    },
+    "TableReference": {
+      "properties": {},
+      "description": "A pointer to the dataset that underlies this table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-tablereference.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-tag.html#cfn-cleanrooms-configuredtable-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-tag.html#cfn-cleanrooms-configuredtable-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-configuredtable-tag.html"
+    }
+  },
+  "description": "Creates a new configured table resource.",
+  "properties": {
+    "AllowedColumns": {
+      "description": "The columns within the underlying AWS Glue table that can be utilized within collaborations.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-allowedcolumns"
+    },
+    "AnalysisMethod": {
+      "description": "The analysis method for the configured table.\n\n`DIRECT_QUERY` allows SQL queries to be run directly on this table.\n\n`DIRECT_JOB` allows PySpark jobs to be run directly on this table.\n\n`MULTIPLE` allows both SQL queries and PySpark jobs to be run directly on this table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-analysismethod"
+    },
+    "AnalysisRules": {
+      "description": "The analysis rule that was created for the configured table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-analysisrules"
+    },
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-arn"
+    },
+    "ConfiguredTableIdentifier": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-configuredtableidentifier"
+    },
+    "Description": {
+      "description": "A description for the configured table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-description"
+    },
+    "Name": {
+      "description": "A name for the configured table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-name"
+    },
+    "SelectedAnalysisMethods": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-selectedanalysismethods"
+    },
+    "TableReference": {
+      "description": "The table that this configured table represents.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-tablereference"
+    },
+    "Tags": {
+      "description": "An optional label that you can assign to a resource when you create it. Each tag consists of a key and an optional value, both of which you define. When you use tagging, you can also use tag-based access control in IAM policies to control access to this resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-configuredtable.html#cfn-cleanrooms-configuredtable-tags"
+    }
+  },
+  "typeName": "AWS::CleanRooms::ConfiguredTable"
+}

@@ -1,0 +1,158 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#aws-resource-osis-pipeline-return-values",
+    "properties": {
+      "PipelineArn": {
+        "description": "The Amazon Resource Name (ARN) of the pipeline."
+      },
+      "VpcEndpoints": {
+        "description": "The VPC interface endpoints that have access to the pipeline."
+      },
+      "IngestEndpointUrls": {
+        "description": "A list of the ingestion endpoints for the pipeline that you can send data to. Currently, only a single ingestion endpoint is supported for a pipeline. For example, `my-pipeline-123456789012.us-east-1.osis.amazonaws.com` ."
+      },
+      "VpcEndpointService": {
+        "description": "The VPC endpoint service name for the pipeline."
+      }
+    }
+  },
+  "definitions": {
+    "BufferOptions": {
+      "properties": {
+        "PersistentBufferEnabled": {
+          "description": "Whether persistent buffering should be enabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-bufferoptions.html#cfn-osis-pipeline-bufferoptions-persistentbufferenabled"
+        }
+      },
+      "description": "Options that specify the configuration of a persistent buffer. To configure how OpenSearch Ingestion encrypts this data, set the `EncryptionAtRestOptions` . For more information, see [Persistent buffering](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/osis-features-overview.html#persistent-buffering) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-bufferoptions.html"
+    },
+    "EncryptionAtRestOptions": {
+      "properties": {
+        "KmsKeyArn": {
+          "description": "The ARN of the KMS key used to encrypt buffer data. By default, data is encrypted using an AWS owned key.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-encryptionatrestoptions.html#cfn-osis-pipeline-encryptionatrestoptions-kmskeyarn"
+        }
+      },
+      "description": "Options to control how OpenSearch encrypts buffer data.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-encryptionatrestoptions.html"
+    },
+    "LogPublishingOptions": {
+      "properties": {
+        "CloudWatchLogDestination": {
+          "description": "The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs. This parameter is required if `IsLoggingEnabled` is set to `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-logpublishingoptions.html#cfn-osis-pipeline-logpublishingoptions-cloudwatchlogdestination"
+        },
+        "IsLoggingEnabled": {
+          "description": "Whether logs should be published.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-logpublishingoptions.html#cfn-osis-pipeline-logpublishingoptions-isloggingenabled"
+        }
+      },
+      "description": "Container for the values required to configure logging for the pipeline. If you don't specify these values, OpenSearch Ingestion will not publish logs from your application to CloudWatch Logs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-logpublishingoptions.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-tag.html#cfn-osis-pipeline-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-tag.html#cfn-osis-pipeline-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-tag.html"
+    },
+    "VpcEndpoint": {
+      "properties": {
+        "VpcEndpointId": {
+          "description": "The unique identifier of the endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcendpoint.html#cfn-osis-pipeline-vpcendpoint-vpcendpointid"
+        },
+        "VpcId": {
+          "description": "The ID for your VPC. AWS PrivateLink generates this value when you create a VPC.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcendpoint.html#cfn-osis-pipeline-vpcendpoint-vpcid"
+        },
+        "VpcOptions": {
+          "description": "Information about the VPC, including associated subnets and security groups.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcendpoint.html#cfn-osis-pipeline-vpcendpoint-vpcoptions"
+        }
+      },
+      "description": "An OpenSearch Ingestion-managed VPC endpoint that will access one or more pipelines.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcendpoint.html"
+    },
+    "VpcOptions": {
+      "properties": {
+        "SecurityGroupIds": {
+          "description": "A list of security groups associated with the VPC endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcoptions.html#cfn-osis-pipeline-vpcoptions-securitygroupids"
+        },
+        "SubnetIds": {
+          "description": "A list of subnet IDs associated with the VPC endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcoptions.html#cfn-osis-pipeline-vpcoptions-subnetids"
+        },
+        "VpcAttachmentOptions": {
+          "description": "Options for attaching a VPC to a pipeline.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcoptions.html#cfn-osis-pipeline-vpcoptions-vpcattachmentoptions"
+        },
+        "VpcEndpointManagement": {
+          "description": "Defines whether you or Amazon OpenSearch Ingestion service create and manage the VPC endpoint configured for the pipeline.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcoptions.html#cfn-osis-pipeline-vpcoptions-vpcendpointmanagement"
+        }
+      },
+      "description": "Options that specify the subnets and security groups for an OpenSearch Ingestion VPC endpoint.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcoptions.html"
+    }
+  },
+  "description": "The AWS::OSIS::Pipeline resource creates an Amazon OpenSearch Ingestion pipeline.",
+  "properties": {
+    "BufferOptions": {
+      "description": "Options that specify the configuration of a persistent buffer. To configure how OpenSearch Ingestion encrypts this data, set the `EncryptionAtRestOptions` . For more information, see [Persistent buffering](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/osis-features-overview.html#persistent-buffering) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-bufferoptions"
+    },
+    "EncryptionAtRestOptions": {
+      "description": "Options to control how OpenSearch encrypts buffer data.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-encryptionatrestoptions"
+    },
+    "IngestEndpointUrls": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-ingestendpointurls"
+    },
+    "LogPublishingOptions": {
+      "description": "Key-value pairs that represent log publishing settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-logpublishingoptions"
+    },
+    "MaxUnits": {
+      "description": "The maximum pipeline capacity, in Ingestion Compute Units (ICUs).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-maxunits"
+    },
+    "MinUnits": {
+      "description": "The minimum pipeline capacity, in Ingestion Compute Units (ICUs).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-minunits"
+    },
+    "PipelineArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-pipelinearn"
+    },
+    "PipelineConfigurationBody": {
+      "description": "The Data Prepper pipeline configuration in YAML format.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-pipelineconfigurationbody"
+    },
+    "PipelineName": {
+      "description": "The name of the pipeline.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-pipelinename"
+    },
+    "Tags": {
+      "description": "List of tags to add to the pipeline upon creation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-tags"
+    },
+    "VpcEndpointService": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-vpcendpointservice"
+    },
+    "VpcEndpoints": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-vpcendpoints"
+    },
+    "VpcOptions": {
+      "description": "Options that specify the subnets and security groups for an OpenSearch Ingestion VPC endpoint.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipeline.html#cfn-osis-pipeline-vpcoptions"
+    }
+  },
+  "typeName": "AWS::OSIS::Pipeline"
+}

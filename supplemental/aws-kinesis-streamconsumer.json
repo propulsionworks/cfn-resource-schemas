@@ -1,0 +1,48 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-streamconsumer.html#aws-resource-kinesis-streamconsumer-return-values",
+    "properties": {
+      "ConsumerCreationTimestamp": {
+        "description": "The time at which the consumer was created."
+      },
+      "ConsumerName": {
+        "description": "The name you gave the consumer when you registered it."
+      },
+      "ConsumerARN": {
+        "description": "When you register a consumer, Kinesis Data Streams generates an ARN for it. You need this ARN to be able to call [SubscribeToShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html) .\n\nIf you delete a consumer and then create a new one with the same name, it won't have the same ARN. That's because consumer ARNs contain the creation timestamp. This is important to keep in mind if you have IAM policies that reference consumer ARNs."
+      },
+      "ConsumerStatus": {
+        "description": "A consumer can't read data while in the `CREATING` or `DELETING` states."
+      },
+      "StreamARN": {
+        "description": "The ARN of the data stream with which the consumer is registered."
+      },
+      "Id": {}
+    }
+  },
+  "definitions": {},
+  "description": "Use the AWS CloudFormation `AWS::Kinesis::StreamConsumer` resource to register a consumer with a Kinesis data stream. The consumer you register can then call [SubscribeToShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html) to receive data from the stream using enhanced fan-out, at a rate of up to 2 MiB per second for every shard you subscribe to. This rate is unaffected by the total number of consumers that read from the same stream.\n\nYou can register up to five consumers per stream. However, you can request a limit increase using the [Kinesis Data Streams limits form](https://docs.aws.amazon.com/support/v1?#/) . A given consumer can only be registered with one stream at a time.\n\nFor more information, see [Using Consumers with Enhanced Fan-Out](https://docs.aws.amazon.com/streams/latest/dev/introduction-to-enhanced-consumers.html) .",
+  "properties": {
+    "ConsumerARN": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-streamconsumer.html#cfn-kinesis-streamconsumer-consumerarn"
+    },
+    "ConsumerCreationTimestamp": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-streamconsumer.html#cfn-kinesis-streamconsumer-consumercreationtimestamp"
+    },
+    "ConsumerName": {
+      "description": "The name of the consumer is something you choose when you register the consumer.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-streamconsumer.html#cfn-kinesis-streamconsumer-consumername"
+    },
+    "ConsumerStatus": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-streamconsumer.html#cfn-kinesis-streamconsumer-consumerstatus"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-streamconsumer.html#cfn-kinesis-streamconsumer-id"
+    },
+    "StreamARN": {
+      "description": "The ARN of the stream with which you registered the consumer.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-streamconsumer.html#cfn-kinesis-streamconsumer-streamarn"
+    }
+  },
+  "typeName": "AWS::Kinesis::StreamConsumer"
+}

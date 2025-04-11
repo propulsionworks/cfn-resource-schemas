@@ -1,0 +1,208 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#aws-resource-msk-replicator-return-values",
+    "properties": {
+      "ReplicatorArn": {
+        "description": "Amazon Resource Name (ARN) for the created replicator."
+      },
+      "CurrentVersion": {
+        "description": "The current version number of the replicator."
+      }
+    }
+  },
+  "definitions": {
+    "AmazonMskCluster": {
+      "properties": {
+        "MskClusterArn": {
+          "description": "The Amazon Resource Name (ARN) of an Amazon MSK cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-amazonmskcluster.html#cfn-msk-replicator-amazonmskcluster-mskclusterarn"
+        }
+      },
+      "description": "Details of an Amazon MSK Cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-amazonmskcluster.html"
+    },
+    "ConsumerGroupReplication": {
+      "properties": {
+        "ConsumerGroupsToExclude": {
+          "description": "List of regular expression patterns indicating the consumer groups that should not be replicated.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupreplication.html#cfn-msk-replicator-consumergroupreplication-consumergroupstoexclude"
+        },
+        "ConsumerGroupsToReplicate": {
+          "description": "List of regular expression patterns indicating the consumer groups to copy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupreplication.html#cfn-msk-replicator-consumergroupreplication-consumergroupstoreplicate"
+        },
+        "DetectAndCopyNewConsumerGroups": {
+          "description": "Enables synchronization of consumer groups to target cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupreplication.html#cfn-msk-replicator-consumergroupreplication-detectandcopynewconsumergroups"
+        },
+        "SynchroniseConsumerGroupOffsets": {
+          "description": "Enables synchronization of consumer group offsets to target cluster. The translated offsets will be written to topic __consumer_offsets.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupreplication.html#cfn-msk-replicator-consumergroupreplication-synchroniseconsumergroupoffsets"
+        }
+      },
+      "description": "Details about consumer group replication.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupreplication.html"
+    },
+    "KafkaCluster": {
+      "properties": {
+        "AmazonMskCluster": {
+          "description": "Details of an Amazon MSK Cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkacluster.html#cfn-msk-replicator-kafkacluster-amazonmskcluster"
+        },
+        "VpcConfig": {
+          "description": "Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkacluster.html#cfn-msk-replicator-kafkacluster-vpcconfig"
+        }
+      },
+      "description": "Information about Kafka Cluster to be used as source / target for replication.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkacluster.html"
+    },
+    "KafkaClusterClientVpcConfig": {
+      "properties": {
+        "SecurityGroupIds": {
+          "description": "The security groups to attach to the ENIs for the broker nodes.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterclientvpcconfig.html#cfn-msk-replicator-kafkaclusterclientvpcconfig-securitygroupids"
+        },
+        "SubnetIds": {
+          "description": "The list of subnets in the client VPC to connect to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterclientvpcconfig.html#cfn-msk-replicator-kafkaclusterclientvpcconfig-subnetids"
+        }
+      },
+      "description": "Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterclientvpcconfig.html"
+    },
+    "ReplicationInfo": {
+      "properties": {
+        "ConsumerGroupReplication": {
+          "description": "Configuration relating to consumer group replication.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-consumergroupreplication"
+        },
+        "SourceKafkaClusterArn": {
+          "description": "The ARN of the source Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-sourcekafkaclusterarn"
+        },
+        "TargetCompressionType": {
+          "description": "The compression type to use when producing records to target cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-targetcompressiontype"
+        },
+        "TargetKafkaClusterArn": {
+          "description": "The ARN of the target Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-targetkafkaclusterarn"
+        },
+        "TopicReplication": {
+          "description": "Configuration relating to topic replication.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-topicreplication"
+        }
+      },
+      "description": "Specifies configuration for replication between a source and target Kafka cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html"
+    },
+    "ReplicationStartingPosition": {
+      "properties": {
+        "Type": {
+          "description": "The type of replication starting position.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationstartingposition.html#cfn-msk-replicator-replicationstartingposition-type"
+        }
+      },
+      "description": "Specifies the position in the topics to start replicating from.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationstartingposition.html"
+    },
+    "ReplicationStartingPositionType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationstartingpositiontype.html"
+    },
+    "ReplicationTopicNameConfiguration": {
+      "properties": {
+        "Type": {
+          "description": "The type of replication topic name configuration, identical to upstream topic name or prefixed with source cluster alias.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationtopicnameconfiguration.html#cfn-msk-replicator-replicationtopicnameconfiguration-type"
+        }
+      },
+      "description": "Configuration for specifying replicated topic names will be the same as their corresponding upstream topics or prefixed with source cluster alias.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationtopicnameconfiguration.html"
+    },
+    "ReplicationTopicNameConfigurationType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationtopicnameconfigurationtype.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-tag.html#cfn-msk-replicator-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-tag.html#cfn-msk-replicator-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-tag.html"
+    },
+    "TopicReplication": {
+      "properties": {
+        "CopyAccessControlListsForTopics": {
+          "description": "Whether to periodically configure remote topic ACLs to match their corresponding upstream topics.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-topicreplication.html#cfn-msk-replicator-topicreplication-copyaccesscontrollistsfortopics"
+        },
+        "CopyTopicConfigurations": {
+          "description": "Whether to periodically configure remote topics to match their corresponding upstream topics.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-topicreplication.html#cfn-msk-replicator-topicreplication-copytopicconfigurations"
+        },
+        "DetectAndCopyNewTopics": {
+          "description": "Whether to periodically check for new topics and partitions.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-topicreplication.html#cfn-msk-replicator-topicreplication-detectandcopynewtopics"
+        },
+        "StartingPosition": {
+          "description": "Specifies the position in the topics to start replicating from.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-topicreplication.html#cfn-msk-replicator-topicreplication-startingposition"
+        },
+        "TopicNameConfiguration": {
+          "description": "Configuration for specifying replicated topic names will be the same as their corresponding upstream topics or prefixed with source cluster alias.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-topicreplication.html#cfn-msk-replicator-topicreplication-topicnameconfiguration"
+        },
+        "TopicsToExclude": {
+          "description": "List of regular expression patterns indicating the topics that should not be replicated.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-topicreplication.html#cfn-msk-replicator-topicreplication-topicstoexclude"
+        },
+        "TopicsToReplicate": {
+          "description": "List of regular expression patterns indicating the topics to copy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-topicreplication.html#cfn-msk-replicator-topicreplication-topicstoreplicate"
+        }
+      },
+      "description": "Details about topic replication.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-topicreplication.html"
+    }
+  },
+  "description": "Creates the replicator.",
+  "properties": {
+    "CurrentVersion": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-currentversion"
+    },
+    "Description": {
+      "description": "A summary description of the replicator.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-description"
+    },
+    "KafkaClusters": {
+      "description": "Kafka Clusters to use in setting up sources / targets for replication.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-kafkaclusters"
+    },
+    "ReplicationInfoList": {
+      "description": "A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-replicationinfolist"
+    },
+    "ReplicatorArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-replicatorarn"
+    },
+    "ReplicatorName": {
+      "description": "The name of the replicator. Alpha-numeric characters with '-' are allowed.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-replicatorname"
+    },
+    "ServiceExecutionRoleArn": {
+      "description": "The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-serviceexecutionrolearn"
+    },
+    "Tags": {
+      "description": "List of tags to attach to created Replicator.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-tags"
+    }
+  },
+  "typeName": "AWS::MSK::Replicator"
+}

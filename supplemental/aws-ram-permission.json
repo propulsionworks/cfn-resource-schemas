@@ -1,0 +1,64 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#aws-resource-ram-permission-return-values",
+    "properties": {
+      "Version": {
+        "description": "The version number for this version of the permission."
+      },
+      "PermissionType": {
+        "description": "The type of managed permission. This can be one of the following values:\n\n- *AWS_MANAGED_PERMISSION* – AWS created and manages this managed permission. You can associate it with your resource shares, but you can't modify it.\n- *CUSTOMER_MANAGED_PERMISSION* – You, or another principal in your account created this managed permission. You can associate it with your resource shares and create new versions that have different permissions."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the new permission."
+      },
+      "IsResourceTypeDefault": {
+        "description": "Specifies whether this permission is the default for new resource shares that include resources of the associated resource type."
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ram-permission-tag.html#cfn-ram-permission-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ram-permission-tag.html#cfn-ram-permission-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ram-permission-tag.html"
+    }
+  },
+  "description": "Creates a customer managed permission for a specified resource type that you can attach to resource shares. It is created in the AWS Region in which you call the operation.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#cfn-ram-permission-arn"
+    },
+    "IsResourceTypeDefault": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#cfn-ram-permission-isresourcetypedefault"
+    },
+    "Name": {
+      "description": "Specifies the name of the customer managed permission. The name must be unique within the AWS Region .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#cfn-ram-permission-name"
+    },
+    "PermissionType": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#cfn-ram-permission-permissiontype"
+    },
+    "PolicyTemplate": {
+      "description": "A string in JSON format string that contains the following elements of a resource-based policy:\n\n- *Effect* : must be set to `ALLOW` .\n- *Action* : specifies the actions that are allowed by this customer managed permission. The list must contain only actions that are supported by the specified resource type. For a list of all actions supported by each resource type, see [Actions, resources, and condition keys for AWS services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html) in the *AWS Identity and Access Management User Guide* .\n- *Condition* : (optional) specifies conditional parameters that must evaluate to true when a user attempts an action for that action to be allowed. For more information about the Condition element, see [IAM policies: Condition element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *AWS Identity and Access Management User Guide* .\n\nThis template can't include either the `Resource` or `Principal` elements. Those are both filled in by AWS RAM when it instantiates the resource-based policy on each resource shared using this managed permission. The `Resource` comes from the ARN of the specific resource that you are sharing. The `Principal` comes from the list of identities added to the resource share.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#cfn-ram-permission-policytemplate"
+    },
+    "ResourceType": {
+      "description": "Specifies the name of the resource type that this customer managed permission applies to.\n\nThe format is `*<service-code>* : *<resource-type>*` and is not case sensitive. For example, to specify an Amazon EC2 Subnet, you can use the string `ec2:subnet` . To see the list of valid values for this parameter, query the [ListResourceTypes](https://docs.aws.amazon.com/ram/latest/APIReference/API_ListResourceTypes.html) operation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#cfn-ram-permission-resourcetype"
+    },
+    "Tags": {
+      "description": "Specifies a list of one or more tag key and value pairs to attach to the permission.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#cfn-ram-permission-tags"
+    },
+    "Version": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-permission.html#cfn-ram-permission-version"
+    }
+  },
+  "typeName": "AWS::RAM::Permission"
+}

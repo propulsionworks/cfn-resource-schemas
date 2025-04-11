@@ -1,0 +1,76 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html#aws-resource-sagemaker-app-return-values",
+    "properties": {
+      "AppArn": {
+        "description": "The Amazon Resource Name (ARN) of the app, such as `arn:aws:sagemaker:us-west-2:account-id:app/my-app-name` ."
+      }
+    }
+  },
+  "definitions": {
+    "ResourceSpec": {
+      "properties": {
+        "InstanceType": {
+          "description": "The instance type that the image version runs on.\n\n> *JupyterServer apps* only support the `system` value.\n> \n> For *KernelGateway apps* , the `system` value is translated to `ml.t3.medium` . KernelGateway apps also support all other values for available instance types.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-app-resourcespec.html#cfn-sagemaker-app-resourcespec-instancetype"
+        },
+        "LifecycleConfigArn": {
+          "description": "The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-app-resourcespec.html#cfn-sagemaker-app-resourcespec-lifecycleconfigarn"
+        },
+        "SageMakerImageArn": {
+          "description": "The ARN of the SageMaker AI image that the image version belongs to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-app-resourcespec.html#cfn-sagemaker-app-resourcespec-sagemakerimagearn"
+        },
+        "SageMakerImageVersionArn": {
+          "description": "The ARN of the image version created on the instance. To clear the value set for `SageMakerImageVersionArn` , pass `None` as the value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-app-resourcespec.html#cfn-sagemaker-app-resourcespec-sagemakerimageversionarn"
+        }
+      },
+      "description": "Specifies the ARN's of a SageMaker AI image and SageMaker AI image version, and the instance type that the version runs on.\n\n> When both `SageMakerImageVersionArn` and `SageMakerImageArn` are passed, `SageMakerImageVersionArn` is used. Any updates to `SageMakerImageArn` will not take effect if `SageMakerImageVersionArn` already exists in the `ResourceSpec` because `SageMakerImageVersionArn` always takes precedence. To clear the value set for `SageMakerImageVersionArn` , pass `None` as the value.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-app-resourcespec.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-app-tag.html#cfn-sagemaker-app-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-app-tag.html#cfn-sagemaker-app-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-app-tag.html"
+    }
+  },
+  "description": "Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker AI upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.",
+  "properties": {
+    "AppArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html#cfn-sagemaker-app-apparn"
+    },
+    "AppName": {
+      "description": "The name of the app.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html#cfn-sagemaker-app-appname"
+    },
+    "AppType": {
+      "description": "The type of app.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html#cfn-sagemaker-app-apptype"
+    },
+    "DomainId": {
+      "description": "The domain ID.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html#cfn-sagemaker-app-domainid"
+    },
+    "ResourceSpec": {
+      "description": "Specifies the ARNs of a SageMaker image and SageMaker image version, and the instance type that the version runs on.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html#cfn-sagemaker-app-resourcespec"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html#cfn-sagemaker-app-tags"
+    },
+    "UserProfileName": {
+      "description": "The user profile name.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-app.html#cfn-sagemaker-app-userprofilename"
+    }
+  },
+  "typeName": "AWS::SageMaker::App"
+}

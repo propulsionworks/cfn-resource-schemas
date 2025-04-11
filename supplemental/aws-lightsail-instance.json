@@ -1,0 +1,337 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#aws-resource-lightsail-instance-return-values",
+    "properties": {
+      "SshKeyName": {
+        "description": "The name of the SSH key pair used by the instance."
+      },
+      "Networking.MonthlyTransfer.GbPerMonthAllocated": {
+        "description": "The amount of allocated monthly data transfer (in GB) for an instance."
+      },
+      "Hardware.CpuCount": {
+        "description": "The number of vCPUs the instance has."
+      },
+      "IsStaticIp": {
+        "description": "A Boolean value indicating whether the instance has a static IP assigned to it."
+      },
+      "PrivateIpAddress": {
+        "description": "The private IP address of the instance."
+      },
+      "UserName": {
+        "description": "The user name for connecting to the instance (for example, `ec2-user` )."
+      },
+      "ResourceType": {
+        "description": "The resource type of the instance (for example, `Instance` )."
+      },
+      "Location.RegionName": {
+        "description": "The AWS Region of the instance."
+      },
+      "PublicIpAddress": {
+        "description": "The public IP address of the instance."
+      },
+      "Location.AvailabilityZone": {
+        "description": "The AWS Region and Availability Zone where the instance is located."
+      },
+      "State.Code": {
+        "description": "The status code of the instance."
+      },
+      "SupportCode": {
+        "description": "The support code of the instance.\n\nInclude this code in your email to support when you have questions about an instance or another resource in Lightsail . This code helps our support team to look up your Lightsail information."
+      },
+      "State.Name": {
+        "description": "The state of the instance (for example, `running` or `pending` )."
+      },
+      "InstanceArn": {
+        "description": "The Amazon Resource Name (ARN) of the instance (for example, `arn:aws:lightsail:us-east-2:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE` )."
+      },
+      "Hardware.RamSizeInGb": {
+        "description": "The amount of RAM in GB on the instance (for example, `1.0` )."
+      },
+      "Ipv6Addresses": {
+        "description": "The IPv6 addresses of the instance."
+      }
+    }
+  },
+  "definitions": {
+    "AddOn": {
+      "properties": {
+        "AddOnType": {
+          "description": "The add-on type (for example, `AutoSnapshot` ).\n\n> `AutoSnapshot` is the only add-on that can be enabled for an instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-addon.html#cfn-lightsail-instance-addon-addontype"
+        },
+        "AutoSnapshotAddOnRequest": {
+          "description": "The parameters for the automatic snapshot add-on, such as the daily time when an automatic snapshot will be created.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-addon.html#cfn-lightsail-instance-addon-autosnapshotaddonrequest"
+        },
+        "Status": {
+          "description": "The status of the add-on.\n\nValid Values: `Enabled` | `Disabled`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-addon.html#cfn-lightsail-instance-addon-status"
+        }
+      },
+      "description": "`AddOn` is a property of the [AWS::Lightsail::Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html) resource. It describes the add-ons for an instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-addon.html"
+    },
+    "AutoSnapshotAddOn": {
+      "properties": {
+        "SnapshotTimeOfDay": {
+          "description": "The daily time when an automatic snapshot will be created.\n\nConstraints:\n\n- Must be in `HH:00` format, and in an hourly increment.\n- Specified in Coordinated Universal Time (UTC).\n- The snapshot will be automatically created between the time specified and up to 45 minutes after.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-autosnapshotaddon.html#cfn-lightsail-instance-autosnapshotaddon-snapshottimeofday"
+        }
+      },
+      "description": "`AutoSnapshotAddOn` is a property of the [AddOn](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-addon.html) property. It describes the automatic snapshot add-on for an instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-autosnapshotaddon.html"
+    },
+    "Disk": {
+      "properties": {
+        "AttachedTo": {
+          "description": "The resources to which the disk is attached.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-disk.html#cfn-lightsail-instance-disk-attachedto"
+        },
+        "AttachmentState": {
+          "description": "(Deprecated) The attachment state of the disk.\n\n> In releases prior to November 14, 2017, this parameter returned `attached` for system disks in the API response. It is now deprecated, but still included in the response. Use `isAttached` instead.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-disk.html#cfn-lightsail-instance-disk-attachmentstate"
+        },
+        "DiskName": {
+          "description": "The unique name of the disk.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-disk.html#cfn-lightsail-instance-disk-diskname"
+        },
+        "IOPS": {
+          "description": "The input/output operations per second (IOPS) of the disk.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-disk.html#cfn-lightsail-instance-disk-iops"
+        },
+        "IsSystemDisk": {
+          "description": "A Boolean value indicating whether this disk is a system disk (has an operating system loaded on it).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-disk.html#cfn-lightsail-instance-disk-issystemdisk"
+        },
+        "Path": {
+          "description": "The disk path.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-disk.html#cfn-lightsail-instance-disk-path"
+        },
+        "SizeInGb": {
+          "description": "The size of the disk in GB.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-disk.html#cfn-lightsail-instance-disk-sizeingb"
+        }
+      },
+      "description": "`Disk` is a property of the [Hardware](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-hardware.html) property. It describes a disk attached to an instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-disk.html"
+    },
+    "Hardware": {
+      "properties": {
+        "CpuCount": {
+          "description": "The number of vCPUs the instance has.\n\n> The `CpuCount` property is read-only and should not be specified in a create instance or update instance request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-hardware.html#cfn-lightsail-instance-hardware-cpucount"
+        },
+        "Disks": {
+          "description": "The disks attached to the instance.\n\nThe instance restarts when performing an attach disk or detach disk request. This resets the public IP address of your instance if a static IP isn't attached to it.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-hardware.html#cfn-lightsail-instance-hardware-disks"
+        },
+        "RamSizeInGb": {
+          "description": "The amount of RAM in GB on the instance (for example, `1.0` ).\n\n> The `RamSizeInGb` property is read-only and should not be specified in a create instance or update instance request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-hardware.html#cfn-lightsail-instance-hardware-ramsizeingb"
+        }
+      },
+      "description": "`Hardware` is a property of the [AWS::Lightsail::Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html) resource. It describes the hardware properties for the instance, such as the vCPU count, attached disks, and amount of RAM.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-hardware.html"
+    },
+    "Location": {
+      "properties": {
+        "AvailabilityZone": {
+          "description": "The Availability Zone for the instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-location.html#cfn-lightsail-instance-location-availabilityzone"
+        },
+        "RegionName": {
+          "description": "The name of the AWS Region for the instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-location.html#cfn-lightsail-instance-location-regionname"
+        }
+      },
+      "description": "`Location` is a property of the [AWS::Lightsail::Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html) resource. It describes the location for an instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-location.html"
+    },
+    "MonthlyTransfer": {
+      "properties": {
+        "GbPerMonthAllocated": {
+          "description": "The amount of allocated monthly data transfer (in GB) for an instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-monthlytransfer.html#cfn-lightsail-instance-monthlytransfer-gbpermonthallocated"
+        }
+      },
+      "description": "`MonthlyTransfer` is a property of the [Networking](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-networking.html) property. It describes the amount of allocated monthly data transfer (in GB) for an instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-monthlytransfer.html"
+    },
+    "Networking": {
+      "properties": {
+        "MonthlyTransfer": {
+          "description": "The monthly amount of data transfer, in GB, allocated for the instance",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-networking.html#cfn-lightsail-instance-networking-monthlytransfer"
+        },
+        "Ports": {
+          "description": "An array of ports to open on the instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-networking.html#cfn-lightsail-instance-networking-ports"
+        }
+      },
+      "description": "`Networking` is a property of the [AWS::Lightsail::Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html) resource. It describes the public ports and the monthly amount of data transfer allocated for the instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-networking.html"
+    },
+    "Port": {
+      "properties": {
+        "AccessDirection": {
+          "description": "The access direction ( `inbound` or `outbound` ).\n\n> Lightsail currently supports only `inbound` access direction.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-accessdirection"
+        },
+        "AccessFrom": {
+          "description": "The location from which access is allowed. For example, `Anywhere (0.0.0.0/0)` , or `Custom` if a specific IP address or range of IP addresses is allowed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-accessfrom"
+        },
+        "AccessType": {
+          "description": "The type of access ( `Public` or `Private` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-accesstype"
+        },
+        "CidrListAliases": {
+          "description": "An alias that defines access for a preconfigured range of IP addresses.\n\nThe only alias currently supported is `lightsail-connect` , which allows IP addresses of the browser-based RDP/SSH client in the Lightsail console to connect to your instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-cidrlistaliases"
+        },
+        "Cidrs": {
+          "description": "The IPv4 address, or range of IPv4 addresses (in CIDR notation) that are allowed to connect to an instance through the ports, and the protocol.\n\n> The `ipv6Cidrs` parameter lists the IPv6 addresses that are allowed to connect to an instance. \n\nExamples:\n\n- To allow the IP address `192.0.2.44` , specify `192.0.2.44` or `192.0.2.44/32` .\n- To allow the IP addresses `192.0.2.0` to `192.0.2.255` , specify `192.0.2.0/24` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-cidrs"
+        },
+        "CommonName": {
+          "description": "The common name of the port information.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-commonname"
+        },
+        "FromPort": {
+          "description": "The first port in a range of open ports on an instance.\n\nAllowed ports:\n\n- TCP and UDP - `0` to `65535`\n- ICMP - The ICMP type for IPv4 addresses. For example, specify `8` as the `fromPort` (ICMP type), and `-1` as the `toPort` (ICMP code), to enable ICMP Ping.\n- ICMPv6 - The ICMP type for IPv6 addresses. For example, specify `128` as the `fromPort` (ICMPv6 type), and `0` as `toPort` (ICMPv6 code).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-fromport"
+        },
+        "Ipv6Cidrs": {
+          "description": "The IPv6 address, or range of IPv6 addresses (in CIDR notation) that are allowed to connect to an instance through the ports, and the protocol. Only devices with an IPv6 address can connect to an instance through IPv6; otherwise, IPv4 should be used.\n\n> The `cidrs` parameter lists the IPv4 addresses that are allowed to connect to an instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-ipv6cidrs"
+        },
+        "Protocol": {
+          "description": "The IP protocol name.\n\nThe name can be one of the following:\n\n- `tcp` - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.\n- `all` - All transport layer protocol types.\n- `udp` - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.\n- `icmp` - Internet Control Message Protocol (ICMP) is used to send error messages and operational information indicating success or failure when communicating with an instance. For example, an error is indicated when an instance could not be reached. When you specify `icmp` as the `protocol` , you must specify the ICMP type using the `fromPort` parameter, and ICMP code using the `toPort` parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-protocol"
+        },
+        "ToPort": {
+          "description": "The last port in a range of open ports on an instance.\n\nAllowed ports:\n\n- TCP and UDP - `0` to `65535`\n- ICMP - The ICMP code for IPv4 addresses. For example, specify `8` as the `fromPort` (ICMP type), and `-1` as the `toPort` (ICMP code), to enable ICMP Ping.\n- ICMPv6 - The ICMP code for IPv6 addresses. For example, specify `128` as the `fromPort` (ICMPv6 type), and `0` as `toPort` (ICMPv6 code).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html#cfn-lightsail-instance-port-toport"
+        }
+      },
+      "description": "`Port` is a property of the [Networking](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-networking.html) property. It describes information about ports for an instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-port.html"
+    },
+    "State": {
+      "properties": {
+        "Code": {
+          "description": "The status code of the instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-state.html#cfn-lightsail-instance-state-code"
+        },
+        "Name": {
+          "description": "The state of the instance (for example, `running` or `pending` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-state.html#cfn-lightsail-instance-state-name"
+        }
+      },
+      "description": "`State` is a property of the [AWS::Lightsail::Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html) resource. It describes the status code and the state (for example, `running` ) of an instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-state.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-tag.html#cfn-lightsail-instance-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-tag.html#cfn-lightsail-instance-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-tag.html"
+    },
+    "cidrListAliases": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-cidrlistaliases.html"
+    },
+    "cidrs": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-cidrs.html"
+    },
+    "ipv6Cidrs": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-instance-ipv6cidrs.html"
+    }
+  },
+  "description": "The `AWS::Lightsail::Instance` resource specifies an Amazon Lightsail instance.",
+  "properties": {
+    "AddOns": {
+      "description": "An array of add-ons for the instance.\n\n> If the instance has an add-on enabled when performing a delete instance request, the add-on is automatically disabled before the instance is deleted.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-addons"
+    },
+    "AvailabilityZone": {
+      "description": "The Availability Zone for the instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-availabilityzone"
+    },
+    "BlueprintId": {
+      "description": "The blueprint ID for the instance (for example, `os_amlinux_2016_03` ).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-blueprintid"
+    },
+    "BundleId": {
+      "description": "The bundle ID for the instance (for example, `micro_1_0` ).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-bundleid"
+    },
+    "Hardware": {
+      "description": "The hardware properties for the instance, such as the vCPU count, attached disks, and amount of RAM.\n\n> The instance restarts when performing an attach disk or detach disk request. This resets the public IP address of your instance if a static IP isn't attached to it.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-hardware"
+    },
+    "InstanceArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-instancearn"
+    },
+    "InstanceName": {
+      "description": "The name of the instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-instancename"
+    },
+    "Ipv6Addresses": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-ipv6addresses"
+    },
+    "IsStaticIp": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-isstaticip"
+    },
+    "KeyPairName": {
+      "description": "The name of the key pair to use for the instance.\n\nIf no key pair name is specified, the Regional Lightsail default key pair is used.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-keypairname"
+    },
+    "Location": {
+      "description": "The location for the instance, such as the AWS Region and Availability Zone.\n\n> The `Location` property is read-only and should not be specified in a create instance or update instance request.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-location"
+    },
+    "Networking": {
+      "description": "The public ports and the monthly amount of data transfer allocated for the instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-networking"
+    },
+    "PrivateIpAddress": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-privateipaddress"
+    },
+    "PublicIpAddress": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-publicipaddress"
+    },
+    "ResourceType": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-resourcetype"
+    },
+    "SshKeyName": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-sshkeyname"
+    },
+    "State": {
+      "description": "The status code and the state (for example, `running` ) of the instance.\n\n> The `State` property is read-only and should not be specified in a create instance or update instance request.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-state"
+    },
+    "SupportCode": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-supportcode"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) in the *AWS CloudFormation User Guide* .\n\n> The `Value` of `Tags` is optional for Lightsail resources.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-tags"
+    },
+    "UserData": {
+      "description": "The optional launch script for the instance.\n\nSpecify a launch script to configure an instance with additional user data. For example, you might want to specify `apt-get -y update` as a launch script.\n\n> Depending on the blueprint of your instance, the command to get software on your instance varies. Amazon Linux and CentOS use `yum` , Debian and Ubuntu use `apt-get` , and FreeBSD uses `pkg` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-userdata"
+    },
+    "UserName": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html#cfn-lightsail-instance-username"
+    }
+  },
+  "typeName": "AWS::Lightsail::Instance"
+}

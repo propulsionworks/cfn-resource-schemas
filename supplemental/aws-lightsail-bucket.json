@@ -1,0 +1,84 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#aws-resource-lightsail-bucket-return-values",
+    "properties": {
+      "BucketArn": {
+        "description": "The Amazon Resource Name (ARN) of the bucket."
+      },
+      "AbleToUpdateBundle": {
+        "description": "A Boolean value indicating whether the bundle that is currently applied to your distribution can be changed to another bundle."
+      },
+      "Url": {
+        "description": "The URL of the bucket."
+      }
+    }
+  },
+  "definitions": {
+    "AccessRules": {
+      "properties": {
+        "AllowPublicOverrides": {
+          "description": "A Boolean value indicating whether the access control list (ACL) permissions that are applied to individual objects override the `GetObject` option that is currently specified.\n\nWhen this is true, you can use the [PutObjectAcl](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html) Amazon S3 API operation to set individual objects to public (read-only) or private, using either the `public-read` ACL or the `private` ACL.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-bucket-accessrules.html#cfn-lightsail-bucket-accessrules-allowpublicoverrides"
+        },
+        "GetObject": {
+          "description": "Specifies the anonymous access to all objects in a bucket.\n\nThe following options can be specified:\n\n- `public` - Sets all objects in the bucket to public (read-only), making them readable by everyone on the internet.\n\nIf the `GetObject` value is set to `public` , then all objects in the bucket default to public regardless of the `allowPublicOverrides` value.\n- `private` - Sets all objects in the bucket to private, making them readable only by you and anyone that you grant access to.\n\nIf the `GetObject` value is set to `private` , and the `allowPublicOverrides` value is set to `true` , then all objects in the bucket default to private unless they are configured with a `public-read` ACL. Individual objects with a `public-read` ACL are readable by everyone on the internet.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-bucket-accessrules.html#cfn-lightsail-bucket-accessrules-getobject"
+        }
+      },
+      "description": "`AccessRules` is a property of the [AWS::Lightsail::Bucket](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html) resource. It describes access rules for a bucket.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-bucket-accessrules.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-bucket-tag.html#cfn-lightsail-bucket-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-bucket-tag.html#cfn-lightsail-bucket-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-bucket-tag.html"
+    }
+  },
+  "description": "The `AWS::Lightsail::Bucket` resource specifies a bucket.",
+  "properties": {
+    "AbleToUpdateBundle": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-abletoupdatebundle"
+    },
+    "AccessRules": {
+      "description": "An object that describes the access rules for the bucket.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-accessrules"
+    },
+    "BucketArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-bucketarn"
+    },
+    "BucketName": {
+      "description": "The name of the bucket.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-bucketname"
+    },
+    "BundleId": {
+      "description": "The bundle ID for the bucket (for example, `small_1_0` ).\n\nA bucket bundle specifies the monthly cost, storage space, and data transfer quota for a bucket.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-bundleid"
+    },
+    "ObjectVersioning": {
+      "description": "Indicates whether object versioning is enabled for the bucket.\n\nThe following options can be configured:\n\n- `Enabled` - Object versioning is enabled.\n- `Suspended` - Object versioning was previously enabled but is currently suspended. Existing object versions are retained.\n- `NeverEnabled` - Object versioning has never been enabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-objectversioning"
+    },
+    "ReadOnlyAccessAccounts": {
+      "description": "An array of AWS account IDs that have read-only access to the bucket.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-readonlyaccessaccounts"
+    },
+    "ResourcesReceivingAccess": {
+      "description": "An array of Lightsail instances that have access to the bucket.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-resourcesreceivingaccess"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) in the *AWS CloudFormation User Guide* .\n\n> The `Value` of `Tags` is optional for Lightsail resources.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-tags"
+    },
+    "Url": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-bucket.html#cfn-lightsail-bucket-url"
+    }
+  },
+  "typeName": "AWS::Lightsail::Bucket"
+}

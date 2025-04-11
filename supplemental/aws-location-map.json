@@ -1,0 +1,99 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#aws-resource-location-map-return-values",
+    "properties": {
+      "CreateTime": {
+        "description": "The timestamp for when the map resource was created in [ISO 8601](https://docs.aws.amazon.com/https://www.iso.org/iso-8601-date-and-time-format.html) format: `YYYY-MM-DDThh:mm:ss.sssZ` ."
+      },
+      "UpdateTime": {
+        "description": "The timestamp for when the map resource was last updated in [ISO 8601](https://docs.aws.amazon.com/https://www.iso.org/iso-8601-date-and-time-format.html) format: `YYYY-MM-DDThh:mm:ss.sssZ` ."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all AWS .\n\n- Format example: `arn:aws:geo:region:account-id:maps/ExampleMap`"
+      },
+      "MapArn": {
+        "description": "Synonym for `Arn` . The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all AWS .\n\n- Format example: `arn:aws:geo:region:account-id:maps/ExampleMap`"
+      },
+      "DataSource": {}
+    }
+  },
+  "definitions": {
+    "MapConfiguration": {
+      "properties": {
+        "CustomLayers": {
+          "description": "Specifies the custom layers for the style. Leave unset to not enable any custom layer, or, for styles that support custom layers, you can enable layer(s), such as the `POI` layer for the VectorEsriNavigation style.\n\n> Currenlty only `VectorEsriNavigation` supports CustomLayers. For more information, see [Custom Layers](https://docs.aws.amazon.com//location/latest/developerguide/map-concepts.html#map-custom-layers) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-mapconfiguration.html#cfn-location-map-mapconfiguration-customlayers"
+        },
+        "PoliticalView": {
+          "description": "Specifies the map political view selected from an available data provider.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-mapconfiguration.html#cfn-location-map-mapconfiguration-politicalview"
+        },
+        "Style": {
+          "description": "Specifies the map style selected from an available data provider.\n\nValid [Esri map styles](https://docs.aws.amazon.com/location/previous/developerguide/esri.html) :\n\n- `VectorEsriDarkGrayCanvas` – The Esri Dark Gray Canvas map style. A vector basemap with a dark gray, neutral background with minimal colors, labels, and features that's designed to draw attention to your thematic content.\n- `RasterEsriImagery` – The Esri Imagery map style. A raster basemap that provides one meter or better satellite and aerial imagery in many parts of the world and lower resolution satellite imagery worldwide.\n- `VectorEsriLightGrayCanvas` – The Esri Light Gray Canvas map style, which provides a detailed vector basemap with a light gray, neutral background style with minimal colors, labels, and features that's designed to draw attention to your thematic content.\n- `VectorEsriTopographic` – The Esri Light map style, which provides a detailed vector basemap with a classic Esri map style.\n- `VectorEsriStreets` – The Esri Street Map style, which provides a detailed vector basemap for the world symbolized with a classic Esri street map style. The vector tile layer is similar in content and style to the World Street Map raster map.\n- `VectorEsriNavigation` – The Esri Navigation map style, which provides a detailed basemap for the world symbolized with a custom navigation map style that's designed for use during the day in mobile devices.\n\nValid [HERE Technologies map styles](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html) :\n\n- `VectorHereContrast` – The HERE Contrast (Berlin) map style is a high contrast detailed base map of the world that blends 3D and 2D rendering.\n\n> The `VectorHereContrast` style has been renamed from `VectorHereBerlin` . `VectorHereBerlin` has been deprecated, but will continue to work in applications that use it.\n- `VectorHereExplore` – A default HERE map style containing a neutral, global map and its features including roads, buildings, landmarks, and water features. It also now includes a fully designed map of Japan.\n- `VectorHereExploreTruck` – A global map containing truck restrictions and attributes (e.g. width / height / HAZMAT) symbolized with highlighted segments and icons on top of HERE Explore to support use cases within transport and logistics.\n- `RasterHereExploreSatellite` – A global map containing high resolution satellite imagery.\n- `HybridHereExploreSatellite` – A global map displaying the road network, street names, and city labels over satellite imagery. This style will automatically retrieve both raster and vector tiles, and your charges will be based on total tiles retrieved.\n\n> Hybrid styles use both vector and raster tiles when rendering the map that you see. This means that more tiles are retrieved than when using either vector or raster tiles alone. Your charges will include all tiles retrieved.\n\nValid [GrabMaps map styles](https://docs.aws.amazon.com/location/previous/developerguide/grab.html) :\n\n- `VectorGrabStandardLight` – The Grab Standard Light map style provides a basemap with detailed land use coloring, area names, roads, landmarks, and points of interest covering Southeast Asia.\n- `VectorGrabStandardDark` – The Grab Standard Dark map style provides a dark variation of the standard basemap covering Southeast Asia.\n\n> Grab provides maps only for countries in Southeast Asia, and is only available in the Asia Pacific (Singapore) Region ( `ap-southeast-1` ). For more information, see [GrabMaps countries and area covered](https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area) . \n\nValid [Open Data map styles](https://docs.aws.amazon.com/location/previous/developerguide/open-data.html) :\n\n- `VectorOpenDataStandardLight` – The Open Data Standard Light map style provides a detailed basemap for the world suitable for website and mobile application use. The map includes highways major roads, minor roads, railways, water features, cities, parks, landmarks, building footprints, and administrative boundaries.\n- `VectorOpenDataStandardDark` – Open Data Standard Dark is a dark-themed map style that provides a detailed basemap for the world suitable for website and mobile application use. The map includes highways major roads, minor roads, railways, water features, cities, parks, landmarks, building footprints, and administrative boundaries.\n- `VectorOpenDataVisualizationLight` – The Open Data Visualization Light map style is a light-themed style with muted colors and fewer features that aids in understanding overlaid data.\n- `VectorOpenDataVisualizationDark` – The Open Data Visualization Dark map style is a dark-themed style with muted colors and fewer features that aids in understanding overlaid data.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-mapconfiguration.html#cfn-location-map-mapconfiguration-style"
+        }
+      },
+      "description": "Specifies the map tile style selected from an available provider.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-mapconfiguration.html"
+    },
+    "PricingPlan": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-pricingplan.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-tag.html#cfn-location-map-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-tag.html#cfn-location-map-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-tag.html"
+    },
+    "TagMap": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-tagmap.html"
+    },
+    "iso8601UTC": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-map-iso8601utc.html"
+    }
+  },
+  "description": "The `AWS::Location::Map` resource specifies a map resource in your AWS account, which provides map tiles of different styles sourced from global location data providers.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-arn"
+    },
+    "Configuration": {
+      "description": "Specifies the `MapConfiguration` , including the map style, for the map resource that you create. The map style defines the look of maps and the data provider for your map resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-configuration"
+    },
+    "CreateTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-createtime"
+    },
+    "Description": {
+      "description": "An optional description for the map resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-description"
+    },
+    "MapArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-maparn"
+    },
+    "MapName": {
+      "description": "The name for the map resource.\n\nRequirements:\n\n- Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_).\n- Must be a unique map resource name.\n- No spaces allowed. For example, `ExampleMap` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-mapname"
+    },
+    "PricingPlan": {
+      "description": "No longer used. If included, the only allowed value is `RequestBasedUsage` .\n\n*Allowed Values* : `RequestBasedUsage`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-pricingplan"
+    },
+    "Tags": {
+      "description": "Applies one or more tags to the map resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them.\n\nFormat: `\"key\" : \"value\"`\n\nRestrictions:\n\n- Maximum 50 tags per resource\n- Each resource tag must be unique with a maximum of one value.\n- Maximum key length: 128 Unicode characters in UTF-8\n- Maximum value length: 256 Unicode characters in UTF-8\n- Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.\n- Cannot use \"aws:\" as a prefix for a key.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-tags"
+    },
+    "UpdateTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-map.html#cfn-location-map-updatetime"
+    }
+  },
+  "typeName": "AWS::Location::Map"
+}

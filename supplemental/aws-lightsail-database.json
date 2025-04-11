@@ -1,0 +1,128 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#aws-resource-lightsail-database-return-values",
+    "properties": {
+      "DatabaseArn": {
+        "description": "The Amazon Resource Name (ARN) of the database (for example, `arn:aws:lightsail:us-east-2:123456789101:RelationalDatabase/244ad76f-8aad-4741-809f-12345EXAMPLE` )."
+      }
+    }
+  },
+  "definitions": {
+    "RelationalDatabaseParameter": {
+      "properties": {
+        "AllowedValues": {
+          "description": "The valid range of values for the parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html#cfn-lightsail-database-relationaldatabaseparameter-allowedvalues"
+        },
+        "ApplyMethod": {
+          "description": "Indicates when parameter updates are applied.\n\nCan be `immediate` or `pending-reboot` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html#cfn-lightsail-database-relationaldatabaseparameter-applymethod"
+        },
+        "ApplyType": {
+          "description": "Specifies the engine-specific parameter type.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html#cfn-lightsail-database-relationaldatabaseparameter-applytype"
+        },
+        "DataType": {
+          "description": "The valid data type of the parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html#cfn-lightsail-database-relationaldatabaseparameter-datatype"
+        },
+        "Description": {
+          "description": "A description of the parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html#cfn-lightsail-database-relationaldatabaseparameter-description"
+        },
+        "IsModifiable": {
+          "description": "A Boolean value indicating whether the parameter can be modified.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html#cfn-lightsail-database-relationaldatabaseparameter-ismodifiable"
+        },
+        "ParameterName": {
+          "description": "The name of the parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html#cfn-lightsail-database-relationaldatabaseparameter-parametername"
+        },
+        "ParameterValue": {
+          "description": "The value for the parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html#cfn-lightsail-database-relationaldatabaseparameter-parametervalue"
+        }
+      },
+      "description": "`RelationalDatabaseParameter` is a property of the [AWS::Lightsail::Database](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html) resource. It describes parameters for the database.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-relationaldatabaseparameter.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-tag.html#cfn-lightsail-database-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-tag.html#cfn-lightsail-database-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-database-tag.html"
+    }
+  },
+  "description": "The `AWS::Lightsail::Database` resource specifies an Amazon Lightsail database.",
+  "properties": {
+    "AvailabilityZone": {
+      "description": "The Availability Zone for the database.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-availabilityzone"
+    },
+    "BackupRetention": {
+      "description": "A Boolean value indicating whether automated backup retention is enabled for the database. Data Import Mode is enabled when `BackupRetention` is set to `false` , and is disabled when `BackupRetention` is set to `true` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-backupretention"
+    },
+    "CaCertificateIdentifier": {
+      "description": "The certificate associated with the database.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-cacertificateidentifier"
+    },
+    "DatabaseArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-databasearn"
+    },
+    "MasterDatabaseName": {
+      "description": "The meaning of this parameter differs according to the database engine you use.\n\n*MySQL*\n\nThe name of the database to create when the Lightsail database resource is created. If this parameter isn't specified, no database is created in the database resource.\n\nConstraints:\n\n- Must contain 1-64 letters or numbers.\n- Must begin with a letter. Subsequent characters can be letters, underscores, or numbers (0-9).\n- Can't be a word reserved by the specified database engine.\n\nFor more information about reserved words in MySQL, see the Keywords and Reserved Words articles for [MySQL 5.6](https://docs.aws.amazon.com/https://dev.mysql.com/doc/refman/5.6/en/keywords.html) , [MySQL 5.7](https://docs.aws.amazon.com/https://dev.mysql.com/doc/refman/5.7/en/keywords.html) , and [MySQL 8.0](https://docs.aws.amazon.com/https://dev.mysql.com/doc/refman/8.0/en/keywords.html) .\n\n*PostgreSQL*\n\nThe name of the database to create when the Lightsail database resource is created. If this parameter isn't specified, a database named `postgres` is created in the database resource.\n\nConstraints:\n\n- Must contain 1-63 letters or numbers.\n- Must begin with a letter. Subsequent characters can be letters, underscores, or numbers (0-9).\n- Can't be a word reserved by the specified database engine.\n\nFor more information about reserved words in PostgreSQL, see the SQL Key Words articles for [PostgreSQL 9.6](https://docs.aws.amazon.com/https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html) , [PostgreSQL 10](https://docs.aws.amazon.com/https://www.postgresql.org/docs/10/sql-keywords-appendix.html) , [PostgreSQL 11](https://docs.aws.amazon.com/https://www.postgresql.org/docs/11/sql-keywords-appendix.html) , and [PostgreSQL 12](https://docs.aws.amazon.com/https://www.postgresql.org/docs/12/sql-keywords-appendix.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-masterdatabasename"
+    },
+    "MasterUserPassword": {
+      "description": "The password for the primary user of the database. The password can include any printable ASCII character except the following: /, \", or @. It cannot contain spaces.\n\n> The `MasterUserPassword` and `RotateMasterUserPassword` parameters cannot be used together in the same template. \n\n*MySQL*\n\nConstraints: Must contain 8-41 characters.\n\n*PostgreSQL*\n\nConstraints: Must contain 8-128 characters.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-masteruserpassword"
+    },
+    "MasterUsername": {
+      "description": "The name for the primary user.\n\n*MySQL*\n\nConstraints:\n\n- Required for MySQL.\n- Must be 1-16 letters or numbers. Can contain underscores.\n- First character must be a letter.\n- Can't be a reserved word for the chosen database engine.\n\nFor more information about reserved words in MySQL 5.6 or 5.7, see the Keywords and Reserved Words articles for [MySQL 5.6](https://docs.aws.amazon.com/https://dev.mysql.com/doc/refman/5.6/en/keywords.html) , [MySQL 5.7](https://docs.aws.amazon.com/https://dev.mysql.com/doc/refman/5.7/en/keywords.html) , or [MySQL 8.0](https://docs.aws.amazon.com/https://dev.mysql.com/doc/refman/8.0/en/keywords.html) .\n\n*PostgreSQL*\n\nConstraints:\n\n- Required for PostgreSQL.\n- Must be 1-63 letters or numbers. Can contain underscores.\n- First character must be a letter.\n- Can't be a reserved word for the chosen database engine.\n\nFor more information about reserved words in MySQL 5.6 or 5.7, see the Keywords and Reserved Words articles for [PostgreSQL 9.6](https://docs.aws.amazon.com/https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html) , [PostgreSQL 10](https://docs.aws.amazon.com/https://www.postgresql.org/docs/10/sql-keywords-appendix.html) , [PostgreSQL 11](https://docs.aws.amazon.com/https://www.postgresql.org/docs/11/sql-keywords-appendix.html) , and [PostgreSQL 12](https://docs.aws.amazon.com/https://www.postgresql.org/docs/12/sql-keywords-appendix.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-masterusername"
+    },
+    "PreferredBackupWindow": {
+      "description": "The daily time range during which automated backups are created for the database (for example, `16:00-16:30` ).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-preferredbackupwindow"
+    },
+    "PreferredMaintenanceWindow": {
+      "description": "The weekly time range during which system maintenance can occur for the database, formatted as follows: `ddd:hh24:mi-ddd:hh24:mi` . For example, `Tue:17:00-Tue:17:30` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-preferredmaintenancewindow"
+    },
+    "PubliclyAccessible": {
+      "description": "A Boolean value indicating whether the database is accessible to anyone on the internet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-publiclyaccessible"
+    },
+    "RelationalDatabaseBlueprintId": {
+      "description": "The blueprint ID for the database (for example, `mysql_8_0` ).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-relationaldatabaseblueprintid"
+    },
+    "RelationalDatabaseBundleId": {
+      "description": "The bundle ID for the database (for example, `medium_1_0` ).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-relationaldatabasebundleid"
+    },
+    "RelationalDatabaseName": {
+      "description": "The name of the instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-relationaldatabasename"
+    },
+    "RelationalDatabaseParameters": {
+      "description": "An array of parameters for the database.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-relationaldatabaseparameters"
+    },
+    "RotateMasterUserPassword": {
+      "description": "A Boolean value indicating whether to change the primary user password to a new, strong password generated by Lightsail .\n\n> The `RotateMasterUserPassword` and `MasterUserPassword` parameters cannot be used together in the same template.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-rotatemasteruserpassword"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) in the *AWS CloudFormation User Guide* .\n\n> The `Value` of `Tags` is optional for Lightsail resources.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-database.html#cfn-lightsail-database-tags"
+    }
+  },
+  "typeName": "AWS::Lightsail::Database"
+}

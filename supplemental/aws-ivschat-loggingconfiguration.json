@@ -1,0 +1,102 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivschat-loggingconfiguration.html#aws-resource-ivschat-loggingconfiguration-return-values",
+    "properties": {
+      "State": {
+        "description": "Indicates the current state of the logging configuration. When the state is `ACTIVE` , the configuration is ready to log a chat session. Valid values: `CREATING` | `CREATE_FAILED` | `DELETING` | `DELETE_FAILED` | `UPDATING` | `UPDATE_FAILED` | `ACTIVE` ."
+      },
+      "Id": {
+        "description": "The logging-configuration ID. For example: `abcdABCDefgh`"
+      },
+      "Arn": {
+        "description": "The logging-configuration ARN. For example: `arn:aws:ivschat:us-west-2:123456789012:logging-configuration/abcdABCDefgh`"
+      }
+    }
+  },
+  "definitions": {
+    "CloudWatchLogsDestinationConfiguration": {
+      "properties": {
+        "LogGroupName": {
+          "description": "Name of the Amazon Cloudwatch Logs destination where chat activity will be logged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-cloudwatchlogsdestinationconfiguration.html#cfn-ivschat-loggingconfiguration-cloudwatchlogsdestinationconfiguration-loggroupname"
+        }
+      },
+      "description": "The CloudWatchLogsDestinationConfiguration property type specifies a CloudWatch Logs location where chat logs will be stored.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-cloudwatchlogsdestinationconfiguration.html"
+    },
+    "DestinationConfiguration": {
+      "properties": {
+        "CloudWatchLogs": {
+          "description": "An Amazon CloudWatch Logs destination configuration where chat activity will be logged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-destinationconfiguration.html#cfn-ivschat-loggingconfiguration-destinationconfiguration-cloudwatchlogs"
+        },
+        "Firehose": {
+          "description": "An Amazon Kinesis Data Firehose destination configuration where chat activity will be logged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-destinationconfiguration.html#cfn-ivschat-loggingconfiguration-destinationconfiguration-firehose"
+        },
+        "S3": {
+          "description": "An Amazon S3 destination configuration where chat activity will be logged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-destinationconfiguration.html#cfn-ivschat-loggingconfiguration-destinationconfiguration-s3"
+        }
+      },
+      "description": "The DestinationConfiguration property type describes a location where chat logs will be stored. Each member represents the configuration of one log destination. For logging, you define only one type of destination.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-destinationconfiguration.html"
+    },
+    "FirehoseDestinationConfiguration": {
+      "properties": {
+        "DeliveryStreamName": {
+          "description": "Name of the Amazon Kinesis Firehose delivery stream where chat activity will be logged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-firehosedestinationconfiguration.html#cfn-ivschat-loggingconfiguration-firehosedestinationconfiguration-deliverystreamname"
+        }
+      },
+      "description": "The FirehoseDestinationConfiguration property type specifies a Kinesis Firehose location where chat logs will be stored.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-firehosedestinationconfiguration.html"
+    },
+    "S3DestinationConfiguration": {
+      "properties": {
+        "BucketName": {
+          "description": "Name of the Amazon S3 bucket where chat activity will be logged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-s3destinationconfiguration.html#cfn-ivschat-loggingconfiguration-s3destinationconfiguration-bucketname"
+        }
+      },
+      "description": "The S3DestinationConfiguration property type specifies an S3 location where chat logs will be stored.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-s3destinationconfiguration.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-tag.html#cfn-ivschat-loggingconfiguration-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-tag.html#cfn-ivschat-loggingconfiguration-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-tag.html"
+    }
+  },
+  "description": "The `AWS::IVSChat::LoggingConfiguration` resource specifies an  logging configuration that allows clients to store and record sent messages. For more information, see [CreateLoggingConfiguration](https://docs.aws.amazon.com/ivs/latest/ChatAPIReference/API_CreateLoggingConfiguration.html) in the *Amazon Interactive Video Service Chat API Reference* .",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivschat-loggingconfiguration.html#cfn-ivschat-loggingconfiguration-arn"
+    },
+    "DestinationConfiguration": {
+      "description": "The DestinationConfiguration is a complex type that contains information about where chat content will be logged.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivschat-loggingconfiguration.html#cfn-ivschat-loggingconfiguration-destinationconfiguration"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivschat-loggingconfiguration.html#cfn-ivschat-loggingconfiguration-id"
+    },
+    "Name": {
+      "description": "Logging-configuration name. The value does not need to be unique.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivschat-loggingconfiguration.html#cfn-ivschat-loggingconfiguration-name"
+    },
+    "State": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivschat-loggingconfiguration.html#cfn-ivschat-loggingconfiguration-state"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivschat-loggingconfiguration-tag.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ivschat-loggingconfiguration.html#cfn-ivschat-loggingconfiguration-tags"
+    }
+  },
+  "typeName": "AWS::IVSChat::LoggingConfiguration"
+}

@@ -1,0 +1,150 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#aws-resource-lightsail-disk-return-values",
+    "properties": {
+      "Path": {
+        "description": "The disk path."
+      },
+      "AttachmentState": {
+        "description": "(Deprecated) The attachment state of the disk.\n\n> In releases prior to November 14, 2017, this parameter returned `attached` for system disks in the API response. It is now deprecated, but still included in the response. Use `isAttached` instead."
+      },
+      "Location.AvailabilityZone": {
+        "description": "The Availability Zone where the disk is located."
+      },
+      "SupportCode": {
+        "description": "The support code of the disk.\n\nInclude this code in your email to support when you have questions about a disk or another resource in Lightsail . This code helps our support team to look up your Lightsail information."
+      },
+      "State": {
+        "description": "The state of the disk (for example, `in-use` )."
+      },
+      "IsAttached": {
+        "description": "A Boolean value indicating whether the disk is attached."
+      },
+      "ResourceType": {
+        "description": "The resource type of the disk (for example, `Disk` )."
+      },
+      "DiskArn": {
+        "description": "The Amazon Resource Name (ARN) of the disk."
+      },
+      "AttachedTo": {
+        "description": "The resources to which the disk is attached."
+      },
+      "Iops": {
+        "description": "The input/output operations per second (IOPS) of the disk."
+      },
+      "Location.RegionName": {
+        "description": "The AWS Region where the disk is located."
+      }
+    }
+  },
+  "definitions": {
+    "AddOn": {
+      "properties": {
+        "AddOnType": {
+          "description": "The add-on type (for example, `AutoSnapshot` ).\n\n> `AutoSnapshot` is the only add-on that can be enabled for a disk.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-addon.html#cfn-lightsail-disk-addon-addontype"
+        },
+        "AutoSnapshotAddOnRequest": {
+          "description": "The parameters for the automatic snapshot add-on, such as the daily time when an automatic snapshot will be created.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-addon.html#cfn-lightsail-disk-addon-autosnapshotaddonrequest"
+        },
+        "Status": {
+          "description": "The status of the add-on.\n\nValid Values: `Enabled` | `Disabled`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-addon.html#cfn-lightsail-disk-addon-status"
+        }
+      },
+      "description": "`AddOn` is a property of the [AWS::Lightsail::Disk](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html) resource. It describes the add-ons for a disk.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-addon.html"
+    },
+    "AutoSnapshotAddOn": {
+      "properties": {
+        "SnapshotTimeOfDay": {
+          "description": "The daily time when an automatic snapshot will be created.\n\nConstraints:\n\n- Must be in `HH:00` format, and in an hourly increment.\n- Specified in Coordinated Universal Time (UTC).\n- The snapshot will be automatically created between the time specified and up to 45 minutes after.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-autosnapshotaddon.html#cfn-lightsail-disk-autosnapshotaddon-snapshottimeofday"
+        }
+      },
+      "description": "`AutoSnapshotAddOn` is a property of the [AddOn](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-addon.html) property. It describes the automatic snapshot add-on for a disk.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-autosnapshotaddon.html"
+    },
+    "Location": {
+      "properties": {
+        "AvailabilityZone": {
+          "description": "The Availability Zone where the disk is located.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-location.html#cfn-lightsail-disk-location-availabilityzone"
+        },
+        "RegionName": {
+          "description": "The AWS Region where the disk is located.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-location.html#cfn-lightsail-disk-location-regionname"
+        }
+      },
+      "description": "The AWS Region and Availability Zone where the disk is located.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-location.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-tag.html#cfn-lightsail-disk-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-tag.html#cfn-lightsail-disk-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-disk-tag.html"
+    }
+  },
+  "description": "The `AWS::Lightsail::Disk` resource specifies a disk that can be attached to an Amazon Lightsail instance that is in the same AWS Region and Availability Zone.",
+  "properties": {
+    "AddOns": {
+      "description": "An array of add-ons for the disk.\n\n> If the disk has an add-on enabled when performing a delete disk request, the add-on is automatically disabled before the disk is deleted.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-addons"
+    },
+    "AttachedTo": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-attachedto"
+    },
+    "AttachmentState": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-attachmentstate"
+    },
+    "AvailabilityZone": {
+      "description": "The AWS Region and Availability Zone location for the disk (for example, `us-east-1a` ).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-availabilityzone"
+    },
+    "DiskArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-diskarn"
+    },
+    "DiskName": {
+      "description": "The name of the disk.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-diskname"
+    },
+    "Iops": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-iops"
+    },
+    "IsAttached": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-isattached"
+    },
+    "Location": {
+      "description": "The AWS Region and Availability Zone where the disk is located.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-location"
+    },
+    "Path": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-path"
+    },
+    "ResourceType": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-resourcetype"
+    },
+    "SizeInGb": {
+      "description": "The size of the disk in GB.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-sizeingb"
+    },
+    "State": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-state"
+    },
+    "SupportCode": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-supportcode"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) in the *AWS CloudFormation User Guide* .\n\n> The `Value` of `Tags` is optional for Lightsail resources.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disk.html#cfn-lightsail-disk-tags"
+    }
+  },
+  "typeName": "AWS::Lightsail::Disk"
+}

@@ -1,0 +1,63 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#aws-resource-events-eventbus-return-values",
+    "properties": {
+      "Policy": {},
+      "Arn": {
+        "description": "The ARN of the event bus, such as `arn:aws:events:us-east-2:123456789012:event-bus/aws.partner/PartnerName/acct1/repo1` ."
+      },
+      "Name": {
+        "description": "The name of the event bus, such as `PartnerName/acct1/repo1` ."
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-eventbus-tag.html#cfn-events-eventbus-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-eventbus-tag.html#cfn-events-eventbus-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-eventbus-tag.html"
+    }
+  },
+  "description": "Specifies an event bus within your account. This can be a custom event bus which you can use to receive events from your custom applications and services, or it can be a partner event bus which can be matched to a partner event source.\n\n> As an aid to help you jumpstart developing CloudFormation templates, the EventBridge console enables you to create templates from the existing event buses in your account. For more information, see [Generating CloudFormation templates from an EventBridge event bus](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-generate-event-bus-template.html) in the *Amazon EventBridge User Guide* .",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#cfn-events-eventbus-arn"
+    },
+    "DeadLetterConfig": {
+      "description": "Configuration details of the Amazon SQS queue for EventBridge to use as a dead-letter queue (DLQ).\n\nFor more information, see [Using dead-letter queues to process undelivered events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-rule-event-delivery.html#eb-rule-dlq) in the *EventBridge User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#cfn-events-eventbus-deadletterconfig"
+    },
+    "Description": {
+      "description": "The event bus description.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#cfn-events-eventbus-description"
+    },
+    "EventSourceName": {
+      "description": "If you are creating a partner event bus, this specifies the partner event source that the new event bus will be matched with.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#cfn-events-eventbus-eventsourcename"
+    },
+    "KmsKeyIdentifier": {
+      "description": "The identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.\n\nIf you do not specify a customer managed key identifier, EventBridge uses an AWS owned key to encrypt events on the event bus.\n\nFor more information, see [Managing keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html) in the *AWS Key Management Service Developer Guide* .\n\n> Archives and schema discovery are not supported for event buses encrypted using a customer managed key. EventBridge returns an error if:\n> \n> - You call `[CreateArchive](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateArchive.html)` on an event bus set to use a customer managed key for encryption.\n> - You call `[CreateDiscoverer](https://docs.aws.amazon.com/eventbridge/latest/schema-reference/v1-discoverers.html#CreateDiscoverer)` on an event bus set to use a customer managed key for encryption.\n> - You call `[UpdatedEventBus](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdatedEventBus.html)` to set a customer managed key on an event bus with an archives or schema discovery enabled.\n> \n> To enable archives or schema discovery on an event bus, choose to use an AWS owned key . For more information, see [Data encryption in EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-encryption.html) in the *Amazon EventBridge User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#cfn-events-eventbus-kmskeyidentifier"
+    },
+    "Name": {
+      "description": "The name of the new event bus.\n\nCustom event bus names can't contain the `/` character, but you can use the `/` character in partner event bus names. In addition, for partner event buses, the name must exactly match the name of the partner event source that this event bus is matched to.\n\nYou can't use the name `default` for a custom event bus, as this name is already used for your account's default event bus.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#cfn-events-eventbus-name"
+    },
+    "Policy": {
+      "description": "The permissions policy of the event bus, describing which other AWS accounts can write events to this event bus.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#cfn-events-eventbus-policy",
+      "wellKnownType": "iam-policy"
+    },
+    "Tags": {
+      "description": "Tags to associate with the event bus.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html#cfn-events-eventbus-tags"
+    }
+  },
+  "typeName": "AWS::Events::EventBus"
+}

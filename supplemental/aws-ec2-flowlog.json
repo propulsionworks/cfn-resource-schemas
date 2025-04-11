@@ -1,0 +1,78 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#aws-resource-ec2-flowlog-return-values",
+    "properties": {
+      "Id": {
+        "description": "The ID of the flow log. For example, `fl-123456abc123abc1` ."
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-flowlog-tag.html#cfn-ec2-flowlog-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-flowlog-tag.html#cfn-ec2-flowlog-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-flowlog-tag.html"
+    }
+  },
+  "description": "Specifies a VPC flow log that captures IP traffic for a specified network interface, subnet, or VPC. To view the log data, use Amazon CloudWatch Logs (CloudWatch Logs) to help troubleshoot connection issues. For example, you can use a flow log to investigate why certain traffic isn't reaching an instance, which can help you diagnose overly restrictive security group rules. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html) in the *Amazon VPC User Guide* .",
+  "properties": {
+    "DeliverCrossAccountRole": {
+      "description": "The ARN of the IAM role that allows the service to publish flow logs across accounts.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-delivercrossaccountrole"
+    },
+    "DeliverLogsPermissionArn": {
+      "description": "The ARN of the IAM role that allows Amazon EC2 to publish flow logs to the log destination.\n\nThis parameter is required if the destination type is `cloud-watch-logs` , or if the destination type is `kinesis-data-firehose` and the delivery stream and the resources to monitor are in different accounts.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-deliverlogspermissionarn"
+    },
+    "DestinationOptions": {
+      "description": "The destination options.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-destinationoptions"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-id"
+    },
+    "LogDestination": {
+      "description": "The destination for the flow log data. The meaning of this parameter depends on the destination type.\n\n- If the destination type is `cloud-watch-logs` , specify the ARN of a CloudWatch Logs log group. For example:\n\narn:aws:logs: *region* : *account_id* :log-group: *my_group*\n\nAlternatively, use the `LogGroupName` parameter.\n- If the destination type is `s3` , specify the ARN of an S3 bucket. For example:\n\narn:aws:s3::: *my_bucket* / *my_subfolder* /\n\nThe subfolder is optional. Note that you can't use `AWSLogs` as a subfolder name.\n- If the destination type is `kinesis-data-firehose` , specify the ARN of a Kinesis Data Firehose delivery stream. For example:\n\narn:aws:firehose: *region* : *account_id* :deliverystream: *my_stream*",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-logdestination"
+    },
+    "LogDestinationType": {
+      "description": "The type of destination for the flow log data.\n\nDefault: `cloud-watch-logs`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-logdestinationtype"
+    },
+    "LogFormat": {
+      "description": "The fields to include in the flow log record, in the order in which they should appear. If you omit this parameter, the flow log is created using the default format. If you specify this parameter, you must include at least one field. For more information about the available fields, see [Flow log records](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records) in the *Amazon VPC User Guide* or [Transit Gateway Flow Log records](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-flow-logs.html#flow-log-records) in the *AWS Transit Gateway Guide* .\n\nSpecify the fields using the `${field-id}` format, separated by spaces.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-logformat"
+    },
+    "LogGroupName": {
+      "description": "The name of a new or existing CloudWatch Logs log group where Amazon EC2 publishes your flow logs.\n\nThis parameter is valid only if the destination type is `cloud-watch-logs` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-loggroupname"
+    },
+    "MaxAggregationInterval": {
+      "description": "The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record. The possible values are 60 seconds (1 minute) or 600 seconds (10 minutes). This parameter must be 60 seconds for transit gateway resource types.\n\nWhen a network interface is attached to a [Nitro-based instance](https://docs.aws.amazon.com/ec2/latest/instancetypes/ec2-nitro-instances.html) , the aggregation interval is always 60 seconds or less, regardless of the value that you specify.\n\nDefault: 600",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-maxaggregationinterval"
+    },
+    "ResourceId": {
+      "description": "The ID of the resource to monitor. For example, if the resource type is `VPC` , specify the ID of the VPC.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-resourceid"
+    },
+    "ResourceType": {
+      "description": "The type of resource to monitor.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-resourcetype"
+    },
+    "Tags": {
+      "description": "The tags to apply to the flow logs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-tags"
+    },
+    "TrafficType": {
+      "description": "The type of traffic to monitor (accepted traffic, rejected traffic, or all traffic). This parameter is not supported for transit gateway resource types. It is required for the other resource types.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html#cfn-ec2-flowlog-traffictype"
+    }
+  },
+  "typeName": "AWS::EC2::FlowLog"
+}

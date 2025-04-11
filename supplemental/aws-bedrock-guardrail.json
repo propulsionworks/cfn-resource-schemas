@@ -1,0 +1,378 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#aws-resource-bedrock-guardrail-return-values",
+    "properties": {
+      "CreatedAt": {
+        "description": "The date and time at which the guardrail was created."
+      },
+      "FailureRecommendations": {
+        "description": "Appears if the `status` of the guardrail is `FAILED` . A list of recommendations to carry out before retrying the request."
+      },
+      "GuardrailArn": {
+        "description": "The ARN of the guardrail."
+      },
+      "GuardrailId": {
+        "description": "The unique identifier of the guardrail."
+      },
+      "Status": {
+        "description": "The status of the guardrail."
+      },
+      "StatusReasons": {
+        "description": "Appears if the `status` is `FAILED` . A list of reasons for why the guardrail failed to be created, updated, versioned, or deleted."
+      },
+      "UpdatedAt": {
+        "description": "The date and time at which the guardrail was last updated."
+      },
+      "Version": {
+        "description": "The version of the guardrail that was created. This value will always be `DRAFT` ."
+      }
+    }
+  },
+  "definitions": {
+    "ContentFilter": {
+      "properties": {
+        "InputStrength": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilter.html#cfn-bedrock-guardrail-contentfilter-inputstrength"
+        },
+        "OutputStrength": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilter.html#cfn-bedrock-guardrail-contentfilter-outputstrength"
+        },
+        "Type": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilter.html#cfn-bedrock-guardrail-contentfilter-type"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilter.html"
+    },
+    "ContentFilterConfig": {
+      "properties": {
+        "InputModalities": {
+          "description": "List of modalities",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilterconfig.html#cfn-bedrock-guardrail-contentfilterconfig-inputmodalities"
+        },
+        "InputStrength": {
+          "description": "The strength of the content filter to apply to prompts. As you increase the filter strength, the likelihood of filtering harmful content increases and the probability of seeing harmful content in your application reduces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilterconfig.html#cfn-bedrock-guardrail-contentfilterconfig-inputstrength"
+        },
+        "OutputModalities": {
+          "description": "List of modalities",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilterconfig.html#cfn-bedrock-guardrail-contentfilterconfig-outputmodalities"
+        },
+        "OutputStrength": {
+          "description": "The strength of the content filter to apply to model responses. As you increase the filter strength, the likelihood of filtering harmful content increases and the probability of seeing harmful content in your application reduces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilterconfig.html#cfn-bedrock-guardrail-contentfilterconfig-outputstrength"
+        },
+        "Type": {
+          "description": "The harmful category that the content filter is applied to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilterconfig.html#cfn-bedrock-guardrail-contentfilterconfig-type"
+        }
+      },
+      "description": "Contains filter strengths for harmful content. Guardrails support the following content filters to detect and filter harmful user inputs and FM-generated outputs.\n\n- *Hate* – Describes language or a statement that discriminates, criticizes, insults, denounces, or dehumanizes a person or group on the basis of an identity (such as race, ethnicity, gender, religion, sexual orientation, ability, and national origin).\n- *Insults* – Describes language or a statement that includes demeaning, humiliating, mocking, insulting, or belittling language. This type of language is also labeled as bullying.\n- *Sexual* – Describes language or a statement that indicates sexual interest, activity, or arousal using direct or indirect references to body parts, physical traits, or sex.\n- *Violence* – Describes language or a statement that includes glorification of or threats to inflict physical pain, hurt, or injury toward a person, group or thing.\n\nContent filtering depends on the confidence classification of user inputs and FM responses across each of the four harmful categories. All input and output statements are classified into one of four confidence levels (NONE, LOW, MEDIUM, HIGH) for each harmful category. For example, if a statement is classified as *Hate* with HIGH confidence, the likelihood of the statement representing hateful content is high. A single statement can be classified across multiple categories with varying confidence levels. For example, a single statement can be classified as *Hate* with HIGH confidence, *Insults* with LOW confidence, *Sexual* with NONE confidence, and *Violence* with MEDIUM confidence.\n\nFor more information, see [Guardrails content filters](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-filters.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfilterconfig.html"
+    },
+    "ContentFilterType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentfiltertype.html"
+    },
+    "ContentPolicyConfig": {
+      "properties": {
+        "FiltersConfig": {
+          "description": "Contains the type of the content filter and how strongly it should apply to prompts and model responses.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentpolicyconfig.html#cfn-bedrock-guardrail-contentpolicyconfig-filtersconfig"
+        }
+      },
+      "description": "Contains details about how to handle harmful content.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contentpolicyconfig.html"
+    },
+    "ContextualGroundingFilterConfig": {
+      "properties": {
+        "Threshold": {
+          "description": "The threshold details for the guardrails contextual grounding filter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contextualgroundingfilterconfig.html#cfn-bedrock-guardrail-contextualgroundingfilterconfig-threshold"
+        },
+        "Type": {
+          "description": "The filter details for the guardrails contextual grounding filter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contextualgroundingfilterconfig.html#cfn-bedrock-guardrail-contextualgroundingfilterconfig-type"
+        }
+      },
+      "description": "The filter configuration details for the guardrails contextual grounding filter.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contextualgroundingfilterconfig.html"
+    },
+    "ContextualGroundingFilterType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contextualgroundingfiltertype.html"
+    },
+    "ContextualGroundingPolicyConfig": {
+      "properties": {
+        "FiltersConfig": {
+          "description": "List of contextual grounding filter configs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contextualgroundingpolicyconfig.html#cfn-bedrock-guardrail-contextualgroundingpolicyconfig-filtersconfig"
+        }
+      },
+      "description": "The policy configuration details for the guardrails contextual grounding policy.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-contextualgroundingpolicyconfig.html"
+    },
+    "FilterStrength": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-filterstrength.html"
+    },
+    "GuardrailStatus": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-guardrailstatus.html"
+    },
+    "ManagedWords": {
+      "properties": {
+        "Type": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-managedwords.html#cfn-bedrock-guardrail-managedwords-type"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-managedwords.html"
+    },
+    "ManagedWordsConfig": {
+      "properties": {
+        "Type": {
+          "description": "The managed word type to configure for the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-managedwordsconfig.html#cfn-bedrock-guardrail-managedwordsconfig-type"
+        }
+      },
+      "description": "The managed word list to configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-managedwordsconfig.html"
+    },
+    "ManagedWordsType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-managedwordstype.html"
+    },
+    "Modality": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-modality.html"
+    },
+    "PiiEntity": {
+      "properties": {
+        "Action": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-piientity.html#cfn-bedrock-guardrail-piientity-action"
+        },
+        "Type": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-piientity.html#cfn-bedrock-guardrail-piientity-type"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-piientity.html"
+    },
+    "PiiEntityConfig": {
+      "properties": {
+        "Action": {
+          "description": "Configure guardrail action when the PII entity is detected.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-piientityconfig.html#cfn-bedrock-guardrail-piientityconfig-action"
+        },
+        "Type": {
+          "description": "Configure guardrail type when the PII entity is detected.\n\nThe following PIIs are used to block or mask sensitive information:\n\n- *General*\n\n- *ADDRESS*\n\nA physical address, such as \"100 Main Street, Anytown, USA\" or \"Suite #12, Building 123\". An address can include information such as the street, building, location, city, state, country, county, zip code, precinct, and neighborhood.\n- *AGE*\n\nAn individual's age, including the quantity and unit of time. For example, in the phrase \"I am 40 years old,\" Guardrails recognizes \"40 years\" as an age.\n- *NAME*\n\nAn individual's name. This entity type does not include titles, such as Dr., Mr., Mrs., or Miss. guardrails doesn't apply this entity type to names that are part of organizations or addresses. For example, guardrails recognizes the \"John Doe Organization\" as an organization, and it recognizes \"Jane Doe Street\" as an address.\n- *EMAIL*\n\nAn email address, such as *marymajor@email.com* .\n- *PHONE*\n\nA phone number. This entity type also includes fax and pager numbers.\n- *USERNAME*\n\nA user name that identifies an account, such as a login name, screen name, nick name, or handle.\n- *PASSWORD*\n\nAn alphanumeric string that is used as a password, such as \"* *very20special#pass** \".\n- *DRIVER_ID*\n\nThe number assigned to a driver's license, which is an official document permitting an individual to operate one or more motorized vehicles on a public road. A driver's license number consists of alphanumeric characters.\n- *LICENSE_PLATE*\n\nA license plate for a vehicle is issued by the state or country where the vehicle is registered. The format for passenger vehicles is typically five to eight digits, consisting of upper-case letters and numbers. The format varies depending on the location of the issuing state or country.\n- *VEHICLE_IDENTIFICATION_NUMBER*\n\nA Vehicle Identification Number (VIN) uniquely identifies a vehicle. VIN content and format are defined in the *ISO 3779* specification. Each country has specific codes and formats for VINs.\n- *Finance*\n\n- *CREDIT_DEBIT_CARD_CVV*\n\nA three-digit card verification code (CVV) that is present on VISA, MasterCard, and Discover credit and debit cards. For American Express credit or debit cards, the CVV is a four-digit numeric code.\n- *CREDIT_DEBIT_CARD_EXPIRY*\n\nThe expiration date for a credit or debit card. This number is usually four digits long and is often formatted as *month/year* or *MM/YY* . Guardrails recognizes expiration dates such as *01/21* , *01/2021* , and *Jan 2021* .\n- *CREDIT_DEBIT_CARD_NUMBER*\n\nThe number for a credit or debit card. These numbers can vary from 13 to 16 digits in length. However, Amazon Comprehend also recognizes credit or debit card numbers when only the last four digits are present.\n- *PIN*\n\nA four-digit personal identification number (PIN) with which you can access your bank account.\n- *INTERNATIONAL_BANK_ACCOUNT_NUMBER*\n\nAn International Bank Account Number has specific formats in each country. For more information, see [www.iban.com/structure](https://docs.aws.amazon.com/https://www.iban.com/structure) .\n- *SWIFT_CODE*\n\nA SWIFT code is a standard format of Bank Identifier Code (BIC) used to specify a particular bank or branch. Banks use these codes for money transfers such as international wire transfers.\n\nSWIFT codes consist of eight or 11 characters. The 11-digit codes refer to specific branches, while eight-digit codes (or 11-digit codes ending in 'XXX') refer to the head or primary office.\n- *IT*\n\n- *IP_ADDRESS*\n\nAn IPv4 address, such as *198.51.100.0* .\n- *MAC_ADDRESS*\n\nA *media access control* (MAC) address is a unique identifier assigned to a network interface controller (NIC).\n- *URL*\n\nA web address, such as *www.example.com* .\n- *AWS_ACCESS_KEY*\n\nA unique identifier that's associated with a secret access key; you use the access key ID and secret access key to sign programmatic AWS requests cryptographically.\n- *AWS_SECRET_KEY*\n\nA unique identifier that's associated with an access key. You use the access key ID and secret access key to sign programmatic AWS requests cryptographically.\n- *USA specific*\n\n- *US_BANK_ACCOUNT_NUMBER*\n\nA US bank account number, which is typically 10 to 12 digits long.\n- *US_BANK_ROUTING_NUMBER*\n\nA US bank account routing number. These are typically nine digits long,\n- *US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER*\n\nA US Individual Taxpayer Identification Number (ITIN) is a nine-digit number that starts with a \"9\" and contain a \"7\" or \"8\" as the fourth digit. An ITIN can be formatted with a space or a dash after the third and forth digits.\n- *US_PASSPORT_NUMBER*\n\nA US passport number. Passport numbers range from six to nine alphanumeric characters.\n- *US_SOCIAL_SECURITY_NUMBER*\n\nA US Social Security Number (SSN) is a nine-digit number that is issued to US citizens, permanent residents, and temporary working residents.\n- *Canada specific*\n\n- *CA_HEALTH_NUMBER*\n\nA Canadian Health Service Number is a 10-digit unique identifier, required for individuals to access healthcare benefits.\n- *CA_SOCIAL_INSURANCE_NUMBER*\n\nA Canadian Social Insurance Number (SIN) is a nine-digit unique identifier, required for individuals to access government programs and benefits.\n\nThe SIN is formatted as three groups of three digits, such as *123-456-789* . A SIN can be validated through a simple check-digit process called the [Luhn algorithm](https://docs.aws.amazon.com/https://www.wikipedia.org/wiki/Luhn_algorithm) .\n- *UK Specific*\n\n- *UK_NATIONAL_HEALTH_SERVICE_NUMBER*\n\nA UK National Health Service Number is a 10-17 digit number, such as *485 777 3456* . The current system formats the 10-digit number with spaces after the third and sixth digits. The final digit is an error-detecting checksum.\n- *UK_NATIONAL_INSURANCE_NUMBER*\n\nA UK National Insurance Number (NINO) provides individuals with access to National Insurance (social security) benefits. It is also used for some purposes in the UK tax system.\n\nThe number is nine digits long and starts with two letters, followed by six numbers and one letter. A NINO can be formatted with a space or a dash after the two letters and after the second, forth, and sixth digits.\n- *UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER*\n\nA UK Unique Taxpayer Reference (UTR) is a 10-digit number that identifies a taxpayer or a business.\n- *Custom*\n\n- *Regex filter* - You can use a regular expressions to define patterns for a guardrail to recognize and act upon such as serial number, booking ID etc..",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-piientityconfig.html#cfn-bedrock-guardrail-piientityconfig-type"
+        }
+      },
+      "description": "The PII entity to configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-piientityconfig.html"
+    },
+    "PiiEntityType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-piientitytype.html"
+    },
+    "RegexConfig": {
+      "properties": {
+        "Action": {
+          "description": "The guardrail action to configure when matching regular expression is detected.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-regexconfig.html#cfn-bedrock-guardrail-regexconfig-action"
+        },
+        "Description": {
+          "description": "The description of the regular expression to configure for the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-regexconfig.html#cfn-bedrock-guardrail-regexconfig-description"
+        },
+        "Name": {
+          "description": "The name of the regular expression to configure for the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-regexconfig.html#cfn-bedrock-guardrail-regexconfig-name"
+        },
+        "Pattern": {
+          "description": "The regular expression pattern to configure for the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-regexconfig.html#cfn-bedrock-guardrail-regexconfig-pattern"
+        }
+      },
+      "description": "The regular expression to configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-regexconfig.html"
+    },
+    "SensitiveInformationAction": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-sensitiveinformationaction.html"
+    },
+    "SensitiveInformationPolicyConfig": {
+      "properties": {
+        "PiiEntitiesConfig": {
+          "description": "A list of PII entities to configure to the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-sensitiveinformationpolicyconfig.html#cfn-bedrock-guardrail-sensitiveinformationpolicyconfig-piientitiesconfig"
+        },
+        "RegexesConfig": {
+          "description": "A list of regular expressions to configure to the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-sensitiveinformationpolicyconfig.html#cfn-bedrock-guardrail-sensitiveinformationpolicyconfig-regexesconfig"
+        }
+      },
+      "description": "Contains details about PII entities and regular expressions to configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-sensitiveinformationpolicyconfig.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-tag.html#cfn-bedrock-guardrail-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-tag.html#cfn-bedrock-guardrail-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-tag.html"
+    },
+    "Topic": {
+      "properties": {
+        "Definition": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topic.html#cfn-bedrock-guardrail-topic-definition"
+        },
+        "Examples": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topic.html#cfn-bedrock-guardrail-topic-examples"
+        },
+        "Name": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topic.html#cfn-bedrock-guardrail-topic-name"
+        },
+        "Type": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topic.html#cfn-bedrock-guardrail-topic-type"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topic.html"
+    },
+    "TopicConfig": {
+      "properties": {
+        "Definition": {
+          "description": "A definition of the topic to deny.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topicconfig.html#cfn-bedrock-guardrail-topicconfig-definition"
+        },
+        "Examples": {
+          "description": "A list of prompts, each of which is an example of a prompt that can be categorized as belonging to the topic.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topicconfig.html#cfn-bedrock-guardrail-topicconfig-examples"
+        },
+        "Name": {
+          "description": "The name of the topic to deny.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topicconfig.html#cfn-bedrock-guardrail-topicconfig-name"
+        },
+        "Type": {
+          "description": "Specifies to deny the topic.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topicconfig.html#cfn-bedrock-guardrail-topicconfig-type"
+        }
+      },
+      "description": "Details about topics for the guardrail to identify and deny.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topicconfig.html"
+    },
+    "TopicPolicyConfig": {
+      "properties": {
+        "TopicsConfig": {
+          "description": "A list of policies related to topics that the guardrail should deny.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topicpolicyconfig.html#cfn-bedrock-guardrail-topicpolicyconfig-topicsconfig"
+        }
+      },
+      "description": "Contains details about topics that the guardrail should identify and deny.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topicpolicyconfig.html"
+    },
+    "TopicType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-topictype.html"
+    },
+    "WordConfig": {
+      "properties": {
+        "Text": {
+          "description": "Text of the word configured for the guardrail to block.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-wordconfig.html#cfn-bedrock-guardrail-wordconfig-text"
+        }
+      },
+      "description": "A word to configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-wordconfig.html"
+    },
+    "WordPolicyConfig": {
+      "properties": {
+        "ManagedWordListsConfig": {
+          "description": "A list of managed words to configure for the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-wordpolicyconfig.html#cfn-bedrock-guardrail-wordpolicyconfig-managedwordlistsconfig"
+        },
+        "WordsConfig": {
+          "description": "A list of words to configure for the guardrail.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-wordpolicyconfig.html#cfn-bedrock-guardrail-wordpolicyconfig-wordsconfig"
+        }
+      },
+      "description": "Contains details about the word policy to configured for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-wordpolicyconfig.html"
+    }
+  },
+  "description": "Creates a guardrail to block topics and to implement safeguards for your generative AI applications.\n\nYou can configure the following policies in a guardrail to avoid undesirable and harmful content, filter out denied topics and words, and remove sensitive information for privacy protection.\n\n- *Content filters* - Adjust filter strengths to block input prompts or model responses containing harmful content.\n- *Denied topics* - Define a set of topics that are undesirable in the context of your application. These topics will be blocked if detected in user queries or model responses.\n- *Word filters* - Configure filters to block undesirable words, phrases, and profanity. Such words can include offensive terms, competitor names etc.\n- *Sensitive information filters* - Block or mask sensitive information such as personally identifiable information (PII) or custom regex in user inputs and model responses.\n\nIn addition to the above policies, you can also configure the messages to be returned to the user if a user input or model response is in violation of the policies defined in the guardrail.\n\nFor more information, see [Amazon Bedrock Guardrails](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html) in the *Amazon Bedrock User Guide* .",
+  "properties": {
+    "BlockedInputMessaging": {
+      "description": "The message to return when the guardrail blocks a prompt.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-blockedinputmessaging"
+    },
+    "BlockedOutputsMessaging": {
+      "description": "The message to return when the guardrail blocks a model response.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-blockedoutputsmessaging"
+    },
+    "ContentPolicyConfig": {
+      "description": "The content filter policies to configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-contentpolicyconfig"
+    },
+    "ContextualGroundingPolicyConfig": {
+      "description": "Contextual grounding policy config for a guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-contextualgroundingpolicyconfig"
+    },
+    "CreatedAt": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-createdat"
+    },
+    "Description": {
+      "description": "A description of the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-description"
+    },
+    "FailureRecommendations": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-failurerecommendations"
+    },
+    "GuardrailArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-guardrailarn"
+    },
+    "GuardrailId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-guardrailid"
+    },
+    "KmsKeyArn": {
+      "description": "The ARN of the AWS KMS key that you use to encrypt the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-kmskeyarn"
+    },
+    "Name": {
+      "description": "The name of the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-name"
+    },
+    "SensitiveInformationPolicyConfig": {
+      "description": "The sensitive information policy to configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-sensitiveinformationpolicyconfig"
+    },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-status"
+    },
+    "StatusReasons": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-statusreasons"
+    },
+    "Tags": {
+      "description": "The tags that you want to attach to the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-tags"
+    },
+    "TopicPolicyConfig": {
+      "description": "The topic policies to configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-topicpolicyconfig"
+    },
+    "UpdatedAt": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-updatedat"
+    },
+    "Version": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-version"
+    },
+    "WordPolicyConfig": {
+      "description": "The word policy you configure for the guardrail.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-wordpolicyconfig"
+    }
+  },
+  "typeName": "AWS::Bedrock::Guardrail"
+}

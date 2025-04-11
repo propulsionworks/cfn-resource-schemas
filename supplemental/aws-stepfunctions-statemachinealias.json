@@ -1,0 +1,79 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachinealias.html#aws-resource-stepfunctions-statemachinealias-return-values",
+    "properties": {
+      "Arn": {
+        "description": "Returns the ARN of the state machine alias. For example, `arn:aws:states:us-east-1:123456789012:stateMachine:myStateMachine:PROD` ."
+      }
+    }
+  },
+  "definitions": {
+    "DeploymentPreference": {
+      "properties": {
+        "Alarms": {
+          "description": "A list of Amazon CloudWatch alarm names to be monitored during the deployment. The deployment fails and rolls back if any of these alarms go into the `ALARM` state.\n\n> Amazon CloudWatch considers nonexistent alarms to have an `OK` state. If you provide an invalid alarm name or provide the ARN of an alarm instead of its name, your deployment may not roll back correctly.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-alarms"
+        },
+        "Interval": {
+          "description": "The time in minutes between each traffic shifting increment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-interval"
+        },
+        "Percentage": {
+          "description": "The percentage of traffic to shift to the new version in each increment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-percentage"
+        },
+        "StateMachineVersionArn": {
+          "description": "The Amazon Resource Name (ARN) of the [`AWS::StepFunctions::StateMachineVersion`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachineversion.html) resource that will be the final version to which the alias points to when the traffic shifting is complete.\n\nWhile performing gradual deployments, you can only provide a single state machine version ARN. To explicitly set version weights in a CloudFormation template, use `RoutingConfiguration` instead.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-statemachineversionarn"
+        },
+        "Type": {
+          "description": "The type of deployment you want to perform. You can specify one of the following types:\n\n- `LINEAR` - Shifts traffic to the new version in equal increments with an equal number of minutes between each increment.\n\nFor example, if you specify the increment percent as `20` with an interval of `600` minutes, this deployment increases traffic by 20 percent every 600 minutes until the new version receives 100 percent of the traffic. This deployment immediately rolls back the new version if any CloudWatch alarms are triggered.\n- `ALL_AT_ONCE` - Shifts 100 percent of traffic to the new version immediately. CloudFormation monitors the new version and rolls it back automatically to the previous version if any CloudWatch alarms are triggered.\n- `CANARY` - Shifts traffic in two increments.\n\nIn the first increment, a small percentage of traffic, for example, 10 percent is shifted to the new version. In the second increment, before a specified time interval in seconds gets over, the remaining traffic is shifted to the new version. The shift to the new version for the remaining traffic takes place only if no CloudWatch alarms are triggered during the specified time interval.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-type"
+        }
+      },
+      "description": "Enables gradual state machine deployments. CloudFormation automatically shifts traffic from the version the alias currently points to, to a new state machine version that you specify.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html"
+    },
+    "RoutingConfiguration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-routingconfiguration.html"
+    },
+    "RoutingConfigurationVersion": {
+      "properties": {
+        "StateMachineVersionArn": {
+          "description": "The Amazon Resource Name (ARN) that identifies one or two state machine versions defined in the routing configuration.\n\nIf you specify the ARN of a second version, it must belong to the same state machine as the first version.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-routingconfigurationversion.html#cfn-stepfunctions-statemachinealias-routingconfigurationversion-statemachineversionarn"
+        },
+        "Weight": {
+          "description": "The percentage of traffic you want to route to the state machine version. The sum of the weights in the routing configuration must be equal to 100.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-routingconfigurationversion.html#cfn-stepfunctions-statemachinealias-routingconfigurationversion-weight"
+        }
+      },
+      "description": "The state machine version to which you want to route the execution traffic.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-routingconfigurationversion.html"
+    }
+  },
+  "description": "Represents a state machine [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html) . An alias routes traffic to one or two versions of the same state machine.\n\nYou can create up to 100 aliases for each state machine.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachinealias.html#cfn-stepfunctions-statemachinealias-arn"
+    },
+    "DeploymentPreference": {
+      "description": "The settings that enable gradual state machine deployments. These settings include [Alarms](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-alarms) , [Interval](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-interval) , [Percentage](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-percentage) , [StateMachineVersionArn](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-statemachineversionarn) , and [Type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachinealias-deploymentpreference.html#cfn-stepfunctions-statemachinealias-deploymentpreference-type) .\n\nCloudFormation automatically shifts traffic from the version an alias currently points to, to a new state machine version that you specify.\n\n> `RoutingConfiguration` and `DeploymentPreference` are mutually exclusive properties. You must define only one of these properties. \n\nBased on the type of deployment you want to perform, you can specify one of the following settings:\n\n- `LINEAR` - Shifts traffic to the new version in equal increments with an equal number of minutes between each increment.\n\nFor example, if you specify the increment percent as `20` with an interval of `600` minutes, this deployment increases traffic by 20 percent every 600 minutes until the new version receives 100 percent of the traffic. This deployment immediately rolls back the new version if any Amazon CloudWatch alarms are triggered.\n- `ALL_AT_ONCE` - Shifts 100 percent of traffic to the new version immediately. CloudFormation monitors the new version and rolls it back automatically to the previous version if any CloudWatch alarms are triggered.\n- `CANARY` - Shifts traffic in two increments.\n\nIn the first increment, a small percentage of traffic, for example, 10 percent is shifted to the new version. In the second increment, before a specified time interval in seconds gets over, the remaining traffic is shifted to the new version. The shift to the new version for the remaining traffic takes place only if no CloudWatch alarms are triggered during the specified time interval.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachinealias.html#cfn-stepfunctions-statemachinealias-deploymentpreference"
+    },
+    "Description": {
+      "description": "An optional description of the state machine alias.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachinealias.html#cfn-stepfunctions-statemachinealias-description"
+    },
+    "Name": {
+      "description": "The name of the state machine alias. If you don't provide a name, it uses an automatically generated name based on the logical ID.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachinealias.html#cfn-stepfunctions-statemachinealias-name"
+    },
+    "RoutingConfiguration": {
+      "description": "The routing configuration of an alias. Routing configuration splits [StartExecution](https://docs.aws.amazon.com/step-functions/latest/apireference/API_StartExecution.html) requests between one or two versions of the same state machine.\n\nUse `RoutingConfiguration` if you want to explicitly set the alias [weights](https://docs.aws.amazon.com/step-functions/latest/apireference/API_RoutingConfigurationListItem.html#StepFunctions-Type-RoutingConfigurationListItem-weight) . Weight is the percentage of traffic you want to route to a state machine version.\n\n> `RoutingConfiguration` and `DeploymentPreference` are mutually exclusive properties. You must define only one of these properties.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachinealias.html#cfn-stepfunctions-statemachinealias-routingconfiguration"
+    }
+  },
+  "typeName": "AWS::StepFunctions::StateMachineAlias"
+}

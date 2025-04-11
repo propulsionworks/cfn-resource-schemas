@@ -1,0 +1,73 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicruledestination.html#aws-resource-iot-topicruledestination-return-values",
+    "properties": {
+      "StatusReason": {
+        "description": "Additional details or reason why the topic rule destination is in the current status."
+      },
+      "Arn": {
+        "description": "The topic rule destination URL."
+      }
+    }
+  },
+  "definitions": {
+    "HttpUrlDestinationSummary": {
+      "properties": {
+        "ConfirmationUrl": {
+          "description": "The URL used to confirm the HTTP topic rule destination URL.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicruledestination-httpurldestinationsummary.html#cfn-iot-topicruledestination-httpurldestinationsummary-confirmationurl"
+        }
+      },
+      "description": "HTTP URL destination properties.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicruledestination-httpurldestinationsummary.html"
+    },
+    "TopicRuleDestinationStatus": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicruledestination-topicruledestinationstatus.html"
+    },
+    "VpcDestinationProperties": {
+      "properties": {
+        "RoleArn": {
+          "description": "The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicruledestination-vpcdestinationproperties.html#cfn-iot-topicruledestination-vpcdestinationproperties-rolearn"
+        },
+        "SecurityGroups": {
+          "description": "The security groups of the VPC destination.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicruledestination-vpcdestinationproperties.html#cfn-iot-topicruledestination-vpcdestinationproperties-securitygroups"
+        },
+        "SubnetIds": {
+          "description": "The subnet IDs of the VPC destination.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicruledestination-vpcdestinationproperties.html#cfn-iot-topicruledestination-vpcdestinationproperties-subnetids"
+        },
+        "VpcId": {
+          "description": "The ID of the VPC.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicruledestination-vpcdestinationproperties.html#cfn-iot-topicruledestination-vpcdestinationproperties-vpcid"
+        }
+      },
+      "description": "The properties of a virtual private cloud (VPC) destination.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicruledestination-vpcdestinationproperties.html"
+    }
+  },
+  "description": "A topic rule destination.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicruledestination.html#cfn-iot-topicruledestination-arn"
+    },
+    "HttpUrlProperties": {
+      "description": "Properties of the HTTP URL.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicruledestination.html#cfn-iot-topicruledestination-httpurlproperties"
+    },
+    "Status": {
+      "description": "- **IN_PROGRESS** - A topic rule destination was created but has not been confirmed. You can set status to `IN_PROGRESS` by calling `UpdateTopicRuleDestination` . Calling `UpdateTopicRuleDestination` causes a new confirmation challenge to be sent to your confirmation endpoint.\n- **ENABLED** - Confirmation was completed, and traffic to this destination is allowed. You can set status to `DISABLED` by calling `UpdateTopicRuleDestination` .\n- **DISABLED** - Confirmation was completed, and traffic to this destination is not allowed. You can set status to `ENABLED` by calling `UpdateTopicRuleDestination` .\n- **ERROR** - Confirmation could not be completed; for example, if the confirmation timed out. You can call `GetTopicRuleDestination` for details about the error. You can set status to `IN_PROGRESS` by calling `UpdateTopicRuleDestination` . Calling `UpdateTopicRuleDestination` causes a new confirmation challenge to be sent to your confirmation endpoint.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicruledestination.html#cfn-iot-topicruledestination-status"
+    },
+    "StatusReason": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicruledestination.html#cfn-iot-topicruledestination-statusreason"
+    },
+    "VpcProperties": {
+      "description": "Properties of the virtual private cloud (VPC) connection.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicruledestination.html#cfn-iot-topicruledestination-vpcproperties"
+    }
+  },
+  "typeName": "AWS::IoT::TopicRuleDestination"
+}

@@ -1,0 +1,181 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#aws-resource-stepfunctions-statemachine-return-values",
+    "properties": {
+      "StateMachineRevisionId": {
+        "description": "Identifier for a state machine revision, which is an immutable, read-only snapshot of a state machine’s definition and configuration."
+      },
+      "Arn": {
+        "description": "Returns the ARN of the resource."
+      },
+      "Name": {
+        "description": "Returns the name of the state machine. For example:\n\n`{ \"Fn::GetAtt\": [\"MyStateMachine\", \"Name\"] }`\n\nReturns the name of your state machine:\n\n`HelloWorld-StateMachine`\n\nIf you did not specify the name it will be similar to the following:\n\n`MyStateMachine-1234abcdefgh`\n\nFor more information about using `Fn::GetAtt` , see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html) ."
+      }
+    }
+  },
+  "definitions": {
+    "CloudWatchLogsLogGroup": {
+      "properties": {
+        "LogGroupArn": {
+          "description": "The ARN of the the CloudWatch log group to which you want your logs emitted to. The ARN must end with `:*`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-cloudwatchlogsloggroup.html#cfn-stepfunctions-statemachine-cloudwatchlogsloggroup-loggrouparn"
+        }
+      },
+      "description": "Defines a CloudWatch log group.\n\n> For more information see [Standard Versus Express Workflows](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-standard-vs-express.html) in the AWS Step Functions Developer Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-cloudwatchlogsloggroup.html"
+    },
+    "Definition": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-definition.html"
+    },
+    "DefinitionSubstitutions": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-definitionsubstitutions.html"
+    },
+    "EncryptionConfiguration": {
+      "properties": {
+        "KmsDataKeyReusePeriodSeconds": {
+          "description": "Maximum duration that Step Functions will reuse data keys. When the period expires, Step Functions will call `GenerateDataKey` . Only applies to customer managed keys.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-encryptionconfiguration.html#cfn-stepfunctions-statemachine-encryptionconfiguration-kmsdatakeyreuseperiodseconds"
+        },
+        "KmsKeyId": {
+          "description": "An alias, alias ARN, key ID, or key ARN of a symmetric encryption AWS KMS key to encrypt data. To specify a AWS KMS key in a different AWS account, you must use the key ARN or alias ARN.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-encryptionconfiguration.html#cfn-stepfunctions-statemachine-encryptionconfiguration-kmskeyid"
+        },
+        "Type": {
+          "description": "Encryption option for a state machine.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-encryptionconfiguration.html#cfn-stepfunctions-statemachine-encryptionconfiguration-type"
+        }
+      },
+      "description": "Settings to configure server-side encryption for a state machine. By default, Step Functions provides transparent server-side encryption. With this configuration, you can specify a customer managed AWS KMS key for encryption.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-encryptionconfiguration.html"
+    },
+    "LogDestination": {
+      "properties": {
+        "CloudWatchLogsLogGroup": {
+          "description": "An object describing a CloudWatch log group. For more information, see [AWS::Logs::LogGroup](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html) in the AWS CloudFormation User Guide.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-logdestination.html#cfn-stepfunctions-statemachine-logdestination-cloudwatchlogsloggroup"
+        }
+      },
+      "description": "Defines a destination for `LoggingConfiguration` .\n\n> For more information on logging with `EXPRESS` workflows, see [Logging Express Workflows Using CloudWatch Logs](https://docs.aws.amazon.com/step-functions/latest/dg/cw-logs.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-logdestination.html"
+    },
+    "LoggingConfiguration": {
+      "properties": {
+        "Destinations": {
+          "description": "An array of objects that describes where your execution history events will be logged. Limited to size 1. Required, if your log level is not set to `OFF` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-loggingconfiguration.html#cfn-stepfunctions-statemachine-loggingconfiguration-destinations"
+        },
+        "IncludeExecutionData": {
+          "description": "Determines whether execution data is included in your log. When set to `false` , data is excluded.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-loggingconfiguration.html#cfn-stepfunctions-statemachine-loggingconfiguration-includeexecutiondata"
+        },
+        "Level": {
+          "description": "Defines which category of execution history events are logged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-loggingconfiguration.html#cfn-stepfunctions-statemachine-loggingconfiguration-level"
+        }
+      },
+      "description": "Defines what execution history events are logged and where they are logged.\n\nStep Functions provides the log levels — `OFF` , `ALL` , `ERROR` , and `FATAL` . No event types log when set to `OFF` and all event types do when set to `ALL` .\n\n> By default, the `level` is set to `OFF` . For more information see [Log Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html) in the AWS Step Functions User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-loggingconfiguration.html"
+    },
+    "S3Location": {
+      "properties": {
+        "Bucket": {
+          "description": "The name of the S3 bucket where the state machine definition JSON or YAML file is stored.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-s3location.html#cfn-stepfunctions-statemachine-s3location-bucket"
+        },
+        "Key": {
+          "description": "The name of the state machine definition file (Amazon S3 object name).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-s3location.html#cfn-stepfunctions-statemachine-s3location-key"
+        },
+        "Version": {
+          "description": "For versioning-enabled buckets, a specific version of the state machine definition.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-s3location.html#cfn-stepfunctions-statemachine-s3location-version"
+        }
+      },
+      "description": "Defines the S3 bucket location where a state machine definition is stored. The state machine definition must be a JSON or YAML file.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-s3location.html"
+    },
+    "TagsEntry": {
+      "properties": {
+        "Key": {
+          "description": "The `key` for a key-value pair in a tag entry.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-tagsentry.html#cfn-stepfunctions-statemachine-tagsentry-key"
+        },
+        "Value": {
+          "description": "The `value` for a key-value pair in a tag entry.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-tagsentry.html#cfn-stepfunctions-statemachine-tagsentry-value"
+        }
+      },
+      "description": "The `TagsEntry` property specifies *tags* to identify a state machine.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-tagsentry.html"
+    },
+    "TracingConfiguration": {
+      "properties": {
+        "Enabled": {
+          "description": "When set to `true` , X-Ray tracing is enabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-tracingconfiguration.html#cfn-stepfunctions-statemachine-tracingconfiguration-enabled"
+        }
+      },
+      "description": "Selects whether or not the state machine's AWS X-Ray tracing is enabled. To configure your state machine to send trace data to X-Ray, set `Enabled` to `true` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stepfunctions-statemachine-tracingconfiguration.html"
+    }
+  },
+  "description": "Provisions a state machine. A state machine consists of a collection of states that can do work ( `Task` states), determine to which states to transition next ( `Choice` states), stop an execution with an error ( `Fail` states), and so on. State machines are specified using a JSON-based, structured language.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-arn"
+    },
+    "Definition": {
+      "description": "The Amazon States Language definition of the state machine. The state machine definition must be in JSON or YAML, and the format of the object must match the format of your CloudFormation template file. See [Amazon States Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-definition"
+    },
+    "DefinitionS3Location": {
+      "description": "The name of the S3 bucket where the state machine definition is stored. The state machine definition must be a JSON or YAML file.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-definitions3location"
+    },
+    "DefinitionString": {
+      "description": "The Amazon States Language definition of the state machine. The state machine definition must be in JSON. See [Amazon States Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-definitionstring"
+    },
+    "DefinitionSubstitutions": {
+      "description": "A map (string to string) that specifies the mappings for placeholder variables in the state machine definition. This enables the customer to inject values obtained at runtime, for example from intrinsic functions, in the state machine definition. Variables can be template parameter names, resource logical IDs, resource attributes, or a variable in a key-value map.\n\nSubstitutions must follow the syntax: `${key_name}` or `${variable_1,variable_2,...}` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-definitionsubstitutions"
+    },
+    "EncryptionConfiguration": {
+      "description": "Encryption configuration for the state machine.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-encryptionconfiguration"
+    },
+    "LoggingConfiguration": {
+      "description": "Defines what execution history events are logged and where they are logged.\n\n> By default, the `level` is set to `OFF` . For more information see [Log Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html) in the AWS Step Functions User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-loggingconfiguration"
+    },
+    "Name": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-name"
+    },
+    "RoleArn": {
+      "description": "The Amazon Resource Name (ARN) of the IAM role to use for this state machine.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-rolearn"
+    },
+    "StateMachineName": {
+      "description": "The name of the state machine.\n\nA name must *not* contain:\n\n- white space\n- brackets `< > { } [ ]`\n- wildcard characters `? *`\n- special characters `\" # % \\ ^ | ~ ` $ & , ; : /`\n- control characters ( `U+0000-001F` , `U+007F-009F` )\n\n> If you specify a name, you cannot perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-statemachinename"
+    },
+    "StateMachineRevisionId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-statemachinerevisionid"
+    },
+    "StateMachineType": {
+      "description": "Determines whether a `STANDARD` or `EXPRESS` state machine is created. The default is `STANDARD` . You cannot update the `type` of a state machine once it has been created. For more information on `STANDARD` and `EXPRESS` workflows, see [Standard Versus Express Workflows](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-standard-vs-express.html) in the AWS Step Functions Developer Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-statemachinetype"
+    },
+    "Tags": {
+      "description": "The list of tags to add to a resource.\n\nTags may only contain Unicode letters, digits, white space, or these symbols: `_ . : / = + - @` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-tags"
+    },
+    "TracingConfiguration": {
+      "description": "Selects whether or not the state machine's AWS X-Ray tracing is enabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html#cfn-stepfunctions-statemachine-tracingconfiguration"
+    }
+  },
+  "typeName": "AWS::StepFunctions::StateMachine"
+}

@@ -1,0 +1,627 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#aws-resource-pinpoint-campaign-return-values",
+    "properties": {
+      "CampaignId": {
+        "description": "The unique identifier for the campaign."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the campaign."
+      }
+    }
+  },
+  "definitions": {
+    "CampaignCustomMessage": {
+      "properties": {
+        "Data": {
+          "description": "The raw, JSON-formatted string to use as the payload for the message. The maximum size is 5 KB.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigncustommessage.html#cfn-pinpoint-campaign-campaigncustommessage-data"
+        }
+      },
+      "description": "Specifies the contents of a message that's sent through a custom channel to recipients of a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigncustommessage.html"
+    },
+    "CampaignEmailMessage": {
+      "properties": {
+        "Body": {
+          "description": "The body of the email for recipients whose email clients don't render HTML content.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignemailmessage.html#cfn-pinpoint-campaign-campaignemailmessage-body"
+        },
+        "FromAddress": {
+          "description": "The verified email address to send the email from. The default address is the `FromAddress` specified for the email channel for the application.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignemailmessage.html#cfn-pinpoint-campaign-campaignemailmessage-fromaddress"
+        },
+        "HtmlBody": {
+          "description": "The body of the email, in HTML format, for recipients whose email clients render HTML content.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignemailmessage.html#cfn-pinpoint-campaign-campaignemailmessage-htmlbody"
+        },
+        "Title": {
+          "description": "The subject line, or title, of the email.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignemailmessage.html#cfn-pinpoint-campaign-campaignemailmessage-title"
+        }
+      },
+      "description": "Specifies the content and \"From\" address for an email message that's sent to recipients of a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignemailmessage.html"
+    },
+    "CampaignEventFilter": {
+      "properties": {
+        "Dimensions": {
+          "description": "The dimension settings of the event filter for the campaign.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigneventfilter.html#cfn-pinpoint-campaign-campaigneventfilter-dimensions"
+        },
+        "FilterType": {
+          "description": "The type of event that causes the campaign to be sent. Valid values are: `SYSTEM` , sends the campaign when a system event occurs; and, `ENDPOINT` , sends the campaign when an endpoint event (Events resource) occurs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigneventfilter.html#cfn-pinpoint-campaign-campaigneventfilter-filtertype"
+        }
+      },
+      "description": "Specifies the settings for events that cause a campaign to be sent.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigneventfilter.html"
+    },
+    "CampaignHook": {
+      "properties": {
+        "LambdaFunctionName": {
+          "description": "The name or Amazon Resource Name (ARN) of the Lambda function that Amazon Pinpoint invokes to customize a segment for a campaign.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignhook.html#cfn-pinpoint-campaign-campaignhook-lambdafunctionname"
+        },
+        "Mode": {
+          "description": "The mode that Amazon Pinpoint uses to invoke the Lambda function. Possible values are:\n\n- `FILTER` - Invoke the function to customize the segment that's used by a campaign.\n- `DELIVERY` - (Deprecated) Previously, invoked the function to send a campaign through a custom channel. This functionality is not supported anymore. To send a campaign through a custom channel, use the `CustomDeliveryConfiguration` and `CampaignCustomMessage` objects of the campaign.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignhook.html#cfn-pinpoint-campaign-campaignhook-mode"
+        },
+        "WebUrl": {
+          "description": "The web URL that Amazon Pinpoint calls to invoke the Lambda function over HTTPS.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignhook.html#cfn-pinpoint-campaign-campaignhook-weburl"
+        }
+      },
+      "description": "Specifies settings for invoking an Lambda function that customizes a segment for a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignhook.html"
+    },
+    "CampaignInAppMessage": {
+      "properties": {
+        "Content": {
+          "description": "An array that contains configurtion information about the in-app message for the campaign, including title and body text, text colors, background colors, image URLs, and button configurations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigninappmessage.html#cfn-pinpoint-campaign-campaigninappmessage-content"
+        },
+        "CustomConfig": {
+          "description": "Custom data, in the form of key-value pairs, that is included in an in-app messaging payload.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigninappmessage.html#cfn-pinpoint-campaign-campaigninappmessage-customconfig"
+        },
+        "Layout": {
+          "description": "A string that describes how the in-app message will appear. You can specify one of the following:\n\n- `BOTTOM_BANNER` – a message that appears as a banner at the bottom of the page.\n- `TOP_BANNER` – a message that appears as a banner at the top of the page.\n- `OVERLAYS` – a message that covers entire screen.\n- `MOBILE_FEED` – a message that appears in a window in front of the page.\n- `MIDDLE_BANNER` – a message that appears as a banner in the middle of the page.\n- `CAROUSEL` – a scrollable layout of up to five unique messages.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigninappmessage.html#cfn-pinpoint-campaign-campaigninappmessage-layout"
+        }
+      },
+      "description": "Specifies the appearance of an in-app message, including the message type, the title and body text, text and background colors, and the configurations of buttons that appear in the message.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaigninappmessage.html"
+    },
+    "CampaignSmsMessage": {
+      "properties": {
+        "Body": {
+          "description": "The body of the SMS message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignsmsmessage.html#cfn-pinpoint-campaign-campaignsmsmessage-body"
+        },
+        "EntityId": {
+          "description": "The entity ID or Principal Entity (PE) id received from the regulatory body for sending SMS in your country.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignsmsmessage.html#cfn-pinpoint-campaign-campaignsmsmessage-entityid"
+        },
+        "MessageType": {
+          "description": "The SMS message type. Valid values are `TRANSACTIONAL` (for messages that are critical or time-sensitive, such as a one-time passwords) and `PROMOTIONAL` (for messsages that aren't critical or time-sensitive, such as marketing messages).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignsmsmessage.html#cfn-pinpoint-campaign-campaignsmsmessage-messagetype"
+        },
+        "OriginationNumber": {
+          "description": "The long code to send the SMS message from. This value should be one of the dedicated long codes that's assigned to your AWS account. Although it isn't required, we recommend that you specify the long code using an E.164 format to ensure prompt and accurate delivery of the message. For example, +12065550100.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignsmsmessage.html#cfn-pinpoint-campaign-campaignsmsmessage-originationnumber"
+        },
+        "SenderId": {
+          "description": "The alphabetic Sender ID to display as the sender of the message on a recipient's device. Support for sender IDs varies by country or region. To specify a phone number as the sender, omit this parameter and use `OriginationNumber` instead. For more information about support for Sender ID by country, see the [Amazon Pinpoint User Guide](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-countries.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignsmsmessage.html#cfn-pinpoint-campaign-campaignsmsmessage-senderid"
+        },
+        "TemplateId": {
+          "description": "The template ID received from the regulatory body for sending SMS in your country.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignsmsmessage.html#cfn-pinpoint-campaign-campaignsmsmessage-templateid"
+        }
+      },
+      "description": "Specifies the content and settings for an SMS message that's sent to recipients of a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-campaignsmsmessage.html"
+    },
+    "CustomDeliveryConfiguration": {
+      "properties": {
+        "DeliveryUri": {
+          "description": "The destination to send the campaign or treatment to. This value can be one of the following:\n\n- The name or Amazon Resource Name (ARN) of an AWS Lambda function to invoke to handle delivery of the campaign or treatment.\n- The URL for a web application or service that supports HTTPS and can receive the message. The URL has to be a full URL, including the HTTPS protocol.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-customdeliveryconfiguration.html#cfn-pinpoint-campaign-customdeliveryconfiguration-deliveryuri"
+        },
+        "EndpointTypes": {
+          "description": "The types of endpoints to send the campaign or treatment to. Each valid value maps to a type of channel that you can associate with an endpoint by using the `ChannelType` property of an endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-customdeliveryconfiguration.html#cfn-pinpoint-campaign-customdeliveryconfiguration-endpointtypes"
+        }
+      },
+      "description": "Specifies the delivery configuration settings for sending a campaign or campaign treatment through a custom channel. This object is required if you use the `CampaignCustomMessage` object to define the message to send for the campaign or campaign treatment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-customdeliveryconfiguration.html"
+    },
+    "DefaultButtonConfiguration": {
+      "properties": {
+        "BackgroundColor": {
+          "description": "The background color of a button, expressed as a hex color code (such as #000000 for black).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-defaultbuttonconfiguration.html#cfn-pinpoint-campaign-defaultbuttonconfiguration-backgroundcolor"
+        },
+        "BorderRadius": {
+          "description": "The border radius of a button.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-defaultbuttonconfiguration.html#cfn-pinpoint-campaign-defaultbuttonconfiguration-borderradius"
+        },
+        "ButtonAction": {
+          "description": "The action that occurs when a recipient chooses a button in an in-app message. You can specify one of the following:\n\n- `LINK` – A link to a web destination.\n- `DEEP_LINK` – A link to a specific page in an application.\n- `CLOSE` – Dismisses the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-defaultbuttonconfiguration.html#cfn-pinpoint-campaign-defaultbuttonconfiguration-buttonaction"
+        },
+        "Link": {
+          "description": "The destination (such as a URL) for a button.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-defaultbuttonconfiguration.html#cfn-pinpoint-campaign-defaultbuttonconfiguration-link"
+        },
+        "Text": {
+          "description": "The text that appears on a button in an in-app message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-defaultbuttonconfiguration.html#cfn-pinpoint-campaign-defaultbuttonconfiguration-text"
+        },
+        "TextColor": {
+          "description": "The color of the body text in a button, expressed as a hex color code (such as #000000 for black).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-defaultbuttonconfiguration.html#cfn-pinpoint-campaign-defaultbuttonconfiguration-textcolor"
+        }
+      },
+      "description": "Specifies the default behavior for a button that appears in an in-app message. You can optionally add button configurations that specifically apply to iOS, Android, or web browser users.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-defaultbuttonconfiguration.html"
+    },
+    "EventDimensions": {
+      "properties": {
+        "Attributes": {
+          "description": "One or more custom attributes that your application reports to Amazon Pinpoint. You can use these attributes as selection criteria when you create an event filter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-eventdimensions.html#cfn-pinpoint-campaign-eventdimensions-attributes"
+        },
+        "EventType": {
+          "description": "The name of the event that causes the campaign to be sent or the journey activity to be performed. This can be a standard event that Amazon Pinpoint generates, such as `_email.delivered` or `_custom.delivered` . For campaigns, this can also be a custom event that's specific to your application. For information about standard events, see [Streaming Amazon Pinpoint Events](https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams.html) in the *Amazon Pinpoint Developer Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-eventdimensions.html#cfn-pinpoint-campaign-eventdimensions-eventtype"
+        },
+        "Metrics": {
+          "description": "One or more custom metrics that your application reports to Amazon Pinpoint . You can use these metrics as selection criteria when you create an event filter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-eventdimensions.html#cfn-pinpoint-campaign-eventdimensions-metrics"
+        }
+      },
+      "description": "Specifies the dimensions for an event filter that determines when a campaign is sent or a journey activity is performed.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-eventdimensions.html"
+    },
+    "InAppMessageBodyConfig": {
+      "properties": {
+        "Alignment": {
+          "description": "The text alignment of the main body text of the message. Acceptable values: `LEFT` , `CENTER` , `RIGHT` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebodyconfig.html#cfn-pinpoint-campaign-inappmessagebodyconfig-alignment"
+        },
+        "Body": {
+          "description": "The main body text of the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebodyconfig.html#cfn-pinpoint-campaign-inappmessagebodyconfig-body"
+        },
+        "TextColor": {
+          "description": "The color of the body text, expressed as a string consisting of a hex color code (such as \"#000000\" for black).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebodyconfig.html#cfn-pinpoint-campaign-inappmessagebodyconfig-textcolor"
+        }
+      },
+      "description": "Specifies the configuration of main body text of the in-app message.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebodyconfig.html"
+    },
+    "InAppMessageButton": {
+      "properties": {
+        "Android": {
+          "description": "An object that defines the default behavior for a button in in-app messages sent to Android.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebutton.html#cfn-pinpoint-campaign-inappmessagebutton-android"
+        },
+        "DefaultConfig": {
+          "description": "An object that defines the default behavior for a button in an in-app message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebutton.html#cfn-pinpoint-campaign-inappmessagebutton-defaultconfig"
+        },
+        "IOS": {
+          "description": "An object that defines the default behavior for a button in in-app messages sent to iOS devices.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebutton.html#cfn-pinpoint-campaign-inappmessagebutton-ios"
+        },
+        "Web": {
+          "description": "An object that defines the default behavior for a button in in-app messages for web applications.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebutton.html#cfn-pinpoint-campaign-inappmessagebutton-web"
+        }
+      },
+      "description": "Specifies the configuration of a button that appears in an in-app message.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagebutton.html"
+    },
+    "InAppMessageContent": {
+      "properties": {
+        "BackgroundColor": {
+          "description": "The background color for an in-app message banner, expressed as a hex color code (such as #000000 for black).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagecontent.html#cfn-pinpoint-campaign-inappmessagecontent-backgroundcolor"
+        },
+        "BodyConfig": {
+          "description": "Specifies the configuration of main body text in an in-app message template.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagecontent.html#cfn-pinpoint-campaign-inappmessagecontent-bodyconfig"
+        },
+        "HeaderConfig": {
+          "description": "Specifies the configuration and content of the header or title text of the in-app message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagecontent.html#cfn-pinpoint-campaign-inappmessagecontent-headerconfig"
+        },
+        "ImageUrl": {
+          "description": "The URL of the image that appears on an in-app message banner.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagecontent.html#cfn-pinpoint-campaign-inappmessagecontent-imageurl"
+        },
+        "PrimaryBtn": {
+          "description": "An object that contains configuration information about the primary button in an in-app message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagecontent.html#cfn-pinpoint-campaign-inappmessagecontent-primarybtn"
+        },
+        "SecondaryBtn": {
+          "description": "An object that contains configuration information about the secondary button in an in-app message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagecontent.html#cfn-pinpoint-campaign-inappmessagecontent-secondarybtn"
+        }
+      },
+      "description": "Specifies the configuration and contents of an in-app message.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessagecontent.html"
+    },
+    "InAppMessageHeaderConfig": {
+      "properties": {
+        "Alignment": {
+          "description": "The text alignment of the title of the message. Acceptable values: `LEFT` , `CENTER` , `RIGHT` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessageheaderconfig.html#cfn-pinpoint-campaign-inappmessageheaderconfig-alignment"
+        },
+        "Header": {
+          "description": "The header or title text of the in-app message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessageheaderconfig.html#cfn-pinpoint-campaign-inappmessageheaderconfig-header"
+        },
+        "TextColor": {
+          "description": "The color of the body text, expressed as a string consisting of a hex color code (such as \"#000000\" for black).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessageheaderconfig.html#cfn-pinpoint-campaign-inappmessageheaderconfig-textcolor"
+        }
+      },
+      "description": "Specifies the configuration and content of the header or title text of the in-app message.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-inappmessageheaderconfig.html"
+    },
+    "Limits": {
+      "properties": {
+        "Daily": {
+          "description": "The maximum number of messages that a campaign can send to a single endpoint during a 24-hour period. The maximum value is 100.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-limits.html#cfn-pinpoint-campaign-limits-daily"
+        },
+        "MaximumDuration": {
+          "description": "The maximum amount of time, in seconds, that a campaign can attempt to deliver a message after the scheduled start time for the campaign. The minimum value is 60 seconds.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-limits.html#cfn-pinpoint-campaign-limits-maximumduration"
+        },
+        "MessagesPerSecond": {
+          "description": "The maximum number of messages that a campaign can send each second. The minimum value is 1. The maximum value is 20,000.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-limits.html#cfn-pinpoint-campaign-limits-messagespersecond"
+        },
+        "Session": {
+          "description": "The maximum number of messages that the campaign can send per user session.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-limits.html#cfn-pinpoint-campaign-limits-session"
+        },
+        "Total": {
+          "description": "The maximum number of messages that a campaign can send to a single endpoint during the course of the campaign. The maximum value is 100.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-limits.html#cfn-pinpoint-campaign-limits-total"
+        }
+      },
+      "description": "Specifies the limits on the messages that a campaign can send.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-limits.html"
+    },
+    "Message": {
+      "properties": {
+        "Action": {
+          "description": "The action to occur if a recipient taps the push notification. Valid values are:\n\n- `OPEN_APP` – Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.\n- `DEEP_LINK` – Your app opens and displays a designated user interface in the app. This setting uses the deep-linking features of iOS and Android.\n- `URL` – The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-action"
+        },
+        "Body": {
+          "description": "The body of the notification message. The maximum number of characters is 200.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-body"
+        },
+        "ImageIconUrl": {
+          "description": "The URL of the image to display as the push notification icon, such as the icon for the app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-imageiconurl"
+        },
+        "ImageSmallIconUrl": {
+          "description": "The URL of the image to display as the small, push notification icon, such as a small version of the icon for the app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-imagesmalliconurl"
+        },
+        "ImageUrl": {
+          "description": "The URL of an image to display in the push notification.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-imageurl"
+        },
+        "JsonBody": {
+          "description": "The JSON payload to use for a silent push notification.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-jsonbody"
+        },
+        "MediaUrl": {
+          "description": "The URL of the image or video to display in the push notification.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-mediaurl"
+        },
+        "RawContent": {
+          "description": "The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value overrides all other content for the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-rawcontent"
+        },
+        "SilentPush": {
+          "description": "Specifies whether the notification is a silent push notification, which is a push notification that doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating an app's configuration, displaying messages in an in-app message center, or supporting phone home functionality.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-silentpush"
+        },
+        "TimeToLive": {
+          "description": "The number of seconds that the push notification service should keep the message, if the service is unable to deliver the notification the first time. This value is converted to an expiration value when it's sent to a push notification service. If this value is `0` , the service treats the notification as if it expires immediately and the service doesn't store or try to deliver the notification again.\n\nThis value doesn't apply to messages that are sent through the Amazon Device Messaging (ADM) service.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-timetolive"
+        },
+        "Title": {
+          "description": "The title to display above the notification message on a recipient's device.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-title"
+        },
+        "Url": {
+          "description": "The URL to open in a recipient's default mobile browser, if a recipient taps the push notification and the value of the `Action` property is `URL` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html#cfn-pinpoint-campaign-message-url"
+        }
+      },
+      "description": "Specifies the content and settings for a push notification that's sent to recipients of a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-message.html"
+    },
+    "MessageConfiguration": {
+      "properties": {
+        "ADMMessage": {
+          "description": "The message that the campaign sends through the ADM (Amazon Device Messaging) channel. If specified, this message overrides the default message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-admmessage"
+        },
+        "APNSMessage": {
+          "description": "The message that the campaign sends through the APNs (Apple Push Notification service) channel. If specified, this message overrides the default message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-apnsmessage"
+        },
+        "BaiduMessage": {
+          "description": "The message that the campaign sends through the Baidu (Baidu Cloud Push) channel. If specified, this message overrides the default message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-baidumessage"
+        },
+        "CustomMessage": {
+          "description": "The message that the campaign sends through a custom channel, as specified by the delivery configuration ( `CustomDeliveryConfiguration` ) settings for the campaign. If specified, this message overrides the default message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-custommessage"
+        },
+        "DefaultMessage": {
+          "description": "The default message that the campaign sends through all the channels that are configured for the campaign.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-defaultmessage"
+        },
+        "EmailMessage": {
+          "description": "The message that the campaign sends through the email channel. If specified, this message overrides the default message.\n\n> The maximum email message size is 200 KB. You can use email templates to send larger email messages.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-emailmessage"
+        },
+        "GCMMessage": {
+          "description": "The message that the campaign sends through the GCM channel, which enables Amazon Pinpoint to send push notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. If specified, this message overrides the default message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-gcmmessage"
+        },
+        "InAppMessage": {
+          "description": "The default message for the in-app messaging channel. This message overrides the default message ( `DefaultMessage` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-inappmessage"
+        },
+        "SMSMessage": {
+          "description": "The message that the campaign sends through the SMS channel. If specified, this message overrides the default message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html#cfn-pinpoint-campaign-messageconfiguration-smsmessage"
+        }
+      },
+      "description": "Specifies the message configuration settings for a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html"
+    },
+    "OverrideButtonConfiguration": {
+      "properties": {
+        "ButtonAction": {
+          "description": "The action that occurs when a recipient chooses a button in an in-app message. You can specify one of the following:\n\n- `LINK` – A link to a web destination.\n- `DEEP_LINK` – A link to a specific page in an application.\n- `CLOSE` – Dismisses the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-overridebuttonconfiguration.html#cfn-pinpoint-campaign-overridebuttonconfiguration-buttonaction"
+        },
+        "Link": {
+          "description": "The destination (such as a URL) for a button.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-overridebuttonconfiguration.html#cfn-pinpoint-campaign-overridebuttonconfiguration-link"
+        }
+      },
+      "description": "Specifies the configuration of a button with settings that are specific to a certain device type.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-overridebuttonconfiguration.html"
+    },
+    "QuietTime": {
+      "properties": {
+        "End": {
+          "description": "The specific time when quiet time ends. This value has to use 24-hour notation and be in HH:MM format, where HH is the hour (with a leading zero, if applicable) and MM is the minutes. For example, use `02:30` to represent 2:30 AM, or `14:30` to represent 2:30 PM.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-quiettime.html#cfn-pinpoint-campaign-quiettime-end"
+        },
+        "Start": {
+          "description": "The specific time when quiet time begins. This value has to use 24-hour notation and be in HH:MM format, where HH is the hour (with a leading zero, if applicable) and MM is the minutes. For example, use `02:30` to represent 2:30 AM, or `14:30` to represent 2:30 PM.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-quiettime.html#cfn-pinpoint-campaign-quiettime-start"
+        }
+      },
+      "description": "Specifies the start and end times that define a time range when messages aren't sent to endpoints.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-quiettime.html"
+    },
+    "Schedule": {
+      "properties": {
+        "EndTime": {
+          "description": "The scheduled time, in ISO 8601 format, when the campaign ended or will end.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-schedule.html#cfn-pinpoint-campaign-schedule-endtime"
+        },
+        "EventFilter": {
+          "description": "The type of event that causes the campaign to be sent, if the value of the `Frequency` property is `EVENT` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-schedule.html#cfn-pinpoint-campaign-schedule-eventfilter"
+        },
+        "Frequency": {
+          "description": "Specifies how often the campaign is sent or whether the campaign is sent in response to a specific event.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-schedule.html#cfn-pinpoint-campaign-schedule-frequency"
+        },
+        "IsLocalTime": {
+          "description": "Specifies whether the start and end times for the campaign schedule use each recipient's local time. To base the schedule on each recipient's local time, set this value to `true` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-schedule.html#cfn-pinpoint-campaign-schedule-islocaltime"
+        },
+        "QuietTime": {
+          "description": "The default quiet time for the campaign. Quiet time is a specific time range when a campaign doesn't send messages to endpoints, if all the following conditions are met:\n\n- The `EndpointDemographic.Timezone` property of the endpoint is set to a valid value.\n- The current time in the endpoint's time zone is later than or equal to the time specified by the `QuietTime.Start` property for the campaign.\n- The current time in the endpoint's time zone is earlier than or equal to the time specified by the `QuietTime.End` property for the campaign.\n\nIf any of the preceding conditions isn't met, the endpoint will receive messages from the campaign, even if quiet time is enabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-schedule.html#cfn-pinpoint-campaign-schedule-quiettime"
+        },
+        "StartTime": {
+          "description": "The scheduled time when the campaign began or will begin. Valid values are: `IMMEDIATE` , to start the campaign immediately; or, a specific time in ISO 8601 format.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-schedule.html#cfn-pinpoint-campaign-schedule-starttime"
+        },
+        "TimeZone": {
+          "description": "The starting UTC offset for the campaign schedule, if the value of the `IsLocalTime` property is `true` . Valid values are: `UTC, UTC+01, UTC+02, UTC+03, UTC+03:30, UTC+04, UTC+04:30, UTC+05, UTC+05:30, UTC+05:45, UTC+06, UTC+06:30, UTC+07, UTC+08, UTC+09, UTC+09:30, UTC+10, UTC+10:30, UTC+11, UTC+12, UTC+13, UTC-02, UTC-03, UTC-04, UTC-05, UTC-06, UTC-07, UTC-08, UTC-09, UTC-10,` and `UTC-11` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-schedule.html#cfn-pinpoint-campaign-schedule-timezone"
+        }
+      },
+      "description": "Specifies the schedule settings for a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-schedule.html"
+    },
+    "SetDimension": {
+      "properties": {
+        "DimensionType": {
+          "description": "The type of segment dimension to use. Valid values are: `INCLUSIVE` , endpoints that match the criteria are included in the segment; and, `EXCLUSIVE` , endpoints that match the criteria are excluded from the segment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-setdimension.html#cfn-pinpoint-campaign-setdimension-dimensiontype"
+        },
+        "Values": {
+          "description": "The criteria values to use for the segment dimension. Depending on the value of the `DimensionType` property, endpoints are included or excluded from the segment if their values match the criteria values.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-setdimension.html#cfn-pinpoint-campaign-setdimension-values"
+        }
+      },
+      "description": "Specifies the dimension type and values for a segment dimension.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-setdimension.html"
+    },
+    "Template": {
+      "properties": {
+        "Name": {
+          "description": "The name of the message template to use for the message. If specified, this value must match the name of an existing message template.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-template.html#cfn-pinpoint-campaign-template-name"
+        },
+        "Version": {
+          "description": "The unique identifier for the version of the message template to use for the message. If specified, this value must match the identifier for an existing template version. To retrieve a list of versions and version identifiers for a template, use the [Template Versions](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-versions.html) resource.\n\nIf you don't specify a value for this property, Amazon Pinpoint uses the *active version* of the template. The *active version* is typically the version of a template that's been most recently reviewed and approved for use, depending on your workflow. It isn't necessarily the latest version of a template.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-template.html#cfn-pinpoint-campaign-template-version"
+        }
+      },
+      "description": "Specifies the name and version of the message template to use for the message.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-template.html"
+    },
+    "TemplateConfiguration": {
+      "properties": {
+        "EmailTemplate": {
+          "description": "The email template to use for the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-templateconfiguration.html#cfn-pinpoint-campaign-templateconfiguration-emailtemplate"
+        },
+        "PushTemplate": {
+          "description": "The push notification template to use for the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-templateconfiguration.html#cfn-pinpoint-campaign-templateconfiguration-pushtemplate"
+        },
+        "SMSTemplate": {
+          "description": "The SMS template to use for the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-templateconfiguration.html#cfn-pinpoint-campaign-templateconfiguration-smstemplate"
+        },
+        "VoiceTemplate": {
+          "description": "The voice template to use for the message. This object isn't supported for campaigns.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-templateconfiguration.html#cfn-pinpoint-campaign-templateconfiguration-voicetemplate"
+        }
+      },
+      "description": "Specifies the message template to use for the message, for each type of channel.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-templateconfiguration.html"
+    },
+    "WriteTreatmentResource": {
+      "properties": {
+        "CustomDeliveryConfiguration": {
+          "description": "The delivery configuration settings for sending the treatment through a custom channel. This object is required if the `MessageConfiguration` object for the treatment specifies a `CustomMessage` object.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-writetreatmentresource.html#cfn-pinpoint-campaign-writetreatmentresource-customdeliveryconfiguration"
+        },
+        "MessageConfiguration": {
+          "description": "The message configuration settings for the treatment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-writetreatmentresource.html#cfn-pinpoint-campaign-writetreatmentresource-messageconfiguration"
+        },
+        "Schedule": {
+          "description": "The schedule settings for the treatment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-writetreatmentresource.html#cfn-pinpoint-campaign-writetreatmentresource-schedule"
+        },
+        "SizePercent": {
+          "description": "The allocated percentage of users (segment members) to send the treatment to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-writetreatmentresource.html#cfn-pinpoint-campaign-writetreatmentresource-sizepercent"
+        },
+        "TemplateConfiguration": {
+          "description": "The message template to use for the treatment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-writetreatmentresource.html#cfn-pinpoint-campaign-writetreatmentresource-templateconfiguration"
+        },
+        "TreatmentDescription": {
+          "description": "A custom description of the treatment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-writetreatmentresource.html#cfn-pinpoint-campaign-writetreatmentresource-treatmentdescription"
+        },
+        "TreatmentName": {
+          "description": "A custom name for the treatment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-writetreatmentresource.html#cfn-pinpoint-campaign-writetreatmentresource-treatmentname"
+        }
+      },
+      "description": "Specifies the settings for a campaign treatment. A *treatment* is a variation of a campaign that's used for A/B testing of a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-writetreatmentresource.html"
+    }
+  },
+  "description": "Specifies the settings for a campaign. A *campaign* is a messaging initiative that engages a specific segment of users for an Amazon Pinpoint application.",
+  "properties": {
+    "AdditionalTreatments": {
+      "description": "An array of requests that defines additional treatments for the campaign, in addition to the default treatment for the campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-additionaltreatments"
+    },
+    "ApplicationId": {
+      "description": "The unique identifier for the Amazon Pinpoint application that the campaign is associated with.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-applicationid"
+    },
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-arn"
+    },
+    "CampaignHook": {
+      "description": "Specifies the Lambda function to use as a code hook for a campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-campaignhook"
+    },
+    "CampaignId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-campaignid"
+    },
+    "CustomDeliveryConfiguration": {
+      "description": "The delivery configuration settings for sending the treatment through a custom channel. This object is required if the `MessageConfiguration` object for the treatment specifies a `CustomMessage` object.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-customdeliveryconfiguration"
+    },
+    "Description": {
+      "description": "A custom description of the campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-description"
+    },
+    "HoldoutPercent": {
+      "description": "The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-holdoutpercent"
+    },
+    "IsPaused": {
+      "description": "Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by changing this value to `false` . If you restart a campaign, the campaign restarts from the beginning and not at the point you paused it. If a campaign is running it will complete and then pause. Pause only pauses or skips the next run for a recurring future scheduled campaign. A campaign scheduled for immediate can't be paused.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-ispaused"
+    },
+    "Limits": {
+      "description": "The messaging limits for the campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-limits"
+    },
+    "MessageConfiguration": {
+      "description": "The message configuration settings for the treatment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-messageconfiguration"
+    },
+    "Name": {
+      "description": "The name of the campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-name"
+    },
+    "Priority": {
+      "description": "An integer between 1 and 5, inclusive, that represents the priority of the in-app message campaign, where 1 is the highest priority and 5 is the lowest. If there are multiple messages scheduled to be displayed at the same time, the priority determines the order in which those messages are displayed.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-priority"
+    },
+    "Schedule": {
+      "description": "The schedule settings for the treatment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-schedule"
+    },
+    "SegmentId": {
+      "description": "The unique identifier for the segment to associate with the campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-segmentid"
+    },
+    "SegmentVersion": {
+      "description": "The version of the segment to associate with the campaign.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-segmentversion"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-tags"
+    },
+    "TemplateConfiguration": {
+      "description": "The message template to use for the treatment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-templateconfiguration"
+    },
+    "TreatmentDescription": {
+      "description": "A custom description of the treatment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-treatmentdescription"
+    },
+    "TreatmentName": {
+      "description": "A custom name for the treatment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pinpoint-campaign.html#cfn-pinpoint-campaign-treatmentname"
+    }
+  },
+  "typeName": "AWS::Pinpoint::Campaign"
+}

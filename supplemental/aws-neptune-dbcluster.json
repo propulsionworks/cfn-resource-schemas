@@ -1,0 +1,176 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#aws-resource-neptune-dbcluster-return-values",
+    "properties": {
+      "ClusterResourceId": {
+        "description": "The resource id for the DB cluster. For example: `cluster-ABCD1234EFGH5678IJKL90MNOP` . The cluster ID uniquely identifies the cluster and is used in things like IAM authentication policies."
+      },
+      "Endpoint": {
+        "description": "The connection endpoint for the DB cluster. For example: `mystack-mydbcluster-1apw1j4phylrk.cg034hpkmmjt.us-east-2.rds.amazonaws.com`"
+      },
+      "Port": {
+        "description": "The port number on which the DB instances in the DB cluster accept connections."
+      },
+      "ReadEndpoint": {
+        "description": "The reader endpoint for the DB cluster. For example: `mystack-mydbcluster-ro-1apw1j4phylrk.cg034hpkmmjt.us-east-2.rds.amazonaws.com`"
+      }
+    }
+  },
+  "definitions": {
+    "DBClusterRole": {
+      "properties": {
+        "FeatureName": {
+          "description": "The name of the feature associated with the Amazon Identity and Access Management (IAM) role. For the list of supported feature names, see [DescribeDBEngineVersions](https://docs.aws.amazon.com/neptune/latest/userguide/api-other-apis.html#DescribeDBEngineVersions) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-dbclusterrole.html#cfn-neptune-dbcluster-dbclusterrole-featurename"
+        },
+        "RoleArn": {
+          "description": "The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-dbclusterrole.html#cfn-neptune-dbcluster-dbclusterrole-rolearn"
+        }
+      },
+      "description": "Describes an Amazon Identity and Access Management (IAM) role that is associated with a DB cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-dbclusterrole.html"
+    },
+    "ServerlessScalingConfiguration": {
+      "properties": {
+        "MaxCapacity": {
+          "description": "The maximum number of Neptune capacity units (NCUs) for a DB instance in a Neptune Serverless cluster. You can specify NCU values in half-step increments, such as 40, 40.5, 41, and so on.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-serverlessscalingconfiguration.html#cfn-neptune-dbcluster-serverlessscalingconfiguration-maxcapacity"
+        },
+        "MinCapacity": {
+          "description": "The minimum number of Neptune capacity units (NCUs) for a DB instance in a Neptune Serverless cluster. You can specify NCU values in half-step increments, such as 8, 8.5, 9, and so on.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-serverlessscalingconfiguration.html#cfn-neptune-dbcluster-serverlessscalingconfiguration-mincapacity"
+        }
+      },
+      "description": "Contains the scaling configuration of a Neptune Serverless DB cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-serverlessscalingconfiguration.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-tag.html#cfn-neptune-dbcluster-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-tag.html#cfn-neptune-dbcluster-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptune-dbcluster-tag.html"
+    }
+  },
+  "description": "The `AWS::Neptune::DBCluster` resource creates an Amazon Neptune DB cluster. Neptune is a fully managed graph database.\n\n> Currently, you can create this resource only in AWS Regions in which Amazon Neptune is supported. \n\nIf no `DeletionPolicy` is set for `AWS::Neptune::DBCluster` resources, the default deletion behavior is that the entire volume will be deleted without a snapshot. To retain a backup of the volume, the `DeletionPolicy` should be set to `Snapshot` . For more information about how AWS CloudFormation deletes resources, see [DeletionPolicy Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html) .\n\nYou can use `AWS::Neptune::DBCluster.DeletionProtection` to help guard against unintended deletion of your DB cluster.",
+  "properties": {
+    "AssociatedRoles": {
+      "description": "Provides a list of the Amazon Identity and Access Management (IAM) roles that are associated with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other Amazon services on your behalf.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-associatedroles"
+    },
+    "AvailabilityZones": {
+      "description": "Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-availabilityzones"
+    },
+    "BackupRetentionPeriod": {
+      "description": "Specifies the number of days for which automatic DB snapshots are retained.\n\nAn update may require some interruption. See [ModifyDBInstance](https://docs.aws.amazon.com/neptune/latest/userguide/api-instances.html#ModifyDBInstance) in the Amazon Neptune User Guide for more information.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-backupretentionperiod"
+    },
+    "ClusterResourceId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-clusterresourceid"
+    },
+    "CopyTagsToSnapshot": {
+      "description": "*If set to `true` , tags are copied to any snapshot of the DB cluster that is created.*",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-copytagstosnapshot"
+    },
+    "DBClusterIdentifier": {
+      "description": "Contains a user-supplied DB cluster identifier. This identifier is the unique key that identifies a DB cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-dbclusteridentifier"
+    },
+    "DBClusterParameterGroupName": {
+      "description": "Provides the name of the DB cluster parameter group.\n\nAn update may require some interruption. See [ModifyDBInstance](https://docs.aws.amazon.com/neptune/latest/userguide/api-instances.html#ModifyDBInstance) in the Amazon Neptune User Guide for more information.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-dbclusterparametergroupname"
+    },
+    "DBInstanceParameterGroupName": {
+      "description": "The name of the DB parameter group to apply to all instances of the DB cluster. Used only in case of a major engine version upgrade request\n\nNote that when you apply a parameter group using `DBInstanceParameterGroupName` , parameter changes are applied immediately, not during the next maintenance window.\n\n**Constraints** - The DB parameter group must be in the same DB parameter group family as the target DB cluster version.\n- The `DBInstanceParameterGroupName` parameter is only valid for major engine version upgrades.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-dbinstanceparametergroupname"
+    },
+    "DBPort": {
+      "description": "The port number on which the DB instances in the DB cluster accept connections.\n\nIf not specified, the default port used is `8182` .\n\n> The `Port` property will soon be deprecated. Please update existing templates to use the new `DBPort` property that has the same functionality.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-dbport"
+    },
+    "DBSubnetGroupName": {
+      "description": "Specifies information on the subnet group associated with the DB cluster, including the name, description, and subnets in the subnet group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-dbsubnetgroupname"
+    },
+    "DeletionProtection": {
+      "description": "Indicates whether or not the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-deletionprotection"
+    },
+    "EnableCloudwatchLogsExports": {
+      "description": "Specifies a list of log types that are enabled for export to CloudWatch Logs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-enablecloudwatchlogsexports"
+    },
+    "Endpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-endpoint"
+    },
+    "EngineVersion": {
+      "description": "Indicates the database engine version.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-engineversion"
+    },
+    "IamAuthEnabled": {
+      "description": "True if mapping of Amazon Identity and Access Management (IAM) accounts to database accounts is enabled, and otherwise false.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-iamauthenabled"
+    },
+    "KmsKeyId": {
+      "description": "The Amazon Resource Name (ARN) of the KMS key that is used to encrypt the database instances in the DB cluster, such as `arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef` . If you enable the `StorageEncrypted` property but don't specify this property, the default KMS key is used. If you specify this property, you must set the `StorageEncrypted` property to `true` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-kmskeyid"
+    },
+    "Port": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-port"
+    },
+    "PreferredBackupWindow": {
+      "description": "Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the `BackupRetentionPeriod` .\n\nAn update may require some interruption.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-preferredbackupwindow"
+    },
+    "PreferredMaintenanceWindow": {
+      "description": "Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-preferredmaintenancewindow"
+    },
+    "ReadEndpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-readendpoint"
+    },
+    "RestoreToTime": {
+      "description": "Creates a new DB cluster from a DB snapshot or DB cluster snapshot.\n\nIf a DB snapshot is specified, the target DB cluster is created from the source DB snapshot with a default configuration and default security group.\n\nIf a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-restoretotime"
+    },
+    "RestoreType": {
+      "description": "Creates a new DB cluster from a DB snapshot or DB cluster snapshot.\n\nIf a DB snapshot is specified, the target DB cluster is created from the source DB snapshot with a default configuration and default security group.\n\nIf a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-restoretype"
+    },
+    "ServerlessScalingConfiguration": {
+      "description": "Contains the scaling configuration of an Neptune Serverless DB cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-serverlessscalingconfiguration"
+    },
+    "SnapshotIdentifier": {
+      "description": "Specifies the identifier for a DB cluster snapshot. Must match the identifier of an existing snapshot.\n\nAfter you restore a DB cluster using a `SnapshotIdentifier` , you must specify the same `SnapshotIdentifier` for any future updates to the DB cluster. When you specify this property for an update, the DB cluster is not restored from the snapshot again, and the data in the database is not changed.\n\nHowever, if you don't specify the `SnapshotIdentifier` , an empty DB cluster is created, and the original DB cluster is deleted. If you specify a property that is different from the previous snapshot restore property, the DB cluster is restored from the snapshot specified by the `SnapshotIdentifier` , and the original DB cluster is deleted.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-snapshotidentifier"
+    },
+    "SourceDBClusterIdentifier": {
+      "description": "Creates a new DB cluster from a DB snapshot or DB cluster snapshot.\n\nIf a DB snapshot is specified, the target DB cluster is created from the source DB snapshot with a default configuration and default security group.\n\nIf a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-sourcedbclusteridentifier"
+    },
+    "StorageEncrypted": {
+      "description": "Indicates whether the DB cluster is encrypted.\n\nIf you specify the `KmsKeyId` property, then you must enable encryption and set this property to `true` .\n\nIf you enable the `StorageEncrypted` property but don't specify the `KmsKeyId` property, then the default KMS key is used. If you specify the `KmsKeyId` property, then that KMS key is used to encrypt the database instances in the DB cluster.\n\nIf you specify the `SourceDBClusterIdentifier` property, and don't specify this property or disable it, the value is inherited from the source DB cluster. If the source DB cluster is encrypted, the `KmsKeyId` property from the source cluster is used.\n\nIf you specify the `DBSnapshotIdentifier` and don't specify this property or disable it, the value is inherited from the snapshot and the specified `KmsKeyId` property from the snapshot is used.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-storageencrypted"
+    },
+    "Tags": {
+      "description": "The tags assigned to this cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-tags"
+    },
+    "UseLatestRestorableTime": {
+      "description": "Creates a new DB cluster from a DB snapshot or DB cluster snapshot.\n\nIf a DB snapshot is specified, the target DB cluster is created from the source DB snapshot with a default configuration and default security group.\n\nIf a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-uselatestrestorabletime"
+    },
+    "VpcSecurityGroupIds": {
+      "description": "Provides a list of VPC security groups that the DB cluster belongs to.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbcluster.html#cfn-neptune-dbcluster-vpcsecuritygroupids"
+    }
+  },
+  "typeName": "AWS::Neptune::DBCluster"
+}

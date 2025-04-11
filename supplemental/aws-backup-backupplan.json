@@ -1,0 +1,168 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupplan.html#aws-resource-backup-backupplan-return-values",
+    "properties": {
+      "VersionId": {
+        "description": "Unique, randomly generated, Unicode, UTF-8 encoded strings that are at most 1,024 bytes long. Version Ids cannot be edited."
+      },
+      "BackupPlanId": {
+        "description": "Uniquely identifies a backup plan."
+      },
+      "BackupPlanArn": {
+        "description": "An Amazon Resource Name (ARN) that uniquely identifies a backup plan; for example, `arn:aws:backup:us-east-1:123456789012:plan:8F81F553-3A74-4A3F-B93D-B3360DC80C50` ."
+      }
+    }
+  },
+  "definitions": {
+    "AdvancedBackupSettingResourceType": {
+      "properties": {
+        "BackupOptions": {
+          "description": "The backup option for the resource. Each option is a key-value pair. This option is only available for Windows VSS backup jobs.\n\nValid values:\n\nSet to `\"WindowsVSS\":\"enabled\"` to enable the `WindowsVSS` backup option and create a Windows VSS backup.\n\nSet to `\"WindowsVSS\":\"disabled\"` to create a regular backup. The `WindowsVSS` option is not enabled by default.\n\nIf you specify an invalid option, you get an `InvalidParameterValueException` exception.\n\nFor more information about Windows VSS backups, see [Creating a VSS-Enabled Windows Backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/windows-backups.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-advancedbackupsettingresourcetype.html#cfn-backup-backupplan-advancedbackupsettingresourcetype-backupoptions"
+        },
+        "ResourceType": {
+          "description": "The name of a resource type. The only supported resource type is EC2.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-advancedbackupsettingresourcetype.html#cfn-backup-backupplan-advancedbackupsettingresourcetype-resourcetype"
+        }
+      },
+      "description": "Specifies an object containing resource type and backup options. This is only supported for Windows VSS backups.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-advancedbackupsettingresourcetype.html"
+    },
+    "BackupPlanResourceType": {
+      "properties": {
+        "AdvancedBackupSettings": {
+          "description": "A list of backup options for each resource type.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupplanresourcetype.html#cfn-backup-backupplan-backupplanresourcetype-advancedbackupsettings"
+        },
+        "BackupPlanName": {
+          "description": "The display name of a backup plan.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupplanresourcetype.html#cfn-backup-backupplan-backupplanresourcetype-backupplanname"
+        },
+        "BackupPlanRule": {
+          "description": "An array of `BackupRule` objects, each of which specifies a scheduled task that is used to back up a selection of resources.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupplanresourcetype.html#cfn-backup-backupplan-backupplanresourcetype-backupplanrule"
+        }
+      },
+      "description": "Specifies an object containing properties used to create a backup plan.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupplanresourcetype.html"
+    },
+    "BackupRuleResourceType": {
+      "properties": {
+        "CompletionWindowMinutes": {
+          "description": "A value in minutes after a backup job is successfully started before it must be completed or it is canceled by AWS Backup .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-completionwindowminutes"
+        },
+        "CopyActions": {
+          "description": "An array of CopyAction objects, which contains the details of the copy operation.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-copyactions"
+        },
+        "EnableContinuousBackup": {
+          "description": "Enables continuous backup and point-in-time restores (PITR).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-enablecontinuousbackup"
+        },
+        "IndexActions": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-indexactions"
+        },
+        "Lifecycle": {
+          "description": "The lifecycle defines when a protected resource is transitioned to cold storage and when it expires. AWS Backup transitions and expires backups automatically according to the lifecycle that you define.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-lifecycle"
+        },
+        "RecoveryPointTags": {
+          "description": "The tags to assign to the resources.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-recoverypointtags"
+        },
+        "RuleName": {
+          "description": "A display name for a backup rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-rulename"
+        },
+        "ScheduleExpression": {
+          "description": "A CRON expression specifying when AWS Backup initiates a backup job.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-scheduleexpression"
+        },
+        "ScheduleExpressionTimezone": {
+          "description": "This is the timezone in which the schedule expression is set. By default, ScheduleExpressions are in UTC. You can modify this to a specified timezone.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-scheduleexpressiontimezone"
+        },
+        "StartWindowMinutes": {
+          "description": "An optional value that specifies a period of time in minutes after a backup is scheduled before a job is canceled if it doesn't start successfully.\n\nIf this value is included, it must be at least 60 minutes to avoid errors.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-startwindowminutes"
+        },
+        "TargetBackupVault": {
+          "description": "The name of a logical container where backups are stored. Backup vaults are identified by names that are unique to the account used to create them and the AWS Region where they are created. They consist of letters, numbers, and hyphens.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-targetbackupvault"
+        }
+      },
+      "description": "Specifies an object containing properties used to schedule a task to back up a selection of resources.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html"
+    },
+    "CopyActionResourceType": {
+      "properties": {
+        "DestinationBackupVaultArn": {
+          "description": "An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup. For example, `arn:aws:backup:us-east-1:123456789012:vault:aBackupVault.`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-copyactionresourcetype.html#cfn-backup-backupplan-copyactionresourcetype-destinationbackupvaultarn"
+        },
+        "Lifecycle": {
+          "description": "Defines when a protected resource is transitioned to cold storage and when it expires. AWS Backup transitions and expires backups automatically according to the lifecycle that you define. If you do not specify a lifecycle, AWS Backup applies the lifecycle policy of the source backup to the destination backup.\n\nBackups transitioned to cold storage must be stored in cold storage for a minimum of 90 days.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-copyactionresourcetype.html#cfn-backup-backupplan-copyactionresourcetype-lifecycle"
+        }
+      },
+      "description": "Copies backups created by a backup rule to another vault.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-copyactionresourcetype.html"
+    },
+    "IndexActionsResourceType": {
+      "properties": {
+        "ResourceTypes": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-indexactionsresourcetype.html#cfn-backup-backupplan-indexactionsresourcetype-resourcetypes"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-indexactionsresourcetype.html"
+    },
+    "LifecycleResourceType": {
+      "properties": {
+        "DeleteAfterDays": {
+          "description": "Specifies the number of days after creation that a recovery point is deleted. Must be greater than `MoveToColdStorageAfterDays` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-lifecycleresourcetype.html#cfn-backup-backupplan-lifecycleresourcetype-deleteafterdays"
+        },
+        "MoveToColdStorageAfterDays": {
+          "description": "Specifies the number of days after creation that a recovery point is moved to cold storage.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-lifecycleresourcetype.html#cfn-backup-backupplan-lifecycleresourcetype-movetocoldstorageafterdays"
+        },
+        "OptInToArchiveForSupportedResources": {
+          "description": "If the value is true, your backup plan transitions supported resources to archive (cold) storage tier in accordance with your lifecycle settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-lifecycleresourcetype.html#cfn-backup-backupplan-lifecycleresourcetype-optintoarchiveforsupportedresources"
+        }
+      },
+      "description": "Specifies an object containing an array of `Transition` objects that determine how long in days before a recovery point transitions to cold storage or is deleted.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-lifecycleresourcetype.html"
+    },
+    "ResourceType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-resourcetype.html"
+    },
+    "ResourceTypes": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-resourcetypes.html"
+    }
+  },
+  "description": "Contains an optional backup plan display name and an array of `BackupRule` objects, each of which specifies a backup rule. Each rule in a backup plan is a separate scheduled task and can back up a different selection of AWS resources.\n\nFor a sample AWS CloudFormation template, see the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/assigning-resources.html#assigning-resources-cfn) .",
+  "properties": {
+    "BackupPlan": {
+      "description": "Uniquely identifies the backup plan to be associated with the selection of resources.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupplan.html#cfn-backup-backupplan-backupplan"
+    },
+    "BackupPlanArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupplan.html#cfn-backup-backupplan-backupplanarn"
+    },
+    "BackupPlanId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupplan.html#cfn-backup-backupplan-backupplanid"
+    },
+    "BackupPlanTags": {
+      "description": "The tags to assign to the backup plan.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupplan.html#cfn-backup-backupplan-backupplantags"
+    },
+    "VersionId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupplan.html#cfn-backup-backupplan-versionid"
+    }
+  },
+  "typeName": "AWS::Backup::BackupPlan"
+}

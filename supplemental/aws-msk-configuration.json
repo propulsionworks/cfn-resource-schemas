@@ -1,0 +1,70 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-configuration.html#aws-resource-msk-configuration-return-values",
+    "properties": {
+      "LatestRevision.Revision": {
+        "description": "The revision number."
+      },
+      "LatestRevision.CreationTime": {
+        "description": "The time when the configuration revision was created."
+      },
+      "LatestRevision.Description": {
+        "description": "The description of the configuration revision."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the configuration."
+      }
+    }
+  },
+  "definitions": {
+    "KafkaVersionsList": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-configuration-kafkaversionslist.html"
+    },
+    "LatestRevision": {
+      "properties": {
+        "CreationTime": {
+          "description": "The time when the configuration revision was created.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-configuration-latestrevision.html#cfn-msk-configuration-latestrevision-creationtime"
+        },
+        "Description": {
+          "description": "The description of the configuration revision.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-configuration-latestrevision.html#cfn-msk-configuration-latestrevision-description"
+        },
+        "Revision": {
+          "description": "The revision number.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-configuration-latestrevision.html#cfn-msk-configuration-latestrevision-revision"
+        }
+      },
+      "description": "Describes a configuration revision.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-configuration-latestrevision.html"
+    }
+  },
+  "description": "Creates a new MSK configuration. To see an example of how to use this operation, first save the following text to a file and name the file `config-file.txt` .\n\n`auto.create.topics.enable = true zookeeper.connection.timeout.ms = 1000 log.roll.ms = 604800000` \n\nNow run the following Python 3.6 script in the folder where you saved `config-file.txt` . This script uses the properties specified in `config-file.txt` to create a configuration named `SalesClusterConfiguration` . This configuration can work with Apache Kafka versions 1.1.1 and 2.1.0.\n\n```PYTHON\nimport boto3 client = boto3.client('kafka') config_file = open('config-file.txt', 'r') server_properties = config_file.read() response = client.create_configuration( Name='SalesClusterConfiguration', Description='The configuration to use on all sales clusters.', KafkaVersions=['1.1.1', '2.1.0'], ServerProperties=server_properties\n) print(response)\n```",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-configuration.html#cfn-msk-configuration-arn"
+    },
+    "Description": {
+      "description": "The description of the configuration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-configuration.html#cfn-msk-configuration-description"
+    },
+    "KafkaVersionsList": {
+      "description": "The [versions of Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/supported-kafka-versions.html) with which you can use this MSK configuration.\n\nWhen you update the `KafkaVersionsList` property, AWS CloudFormation recreates a new configuration with the updated property before deleting the old configuration. Such an update requires a [resource replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement) . To successfully update `KafkaVersionsList` , you must also update the `Name` property in the same operation.\n\nIf your configuration is attached with any clusters created using the AWS Management Console or AWS CLI , you'll need to manually delete the old configuration from the console after the update completes.\n\nFor more information, see [Can’t update KafkaVersionsList in MSK configuration](https://docs.aws.amazon.com/msk/latest/developerguide/troubleshooting.html#troubleshoot-kafkaversionslist-cfn-update-failure) in the *Amazon MSK Developer Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-configuration.html#cfn-msk-configuration-kafkaversionslist"
+    },
+    "LatestRevision": {
+      "description": "Latest revision of the MSK configuration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-configuration.html#cfn-msk-configuration-latestrevision"
+    },
+    "Name": {
+      "description": "The name of the configuration. Configuration names are strings that match the regex \"^[0-9A-Za-z][0-9A-Za-z-]{0,}$\".",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-configuration.html#cfn-msk-configuration-name"
+    },
+    "ServerProperties": {
+      "description": "Contents of the `server.properties` file. When using this property, you must ensure that the contents of the file are base64 encoded. When using the console, the SDK, or the AWS CLI , the contents of `server.properties` can be in plaintext.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-configuration.html#cfn-msk-configuration-serverproperties"
+    }
+  },
+  "typeName": "AWS::MSK::Configuration"
+}

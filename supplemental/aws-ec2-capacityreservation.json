@@ -1,0 +1,195 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#aws-resource-ec2-capacityreservation-return-values",
+    "properties": {
+      "Tenancy": {
+        "description": "Returns the tenancy of the Capacity Reservation. For example: `dedicated` ."
+      },
+      "AvailableInstanceCount": {
+        "description": "Returns the remaining capacity, which indicates the number of instances that can be launched in the Capacity Reservation. For example: `9` ."
+      },
+      "AvailabilityZone": {
+        "description": "Returns the Availability Zone in which the capacity is reserved. For example: `us-east-1a` ."
+      },
+      "TotalInstanceCount": {
+        "description": "Returns the total number of instances for which the Capacity Reservation reserves capacity. For example: `15` ."
+      },
+      "Id": {
+        "description": "The ID of the Capacity Reservation."
+      },
+      "InstanceType": {
+        "description": "Returns the type of instance for which the capacity is reserved. For example: `m4.large` ."
+      },
+      "StartDate": {
+        "description": "The date and time at which the Capacity Reservation was started."
+      },
+      "CapacityReservationArn": {
+        "description": "The Amazon Resource Name (ARN) of the Capacity Reservation."
+      },
+      "CreateDate": {
+        "description": "The date and time at which the Capacity Reservation was created."
+      },
+      "State": {
+        "description": "The current state of the Capacity Reservation. A Capacity Reservation can be in one of the following states:\n\n- `active` - The capacity is available for use.\n- `expired` - The Capacity Reservation expired automatically at the date and time specified in your reservation request. The reserved capacity is no longer available for your use.\n- `cancelled` - The Capacity Reservation was canceled. The reserved capacity is no longer available for your use.\n- `pending` - The Capacity Reservation request was successful but the capacity provisioning is still pending.\n- `failed` - The Capacity Reservation request has failed. A request can fail due to request parameters that are not valid, capacity constraints, or instance limit constraints. You can view a failed request for 60 minutes.\n- `scheduled` - ( *Future-dated Capacity Reservations* ) The future-dated Capacity Reservation request was approved and the Capacity Reservation is scheduled for delivery on the requested start date.\n- `payment-pending` - ( *Capacity Blocks* ) The upfront payment has not been processed yet.\n- `payment-failed` - ( *Capacity Blocks* ) The upfront payment was not processed in the 12-hour time frame. Your Capacity Block was released.\n- `assessing` - ( *Future-dated Capacity Reservations* ) Amazon EC2 is assessing your request for a future-dated Capacity Reservation.\n- `delayed` - ( *Future-dated Capacity Reservations* ) Amazon EC2 encountered a delay in provisioning the requested future-dated Capacity Reservation. Amazon EC2 is unable to deliver the requested capacity by the requested start date and time.\n- `unsupported` - ( *Future-dated Capacity Reservations* ) Amazon EC2 can't support the future-dated Capacity Reservation request due to capacity constraints. You can view unsupported requests for 30 days. The Capacity Reservation will not be delivered."
+      },
+      "OwnerId": {
+        "description": "The ID of the AWS account that owns the Capacity Reservation."
+      },
+      "ReservationType": {
+        "description": "The type of Capacity Reservation."
+      },
+      "CapacityAllocationSet": {},
+      "CommitmentInfo": {},
+      "DeliveryPreference": {
+        "description": "The delivery method for a future-dated Capacity Reservation. `incremental` indicates that the requested capacity is delivered in addition to any running instances and reserved capacity that you have in your account at the requested date and time."
+      },
+      "CapacityReservationFleetId": {
+        "description": "The ID of the Capacity Reservation Fleet to which the Capacity Reservation belongs. Only valid for Capacity Reservations that were created by a Capacity Reservation Fleet."
+      }
+    }
+  },
+  "definitions": {
+    "CapacityAllocation": {
+      "properties": {
+        "AllocationType": {
+          "description": "The usage type. `used` indicates that the instance capacity is in use by instances that are running in the Capacity Reservation.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-capacityallocation.html#cfn-ec2-capacityreservation-capacityallocation-allocationtype"
+        },
+        "Count": {
+          "description": "The amount of instance capacity associated with the usage. For example a value of `4` indicates that instance capacity for 4 instances is currently in use.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-capacityallocation.html#cfn-ec2-capacityreservation-capacityallocation-count"
+        }
+      },
+      "description": "Information about instance capacity usage for a Capacity Reservation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-capacityallocation.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-tag.html#cfn-ec2-capacityreservation-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-tag.html#cfn-ec2-capacityreservation-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-tag.html"
+    },
+    "TagSpecification": {
+      "properties": {
+        "ResourceType": {
+          "description": "The type of resource to tag. Specify `capacity-reservation` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-tagspecification.html#cfn-ec2-capacityreservation-tagspecification-resourcetype"
+        },
+        "Tags": {
+          "description": "The tags to apply to the resource.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-tagspecification.html#cfn-ec2-capacityreservation-tagspecification-tags"
+        }
+      },
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-capacityreservation-tagspecification.html"
+    }
+  },
+  "description": "Creates a new Capacity Reservation with the specified attributes. For more information, see [Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html) in the *Amazon EC2 User Guide* .",
+  "properties": {
+    "AvailabilityZone": {
+      "description": "The Availability Zone in which to create the Capacity Reservation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-availabilityzone"
+    },
+    "AvailabilityZoneId": {
+      "description": "The Availability Zone ID of the Capacity Reservation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-availabilityzoneid"
+    },
+    "AvailableInstanceCount": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-availableinstancecount"
+    },
+    "CapacityAllocationSet": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-capacityallocationset"
+    },
+    "CapacityReservationArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-capacityreservationarn"
+    },
+    "CapacityReservationFleetId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-capacityreservationfleetid"
+    },
+    "CommitmentInfo": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-commitmentinfo"
+    },
+    "CreateDate": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-createdate"
+    },
+    "DeliveryPreference": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-deliverypreference"
+    },
+    "EbsOptimized": {
+      "description": "Indicates whether the Capacity Reservation supports EBS-optimized instances. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS- optimized instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-ebsoptimized"
+    },
+    "EndDate": {
+      "description": "The date and time at which the Capacity Reservation expires. When a Capacity Reservation expires, the reserved capacity is released and you can no longer launch instances into it. The Capacity Reservation's state changes to `expired` when it reaches its end date and time.\n\nYou must provide an `EndDate` value if `EndDateType` is `limited` . Omit `EndDate` if `EndDateType` is `unlimited` .\n\nIf the `EndDateType` is `limited` , the Capacity Reservation is cancelled within an hour from the specified time. For example, if you specify 5/31/2019, 13:30:55, the Capacity Reservation is guaranteed to end between 13:30:55 and 14:30:55 on 5/31/2019.\n\nIf you are requesting a future-dated Capacity Reservation, you can't specify an end date and time that is within the commitment duration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-enddate"
+    },
+    "EndDateType": {
+      "description": "Indicates the way in which the Capacity Reservation ends. A Capacity Reservation can have one of the following end types:\n\n- `unlimited` - The Capacity Reservation remains active until you explicitly cancel it. Do not provide an `EndDate` if the `EndDateType` is `unlimited` .\n- `limited` - The Capacity Reservation expires automatically at a specified date and time. You must provide an `EndDate` value if the `EndDateType` value is `limited` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-enddatetype"
+    },
+    "EphemeralStorage": {
+      "description": "*Deprecated.*",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-ephemeralstorage"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-id"
+    },
+    "InstanceCount": {
+      "description": "The number of instances for which to reserve capacity.\n\n> You can request future-dated Capacity Reservations for an instance count with a minimum of 100 vCPUs. For example, if you request a future-dated Capacity Reservation for `m5.xlarge` instances, you must request at least 25 instances ( *25 * m5.xlarge = 100 vCPUs* ). \n\nValid range: 1 - 1000",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-instancecount"
+    },
+    "InstanceMatchCriteria": {
+      "description": "Indicates the type of instance launches that the Capacity Reservation accepts. The options include:\n\n- `open` - The Capacity Reservation automatically matches all instances that have matching attributes (instance type, platform, and Availability Zone). Instances that have matching attributes run in the Capacity Reservation automatically without specifying any additional parameters.\n- `targeted` - The Capacity Reservation only accepts instances that have matching attributes (instance type, platform, and Availability Zone), and explicitly target the Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.\n\n> If you are requesting a future-dated Capacity Reservation, you must specify `targeted` . \n\nDefault: `open`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-instancematchcriteria"
+    },
+    "InstancePlatform": {
+      "description": "The type of operating system for which to reserve capacity.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-instanceplatform"
+    },
+    "InstanceType": {
+      "description": "The instance type for which to reserve capacity.\n\n> You can request future-dated Capacity Reservations for instance types in the C, M, R, I, and T instance families only. \n\nFor more information, see [Instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-instancetype"
+    },
+    "OutPostArn": {
+      "description": "> Not supported for future-dated Capacity Reservations. \n\nThe Amazon Resource Name (ARN) of the Outpost on which to create the Capacity Reservation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-outpostarn"
+    },
+    "OwnerId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-ownerid"
+    },
+    "PlacementGroupArn": {
+      "description": "> Not supported for future-dated Capacity Reservations. \n\nThe Amazon Resource Name (ARN) of the cluster placement group in which to create the Capacity Reservation. For more information, see [Capacity Reservations for cluster placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html) in the *Amazon EC2 User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-placementgrouparn"
+    },
+    "ReservationType": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-reservationtype"
+    },
+    "StartDate": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-startdate"
+    },
+    "State": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-state"
+    },
+    "TagSpecifications": {
+      "description": "The tags to apply to the Capacity Reservation during launch.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-tagspecifications"
+    },
+    "Tenancy": {
+      "description": "Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can have one of the following tenancy settings:\n\n- `default` - The Capacity Reservation is created on hardware that is shared with other AWS accounts .\n- `dedicated` - The Capacity Reservation is created on single-tenant hardware that is dedicated to a single AWS account .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-tenancy"
+    },
+    "TotalInstanceCount": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-totalinstancecount"
+    },
+    "UnusedReservationBillingOwnerId": {
+      "description": "The ID of the AWS account to which to assign billing of the unused capacity of the Capacity Reservation. A request will be sent to the specified account. That account must accept the request for the billing to be assigned to their account. For more information, see [Billing assignment for shared Amazon EC2 Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/assign-billing.html) .\n\nYou can assign billing only for shared Capacity Reservations. To share a Capacity Reservation, you must add it to a resource share. For more information, see [AWS::RAM::ResourceShare](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ram-resourceshare.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html#cfn-ec2-capacityreservation-unusedreservationbillingownerid"
+    }
+  },
+  "typeName": "AWS::EC2::CapacityReservation"
+}

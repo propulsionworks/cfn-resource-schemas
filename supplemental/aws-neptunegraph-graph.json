@@ -1,0 +1,80 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#aws-resource-neptunegraph-graph-return-values",
+    "properties": {
+      "GraphArn": {
+        "description": "The ARN of the graph. For example: `arn:aws:neptune-graph:us-east-1:111122223333:graph/g-12a3bcdef4`"
+      },
+      "GraphId": {
+        "description": "The ID of the graph. For example: `g-12a3bcdef4`"
+      },
+      "Endpoint": {
+        "description": "The connection endpoint for the graph. For example: `g-12a3bcdef4.us-east-1.neptune-graph.amazonaws.com`"
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptunegraph-graph-tag.html#cfn-neptunegraph-graph-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptunegraph-graph-tag.html#cfn-neptunegraph-graph-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptunegraph-graph-tag.html"
+    },
+    "VectorSearchConfiguration": {
+      "properties": {
+        "VectorSearchDimension": {
+          "description": "The number of dimensions.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptunegraph-graph-vectorsearchconfiguration.html#cfn-neptunegraph-graph-vectorsearchconfiguration-vectorsearchdimension"
+        }
+      },
+      "description": "The vector-search configuration for the graph, which specifies the vector dimension to use in the vector index, if any.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-neptunegraph-graph-vectorsearchconfiguration.html"
+    }
+  },
+  "description": "The `AWS ::NeptuneGraph::Graph` resource creates an  graph.  is a memory-optimized graph database engine for analytics. For more information, see [](https://docs.aws.amazon.com/neptune-analytics/latest/userguide/what-is-neptune-analytics.html) .\n\nYou can use `AWS ::NeptuneGraph::Graph.DeletionProtection` to help guard against unintended deletion of your graph.",
+  "properties": {
+    "DeletionProtection": {
+      "description": "A value that indicates whether the graph has deletion protection enabled. The graph can't be deleted when deletion protection is enabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-deletionprotection"
+    },
+    "Endpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-endpoint"
+    },
+    "GraphArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-grapharn"
+    },
+    "GraphId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-graphid"
+    },
+    "GraphName": {
+      "description": "The graph name. For example: `my-graph-1` .\n\nThe name must contain from 1 to 63 letters, numbers, or hyphens, and its first character must be a letter. It cannot end with a hyphen or contain two consecutive hyphens.\n\nIf you don't specify a graph name, a unique graph name is generated for you using the prefix `graph-for` , followed by a combination of `Stack Name` and a `UUID` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-graphname"
+    },
+    "ProvisionedMemory": {
+      "description": "The provisioned memory-optimized Neptune Capacity Units (m-NCUs) to use for the graph.\n\nMin = 16",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-provisionedmemory"
+    },
+    "PublicConnectivity": {
+      "description": "Specifies whether or not the graph can be reachable over the internet. All access to graphs is IAM authenticated.\n\nWhen the graph is publicly available, its domain name system (DNS) endpoint resolves to the public IP address from the internet. When the graph isn't publicly available, you need to create a `PrivateGraphEndpoint` in a given VPC to ensure the DNS name resolves to a private IP address that is reachable from the VPC.\n\nDefault: If not specified, the default value is false.\n\n> If enabling public connectivity for the first time, there will be a delay while it is enabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-publicconnectivity"
+    },
+    "ReplicaCount": {
+      "description": "The number of replicas in other AZs.\n\nDefault: If not specified, the default value is 1.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-replicacount"
+    },
+    "Tags": {
+      "description": "Adds metadata tags to the new graph. These tags can also be used with cost allocation reporting, or used in a Condition statement in an IAM policy.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-tags"
+    },
+    "VectorSearchConfiguration": {
+      "description": "Specifies the number of dimensions for vector embeddings that will be loaded into the graph. The value is specified as `dimension=` value. Max = 65,535",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html#cfn-neptunegraph-graph-vectorsearchconfiguration"
+    }
+  },
+  "typeName": "AWS::NeptuneGraph::Graph"
+}

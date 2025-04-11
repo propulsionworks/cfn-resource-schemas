@@ -1,0 +1,322 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#aws-resource-sagemaker-space-return-values",
+    "properties": {
+      "SpaceArn": {
+        "description": "The space's Amazon Resource Name (ARN)."
+      },
+      "Url": {
+        "description": "Returns the URL of the space. If the space is created with AWS IAM Identity Center (Successor to AWS Single Sign-On) authentication, users can navigate to the URL after appending the respective redirect parameter for the application type to be federated through AWS IAM Identity Center.\n\nThe following application types are supported:\n\n- Studio Classic: `&redirect=JupyterServer`\n- JupyterLab: `&redirect=JupyterLab`\n- Code Editor, based on Code-OSS, Visual Studio Code - Open Source: `&redirect=CodeEditor`"
+      }
+    }
+  },
+  "definitions": {
+    "AppType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-apptype.html"
+    },
+    "CodeRepository": {
+      "properties": {
+        "RepositoryUrl": {
+          "description": "The URL of the Git repository.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-coderepository.html#cfn-sagemaker-space-coderepository-repositoryurl"
+        }
+      },
+      "description": "A Git repository that SageMaker AI automatically displays to users for cloning in the JupyterServer application.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-coderepository.html"
+    },
+    "CustomFileSystem": {
+      "properties": {
+        "EFSFileSystem": {
+          "description": "A custom file system in Amazon EFS.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-customfilesystem.html#cfn-sagemaker-space-customfilesystem-efsfilesystem"
+        },
+        "FSxLustreFileSystem": {
+          "description": "A custom file system in Amazon FSx for Lustre.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-customfilesystem.html#cfn-sagemaker-space-customfilesystem-fsxlustrefilesystem"
+        }
+      },
+      "description": "A file system, created by you, that you assign to a user profile or space for an Amazon SageMaker AI Domain. Permitted users can access this file system in Amazon SageMaker AI Studio.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-customfilesystem.html"
+    },
+    "CustomFileSystems": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-customfilesystems.html"
+    },
+    "CustomImage": {
+      "properties": {
+        "AppImageConfigName": {
+          "description": "The name of the AppImageConfig.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-customimage.html#cfn-sagemaker-space-customimage-appimageconfigname"
+        },
+        "ImageName": {
+          "description": "The name of the CustomImage. Must be unique to your account.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-customimage.html#cfn-sagemaker-space-customimage-imagename"
+        },
+        "ImageVersionNumber": {
+          "description": "The version number of the CustomImage.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-customimage.html#cfn-sagemaker-space-customimage-imageversionnumber"
+        }
+      },
+      "description": "A custom SageMaker AI image. For more information, see [Bring your own SageMaker AI image](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-customimage.html"
+    },
+    "EFSFileSystem": {
+      "properties": {
+        "FileSystemId": {
+          "description": "The ID of your Amazon EFS file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-efsfilesystem.html#cfn-sagemaker-space-efsfilesystem-filesystemid"
+        }
+      },
+      "description": "A file system, created by you in Amazon EFS, that you assign to a user profile or space for an Amazon SageMaker AI Domain. Permitted users can access this file system in Amazon SageMaker AI Studio.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-efsfilesystem.html"
+    },
+    "EbsStorageSettings": {
+      "properties": {
+        "EbsVolumeSizeInGb": {
+          "description": "The size of an EBS storage volume for a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-ebsstoragesettings.html#cfn-sagemaker-space-ebsstoragesettings-ebsvolumesizeingb"
+        }
+      },
+      "description": "A collection of EBS storage settings that apply to both private and shared spaces.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-ebsstoragesettings.html"
+    },
+    "FSxLustreFileSystem": {
+      "properties": {
+        "FileSystemId": {
+          "description": "Amazon FSx for Lustre file system ID.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-fsxlustrefilesystem.html#cfn-sagemaker-space-fsxlustrefilesystem-filesystemid"
+        }
+      },
+      "description": "A custom file system in Amazon FSx for Lustre.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-fsxlustrefilesystem.html"
+    },
+    "JupyterServerAppSettings": {
+      "properties": {
+        "DefaultResourceSpec": {
+          "description": "The default instance type and the Amazon Resource Name (ARN) of the default SageMaker AI image used by the JupyterServer app. If you use the `LifecycleConfigArns` parameter, then this parameter is also required.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-jupyterserverappsettings.html#cfn-sagemaker-space-jupyterserverappsettings-defaultresourcespec"
+        },
+        "LifecycleConfigArns": {
+          "description": "The Amazon Resource Name (ARN) of the Lifecycle Configurations attached to the JupyterServerApp. If you use this parameter, the `DefaultResourceSpec` parameter is also required.\n\n> To remove a Lifecycle Config, you must set `LifecycleConfigArns` to an empty list.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-jupyterserverappsettings.html#cfn-sagemaker-space-jupyterserverappsettings-lifecycleconfigarns"
+        }
+      },
+      "description": "The JupyterServer app settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-jupyterserverappsettings.html"
+    },
+    "KernelGatewayAppSettings": {
+      "properties": {
+        "CustomImages": {
+          "description": "A list of custom SageMaker AI images that are configured to run as a KernelGateway app.\n\nThe maximum number of custom images are as follows.\n\n- On a domain level: 200\n- On a space level: 5\n- On a user profile level: 5",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-kernelgatewayappsettings.html#cfn-sagemaker-space-kernelgatewayappsettings-customimages"
+        },
+        "DefaultResourceSpec": {
+          "description": "The default instance type and the Amazon Resource Name (ARN) of the default SageMaker AI image used by the KernelGateway app.\n\n> The Amazon SageMaker AI Studio UI does not use the default instance type value set here. The default instance type set here is used when Apps are created using the AWS CLI or AWS CloudFormation and the instance type parameter value is not passed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-kernelgatewayappsettings.html#cfn-sagemaker-space-kernelgatewayappsettings-defaultresourcespec"
+        },
+        "LifecycleConfigArns": {
+          "description": "The Amazon Resource Name (ARN) of the Lifecycle Configurations attached to the the user profile or domain.\n\n> To remove a Lifecycle Config, you must set `LifecycleConfigArns` to an empty list.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-kernelgatewayappsettings.html#cfn-sagemaker-space-kernelgatewayappsettings-lifecycleconfigarns"
+        }
+      },
+      "description": "The KernelGateway app settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-kernelgatewayappsettings.html"
+    },
+    "OwnershipSettings": {
+      "properties": {
+        "OwnerUserProfileName": {
+          "description": "The user profile who is the owner of the space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-ownershipsettings.html#cfn-sagemaker-space-ownershipsettings-owneruserprofilename"
+        }
+      },
+      "description": "The collection of ownership settings for a space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-ownershipsettings.html"
+    },
+    "ResourceSpec": {
+      "properties": {
+        "InstanceType": {
+          "description": "The instance type that the image version runs on.\n\n> *JupyterServer apps* only support the `system` value.\n> \n> For *KernelGateway apps* , the `system` value is translated to `ml.t3.medium` . KernelGateway apps also support all other values for available instance types.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-resourcespec.html#cfn-sagemaker-space-resourcespec-instancetype"
+        },
+        "LifecycleConfigArn": {
+          "description": "The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-resourcespec.html#cfn-sagemaker-space-resourcespec-lifecycleconfigarn"
+        },
+        "SageMakerImageArn": {
+          "description": "The ARN of the SageMaker AI image that the image version belongs to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-resourcespec.html#cfn-sagemaker-space-resourcespec-sagemakerimagearn"
+        },
+        "SageMakerImageVersionArn": {
+          "description": "The ARN of the image version created on the instance. To clear the value set for `SageMakerImageVersionArn` , pass `None` as the value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-resourcespec.html#cfn-sagemaker-space-resourcespec-sagemakerimageversionarn"
+        }
+      },
+      "description": "Specifies the ARN's of a SageMaker AI image and SageMaker AI image version, and the instance type that the version runs on.\n\n> When both `SageMakerImageVersionArn` and `SageMakerImageArn` are passed, `SageMakerImageVersionArn` is used. Any updates to `SageMakerImageArn` will not take effect if `SageMakerImageVersionArn` already exists in the `ResourceSpec` because `SageMakerImageVersionArn` always takes precedence. To clear the value set for `SageMakerImageVersionArn` , pass `None` as the value.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-resourcespec.html"
+    },
+    "SpaceAppLifecycleManagement": {
+      "properties": {
+        "IdleSettings": {
+          "description": "Settings related to idle shutdown of Studio applications.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spaceapplifecyclemanagement.html#cfn-sagemaker-space-spaceapplifecyclemanagement-idlesettings"
+        }
+      },
+      "description": "Settings that are used to configure and manage the lifecycle of Amazon SageMaker Studio applications in a space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spaceapplifecyclemanagement.html"
+    },
+    "SpaceCodeEditorAppSettings": {
+      "properties": {
+        "AppLifecycleManagement": {
+          "description": "Settings that are used to configure and manage the lifecycle of CodeEditor applications in a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacecodeeditorappsettings.html#cfn-sagemaker-space-spacecodeeditorappsettings-applifecyclemanagement"
+        },
+        "DefaultResourceSpec": {
+          "description": "Specifies the ARNs of a SageMaker image and SageMaker image version, and the instance type that the version runs on.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacecodeeditorappsettings.html#cfn-sagemaker-space-spacecodeeditorappsettings-defaultresourcespec"
+        }
+      },
+      "description": "The application settings for a Code Editor space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacecodeeditorappsettings.html"
+    },
+    "SpaceEbsVolumeSizeInGb": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spaceebsvolumesizeingb.html"
+    },
+    "SpaceIdleSettings": {
+      "properties": {
+        "IdleTimeoutInMinutes": {
+          "description": "The time that SageMaker waits after the application becomes idle before shutting it down.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spaceidlesettings.html#cfn-sagemaker-space-spaceidlesettings-idletimeoutinminutes"
+        }
+      },
+      "description": "Settings related to idle shutdown of Studio applications in a space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spaceidlesettings.html"
+    },
+    "SpaceJupyterLabAppSettings": {
+      "properties": {
+        "AppLifecycleManagement": {
+          "description": "Settings that are used to configure and manage the lifecycle of JupyterLab applications in a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacejupyterlabappsettings.html#cfn-sagemaker-space-spacejupyterlabappsettings-applifecyclemanagement"
+        },
+        "CodeRepositories": {
+          "description": "A list of Git repositories that SageMaker automatically displays to users for cloning in the JupyterLab application.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacejupyterlabappsettings.html#cfn-sagemaker-space-spacejupyterlabappsettings-coderepositories"
+        },
+        "DefaultResourceSpec": {
+          "description": "Specifies the ARNs of a SageMaker image and SageMaker image version, and the instance type that the version runs on.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacejupyterlabappsettings.html#cfn-sagemaker-space-spacejupyterlabappsettings-defaultresourcespec"
+        }
+      },
+      "description": "The settings for the JupyterLab application within a space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacejupyterlabappsettings.html"
+    },
+    "SpaceSettings": {
+      "properties": {
+        "AppType": {
+          "description": "The type of app created within the space.\n\nIf using the [UpdateSpace](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateSpace.html) API, you can't change the app type of your space by specifying a different value for this field.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesettings.html#cfn-sagemaker-space-spacesettings-apptype"
+        },
+        "CodeEditorAppSettings": {
+          "description": "The Code Editor application settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesettings.html#cfn-sagemaker-space-spacesettings-codeeditorappsettings"
+        },
+        "CustomFileSystems": {
+          "description": "A file system, created by you, that you assign to a space for an Amazon SageMaker AI Domain. Permitted users can access this file system in Amazon SageMaker AI Studio.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesettings.html#cfn-sagemaker-space-spacesettings-customfilesystems"
+        },
+        "JupyterLabAppSettings": {
+          "description": "The settings for the JupyterLab application.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesettings.html#cfn-sagemaker-space-spacesettings-jupyterlabappsettings"
+        },
+        "JupyterServerAppSettings": {
+          "description": "The JupyterServer app settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesettings.html#cfn-sagemaker-space-spacesettings-jupyterserverappsettings"
+        },
+        "KernelGatewayAppSettings": {
+          "description": "The KernelGateway app settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesettings.html#cfn-sagemaker-space-spacesettings-kernelgatewayappsettings"
+        },
+        "SpaceStorageSettings": {
+          "description": "The storage settings for a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesettings.html#cfn-sagemaker-space-spacesettings-spacestoragesettings"
+        }
+      },
+      "description": "A collection of space settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesettings.html"
+    },
+    "SpaceSharingSettings": {
+      "properties": {
+        "SharingType": {
+          "description": "Specifies the sharing type of the space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesharingsettings.html#cfn-sagemaker-space-spacesharingsettings-sharingtype"
+        }
+      },
+      "description": "A collection of space sharing settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacesharingsettings.html"
+    },
+    "SpaceStorageSettings": {
+      "properties": {
+        "EbsStorageSettings": {
+          "description": "A collection of EBS storage settings for a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacestoragesettings.html#cfn-sagemaker-space-spacestoragesettings-ebsstoragesettings"
+        }
+      },
+      "description": "The storage settings for a space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-spacestoragesettings.html"
+    },
+    "StudioLifecycleConfigArn": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-studiolifecycleconfigarn.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-tag.html#cfn-sagemaker-space-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-tag.html#cfn-sagemaker-space-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-space-tag.html"
+    }
+  },
+  "description": "Creates a private space or a space used for real time collaboration in a domain.",
+  "properties": {
+    "DomainId": {
+      "description": "The ID of the associated domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-domainid"
+    },
+    "OwnershipSettings": {
+      "description": "The collection of ownership settings for a space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-ownershipsettings"
+    },
+    "SpaceArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-spacearn"
+    },
+    "SpaceDisplayName": {
+      "description": "The name of the space that appears in the Studio UI.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-spacedisplayname"
+    },
+    "SpaceName": {
+      "description": "The name of the space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-spacename"
+    },
+    "SpaceSettings": {
+      "description": "A collection of space settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-spacesettings"
+    },
+    "SpaceSharingSettings": {
+      "description": "A collection of space sharing settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-spacesharingsettings"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-tags"
+    },
+    "Url": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-space.html#cfn-sagemaker-space-url"
+    }
+  },
+  "typeName": "AWS::SageMaker::Space"
+}

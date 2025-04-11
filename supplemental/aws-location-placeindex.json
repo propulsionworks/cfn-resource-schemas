@@ -1,0 +1,98 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#aws-resource-location-placeindex-return-values",
+    "properties": {
+      "IndexArn": {
+        "description": "Synonym for `Arn` . The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across AWS .\n\n- Format example: `arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex`"
+      },
+      "CreateTime": {
+        "description": "The timestamp for when the place index resource was created in [ISO 8601](https://docs.aws.amazon.com/https://www.iso.org/iso-8601-date-and-time-format.html) format: `YYYY-MM-DDThh:mm:ss.sssZ` ."
+      },
+      "UpdateTime": {
+        "description": "The timestamp for when the place index resource was last updated in [ISO 8601](https://docs.aws.amazon.com/https://www.iso.org/iso-8601-date-and-time-format.html) format: `YYYY-MM-DDThh:mm:ss.sssZ` ."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across AWS .\n\n- Format example: `arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex`"
+      }
+    }
+  },
+  "definitions": {
+    "DataSourceConfiguration": {
+      "properties": {
+        "IntendedUse": {
+          "description": "Specifies how the results of an operation will be stored by the caller.\n\nValid values include:\n\n- `SingleUse` specifies that the results won't be stored.\n- `Storage` specifies that the result can be cached or stored in a database.\n\nDefault value: `SingleUse`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-datasourceconfiguration.html#cfn-location-placeindex-datasourceconfiguration-intendeduse"
+        }
+      },
+      "description": "Specifies the data storage option requesting Places.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-datasourceconfiguration.html"
+    },
+    "IntendedUse": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-intendeduse.html"
+    },
+    "PricingPlan": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-pricingplan.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-tag.html#cfn-location-placeindex-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-tag.html#cfn-location-placeindex-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-tag.html"
+    },
+    "TagMap": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-tagmap.html"
+    },
+    "iso8601UTC": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-location-placeindex-iso8601utc.html"
+    }
+  },
+  "description": "Specifies a place index resource in your AWS account. Use a place index resource to geocode addresses and other text queries by using the `SearchPlaceIndexForText` operation, and reverse geocode coordinates by using the `SearchPlaceIndexForPosition` operation, and enable autosuggestions by using the `SearchPlaceIndexForSuggestions` operation.\n\n> If your application is tracking or routing assets you use in your business, such as delivery vehicles or employees, you must not use Esri as your geolocation provider. See section 82 of the [AWS service terms](https://docs.aws.amazon.com/service-terms) for more details.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-arn"
+    },
+    "CreateTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-createtime"
+    },
+    "DataSource": {
+      "description": "Specifies the geospatial data provider for the new place index.\n\n> This field is case-sensitive. Enter the valid values as shown. For example, entering `HERE` returns an error. \n\nValid values include:\n\n- `Esri` – For additional information about [Esri](https://docs.aws.amazon.com/location/previous/developerguide/esri.html) 's coverage in your region of interest, see [Esri details on geocoding coverage](https://docs.aws.amazon.com/https://developers.arcgis.com/rest/geocode/api-reference/geocode-coverage.htm) .\n- `Grab` – Grab provides place index functionality for Southeast Asia. For additional information about [GrabMaps](https://docs.aws.amazon.com/location/previous/developerguide/grab.html) ' coverage, see [GrabMaps countries and areas covered](https://docs.aws.amazon.com/location/previous/developerguide/grab.html#grab-coverage-area) .\n- `Here` – For additional information about [HERE Technologies](https://docs.aws.amazon.com/location/previous/developerguide/HERE.html) ' coverage in your region of interest, see [HERE details on goecoding coverage](https://docs.aws.amazon.com/https://developer.here.com/documentation/geocoder/dev_guide/topics/coverage-geocoder.html) .\n\n> If you specify HERE Technologies ( `Here` ) as the data provider, you may not [store results](https://docs.aws.amazon.com//location-places/latest/APIReference/API_DataSourceConfiguration.html) for locations in Japan. For more information, see the [AWS Service Terms](https://docs.aws.amazon.com/service-terms/) for Amazon Location Service.\n\nFor additional information , see [Data providers](https://docs.aws.amazon.com/location/previous/developerguide/what-is-data-provider.html) on the *Amazon Location Service Developer Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-datasource"
+    },
+    "DataSourceConfiguration": {
+      "description": "Specifies the data storage option requesting Places.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-datasourceconfiguration"
+    },
+    "Description": {
+      "description": "The optional description for the place index resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-description"
+    },
+    "IndexArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-indexarn"
+    },
+    "IndexName": {
+      "description": "The name of the place index resource.\n\nRequirements:\n\n- Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_).\n- Must be a unique place index resource name.\n- No spaces allowed. For example, `ExamplePlaceIndex` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-indexname"
+    },
+    "PricingPlan": {
+      "description": "No longer used. If included, the only allowed value is `RequestBasedUsage` .\n\n*Allowed Values* : `RequestBasedUsage`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-pricingplan"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-tags"
+    },
+    "UpdateTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-location-placeindex.html#cfn-location-placeindex-updatetime"
+    }
+  },
+  "typeName": "AWS::Location::PlaceIndex"
+}

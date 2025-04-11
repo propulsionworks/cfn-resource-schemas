@@ -1,0 +1,175 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#aws-resource-securityhub-configurationpolicy-return-values",
+    "properties": {
+      "Arn": {
+        "description": "The ARN of the configuration policy."
+      },
+      "Id": {
+        "description": "The universally unique identifier (UUID) of the configuration policy. A self-managed configuration has no UUID. The identifier of a self-managed configuration is `SELF_MANAGED_SECURITY_HUB` ."
+      },
+      "CreatedAt": {
+        "description": "The date and time, in UTC and ISO 8601 format."
+      },
+      "UpdatedAt": {
+        "description": "The date and time, in UTC and ISO 8601 format, that the configuration policy was last updated."
+      },
+      "ServiceEnabled": {
+        "description": "Indicates whether the service that the configuration policy applies to is enabled in the policy."
+      }
+    }
+  },
+  "definitions": {
+    "ParameterConfiguration": {
+      "properties": {
+        "Value": {
+          "description": "The current value of a control parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parameterconfiguration.html#cfn-securityhub-configurationpolicy-parameterconfiguration-value"
+        },
+        "ValueType": {
+          "description": "Identifies whether a control parameter uses a custom user-defined value or subscribes to the default AWS Security Hub behavior.\n\nWhen `ValueType` is set equal to `DEFAULT` , the default behavior can be a specific Security Hub default value, or the default behavior can be to ignore a specific parameter. When `ValueType` is set equal to `DEFAULT` , Security Hub ignores user-provided input for the `Value` field.\n\nWhen `ValueType` is set equal to `CUSTOM` , the `Value` field can't be empty.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parameterconfiguration.html#cfn-securityhub-configurationpolicy-parameterconfiguration-valuetype"
+        }
+      },
+      "description": "An object that provides the current value of a security control parameter and identifies whether it has been customized.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parameterconfiguration.html"
+    },
+    "ParameterValue": {
+      "properties": {
+        "Boolean": {
+          "description": "A control parameter that is a boolean.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html#cfn-securityhub-configurationpolicy-parametervalue-boolean"
+        },
+        "Double": {
+          "description": "A control parameter that is a double.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html#cfn-securityhub-configurationpolicy-parametervalue-double"
+        },
+        "Enum": {
+          "description": "A control parameter that is an enum.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html#cfn-securityhub-configurationpolicy-parametervalue-enum"
+        },
+        "EnumList": {
+          "description": "A control parameter that is a list of enums.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html#cfn-securityhub-configurationpolicy-parametervalue-enumlist"
+        },
+        "Integer": {
+          "description": "A control parameter that is an integer.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html#cfn-securityhub-configurationpolicy-parametervalue-integer"
+        },
+        "IntegerList": {
+          "description": "A control parameter that is a list of integers.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html#cfn-securityhub-configurationpolicy-parametervalue-integerlist"
+        },
+        "String": {
+          "description": "A control parameter that is a string.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html#cfn-securityhub-configurationpolicy-parametervalue-string"
+        },
+        "StringList": {
+          "description": "A control parameter that is a list of strings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html#cfn-securityhub-configurationpolicy-parametervalue-stringlist"
+        }
+      },
+      "description": "An object that includes the data type of a security control parameter and its current value.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parametervalue.html"
+    },
+    "Policy": {
+      "properties": {
+        "SecurityHub": {
+          "description": "The AWS service that the configuration policy applies to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-policy.html#cfn-securityhub-configurationpolicy-policy-securityhub"
+        }
+      },
+      "description": "An object that defines how AWS Security Hub is configured. It includes whether Security Hub is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub enables all other controls (including newly released controls).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-policy.html"
+    },
+    "SecurityControlCustomParameter": {
+      "properties": {
+        "Parameters": {
+          "description": "An object that specifies parameter values for a control in a configuration policy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolcustomparameter.html#cfn-securityhub-configurationpolicy-securitycontrolcustomparameter-parameters"
+        },
+        "SecurityControlId": {
+          "description": "The ID of the security control.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolcustomparameter.html#cfn-securityhub-configurationpolicy-securitycontrolcustomparameter-securitycontrolid"
+        }
+      },
+      "description": "A list of security controls and control parameter values that are included in a configuration policy.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolcustomparameter.html"
+    },
+    "SecurityControlsConfiguration": {
+      "properties": {
+        "DisabledSecurityControlIdentifiers": {
+          "description": "A list of security controls that are disabled in the configuration policy.\n\nProvide only one of `EnabledSecurityControlIdentifiers` or `DisabledSecurityControlIdentifiers` .\n\nIf you provide `DisabledSecurityControlIdentifiers` , Security Hub enables all other controls not in the list, and enables [AutoEnableControls](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_UpdateSecurityHubConfiguration.html#securityhub-UpdateSecurityHubConfiguration-request-AutoEnableControls) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolsconfiguration.html#cfn-securityhub-configurationpolicy-securitycontrolsconfiguration-disabledsecuritycontrolidentifiers"
+        },
+        "EnabledSecurityControlIdentifiers": {
+          "description": "A list of security controls that are enabled in the configuration policy.\n\nProvide only one of `EnabledSecurityControlIdentifiers` or `DisabledSecurityControlIdentifiers` .\n\nIf you provide `EnabledSecurityControlIdentifiers` , Security Hub disables all other controls not in the list, and disables [AutoEnableControls](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_UpdateSecurityHubConfiguration.html#securityhub-UpdateSecurityHubConfiguration-request-AutoEnableControls) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolsconfiguration.html#cfn-securityhub-configurationpolicy-securitycontrolsconfiguration-enabledsecuritycontrolidentifiers"
+        },
+        "SecurityControlCustomParameters": {
+          "description": "A list of security controls and control parameter values that are included in a configuration policy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolsconfiguration.html#cfn-securityhub-configurationpolicy-securitycontrolsconfiguration-securitycontrolcustomparameters"
+        }
+      },
+      "description": "An object that defines which security controls are enabled in an AWS Security Hub configuration policy. The enablement status of a control is aligned across all of the enabled standards in an account.\n\nThis property is required only if `ServiceEnabled` is set to `true` in your configuration policy.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolsconfiguration.html"
+    },
+    "SecurityHubPolicy": {
+      "properties": {
+        "EnabledStandardIdentifiers": {
+          "description": "A list that defines which security standards are enabled in the configuration policy.\n\nThis property is required only if `ServiceEnabled` is set to `true` in your configuration policy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securityhubpolicy.html#cfn-securityhub-configurationpolicy-securityhubpolicy-enabledstandardidentifiers"
+        },
+        "SecurityControlsConfiguration": {
+          "description": "An object that defines which security controls are enabled in the configuration policy. The enablement status of a control is aligned across all of the enabled standards in an account.\n\nThis property is required only if `ServiceEnabled` is set to true in your configuration policy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securityhubpolicy.html#cfn-securityhub-configurationpolicy-securityhubpolicy-securitycontrolsconfiguration"
+        },
+        "ServiceEnabled": {
+          "description": "Indicates whether Security Hub is enabled in the policy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securityhubpolicy.html#cfn-securityhub-configurationpolicy-securityhubpolicy-serviceenabled"
+        }
+      },
+      "description": "An object that defines how AWS Security Hub is configured. The configuration policy includes whether Security Hub is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub enables all other controls (including newly released controls).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securityhubpolicy.html"
+    },
+    "Tags": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-tags.html"
+    }
+  },
+  "description": "The `AWS::SecurityHub::ConfigurationPolicy` resource creates a central configuration policy with the defined settings. Only the AWS Security Hub delegated administrator can create this resource in the home Region. For more information, see [Central configuration in Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html) in the *AWS Security Hub User Guide* .",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-arn"
+    },
+    "ConfigurationPolicy": {
+      "description": "An object that defines how AWS Security Hub is configured. It includes whether Security Hub is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub enables all other controls (including newly released controls).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-configurationpolicy"
+    },
+    "CreatedAt": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-createdat"
+    },
+    "Description": {
+      "description": "The description of the configuration policy.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-description"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-id"
+    },
+    "Name": {
+      "description": "The name of the configuration policy. Alphanumeric characters and the following ASCII characters are permitted: `-, ., !, *, /` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-name"
+    },
+    "ServiceEnabled": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-serviceenabled"
+    },
+    "Tags": {
+      "description": "User-defined tags associated with a configuration policy. For more information, see [Tagging AWS Security Hub resources](https://docs.aws.amazon.com/securityhub/latest/userguide/tagging-resources.html) in the *Security Hub user guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-tags"
+    },
+    "UpdatedAt": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-updatedat"
+    }
+  },
+  "typeName": "AWS::SecurityHub::ConfigurationPolicy"
+}

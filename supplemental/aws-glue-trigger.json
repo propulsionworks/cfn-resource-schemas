@@ -1,0 +1,146 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#aws-resource-glue-trigger-return-values",
+    "properties": {}
+  },
+  "definitions": {
+    "Action": {
+      "properties": {
+        "Arguments": {
+          "description": "The job arguments used when this trigger fires. For this job run, they replace the default arguments set in the job definition itself.\n\nYou can specify arguments here that your own job-execution script consumes, in addition to arguments that AWS Glue itself consumes.\n\nFor information about how to specify and consume your own job arguments, see [Calling AWS Glue APIs in Python](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) in the *AWS Glue Developer Guide* .\n\nFor information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the developer guide.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-action.html#cfn-glue-trigger-action-arguments"
+        },
+        "CrawlerName": {
+          "description": "The name of the crawler to be used with this action.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-action.html#cfn-glue-trigger-action-crawlername"
+        },
+        "JobName": {
+          "description": "The name of a job to be executed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-action.html#cfn-glue-trigger-action-jobname"
+        },
+        "NotificationProperty": {
+          "description": "Specifies configuration properties of a job run notification.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-action.html#cfn-glue-trigger-action-notificationproperty"
+        },
+        "SecurityConfiguration": {
+          "description": "The name of the `SecurityConfiguration` structure to be used with this action.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-action.html#cfn-glue-trigger-action-securityconfiguration"
+        },
+        "Timeout": {
+          "description": "The `JobRun` timeout in minutes. This is the maximum time that a job run can consume resources before it is terminated and enters TIMEOUT status. The default is 2,880 minutes (48 hours). This overrides the timeout value set in the parent job.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-action.html#cfn-glue-trigger-action-timeout"
+        }
+      },
+      "description": "Defines an action to be initiated by a trigger.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-action.html"
+    },
+    "Condition": {
+      "properties": {
+        "CrawlState": {
+          "description": "The state of the crawler to which this condition applies.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-condition.html#cfn-glue-trigger-condition-crawlstate"
+        },
+        "CrawlerName": {
+          "description": "The name of the crawler to which this condition applies.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-condition.html#cfn-glue-trigger-condition-crawlername"
+        },
+        "JobName": {
+          "description": "The name of the job whose `JobRuns` this condition applies to, and on which this trigger waits.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-condition.html#cfn-glue-trigger-condition-jobname"
+        },
+        "LogicalOperator": {
+          "description": "A logical operator.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-condition.html#cfn-glue-trigger-condition-logicaloperator"
+        },
+        "State": {
+          "description": "The condition state. Currently, the values supported are `SUCCEEDED` , `STOPPED` , `TIMEOUT` , and `FAILED` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-condition.html#cfn-glue-trigger-condition-state"
+        }
+      },
+      "description": "Defines a condition under which a trigger fires.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-condition.html"
+    },
+    "EventBatchingCondition": {
+      "properties": {
+        "BatchSize": {
+          "description": "Number of events that must be received from Amazon EventBridge before EventBridge event trigger fires.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-eventbatchingcondition.html#cfn-glue-trigger-eventbatchingcondition-batchsize"
+        },
+        "BatchWindow": {
+          "description": "Window of time in seconds after which EventBridge event trigger fires. Window starts when first event is received.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-eventbatchingcondition.html#cfn-glue-trigger-eventbatchingcondition-batchwindow"
+        }
+      },
+      "description": "Batch condition that must be met (specified number of events received or batch time window expired) before EventBridge event trigger fires.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-eventbatchingcondition.html"
+    },
+    "NotificationProperty": {
+      "properties": {
+        "NotifyDelayAfter": {
+          "description": "After a job run starts, the number of minutes to wait before sending a job run delay notification",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-notificationproperty.html#cfn-glue-trigger-notificationproperty-notifydelayafter"
+        }
+      },
+      "description": "Specifies configuration properties of a job run notification.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-notificationproperty.html"
+    },
+    "Predicate": {
+      "properties": {
+        "Conditions": {
+          "description": "A list of the conditions that determine when the trigger will fire.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-predicate.html#cfn-glue-trigger-predicate-conditions"
+        },
+        "Logical": {
+          "description": "An optional field if only one condition is listed. If multiple conditions are listed, then this field is required.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-predicate.html#cfn-glue-trigger-predicate-logical"
+        }
+      },
+      "description": "Defines the predicate of the trigger, which determines when it fires.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-trigger-predicate.html"
+    }
+  },
+  "description": "The `AWS::Glue::Trigger` resource specifies triggers that run AWS Glue jobs. For more information, see [Triggering Jobs in AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) and [Trigger Structure](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-trigger.html#aws-glue-api-jobs-trigger-Trigger) in the *AWS Glue Developer Guide* .",
+  "properties": {
+    "Actions": {
+      "description": "The actions initiated by this trigger.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-actions"
+    },
+    "Description": {
+      "description": "A description of this trigger.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-description"
+    },
+    "EventBatchingCondition": {
+      "description": "Batch condition that must be met (specified number of events received or batch time window expired) before EventBridge event trigger fires.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-eventbatchingcondition"
+    },
+    "Name": {
+      "description": "The name of the trigger.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-name"
+    },
+    "Predicate": {
+      "description": "The predicate of this trigger, which defines when it will fire.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-predicate"
+    },
+    "Schedule": {
+      "description": "A `cron` expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html) in the *AWS Glue Developer Guide* . For example, to run something every day at 12:15 UTC, specify `cron(15 12 * * ? *)` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-schedule"
+    },
+    "StartOnCreation": {
+      "description": "Set to true to start `SCHEDULED` and `CONDITIONAL` triggers when created. True is not supported for `ON_DEMAND` triggers.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-startoncreation"
+    },
+    "Tags": {
+      "description": "The tags to use with this trigger.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-tags"
+    },
+    "Type": {
+      "description": "The type of trigger that this is.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-type"
+    },
+    "WorkflowName": {
+      "description": "The name of the workflow associated with the trigger.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-trigger.html#cfn-glue-trigger-workflowname"
+    }
+  },
+  "typeName": "AWS::Glue::Trigger"
+}

@@ -1,0 +1,118 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#aws-resource-aps-scraper-return-values",
+    "properties": {
+      "ScraperId": {
+        "description": "The ID of the scraper. For example, `s-example1-1234-abcd-5678-ef9012abcd34` ."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the scraper. For example, `arn:aws:aps:<region>:123456798012:scraper/s-example1-1234-abcd-5678-ef9012abcd34` ."
+      },
+      "RoleArn": {
+        "description": "The Amazon Resource Name (ARN) of the IAM role that provides permissions for the scraper to discover and collect metrics on your behalf.\n\nFor example, `arn:aws:iam::123456789012:role/service-role/AmazonGrafanaServiceRole-12example` ."
+      }
+    }
+  },
+  "definitions": {
+    "Destination": {
+      "properties": {
+        "AmpConfiguration": {
+          "description": "The Amazon Managed Service for Prometheus workspace to send metrics to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-destination.html#cfn-aps-scraper-destination-ampconfiguration"
+        }
+      },
+      "description": "Where to send the metrics from a scraper.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-destination.html"
+    },
+    "RoleConfiguration": {
+      "properties": {
+        "SourceRoleArn": {
+          "description": "IAM Role in source account",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-roleconfiguration.html#cfn-aps-scraper-roleconfiguration-sourcerolearn"
+        },
+        "TargetRoleArn": {
+          "description": "IAM Role in the target account",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-roleconfiguration.html#cfn-aps-scraper-roleconfiguration-targetrolearn"
+        }
+      },
+      "description": "Role configuration",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-roleconfiguration.html"
+    },
+    "ScrapeConfiguration": {
+      "properties": {
+        "ConfigurationBlob": {
+          "description": "The base 64 encoded scrape configuration file.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-scrapeconfiguration.html#cfn-aps-scraper-scrapeconfiguration-configurationblob"
+        }
+      },
+      "description": "A scrape configuration for a scraper, base 64 encoded. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration) in the *Amazon Managed Service for Prometheus User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-scrapeconfiguration.html"
+    },
+    "SecurityGroupId": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-securitygroupid.html"
+    },
+    "Source": {
+      "properties": {
+        "EksConfiguration": {
+          "description": "The Amazon EKS cluster from which a scraper collects metrics.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-source.html#cfn-aps-scraper-source-eksconfiguration"
+        }
+      },
+      "description": "The source of collected metrics for a scraper.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-source.html"
+    },
+    "SubnetId": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-subnetid.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-tag.html#cfn-aps-scraper-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-tag.html#cfn-aps-scraper-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-scraper-tag.html"
+    }
+  },
+  "description": "A scraper is a fully-managed agentless collector that discovers and pulls metrics automatically. A scraper pulls metrics from Prometheus-compatible sources within an Amazon EKS cluster, and sends them to your Amazon Managed Service for Prometheus workspace. Scrapers are flexible. You can configure the scraper to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.\n\nAn IAM role will be created for you that Amazon Managed Service for Prometheus uses to access the metrics in your cluster. You must configure this role with a policy that allows it to scrape metrics from your cluster. For more information, see [Configuring your Amazon EKS cluster](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-eks-setup) in the *Amazon Managed Service for Prometheus User Guide* .\n\nThe `scrapeConfiguration` parameter contains the YAML configuration for the scraper.\n\n> For more information about collectors, including what metrics are collected, and how to configure the scraper, see [Using an AWS managed collector](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html) in the *Amazon Managed Service for Prometheus User Guide* .",
+  "properties": {
+    "Alias": {
+      "description": "An optional user-assigned scraper alias.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-alias"
+    },
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-arn"
+    },
+    "Destination": {
+      "description": "The Amazon Managed Service for Prometheus workspace the scraper sends metrics to.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-destination"
+    },
+    "RoleArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-rolearn"
+    },
+    "RoleConfiguration": {
+      "description": "Role configuration",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-roleconfiguration"
+    },
+    "ScrapeConfiguration": {
+      "description": "The configuration in use by the scraper.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-scrapeconfiguration"
+    },
+    "ScraperId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-scraperid"
+    },
+    "Source": {
+      "description": "The Amazon EKS cluster from which the scraper collects metrics.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-source"
+    },
+    "Tags": {
+      "description": "(Optional) The list of tag keys and values associated with the scraper.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-scraper.html#cfn-aps-scraper-tags"
+    }
+  },
+  "typeName": "AWS::APS::Scraper"
+}

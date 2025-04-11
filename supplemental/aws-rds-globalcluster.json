@@ -1,0 +1,70 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#aws-resource-rds-globalcluster-return-values",
+    "properties": {
+      "GlobalEndpoint": {}
+    }
+  },
+  "definitions": {
+    "GlobalEndpoint": {
+      "properties": {
+        "Address": {
+          "description": "The writer endpoint for the new global database cluster. This endpoint always points to the writer DB instance in the current primary cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-globalcluster-globalendpoint.html#cfn-rds-globalcluster-globalendpoint-address"
+        }
+      },
+      "description": "The writer endpoint for the new global database cluster. This endpoint always points to the writer DB instance in the current primary cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-globalcluster-globalendpoint.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-globalcluster-tag.html#cfn-rds-globalcluster-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-globalcluster-tag.html#cfn-rds-globalcluster-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-globalcluster-tag.html"
+    }
+  },
+  "description": "The `AWS::RDS::GlobalCluster` resource creates or updates an Amazon Aurora global database spread across multiple AWS Regions.\n\nThe global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.\n\nYou can create a global database that is initially empty, and then add a primary cluster and a secondary cluster to it.\n\nFor information about Aurora global databases, see [Working with Amazon Aurora Global Databases](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html) in the *Amazon Aurora User Guide* .",
+  "properties": {
+    "DeletionProtection": {
+      "description": "Specifies whether to enable deletion protection for the new global database cluster. The global database can't be deleted when deletion protection is enabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-deletionprotection"
+    },
+    "Engine": {
+      "description": "The database engine to use for this global database cluster.\n\nValid Values: `aurora-mysql | aurora-postgresql`\n\nConstraints:\n\n- Can't be specified if `SourceDBClusterIdentifier` is specified. In this case, Amazon Aurora uses the engine of the source DB cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-engine"
+    },
+    "EngineLifecycleSupport": {
+      "description": "The life cycle type for this global database cluster.\n\n> By default, this value is set to `open-source-rds-extended-support` , which enrolls your global cluster into Amazon RDS Extended Support. At the end of standard support, you can avoid charges for Extended Support by setting the value to `open-source-rds-extended-support-disabled` . In this case, creating the global cluster will fail if the DB major version is past its end of standard support date. \n\nThis setting only applies to Aurora PostgreSQL-based global databases.\n\nYou can use this setting to enroll your global cluster into Amazon RDS Extended Support. With RDS Extended Support, you can run the selected major engine version on your global cluster past the end of standard support for that engine version. For more information, see [Using Amazon RDS Extended Support](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html) in the *Amazon Aurora User Guide* .\n\nValid Values: `open-source-rds-extended-support | open-source-rds-extended-support-disabled`\n\nDefault: `open-source-rds-extended-support`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-enginelifecyclesupport"
+    },
+    "EngineVersion": {
+      "description": "The engine version to use for this global database cluster.\n\nConstraints:\n\n- Can't be specified if `SourceDBClusterIdentifier` is specified. In this case, Amazon Aurora uses the engine version of the source DB cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-engineversion"
+    },
+    "GlobalClusterIdentifier": {
+      "description": "The cluster identifier for this global database cluster. This parameter is stored as a lowercase string.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-globalclusteridentifier"
+    },
+    "GlobalEndpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-globalendpoint"
+    },
+    "SourceDBClusterIdentifier": {
+      "description": "The Amazon Resource Name (ARN) to use as the primary cluster of the global database.\n\nIf you provide a value for this parameter, don't specify values for the following settings because Amazon Aurora uses the values from the specified source DB cluster:\n\n- `DatabaseName`\n- `Engine`\n- `EngineVersion`\n- `StorageEncrypted`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-sourcedbclusteridentifier"
+    },
+    "StorageEncrypted": {
+      "description": "Specifies whether to enable storage encryption for the new global database cluster.\n\nConstraints:\n\n- Can't be specified if `SourceDBClusterIdentifier` is specified. In this case, Amazon Aurora uses the setting from the source DB cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-storageencrypted"
+    },
+    "Tags": {
+      "description": "Metadata assigned to an Amazon RDS resource consisting of a key-value pair.\n\nFor more information, see [Tagging Amazon RDS resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html) in the *Amazon RDS User Guide* or [Tagging Amazon Aurora and Amazon RDS resources](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.html) in the *Amazon Aurora User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html#cfn-rds-globalcluster-tags"
+    }
+  },
+  "typeName": "AWS::RDS::GlobalCluster"
+}

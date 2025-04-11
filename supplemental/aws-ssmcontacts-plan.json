@@ -1,0 +1,87 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssmcontacts-plan.html#aws-resource-ssmcontacts-plan-return-values",
+    "properties": {
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the `Plan` resource."
+      }
+    }
+  },
+  "definitions": {
+    "ChannelTargetInfo": {
+      "properties": {
+        "ChannelId": {
+          "description": "The Amazon Resource Name (ARN) of the contact channel.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-channeltargetinfo.html#cfn-ssmcontacts-plan-channeltargetinfo-channelid"
+        },
+        "RetryIntervalInMinutes": {
+          "description": "The number of minutes to wait before retrying to send engagement if the engagement initially failed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-channeltargetinfo.html#cfn-ssmcontacts-plan-channeltargetinfo-retryintervalinminutes"
+        }
+      },
+      "description": "Information about the contact channel that Incident Manager uses to engage the contact.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-channeltargetinfo.html"
+    },
+    "ContactTargetInfo": {
+      "properties": {
+        "ContactId": {
+          "description": "The Amazon Resource Name (ARN) of the contact.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-contacttargetinfo.html#cfn-ssmcontacts-plan-contacttargetinfo-contactid"
+        },
+        "IsEssential": {
+          "description": "A Boolean value determining if the contact's acknowledgement stops the progress of stages in the plan.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-contacttargetinfo.html#cfn-ssmcontacts-plan-contacttargetinfo-isessential"
+        }
+      },
+      "description": "The contact that Incident Manager is engaging during an incident.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-contacttargetinfo.html"
+    },
+    "Stage": {
+      "properties": {
+        "DurationInMinutes": {
+          "description": "The time to wait until beginning the next stage. The duration can only be set to 0 if a target is specified.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-stage.html#cfn-ssmcontacts-plan-stage-durationinminutes"
+        },
+        "Targets": {
+          "description": "The contacts or contact methods that the escalation plan or engagement plan is engaging.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-stage.html#cfn-ssmcontacts-plan-stage-targets"
+        }
+      },
+      "description": "A set amount of time that an escalation plan or engagement plan engages the specified contacts or contact methods.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-stage.html"
+    },
+    "Targets": {
+      "properties": {
+        "ChannelTargetInfo": {
+          "description": "Information about the contact channel that Incident Manager engages.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-targets.html#cfn-ssmcontacts-plan-targets-channeltargetinfo"
+        },
+        "ContactTargetInfo": {
+          "description": "Information about the contact that Incident Manager engages.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-targets.html#cfn-ssmcontacts-plan-targets-contacttargetinfo"
+        }
+      },
+      "description": "The contact or contact channel that's being engaged.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssmcontacts-plan-targets.html"
+    }
+  },
+  "description": "Information about the stages and on-call rotation teams associated with an escalation plan or engagement plan.\n\n> *Template example* : We recommend creating all Incident Manager `Contacts` resources using a single AWS CloudFormation template. For a demonstration, see the examples for [AWS::SSMContacts::Contacts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssmcontacts-contact.html) .",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssmcontacts-plan.html#cfn-ssmcontacts-plan-arn"
+    },
+    "ContactId": {
+      "description": "The Amazon Resource Name (ARN) of the contact.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssmcontacts-plan.html#cfn-ssmcontacts-plan-contactid"
+    },
+    "RotationIds": {
+      "description": "The Amazon Resource Names (ARNs) of the on-call rotations associated with the plan.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssmcontacts-plan.html#cfn-ssmcontacts-plan-rotationids"
+    },
+    "Stages": {
+      "description": "A list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssmcontacts-plan.html#cfn-ssmcontacts-plan-stages"
+    }
+  },
+  "typeName": "AWS::SSMContacts::Plan"
+}

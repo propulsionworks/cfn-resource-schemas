@@ -1,0 +1,68 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#aws-resource-lightsail-alarm-return-values",
+    "properties": {
+      "AlarmArn": {
+        "description": "The Amazon Resource Name (ARN) of the alarm."
+      },
+      "State": {
+        "description": "The current state of the alarm.\n\nAn alarm has the following possible states:\n\n- `ALARM` - The metric is outside of the defined threshold.\n- `INSUFFICIENT_DATA` - The alarm has recently started, the metric is not available, or not enough data is available for the metric to determine the alarm state.\n- `OK` - The metric is within the defined threshold."
+      }
+    }
+  },
+  "definitions": {},
+  "description": "The `AWS::Lightsail::Alarm` resource specifies an alarm that can be used to monitor a single metric for one of your Lightsail resources.",
+  "properties": {
+    "AlarmArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-alarmarn"
+    },
+    "AlarmName": {
+      "description": "The name of the alarm.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-alarmname"
+    },
+    "ComparisonOperator": {
+      "description": "The arithmetic operation to use when comparing the specified statistic and threshold.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-comparisonoperator"
+    },
+    "ContactProtocols": {
+      "description": "The contact protocols for the alarm, such as `Email` , `SMS` (text messaging), or both.\n\n*Allowed Values* : `Email` | `SMS`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-contactprotocols"
+    },
+    "DatapointsToAlarm": {
+      "description": "The number of data points within the evaluation periods that must be breaching to cause the alarm to go to the `ALARM` state.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-datapointstoalarm"
+    },
+    "EvaluationPeriods": {
+      "description": "The number of periods over which data is compared to the specified threshold.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-evaluationperiods"
+    },
+    "MetricName": {
+      "description": "The name of the metric associated with the alarm.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-metricname"
+    },
+    "MonitoredResourceName": {
+      "description": "The name of the Lightsail resource that the alarm monitors.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-monitoredresourcename"
+    },
+    "NotificationEnabled": {
+      "description": "A Boolean value indicating whether the alarm is enabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-notificationenabled"
+    },
+    "NotificationTriggers": {
+      "description": "The alarm states that trigger a notification.\n\n> To specify the `OK` and `INSUFFICIENT_DATA` values, you must also specify `ContactProtocols` values. Otherwise, the `OK` and `INSUFFICIENT_DATA` values will not take effect and the stack will drift. \n\n*Allowed Values* : `OK` | `ALARM` | `INSUFFICIENT_DATA`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-notificationtriggers"
+    },
+    "State": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-state"
+    },
+    "Threshold": {
+      "description": "The value against which the specified statistic is compared.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-threshold"
+    },
+    "TreatMissingData": {
+      "description": "Specifies how the alarm handles missing data points.\n\nAn alarm can treat missing data in the following ways:\n\n- `breaching` - Assumes the missing data is not within the threshold. Missing data counts towards the number of times that the metric is not within the threshold.\n- `notBreaching` - Assumes the missing data is within the threshold. Missing data does not count towards the number of times that the metric is not within the threshold.\n- `ignore` - Ignores the missing data. Maintains the current alarm state.\n- `missing` - Missing data is treated as missing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-alarm.html#cfn-lightsail-alarm-treatmissingdata"
+    }
+  },
+  "typeName": "AWS::Lightsail::Alarm"
+}

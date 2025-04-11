@@ -1,0 +1,133 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#aws-resource-amplify-domain-return-values",
+    "properties": {
+      "AutoSubDomainIAMRole": {
+        "description": "The IAM service role for the subdomain."
+      },
+      "DomainName": {
+        "description": "Name of the domain."
+      },
+      "EnableAutoSubDomain": {
+        "description": "Specifies whether the automated creation of subdomains for branches is enabled."
+      },
+      "StatusReason": {
+        "description": "Reason for the current status of the domain."
+      },
+      "Arn": {
+        "description": "ARN for the Domain Association."
+      },
+      "AutoSubDomainCreationPatterns": {
+        "description": "Branch patterns for the automatically created subdomain."
+      },
+      "DomainStatus": {
+        "description": "Status for the Domain Association."
+      },
+      "CertificateRecord": {
+        "description": "DNS Record for certificate verification."
+      },
+      "Certificate": {},
+      "UpdateStatus": {
+        "description": "The status of the domain update operation that is currently in progress. The following list describes the valid update states.\n\n- **REQUESTING_CERTIFICATE** - The certificate is in the process of being updated.\n- **PENDING_VERIFICATION** - Indicates that an Amplify managed certificate is in the process of being verified. This occurs during the creation of a custom domain or when a custom domain is updated to use a managed certificate.\n- **IMPORTING_CUSTOM_CERTIFICATE** - Indicates that an Amplify custom certificate is in the process of being imported. This occurs during the creation of a custom domain or when a custom domain is updated to use a custom certificate.\n- **PENDING_DEPLOYMENT** - Indicates that the subdomain or certificate changes are being propagated.\n- **AWAITING_APP_CNAME** - Amplify is waiting for CNAME records corresponding to subdomains to be propagated. If your custom domain is on Route 53, Amplify handles this for you automatically. For more information about custom domains, see [Setting up custom domains](https://docs.aws.amazon.com/amplify/latest/userguide/custom-domains.html) in the *Amplify Hosting User Guide* .\n- **UPDATE_COMPLETE** - The certificate has been associated with a domain.\n- **UPDATE_FAILED** - The certificate has failed to be provisioned or associated, and there is no existing active certificate to roll back to."
+      }
+    }
+  },
+  "definitions": {
+    "Certificate": {
+      "properties": {
+        "CertificateArn": {
+          "description": "The Amazon resource name (ARN) for a custom certificate that you have already added to AWS Certificate Manager in your AWS account .\n\nThis field is required only when the certificate type is `CUSTOM` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-certificate.html#cfn-amplify-domain-certificate-certificatearn"
+        },
+        "CertificateType": {
+          "description": "The type of SSL/TLS certificate that you want to use.\n\nSpecify `AMPLIFY_MANAGED` to use the default certificate that Amplify provisions for you.\n\nSpecify `CUSTOM` to use your own certificate that you have already added to AWS Certificate Manager in your AWS account . Make sure you request (or import) the certificate in the US East (N. Virginia) Region (us-east-1). For more information about using ACM, see [Importing certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *ACM User guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-certificate.html#cfn-amplify-domain-certificate-certificatetype"
+        },
+        "CertificateVerificationDNSRecord": {
+          "description": "The DNS record for certificate verification.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-certificate.html#cfn-amplify-domain-certificate-certificateverificationdnsrecord"
+        }
+      },
+      "description": "Describes the SSL/TLS certificate for the domain association. This can be your own custom certificate or the default certificate that Amplify provisions for you.\n\nIf you are updating your domain to use a different certificate, `Certificate` points to the new certificate that is being created instead of the current active certificate. Otherwise, `Certificate` points to the current active certificate.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-certificate.html"
+    },
+    "CertificateSettings": {
+      "properties": {
+        "CertificateType": {
+          "description": "The certificate type.\n\nSpecify `AMPLIFY_MANAGED` to use the default certificate that Amplify provisions for you.\n\nSpecify `CUSTOM` to use your own certificate that you have already added to AWS Certificate Manager in your AWS account . Make sure you request (or import) the certificate in the US East (N. Virginia) Region (us-east-1). For more information about using ACM, see [Importing certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *ACM User guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-certificatesettings.html#cfn-amplify-domain-certificatesettings-certificatetype"
+        },
+        "CustomCertificateArn": {
+          "description": "The Amazon resource name (ARN) for the custom certificate that you have already added to AWS Certificate Manager in your AWS account .\n\nThis field is required only when the certificate type is `CUSTOM` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-certificatesettings.html#cfn-amplify-domain-certificatesettings-customcertificatearn"
+        }
+      },
+      "description": "The type of SSL/TLS certificate to use for your custom domain. If a certificate type isn't specified, Amplify uses the default `AMPLIFY_MANAGED` certificate.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-certificatesettings.html"
+    },
+    "SubDomainSetting": {
+      "properties": {
+        "BranchName": {
+          "description": "The branch name setting for the subdomain.\n\n*Length Constraints:* Minimum length of 1. Maximum length of 255.\n\n*Pattern:* (?s).+",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-subdomainsetting.html#cfn-amplify-domain-subdomainsetting-branchname"
+        },
+        "Prefix": {
+          "description": "The prefix setting for the subdomain.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-subdomainsetting.html#cfn-amplify-domain-subdomainsetting-prefix"
+        }
+      },
+      "description": "The SubDomainSetting property type enables you to connect a subdomain (for example, example.exampledomain.com) to a specific branch.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-amplify-domain-subdomainsetting.html"
+    }
+  },
+  "description": "Specifies the AWS::Amplify::Domain resource that enables you to connect a custom domain to your app.",
+  "properties": {
+    "AppId": {
+      "description": "The unique ID for an Amplify app.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-appid"
+    },
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-arn"
+    },
+    "AutoSubDomainCreationPatterns": {
+      "description": "Sets the branch patterns for automatic subdomain creation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-autosubdomaincreationpatterns"
+    },
+    "AutoSubDomainIAMRole": {
+      "description": "The required AWS Identity and Access Management (IAMlong) service role for the Amazon Resource Name (ARN) for automatically creating subdomains.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-autosubdomainiamrole"
+    },
+    "Certificate": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-certificate"
+    },
+    "CertificateRecord": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-certificaterecord"
+    },
+    "CertificateSettings": {
+      "description": "The type of SSL/TLS certificate to use for your custom domain. If you don't specify a certificate type, Amplify uses the default certificate that it provisions and manages for you.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-certificatesettings"
+    },
+    "DomainName": {
+      "description": "The domain name for the domain association.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-domainname"
+    },
+    "DomainStatus": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-domainstatus"
+    },
+    "EnableAutoSubDomain": {
+      "description": "Enables the automated creation of subdomains for branches.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-enableautosubdomain"
+    },
+    "StatusReason": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-statusreason"
+    },
+    "SubDomainSettings": {
+      "description": "The setting for the subdomain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-subdomainsettings"
+    },
+    "UpdateStatus": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html#cfn-amplify-domain-updatestatus"
+    }
+  },
+  "typeName": "AWS::Amplify::Domain"
+}

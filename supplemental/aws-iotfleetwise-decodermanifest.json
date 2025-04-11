@@ -1,0 +1,357 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#aws-resource-iotfleetwise-decodermanifest-return-values",
+    "properties": {
+      "LastModificationTime": {
+        "description": "The time the decoder manifest was last updated in seconds since epoch (January 1, 1970 at midnight UTC time)."
+      },
+      "CreationTime": {
+        "description": "The time the decoder manifest was created in seconds since epoch (January 1, 1970 at midnight UTC time)."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the decoder manifest."
+      }
+    }
+  },
+  "definitions": {
+    "CanInterface": {
+      "properties": {
+        "Name": {
+          "description": "The unique name of the interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-caninterface.html#cfn-iotfleetwise-decodermanifest-caninterface-name"
+        },
+        "ProtocolName": {
+          "description": "The name of the communication protocol for the interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-caninterface.html#cfn-iotfleetwise-decodermanifest-caninterface-protocolname"
+        },
+        "ProtocolVersion": {
+          "description": "The version of the communication protocol for the interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-caninterface.html#cfn-iotfleetwise-decodermanifest-caninterface-protocolversion"
+        }
+      },
+      "description": "A single controller area network (CAN) device interface.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-caninterface.html"
+    },
+    "CanNetworkInterface": {
+      "properties": {
+        "CanInterface": {
+          "description": "Information about a network interface specified by the Controller Area Network (CAN) protocol.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cannetworkinterface.html#cfn-iotfleetwise-decodermanifest-cannetworkinterface-caninterface"
+        },
+        "InterfaceId": {
+          "description": "The ID of the network interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cannetworkinterface.html#cfn-iotfleetwise-decodermanifest-cannetworkinterface-interfaceid"
+        },
+        "Type": {
+          "description": "The network protocol for the vehicle. For example, `CAN_SIGNAL` specifies a protocol that defines how data is communicated between electronic control units (ECUs). `OBD_SIGNAL` specifies a protocol that defines how self-diagnostic data is communicated between ECUs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cannetworkinterface.html#cfn-iotfleetwise-decodermanifest-cannetworkinterface-type"
+        }
+      },
+      "description": "Represents a node and its specifications in an in-vehicle communication network. All signal decoders must be associated with a network node.\n\nTo return this information about all the network interfaces specified in a decoder manifest, use the [ListDecoderManifestNetworkInterfaces](https://docs.aws.amazon.com/iot-fleetwise/latest/APIReference/API_ListDecoderManifestNetworkInterfaces.html) in the *AWS IoT FleetWise API Reference* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cannetworkinterface.html"
+    },
+    "CanSignal": {
+      "properties": {
+        "Factor": {
+          "description": "A multiplier used to decode the CAN message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-factor"
+        },
+        "IsBigEndian": {
+          "description": "Whether the byte ordering of a CAN message is big-endian.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-isbigendian"
+        },
+        "IsSigned": {
+          "description": "Whether the message data is specified as a signed value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-issigned"
+        },
+        "Length": {
+          "description": "How many bytes of data are in the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-length"
+        },
+        "MessageId": {
+          "description": "The ID of the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-messageid"
+        },
+        "Name": {
+          "description": "The name of the signal.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-name"
+        },
+        "Offset": {
+          "description": "The offset used to calculate the signal value. Combined with factor, the calculation is `value = raw_value * factor + offset` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-offset"
+        },
+        "SignalValueType": {
+          "description": "The value type of the signal. The default value is `INTEGER` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-signalvaluetype"
+        },
+        "StartBit": {
+          "description": "Indicates the beginning of the CAN message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html#cfn-iotfleetwise-decodermanifest-cansignal-startbit"
+        }
+      },
+      "description": "Information about a single controller area network (CAN) signal and the messages it receives and transmits.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignal.html"
+    },
+    "CanSignalDecoder": {
+      "properties": {
+        "CanSignal": {
+          "description": "Information about a single controller area network (CAN) signal and the messages it receives and transmits.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignaldecoder.html#cfn-iotfleetwise-decodermanifest-cansignaldecoder-cansignal"
+        },
+        "FullyQualifiedName": {
+          "description": "The fully qualified name of a signal decoder as defined in a vehicle model.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignaldecoder.html#cfn-iotfleetwise-decodermanifest-cansignaldecoder-fullyqualifiedname"
+        },
+        "InterfaceId": {
+          "description": "The ID of a network interface that specifies what network protocol a vehicle follows.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignaldecoder.html#cfn-iotfleetwise-decodermanifest-cansignaldecoder-interfaceid"
+        },
+        "Type": {
+          "description": "The network protocol for the vehicle. For example, `CAN_SIGNAL` specifies a protocol that defines how data is communicated between electronic control units (ECUs). `OBD_SIGNAL` specifies a protocol that defines how self-diagnostic data is communicated between ECUs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignaldecoder.html#cfn-iotfleetwise-decodermanifest-cansignaldecoder-type"
+        }
+      },
+      "description": "Information about signal decoder using the Controller Area Network (CAN) protocol.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-cansignaldecoder.html"
+    },
+    "CustomDecodingInterface": {
+      "properties": {
+        "Name": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodinginterface.html#cfn-iotfleetwise-decodermanifest-customdecodinginterface-name"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodinginterface.html"
+    },
+    "CustomDecodingNetworkInterface": {
+      "properties": {
+        "CustomDecodingInterface": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingnetworkinterface.html#cfn-iotfleetwise-decodermanifest-customdecodingnetworkinterface-customdecodinginterface"
+        },
+        "InterfaceId": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingnetworkinterface.html#cfn-iotfleetwise-decodermanifest-customdecodingnetworkinterface-interfaceid"
+        },
+        "Type": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingnetworkinterface.html#cfn-iotfleetwise-decodermanifest-customdecodingnetworkinterface-type"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingnetworkinterface.html"
+    },
+    "CustomDecodingSignal": {
+      "properties": {
+        "Id": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingsignal.html#cfn-iotfleetwise-decodermanifest-customdecodingsignal-id"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingsignal.html"
+    },
+    "CustomDecodingSignalDecoder": {
+      "properties": {
+        "CustomDecodingSignal": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingsignaldecoder.html#cfn-iotfleetwise-decodermanifest-customdecodingsignaldecoder-customdecodingsignal"
+        },
+        "FullyQualifiedName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingsignaldecoder.html#cfn-iotfleetwise-decodermanifest-customdecodingsignaldecoder-fullyqualifiedname"
+        },
+        "InterfaceId": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingsignaldecoder.html#cfn-iotfleetwise-decodermanifest-customdecodingsignaldecoder-interfaceid"
+        },
+        "Type": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingsignaldecoder.html#cfn-iotfleetwise-decodermanifest-customdecodingsignaldecoder-type"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-customdecodingsignaldecoder.html"
+    },
+    "DefaultForUnmappedSignalsType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-defaultforunmappedsignalstype.html"
+    },
+    "ManifestStatus": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-manifeststatus.html"
+    },
+    "ObdInterface": {
+      "properties": {
+        "DtcRequestIntervalSeconds": {
+          "description": "The maximum number message requests per diagnostic trouble code per second.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdinterface.html#cfn-iotfleetwise-decodermanifest-obdinterface-dtcrequestintervalseconds"
+        },
+        "HasTransmissionEcu": {
+          "description": "Whether the vehicle has a transmission control module (TCM).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdinterface.html#cfn-iotfleetwise-decodermanifest-obdinterface-hastransmissionecu"
+        },
+        "Name": {
+          "description": "The name of the interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdinterface.html#cfn-iotfleetwise-decodermanifest-obdinterface-name"
+        },
+        "ObdStandard": {
+          "description": "The standard OBD II PID.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdinterface.html#cfn-iotfleetwise-decodermanifest-obdinterface-obdstandard"
+        },
+        "PidRequestIntervalSeconds": {
+          "description": "The maximum number message requests per second.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdinterface.html#cfn-iotfleetwise-decodermanifest-obdinterface-pidrequestintervalseconds"
+        },
+        "RequestMessageId": {
+          "description": "The ID of the message requesting vehicle data.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdinterface.html#cfn-iotfleetwise-decodermanifest-obdinterface-requestmessageid"
+        },
+        "UseExtendedIds": {
+          "description": "Whether to use extended IDs in the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdinterface.html#cfn-iotfleetwise-decodermanifest-obdinterface-useextendedids"
+        }
+      },
+      "description": "A network interface that specifies the On-board diagnostic (OBD) II network protocol.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdinterface.html"
+    },
+    "ObdNetworkInterface": {
+      "properties": {
+        "InterfaceId": {
+          "description": "The ID of the network interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdnetworkinterface.html#cfn-iotfleetwise-decodermanifest-obdnetworkinterface-interfaceid"
+        },
+        "ObdInterface": {
+          "description": "Information about a network interface specified by the On-board diagnostic (OBD) II protocol.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdnetworkinterface.html#cfn-iotfleetwise-decodermanifest-obdnetworkinterface-obdinterface"
+        },
+        "Type": {
+          "description": "The network protocol for the vehicle. For example, `CAN_SIGNAL` specifies a protocol that defines how data is communicated between electronic control units (ECUs). `OBD_SIGNAL` specifies a protocol that defines how self-diagnostic data is communicated between ECUs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdnetworkinterface.html#cfn-iotfleetwise-decodermanifest-obdnetworkinterface-type"
+        }
+      },
+      "description": "Information about a network interface specified by the On-board diagnostic (OBD) II protocol.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdnetworkinterface.html"
+    },
+    "ObdSignal": {
+      "properties": {
+        "BitMaskLength": {
+          "description": "The number of bits to mask in a message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-bitmasklength"
+        },
+        "BitRightShift": {
+          "description": "The number of positions to shift bits in the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-bitrightshift"
+        },
+        "ByteLength": {
+          "description": "The length of a message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-bytelength"
+        },
+        "IsSigned": {
+          "description": "Determines whether the message is signed ( `true` ) or not ( `false` ). If it's signed, the message can represent both positive and negative numbers. The `isSigned` parameter only applies to the `INTEGER` raw signal type, and it doesn't affect the `FLOATING_POINT` raw signal type. The default value is `false` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-issigned"
+        },
+        "Offset": {
+          "description": "The offset used to calculate the signal value. Combined with scaling, the calculation is `value = raw_value * scaling + offset` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-offset"
+        },
+        "Pid": {
+          "description": "The diagnostic code used to request data from a vehicle for this signal.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-pid"
+        },
+        "PidResponseLength": {
+          "description": "The length of the requested data.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-pidresponselength"
+        },
+        "Scaling": {
+          "description": "A multiplier used to decode the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-scaling"
+        },
+        "ServiceMode": {
+          "description": "The mode of operation (diagnostic service) in a message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-servicemode"
+        },
+        "SignalValueType": {
+          "description": "The value type of the signal. The default value is `INTEGER` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-signalvaluetype"
+        },
+        "StartByte": {
+          "description": "Indicates the beginning of the message.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html#cfn-iotfleetwise-decodermanifest-obdsignal-startbyte"
+        }
+      },
+      "description": "Information about signal messages using the on-board diagnostics (OBD) II protocol in a vehicle.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignal.html"
+    },
+    "ObdSignalDecoder": {
+      "properties": {
+        "FullyQualifiedName": {
+          "description": "The fully qualified name of a signal decoder as defined in a vehicle model.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignaldecoder.html#cfn-iotfleetwise-decodermanifest-obdsignaldecoder-fullyqualifiedname"
+        },
+        "InterfaceId": {
+          "description": "The ID of a network interface that specifies what network protocol a vehicle follows.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignaldecoder.html#cfn-iotfleetwise-decodermanifest-obdsignaldecoder-interfaceid"
+        },
+        "ObdSignal": {
+          "description": "Information about signal messages using the on-board diagnostics (OBD) II protocol in a vehicle.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignaldecoder.html#cfn-iotfleetwise-decodermanifest-obdsignaldecoder-obdsignal"
+        },
+        "Type": {
+          "description": "The network protocol for the vehicle. For example, `CAN_SIGNAL` specifies a protocol that defines how data is communicated between electronic control units (ECUs). `OBD_SIGNAL` specifies a protocol that defines how self-diagnostic data is communicated between ECUs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignaldecoder.html#cfn-iotfleetwise-decodermanifest-obdsignaldecoder-type"
+        }
+      },
+      "description": "A list of information about signal decoders.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-obdsignaldecoder.html"
+    },
+    "SignalValueType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-signalvaluetype.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-tag.html#cfn-iotfleetwise-decodermanifest-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-tag.html#cfn-iotfleetwise-decodermanifest-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotfleetwise-decodermanifest-tag.html"
+    }
+  },
+  "description": "Creates the decoder manifest associated with a model manifest. To create a decoder manifest, the following must be true:\n\n- Every signal decoder has a unique name.\n- Each signal decoder is associated with a network interface.\n- Each network interface has a unique ID.\n- The signal decoders are specified in the model manifest.\n\nFor more information, see [Decoder manifests](https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/decoder-manifests.html) in the *AWS IoT FleetWise Developer Guide* .\n\n> Access to certain AWS IoT FleetWise features is currently gated. For more information, see [AWS Region and feature availability](https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleetwise-regions.html) in the *AWS IoT FleetWise Developer Guide* .",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-arn"
+    },
+    "CreationTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-creationtime"
+    },
+    "DefaultForUnmappedSignals": {
+      "description": "Use default decoders for all unmapped signals in the model. You don't need to provide any detailed decoding information.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-defaultforunmappedsignals"
+    },
+    "Description": {
+      "description": "A brief description of the decoder manifest.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-description"
+    },
+    "LastModificationTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-lastmodificationtime"
+    },
+    "ModelManifestArn": {
+      "description": "The Amazon Resource Name (ARN) of a vehicle model (model manifest) associated with the decoder manifest.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-modelmanifestarn"
+    },
+    "Name": {
+      "description": "The name of the decoder manifest.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-name"
+    },
+    "NetworkInterfaces": {
+      "description": "A list of information about available network interfaces.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-networkinterfaces"
+    },
+    "SignalDecoders": {
+      "description": "A list of information about signal decoders.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-signaldecoders"
+    },
+    "Status": {
+      "description": "The state of the decoder manifest. If the status is `ACTIVE` , the decoder manifest can't be edited. If the status is marked `DRAFT` , you can edit the decoder manifest.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-status"
+    },
+    "Tags": {
+      "description": "Metadata that can be used to manage the decoder manifest.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-decodermanifest.html#cfn-iotfleetwise-decodermanifest-tags"
+    }
+  },
+  "typeName": "AWS::IoTFleetWise::DecoderManifest"
+}

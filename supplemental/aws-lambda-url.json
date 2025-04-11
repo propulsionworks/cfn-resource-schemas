@@ -1,0 +1,91 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#aws-resource-lambda-url-return-values",
+    "properties": {
+      "FunctionArn": {
+        "description": "The Amazon Resource Name (ARN) of the function."
+      },
+      "FunctionUrl": {
+        "description": "The HTTP URL endpoint for your function."
+      }
+    }
+  },
+  "definitions": {
+    "AllowHeaders": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-allowheaders.html"
+    },
+    "AllowMethods": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-allowmethods.html"
+    },
+    "AllowOrigins": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-alloworigins.html"
+    },
+    "Cors": {
+      "properties": {
+        "AllowCredentials": {
+          "description": "Whether you want to allow cookies or other credentials in requests to your function URL. The default is `false` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html#cfn-lambda-url-cors-allowcredentials"
+        },
+        "AllowHeaders": {
+          "description": "The HTTP headers that origins can include in requests to your function URL. For example: `Date` , `Keep-Alive` , `X-Custom-Header` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html#cfn-lambda-url-cors-allowheaders"
+        },
+        "AllowMethods": {
+          "description": "The HTTP methods that are allowed when calling your function URL. For example: `GET` , `POST` , `DELETE` , or the wildcard character ( `*` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html#cfn-lambda-url-cors-allowmethods"
+        },
+        "AllowOrigins": {
+          "description": "The origins that can access your function URL. You can list any number of specific origins, separated by a comma. For example: `https://www.example.com` , `http://localhost:60905` .\n\nAlternatively, you can grant access to all origins with the wildcard character ( `*` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html#cfn-lambda-url-cors-alloworigins"
+        },
+        "ExposeHeaders": {
+          "description": "The HTTP headers in your function response that you want to expose to origins that call your function URL. For example: `Date` , `Keep-Alive` , `X-Custom-Header` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html#cfn-lambda-url-cors-exposeheaders"
+        },
+        "MaxAge": {
+          "description": "The maximum amount of time, in seconds, that browsers can cache results of a preflight request. By default, this is set to `0` , which means the browser will not cache results.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html#cfn-lambda-url-cors-maxage"
+        }
+      },
+      "description": "The [Cross-Origin Resource Sharing (CORS)](https://docs.aws.amazon.com/https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) settings for your function URL. Use CORS to grant access to your function URL from any origin. You can also use CORS to control access for specific HTTP headers and methods in requests to your function URL.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html"
+    },
+    "ExposeHeaders": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-exposeheaders.html"
+    }
+  },
+  "description": "The `AWS::Lambda::Url` resource creates a function URL with the specified configuration parameters. A [function URL](https://docs.aws.amazon.com/lambda/latest/dg/lambda-urls.html) is a dedicated HTTP(S) endpoint that you can use to invoke your function.",
+  "properties": {
+    "AuthType": {
+      "description": "The type of authentication that your function URL uses. Set to `AWS_IAM` if you want to restrict access to authenticated users only. Set to `NONE` if you want to bypass IAM authentication to create a public endpoint. For more information, see [Security and auth model for Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-authtype"
+    },
+    "Cors": {
+      "description": "The [Cross-Origin Resource Sharing (CORS)](https://docs.aws.amazon.com/https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) settings for your function URL.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-cors"
+    },
+    "FunctionArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-functionarn"
+    },
+    "FunctionUrl": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-functionurl"
+    },
+    "InvokeMode": {
+      "description": "Use one of the following options:\n\n- `BUFFERED` – This is the default option. Lambda invokes your function using the `Invoke` API operation. Invocation results are available when the payload is complete. The maximum payload size is 6 MB.\n- `RESPONSE_STREAM` – Your function streams payload results as they become available. Lambda invokes your function using the `InvokeWithResponseStream` API operation. The maximum response payload size is 20 MB, however, you can [request a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-invokemode"
+    },
+    "Qualifier": {
+      "description": "The alias name.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-qualifier"
+    },
+    "TargetFunctionArn": {
+      "description": "The name of the Lambda function.\n\n**Name formats** - *Function name* - `my-function` .\n- *Function ARN* - `lambda:  :  :function:my-function` .\n- *Partial ARN* - `:function:my-function` .\n\nThe length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-targetfunctionarn"
+    }
+  },
+  "typeName": "AWS::Lambda::Url"
+}

@@ -1,0 +1,64 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-observabilityconfiguration.html#aws-resource-apprunner-observabilityconfiguration-return-values",
+    "properties": {
+      "ObservabilityConfigurationRevision": {
+        "description": "The revision of this observability configuration. It's unique among all the active configurations ( `\"Status\": \"ACTIVE\"` ) that share the same `ObservabilityConfigurationName` ."
+      },
+      "ObservabilityConfigurationArn": {
+        "description": "The Amazon Resource Name (ARN) of this observability configuration."
+      },
+      "Latest": {
+        "description": "It's set to `true` for the configuration with the highest `Revision` among all configurations that share the same `ObservabilityConfigurationName` . It's set to `false` otherwise."
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-observabilityconfiguration-tag.html#cfn-apprunner-observabilityconfiguration-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-observabilityconfiguration-tag.html#cfn-apprunner-observabilityconfiguration-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-observabilityconfiguration-tag.html"
+    },
+    "TraceConfiguration": {
+      "properties": {
+        "Vendor": {
+          "description": "The implementation provider chosen for tracing App Runner services.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-observabilityconfiguration-traceconfiguration.html#cfn-apprunner-observabilityconfiguration-traceconfiguration-vendor"
+        }
+      },
+      "description": "Describes the configuration of the tracing feature within an AWS App Runner observability configuration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apprunner-observabilityconfiguration-traceconfiguration.html"
+    }
+  },
+  "description": "Specify an AWS App Runner observability configuration by using the `AWS::AppRunner::ObservabilityConfiguration` resource in an AWS CloudFormation template. \n\nThe `AWS::AppRunner::ObservabilityConfiguration` resource is an AWS App Runner resource type that specifies an App Runner observability configuration.\n\nApp Runner requires this resource when you specify App Runner services and you want to enable non-default observability features. You can share an observability configuration across multiple services.\n\nCreate multiple revisions of a configuration by specifying this resource multiple times using the same `ObservabilityConfigurationName` . App Runner creates multiple resources with incremental `ObservabilityConfigurationRevision` values. When you specify a service and configure an observability configuration resource, the service uses the latest active revision of the observability configuration by default. You can optionally configure the service to use a specific revision.\n\nThe observability configuration resource is designed to configure multiple features (currently one feature, tracing). This resource takes optional parameters that describe the configuration of these features (currently one parameter, `TraceConfiguration` ). If you don't specify a feature parameter, App Runner doesn't enable the feature.",
+  "properties": {
+    "Latest": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-observabilityconfiguration.html#cfn-apprunner-observabilityconfiguration-latest"
+    },
+    "ObservabilityConfigurationArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-observabilityconfiguration.html#cfn-apprunner-observabilityconfiguration-observabilityconfigurationarn"
+    },
+    "ObservabilityConfigurationName": {
+      "description": "A name for the observability configuration. When you use it for the first time in an AWS Region , App Runner creates revision number `1` of this name. When you use the same name in subsequent calls, App Runner creates incremental revisions of the configuration.\n\n> The name `DefaultConfiguration` is reserved. You can't use it to create a new observability configuration, and you can't create a revision of it.\n> \n> When you want to use your own observability configuration for your App Runner service, *create a configuration with a different name* , and then provide it when you create or update your service. \n\nIf you don't specify a name, AWS CloudFormation generates a name for your observability configuration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-observabilityconfiguration.html#cfn-apprunner-observabilityconfiguration-observabilityconfigurationname"
+    },
+    "ObservabilityConfigurationRevision": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-observabilityconfiguration.html#cfn-apprunner-observabilityconfiguration-observabilityconfigurationrevision"
+    },
+    "Tags": {
+      "description": "A list of metadata items that you can associate with your observability configuration resource. A tag is a key-value pair.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-observabilityconfiguration.html#cfn-apprunner-observabilityconfiguration-tags"
+    },
+    "TraceConfiguration": {
+      "description": "The configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apprunner-observabilityconfiguration.html#cfn-apprunner-observabilityconfiguration-traceconfiguration"
+    }
+  },
+  "typeName": "AWS::AppRunner::ObservabilityConfiguration"
+}

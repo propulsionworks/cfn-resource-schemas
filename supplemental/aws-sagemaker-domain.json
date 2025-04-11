@@ -1,0 +1,609 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#aws-resource-sagemaker-domain-return-values",
+    "properties": {
+      "HomeEfsFileSystemId": {
+        "description": "The ID of the Amazon Elastic File System (EFS) managed by this Domain."
+      },
+      "DomainId": {
+        "description": "The Domain ID."
+      },
+      "SecurityGroupIdForDomainBoundary": {
+        "description": "The ID of the security group that authorizes traffic between the `RSessionGateway` apps and the `RStudioServerPro` app."
+      },
+      "SingleSignOnManagedApplicationInstanceId": {
+        "description": "The IAM Identity Center managed application instance ID."
+      },
+      "DomainArn": {
+        "description": "The Amazon Resource Name (ARN) of the Domain, such as `arn:aws:sagemaker:us-west-2:account-id:domain/my-domain-name` ."
+      },
+      "Url": {
+        "description": "The URL for the Domain."
+      },
+      "SingleSignOnApplicationArn": {
+        "description": "The ARN of the application managed by SageMaker in IAM Identity Center. This value is only returned for domains created after October 1, 2023."
+      }
+    }
+  },
+  "definitions": {
+    "AppLifecycleManagement": {
+      "properties": {
+        "IdleSettings": {
+          "description": "Settings related to idle shutdown of Studio applications.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-applifecyclemanagement.html#cfn-sagemaker-domain-applifecyclemanagement-idlesettings"
+        }
+      },
+      "description": "Settings that are used to configure and manage the lifecycle of Amazon SageMaker Studio applications.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-applifecyclemanagement.html"
+    },
+    "AppType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-apptype.html"
+    },
+    "CodeEditorAppSettings": {
+      "properties": {
+        "AppLifecycleManagement": {
+          "description": "Settings that are used to configure and manage the lifecycle of CodeEditor applications.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-codeeditorappsettings.html#cfn-sagemaker-domain-codeeditorappsettings-applifecyclemanagement"
+        },
+        "CustomImages": {
+          "description": "A list of custom SageMaker images that are configured to run as a Code Editor app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-codeeditorappsettings.html#cfn-sagemaker-domain-codeeditorappsettings-customimages"
+        },
+        "DefaultResourceSpec": {
+          "description": "The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the Code Editor app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-codeeditorappsettings.html#cfn-sagemaker-domain-codeeditorappsettings-defaultresourcespec"
+        },
+        "LifecycleConfigArns": {
+          "description": "The Amazon Resource Name (ARN) of the Code Editor application lifecycle configuration.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-codeeditorappsettings.html#cfn-sagemaker-domain-codeeditorappsettings-lifecycleconfigarns"
+        }
+      },
+      "description": "The Code Editor application settings.\n\nFor more information about Code Editor, see [Get started with Code Editor in Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-codeeditorappsettings.html"
+    },
+    "CodeRepository": {
+      "properties": {
+        "RepositoryUrl": {
+          "description": "The URL of the Git repository.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-coderepository.html#cfn-sagemaker-domain-coderepository-repositoryurl"
+        }
+      },
+      "description": "A Git repository that SageMaker AI automatically displays to users for cloning in the JupyterServer application.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-coderepository.html"
+    },
+    "CustomFileSystemConfig": {
+      "properties": {
+        "EFSFileSystemConfig": {
+          "description": "The settings for a custom Amazon EFS file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customfilesystemconfig.html#cfn-sagemaker-domain-customfilesystemconfig-efsfilesystemconfig"
+        },
+        "FSxLustreFileSystemConfig": {
+          "description": "The settings for a custom Amazon FSx for Lustre file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customfilesystemconfig.html#cfn-sagemaker-domain-customfilesystemconfig-fsxlustrefilesystemconfig"
+        }
+      },
+      "description": "The settings for assigning a custom file system to a user profile or space for an Amazon SageMaker AI Domain. Permitted users can access this file system in Amazon SageMaker AI Studio.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customfilesystemconfig.html"
+    },
+    "CustomImage": {
+      "properties": {
+        "AppImageConfigName": {
+          "description": "The name of the AppImageConfig.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customimage.html#cfn-sagemaker-domain-customimage-appimageconfigname"
+        },
+        "ImageName": {
+          "description": "The name of the CustomImage. Must be unique to your account.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customimage.html#cfn-sagemaker-domain-customimage-imagename"
+        },
+        "ImageVersionNumber": {
+          "description": "The version number of the CustomImage.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customimage.html#cfn-sagemaker-domain-customimage-imageversionnumber"
+        }
+      },
+      "description": "A custom SageMaker AI image. For more information, see [Bring your own SageMaker AI image](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customimage.html"
+    },
+    "CustomPosixUserConfig": {
+      "properties": {
+        "Gid": {
+          "description": "The POSIX group ID.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customposixuserconfig.html#cfn-sagemaker-domain-customposixuserconfig-gid"
+        },
+        "Uid": {
+          "description": "The POSIX user ID.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customposixuserconfig.html#cfn-sagemaker-domain-customposixuserconfig-uid"
+        }
+      },
+      "description": "Details about the POSIX identity that is used for file system operations.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-customposixuserconfig.html"
+    },
+    "DefaultEbsStorageSettings": {
+      "properties": {
+        "DefaultEbsVolumeSizeInGb": {
+          "description": "The default size of the EBS storage volume for a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultebsstoragesettings.html#cfn-sagemaker-domain-defaultebsstoragesettings-defaultebsvolumesizeingb"
+        },
+        "MaximumEbsVolumeSizeInGb": {
+          "description": "The maximum size of the EBS storage volume for a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultebsstoragesettings.html#cfn-sagemaker-domain-defaultebsstoragesettings-maximumebsvolumesizeingb"
+        }
+      },
+      "description": "A collection of default EBS storage settings that apply to spaces created within a domain or user profile.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultebsstoragesettings.html"
+    },
+    "DefaultSpaceSettings": {
+      "properties": {
+        "CustomFileSystemConfigs": {
+          "description": "The settings for assigning a custom file system to a domain. Permitted users can access this file system in Amazon SageMaker AI Studio.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html#cfn-sagemaker-domain-defaultspacesettings-customfilesystemconfigs"
+        },
+        "CustomPosixUserConfig": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html#cfn-sagemaker-domain-defaultspacesettings-customposixuserconfig"
+        },
+        "ExecutionRole": {
+          "description": "The ARN of the execution role for the space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html#cfn-sagemaker-domain-defaultspacesettings-executionrole"
+        },
+        "JupyterLabAppSettings": {
+          "description": "The JupyterLab app settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html#cfn-sagemaker-domain-defaultspacesettings-jupyterlabappsettings"
+        },
+        "JupyterServerAppSettings": {
+          "description": "The JupyterServer app settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html#cfn-sagemaker-domain-defaultspacesettings-jupyterserverappsettings"
+        },
+        "KernelGatewayAppSettings": {
+          "description": "The KernelGateway app settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html#cfn-sagemaker-domain-defaultspacesettings-kernelgatewayappsettings"
+        },
+        "SecurityGroups": {
+          "description": "The security group IDs for the Amazon VPC that the space uses for communication.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html#cfn-sagemaker-domain-defaultspacesettings-securitygroups"
+        },
+        "SpaceStorageSettings": {
+          "description": "Default storage settings for a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html#cfn-sagemaker-domain-defaultspacesettings-spacestoragesettings"
+        }
+      },
+      "description": "The default settings for shared spaces that users create in the domain.\n\nSageMaker applies these settings only to shared spaces. It doesn't apply them to private spaces.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacesettings.html"
+    },
+    "DefaultSpaceStorageSettings": {
+      "properties": {
+        "DefaultEbsStorageSettings": {
+          "description": "The default EBS storage settings for a space.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacestoragesettings.html#cfn-sagemaker-domain-defaultspacestoragesettings-defaultebsstoragesettings"
+        }
+      },
+      "description": "The default storage settings for a space.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-defaultspacestoragesettings.html"
+    },
+    "DockerSettings": {
+      "properties": {
+        "EnableDockerAccess": {
+          "description": "Indicates whether the domain can access Docker.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-dockersettings.html#cfn-sagemaker-domain-dockersettings-enabledockeraccess"
+        },
+        "VpcOnlyTrustedAccounts": {
+          "description": "The list of AWS accounts that are trusted when the domain is created in VPC-only mode.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-dockersettings.html#cfn-sagemaker-domain-dockersettings-vpconlytrustedaccounts"
+        }
+      },
+      "description": "A collection of settings that configure the domain's Docker interaction.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-dockersettings.html"
+    },
+    "DomainSettings": {
+      "properties": {
+        "DockerSettings": {
+          "description": "A collection of settings that configure the domain's Docker interaction.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-domainsettings.html#cfn-sagemaker-domain-domainsettings-dockersettings"
+        },
+        "ExecutionRoleIdentityConfig": {
+          "description": "The configuration for attaching a SageMaker AI user profile name to the execution role as a [sts:SourceIdentity key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-domainsettings.html#cfn-sagemaker-domain-domainsettings-executionroleidentityconfig"
+        },
+        "RStudioServerProDomainSettings": {
+          "description": "A collection of settings that configure the `RStudioServerPro` Domain-level app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-domainsettings.html#cfn-sagemaker-domain-domainsettings-rstudioserverprodomainsettings"
+        },
+        "SecurityGroupIds": {
+          "description": "The security groups for the Amazon Virtual Private Cloud that the `Domain` uses for communication between Domain-level apps and user apps.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-domainsettings.html#cfn-sagemaker-domain-domainsettings-securitygroupids"
+        }
+      },
+      "description": "A collection of settings that apply to the `SageMaker Domain` . These settings are specified through the `CreateDomain` API call.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-domainsettings.html"
+    },
+    "EFSFileSystemConfig": {
+      "properties": {
+        "FileSystemId": {
+          "description": "The ID of your Amazon EFS file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-efsfilesystemconfig.html#cfn-sagemaker-domain-efsfilesystemconfig-filesystemid"
+        },
+        "FileSystemPath": {
+          "description": "The path to the file system directory that is accessible in Amazon SageMaker AI Studio. Permitted users can access only this directory and below.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-efsfilesystemconfig.html#cfn-sagemaker-domain-efsfilesystemconfig-filesystempath"
+        }
+      },
+      "description": "The settings for assigning a custom Amazon EFS file system to a user profile or space for an Amazon SageMaker AI Domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-efsfilesystemconfig.html"
+    },
+    "FSxLustreFileSystemConfig": {
+      "properties": {
+        "FileSystemId": {
+          "description": "The globally unique, 17-digit, ID of the file system, assigned by Amazon FSx for Lustre.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-fsxlustrefilesystemconfig.html#cfn-sagemaker-domain-fsxlustrefilesystemconfig-filesystemid"
+        },
+        "FileSystemPath": {
+          "description": "The path to the file system directory that is accessible in Amazon SageMaker Studio. Permitted users can access only this directory and below.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-fsxlustrefilesystemconfig.html#cfn-sagemaker-domain-fsxlustrefilesystemconfig-filesystempath"
+        }
+      },
+      "description": "The settings for assigning a custom Amazon FSx for Lustre file system to a user profile or space for an Amazon SageMaker Domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-fsxlustrefilesystemconfig.html"
+    },
+    "IdleSettings": {
+      "properties": {
+        "IdleTimeoutInMinutes": {
+          "description": "The time that SageMaker waits after the application becomes idle before shutting it down.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-idlesettings.html#cfn-sagemaker-domain-idlesettings-idletimeoutinminutes"
+        },
+        "LifecycleManagement": {
+          "description": "Indicates whether idle shutdown is activated for the application type.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-idlesettings.html#cfn-sagemaker-domain-idlesettings-lifecyclemanagement"
+        },
+        "MaxIdleTimeoutInMinutes": {
+          "description": "The maximum value in minutes that custom idle shutdown can be set to by the user.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-idlesettings.html#cfn-sagemaker-domain-idlesettings-maxidletimeoutinminutes"
+        },
+        "MinIdleTimeoutInMinutes": {
+          "description": "The minimum value in minutes that custom idle shutdown can be set to by the user.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-idlesettings.html#cfn-sagemaker-domain-idlesettings-minidletimeoutinminutes"
+        }
+      },
+      "description": "Settings related to idle shutdown of Studio applications.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-idlesettings.html"
+    },
+    "IdleTimeoutInMinutes": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-idletimeoutinminutes.html"
+    },
+    "JupyterLabAppSettings": {
+      "properties": {
+        "AppLifecycleManagement": {
+          "description": "Indicates whether idle shutdown is activated for JupyterLab applications.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterlabappsettings.html#cfn-sagemaker-domain-jupyterlabappsettings-applifecyclemanagement"
+        },
+        "CodeRepositories": {
+          "description": "A list of Git repositories that SageMaker automatically displays to users for cloning in the JupyterLab application.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterlabappsettings.html#cfn-sagemaker-domain-jupyterlabappsettings-coderepositories"
+        },
+        "CustomImages": {
+          "description": "A list of custom SageMaker images that are configured to run as a JupyterLab app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterlabappsettings.html#cfn-sagemaker-domain-jupyterlabappsettings-customimages"
+        },
+        "DefaultResourceSpec": {
+          "description": "The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the JupyterLab app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterlabappsettings.html#cfn-sagemaker-domain-jupyterlabappsettings-defaultresourcespec"
+        },
+        "LifecycleConfigArns": {
+          "description": "The Amazon Resource Name (ARN) of the lifecycle configurations attached to the user profile or domain. To remove a lifecycle config, you must set `LifecycleConfigArns` to an empty list.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterlabappsettings.html#cfn-sagemaker-domain-jupyterlabappsettings-lifecycleconfigarns"
+        }
+      },
+      "description": "The settings for the JupyterLab application.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterlabappsettings.html"
+    },
+    "JupyterServerAppSettings": {
+      "properties": {
+        "DefaultResourceSpec": {
+          "description": "The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the JupyterServer app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterserverappsettings.html#cfn-sagemaker-domain-jupyterserverappsettings-defaultresourcespec"
+        },
+        "LifecycleConfigArns": {
+          "description": "The Amazon Resource Name (ARN) of the Lifecycle Configurations attached to the JupyterServerApp. If you use this parameter, the `DefaultResourceSpec` parameter is also required.\n\n> To remove a Lifecycle Config, you must set `LifecycleConfigArns` to an empty list.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterserverappsettings.html#cfn-sagemaker-domain-jupyterserverappsettings-lifecycleconfigarns"
+        }
+      },
+      "description": "The JupyterServer app settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterserverappsettings.html"
+    },
+    "KernelGatewayAppSettings": {
+      "properties": {
+        "CustomImages": {
+          "description": "A list of custom SageMaker AI images that are configured to run as a KernelGateway app.\n\nThe maximum number of custom images are as follows.\n\n- On a domain level: 200\n- On a space level: 5\n- On a user profile level: 5",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-kernelgatewayappsettings.html#cfn-sagemaker-domain-kernelgatewayappsettings-customimages"
+        },
+        "DefaultResourceSpec": {
+          "description": "The default instance type and the Amazon Resource Name (ARN) of the default SageMaker AI image used by the KernelGateway app.\n\n> The Amazon SageMaker AI Studio UI does not use the default instance type value set here. The default instance type set here is used when Apps are created using the AWS CLI or AWS CloudFormation and the instance type parameter value is not passed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-kernelgatewayappsettings.html#cfn-sagemaker-domain-kernelgatewayappsettings-defaultresourcespec"
+        },
+        "LifecycleConfigArns": {
+          "description": "The Amazon Resource Name (ARN) of the Lifecycle Configurations attached to the the user profile or domain.\n\n> To remove a Lifecycle Config, you must set `LifecycleConfigArns` to an empty list.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-kernelgatewayappsettings.html#cfn-sagemaker-domain-kernelgatewayappsettings-lifecycleconfigarns"
+        }
+      },
+      "description": "The KernelGateway app settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-kernelgatewayappsettings.html"
+    },
+    "LifecycleManagement": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-lifecyclemanagement.html"
+    },
+    "MaxIdleTimeoutInMinutes": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-maxidletimeoutinminutes.html"
+    },
+    "MinIdleTimeoutInMinutes": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-minidletimeoutinminutes.html"
+    },
+    "MlTools": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-mltools.html"
+    },
+    "RSessionAppSettings": {
+      "properties": {
+        "CustomImages": {
+          "description": "A list of custom SageMaker AI images that are configured to run as a RSession app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rsessionappsettings.html#cfn-sagemaker-domain-rsessionappsettings-customimages"
+        },
+        "DefaultResourceSpec": {
+          "description": "Specifies the ARNs of a SageMaker image and SageMaker image version, and the instance type that the version runs on.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rsessionappsettings.html#cfn-sagemaker-domain-rsessionappsettings-defaultresourcespec"
+        }
+      },
+      "description": "A collection of settings that apply to an `RSessionGateway` app.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rsessionappsettings.html"
+    },
+    "RStudioServerProAppSettings": {
+      "properties": {
+        "AccessStatus": {
+          "description": "Indicates whether the current user has access to the `RStudioServerPro` app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rstudioserverproappsettings.html#cfn-sagemaker-domain-rstudioserverproappsettings-accessstatus"
+        },
+        "UserGroup": {
+          "description": "The level of permissions that the user has within the `RStudioServerPro` app. This value defaults to `User`. The `Admin` value allows the user access to the RStudio Administrative Dashboard.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rstudioserverproappsettings.html#cfn-sagemaker-domain-rstudioserverproappsettings-usergroup"
+        }
+      },
+      "description": "A collection of settings that configure user interaction with the `RStudioServerPro` app.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rstudioserverproappsettings.html"
+    },
+    "RStudioServerProDomainSettings": {
+      "properties": {
+        "DefaultResourceSpec": {
+          "description": "A collection that defines the default `InstanceType` , `SageMakerImageArn` , and `SageMakerImageVersionArn` for the Domain.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rstudioserverprodomainsettings.html#cfn-sagemaker-domain-rstudioserverprodomainsettings-defaultresourcespec"
+        },
+        "DomainExecutionRoleArn": {
+          "description": "The ARN of the execution role for the `RStudioServerPro` Domain-level app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rstudioserverprodomainsettings.html#cfn-sagemaker-domain-rstudioserverprodomainsettings-domainexecutionrolearn"
+        },
+        "RStudioConnectUrl": {
+          "description": "A URL pointing to an RStudio Connect server.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rstudioserverprodomainsettings.html#cfn-sagemaker-domain-rstudioserverprodomainsettings-rstudioconnecturl"
+        },
+        "RStudioPackageManagerUrl": {
+          "description": "A URL pointing to an RStudio Package Manager server.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rstudioserverprodomainsettings.html#cfn-sagemaker-domain-rstudioserverprodomainsettings-rstudiopackagemanagerurl"
+        }
+      },
+      "description": "A collection of settings that configure the `RStudioServerPro` Domain-level app.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-rstudioserverprodomainsettings.html"
+    },
+    "ResourceSpec": {
+      "properties": {
+        "InstanceType": {
+          "description": "The instance type that the image version runs on.\n\n> *JupyterServer apps* only support the `system` value.\n> \n> For *KernelGateway apps* , the `system` value is translated to `ml.t3.medium` . KernelGateway apps also support all other values for available instance types.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-resourcespec.html#cfn-sagemaker-domain-resourcespec-instancetype"
+        },
+        "LifecycleConfigArn": {
+          "description": "The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-resourcespec.html#cfn-sagemaker-domain-resourcespec-lifecycleconfigarn"
+        },
+        "SageMakerImageArn": {
+          "description": "The ARN of the SageMaker AI image that the image version belongs to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-resourcespec.html#cfn-sagemaker-domain-resourcespec-sagemakerimagearn"
+        },
+        "SageMakerImageVersionArn": {
+          "description": "The ARN of the image version created on the instance. To clear the value set for `SageMakerImageVersionArn` , pass `None` as the value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-resourcespec.html#cfn-sagemaker-domain-resourcespec-sagemakerimageversionarn"
+        }
+      },
+      "description": "Specifies the ARN's of a SageMaker AI image and SageMaker AI image version, and the instance type that the version runs on.\n\n> When both `SageMakerImageVersionArn` and `SageMakerImageArn` are passed, `SageMakerImageVersionArn` is used. Any updates to `SageMakerImageArn` will not take effect if `SageMakerImageVersionArn` already exists in the `ResourceSpec` because `SageMakerImageVersionArn` always takes precedence. To clear the value set for `SageMakerImageVersionArn` , pass `None` as the value.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-resourcespec.html"
+    },
+    "SharingSettings": {
+      "properties": {
+        "NotebookOutputOption": {
+          "description": "Whether to include the notebook cell output when sharing the notebook. The default is `Disabled` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-sharingsettings.html#cfn-sagemaker-domain-sharingsettings-notebookoutputoption"
+        },
+        "S3KmsKeyId": {
+          "description": "When `NotebookOutputOption` is `Allowed` , the AWS Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-sharingsettings.html#cfn-sagemaker-domain-sharingsettings-s3kmskeyid"
+        },
+        "S3OutputPath": {
+          "description": "When `NotebookOutputOption` is `Allowed` , the Amazon S3 bucket used to store the shared notebook snapshots.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-sharingsettings.html#cfn-sagemaker-domain-sharingsettings-s3outputpath"
+        }
+      },
+      "description": "Specifies options when sharing an Amazon SageMaker Studio notebook. These settings are specified as part of `DefaultUserSettings` when the [CreateDomain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html) API is called, and as part of `UserSettings` when the [CreateUserProfile](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateUserProfile.html) API is called.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-sharingsettings.html"
+    },
+    "SpaceEbsVolumeSizeInGb": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-spaceebsvolumesizeingb.html"
+    },
+    "StudioLifecycleConfigArn": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-studiolifecycleconfigarn.html"
+    },
+    "StudioWebPortalSettings": {
+      "properties": {
+        "HiddenAppTypes": {
+          "description": "The [Applications supported in Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-apps.html) that are hidden from the Studio left navigation pane.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-studiowebportalsettings.html#cfn-sagemaker-domain-studiowebportalsettings-hiddenapptypes"
+        },
+        "HiddenMlTools": {
+          "description": "The machine learning tools that are hidden from the Studio left navigation pane.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-studiowebportalsettings.html#cfn-sagemaker-domain-studiowebportalsettings-hiddenmltools"
+        }
+      },
+      "description": "Studio settings. If these settings are applied on a user level, they take priority over the settings applied on a domain level.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-studiowebportalsettings.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-tag.html#cfn-sagemaker-domain-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-tag.html#cfn-sagemaker-domain-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-tag.html"
+    },
+    "UserSettings": {
+      "properties": {
+        "CodeEditorAppSettings": {
+          "description": "The Code Editor application settings.\n\nSageMaker applies these settings only to private spaces that the user creates in the domain. SageMaker doesn't apply these settings to shared spaces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-codeeditorappsettings"
+        },
+        "CustomFileSystemConfigs": {
+          "description": "The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio.\n\nSageMaker applies these settings only to private spaces that the user creates in the domain. SageMaker doesn't apply these settings to shared spaces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-customfilesystemconfigs"
+        },
+        "CustomPosixUserConfig": {
+          "description": "Details about the POSIX identity that is used for file system operations.\n\nSageMaker applies these settings only to private spaces that the user creates in the domain. SageMaker doesn't apply these settings to shared spaces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-customposixuserconfig"
+        },
+        "DefaultLandingUri": {
+          "description": "The default experience that the user is directed to when accessing the domain. The supported values are:\n\n- `studio::` : Indicates that Studio is the default experience. This value can only be passed if `StudioWebPortal` is set to `ENABLED` .\n- `app:JupyterServer:` : Indicates that Studio Classic is the default experience.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-defaultlandinguri"
+        },
+        "ExecutionRole": {
+          "description": "The execution role for the user.\n\nSageMaker applies this setting only to private spaces that the user creates in the domain. SageMaker doesn't apply this setting to shared spaces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-executionrole"
+        },
+        "JupyterLabAppSettings": {
+          "description": "The settings for the JupyterLab application.\n\nSageMaker applies these settings only to private spaces that the user creates in the domain. SageMaker doesn't apply these settings to shared spaces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-jupyterlabappsettings"
+        },
+        "JupyterServerAppSettings": {
+          "description": "The Jupyter server's app settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-jupyterserverappsettings"
+        },
+        "KernelGatewayAppSettings": {
+          "description": "The kernel gateway app settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-kernelgatewayappsettings"
+        },
+        "RSessionAppSettings": {
+          "description": "A collection of settings that configure the `RSessionGateway` app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-rsessionappsettings"
+        },
+        "RStudioServerProAppSettings": {
+          "description": "A collection of settings that configure user interaction with the `RStudioServerPro` app.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-rstudioserverproappsettings"
+        },
+        "SecurityGroups": {
+          "description": "The security groups for the Amazon Virtual Private Cloud (VPC) that the domain uses for communication.\n\nOptional when the `CreateDomain.AppNetworkAccessType` parameter is set to `PublicInternetOnly` .\n\nRequired when the `CreateDomain.AppNetworkAccessType` parameter is set to `VpcOnly` , unless specified as part of the `DefaultUserSettings` for the domain.\n\nAmazon SageMaker AI adds a security group to allow NFS traffic from Amazon SageMaker AI Studio. Therefore, the number of security groups that you can specify is one less than the maximum number shown.\n\nSageMaker applies these settings only to private spaces that the user creates in the domain. SageMaker doesn't apply these settings to shared spaces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-securitygroups"
+        },
+        "SharingSettings": {
+          "description": "Specifies options for sharing Amazon SageMaker AI Studio notebooks.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-sharingsettings"
+        },
+        "SpaceStorageSettings": {
+          "description": "The storage settings for a space.\n\nSageMaker applies these settings only to private spaces that the user creates in the domain. SageMaker doesn't apply these settings to shared spaces.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-spacestoragesettings"
+        },
+        "StudioWebPortal": {
+          "description": "Whether the user can access Studio. If this value is set to `DISABLED` , the user cannot access Studio, even if that is the default experience for the domain.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-studiowebportal"
+        },
+        "StudioWebPortalSettings": {
+          "description": "Studio settings. If these settings are applied on a user level, they take priority over the settings applied on a domain level.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-studiowebportalsettings"
+        }
+      },
+      "description": "A collection of settings that apply to users of Amazon SageMaker Studio. These settings are specified when the [CreateUserProfile](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateUserProfile.html) API is called, and as `DefaultUserSettings` when the [CreateDomain](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html) API is called.\n\n`SecurityGroups` is aggregated when specified in both calls. For all other settings in `UserSettings` , the values specified in `CreateUserProfile` take precedence over those specified in `CreateDomain` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html"
+    }
+  },
+  "description": "Creates a `Domain` . A domain consists of an associated Amazon Elastic File System volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.\n\n*EFS storage*\n\nWhen a domain is created, an EFS volume is created for use by all of the users within the domain. Each user receives a private home directory within the EFS volume for notebooks, Git repositories, and data files.\n\nSageMaker AI uses the AWS Key Management Service ( AWS KMS) to encrypt the EFS volume attached to the domain with an AWS managed key by default. For more control, you can specify a customer managed key. For more information, see [Protect Data at Rest Using Encryption](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html) .\n\n*VPC configuration*\n\nAll traffic between the domain and the Amazon EFS volume is through the specified VPC and subnets. For other traffic, you can specify the `AppNetworkAccessType` parameter. `AppNetworkAccessType` corresponds to the network access type that you choose when you onboard to the domain. The following options are available:\n\n- `PublicInternetOnly` - Non-EFS traffic goes through a VPC managed by Amazon SageMaker AI, which allows internet access. This is the default value.\n- `VpcOnly` - All traffic is through the specified VPC and subnets. Internet access is disabled by default. To allow internet access, you must specify a NAT gateway.\n\nWhen internet access is disabled, you won't be able to run a Amazon SageMaker AI Studio notebook or to train or host models unless your VPC has an interface endpoint to the SageMaker AI API and runtime or a NAT gateway and your security groups allow outbound connections.\n\n> NFS traffic over TCP on port 2049 needs to be allowed in both inbound and outbound rules in order to launch a Amazon SageMaker AI Studio app successfully. \n\nFor more information, see [Connect Amazon SageMaker AI Studio Notebooks to Resources in a VPC](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html) .",
+  "properties": {
+    "AppNetworkAccessType": {
+      "description": "Specifies the VPC used for non-EFS traffic. The default value is `PublicInternetOnly` .\n\n- `PublicInternetOnly` - Non-EFS traffic is through a VPC managed by Amazon SageMaker AI , which allows direct internet access\n- `VpcOnly` - All Studio traffic is through the specified VPC and subnets\n\n*Valid Values* : `PublicInternetOnly | VpcOnly`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-appnetworkaccesstype"
+    },
+    "AppSecurityGroupManagement": {
+      "description": "The entity that creates and manages the required security groups for inter-app communication in `VpcOnly` mode. Required when `CreateDomain.AppNetworkAccessType` is `VpcOnly` and `DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn` is provided. If setting up the domain for use with RStudio, this value must be set to `Service` .\n\n*Allowed Values* : `Service` | `Customer`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-appsecuritygroupmanagement"
+    },
+    "AuthMode": {
+      "description": "The mode of authentication that members use to access the Domain.\n\n*Valid Values* : `SSO | IAM`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-authmode"
+    },
+    "DefaultSpaceSettings": {
+      "description": "The default settings for shared spaces that users create in the domain.\n\nSageMaker applies these settings only to shared spaces. It doesn't apply them to private spaces.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-defaultspacesettings"
+    },
+    "DefaultUserSettings": {
+      "description": "The default user settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-defaultusersettings"
+    },
+    "DomainArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-domainarn"
+    },
+    "DomainId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-domainid"
+    },
+    "DomainName": {
+      "description": "The domain name.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-domainname"
+    },
+    "DomainSettings": {
+      "description": "A collection of settings that apply to the `SageMaker Domain` . These settings are specified through the `CreateDomain` API call.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-domainsettings"
+    },
+    "HomeEfsFileSystemId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-homeefsfilesystemid"
+    },
+    "KmsKeyId": {
+      "description": "SageMaker uses AWS KMS to encrypt the EFS volume attached to the Domain with an AWS managed customer master key (CMK) by default. For more control, specify a customer managed CMK.\n\n*Length Constraints* : Maximum length of 2048.\n\n*Pattern* : `.*`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-kmskeyid"
+    },
+    "SecurityGroupIdForDomainBoundary": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-securitygroupidfordomainboundary"
+    },
+    "SingleSignOnApplicationArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-singlesignonapplicationarn"
+    },
+    "SingleSignOnManagedApplicationInstanceId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-singlesignonmanagedapplicationinstanceid"
+    },
+    "SubnetIds": {
+      "description": "The VPC subnets that Studio uses for communication.\n\n*Length Constraints* : Maximum length of 32.\n\n*Array members* : Minimum number of 1 item. Maximum number of 16 items.\n\n*Pattern* : `[-0-9a-zA-Z]+`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-subnetids"
+    },
+    "TagPropagation": {
+      "description": "Indicates whether the tags added to Domain, User Profile and Space entity is propagated to all SageMaker resources.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-tagpropagation"
+    },
+    "Tags": {
+      "description": "Tags to associated with the Domain. Each tag consists of a key and an optional value. Tag keys must be unique per resource. Tags are searchable using the Search API.\n\nTags that you specify for the Domain are also added to all apps that are launched in the Domain.\n\n*Array members* : Minimum number of 0 items. Maximum number of 50 items.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-tags"
+    },
+    "Url": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-url"
+    },
+    "VpcId": {
+      "description": "The ID of the Amazon Virtual Private Cloud (Amazon VPC) that Studio uses for communication.\n\n*Length Constraints* : Maximum length of 32.\n\n*Pattern* : `[-0-9a-zA-Z]+`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-domain.html#cfn-sagemaker-domain-vpcid"
+    }
+  },
+  "typeName": "AWS::SageMaker::Domain"
+}

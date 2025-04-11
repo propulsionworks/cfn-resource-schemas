@@ -1,0 +1,166 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#aws-resource-cloudtrail-eventdatastore-return-values",
+    "properties": {
+      "Status": {
+        "description": "`Ref` returns the status of the event data store, such as `ENABLED` ."
+      },
+      "UpdatedTimestamp": {
+        "description": "`Ref` returns the time stamp that updates were made to an event data store, such as `1598296624` ."
+      },
+      "EventDataStoreArn": {
+        "description": "`Ref` returns the ARN of the CloudTrail event data store, such as `arn:aws:cloudtrail:us-east-1:12345678910:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE` ."
+      },
+      "CreatedTimestamp": {
+        "description": "`Ref` returns the time stamp of the creation of the event data store, such as `1248496624` ."
+      }
+    }
+  },
+  "definitions": {
+    "AdvancedEventSelector": {
+      "properties": {
+        "FieldSelectors": {
+          "description": "Contains all selector statements in an advanced event selector.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedeventselector.html#cfn-cloudtrail-eventdatastore-advancedeventselector-fieldselectors"
+        },
+        "Name": {
+          "description": "An optional, descriptive name for an advanced event selector, such as \"Log data events for only two S3 buckets\".",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedeventselector.html#cfn-cloudtrail-eventdatastore-advancedeventselector-name"
+        }
+      },
+      "description": "Advanced event selectors let you create fine-grained selectors for AWS CloudTrail management, data, and network activity events. They help you control costs by logging only those events that are important to you. For more information about configuring advanced event selectors, see the [Logging data events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html) , [Logging network activity events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html) , and [Logging management events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html) topics in the *AWS CloudTrail User Guide* .\n\nYou cannot apply both event selectors and advanced event selectors to a trail.\n\n*Supported CloudTrail event record fields for management events*\n\n- `eventCategory` (required)\n- `eventSource`\n- `readOnly`\n\nThe following additional fields are available for event data stores:\n\n- `eventName`\n- `eventType`\n- `sessionCredentialFromConsole`\n- `userIdentity.arn`\n\n*Supported CloudTrail event record fields for data events*\n\n- `eventCategory` (required)\n- `resources.type` (required)\n- `readOnly`\n- `eventName`\n- `resources.ARN`\n\nThe following additional fields are available for event data stores:\n\n- `eventSource`\n- `eventType`\n- `sessionCredentialFromConsole`\n- `userIdentity.arn`\n\n*Supported CloudTrail event record fields for network activity events*\n\n- `eventCategory` (required)\n- `eventSource` (required)\n- `eventName`\n- `errorCode` - The only valid value for `errorCode` is `VpceAccessDenied` .\n- `vpcEndpointId`\n\n> For event data stores for CloudTrail Insights events, AWS Config configuration items, Audit Manager evidence, or events outside of AWS , the only supported field is `eventCategory` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedeventselector.html"
+    },
+    "AdvancedFieldSelector": {
+      "properties": {
+        "EndsWith": {
+          "description": "An operator that includes events that match the last few characters of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html#cfn-cloudtrail-eventdatastore-advancedfieldselector-endswith"
+        },
+        "Equals": {
+          "description": "An operator that includes events that match the exact value of the event record field specified as the value of `Field` . This is the only valid operator that you can use with the `readOnly` , `eventCategory` , and `resources.type` fields.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html#cfn-cloudtrail-eventdatastore-advancedfieldselector-equals"
+        },
+        "Field": {
+          "description": "A field in a CloudTrail event record on which to filter events to be logged. For event data stores for CloudTrail Insights events, AWS Config configuration items, Audit Manager evidence, or events outside of AWS , the field is used only for selecting events as filtering is not supported.\n\nFor CloudTrail management events, supported fields include `eventCategory` (required), `eventSource` , and `readOnly` . The following additional fields are available for event data stores: `eventName` , `eventType` , `sessionCredentialFromConsole` , and `userIdentity.arn` .\n\nFor CloudTrail data events, supported fields include `eventCategory` (required), `resources.type` (required), `eventName` , `readOnly` , and `resources.ARN` . The following additional fields are available for event data stores: `eventSource` , `eventType` , `sessionCredentialFromConsole` , and `userIdentity.arn` .\n\nFor CloudTrail network activity events, supported fields include `eventCategory` (required), `eventSource` (required), `eventName` , `errorCode` , and `vpcEndpointId` .\n\nFor event data stores for CloudTrail Insights events, AWS Config configuration items, Audit Manager evidence, or events outside of AWS , the only supported field is `eventCategory` .\n\n> Selectors don't support the use of wildcards like `*` . To match multiple values with a single condition, you may use `StartsWith` , `EndsWith` , `NotStartsWith` , or `NotEndsWith` to explicitly match the beginning or end of the event field. \n\n- *`readOnly`* - This is an optional field that is only used for management events and data events. This field can be set to `Equals` with a value of `true` or `false` . If you do not add this field, CloudTrail logs both `read` and `write` events. A value of `true` logs only `read` events. A value of `false` logs only `write` events.\n- *`eventSource`* - This field is only used for management events, data events (for event data stores only), and network activity events.\n\nFor management events for trails, this is an optional field that can be set to `NotEquals` `kms.amazonaws.com` to exclude KMS management events, or `NotEquals` `rdsdata.amazonaws.com` to exclude RDS management events.\n\nFor management and data events for event data stores, you can use it to include or exclude any event source and can use any operator.\n\nFor network activity events, this is a required field that only uses the `Equals` operator. Set this field to the event source for which you want to log network activity events. If you want to log network activity events for multiple event sources, you must create a separate field selector for each event source. For a list of services supporting network activity events, see [Logging network activity events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html) in the *AWS CloudTrail User Guide* .\n- *`eventName`* - This is an optional field that is only used for data events, management events (for event data stores only), and network activity events. You can use any operator with `eventName` . You can use it to ﬁlter in or ﬁlter out specific events. You can have multiple values for this ﬁeld, separated by commas.\n- *`eventCategory`* - This field is required and must be set to `Equals` .\n\n- For CloudTrail management events, the value must be `Management` .\n- For CloudTrail data events, the value must be `Data` .\n- For CloudTrail network activity events, the value must be `NetworkActivity` .\n\nThe following are used only for event data stores:\n\n- For CloudTrail Insights events, the value must be `Insight` .\n- For AWS Config configuration items, the value must be `ConfigurationItem` .\n- For Audit Manager evidence, the value must be `Evidence` .\n- For events outside of AWS , the value must be `ActivityAuditLog` .\n- *`eventType`* - This is an optional field available only for event data stores, which is used to filter management and data events on the event type. For information about available event types, see [CloudTrail record contents](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html#ct-event-type) in the *AWS CloudTrail user guide* .\n- *`errorCode`* - This ﬁeld is only used to filter CloudTrail network activity events and is optional. This is the error code to filter on. Currently, the only valid `errorCode` is `VpceAccessDenied` . `errorCode` can only use the `Equals` operator.\n- *`sessionCredentialFromConsole`* - This is an optional field available only for event data stores, which is used to filter management and data events based on whether the events originated from an AWS Management Console session. `sessionCredentialFromConsole` can only use the `Equals` and `NotEquals` operators.\n- *`resources.type`* - This ﬁeld is required for CloudTrail data events. `resources.type` can only use the `Equals` operator.\n\nFor a list of available resource types for data events, see [Data events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events) in the *AWS CloudTrail User Guide* .\n\nYou can have only one `resources.type` ﬁeld per selector. To log events on more than one resource type, add another selector.\n- *`resources.ARN`* - The `resources.ARN` is an optional field for data events. You can use any operator with `resources.ARN` , but if you use `Equals` or `NotEquals` , the value must exactly match the ARN of a valid resource of the type you've speciﬁed in the template as the value of resources.type. To log all data events for all objects in a specific S3 bucket, use the `StartsWith` operator, and include only the bucket ARN as the matching value.\n\nFor more information about the ARN formats of data event resources, see [Actions, resources, and condition keys for AWS services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html) in the *Service Authorization Reference* .\n\n> You can't use the `resources.ARN` field to filter resource types that do not have ARNs.\n- *`userIdentity.arn`* - This is an optional field available only for event data stores, which is used to filter management and data events on the userIdentity ARN. You can use any operator with `userIdentity.arn` . For more information on the userIdentity element, see [CloudTrail userIdentity element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html) in the *AWS CloudTrail User Guide* .\n- *`vpcEndpointId`* - This ﬁeld is only used to filter CloudTrail network activity events and is optional. This field identifies the VPC endpoint that the request passed through. You can use any operator with `vpcEndpointId` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html#cfn-cloudtrail-eventdatastore-advancedfieldselector-field"
+        },
+        "NotEndsWith": {
+          "description": "An operator that excludes events that match the last few characters of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html#cfn-cloudtrail-eventdatastore-advancedfieldselector-notendswith"
+        },
+        "NotEquals": {
+          "description": "An operator that excludes events that match the exact value of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html#cfn-cloudtrail-eventdatastore-advancedfieldselector-notequals"
+        },
+        "NotStartsWith": {
+          "description": "An operator that excludes events that match the first few characters of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html#cfn-cloudtrail-eventdatastore-advancedfieldselector-notstartswith"
+        },
+        "StartsWith": {
+          "description": "An operator that includes events that match the first few characters of the event record field specified as the value of `Field` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html#cfn-cloudtrail-eventdatastore-advancedfieldselector-startswith"
+        }
+      },
+      "description": "A single selector statement in an advanced event selector.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html"
+    },
+    "InsightSelector": {
+      "properties": {
+        "InsightType": {
+          "description": "The type of Insights events to log on an event data store. `ApiCallRateInsight` and `ApiErrorRateInsight` are valid Insight types.\n\nThe `ApiCallRateInsight` Insights type analyzes write-only management API calls that are aggregated per minute against a baseline API call volume.\n\nThe `ApiErrorRateInsight` Insights type analyzes management API calls that result in error codes. The error is shown if the API call is unsuccessful.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-insightselector.html#cfn-cloudtrail-eventdatastore-insightselector-insighttype"
+        }
+      },
+      "description": "A JSON string that contains a list of Insights types that are logged on an event data store.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-insightselector.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-tag.html#cfn-cloudtrail-eventdatastore-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-tag.html#cfn-cloudtrail-eventdatastore-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-tag.html"
+    },
+    "Timestamp": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-timestamp.html"
+    }
+  },
+  "description": "Creates a new event data store.",
+  "properties": {
+    "AdvancedEventSelectors": {
+      "description": "The advanced event selectors to use to select the events for the data store. You can configure up to five advanced event selectors for each event data store.\n\nFor more information about how to use advanced event selectors to log CloudTrail events, see [Log events by using advanced event selectors](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-advanced) in the CloudTrail User Guide.\n\nFor more information about how to use advanced event selectors to include AWS Config configuration items in your event data store, see [Create an event data store for AWS Config configuration items](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-eds-cli.html#lake-cli-create-eds-config) in the CloudTrail User Guide.\n\nFor more information about how to use advanced event selectors to include events outside of AWS events in your event data store, see [Create an integration to log events from outside AWS](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-integrations-cli.html#lake-cli-create-integration) in the CloudTrail User Guide.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-advancedeventselectors"
+    },
+    "BillingMode": {
+      "description": "The billing mode for the event data store determines the cost for ingesting events and the default and maximum retention period for the event data store.\n\nThe following are the possible values:\n\n- `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally recommended if you want a flexible retention period of up to 3653 days (about 10 years). The default retention period for this billing mode is 366 days.\n- `FIXED_RETENTION_PRICING` - This billing mode is recommended if you expect to ingest more than 25 TB of event data per month and need a retention period of up to 2557 days (about 7 years). The default retention period for this billing mode is 2557 days.\n\nThe default value is `EXTENDABLE_RETENTION_PRICING` .\n\nFor more information about CloudTrail pricing, see [AWS CloudTrail Pricing](https://docs.aws.amazon.com/cloudtrail/pricing/) and [Managing CloudTrail Lake costs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-billingmode"
+    },
+    "CreatedTimestamp": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-createdtimestamp"
+    },
+    "EventDataStoreArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-eventdatastorearn"
+    },
+    "FederationEnabled": {
+      "description": "Indicates if [Lake query federation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation.html) is enabled. By default, Lake query federation is disabled. You cannot delete an event data store if Lake query federation is enabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-federationenabled"
+    },
+    "FederationRoleArn": {
+      "description": "If Lake query federation is enabled, provides the ARN of the federation role used to access the resources for the federated event data store.\n\nThe federation role must exist in your account and provide the [required minimum permissions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation.html#query-federation-permissions-role) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-federationrolearn"
+    },
+    "IngestionEnabled": {
+      "description": "Specifies whether the event data store should start ingesting live events. The default is true.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-ingestionenabled"
+    },
+    "InsightSelectors": {
+      "description": "A JSON string that contains the Insights types you want to log on an event data store. `ApiCallRateInsight` and `ApiErrorRateInsight` are valid Insight types.\n\nThe `ApiCallRateInsight` Insights type analyzes write-only management API calls that are aggregated per minute against a baseline API call volume.\n\nThe `ApiErrorRateInsight` Insights type analyzes management API calls that result in error codes. The error is shown if the API call is unsuccessful.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-insightselectors"
+    },
+    "InsightsDestination": {
+      "description": "The ARN (or ID suffix of the ARN) of the destination event data store that logs Insights events. For more information, see [Create an event data store for CloudTrail Insights events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-event-data-store-insights.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-insightsdestination"
+    },
+    "KmsKeyId": {
+      "description": "Specifies the AWS KMS key ID to use to encrypt the events delivered by CloudTrail. The value can be an alias name prefixed by `alias/` , a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.\n\n> Disabling or deleting the KMS key, or removing CloudTrail permissions on the key, prevents CloudTrail from logging events to the event data store, and prevents users from querying the data in the event data store that was encrypted with the key. After you associate an event data store with a KMS key, the KMS key cannot be removed or changed. Before you disable or delete a KMS key that you are using with an event data store, delete or back up your event data store. \n\nCloudTrail also supports AWS KMS multi-Region keys. For more information about multi-Region keys, see [Using multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *AWS Key Management Service Developer Guide* .\n\nExamples:\n\n- `alias/MyAliasName`\n- `arn:aws:kms:us-east-2:123456789012:alias/MyAliasName`\n- `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`\n- `12345678-1234-1234-1234-123456789012`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-kmskeyid"
+    },
+    "MultiRegionEnabled": {
+      "description": "Specifies whether the event data store includes events from all Regions, or only from the Region in which the event data store is created.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-multiregionenabled"
+    },
+    "Name": {
+      "description": "The name of the event data store.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-name"
+    },
+    "OrganizationEnabled": {
+      "description": "Specifies whether an event data store collects events logged for an organization in AWS Organizations .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-organizationenabled"
+    },
+    "RetentionPeriod": {
+      "description": "The retention period of the event data store, in days. If `BillingMode` is set to `EXTENDABLE_RETENTION_PRICING` , you can set a retention period of up to 3653 days, the equivalent of 10 years. If `BillingMode` is set to `FIXED_RETENTION_PRICING` , you can set a retention period of up to 2557 days, the equivalent of seven years.\n\nCloudTrail Lake determines whether to retain an event by checking if the `eventTime` of the event is within the specified retention period. For example, if you set a retention period of 90 days, CloudTrail will remove events when the `eventTime` is older than 90 days.\n\n> If you plan to copy trail events to this event data store, we recommend that you consider both the age of the events that you want to copy as well as how long you want to keep the copied events in your event data store. For example, if you copy trail events that are 5 years old and specify a retention period of 7 years, the event data store will retain those events for two years.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-retentionperiod"
+    },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-status"
+    },
+    "Tags": {
+      "description": "A list of tags.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-tags"
+    },
+    "TerminationProtectionEnabled": {
+      "description": "Specifies whether termination protection is enabled for the event data store. If termination protection is enabled, you cannot delete the event data store until termination protection is disabled.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-terminationprotectionenabled"
+    },
+    "UpdatedTimestamp": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-updatedtimestamp"
+    }
+  },
+  "typeName": "AWS::CloudTrail::EventDataStore"
+}

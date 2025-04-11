@@ -1,0 +1,279 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#aws-resource-customerprofiles-domain-return-values",
+    "properties": {
+      "LastUpdatedAt": {
+        "description": "The timestamp of when the domain was most recently edited."
+      },
+      "CreatedAt": {
+        "description": "The timestamp of when the domain was created."
+      },
+      "RuleBasedMatching.Status": {
+        "description": "The status of rule-based matching rule."
+      },
+      "Stats": {
+        "description": "Usage-specific statistics about the domain."
+      }
+    }
+  },
+  "definitions": {
+    "AttributeTypesSelector": {
+      "properties": {
+        "Address": {
+          "description": "The `Address` type. You can choose from `Address` , `BusinessAddress` , `MaillingAddress` , and `ShippingAddress` . You only can use the `Address` type in the `MatchingRule` . For example, if you want to match a profile based on `BusinessAddress.City` or `MaillingAddress.City` , you can choose the `BusinessAddress` and the `MaillingAddress` to represent the `Address` type and specify the `Address.City` on the matching rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-attributetypesselector.html#cfn-customerprofiles-domain-attributetypesselector-address"
+        },
+        "AttributeMatchingModel": {
+          "description": "Configures the `AttributeMatchingModel` , you can either choose `ONE_TO_ONE` or `MANY_TO_MANY` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-attributetypesselector.html#cfn-customerprofiles-domain-attributetypesselector-attributematchingmodel"
+        },
+        "EmailAddress": {
+          "description": "The Email type. You can choose from `EmailAddress` , `BusinessEmailAddress` and `PersonalEmailAddress` . You only can use the `EmailAddress` type in the `MatchingRule` . For example, if you want to match profile based on `PersonalEmailAddress` or `BusinessEmailAddress` , you can choose the `PersonalEmailAddress` and the `BusinessEmailAddress` to represent the `EmailAddress` type and only specify the `EmailAddress` on the matching rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-attributetypesselector.html#cfn-customerprofiles-domain-attributetypesselector-emailaddress"
+        },
+        "PhoneNumber": {
+          "description": "The `PhoneNumber` type. You can choose from `PhoneNumber` , `HomePhoneNumber` , and `MobilePhoneNumber` . You only can use the `PhoneNumber` type in the `MatchingRule` . For example, if you want to match a profile based on `Phone` or `HomePhone` , you can choose the `Phone` and the `HomePhone` to represent the `PhoneNumber` type and only specify the `PhoneNumber` on the matching rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-attributetypesselector.html#cfn-customerprofiles-domain-attributetypesselector-phonenumber"
+        }
+      },
+      "description": "Configures information about the `AttributeTypesSelector` which rule-based identity resolution uses to match profiles.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-attributetypesselector.html"
+    },
+    "AutoMerging": {
+      "properties": {
+        "ConflictResolution": {
+          "description": "Determines how the auto-merging process should resolve conflicts between different profiles. For example, if Profile A and Profile B have the same `FirstName` and `LastName` , `ConflictResolution` specifies which `EmailAddress` should be used.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-automerging.html#cfn-customerprofiles-domain-automerging-conflictresolution"
+        },
+        "Consolidation": {
+          "description": "A list of matching attributes that represent matching criteria. If two profiles meet at least one of the requirements in the matching attributes list, they will be merged.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-automerging.html#cfn-customerprofiles-domain-automerging-consolidation"
+        },
+        "Enabled": {
+          "description": "The flag that enables the auto-merging of duplicate profiles.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-automerging.html#cfn-customerprofiles-domain-automerging-enabled"
+        },
+        "MinAllowedConfidenceScoreForMerging": {
+          "description": "A number between 0 and 1 that represents the minimum confidence score required for profiles within a matching group to be merged during the auto-merge process. A higher score means that a higher similarity is required to merge profiles.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-automerging.html#cfn-customerprofiles-domain-automerging-minallowedconfidencescoreformerging"
+        }
+      },
+      "description": "Configuration information about the auto-merging process.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-automerging.html"
+    },
+    "ConflictResolution": {
+      "properties": {
+        "ConflictResolvingModel": {
+          "description": "How the auto-merging process should resolve conflicts between different profiles.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-conflictresolution.html#cfn-customerprofiles-domain-conflictresolution-conflictresolvingmodel"
+        },
+        "SourceName": {
+          "description": "The `ObjectType` name that is used to resolve profile merging conflicts when choosing `SOURCE` as the `ConflictResolvingModel` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-conflictresolution.html#cfn-customerprofiles-domain-conflictresolution-sourcename"
+        }
+      },
+      "description": "Determines how the auto-merging process should resolve conflicts between different profiles. For example, if Profile A and Profile B have the same `FirstName` and `LastName` , `ConflictResolution` specifies which `EmailAddress` should be used.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-conflictresolution.html"
+    },
+    "Consolidation": {
+      "properties": {
+        "MatchingAttributesList": {
+          "description": "A list of matching criteria.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-consolidation.html#cfn-customerprofiles-domain-consolidation-matchingattributeslist"
+        }
+      },
+      "description": "A list of matching attributes that represent matching criteria. If two profiles meet at least one of the requirements in the matching attributes list, they will be merged.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-consolidation.html"
+    },
+    "DomainStats": {
+      "properties": {
+        "MeteringProfileCount": {
+          "description": "The number of profiles that you are currently paying for in the domain. If you have more than 100 objects associated with a single profile, that profile counts as two profiles. If you have more than 200 objects, that profile counts as three, and so on.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-domainstats.html#cfn-customerprofiles-domain-domainstats-meteringprofilecount"
+        },
+        "ObjectCount": {
+          "description": "The total number of objects in domain.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-domainstats.html#cfn-customerprofiles-domain-domainstats-objectcount"
+        },
+        "ProfileCount": {
+          "description": "The total number of profiles currently in the domain.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-domainstats.html#cfn-customerprofiles-domain-domainstats-profilecount"
+        },
+        "TotalSize": {
+          "description": "The total size, in bytes, of all objects in the domain.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-domainstats.html#cfn-customerprofiles-domain-domainstats-totalsize"
+        }
+      },
+      "description": "Usage-specific statistics about the domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-domainstats.html"
+    },
+    "ExportingConfig": {
+      "properties": {
+        "S3Exporting": {
+          "description": "The S3 location where Identity Resolution Jobs write result files.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-exportingconfig.html#cfn-customerprofiles-domain-exportingconfig-s3exporting"
+        }
+      },
+      "description": "Configuration information for exporting Identity Resolution results, for example, to an S3 bucket.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-exportingconfig.html"
+    },
+    "JobSchedule": {
+      "properties": {
+        "DayOfTheWeek": {
+          "description": "The day when the Identity Resolution Job should run every week.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-jobschedule.html#cfn-customerprofiles-domain-jobschedule-dayoftheweek"
+        },
+        "Time": {
+          "description": "The time when the Identity Resolution Job should run every week.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-jobschedule.html#cfn-customerprofiles-domain-jobschedule-time"
+        }
+      },
+      "description": "The day and time when do you want to start the Identity Resolution Job every week.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-jobschedule.html"
+    },
+    "Matching": {
+      "properties": {
+        "AutoMerging": {
+          "description": "Configuration information about the auto-merging process.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matching.html#cfn-customerprofiles-domain-matching-automerging"
+        },
+        "Enabled": {
+          "description": "The flag that enables the matching process of duplicate profiles.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matching.html#cfn-customerprofiles-domain-matching-enabled"
+        },
+        "ExportingConfig": {
+          "description": "The S3 location where Identity Resolution Jobs write result files.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matching.html#cfn-customerprofiles-domain-matching-exportingconfig"
+        },
+        "JobSchedule": {
+          "description": "The day and time when do you want to start the Identity Resolution Job every week.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matching.html#cfn-customerprofiles-domain-matching-jobschedule"
+        }
+      },
+      "description": "The process of matching duplicate profiles. If `Matching = true` , Amazon Connect Customer Profiles starts a weekly batch process called *Identity Resolution Job* . If you do not specify a date and time for the *Identity Resolution Job* to run, by default it runs every Saturday at 12AM UTC to detect duplicate profiles in your domains. After the *Identity Resolution Job* completes, use the `GetMatches` API to return and review the results. Or, if you have configured `ExportingConfig` in the `MatchingRequest` , you can download the results from S3.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matching.html"
+    },
+    "MatchingAttributes": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matchingattributes.html"
+    },
+    "MatchingRule": {
+      "properties": {
+        "Rule": {
+          "description": "A single rule level of the `MatchRules` . Configures how the rule-based matching process should match profiles.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matchingrule.html#cfn-customerprofiles-domain-matchingrule-rule"
+        }
+      },
+      "description": "Specifies how the rule-based matching process should match profiles.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matchingrule.html"
+    },
+    "MatchingRuleAttributeList": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matchingruleattributelist.html"
+    },
+    "RuleBasedMatching": {
+      "properties": {
+        "AttributeTypesSelector": {
+          "description": "Configures information about the `AttributeTypesSelector` where the rule-based identity resolution uses to match profiles.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html#cfn-customerprofiles-domain-rulebasedmatching-attributetypesselector"
+        },
+        "ConflictResolution": {
+          "description": "Determines how the auto-merging process should resolve conflicts between different profiles. For example, if Profile A and Profile B have the same `FirstName` and `LastName` , `ConflictResolution` specifies which `EmailAddress` should be used.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html#cfn-customerprofiles-domain-rulebasedmatching-conflictresolution"
+        },
+        "Enabled": {
+          "description": "The flag that enables the matching process of duplicate profiles.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html#cfn-customerprofiles-domain-rulebasedmatching-enabled"
+        },
+        "ExportingConfig": {
+          "description": "The S3 location where Identity Resolution Jobs write result files.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html#cfn-customerprofiles-domain-rulebasedmatching-exportingconfig"
+        },
+        "MatchingRules": {
+          "description": "Configures how the rule-based matching process should match profiles. You can have up to 15 `MatchingRule` in the `MatchingRules` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html#cfn-customerprofiles-domain-rulebasedmatching-matchingrules"
+        },
+        "MaxAllowedRuleLevelForMatching": {
+          "description": "Indicates the maximum allowed rule level for matching.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html#cfn-customerprofiles-domain-rulebasedmatching-maxallowedrulelevelformatching"
+        },
+        "MaxAllowedRuleLevelForMerging": {
+          "description": "Indicates the maximum allowed rule level for merging.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html#cfn-customerprofiles-domain-rulebasedmatching-maxallowedrulelevelformerging"
+        },
+        "Status": {
+          "description": "The status of rule-based matching rule.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html#cfn-customerprofiles-domain-rulebasedmatching-status"
+        }
+      },
+      "description": "The process of matching duplicate profiles using Rule-Based matching. If `RuleBasedMatching = true` , Amazon Connect Customer Profiles will start to match and merge your profiles according to your configuration in the `RuleBasedMatchingRequest` . You can use the `ListRuleBasedMatches` and `GetSimilarProfiles` API to return and review the results. Also, if you have configured `ExportingConfig` in the `RuleBasedMatchingRequest` , you can download the results from S3.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-rulebasedmatching.html"
+    },
+    "S3ExportingConfig": {
+      "properties": {
+        "S3BucketName": {
+          "description": "The name of the S3 bucket where Identity Resolution Jobs write result files.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-s3exportingconfig.html#cfn-customerprofiles-domain-s3exportingconfig-s3bucketname"
+        },
+        "S3KeyName": {
+          "description": "The S3 key name of the location where Identity Resolution Jobs write result files.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-s3exportingconfig.html#cfn-customerprofiles-domain-s3exportingconfig-s3keyname"
+        }
+      },
+      "description": "The S3 location where Identity Resolution Jobs write result files.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-s3exportingconfig.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-tag.html#cfn-customerprofiles-domain-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-tag.html#cfn-customerprofiles-domain-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-tag.html"
+    }
+  },
+  "description": "Specifies an Amazon Connect Customer Profiles Domain.",
+  "properties": {
+    "CreatedAt": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-createdat"
+    },
+    "DeadLetterQueueUrl": {
+      "description": "The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting data from third party applications. You must set up a policy on the `DeadLetterQueue` for the `SendMessage` operation to enable Amazon Connect Customer Profiles to send messages to the `DeadLetterQueue` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-deadletterqueueurl"
+    },
+    "DefaultEncryptionKey": {
+      "description": "The default encryption key, which is an AWS managed key, is used when no specific type of encryption key is specified. It is used to encrypt all data before it is placed in permanent or semi-permanent storage.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-defaultencryptionkey"
+    },
+    "DefaultExpirationDays": {
+      "description": "The default number of days until the data within the domain expires.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-defaultexpirationdays"
+    },
+    "DomainName": {
+      "description": "The unique name of the domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-domainname"
+    },
+    "LastUpdatedAt": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-lastupdatedat"
+    },
+    "Matching": {
+      "description": "The process of matching duplicate profiles.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-matching"
+    },
+    "RuleBasedMatching": {
+      "description": "The process of matching duplicate profiles using Rule-Based matching.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-rulebasedmatching"
+    },
+    "Stats": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-stats"
+    },
+    "Tags": {
+      "description": "The tags used to organize, track, or control access for this resource.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-tags"
+    }
+  },
+  "typeName": "AWS::CustomerProfiles::Domain"
+}

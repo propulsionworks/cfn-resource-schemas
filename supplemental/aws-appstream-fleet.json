@@ -1,0 +1,172 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#aws-resource-appstream-fleet-return-values",
+    "properties": {
+      "Id": {}
+    }
+  },
+  "definitions": {
+    "ComputeCapacity": {
+      "properties": {
+        "DesiredInstances": {
+          "description": "The desired number of streaming instances.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-computecapacity.html#cfn-appstream-fleet-computecapacity-desiredinstances"
+        },
+        "DesiredSessions": {
+          "description": "The desired capacity in terms of number of user sessions, for the multi-session fleet. This is not allowed for single-session fleets.\n\nWhen you create a fleet, you must set define either the DesiredSessions or DesiredInstances attribute, based on the type of fleet you create. You can’t define both attributes or leave both attributes blank.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-computecapacity.html#cfn-appstream-fleet-computecapacity-desiredsessions"
+        }
+      },
+      "description": "The desired capacity for a fleet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-computecapacity.html"
+    },
+    "DomainJoinInfo": {
+      "properties": {
+        "DirectoryName": {
+          "description": "The fully qualified name of the directory (for example, corp.example.com).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-domainjoininfo.html#cfn-appstream-fleet-domainjoininfo-directoryname"
+        },
+        "OrganizationalUnitDistinguishedName": {
+          "description": "The distinguished name of the organizational unit for computer accounts.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-domainjoininfo.html#cfn-appstream-fleet-domainjoininfo-organizationalunitdistinguishedname"
+        }
+      },
+      "description": "The name of the directory and organizational unit (OU) to use to join a fleet to a Microsoft Active Directory domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-domainjoininfo.html"
+    },
+    "S3Location": {
+      "properties": {
+        "S3Bucket": {
+          "description": "The S3 bucket of the S3 object.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-s3location.html#cfn-appstream-fleet-s3location-s3bucket"
+        },
+        "S3Key": {
+          "description": "The S3 key of the S3 object.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-s3location.html#cfn-appstream-fleet-s3location-s3key"
+        }
+      },
+      "description": "Describes the S3 location.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-s3location.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-tag.html#cfn-appstream-fleet-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-tag.html#cfn-appstream-fleet-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-tag.html"
+    },
+    "VpcConfig": {
+      "properties": {
+        "SecurityGroupIds": {
+          "description": "The identifiers of the security groups for the fleet.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-vpcconfig.html#cfn-appstream-fleet-vpcconfig-securitygroupids"
+        },
+        "SubnetIds": {
+          "description": "The identifiers of the subnets to which a network interface is attached from the fleet instance. Fleet instances can use one or two subnets.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-vpcconfig.html#cfn-appstream-fleet-vpcconfig-subnetids"
+        }
+      },
+      "description": "The VPC configuration information for the fleet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-vpcconfig.html"
+    }
+  },
+  "description": "The `AWS::AppStream::Fleet` resource creates a fleet for Amazon AppStream 2.0. A fleet consists of streaming instances that run a specified image when using Always-On or On-Demand.",
+  "properties": {
+    "ComputeCapacity": {
+      "description": "The desired capacity for the fleet. This is not allowed for Elastic fleets.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-computecapacity"
+    },
+    "Description": {
+      "description": "The description to display.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-description"
+    },
+    "DisconnectTimeoutInSeconds": {
+      "description": "The amount of time that a streaming session remains active after users disconnect. If users try to reconnect to the streaming session after a disconnection or network interruption within this time interval, they are connected to their previous session. Otherwise, they are connected to a new session with a new streaming instance.\n\nSpecify a value between 60 and 36000.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-disconnecttimeoutinseconds"
+    },
+    "DisplayName": {
+      "description": "The fleet name to display.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-displayname"
+    },
+    "DomainJoinInfo": {
+      "description": "The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain. This is not allowed for Elastic fleets.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-domainjoininfo"
+    },
+    "EnableDefaultInternetAccess": {
+      "description": "Enables or disables default internet access for the fleet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-enabledefaultinternetaccess"
+    },
+    "FleetType": {
+      "description": "The fleet type.\n\n- **ALWAYS_ON** - Provides users with instant-on access to their apps. You are charged for all running instances in your fleet, even if no users are streaming apps.\n- **ON_DEMAND** - Provide users with access to applications after they connect, which takes one to two minutes. You are charged for instance streaming when users are connected and a small hourly fee for instances that are not streaming apps.\n- **ELASTIC** - The pool of streaming instances is managed by Amazon AppStream 2.0. When a user selects their application or desktop to launch, they will start streaming after the app block has been downloaded and mounted to a streaming instance.\n\n*Allowed Values* : `ALWAYS_ON` | `ELASTIC` | `ON_DEMAND`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-fleettype"
+    },
+    "IamRoleArn": {
+      "description": "The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS Security Token Service `AssumeRole` API operation and passes the ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates the *appstream_machine_role* credential profile on the instance.\n\nFor more information, see [Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html) in the *Amazon AppStream 2.0 Administration Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-iamrolearn"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-id"
+    },
+    "IdleDisconnectTimeoutInSeconds": {
+      "description": "The amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `DisconnectTimeoutInSeconds` time interval begins. Users are notified before they are disconnected due to inactivity. If they try to reconnect to the streaming session before the time interval specified in `DisconnectTimeoutInSeconds` elapses, they are connected to their previous session. Users are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be idle after the time interval in `IdleDisconnectTimeoutInSeconds` elapses, they are disconnected.\n\nTo prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value between 60 and 36000.\n\nIf you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify a value of 90, users are disconnected after 2 minutes of inactivity.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-idledisconnecttimeoutinseconds"
+    },
+    "ImageArn": {
+      "description": "The ARN of the public, private, or shared image to use.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-imagearn"
+    },
+    "ImageName": {
+      "description": "The name of the image used to create the fleet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-imagename"
+    },
+    "InstanceType": {
+      "description": "The instance type to use when launching fleet instances. The following instance types are available for non-Elastic fleets:\n\n- stream.standard.small\n- stream.standard.medium\n- stream.standard.large\n- stream.compute.large\n- stream.compute.xlarge\n- stream.compute.2xlarge\n- stream.compute.4xlarge\n- stream.compute.8xlarge\n- stream.memory.large\n- stream.memory.xlarge\n- stream.memory.2xlarge\n- stream.memory.4xlarge\n- stream.memory.8xlarge\n- stream.memory.z1d.large\n- stream.memory.z1d.xlarge\n- stream.memory.z1d.2xlarge\n- stream.memory.z1d.3xlarge\n- stream.memory.z1d.6xlarge\n- stream.memory.z1d.12xlarge\n- stream.graphics-design.large\n- stream.graphics-design.xlarge\n- stream.graphics-design.2xlarge\n- stream.graphics-design.4xlarge\n- stream.graphics-desktop.2xlarge\n- stream.graphics.g4dn.xlarge\n- stream.graphics.g4dn.2xlarge\n- stream.graphics.g4dn.4xlarge\n- stream.graphics.g4dn.8xlarge\n- stream.graphics.g4dn.12xlarge\n- stream.graphics.g4dn.16xlarge\n- stream.graphics-pro.4xlarge\n- stream.graphics-pro.8xlarge\n- stream.graphics-pro.16xlarge\n\nThe following instance types are available for Elastic fleets:\n\n- stream.standard.small\n- stream.standard.medium",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-instancetype"
+    },
+    "MaxConcurrentSessions": {
+      "description": "The maximum number of concurrent sessions that can be run on an Elastic fleet. This setting is required for Elastic fleets, but is not used for other fleet types.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-maxconcurrentsessions"
+    },
+    "MaxSessionsPerInstance": {
+      "description": "Max number of user sessions on an instance. This is applicable only for multi-session fleets.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-maxsessionsperinstance"
+    },
+    "MaxUserDurationInSeconds": {
+      "description": "The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.\n\nSpecify a value between 600 and 432000.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-maxuserdurationinseconds"
+    },
+    "Name": {
+      "description": "A unique name for the fleet.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-name"
+    },
+    "Platform": {
+      "description": "The platform of the fleet. Platform is a required setting for Elastic fleets, and is not used for other fleet types.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-platform"
+    },
+    "SessionScriptS3Location": {
+      "description": "The S3 location of the session scripts configuration zip file. This only applies to Elastic fleets.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-sessionscripts3location"
+    },
+    "StreamView": {
+      "description": "The AppStream 2.0 view that is displayed to your users when they stream from the fleet. When `APP` is specified, only the windows of applications opened by users display. When `DESKTOP` is specified, the standard desktop that is provided by the operating system displays.\n\nThe default value is `APP` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-streamview"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-tags"
+    },
+    "UsbDeviceFilterStrings": {
+      "description": "The USB device filter strings that specify which USB devices a user can redirect to the fleet streaming session, when using the Windows native client. This is allowed but not required for Elastic fleets.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-usbdevicefilterstrings"
+    },
+    "VpcConfig": {
+      "description": "The VPC configuration for the fleet. This is required for Elastic fleets, but not required for other fleet types.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html#cfn-appstream-fleet-vpcconfig"
+    }
+  },
+  "typeName": "AWS::AppStream::Fleet"
+}

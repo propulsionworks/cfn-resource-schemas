@@ -1,0 +1,73 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#aws-resource-cloudformation-hookversion-return-values",
+    "properties": {
+      "VersionId": {
+        "description": "The ID of this version of the Hook."
+      },
+      "IsDefaultVersion": {
+        "description": "Whether the specified Hook version is set as the default version."
+      },
+      "Visibility": {
+        "description": "The scope at which the Hook is visible and usable in CloudFormation operations.\n\nValid values include:\n\n- `PRIVATE` : The extension (Hook) is only visible and usable within the account in which it's registered. CloudFormation marks any resources you register as `PRIVATE` .\n- `PUBLIC` : The extension (Hook) is publicly visible and usable within any AWS account."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the Hook."
+      },
+      "TypeArn": {
+        "description": "The Amazon Resource Number (ARN) assigned to this version of the Hook."
+      }
+    }
+  },
+  "definitions": {
+    "LoggingConfig": {
+      "properties": {
+        "LogGroupName": {
+          "description": "The Amazon CloudWatch Logs group to which CloudFormation sends error logging information when invoking the extension's handlers.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-hookversion-loggingconfig.html#cfn-cloudformation-hookversion-loggingconfig-loggroupname"
+        },
+        "LogRoleArn": {
+          "description": "The Amazon Resource Name (ARN) of the role that CloudFormation should assume when sending log entries to CloudWatch Logs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-hookversion-loggingconfig.html#cfn-cloudformation-hookversion-loggingconfig-logrolearn"
+        }
+      },
+      "description": "The `LoggingConfig` property type specifies logging configuration information for an extension.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-hookversion-loggingconfig.html"
+    }
+  },
+  "description": "The `AWS::CloudFormation::HookVersion` resource publishes new or first version of a Hook to the CloudFormation registry.\n\nFor information about the CloudFormation registry, see [Managing extensions with the CloudFormation registry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html) in the *AWS CloudFormation User Guide* .\n\nThis resource type is not compatible with Guard and Lambda Hooks.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-arn"
+    },
+    "ExecutionRoleArn": {
+      "description": "The Amazon Resource Name (ARN) of the task execution role that grants the Hook permission.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-executionrolearn"
+    },
+    "IsDefaultVersion": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-isdefaultversion"
+    },
+    "LoggingConfig": {
+      "description": "Contains logging configuration information for an extension.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-loggingconfig"
+    },
+    "SchemaHandlerPackage": {
+      "description": "A URL to the Amazon S3 bucket containing the Hook project package that contains the necessary files for the Hook you want to register.\n\nFor information on generating a schema handler package, see [Modeling custom CloudFormation Hooks](https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/hooks-model.html) in the *AWS CloudFormation Hooks User Guide* .\n\n> To register the Hook, you must have `s3:GetObject` permissions to access the S3 objects.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-schemahandlerpackage"
+    },
+    "TypeArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-typearn"
+    },
+    "TypeName": {
+      "description": "The unique name for your hook. Specifies a three-part namespace for your hook, with a recommended pattern of `Organization::Service::Hook` .\n\n> The following organization namespaces are reserved and can't be used in your hook type names:\n> \n> - `Alexa`\n> - `AMZN`\n> - `Amazon`\n> - `ASK`\n> - `AWS`\n> - `Custom`\n> - `Dev`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-typename"
+    },
+    "VersionId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-versionid"
+    },
+    "Visibility": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-hookversion.html#cfn-cloudformation-hookversion-visibility"
+    }
+  },
+  "typeName": "AWS::CloudFormation::HookVersion"
+}

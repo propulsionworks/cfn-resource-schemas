@@ -1,0 +1,118 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html#aws-resource-guardduty-filter-return-values",
+    "properties": {}
+  },
+  "definitions": {
+    "Condition": {
+      "properties": {
+        "Eq": {
+          "description": "Represents the equal condition to apply to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-eq"
+        },
+        "Equals": {
+          "description": "Represents an *equal* ** condition to be applied to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-equals"
+        },
+        "GreaterThan": {
+          "description": "Represents a *greater than* condition to be applied to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-greaterthan"
+        },
+        "GreaterThanOrEqual": {
+          "description": "Represents a *greater than or equal* condition to be applied to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-greaterthanorequal"
+        },
+        "Gt": {
+          "description": "Represents a *greater than* condition to be applied to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-gt"
+        },
+        "Gte": {
+          "description": "Represents the greater than or equal condition to apply to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-gte"
+        },
+        "LessThan": {
+          "description": "Represents a *less than* condition to be applied to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-lessthan"
+        },
+        "LessThanOrEqual": {
+          "description": "Represents a *less than or equal* condition to be applied to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-lessthanorequal"
+        },
+        "Lt": {
+          "description": "Represents the less than condition to apply to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-lt"
+        },
+        "Lte": {
+          "description": "Represents the less than or equal condition to apply to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-lte"
+        },
+        "Neq": {
+          "description": "Represents the not equal condition to apply to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-neq"
+        },
+        "NotEquals": {
+          "description": "Represents a *not equal* ** condition to be applied to a single field when querying for findings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html#cfn-guardduty-filter-condition-notequals"
+        }
+      },
+      "description": "Specifies the condition to apply to a single field when filtering through GuardDuty findings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-condition.html"
+    },
+    "FindingCriteria": {
+      "properties": {
+        "Criterion": {
+          "description": "Represents a map of finding properties that match specified conditions and values when querying findings.\n\nFor information about JSON criterion mapping to their console equivalent, see [Finding criteria](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_filter-findings.html#filter_criteria) . The following are the available criterion:\n\n- accountId\n- id\n- region\n- severity\n\nTo filter on the basis of severity, the API and AWS CLI use the following input list for the `FindingCriteria` condition:\n\n- *Low* : `[\"1\", \"2\", \"3\"]`\n- *Medium* : `[\"4\", \"5\", \"6\"]`\n- *High* : `[\"7\", \"8\", \"9\"]`\n\nFor more information, see [Severity levels for GuardDuty findings](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings.html#guardduty_findings-severity) in the *Amazon GuardDuty User Guide* .\n- type\n- updatedAt\n\nType: ISO 8601 string format: `YYYY-MM-DDTHH:MM:SS.SSSZ` or `YYYY-MM-DDTHH:MM:SSZ` depending on whether the value contains milliseconds.\n- resource.accessKeyDetails.accessKeyId\n- resource.accessKeyDetails.principalId\n- resource.accessKeyDetails.userName\n- resource.accessKeyDetails.userType\n- resource.instanceDetails.iamInstanceProfile.id\n- resource.instanceDetails.imageId\n- resource.instanceDetails.instanceId\n- resource.instanceDetails.tags.key\n- resource.instanceDetails.tags.value\n- resource.instanceDetails.networkInterfaces.ipv6Addresses\n- resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress\n- resource.instanceDetails.networkInterfaces.publicDnsName\n- resource.instanceDetails.networkInterfaces.publicIp\n- resource.instanceDetails.networkInterfaces.securityGroups.groupId\n- resource.instanceDetails.networkInterfaces.securityGroups.groupName\n- resource.instanceDetails.networkInterfaces.subnetId\n- resource.instanceDetails.networkInterfaces.vpcId\n- resource.instanceDetails.outpostArn\n- resource.resourceType\n- resource.s3BucketDetails.publicAccess.effectivePermissions\n- resource.s3BucketDetails.name\n- resource.s3BucketDetails.tags.key\n- resource.s3BucketDetails.tags.value\n- resource.s3BucketDetails.type\n- service.action.actionType\n- service.action.awsApiCallAction.api\n- service.action.awsApiCallAction.callerType\n- service.action.awsApiCallAction.errorCode\n- service.action.awsApiCallAction.remoteIpDetails.city.cityName\n- service.action.awsApiCallAction.remoteIpDetails.country.countryName\n- service.action.awsApiCallAction.remoteIpDetails.ipAddressV4\n- service.action.awsApiCallAction.remoteIpDetails.ipAddressV6\n- service.action.awsApiCallAction.remoteIpDetails.organization.asn\n- service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg\n- service.action.awsApiCallAction.serviceName\n- service.action.dnsRequestAction.domain\n- service.action.dnsRequestAction.domainWithSuffix\n- service.action.networkConnectionAction.blocked\n- service.action.networkConnectionAction.connectionDirection\n- service.action.networkConnectionAction.localPortDetails.port\n- service.action.networkConnectionAction.protocol\n- service.action.networkConnectionAction.remoteIpDetails.city.cityName\n- service.action.networkConnectionAction.remoteIpDetails.country.countryName\n- service.action.networkConnectionAction.remoteIpDetails.ipAddressV4\n- service.action.networkConnectionAction.remoteIpDetails.ipAddressV6\n- service.action.networkConnectionAction.remoteIpDetails.organization.asn\n- service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg\n- service.action.networkConnectionAction.remotePortDetails.port\n- service.action.awsApiCallAction.remoteAccountDetails.affiliated\n- service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4\n- service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6\n- service.action.kubernetesApiCallAction.namespace\n- service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn\n- service.action.kubernetesApiCallAction.requestUri\n- service.action.kubernetesApiCallAction.statusCode\n- service.action.networkConnectionAction.localIpDetails.ipAddressV4\n- service.action.networkConnectionAction.localIpDetails.ipAddressV6\n- service.action.networkConnectionAction.protocol\n- service.action.awsApiCallAction.serviceName\n- service.action.awsApiCallAction.remoteAccountDetails.accountId\n- service.additionalInfo.threatListName\n- service.resourceRole\n- resource.eksClusterDetails.name\n- resource.kubernetesDetails.kubernetesWorkloadDetails.name\n- resource.kubernetesDetails.kubernetesWorkloadDetails.namespace\n- resource.kubernetesDetails.kubernetesUserDetails.username\n- resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image\n- resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix\n- service.ebsVolumeScanDetails.scanId\n- service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name\n- service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity\n- service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash\n- service.malwareScanDetails.threats.name\n- resource.ecsClusterDetails.name\n- resource.ecsClusterDetails.taskDetails.containers.image\n- resource.ecsClusterDetails.taskDetails.definitionArn\n- resource.containerDetails.image\n- resource.rdsDbInstanceDetails.dbInstanceIdentifier\n- resource.rdsDbInstanceDetails.dbClusterIdentifier\n- resource.rdsDbInstanceDetails.engine\n- resource.rdsDbUserDetails.user\n- resource.rdsDbInstanceDetails.tags.key\n- resource.rdsDbInstanceDetails.tags.value\n- service.runtimeDetails.process.executableSha256\n- service.runtimeDetails.process.name\n- service.runtimeDetails.process.name\n- resource.lambdaDetails.functionName\n- resource.lambdaDetails.functionArn\n- resource.lambdaDetails.tags.key\n- resource.lambdaDetails.tags.value",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-findingcriteria.html#cfn-guardduty-filter-findingcriteria-criterion"
+        }
+      },
+      "description": "Represents a map of finding properties that match specified conditions and values when querying findings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-findingcriteria.html"
+    },
+    "TagItem": {
+      "properties": {
+        "Key": {
+          "description": "The tag key.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-tagitem.html#cfn-guardduty-filter-tagitem-key"
+        },
+        "Value": {
+          "description": "The tag value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-tagitem.html#cfn-guardduty-filter-tagitem-value"
+        }
+      },
+      "description": "Describes a tag.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-filter-tagitem.html"
+    }
+  },
+  "description": "The `AWS::GuardDuty::Filter` resource specifies a new filter defined by the provided `findingCriteria` .",
+  "properties": {
+    "Action": {
+      "description": "Specifies the action that is to be applied to the findings that match the filter.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html#cfn-guardduty-filter-action"
+    },
+    "Description": {
+      "description": "The description of the filter. Valid characters include alphanumeric characters, and special characters such as hyphen, period, colon, underscore, parentheses ( `{ }` , `[ ]` , and `( )` ), forward slash, horizontal tab, vertical tab, newline, form feed, return, and whitespace.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html#cfn-guardduty-filter-description"
+    },
+    "DetectorId": {
+      "description": "The detector ID associated with the GuardDuty account for which you want to create a filter.\n\nTo find the `detectorId` in the current Region, see the\nSettings page in the GuardDuty console, or run the [ListDetectors](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html) API.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html#cfn-guardduty-filter-detectorid"
+    },
+    "FindingCriteria": {
+      "description": "Represents the criteria to be used in the filter for querying findings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html#cfn-guardduty-filter-findingcriteria"
+    },
+    "Name": {
+      "description": "The name of the filter. Valid characters include period (.), underscore (_), dash (-), and alphanumeric characters. A whitespace is considered to be an invalid character.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html#cfn-guardduty-filter-name"
+    },
+    "Rank": {
+      "description": "Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings. The minimum value for this property is 1 and the maximum is 100.\n\nBy default, filters may not be created in the same order as they are ranked. To ensure that the filters are created in the expected order, you can use an optional attribute, [DependsOn](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html) , with the following syntax: `\"DependsOn\":[ \"ObjectName\" ]` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html#cfn-guardduty-filter-rank"
+    },
+    "Tags": {
+      "description": "The tags to be added to a new filter resource. Each tag consists of a key and an optional value, both of which you define.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html#cfn-guardduty-filter-tags"
+    }
+  },
+  "typeName": "AWS::GuardDuty::Filter"
+}

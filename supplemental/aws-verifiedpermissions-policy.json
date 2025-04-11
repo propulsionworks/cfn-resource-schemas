@@ -1,0 +1,88 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-verifiedpermissions-policy.html#aws-resource-verifiedpermissions-policy-return-values",
+    "properties": {
+      "PolicyType": {
+        "description": "The type of the policy. This is one of the following values:\n\n- Static\n- TemplateLinked"
+      },
+      "PolicyId": {
+        "description": "The unique ID of the new or updated policy."
+      }
+    }
+  },
+  "definitions": {
+    "EntityIdentifier": {
+      "properties": {
+        "EntityId": {
+          "description": "The identifier of an entity.\n\n`\"entityId\":\" *identifier* \"`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-entityidentifier.html#cfn-verifiedpermissions-policy-entityidentifier-entityid"
+        },
+        "EntityType": {
+          "description": "The type of an entity.\n\nExample: `\"entityType\":\" *typeName* \"`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-entityidentifier.html#cfn-verifiedpermissions-policy-entityidentifier-entitytype"
+        }
+      },
+      "description": "Contains the identifier of an entity in a policy, including its ID and type.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-entityidentifier.html"
+    },
+    "PolicyDefinition": {
+      "properties": {},
+      "description": "A structure that defines a Cedar policy. It includes the policy type, a description, and a policy body. This is a top level data type used to create a policy.\n\nThis data type is used as a request parameter for the [CreatePolicy](https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_CreatePolicy.html) operation. This structure must always have either an `Static` or a `TemplateLinked` element.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-policydefinition.html"
+    },
+    "PolicyType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-policytype.html"
+    },
+    "StaticPolicyDefinition": {
+      "properties": {
+        "Description": {
+          "description": "The description of the static policy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-staticpolicydefinition.html#cfn-verifiedpermissions-policy-staticpolicydefinition-description"
+        },
+        "Statement": {
+          "description": "The policy content of the static policy, written in the Cedar policy language.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-staticpolicydefinition.html#cfn-verifiedpermissions-policy-staticpolicydefinition-statement"
+        }
+      },
+      "description": "A structure that defines a static policy.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-staticpolicydefinition.html"
+    },
+    "TemplateLinkedPolicyDefinition": {
+      "properties": {
+        "PolicyTemplateId": {
+          "description": "The unique identifier of the policy template used to create this policy.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-templatelinkedpolicydefinition.html#cfn-verifiedpermissions-policy-templatelinkedpolicydefinition-policytemplateid"
+        },
+        "Principal": {
+          "description": "The principal associated with this template-linked policy. Verified Permissions substitutes this principal for the `?principal` placeholder in the policy template when it evaluates an authorization request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-templatelinkedpolicydefinition.html#cfn-verifiedpermissions-policy-templatelinkedpolicydefinition-principal"
+        },
+        "Resource": {
+          "description": "The resource associated with this template-linked policy. Verified Permissions substitutes this resource for the `?resource` placeholder in the policy template when it evaluates an authorization request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-templatelinkedpolicydefinition.html#cfn-verifiedpermissions-policy-templatelinkedpolicydefinition-resource"
+        }
+      },
+      "description": "A structure that describes a policy created by instantiating a policy template.\n\n> You can't directly update a template-linked policy. You must update the associated policy template instead.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-verifiedpermissions-policy-templatelinkedpolicydefinition.html"
+    }
+  },
+  "description": "Creates or updates a Cedar policy and saves it in the specified policy store. You can create either a static policy or a policy linked to a policy template.\n\nYou can directly update only static policies. To update a template-linked policy, you must update its linked policy template instead.\n\n- To create a static policy, in the `Definition` include a `Static` element that includes the Cedar policy text in the `Statement` element.\n- To create a policy that is dynamically linked to a policy template, in the `Definition` include a `Templatelinked` element that specifies the policy template ID and the principal and resource to associate with this policy. If the policy template is ever updated, any policies linked to the policy template automatically use the updated template.\n\n> - If policy validation is enabled in the policy store, then updating a static policy causes Verified Permissions to validate the policy against the schema in the policy store. If the updated static policy doesn't pass validation, the operation fails and the update isn't stored.\n> - When you edit a static policy, You can change only certain elements of a static policy:\n> \n> - The action referenced by the policy.\n> - A condition clause, such as when and unless.\n> \n> You can't change these elements of a static policy:\n> \n> - Changing a policy from a static policy to a template-linked policy.\n> - Changing the effect of a static policy from permit or forbid.\n> - The principal referenced by a static policy.\n> - The resource referenced by a static policy.\n> - To update a template-linked policy, you must update the template instead.",
+  "properties": {
+    "Definition": {
+      "description": "Specifies the policy type and content to use for the new or updated policy. The definition structure must include either a `Static` or a `TemplateLinked` element.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-verifiedpermissions-policy.html#cfn-verifiedpermissions-policy-definition"
+    },
+    "PolicyId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-verifiedpermissions-policy.html#cfn-verifiedpermissions-policy-policyid"
+    },
+    "PolicyStoreId": {
+      "description": "Specifies the `PolicyStoreId` of the policy store you want to store the policy in.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-verifiedpermissions-policy.html#cfn-verifiedpermissions-policy-policystoreid"
+    },
+    "PolicyType": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-verifiedpermissions-policy.html#cfn-verifiedpermissions-policy-policytype"
+    }
+  },
+  "typeName": "AWS::VerifiedPermissions::Policy"
+}

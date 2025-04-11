@@ -1,0 +1,115 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#aws-resource-elasticache-globalreplicationgroup-return-values",
+    "properties": {
+      "Status": {
+        "description": "The status of the Global Datastore. Can be `Creating` , `Modifying` , `Available` , `Deleting` or `Primary-Only` . Primary-only status indicates the global datastore contains only a primary cluster. Either all secondary clusters are deleted or not successfully created."
+      },
+      "GlobalReplicationGroupId": {
+        "description": "The ID used to associate a secondary cluster to the Global Replication Group."
+      }
+    }
+  },
+  "definitions": {
+    "GlobalReplicationGroupMember": {
+      "properties": {
+        "ReplicationGroupId": {
+          "description": "The replication group id of the Global datastore member.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-globalreplicationgroupmember.html#cfn-elasticache-globalreplicationgroup-globalreplicationgroupmember-replicationgroupid"
+        },
+        "ReplicationGroupRegion": {
+          "description": "The Amazon region of the Global datastore member.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-globalreplicationgroupmember.html#cfn-elasticache-globalreplicationgroup-globalreplicationgroupmember-replicationgroupregion"
+        },
+        "Role": {
+          "description": "Indicates the role of the replication group, `PRIMARY` or `SECONDARY` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-globalreplicationgroupmember.html#cfn-elasticache-globalreplicationgroup-globalreplicationgroupmember-role"
+        }
+      },
+      "description": "A member of a Global datastore. It contains the Replication Group Id, the Amazon region and the role of the replication group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-globalreplicationgroupmember.html"
+    },
+    "RegionalConfiguration": {
+      "properties": {
+        "ReplicationGroupId": {
+          "description": "The name of the secondary cluster",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-regionalconfiguration.html#cfn-elasticache-globalreplicationgroup-regionalconfiguration-replicationgroupid"
+        },
+        "ReplicationGroupRegion": {
+          "description": "The Amazon region where the cluster is stored",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-regionalconfiguration.html#cfn-elasticache-globalreplicationgroup-regionalconfiguration-replicationgroupregion"
+        },
+        "ReshardingConfigurations": {
+          "description": "A list of PreferredAvailabilityZones objects that specifies the configuration of a node group in the resharded cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-regionalconfiguration.html#cfn-elasticache-globalreplicationgroup-regionalconfiguration-reshardingconfigurations"
+        }
+      },
+      "description": "A list of the replication groups",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-regionalconfiguration.html"
+    },
+    "ReshardingConfiguration": {
+      "properties": {
+        "NodeGroupId": {
+          "description": "Either the ElastiCache supplied 4-digit id or a user supplied id for the node group these configuration values apply to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-reshardingconfiguration.html#cfn-elasticache-globalreplicationgroup-reshardingconfiguration-nodegroupid"
+        },
+        "PreferredAvailabilityZones": {
+          "description": "A list of preferred availability zones for the nodes in this cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-reshardingconfiguration.html#cfn-elasticache-globalreplicationgroup-reshardingconfiguration-preferredavailabilityzones"
+        }
+      },
+      "description": "A list of `PreferredAvailabilityZones` objects that specifies the configuration of a node group in the resharded cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-globalreplicationgroup-reshardingconfiguration.html"
+    }
+  },
+  "description": "Consists of a primary cluster that accepts writes and an associated secondary cluster that resides in a different Amazon region. The secondary cluster accepts only reads. The primary cluster automatically replicates updates to the secondary cluster.\n\n- The *GlobalReplicationGroupIdSuffix* represents the name of the Global datastore, which is what you use to associate a secondary cluster.",
+  "properties": {
+    "AutomaticFailoverEnabled": {
+      "description": "Specifies whether a read-only replica is automatically promoted to read/write primary if the existing primary fails.\n\n`AutomaticFailoverEnabled` must be enabled for Valkey or Redis OSS (cluster mode enabled) replication groups.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-automaticfailoverenabled"
+    },
+    "CacheNodeType": {
+      "description": "The cache node type of the Global datastore",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-cachenodetype"
+    },
+    "CacheParameterGroupName": {
+      "description": "The name of the cache parameter group to use with the Global datastore. It must be compatible with the major engine version used by the Global datastore.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-cacheparametergroupname"
+    },
+    "Engine": {
+      "description": "The ElastiCache engine. For Valkey or Redis OSS only.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-engine"
+    },
+    "EngineVersion": {
+      "description": "The Elasticache Valkey or Redis OSS engine version.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-engineversion"
+    },
+    "GlobalNodeGroupCount": {
+      "description": "The number of node groups that comprise the Global Datastore.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-globalnodegroupcount"
+    },
+    "GlobalReplicationGroupDescription": {
+      "description": "The optional description of the Global datastore",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-globalreplicationgroupdescription"
+    },
+    "GlobalReplicationGroupId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-globalreplicationgroupid"
+    },
+    "GlobalReplicationGroupIdSuffix": {
+      "description": "The suffix name of a Global Datastore. The suffix guarantees uniqueness of the Global Datastore name across multiple regions.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-globalreplicationgroupidsuffix"
+    },
+    "Members": {
+      "description": "The replication groups that comprise the Global datastore.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-members"
+    },
+    "RegionalConfigurations": {
+      "description": "The Regions that comprise the Global Datastore.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-regionalconfigurations"
+    },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-globalreplicationgroup.html#cfn-elasticache-globalreplicationgroup-status"
+    }
+  },
+  "typeName": "AWS::ElastiCache::GlobalReplicationGroup"
+}

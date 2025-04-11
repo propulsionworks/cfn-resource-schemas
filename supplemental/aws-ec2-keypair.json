@@ -1,0 +1,56 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html#aws-resource-ec2-keypair-return-values",
+    "properties": {
+      "KeyPairId": {
+        "description": "The ID of the key pair."
+      },
+      "KeyFingerprint": {
+        "description": "If you created the key pair using Amazon EC2:\n\n- For RSA key pairs, the key fingerprint is the SHA-1 digest of the DER encoded private key.\n- For ED25519 key pairs, the key fingerprint is the base64-encoded SHA-256 digest, which is the default for OpenSSH, starting with [OpenSSH 6.8](https://docs.aws.amazon.com/http://www.openssh.com/txt/release-6.8) .\n\nIf you imported the key pair to Amazon EC2:\n\n- For RSA key pairs, the key fingerprint is the MD5 public key fingerprint as specified in section 4 of RFC 4716.\n- For ED25519 key pairs, the key fingerprint is the base64-encoded SHA-256 digest, which is the default for OpenSSH, starting with [OpenSSH 6.8](https://docs.aws.amazon.com/http://www.openssh.com/txt/release-6.8) ."
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-keypair-tag.html#cfn-ec2-keypair-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-keypair-tag.html#cfn-ec2-keypair-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-keypair-tag.html"
+    }
+  },
+  "description": "Specifies a key pair for use with an Amazon Elastic Compute Cloud instance as follows:\n\n- To import an existing key pair, include the `PublicKeyMaterial` property.\n- To create a new key pair, omit the `PublicKeyMaterial` property.\n\nWhen you import an existing key pair, you specify the public key material for the key. We assume that you have the private key material for the key. AWS CloudFormation does not create or return the private key material when you import a key pair.\n\nWhen you create a new key pair, the private key is saved to AWS Systems Manager Parameter Store, using a parameter with the following name: `/ec2/keypair/{key_pair_id}` . For more information about retrieving private key, and the required permissions, see [Create a key pair using AWS CloudFormation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html#create-key-pair-cloudformation) in the *Amazon EC2 User Guide* .\n\nWhen AWS CloudFormation deletes a key pair that was created or imported by a stack, it also deletes the parameter that was used to store the private key material in Parameter Store.",
+  "properties": {
+    "KeyFingerprint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html#cfn-ec2-keypair-keyfingerprint"
+    },
+    "KeyFormat": {
+      "description": "The format of the key pair.\n\nDefault: `pem`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html#cfn-ec2-keypair-keyformat"
+    },
+    "KeyName": {
+      "description": "A unique name for the key pair.\n\nConstraints: Up to 255 ASCII characters",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html#cfn-ec2-keypair-keyname"
+    },
+    "KeyPairId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html#cfn-ec2-keypair-keypairid"
+    },
+    "KeyType": {
+      "description": "The type of key pair. Note that ED25519 keys are not supported for Windows instances.\n\nIf the `PublicKeyMaterial` property is specified, the `KeyType` property is ignored, and the key type is inferred from the `PublicKeyMaterial` value.\n\nDefault: `rsa`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html#cfn-ec2-keypair-keytype"
+    },
+    "PublicKeyMaterial": {
+      "description": "The public key material. The `PublicKeyMaterial` property is used to import a key pair. If this property is not specified, then a new key pair will be created.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html#cfn-ec2-keypair-publickeymaterial"
+    },
+    "Tags": {
+      "description": "The tags to apply to the key pair.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html#cfn-ec2-keypair-tags"
+    }
+  },
+  "typeName": "AWS::EC2::KeyPair"
+}

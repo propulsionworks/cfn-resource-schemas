@@ -1,0 +1,94 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#aws-resource-timestream-table-return-values",
+    "properties": {
+      "Arn": {
+        "description": "The `arn` of the table."
+      },
+      "Name": {
+        "description": "The name of the table."
+      }
+    }
+  },
+  "definitions": {
+    "PartitionKey": {
+      "properties": {
+        "EnforcementInRecord": {
+          "description": "The level of enforcement for the specification of a dimension key in ingested records. Options are REQUIRED (dimension key must be specified) and OPTIONAL (dimension key does not have to be specified).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-partitionkey.html#cfn-timestream-table-partitionkey-enforcementinrecord"
+        },
+        "Name": {
+          "description": "The name of the attribute used for a dimension key.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-partitionkey.html#cfn-timestream-table-partitionkey-name"
+        },
+        "Type": {
+          "description": "The type of the partition key. Options are DIMENSION (dimension key) and MEASURE (measure key).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-partitionkey.html#cfn-timestream-table-partitionkey-type"
+        }
+      },
+      "description": "An attribute used in partitioning data in a table. A dimension key partitions data using the values of the dimension specified by the dimension-name as partition key, while a measure key partitions data using measure names (values of the 'measure_name' column).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-partitionkey.html"
+    },
+    "PartitionKeyEnforcementLevel": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-partitionkeyenforcementlevel.html"
+    },
+    "PartitionKeyList": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-partitionkeylist.html"
+    },
+    "PartitionKeyType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-partitionkeytype.html"
+    },
+    "SchemaName": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-schemaname.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-tag.html#cfn-timestream-table-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-tag.html#cfn-timestream-table-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-table-tag.html"
+    }
+  },
+  "description": "The CreateTable operation adds a new table to an existing database in your account. In an AWS account, table names must be at least unique within each Region if they are in the same database. You may have identical table names in the same Region if the tables are in separate databases. While creating the table, you must specify the table name, database name, and the retention properties. [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html) . See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-table.html) for details.",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#cfn-timestream-table-arn"
+    },
+    "DatabaseName": {
+      "description": "The name of the Timestream database that contains this table.\n\n*Length Constraints* : Minimum length of 3 bytes. Maximum length of 256 bytes.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#cfn-timestream-table-databasename"
+    },
+    "MagneticStoreWriteProperties": {
+      "description": "Contains properties to set on the table when enabling magnetic store writes.\n\nThis object has the following attributes:\n\n- *EnableMagneticStoreWrites* : A `boolean` flag to enable magnetic store writes.\n- *MagneticStoreRejectedDataLocation* : The location to write error reports for records rejected, asynchronously, during magnetic store writes. Only `S3Configuration` objects are allowed. The `S3Configuration` object has the following attributes:\n\n- *BucketName* : The name of the S3 bucket.\n- *EncryptionOption* : The encryption option for the S3 location. Valid values are S3 server-side encryption with an S3 managed key ( `SSE_S3` ) or AWS managed key ( `SSE_KMS` ).\n- *KmsKeyId* : The AWS KMS key ID to use when encrypting with an AWS managed key.\n- *ObjectKeyPrefix* : The prefix to use option for the objects stored in S3.\n\nBoth `BucketName` and `EncryptionOption` are *required* when `S3Configuration` is specified. If you specify `SSE_KMS` as your `EncryptionOption` then `KmsKeyId` is *required* .\n\n`EnableMagneticStoreWrites` attribute is *required* when `MagneticStoreWriteProperties` is specified. `MagneticStoreRejectedDataLocation` attribute is *required* when `EnableMagneticStoreWrites` is set to `true` .\n\nSee the following examples:\n\n*JSON*\n\n```json\n{ \"Type\" : AWS::Timestream::Table\", \"Properties\":{ \"DatabaseName\":\"TestDatabase\", \"TableName\":\"TestTable\", \"MagneticStoreWriteProperties\":{ \"EnableMagneticStoreWrites\":true, \"MagneticStoreRejectedDataLocation\":{ \"S3Configuration\":{ \"BucketName\":\" amzn-s3-demo-bucket \", \"EncryptionOption\":\"SSE_KMS\", \"KmsKeyId\":\"1234abcd-12ab-34cd-56ef-1234567890ab\", \"ObjectKeyPrefix\":\"prefix\" } } } }\n}\n```\n\n*YAML*\n\n```\nType: AWS::Timestream::Table\nDependsOn: TestDatabase\nProperties: TableName: \"TestTable\" DatabaseName: \"TestDatabase\" MagneticStoreWriteProperties: EnableMagneticStoreWrites: true MagneticStoreRejectedDataLocation: S3Configuration: BucketName: \" amzn-s3-demo-bucket \" EncryptionOption: \"SSE_KMS\" KmsKeyId: \"1234abcd-12ab-34cd-56ef-1234567890ab\" ObjectKeyPrefix: \"prefix\"\n```",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#cfn-timestream-table-magneticstorewriteproperties"
+    },
+    "Name": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#cfn-timestream-table-name"
+    },
+    "RetentionProperties": {
+      "description": "The retention duration for the memory store and magnetic store. This object has the following attributes:\n\n- *MemoryStoreRetentionPeriodInHours* : Retention duration for memory store, in hours.\n- *MagneticStoreRetentionPeriodInDays* : Retention duration for magnetic store, in days.\n\nBoth attributes are of type `string` . Both attributes are *required* when `RetentionProperties` is specified.\n\nSee the following examples:\n\n*JSON*\n\n`{ \"Type\" : AWS::Timestream::Table\", \"Properties\" : { \"DatabaseName\" : \"TestDatabase\", \"TableName\" : \"TestTable\", \"RetentionProperties\" : { \"MemoryStoreRetentionPeriodInHours\": \"24\", \"MagneticStoreRetentionPeriodInDays\": \"7\" } } }` \n\n*YAML*\n\n```\nType: AWS::Timestream::Table\nDependsOn: TestDatabase\nProperties: TableName: \"TestTable\" DatabaseName: \"TestDatabase\" RetentionProperties: MemoryStoreRetentionPeriodInHours: \"24\" MagneticStoreRetentionPeriodInDays: \"7\"\n```",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#cfn-timestream-table-retentionproperties"
+    },
+    "Schema": {
+      "description": "The schema of the table.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#cfn-timestream-table-schema"
+    },
+    "TableName": {
+      "description": "The name of the Timestream table.\n\n*Length Constraints* : Minimum length of 3 bytes. Maximum length of 256 bytes.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#cfn-timestream-table-tablename"
+    },
+    "Tags": {
+      "description": "The tags to add to the table",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-table.html#cfn-timestream-table-tags"
+    }
+  },
+  "typeName": "AWS::Timestream::Table"
+}

@@ -1,0 +1,221 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-connection.html#aws-resource-glue-connection-return-values",
+    "properties": {
+      "Id": {}
+    }
+  },
+  "definitions": {
+    "AuthenticationConfigurationInput": {
+      "properties": {
+        "AuthenticationType": {
+          "description": "A structure containing the authentication configuration in the CreateConnection request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authenticationconfigurationinput.html#cfn-glue-connection-authenticationconfigurationinput-authenticationtype"
+        },
+        "BasicAuthenticationCredentials": {
+          "description": "The credentials used when the authentication type is basic authentication.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authenticationconfigurationinput.html#cfn-glue-connection-authenticationconfigurationinput-basicauthenticationcredentials"
+        },
+        "CustomAuthenticationCredentials": {
+          "description": "The credentials used when the authentication type is custom authentication.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authenticationconfigurationinput.html#cfn-glue-connection-authenticationconfigurationinput-customauthenticationcredentials"
+        },
+        "KmsKeyArn": {
+          "description": "The ARN of the KMS key used to encrypt the connection. Only taken an as input in the request and stored in the Secret Manager.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authenticationconfigurationinput.html#cfn-glue-connection-authenticationconfigurationinput-kmskeyarn"
+        },
+        "OAuth2Properties": {
+          "description": "The properties for OAuth2 authentication in the CreateConnection request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authenticationconfigurationinput.html#cfn-glue-connection-authenticationconfigurationinput-oauth2properties"
+        },
+        "SecretArn": {
+          "description": "The secret manager ARN to store credentials in the CreateConnection request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authenticationconfigurationinput.html#cfn-glue-connection-authenticationconfigurationinput-secretarn"
+        }
+      },
+      "description": "A structure containing the authentication configuration in the CreateConnection request.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authenticationconfigurationinput.html"
+    },
+    "AuthorizationCodeProperties": {
+      "properties": {
+        "AuthorizationCode": {
+          "description": "An authorization code to be used in the third leg of the `AUTHORIZATION_CODE` grant workflow. This is a single-use code which becomes invalid once exchanged for an access token, thus it is acceptable to have this value as a request parameter.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authorizationcodeproperties.html#cfn-glue-connection-authorizationcodeproperties-authorizationcode"
+        },
+        "RedirectUri": {
+          "description": "The redirect URI where the user gets redirected to by authorization server when issuing an authorization code. The URI is subsequently used when the authorization code is exchanged for an access token.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authorizationcodeproperties.html#cfn-glue-connection-authorizationcodeproperties-redirecturi"
+        }
+      },
+      "description": "The set of properties required for the the OAuth2 `AUTHORIZATION_CODE` grant type workflow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-authorizationcodeproperties.html"
+    },
+    "BasicAuthenticationCredentials": {
+      "properties": {
+        "Password": {
+          "description": "The password to connect to the data source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-basicauthenticationcredentials.html#cfn-glue-connection-basicauthenticationcredentials-password"
+        },
+        "Username": {
+          "description": "The username to connect to the data source.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-basicauthenticationcredentials.html#cfn-glue-connection-basicauthenticationcredentials-username"
+        }
+      },
+      "description": "For supplying basic auth credentials when not providing a `SecretArn` value.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-basicauthenticationcredentials.html"
+    },
+    "ConnectionInput": {
+      "properties": {
+        "AthenaProperties": {
+          "description": "Connection properties specific to the Athena compute environment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-athenaproperties"
+        },
+        "AuthenticationConfiguration": {
+          "description": "The authentication properties of the connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-authenticationconfiguration"
+        },
+        "ConnectionProperties": {
+          "description": "These key-value pairs define parameters for the connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-connectionproperties"
+        },
+        "ConnectionType": {
+          "description": "The type of the connection. Currently, these types are supported:\n\n- `JDBC` - Designates a connection to a database through Java Database Connectivity (JDBC).\n\n`JDBC` Connections use the following ConnectionParameters.\n\n- Required: All of ( `HOST` , `PORT` , `JDBC_ENGINE` ) or `JDBC_CONNECTION_URL` .\n- Required: All of ( `USERNAME` , `PASSWORD` ) or `SECRET_ID` .\n- Optional: `JDBC_ENFORCE_SSL` , `CUSTOM_JDBC_CERT` , `CUSTOM_JDBC_CERT_STRING` , `SKIP_CUSTOM_JDBC_CERT_VALIDATION` . These parameters are used to configure SSL with JDBC.\n- `KAFKA` - Designates a connection to an Apache Kafka streaming platform.\n\n`KAFKA` Connections use the following ConnectionParameters.\n\n- Required: `KAFKA_BOOTSTRAP_SERVERS` .\n- Optional: `KAFKA_SSL_ENABLED` , `KAFKA_CUSTOM_CERT` , `KAFKA_SKIP_CUSTOM_CERT_VALIDATION` . These parameters are used to configure SSL with `KAFKA` .\n- Optional: `KAFKA_CLIENT_KEYSTORE` , `KAFKA_CLIENT_KEYSTORE_PASSWORD` , `KAFKA_CLIENT_KEY_PASSWORD` , `ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD` , `ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD` . These parameters are used to configure TLS client configuration with SSL in `KAFKA` .\n- Optional: `KAFKA_SASL_MECHANISM` . Can be specified as `SCRAM-SHA-512` , `GSSAPI` , or `AWS_MSK_IAM` .\n- Optional: `KAFKA_SASL_SCRAM_USERNAME` , `KAFKA_SASL_SCRAM_PASSWORD` , `ENCRYPTED_KAFKA_SASL_SCRAM_PASSWORD` . These parameters are used to configure SASL/SCRAM-SHA-512 authentication with `KAFKA` .\n- Optional: `KAFKA_SASL_GSSAPI_KEYTAB` , `KAFKA_SASL_GSSAPI_KRB5_CONF` , `KAFKA_SASL_GSSAPI_SERVICE` , `KAFKA_SASL_GSSAPI_PRINCIPAL` . These parameters are used to configure SASL/GSSAPI authentication with `KAFKA` .\n- `MONGODB` - Designates a connection to a MongoDB document database.\n\n`MONGODB` Connections use the following ConnectionParameters.\n\n- Required: `CONNECTION_URL` .\n- Required: All of ( `USERNAME` , `PASSWORD` ) or `SECRET_ID` .\n- `VIEW_VALIDATION_REDSHIFT` - Designates a connection used for view validation by Amazon Redshift.\n- `VIEW_VALIDATION_ATHENA` - Designates a connection used for view validation by Amazon Athena.\n- `NETWORK` - Designates a network connection to a data source within an Amazon Virtual Private Cloud environment (Amazon VPC).\n\n`NETWORK` Connections do not require ConnectionParameters. Instead, provide a PhysicalConnectionRequirements.\n- `MARKETPLACE` - Uses configuration settings contained in a connector purchased from AWS Marketplace to read from and write to data stores that are not natively supported by AWS Glue .\n\n`MARKETPLACE` Connections use the following ConnectionParameters.\n\n- Required: `CONNECTOR_TYPE` , `CONNECTOR_URL` , `CONNECTOR_CLASS_NAME` , `CONNECTION_URL` .\n- Required for `JDBC` `CONNECTOR_TYPE` connections: All of ( `USERNAME` , `PASSWORD` ) or `SECRET_ID` .\n- `CUSTOM` - Uses configuration settings contained in a custom connector to read from and write to data stores that are not natively supported by AWS Glue .\n\nAdditionally, a `ConnectionType` for the following SaaS connectors is supported:\n\n- `FACEBOOKADS` - Designates a connection to Facebook Ads.\n- `GOOGLEADS` - Designates a connection to Google Ads.\n- `GOOGLESHEETS` - Designates a connection to Google Sheets.\n- `GOOGLEANALYTICS4` - Designates a connection to Google Analytics 4.\n- `HUBSPOT` - Designates a connection to HubSpot.\n- `INSTAGRAMADS` - Designates a connection to Instagram Ads.\n- `INTERCOM` - Designates a connection to Intercom.\n- `JIRACLOUD` - Designates a connection to Jira Cloud.\n- `MARKETO` - Designates a connection to Adobe Marketo Engage.\n- `NETSUITEERP` - Designates a connection to Oracle NetSuite.\n- `SALESFORCE` - Designates a connection to Salesforce using OAuth authentication.\n- `SALESFORCEMARKETINGCLOUD` - Designates a connection to Salesforce Marketing Cloud.\n- `SALESFORCEPARDOT` - Designates a connection to Salesforce Marketing Cloud Account Engagement (MCAE).\n- `SAPODATA` - Designates a connection to SAP OData.\n- `SERVICENOW` - Designates a connection to ServiceNow.\n- `SLACK` - Designates a connection to Slack.\n- `SNAPCHATADS` - Designates a connection to Snapchat Ads.\n- `STRIPE` - Designates a connection to Stripe.\n- `ZENDESK` - Designates a connection to Zendesk.\n- `ZOHOCRM` - Designates a connection to Zoho CRM.\n\nFor more information on the connection parameters needed for a particular connector, see the documentation for the connector in [Adding an AWS Glue connection](https://docs.aws.amazon.com/glue/latest/dg/console-connections.html) in the AWS Glue User Guide.\n\n`SFTP` is not supported.\n\nFor more information about how optional ConnectionProperties are used to configure features in AWS Glue , consult [AWS Glue connection properties](https://docs.aws.amazon.com/glue/latest/dg/connection-defining.html) .\n\nFor more information about how optional ConnectionProperties are used to configure features in AWS Glue Studio, consult [Using connectors and connections](https://docs.aws.amazon.com/glue/latest/ug/connectors-chapter.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-connectiontype"
+        },
+        "Description": {
+          "description": "The description of the connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-description"
+        },
+        "MatchCriteria": {
+          "description": "A list of criteria that can be used in selecting this connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-matchcriteria"
+        },
+        "Name": {
+          "description": "The name of the connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-name"
+        },
+        "PhysicalConnectionRequirements": {
+          "description": "The physical connection requirements, such as virtual private cloud (VPC) and `SecurityGroup` , that are needed to successfully make this connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-physicalconnectionrequirements"
+        },
+        "PythonProperties": {
+          "description": "Connection properties specific to the Python compute environment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-pythonproperties"
+        },
+        "SparkProperties": {
+          "description": "Connection properties specific to the Spark compute environment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-sparkproperties"
+        },
+        "ValidateCredentials": {
+          "description": "A flag to validate the credentials during create connection. Default is true.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-validatecredentials"
+        },
+        "ValidateForComputeEnvironments": {
+          "description": "The compute environments that the specified connection properties are validated against.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html#cfn-glue-connection-connectioninput-validateforcomputeenvironments"
+        }
+      },
+      "description": "A structure that is used to specify a connection to create or update.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-connectioninput.html"
+    },
+    "OAuth2ClientApplication": {
+      "properties": {
+        "AWSManagedClientApplicationReference": {
+          "description": "The reference to the SaaS-side client app that is AWS managed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2clientapplication.html#cfn-glue-connection-oauth2clientapplication-awsmanagedclientapplicationreference"
+        },
+        "UserManagedClientApplicationClientId": {
+          "description": "The client application clientID if the ClientAppType is `USER_MANAGED` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2clientapplication.html#cfn-glue-connection-oauth2clientapplication-usermanagedclientapplicationclientid"
+        }
+      },
+      "description": "The OAuth2 client app used for the connection.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2clientapplication.html"
+    },
+    "OAuth2Credentials": {
+      "properties": {
+        "AccessToken": {
+          "description": "The access token used when the authentication type is OAuth2.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2credentials.html#cfn-glue-connection-oauth2credentials-accesstoken"
+        },
+        "JwtToken": {
+          "description": "The JSON Web Token (JWT) used when the authentication type is OAuth2.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2credentials.html#cfn-glue-connection-oauth2credentials-jwttoken"
+        },
+        "RefreshToken": {
+          "description": "The refresh token used when the authentication type is OAuth2.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2credentials.html#cfn-glue-connection-oauth2credentials-refreshtoken"
+        },
+        "UserManagedClientApplicationClientSecret": {
+          "description": "The client application client secret if the client application is user managed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2credentials.html#cfn-glue-connection-oauth2credentials-usermanagedclientapplicationclientsecret"
+        }
+      },
+      "description": "The credentials used when the authentication type is OAuth2 authentication.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2credentials.html"
+    },
+    "OAuth2PropertiesInput": {
+      "properties": {
+        "AuthorizationCodeProperties": {
+          "description": "The set of properties required for the the OAuth2 `AUTHORIZATION_CODE` grant type.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2propertiesinput.html#cfn-glue-connection-oauth2propertiesinput-authorizationcodeproperties"
+        },
+        "OAuth2ClientApplication": {
+          "description": "The client application type in the CreateConnection request. For example, `AWS_MANAGED` or `USER_MANAGED` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2propertiesinput.html#cfn-glue-connection-oauth2propertiesinput-oauth2clientapplication"
+        },
+        "OAuth2Credentials": {
+          "description": "The credentials used when the authentication type is OAuth2 authentication.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2propertiesinput.html#cfn-glue-connection-oauth2propertiesinput-oauth2credentials"
+        },
+        "OAuth2GrantType": {
+          "description": "The OAuth2 grant type in the CreateConnection request. For example, `AUTHORIZATION_CODE` , `JWT_BEARER` , or `CLIENT_CREDENTIALS` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2propertiesinput.html#cfn-glue-connection-oauth2propertiesinput-oauth2granttype"
+        },
+        "TokenUrl": {
+          "description": "The URL of the provider's authentication server, to exchange an authorization code for an access token.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2propertiesinput.html#cfn-glue-connection-oauth2propertiesinput-tokenurl"
+        },
+        "TokenUrlParametersMap": {
+          "description": "A map of parameters that are added to the token `GET` request.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2propertiesinput.html#cfn-glue-connection-oauth2propertiesinput-tokenurlparametersmap"
+        }
+      },
+      "description": "A structure containing properties for OAuth2 in the CreateConnection request.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-oauth2propertiesinput.html"
+    },
+    "PhysicalConnectionRequirements": {
+      "properties": {
+        "AvailabilityZone": {
+          "description": "The connection's Availability Zone.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-physicalconnectionrequirements.html#cfn-glue-connection-physicalconnectionrequirements-availabilityzone"
+        },
+        "SecurityGroupIdList": {
+          "description": "The security group ID list used by the connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-physicalconnectionrequirements.html#cfn-glue-connection-physicalconnectionrequirements-securitygroupidlist"
+        },
+        "SubnetId": {
+          "description": "The subnet ID used by the connection.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-physicalconnectionrequirements.html#cfn-glue-connection-physicalconnectionrequirements-subnetid"
+        }
+      },
+      "description": "The OAuth client app in GetConnection response.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-connection-physicalconnectionrequirements.html"
+    }
+  },
+  "description": "The `AWS::Glue::Connection` resource specifies an AWS Glue connection to a data source. For more information, see [Adding a Connection to Your Data Store](https://docs.aws.amazon.com/glue/latest/dg/populate-add-connection.html) and [Connection Structure](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-connections.html#aws-glue-api-catalog-connections-Connection) in the *AWS Glue Developer Guide* .",
+  "properties": {
+    "CatalogId": {
+      "description": "The ID of the data catalog to create the catalog object in. Currently, this should be the AWS account ID.\n\n> To specify the account ID, you can use the `Ref` intrinsic function with the `AWS::AccountId` pseudo parameter. For example: `!Ref AWS::AccountId` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-connection.html#cfn-glue-connection-catalogid"
+    },
+    "ConnectionInput": {
+      "description": "The connection that you want to create.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-connection.html#cfn-glue-connection-connectioninput"
+    },
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-connection.html#cfn-glue-connection-id"
+    }
+  },
+  "typeName": "AWS::Glue::Connection"
+}

@@ -1,0 +1,78 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#aws-resource-rds-customdbengineversion-return-values",
+    "properties": {
+      "DBEngineVersionArn": {
+        "description": "The ARN of the custom engine version."
+      }
+    }
+  },
+  "definitions": {
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-customdbengineversion-tag.html#cfn-rds-customdbengineversion-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-customdbengineversion-tag.html#cfn-rds-customdbengineversion-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-customdbengineversion-tag.html"
+    }
+  },
+  "description": "Creates a custom DB engine version (CEV).",
+  "properties": {
+    "DBEngineVersionArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-dbengineversionarn"
+    },
+    "DatabaseInstallationFilesS3BucketName": {
+      "description": "The name of an Amazon S3 bucket that contains database installation files for your CEV. For example, a valid bucket name is `my-custom-installation-files` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-databaseinstallationfiless3bucketname"
+    },
+    "DatabaseInstallationFilesS3Prefix": {
+      "description": "The Amazon S3 directory that contains the database installation files for your CEV. For example, a valid bucket name is `123456789012/cev1` . If this setting isn't specified, no prefix is assumed.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-databaseinstallationfiless3prefix"
+    },
+    "Description": {
+      "description": "An optional description of your CEV.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-description"
+    },
+    "Engine": {
+      "description": "The database engine to use for your custom engine version (CEV).\n\nValid values:\n\n- `custom-oracle-ee`\n- `custom-oracle-ee-cdb`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-engine"
+    },
+    "EngineVersion": {
+      "description": "The name of your CEV. The name format is `major version.customized_string` . For example, a valid CEV name is `19.my_cev1` . This setting is required for RDS Custom for Oracle, but optional for Amazon RDS. The combination of `Engine` and `EngineVersion` is unique per customer per Region.\n\n*Constraints:* Minimum length is 1. Maximum length is 60.\n\n*Pattern:* `^[a-z0-9_.-]{1,60$` }",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-engineversion"
+    },
+    "ImageId": {
+      "description": "A value that indicates the ID of the AMI.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-imageid"
+    },
+    "KMSKeyId": {
+      "description": "The AWS KMS key identifier for an encrypted CEV. A symmetric encryption KMS key is required for RDS Custom, but optional for Amazon RDS.\n\nIf you have an existing symmetric encryption KMS key in your account, you can use it with RDS Custom. No further action is necessary. If you don't already have a symmetric encryption KMS key in your account, follow the instructions in [Creating a symmetric encryption KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-symmetric-cmk) in the *AWS Key Management Service Developer Guide* .\n\nYou can choose the same symmetric encryption key when you create a CEV and a DB instance, or choose different keys.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-kmskeyid"
+    },
+    "Manifest": {
+      "description": "The CEV manifest, which is a JSON document that describes the installation .zip files stored in Amazon S3. Specify the name/value pairs in a file or a quoted string. RDS Custom applies the patches in the order in which they are listed.\n\nThe following JSON fields are valid:\n\n- **MediaImportTemplateVersion** - Version of the CEV manifest. The date is in the format `YYYY-MM-DD` .\n- **databaseInstallationFileNames** - Ordered list of installation files for the CEV.\n- **opatchFileNames** - Ordered list of OPatch installers used for the Oracle DB engine.\n- **psuRuPatchFileNames** - The PSU and RU patches for this CEV.\n- **OtherPatchFileNames** - The patches that are not in the list of PSU and RU patches. Amazon RDS applies these patches after applying the PSU and RU patches.\n\nFor more information, see [Creating the CEV manifest](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.preparing.manifest) in the *Amazon RDS User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-manifest"
+    },
+    "SourceCustomDbEngineVersionIdentifier": {
+      "description": "The ARN of a CEV to use as a source for creating a new CEV. You can specify a different Amazon Machine Imagine (AMI) by using either `Source` or `UseAwsProvidedLatestImage` . You can't specify a different JSON manifest when you specify `SourceCustomDbEngineVersionIdentifier` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-sourcecustomdbengineversionidentifier"
+    },
+    "Status": {
+      "description": "A value that indicates the status of a custom engine version (CEV).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-status"
+    },
+    "Tags": {
+      "description": "A list of tags. For more information, see [Tagging Amazon RDS Resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html) in the *Amazon RDS User Guide.*",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-tags"
+    },
+    "UseAwsProvidedLatestImage": {
+      "description": "Specifies whether to use the latest service-provided Amazon Machine Image (AMI) for the CEV. If you specify `UseAwsProvidedLatestImage` , you can't also specify `ImageId` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html#cfn-rds-customdbengineversion-useawsprovidedlatestimage"
+    }
+  },
+  "typeName": "AWS::RDS::CustomDBEngineVersion"
+}

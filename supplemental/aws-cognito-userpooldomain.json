@@ -1,0 +1,45 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooldomain.html#aws-resource-cognito-userpooldomain-return-values",
+    "properties": {
+      "CloudFrontDistribution": {
+        "description": "The Amazon CloudFront endpoint that you use as the target of the alias that you set up with your Domain Name Service (DNS) provider."
+      }
+    }
+  },
+  "definitions": {
+    "CustomDomainConfigType": {
+      "properties": {
+        "CertificateArn": {
+          "description": "The Amazon Resource Name (ARN) of an AWS Certificate Manager SSL certificate. You use this certificate for the subdomain of your custom domain.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-userpooldomain-customdomainconfigtype.html#cfn-cognito-userpooldomain-customdomainconfigtype-certificatearn"
+        }
+      },
+      "description": "The configuration for a hosted UI custom domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-userpooldomain-customdomainconfigtype.html"
+    }
+  },
+  "description": "The AWS::Cognito::UserPoolDomain resource creates a new domain for a user pool.",
+  "properties": {
+    "CloudFrontDistribution": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooldomain.html#cfn-cognito-userpooldomain-cloudfrontdistribution"
+    },
+    "CustomDomainConfig": {
+      "description": "The configuration for a custom domain that hosts the sign-up and sign-in pages for your application. Use this object to specify an SSL certificate that is managed by ACM.\n\nWhen you create a custom domain, the passkey RP ID defaults to the custom domain. If you had a prefix domain active, this will cause passkey integration for your prefix domain to stop working due to a mismatch in RP ID. To keep the prefix domain passkey integration working, you can explicitly set RP ID to the prefix domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooldomain.html#cfn-cognito-userpooldomain-customdomainconfig"
+    },
+    "Domain": {
+      "description": "The name of the domain that you want to update. For custom domains, this is the fully-qualified domain name, for example `auth.example.com` . For prefix domains, this is the prefix alone, such as `myprefix` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooldomain.html#cfn-cognito-userpooldomain-domain"
+    },
+    "ManagedLoginVersion": {
+      "description": "A version number that indicates the state of managed login for your domain. Version `1` is hosted UI (classic). Version `2` is the newer managed login with the branding designer. For more information, see [Managed login](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooldomain.html#cfn-cognito-userpooldomain-managedloginversion"
+    },
+    "UserPoolId": {
+      "description": "The ID of the user pool that is associated with the domain you're updating.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooldomain.html#cfn-cognito-userpooldomain-userpoolid"
+    }
+  },
+  "typeName": "AWS::Cognito::UserPoolDomain"
+}

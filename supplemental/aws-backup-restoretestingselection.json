@@ -1,0 +1,76 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#aws-resource-backup-restoretestingselection-return-values",
+    "properties": {}
+  },
+  "definitions": {
+    "KeyValue": {
+      "properties": {
+        "Key": {
+          "description": "The tag key.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-keyvalue.html#cfn-backup-restoretestingselection-keyvalue-key"
+        },
+        "Value": {
+          "description": "The tag value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-keyvalue.html#cfn-backup-restoretestingselection-keyvalue-value"
+        }
+      },
+      "description": "Pair of two related strings. Allowed characters are letters, white space, and numbers that can be represented in UTF-8 and the following characters: `+ - = . _ : /`",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-keyvalue.html"
+    },
+    "ProtectedResourceConditions": {
+      "properties": {
+        "StringEquals": {
+          "description": "Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called \"exact matching.\"",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-protectedresourceconditions.html#cfn-backup-restoretestingselection-protectedresourceconditions-stringequals"
+        },
+        "StringNotEquals": {
+          "description": "Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called \"negated matching.\"",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-protectedresourceconditions.html#cfn-backup-restoretestingselection-protectedresourceconditions-stringnotequals"
+        }
+      },
+      "description": "The conditions that you define for resources in your restore testing plan using tags.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-protectedresourceconditions.html"
+    },
+    "SensitiveStringMap": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-sensitivestringmap.html"
+    }
+  },
+  "description": "This request can be sent after CreateRestoreTestingPlan request returns successfully. This is the second part of creating a resource testing plan, and it must be completed sequentially.\n\nThis consists of `RestoreTestingSelectionName` , `ProtectedResourceType` , and one of the following:\n\n- `ProtectedResourceArns`\n- `ProtectedResourceConditions`\n\nEach protected resource type can have one single value.\n\nA restore testing selection can include a wildcard value (\"*\") for `ProtectedResourceArns` along with `ProtectedResourceConditions` . Alternatively, you can include up to 30 specific protected resource ARNs in `ProtectedResourceArns` .\n\nCannot select by both protected resource types AND specific ARNs. Request will fail if both are included.",
+  "properties": {
+    "IamRoleArn": {
+      "description": "The Amazon Resource Name (ARN) of the IAM role that AWS Backup uses to create the target resource; for example: `arn:aws:iam::123456789012:role/S3Access` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-iamrolearn"
+    },
+    "ProtectedResourceArns": {
+      "description": "You can include specific ARNs, such as `ProtectedResourceArns: [\"arn:aws:...\", \"arn:aws:...\"]` or you can include a wildcard: `ProtectedResourceArns: [\"*\"]` , but not both.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-protectedresourcearns"
+    },
+    "ProtectedResourceConditions": {
+      "description": "In a resource testing selection, this parameter filters by specific conditions such as `StringEquals` or `StringNotEquals` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-protectedresourceconditions"
+    },
+    "ProtectedResourceType": {
+      "description": "The type of AWS resource included in a resource testing selection; for example, an Amazon EBS volume or an Amazon RDS database.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-protectedresourcetype"
+    },
+    "RestoreMetadataOverrides": {
+      "description": "You can override certain restore metadata keys by including the parameter `RestoreMetadataOverrides` in the body of `RestoreTestingSelection` . Key values are not case sensitive.\n\nSee the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-restoremetadataoverrides"
+    },
+    "RestoreTestingPlanName": {
+      "description": "Unique string that is the name of the restore testing plan.\n\nThe name cannot be changed after creation. The name must consist of only alphanumeric characters and underscores. Maximum length is 50.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-restoretestingplanname"
+    },
+    "RestoreTestingSelectionName": {
+      "description": "The unique name of the restore testing selection that belongs to the related restore testing plan.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-restoretestingselectionname"
+    },
+    "ValidationWindowHours": {
+      "description": "This is amount of hours (1 to 168) available to run a validation script on the data. The data will be deleted upon the completion of the validation script or the end of the specified retention period, whichever comes first.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-validationwindowhours"
+    }
+  },
+  "typeName": "AWS::Backup::RestoreTestingSelection"
+}

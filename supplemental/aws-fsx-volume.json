@@ -1,0 +1,334 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#aws-resource-fsx-volume-return-values",
+    "properties": {
+      "ResourceARN": {
+        "description": "Returns the volume's Amazon Resource Name (ARN).\n\nExample: `arn:aws:fsx:us-east-2:111122223333:volume/fs-0123456789abcdef9/fsvol-01234567891112223`"
+      },
+      "VolumeId": {
+        "description": "Returns the volume's ID.\n\nExample: `fsvol-0123456789abcdefa`"
+      },
+      "UUID": {
+        "description": "Returns the volume's universally unique identifier (UUID).\n\nExample: `abcd0123-cd45-ef67-11aa-1111aaaa23bc`"
+      }
+    }
+  },
+  "definitions": {
+    "AggregateConfiguration": {
+      "properties": {
+        "Aggregates": {
+          "description": "The list of aggregates that this volume resides on. Aggregates are storage pools which make up your primary storage tier. Each high-availability (HA) pair has one aggregate. The names of the aggregates map to the names of the aggregates in the ONTAP CLI and REST API. For FlexVols, there will always be a single entry.\n\nAmazon FSx responds with an HTTP status code 400 (Bad Request) for the following conditions:\n\n- The strings in the value of `Aggregates` are not are not formatted as `aggrX` , where X is a number between 1 and 12.\n- The value of `Aggregates` contains aggregates that are not present.\n- One or more of the aggregates supplied are too close to the volume limit to support adding more volumes.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-aggregateconfiguration.html#cfn-fsx-volume-aggregateconfiguration-aggregates"
+        },
+        "ConstituentsPerAggregate": {
+          "description": "Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. This field is optional when creating a FlexGroup volume. If unspecified, the default value will be 8. This field cannot be provided when creating a FlexVol volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-aggregateconfiguration.html#cfn-fsx-volume-aggregateconfiguration-constituentsperaggregate"
+        }
+      },
+      "description": "Use to specify configuration options for a volume’s storage aggregate or aggregates.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-aggregateconfiguration.html"
+    },
+    "AutocommitPeriod": {
+      "properties": {
+        "Type": {
+          "description": "Defines the type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. Setting this value to `NONE` disables autocommit. The default value is `NONE` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-autocommitperiod.html#cfn-fsx-volume-autocommitperiod-type"
+        },
+        "Value": {
+          "description": "Defines the amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. The following ranges are valid:\n\n- `Minutes` : 5 - 65,535\n- `Hours` : 1 - 65,535\n- `Days` : 1 - 3,650\n- `Months` : 1 - 120\n- `Years` : 1 - 10",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-autocommitperiod.html#cfn-fsx-volume-autocommitperiod-value"
+        }
+      },
+      "description": "Sets the autocommit period of files in an FSx for ONTAP SnapLock volume, which determines how long the files must remain unmodified before they're automatically transitioned to the write once, read many (WORM) state.\n\nFor more information, see [Autocommit](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/worm-state.html#worm-state-autocommit) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-autocommitperiod.html"
+    },
+    "ClientConfigurations": {
+      "properties": {
+        "Clients": {
+          "description": "A value that specifies who can mount the file system. You can provide a wildcard character ( `*` ), an IP address ( `0.0.0.0` ), or a CIDR address ( `192.0.2.0/24` ). By default, Amazon FSx uses the wildcard character when specifying the client.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-clientconfigurations.html#cfn-fsx-volume-clientconfigurations-clients"
+        },
+        "Options": {
+          "description": "The options to use when mounting the file system. For a list of options that you can use with Network File System (NFS), see the [exports(5) - Linux man page](https://docs.aws.amazon.com/https://linux.die.net/man/5/exports) . When choosing your options, consider the following:\n\n- `crossmnt` is used by default. If you don't specify `crossmnt` when changing the client configuration, you won't be able to see or access snapshots in your file system's snapshot directory.\n- `sync` is used by default. If you instead specify `async` , the system acknowledges writes before writing to disk. If the system crashes before the writes are finished, you lose the unwritten data.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-clientconfigurations.html#cfn-fsx-volume-clientconfigurations-options"
+        }
+      },
+      "description": "Specifies who can mount an OpenZFS file system and the options available while mounting the file system.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-clientconfigurations.html"
+    },
+    "NfsExports": {
+      "properties": {
+        "ClientConfigurations": {
+          "description": "A list of configuration objects that contain the client and options for mounting the OpenZFS file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-nfsexports.html#cfn-fsx-volume-nfsexports-clientconfigurations"
+        }
+      },
+      "description": "The configuration object for mounting a Network File System (NFS) file system.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-nfsexports.html"
+    },
+    "OntapConfiguration": {
+      "properties": {
+        "AggregateConfiguration": {
+          "description": "Used to specify the configuration options for an FSx for ONTAP volume's storage aggregate or aggregates.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-aggregateconfiguration"
+        },
+        "CopyTagsToBackups": {
+          "description": "A boolean flag indicating whether tags for the volume should be copied to backups. This value defaults to false. If it's set to true, all tags for the volume are copied to all automatic and user-initiated backups where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the specified tags are copied to backups. If you specify one or more tags when creating a user-initiated backup, no tags are copied from the volume, regardless of this value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-copytagstobackups"
+        },
+        "JunctionPath": {
+          "description": "Specifies the location in the SVM's namespace where the volume is mounted. This parameter is required. The `JunctionPath` must have a leading forward slash, such as `/vol3` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-junctionpath"
+        },
+        "OntapVolumeType": {
+          "description": "Specifies the type of volume you are creating. Valid values are the following:\n\n- `RW` specifies a read/write volume. `RW` is the default.\n- `DP` specifies a data-protection volume. A `DP` volume is read-only and can be used as the destination of a NetApp SnapMirror relationship.\n\nFor more information, see [Volume types](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-volumes.html#volume-types) in the Amazon FSx for NetApp ONTAP User Guide.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-ontapvolumetype"
+        },
+        "SecurityStyle": {
+          "description": "Specifies the security style for the volume. If a volume's security style is not specified, it is automatically set to the root volume's security style. The security style determines the type of permissions that FSx for ONTAP uses to control data access. Specify one of the following values:\n\n- `UNIX` if the file system is managed by a UNIX administrator, the majority of users are NFS clients, and an application accessing the data uses a UNIX user as the service account.\n- `NTFS` if the file system is managed by a Windows administrator, the majority of users are SMB clients, and an application accessing the data uses a Windows user as the service account.\n- `MIXED` This is an advanced setting. For more information, see the topic [What the security styles and their effects are](https://docs.aws.amazon.com/https://docs.netapp.com/us-en/ontap/nfs-admin/security-styles-their-effects-concept.html) in the NetApp Documentation Center.\n\nFor more information, see [Volume security style](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-volumes.html#volume-security-style) in the FSx for ONTAP User Guide.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-securitystyle"
+        },
+        "SizeInBytes": {
+          "description": "Specifies the configured size of the volume, in bytes.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-sizeinbytes"
+        },
+        "SizeInMegabytes": {
+          "description": "Use `SizeInBytes` instead. Specifies the size of the volume, in megabytes (MB), that you are creating.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-sizeinmegabytes"
+        },
+        "SnaplockConfiguration": {
+          "description": "The SnapLock configuration object for an FSx for ONTAP SnapLock volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-snaplockconfiguration"
+        },
+        "SnapshotPolicy": {
+          "description": "Specifies the snapshot policy for the volume. There are three built-in snapshot policies:\n\n- `default` : This is the default policy. A maximum of six hourly snapshots taken five minutes past the hour. A maximum of two daily snapshots taken Monday through Saturday at 10 minutes after midnight. A maximum of two weekly snapshots taken every Sunday at 15 minutes after midnight.\n- `default-1weekly` : This policy is the same as the `default` policy except that it only retains one snapshot from the weekly schedule.\n- `none` : This policy does not take any snapshots. This policy can be assigned to volumes to prevent automatic snapshots from being taken.\n\nYou can also provide the name of a custom policy that you created with the ONTAP CLI or REST API.\n\nFor more information, see [Snapshot policies](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snapshots-ontap.html#snapshot-policies) in the Amazon FSx for NetApp ONTAP User Guide.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-snapshotpolicy"
+        },
+        "StorageEfficiencyEnabled": {
+          "description": "Set to true to enable deduplication, compression, and compaction storage efficiency features on the volume, or set to false to disable them.\n\n`StorageEfficiencyEnabled` is required when creating a `RW` volume ( `OntapVolumeType` set to `RW` ).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-storageefficiencyenabled"
+        },
+        "StorageVirtualMachineId": {
+          "description": "Specifies the ONTAP SVM in which to create the volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-storagevirtualmachineid"
+        },
+        "TieringPolicy": {
+          "description": "Describes the data tiering policy for an ONTAP volume. When enabled, Amazon FSx for ONTAP's intelligent tiering automatically transitions a volume's data between the file system's primary storage and capacity pool storage based on your access patterns.\n\nValid tiering policies are the following:\n\n- `SNAPSHOT_ONLY` - (Default value) moves cold snapshots to the capacity pool storage tier.\n\n- `AUTO` - moves cold user data and snapshots to the capacity pool storage tier based on your access patterns.\n\n- `ALL` - moves all user data blocks in both the active file system and Snapshot copies to the storage pool tier.\n\n- `NONE` - keeps a volume's data in the primary storage tier, preventing it from being moved to the capacity pool tier.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-tieringpolicy"
+        },
+        "VolumeStyle": {
+          "description": "Use to specify the style of an ONTAP volume. FSx for ONTAP offers two styles of volumes that you can use for different purposes, FlexVol and FlexGroup volumes. For more information, see [Volume styles](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-volumes.html#volume-styles) in the Amazon FSx for NetApp ONTAP User Guide.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-volumestyle"
+        }
+      },
+      "description": "Specifies the configuration of the ONTAP volume that you are creating.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html"
+    },
+    "OpenZFSConfiguration": {
+      "properties": {
+        "CopyTagsToSnapshots": {
+          "description": "A Boolean value indicating whether tags for the volume should be copied to snapshots. This value defaults to `false` . If this value is set to `true` , and you do not specify any tags, all tags for the original volume are copied over to snapshots. If this value is set to `true` , and you do specify one or more tags, only the specified tags for the original volume are copied over to snapshots. If you specify one or more tags when creating a new snapshot, no tags are copied over from the original volume, regardless of this value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-copytagstosnapshots"
+        },
+        "DataCompressionType": {
+          "description": "Specifies the method used to compress the data on the volume. The compression type is `NONE` by default.\n\n- `NONE` - Doesn't compress the data on the volume. `NONE` is the default.\n- `ZSTD` - Compresses the data in the volume using the Zstandard (ZSTD) compression algorithm. Compared to LZ4, Z-Standard provides a better compression ratio to minimize on-disk storage utilization.\n- `LZ4` - Compresses the data in the volume using the LZ4 compression algorithm. Compared to Z-Standard, LZ4 is less compute-intensive and delivers higher write throughput speeds.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-datacompressiontype"
+        },
+        "NfsExports": {
+          "description": "The configuration object for mounting a Network File System (NFS) file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-nfsexports"
+        },
+        "Options": {
+          "description": "To delete the volume's child volumes, snapshots, and clones, use the string `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-options"
+        },
+        "OriginSnapshot": {
+          "description": "The configuration object that specifies the snapshot to use as the origin of the data for the volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-originsnapshot"
+        },
+        "ParentVolumeId": {
+          "description": "The ID of the volume to use as the parent volume of the volume that you are creating.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-parentvolumeid"
+        },
+        "ReadOnly": {
+          "description": "A Boolean value indicating whether the volume is read-only.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-readonly"
+        },
+        "RecordSizeKiB": {
+          "description": "Specifies the suggested block size for a volume in a ZFS dataset, in kibibytes (KiB). For file systems using the Intelligent-Tiering storage class, valid values are 128, 256, 512, 1024, 2048, or 4096 KiB, with a default of 1024 KiB. For all other file systems, valid values are 4, 8, 16, 32, 64, 128, 256, 512, or 1024 KiB, with a default of 128 KiB. We recommend using the default setting for the majority of use cases. Generally, workloads that write in fixed small or large record sizes may benefit from setting a custom record size, like database workloads (small record size) or media streaming workloads (large record size). For additional guidance on when to set a custom record size, see [ZFS Record size](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/performance.html#record-size-performance) in the *Amazon FSx for OpenZFS User Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-recordsizekib"
+        },
+        "StorageCapacityQuotaGiB": {
+          "description": "Sets the maximum storage size in gibibytes (GiB) for the volume. You can specify a quota that is larger than the storage on the parent volume. A volume quota limits the amount of storage that the volume can consume to the configured amount, but does not guarantee the space will be available on the parent volume. To guarantee quota space, you must also set `StorageCapacityReservationGiB` . To *not* specify a storage capacity quota, set this to `-1` .\n\nFor more information, see [Volume properties](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/managing-volumes.html#volume-properties) in the *Amazon FSx for OpenZFS User Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-storagecapacityquotagib"
+        },
+        "StorageCapacityReservationGiB": {
+          "description": "Specifies the amount of storage in gibibytes (GiB) to reserve from the parent volume. Setting `StorageCapacityReservationGiB` guarantees that the specified amount of storage space on the parent volume will always be available for the volume. You can't reserve more storage than the parent volume has. To *not* specify a storage capacity reservation, set this to `0` or `-1` . For more information, see [Volume properties](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/managing-volumes.html#volume-properties) in the *Amazon FSx for OpenZFS User Guide* .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-storagecapacityreservationgib"
+        },
+        "UserAndGroupQuotas": {
+          "description": "Configures how much storage users and groups can use on the volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html#cfn-fsx-volume-openzfsconfiguration-userandgroupquotas"
+        }
+      },
+      "description": "Specifies the configuration of the Amazon FSx for OpenZFS volume that you are creating.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-openzfsconfiguration.html"
+    },
+    "OriginSnapshot": {
+      "properties": {
+        "CopyStrategy": {
+          "description": "Specifies the strategy used when copying data from the snapshot to the new volume.\n\n- `CLONE` - The new volume references the data in the origin snapshot. Cloning a snapshot is faster than copying data from the snapshot to a new volume and doesn't consume disk throughput. However, the origin snapshot can't be deleted if there is a volume using its copied data.\n- `FULL_COPY` - Copies all data from the snapshot to the new volume.\n\nSpecify this option to create the volume from a snapshot on another FSx for OpenZFS file system.\n\n> The `INCREMENTAL_COPY` option is only for updating an existing volume by using a snapshot from another FSx for OpenZFS file system. For more information, see [CopySnapshotAndUpdateVolume](https://docs.aws.amazon.com/fsx/latest/APIReference/API_CopySnapshotAndUpdateVolume.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-originsnapshot.html#cfn-fsx-volume-originsnapshot-copystrategy"
+        },
+        "SnapshotARN": {
+          "description": "Specifies the snapshot to use when creating an OpenZFS volume from a snapshot.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-originsnapshot.html#cfn-fsx-volume-originsnapshot-snapshotarn"
+        }
+      },
+      "description": "The configuration object that specifies the snapshot to use as the origin of the data for the volume.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-originsnapshot.html"
+    },
+    "RetentionPeriod": {
+      "properties": {
+        "Type": {
+          "description": "Defines the type of time for the retention period of an FSx for ONTAP SnapLock volume. Set it to one of the valid types. If you set it to `INFINITE` , the files are retained forever. If you set it to `UNSPECIFIED` , the files are retained until you set an explicit retention period.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-retentionperiod.html#cfn-fsx-volume-retentionperiod-type"
+        },
+        "Value": {
+          "description": "Defines the amount of time for the retention period of an FSx for ONTAP SnapLock volume. You can't set a value for `INFINITE` or `UNSPECIFIED` . For all other options, the following ranges are valid:\n\n- `Seconds` : 0 - 65,535\n- `Minutes` : 0 - 65,535\n- `Hours` : 0 - 24\n- `Days` : 0 - 365\n- `Months` : 0 - 12\n- `Years` : 0 - 100",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-retentionperiod.html#cfn-fsx-volume-retentionperiod-value"
+        }
+      },
+      "description": "Specifies the retention period of an FSx for ONTAP SnapLock volume. After it is set, it can't be changed. Files can't be deleted or modified during the retention period.\n\nFor more information, see [Working with the retention period in SnapLock](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snaplock-retention.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-retentionperiod.html"
+    },
+    "SnaplockConfiguration": {
+      "properties": {
+        "AuditLogVolume": {
+          "description": "Enables or disables the audit log volume for an FSx for ONTAP SnapLock volume. The default value is `false` . If you set `AuditLogVolume` to `true` , the SnapLock volume is created as an audit log volume. The minimum retention period for an audit log volume is six months.\n\nFor more information, see [SnapLock audit log volumes](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/how-snaplock-works.html#snaplock-audit-log-volume) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockconfiguration.html#cfn-fsx-volume-snaplockconfiguration-auditlogvolume"
+        },
+        "AutocommitPeriod": {
+          "description": "The configuration object for setting the autocommit period of files in an FSx for ONTAP SnapLock volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockconfiguration.html#cfn-fsx-volume-snaplockconfiguration-autocommitperiod"
+        },
+        "PrivilegedDelete": {
+          "description": "Enables, disables, or permanently disables privileged delete on an FSx for ONTAP SnapLock Enterprise volume. Enabling privileged delete allows SnapLock administrators to delete write once, read many (WORM) files even if they have active retention periods. `PERMANENTLY_DISABLED` is a terminal state. If privileged delete is permanently disabled on a SnapLock volume, you can't re-enable it. The default value is `DISABLED` .\n\nFor more information, see [Privileged delete](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snaplock-enterprise.html#privileged-delete) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockconfiguration.html#cfn-fsx-volume-snaplockconfiguration-privilegeddelete"
+        },
+        "RetentionPeriod": {
+          "description": "Specifies the retention period of an FSx for ONTAP SnapLock volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockconfiguration.html#cfn-fsx-volume-snaplockconfiguration-retentionperiod"
+        },
+        "SnaplockType": {
+          "description": "Specifies the retention mode of an FSx for ONTAP SnapLock volume. After it is set, it can't be changed. You can choose one of the following retention modes:\n\n- `COMPLIANCE` : Files transitioned to write once, read many (WORM) on a Compliance volume can't be deleted until their retention periods expire. This retention mode is used to address government or industry-specific mandates or to protect against ransomware attacks. For more information, see [SnapLock Compliance](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snaplock-compliance.html) .\n- `ENTERPRISE` : Files transitioned to WORM on an Enterprise volume can be deleted by authorized users before their retention periods expire using privileged delete. This retention mode is used to advance an organization's data integrity and internal compliance or to test retention settings before using SnapLock Compliance. For more information, see [SnapLock Enterprise](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snaplock-enterprise.html) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockconfiguration.html#cfn-fsx-volume-snaplockconfiguration-snaplocktype"
+        },
+        "VolumeAppendModeEnabled": {
+          "description": "Enables or disables volume-append mode on an FSx for ONTAP SnapLock volume. Volume-append mode allows you to create WORM-appendable files and write data to them incrementally. The default value is `false` .\n\nFor more information, see [Volume-append mode](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/worm-state.html#worm-state-append) .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockconfiguration.html#cfn-fsx-volume-snaplockconfiguration-volumeappendmodeenabled"
+        }
+      },
+      "description": "Specifies the SnapLock configuration for an FSx for ONTAP SnapLock volume.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockconfiguration.html"
+    },
+    "SnaplockRetentionPeriod": {
+      "properties": {
+        "DefaultRetention": {
+          "description": "The retention period assigned to a write once, read many (WORM) file by default if an explicit retention period is not set for an FSx for ONTAP SnapLock volume. The default retention period must be greater than or equal to the minimum retention period and less than or equal to the maximum retention period.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockretentionperiod.html#cfn-fsx-volume-snaplockretentionperiod-defaultretention"
+        },
+        "MaximumRetention": {
+          "description": "The longest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockretentionperiod.html#cfn-fsx-volume-snaplockretentionperiod-maximumretention"
+        },
+        "MinimumRetention": {
+          "description": "The shortest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock volume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockretentionperiod.html#cfn-fsx-volume-snaplockretentionperiod-minimumretention"
+        }
+      },
+      "description": "The configuration to set the retention period of an FSx for ONTAP SnapLock volume. The retention period includes default, maximum, and minimum settings. For more information, see [Working with the retention period in SnapLock](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/snaplock-retention.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-snaplockretentionperiod.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-tag.html#cfn-fsx-volume-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-tag.html#cfn-fsx-volume-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-tag.html"
+    },
+    "TieringPolicy": {
+      "properties": {
+        "CoolingPeriod": {
+          "description": "Specifies the number of days that user data in a volume must remain inactive before it is considered \"cold\" and moved to the capacity pool. Used with the `AUTO` and `SNAPSHOT_ONLY` tiering policies. Enter a whole number between 2 and 183. Default values are 31 days for `AUTO` and 2 days for `SNAPSHOT_ONLY` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-tieringpolicy.html#cfn-fsx-volume-tieringpolicy-coolingperiod"
+        },
+        "Name": {
+          "description": "Specifies the tiering policy used to transition data. Default value is `SNAPSHOT_ONLY` .\n\n- `SNAPSHOT_ONLY` - moves cold snapshots to the capacity pool storage tier.\n- `AUTO` - moves cold user data and snapshots to the capacity pool storage tier based on your access patterns.\n- `ALL` - moves all user data blocks in both the active file system and Snapshot copies to the storage pool tier.\n- `NONE` - keeps a volume's data in the primary storage tier, preventing it from being moved to the capacity pool tier.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-tieringpolicy.html#cfn-fsx-volume-tieringpolicy-name"
+        }
+      },
+      "description": "Describes the data tiering policy for an ONTAP volume. When enabled, Amazon FSx for ONTAP's intelligent tiering automatically transitions a volume's data between the file system's primary storage and capacity pool storage based on your access patterns.\n\nValid tiering policies are the following:\n\n- `SNAPSHOT_ONLY` - (Default value) moves cold snapshots to the capacity pool storage tier.\n\n- `AUTO` - moves cold user data and snapshots to the capacity pool storage tier based on your access patterns.\n\n- `ALL` - moves all user data blocks in both the active file system and Snapshot copies to the storage pool tier.\n\n- `NONE` - keeps a volume's data in the primary storage tier, preventing it from being moved to the capacity pool tier.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-tieringpolicy.html"
+    },
+    "UserAndGroupQuotas": {
+      "properties": {
+        "Id": {
+          "description": "The ID of the user or group that the quota applies to.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-userandgroupquotas.html#cfn-fsx-volume-userandgroupquotas-id"
+        },
+        "StorageCapacityQuotaGiB": {
+          "description": "The user or group's storage quota, in gibibytes (GiB).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-userandgroupquotas.html#cfn-fsx-volume-userandgroupquotas-storagecapacityquotagib"
+        },
+        "Type": {
+          "description": "Specifies whether the quota applies to a user or group.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-userandgroupquotas.html#cfn-fsx-volume-userandgroupquotas-type"
+        }
+      },
+      "description": "Configures how much storage users and groups can use on the volume.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-userandgroupquotas.html"
+    }
+  },
+  "description": "Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.",
+  "properties": {
+    "BackupId": {
+      "description": "Specifies the ID of the volume backup to use to create a new volume.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-backupid"
+    },
+    "Name": {
+      "description": "The name of the volume.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-name"
+    },
+    "OntapConfiguration": {
+      "description": "The configuration of an Amazon FSx for NetApp ONTAP volume.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-ontapconfiguration"
+    },
+    "OpenZFSConfiguration": {
+      "description": "The configuration of an Amazon FSx for OpenZFS volume.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-openzfsconfiguration"
+    },
+    "ResourceARN": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-resourcearn"
+    },
+    "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-tags"
+    },
+    "UUID": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-uuid"
+    },
+    "VolumeId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-volumeid"
+    },
+    "VolumeType": {
+      "description": "The type of the volume.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html#cfn-fsx-volume-volumetype"
+    }
+  },
+  "typeName": "AWS::FSx::Volume"
+}

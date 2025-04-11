@@ -1,0 +1,53 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-xssmatchset.html#aws-resource-wafregional-xssmatchset-return-values",
+    "properties": {
+      "Id": {}
+    }
+  },
+  "definitions": {
+    "FieldToMatch": {
+      "properties": {
+        "Data": {
+          "description": "When the value of `Type` is `HEADER` , enter the name of the header that you want AWS WAF to search, for example, `User-Agent` or `Referer` . The name of the header is not case sensitive.\n\nWhen the value of `Type` is `SINGLE_QUERY_ARG` , enter the name of the parameter that you want AWS WAF to search, for example, `UserName` or `SalesRegion` . The parameter name is not case sensitive.\n\nIf the value of `Type` is any other value, omit `Data` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafregional-xssmatchset-fieldtomatch.html#cfn-wafregional-xssmatchset-fieldtomatch-data"
+        },
+        "Type": {
+          "description": "The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:\n\n- `HEADER` : A specified request header, for example, the value of the `User-Agent` or `Referer` header. If you choose `HEADER` for the type, specify the name of the header in `Data` .\n- `METHOD` : The HTTP method, which indicates the type of operation that the request is asking the origin to perform.\n- `QUERY_STRING` : A query string, which is the part of a URL that appears after a `?` character, if any.\n- `URI` : The part of a web request that identifies a resource, for example, `/images/daily-ad.jpg` .\n- `BODY` : The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first `8192` bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set.\n- `SINGLE_QUERY_ARG` : The parameter in the query string that you will inspect, such as *UserName* or *SalesRegion* . The maximum length for `SINGLE_QUERY_ARG` is 30 characters.\n- `ALL_QUERY_ARGS` : Similar to `SINGLE_QUERY_ARG` , but rather than inspecting a single parameter, AWS WAF will inspect all parameters within the query for the value or regex pattern that you specify in `TargetString` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafregional-xssmatchset-fieldtomatch.html#cfn-wafregional-xssmatchset-fieldtomatch-type"
+        }
+      },
+      "description": "The part of a web request that you want AWS WAF to inspect, such as a specific header or a query string.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafregional-xssmatchset-fieldtomatch.html"
+    },
+    "XssMatchTuple": {
+      "properties": {
+        "FieldToMatch": {
+          "description": "The part of a web request that you want AWS WAF to inspect, such as a specified header or a query string.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafregional-xssmatchset-xssmatchtuple.html#cfn-wafregional-xssmatchset-xssmatchtuple-fieldtomatch"
+        },
+        "TextTransformation": {
+          "description": "Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF . If you specify a transformation, AWS WAF performs the transformation on `FieldToMatch` before inspecting it for a match.\n\nYou can only specify a single type of TextTransformation.\n\n*CMD_LINE*\n\nWhen you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:\n\n- Delete the following characters: \\ \" ' ^\n- Delete spaces before the following characters: / (\n- Replace the following characters with a space: , ;\n- Replace multiple spaces with one space\n- Convert uppercase letters (A-Z) to lowercase (a-z)\n\n*COMPRESS_WHITE_SPACE*\n\nUse this option to replace the following characters with a space character (decimal 32):\n\n- \\f, formfeed, decimal 12\n- \\t, tab, decimal 9\n- \\n, newline, decimal 10\n- \\r, carriage return, decimal 13\n- \\v, vertical tab, decimal 11\n- non-breaking space, decimal 160\n\n`COMPRESS_WHITE_SPACE` also replaces multiple spaces with one space.\n\n*HTML_ENTITY_DECODE*\n\nUse this option to replace HTML-encoded characters with unencoded characters. `HTML_ENTITY_DECODE` performs the following operations:\n\n- Replaces `(ampersand)quot;` with `\"`\n- Replaces `(ampersand)nbsp;` with a non-breaking space, decimal 160\n- Replaces `(ampersand)lt;` with a \"less than\" symbol\n- Replaces `(ampersand)gt;` with `>`\n- Replaces characters that are represented in hexadecimal format, `(ampersand)#xhhhh;` , with the corresponding characters\n- Replaces characters that are represented in decimal format, `(ampersand)#nnnn;` , with the corresponding characters\n\n*LOWERCASE*\n\nUse this option to convert uppercase letters (A-Z) to lowercase (a-z).\n\n*URL_DECODE*\n\nUse this option to decode a URL-encoded value.\n\n*NONE*\n\nSpecify `NONE` if you don't want to perform any text transformations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafregional-xssmatchset-xssmatchtuple.html#cfn-wafregional-xssmatchset-xssmatchtuple-texttransformation"
+        }
+      },
+      "description": "> AWS WAF Classic support will end on September 30, 2025.\n> \n> This is *AWS WAF Classic* documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.\n> \n> *For the latest version of AWS WAF* , use the AWS WAF V2 API and see the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html) . With the latest version, AWS WAF has a single set of endpoints for regional and global use. \n\nSpecifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafregional-xssmatchset-xssmatchtuple.html"
+    }
+  },
+  "description": "> AWS WAF Classic support will end on September 30, 2025.\n> \n> This is *AWS WAF Classic* documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.\n> \n> *For the latest version of AWS WAF* , use the AWS WAF V2 API and see the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html) . With the latest version, AWS WAF has a single set of endpoints for regional and global use. \n\nA complex type that contains `XssMatchTuple` objects, which specify the parts of web requests that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a `XssMatchSet` contains more than one `XssMatchTuple` object, a request needs to include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.",
+  "properties": {
+    "Id": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-xssmatchset.html#cfn-wafregional-xssmatchset-id"
+    },
+    "Name": {
+      "description": "The name, if any, of the `XssMatchSet` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-xssmatchset.html#cfn-wafregional-xssmatchset-name"
+    },
+    "XssMatchTuples": {
+      "description": "Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-xssmatchset.html#cfn-wafregional-xssmatchset-xssmatchtuples"
+    }
+  },
+  "typeName": "AWS::WAFRegional::XssMatchSet"
+}

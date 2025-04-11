@@ -1,0 +1,38 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-archive.html#aws-resource-events-archive-return-values",
+    "properties": {
+      "Arn": {
+        "description": "The ARN of the archive created."
+      }
+    }
+  },
+  "definitions": {},
+  "description": "Creates an archive of events with the specified settings. When you create an archive, incoming events might not immediately start being sent to the archive. Allow a short period of time for changes to take effect. If you do not specify a pattern to filter events sent to the archive, all events are sent to the archive except replayed events. Replayed events are not sent to an archive.\n\n> Archives and schema discovery are not supported for event buses encrypted using a customer managed key. EventBridge returns an error if:\n> \n> - You call `[CreateArchive](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateArchive.html)` on an event bus set to use a customer managed key for encryption.\n> - You call `[CreateDiscoverer](https://docs.aws.amazon.com/eventbridge/latest/schema-reference/v1-discoverers.html#CreateDiscoverer)` on an event bus set to use a customer managed key for encryption.\n> - You call `[UpdatedEventBus](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdatedEventBus.html)` to set a customer managed key on an event bus with an archives or schema discovery enabled.\n> \n> To enable archives or schema discovery on an event bus, choose to use an AWS owned key . For more information, see [Data encryption in EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-encryption.html) in the *Amazon EventBridge User Guide* .",
+  "properties": {
+    "ArchiveName": {
+      "description": "The name for the archive to create.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-archive.html#cfn-events-archive-archivename"
+    },
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-archive.html#cfn-events-archive-arn"
+    },
+    "Description": {
+      "description": "A description for the archive.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-archive.html#cfn-events-archive-description"
+    },
+    "EventPattern": {
+      "description": "An event pattern to use to filter events sent to the archive.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-archive.html#cfn-events-archive-eventpattern"
+    },
+    "RetentionDays": {
+      "description": "The number of days to retain events for. Default value is 0. If set to 0, events are retained indefinitely",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-archive.html#cfn-events-archive-retentiondays"
+    },
+    "SourceArn": {
+      "description": "The ARN of the event bus that sends events to the archive.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-archive.html#cfn-events-archive-sourcearn"
+    }
+  },
+  "typeName": "AWS::Events::Archive"
+}

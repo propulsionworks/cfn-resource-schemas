@@ -1,0 +1,53 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfaceattachment.html#aws-resource-ec2-networkinterfaceattachment-return-values",
+    "properties": {
+      "AttachmentId": {
+        "description": "The ID of the network interface attachment."
+      }
+    }
+  },
+  "definitions": {
+    "EnaSrdSpecification": {
+      "properties": {
+        "EnaSrdEnabled": {
+          "description": "Indicates whether ENA Express is enabled for the network interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterfaceattachment-enasrdspecification.html#cfn-ec2-networkinterfaceattachment-enasrdspecification-enasrdenabled"
+        },
+        "EnaSrdUdpSpecification": {
+          "description": "Configures ENA Express for UDP network traffic.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterfaceattachment-enasrdspecification.html#cfn-ec2-networkinterfaceattachment-enasrdspecification-enasrdudpspecification"
+        }
+      },
+      "description": "ENA Express uses AWS Scalable Reliable Datagram (SRD) technology to increase the maximum bandwidth used per stream and minimize tail latency of network traffic between EC2 instances. With ENA Express, you can communicate between two EC2 instances in the same subnet within the same account, or in different accounts. Both sending and receiving instances must have ENA Express enabled.\n\nTo improve the reliability of network packet delivery, ENA Express reorders network packets on the receiving end by default. However, some UDP-based applications are designed to handle network packets that are out of order to reduce the overhead for packet delivery at the network layer. When ENA Express is enabled, you can specify whether UDP network traffic uses it.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterfaceattachment-enasrdspecification.html"
+    }
+  },
+  "description": "Attaches an elastic network interface (ENI) to an Amazon EC2 instance. You can use this resource type to attach additional network interfaces to an instance without interruption.",
+  "properties": {
+    "AttachmentId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfaceattachment.html#cfn-ec2-networkinterfaceattachment-attachmentid"
+    },
+    "DeleteOnTermination": {
+      "description": "Whether to delete the network interface when the instance terminates. By default, this value is set to `true` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfaceattachment.html#cfn-ec2-networkinterfaceattachment-deleteontermination"
+    },
+    "DeviceIndex": {
+      "description": "The network interface's position in the attachment order. For example, the first attached network interface has a `DeviceIndex` of 0.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfaceattachment.html#cfn-ec2-networkinterfaceattachment-deviceindex"
+    },
+    "EnaSrdSpecification": {
+      "description": "Configures ENA Express for the network interface that this action attaches to the instance.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfaceattachment.html#cfn-ec2-networkinterfaceattachment-enasrdspecification"
+    },
+    "InstanceId": {
+      "description": "The ID of the instance to which you will attach the ENI.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfaceattachment.html#cfn-ec2-networkinterfaceattachment-instanceid"
+    },
+    "NetworkInterfaceId": {
+      "description": "The ID of the ENI that you want to attach.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterfaceattachment.html#cfn-ec2-networkinterfaceattachment-networkinterfaceid"
+    }
+  },
+  "typeName": "AWS::EC2::NetworkInterfaceAttachment"
+}

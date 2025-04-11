@@ -1,0 +1,226 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#aws-resource-iot-securityprofile-return-values",
+    "properties": {
+      "SecurityProfileArn": {
+        "description": "The Amazon Resource Name (ARN) of the security profile."
+      }
+    }
+  },
+  "definitions": {
+    "AlertTarget": {
+      "properties": {
+        "AlertTargetArn": {
+          "description": "The Amazon Resource Name (ARN) of the notification target to which alerts are sent.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-alerttarget.html#cfn-iot-securityprofile-alerttarget-alerttargetarn"
+        },
+        "RoleArn": {
+          "description": "The ARN of the role that grants permission to send alerts to the notification target.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-alerttarget.html#cfn-iot-securityprofile-alerttarget-rolearn"
+        }
+      },
+      "description": "A structure containing the alert target ARN and the role ARN.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-alerttarget.html"
+    },
+    "Behavior": {
+      "properties": {
+        "Criteria": {
+          "description": "The criteria that determine if a device is behaving normally in regard to the `metric` .\n\n> In the AWS IoT console, you can choose to be sent an alert through Amazon SNS when AWS IoT Device Defender detects that a device is behaving anomalously.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-criteria"
+        },
+        "ExportMetric": {
+          "description": "Value indicates exporting metrics related to the behavior when it is true.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-exportmetric"
+        },
+        "Metric": {
+          "description": "What is measured by the behavior.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-metric"
+        },
+        "MetricDimension": {
+          "description": "The dimension of the metric.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-metricdimension"
+        },
+        "Name": {
+          "description": "The name you've given to the behavior.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-name"
+        },
+        "SuppressAlerts": {
+          "description": "The alert status. If you set the value to `true` , alerts will be suppressed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-suppressalerts"
+        }
+      },
+      "description": "A Device Defender security profile behavior.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html"
+    },
+    "BehaviorCriteria": {
+      "properties": {
+        "ComparisonOperator": {
+          "description": "The operator that relates the thing measured ( `metric` ) to the criteria (containing a `value` or `statisticalThreshold` ). Valid operators include:\n\n- `string-list` : `in-set` and `not-in-set`\n- `number-list` : `in-set` and `not-in-set`\n- `ip-address-list` : `in-cidr-set` and `not-in-cidr-set`\n- `number` : `less-than` , `less-than-equals` , `greater-than` , and `greater-than-equals`",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behaviorcriteria.html#cfn-iot-securityprofile-behaviorcriteria-comparisonoperator"
+        },
+        "ConsecutiveDatapointsToAlarm": {
+          "description": "If a device is in violation of the behavior for the specified number of consecutive datapoints, an alarm occurs. If not specified, the default is 1.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behaviorcriteria.html#cfn-iot-securityprofile-behaviorcriteria-consecutivedatapointstoalarm"
+        },
+        "ConsecutiveDatapointsToClear": {
+          "description": "If an alarm has occurred and the offending device is no longer in violation of the behavior for the specified number of consecutive datapoints, the alarm is cleared. If not specified, the default is 1.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behaviorcriteria.html#cfn-iot-securityprofile-behaviorcriteria-consecutivedatapointstoclear"
+        },
+        "DurationSeconds": {
+          "description": "Use this to specify the time duration over which the behavior is evaluated, for those criteria that have a time dimension (for example, `NUM_MESSAGES_SENT` ). For a `statisticalThreshhold` metric comparison, measurements from all devices are accumulated over this time duration before being used to calculate percentiles, and later, measurements from an individual device are also accumulated over this time duration before being given a percentile rank. Cannot be used with list-based metric datatypes.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behaviorcriteria.html#cfn-iot-securityprofile-behaviorcriteria-durationseconds"
+        },
+        "MlDetectionConfig": {
+          "description": "The confidence level of the detection model.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behaviorcriteria.html#cfn-iot-securityprofile-behaviorcriteria-mldetectionconfig"
+        },
+        "StatisticalThreshold": {
+          "description": "A statistical ranking (percentile)that indicates a threshold value by which a behavior is determined to be in compliance or in violation of the behavior.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behaviorcriteria.html#cfn-iot-securityprofile-behaviorcriteria-statisticalthreshold"
+        },
+        "Value": {
+          "description": "The value to be compared with the `metric` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behaviorcriteria.html#cfn-iot-securityprofile-behaviorcriteria-value"
+        }
+      },
+      "description": "The criteria by which the behavior is determined to be normal.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behaviorcriteria.html"
+    },
+    "ExportMetric": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-exportmetric.html"
+    },
+    "MachineLearningDetectionConfig": {
+      "properties": {
+        "ConfidenceLevel": {
+          "description": "The model confidence level.\n\nThere are three levels of confidence, `\"high\"` , `\"medium\"` , and `\"low\"` .\n\nThe higher the confidence level, the lower the sensitivity, and the lower the alarm frequency will be.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-machinelearningdetectionconfig.html#cfn-iot-securityprofile-machinelearningdetectionconfig-confidencelevel"
+        }
+      },
+      "description": "The `MachineLearningDetectionConfig` property type controls confidence of the machine learning model.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-machinelearningdetectionconfig.html"
+    },
+    "MetricDimension": {
+      "properties": {
+        "DimensionName": {
+          "description": "The name of the dimension.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricdimension.html#cfn-iot-securityprofile-metricdimension-dimensionname"
+        },
+        "Operator": {
+          "description": "Operators are constructs that perform logical operations. Valid values are `IN` and `NOT_IN` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricdimension.html#cfn-iot-securityprofile-metricdimension-operator"
+        }
+      },
+      "description": "The dimension of the metric.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricdimension.html"
+    },
+    "MetricToRetain": {
+      "properties": {
+        "ExportMetric": {
+          "description": "The value indicates exporting metrics related to the `MetricToRetain` when it's true.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metrictoretain.html#cfn-iot-securityprofile-metrictoretain-exportmetric"
+        },
+        "Metric": {
+          "description": "A standard of measurement.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metrictoretain.html#cfn-iot-securityprofile-metrictoretain-metric"
+        },
+        "MetricDimension": {
+          "description": "The dimension of the metric.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metrictoretain.html#cfn-iot-securityprofile-metrictoretain-metricdimension"
+        }
+      },
+      "description": "The metric you want to retain. Dimensions are optional.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metrictoretain.html"
+    },
+    "MetricValue": {
+      "properties": {
+        "Cidrs": {
+          "description": "If the `comparisonOperator` calls for a set of CIDRs, use this to specify that set to be compared with the `metric` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricvalue.html#cfn-iot-securityprofile-metricvalue-cidrs"
+        },
+        "Count": {
+          "description": "If the `comparisonOperator` calls for a numeric value, use this to specify that numeric value to be compared with the `metric` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricvalue.html#cfn-iot-securityprofile-metricvalue-count"
+        },
+        "Number": {
+          "description": "The numeric values of a metric.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricvalue.html#cfn-iot-securityprofile-metricvalue-number"
+        },
+        "Numbers": {
+          "description": "The numeric value of a metric.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricvalue.html#cfn-iot-securityprofile-metricvalue-numbers"
+        },
+        "Ports": {
+          "description": "If the `comparisonOperator` calls for a set of ports, use this to specify that set to be compared with the `metric` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricvalue.html#cfn-iot-securityprofile-metricvalue-ports"
+        },
+        "Strings": {
+          "description": "The string values of a metric.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricvalue.html#cfn-iot-securityprofile-metricvalue-strings"
+        }
+      },
+      "description": "The value to be compared with the `metric` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricvalue.html"
+    },
+    "StatisticalThreshold": {
+      "properties": {
+        "Statistic": {
+          "description": "The percentile that resolves to a threshold value by which compliance with a behavior is determined. Metrics are collected over the specified period ( `durationSeconds` ) from all reporting devices in your account and statistical ranks are calculated. Then, the measurements from a device are collected over the same period. If the accumulated measurements from the device fall above or below ( `comparisonOperator` ) the value associated with the percentile specified, then the device is considered to be in compliance with the behavior, otherwise a violation occurs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-statisticalthreshold.html#cfn-iot-securityprofile-statisticalthreshold-statistic"
+        }
+      },
+      "description": "A statistical ranking (percentile) that indicates a threshold value by which a behavior is determined to be in compliance or in violation of the behavior.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-statisticalthreshold.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-tag.html#cfn-iot-securityprofile-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-tag.html#cfn-iot-securityprofile-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-tag.html"
+    }
+  },
+  "description": "Use the `AWS::IoT::SecurityProfile` resource to create a Device Defender security profile. For API reference, see [CreateSecurityProfile](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateSecurityProfile.html) and for general information, see [Detect](https://docs.aws.amazon.com/iot/latest/developerguide/device-defender-detect.html) .",
+  "properties": {
+    "AdditionalMetricsToRetainV2": {
+      "description": "A list of metrics whose data is retained (stored). By default, data is retained for any metric used in the profile's `behaviors` , but it's also retained for any metric specified here. Can be used with custom metrics; can't be used with dimensions.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-additionalmetricstoretainv2"
+    },
+    "AlertTargets": {
+      "description": "Specifies the destinations to which alerts are sent. (Alerts are always sent to the console.) Alerts are generated when a device (thing) violates a behavior.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-alerttargets"
+    },
+    "Behaviors": {
+      "description": "Specifies the behaviors that, when violated by a device (thing), cause an alert.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-behaviors"
+    },
+    "MetricsExportConfig": {
+      "description": "Specifies the MQTT topic and role ARN required for metric export.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-metricsexportconfig"
+    },
+    "SecurityProfileArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-securityprofilearn"
+    },
+    "SecurityProfileDescription": {
+      "description": "A description of the security profile.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-securityprofiledescription"
+    },
+    "SecurityProfileName": {
+      "description": "The name you gave to the security profile.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-securityprofilename"
+    },
+    "Tags": {
+      "description": "Metadata that can be used to manage the security profile.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-tags"
+    },
+    "TargetArns": {
+      "description": "The ARN of the target (thing group) to which the security profile is attached.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-targetarns"
+    }
+  },
+  "typeName": "AWS::IoT::SecurityProfile"
+}

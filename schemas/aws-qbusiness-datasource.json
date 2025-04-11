@@ -1,6 +1,6 @@
 {
   "$id": "aws-qbusiness-datasource",
-  "$integrity": "sha512-pDhjrR5zESJsc9hC7SQT/AsvY9bRBr49dND6DSKpnjIRRCgzxdqUYVNbQTKbTjoBKBufqDK2w7bEv4EA/uJLhA==",
+  "$integrity": "sha512-XKNoxh+YIHVA3mIXt8USPv7xPKC1oWihecd/V7alozZa3IgX/S+EEe7bu9y/syj0+CAI9Lds/OAR8jGjrzVbXA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ApplicationId",
@@ -10,6 +10,25 @@
     "AttributeValueOperator": {
       "enum": [
         "DELETE"
+      ],
+      "type": "string"
+    },
+    "AudioExtractionConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "AudioExtractionStatus": {
+          "$ref": "#/definitions/AudioExtractionStatus"
+        }
+      },
+      "required": [
+        "AudioExtractionStatus"
+      ],
+      "type": "object"
+    },
+    "AudioExtractionStatus": {
+      "enum": [
+        "ENABLED",
+        "DISABLED"
       ],
       "type": "string"
     },
@@ -270,8 +289,14 @@
     "MediaExtractionConfiguration": {
       "additionalProperties": false,
       "properties": {
+        "AudioExtractionConfiguration": {
+          "$ref": "#/definitions/AudioExtractionConfiguration"
+        },
         "ImageExtractionConfiguration": {
           "$ref": "#/definitions/ImageExtractionConfiguration"
+        },
+        "VideoExtractionConfiguration": {
+          "$ref": "#/definitions/VideoExtractionConfiguration"
         }
       },
       "type": "object"
@@ -295,6 +320,25 @@
         "Value"
       ],
       "type": "object"
+    },
+    "VideoExtractionConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "VideoExtractionStatus": {
+          "$ref": "#/definitions/VideoExtractionStatus"
+        }
+      },
+      "required": [
+        "VideoExtractionStatus"
+      ],
+      "type": "object"
+    },
+    "VideoExtractionStatus": {
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "type": "string"
     }
   },
   "description": "Definition of AWS::QBusiness::DataSource Resource Type",

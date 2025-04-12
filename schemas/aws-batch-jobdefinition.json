@@ -1,6 +1,6 @@
 {
   "$id": "aws-batch-jobdefinition",
-  "$integrity": "sha512-K1lCaV2f+7oWuO50HXncXQNhpO/kz/cTMMz3ryeofkkSF9307eLPoHVtiKV6kDFrOoJaVMxAw1ZtMouWQrcg/w==",
+  "$integrity": "sha512-Fxb981bfIEbU5d9p44fDfLKFZouuMTg9zubVOfkcvNPKF5eXvMn6j3rglSc2M7Jftv1OZAEI4DcQNPuEsPFEkQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/JobDefinitionName"
@@ -52,6 +52,9 @@
           },
           "type": "array",
           "uniqueItems": false
+        },
+        "EnableExecuteCommand": {
+          "type": "boolean"
         },
         "Environment": {
           "insertionOrder": true,
@@ -241,6 +244,9 @@
           },
           "type": "array",
           "uniqueItems": false
+        },
+        "EnableExecuteCommand": {
+          "type": "boolean"
         },
         "EphemeralStorage": {
           "$ref": "#/definitions/EphemeralStorage"
@@ -739,6 +745,9 @@
           "type": "array",
           "uniqueItems": false
         },
+        "EnableExecuteCommand": {
+          "type": "boolean"
+        },
         "Environment": {
           "insertionOrder": true,
           "items": {
@@ -862,6 +871,9 @@
           },
           "type": "array",
           "uniqueItems": false
+        },
+        "EnableExecuteCommand": {
+          "type": "boolean"
         },
         "ExecutionRoleArn": {
           "type": "string"
@@ -1066,6 +1078,27 @@
         },
         "Essential": {
           "type": "boolean"
+        },
+        "FirelensConfiguration": {
+          "additionalProperties": false,
+          "properties": {
+            "Options": {
+              "additionalProperties": false,
+              "patternProperties": {
+                ".*": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "Type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "Type"
+          ],
+          "type": "object"
         },
         "Image": {
           "type": "string"
@@ -1307,7 +1340,7 @@
     "cloudFormationSystemTags": true,
     "permissions": [
       "Batch:TagResource",
-      "Batch:UntagResource"
+      "Batch:UnTagResource"
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",

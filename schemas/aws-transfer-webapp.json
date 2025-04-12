@@ -1,6 +1,6 @@
 {
   "$id": "aws-transfer-webapp",
-  "$integrity": "sha512-k/gqMpAfQCmFxkgLG65nfwpciKeDy2TbDsF6Jht+4i+GojZQA9i5xpt0gwaWZ+r2V0znX4tzvXFVh9YPSF+KUw==",
+  "$integrity": "sha512-FTEyGMsyz/LVAq8sRF9wZLjQlEtaW0IETSyVQMYJqENGd2H7SWYcAgaArQoFUHbuMKbTQQqEZ/6hRS3jWHgHZA==",
   "additionalIdentifiers": [
     [
       "/properties/WebAppId"
@@ -8,6 +8,7 @@
   ],
   "additionalProperties": false,
   "createOnlyProperties": [
+    "/properties/WebAppEndpointPolicy",
     "/properties/IdentityProviderDetails/InstanceArn"
   ],
   "definitions": {
@@ -82,6 +83,13 @@
         }
       },
       "type": "object"
+    },
+    "WebAppEndpointPolicy": {
+      "enum": [
+        "STANDARD",
+        "FIPS"
+      ],
+      "type": "string"
     },
     "WebAppUnits": {
       "oneOf": [
@@ -195,6 +203,9 @@
     },
     "WebAppCustomization": {
       "$ref": "#/definitions/WebAppCustomization"
+    },
+    "WebAppEndpointPolicy": {
+      "$ref": "#/definitions/WebAppEndpointPolicy"
     },
     "WebAppId": {
       "description": "A unique identifier for the web app.",

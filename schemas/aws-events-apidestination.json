@@ -1,6 +1,6 @@
 {
   "$id": "aws-events-apidestination",
-  "$integrity": "sha512-r/Y0HJDRoyqXo4fOmZpj1t2pi/DtxJOA6da51GN35UHcPNR/p1FgkZ/7OqdvQXngyIHUWQnPOGa+UyfJ25ro5A==",
+  "$integrity": "sha512-1m6itGfL7O35WQ351bNEpfNSyKi7BoxrRXb6+wnCtCY2xWDnYThEU9sP9AyeRriFPPBa4uj+y97Xn5F5SWZnFA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -45,6 +45,11 @@
       "pattern": "^arn:aws([a-z]|\\-)*:events:([a-z]|\\d|\\-)*:([0-9]{12})?:api-destination/[\\.\\-_A-Za-z0-9]+/[\\-A-Za-z0-9]+$",
       "type": "string"
     },
+    "ArnForPolicy": {
+      "description": "The arn of the api destination to be used in IAM policies.",
+      "pattern": "^arn:aws([a-z]|\\-)*:events:([a-z]|\\d|\\-)*:([0-9]{12})?:api-destination/[\\.\\-_A-Za-z0-9]+$",
+      "type": "string"
+    },
     "ConnectionArn": {
       "description": "The arn of the connection.",
       "pattern": "^arn:aws([a-z]|\\-)*:events:([a-z]|\\d|\\-)*:([0-9]{12})?:connection/[\\.\\-_A-Za-z0-9]+/[\\-A-Za-z0-9]+$",
@@ -84,7 +89,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/Arn"
+    "/properties/Arn",
+    "/properties/ArnForPolicy"
   ],
   "required": [
     "ConnectionArn",

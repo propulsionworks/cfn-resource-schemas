@@ -1,6 +1,6 @@
 {
   "$id": "aws-events-archive",
-  "$integrity": "sha512-h+OpTV9yzjLywtHWB/q81fxl6UjEkqGX+KV9ggbx+5U7Pwd3ZqozT7xyPwcJjk+nmo6LzQUFizO984eKreBMYA==",
+  "$integrity": "sha512-YppO7neWzTkyjCa9nPt8/EcvS72mk0/B7ncZGa4Ju2As4SHmkJTXnNN6YUg7EUIn2DGrAPX7BqdKBLu1ppwZ1w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ArchiveName",
@@ -11,7 +11,10 @@
     "create": {
       "permissions": [
         "events:DescribeArchive",
-        "events:CreateArchive"
+        "events:CreateArchive",
+        "kms:DescribeKey",
+        "kms:GenerateDataKey",
+        "kms:Decrypt"
       ]
     },
     "delete": {
@@ -27,13 +30,19 @@
     },
     "read": {
       "permissions": [
-        "events:DescribeArchive"
+        "events:DescribeArchive",
+        "kms:Decrypt"
       ]
     },
     "update": {
       "permissions": [
         "events:DescribeArchive",
-        "events:UpdateArchive"
+        "events:UpdateArchive",
+        "kms:DescribeKey",
+        "kms:GenerateDataKey",
+        "kms:Decrypt",
+        "kms:ReEncryptTo",
+        "kms:ReEncryptFrom"
       ]
     }
   },
@@ -56,6 +65,11 @@
     },
     "EventPattern": {
       "type": "object"
+    },
+    "KmsKeyIdentifier": {
+      "maxLength": 2048,
+      "minLength": 0,
+      "type": "string"
     },
     "RetentionDays": {
       "type": "integer"

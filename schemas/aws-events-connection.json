@@ -1,6 +1,6 @@
 {
   "$id": "aws-events-connection",
-  "$integrity": "sha512-oZ4D7jte20bDz1tWt5n3KlAriO2bJdBB7jUUd/3JqK6bGsvVekVEHhpPUxdtkBV37fuSliVUes+E3GAlyZL1nw==",
+  "$integrity": "sha512-BZf0u08rpAiNolMW8h6k8hNozgdcvrsOGVck6bXVhex+noNc65Rg8lNWjOG7VQeUlCcVDd1L0f+rm7pUAFoh3A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -256,6 +256,11 @@
       "pattern": "^arn:aws([a-z]|\\-)*:events:([a-z]|\\d|\\-)*:([0-9]{12})?:connection\\/[\\.\\-_A-Za-z0-9]+\\/[\\-A-Za-z0-9]+$",
       "type": "string"
     },
+    "ArnForPolicy": {
+      "description": "The arn of the connection resource to be used in IAM policies.",
+      "pattern": "^arn:aws([a-z]|\\-)*:events:([a-z]|\\d|\\-)*:([0-9]{12})?:connection\\/[\\.\\-_A-Za-z0-9]+$",
+      "type": "string"
+    },
     "AuthParameters": {
       "$ref": "#/definitions/AuthParameters"
     },
@@ -300,6 +305,7 @@
   },
   "readOnlyProperties": [
     "/properties/Arn",
+    "/properties/ArnForPolicy",
     "/properties/SecretArn",
     "/properties/AuthParameters/ConnectivityParameters/ResourceParameters/ResourceAssociationArn",
     "/properties/InvocationConnectivityParameters/ResourceParameters/ResourceAssociationArn"

@@ -26,10 +26,8 @@ const db = await loadAwsServiceSpec();
 const policyFile = await readPolicyFile();
 
 for await (const schema of readSchemaSources()) {
-  const outputPath = join(
-    Sources.supplemental,
-    schema.typeName.replaceAll("::", "-").toLowerCase() + ".json"
-  );
+  const id = schema.typeName.replaceAll("::", "-").toLowerCase();
+  const outputPath = join(Sources.supplemental, `${id}.json`);
 
   const dbResource = db.lookup(
     "resource",
@@ -45,6 +43,7 @@ for await (const schema of readSchemaSources()) {
     },
     definitions: {},
     description: dbResource?.documentation,
+    id,
     properties: {},
     typeName: schema.typeName,
   };

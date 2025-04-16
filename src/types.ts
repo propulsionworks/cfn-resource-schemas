@@ -38,6 +38,7 @@ export type ResourceSupplemental = {
   definitions: Record<string, ObjectSupplemental>;
   description?: string | undefined;
   documentationUrl?: string | undefined;
+  id: string;
   properties: Record<string, PropertySupplemental>;
   typeName: string;
 };

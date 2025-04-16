@@ -1,12 +1,9 @@
 {
   "$id": "aws-appconfig-extension",
-  "$integrity": "sha512-YoiPT5nKXI4AbyciVrlRZcqntdvcNC0yPkzs14ovnxzskEYcbJmRBoPLkk5cQntf/KDdb2+h9MGxmYK/vIEIAQ==",
+  "$integrity": "sha512-nBgteO8+kSOQjghMnrojCeqWoh6mxca3GBVAsodS5MMCJhuVYXaalL3mkRY+ZK2+25XMaLfCW8o1S85ddapQ2g==",
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/Name",
-    "/properties/Tags",
-    "/properties/Tags/*/Key",
-    "/properties/Tags/*/Value"
+    "/properties/Name"
   ],
   "definitions": {
     "Action": {
@@ -121,7 +118,8 @@
     },
     "read": {
       "permissions": [
-        "appconfig:GetExtension"
+        "appconfig:GetExtension",
+        "appconfig:ListTagsForResource"
       ]
     },
     "update": {
@@ -178,7 +176,7 @@
         "$ref": "#/definitions/Tag"
       },
       "type": "array",
-      "uniqueItems": false
+      "uniqueItems": true
     },
     "VersionNumber": {
       "type": "integer"
@@ -208,9 +206,6 @@
   },
   "typeName": "AWS::AppConfig::Extension",
   "writeOnlyProperties": [
-    "/properties/LatestVersionNumber",
-    "/properties/Tags",
-    "/properties/Tags/*/Key",
-    "/properties/Tags/*/Value"
+    "/properties/LatestVersionNumber"
   ]
 }

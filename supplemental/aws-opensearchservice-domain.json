@@ -28,10 +28,10 @@
         "description": "If `IPAddressType` to set to `dualstack` , a version 2 domain endpoint is provisioned. This endpoint functions like a normal endpoint, except that it works with both IPv4 and IPv6 IP addresses. Normal endpoints work only with IPv4 IP addresses."
       },
       "IdentityCenterOptions.IdentityCenterApplicationARN": {
-        "description": "The ARN for IAM Identity Center Application which will integrate with Amazon OpenSearch Service."
+        "description": "The ARN of the IAM Identity Center application that integrates with Amazon OpenSearch Service."
       },
       "IdentityCenterOptions.IdentityStoreId": {
-        "description": "The ID of IAM Identity Store."
+        "description": "The identifier of the IAM Identity Store."
       }
     }
   },
@@ -229,31 +229,31 @@
     "IdentityCenterOptions": {
       "properties": {
         "EnabledAPIAccess": {
-          "description": "True to enable IAM Identity Center for API access in Amazon OpenSearch Service.",
+          "description": "Indicates whether IAM Identity Center is enabled for the application.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-identitycenteroptions.html#cfn-opensearchservice-domain-identitycenteroptions-enabledapiaccess"
         },
         "IdentityCenterApplicationARN": {
-          "description": "The ARN for IAM Identity Center Application which will integrate with Amazon OpenSearch Service.",
+          "description": "The ARN of the IAM Identity Center application that integrates with Amazon OpenSearch Service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-identitycenteroptions.html#cfn-opensearchservice-domain-identitycenteroptions-identitycenterapplicationarn"
         },
         "IdentityCenterInstanceARN": {
-          "description": "The ARN for IAM Identity Center Instance.",
+          "description": "The Amazon Resource Name (ARN) of the IAM Identity Center instance.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-identitycenteroptions.html#cfn-opensearchservice-domain-identitycenteroptions-identitycenterinstancearn"
         },
         "IdentityStoreId": {
-          "description": "The ID of IAM Identity Store.",
+          "description": "The identifier of the IAM Identity Store.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-identitycenteroptions.html#cfn-opensearchservice-domain-identitycenteroptions-identitystoreid"
         },
         "RolesKey": {
-          "description": "Specify the attribute that contains the backend role (groupName, groupID) of IAM Identity Center",
+          "description": "Specifies the attribute that contains the backend role identifier (such as group name or group ID) in IAM Identity Center.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-identitycenteroptions.html#cfn-opensearchservice-domain-identitycenteroptions-roleskey"
         },
         "SubjectKey": {
-          "description": "Specify the attribute that contains the subject (username, userID, email) of IAM Identity Center.",
+          "description": "Specifies the attribute that contains the subject identifier (such as username, user ID, or email) in IAM Identity Center.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-identitycenteroptions.html#cfn-opensearchservice-domain-identitycenteroptions-subjectkey"
         }
       },
-      "description": "Container for IAM Identity Center Options settings.",
+      "description": "Settings container for integrating IAM Identity Center with OpenSearch UI applications, which enables enabling secure user authentication and access control across multiple data sources. This setup supports single sign-on (SSO) through IAM Identity Center, allowing centralized user management.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-identitycenteroptions.html"
     },
     "Idp": {
@@ -322,33 +322,33 @@
     "NodeConfig": {
       "properties": {
         "Count": {
-          "description": "The number of nodes of a particular node type in the cluster.",
+          "description": "The number of nodes of a specific type within the cluster.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-nodeconfig.html#cfn-opensearchservice-domain-nodeconfig-count"
         },
         "Enabled": {
-          "description": "A boolean that indicates whether a particular node type is enabled or not.",
+          "description": "A boolean value indicating whether a specific node type is active or inactive.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-nodeconfig.html#cfn-opensearchservice-domain-nodeconfig-enabled"
         },
         "Type": {
-          "description": "The instance type of a particular node type in the cluster.",
+          "description": "The instance type of a particular node within the cluster.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-nodeconfig.html#cfn-opensearchservice-domain-nodeconfig-type"
         }
       },
-      "description": "Container for specifying configuration of any node type.",
+      "description": "Configuration options for defining the setup of any node type within the cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-nodeconfig.html"
     },
     "NodeOption": {
       "properties": {
         "NodeConfig": {
-          "description": "Container for specifying configuration of any node type.",
+          "description": "Configuration options for defining the setup of any node type.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-nodeoption.html#cfn-opensearchservice-domain-nodeoption-nodeconfig"
         },
         "NodeType": {
-          "description": "Container for node type like coordinating.",
+          "description": "Defines the type of node, such as coordinating nodes.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-nodeoption.html#cfn-opensearchservice-domain-nodeoption-nodetype"
         }
       },
-      "description": "Container for specifying node type.",
+      "description": "Configuration settings for defining the node type within a cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-nodeoption.html"
     },
     "NodeToNodeEncryptionOptions": {
@@ -536,6 +536,7 @@
     }
   },
   "description": "The AWS::OpenSearchService::Domain resource creates an Amazon OpenSearch Service domain.",
+  "id": "aws-opensearchservice-domain",
   "properties": {
     "AccessPolicies": {
       "description": "An AWS Identity and Access Management ( IAM ) policy document that specifies who can access the OpenSearch Service domain and their permissions. For more information, see [Configuring access policies](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ac.html#ac-creating) in the *Amazon OpenSearch Service Developer Guide* .",
@@ -600,7 +601,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchservice-domain.html#cfn-opensearchservice-domain-id"
     },
     "IdentityCenterOptions": {
-      "description": "Container for IAM Identity Center Option control for the domain.",
+      "description": "Configuration options for controlling IAM Identity Center integration within a domain.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchservice-domain.html#cfn-opensearchservice-domain-identitycenteroptions"
     },
     "LogPublishingOptions": {

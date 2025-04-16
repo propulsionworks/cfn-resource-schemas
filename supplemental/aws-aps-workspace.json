@@ -37,6 +37,7 @@
     }
   },
   "description": "An Amazon Managed Service for Prometheus workspace is a logical and isolated Prometheus server dedicated to ingesting, storing, and querying your Prometheus-compatible metrics.",
+  "id": "aws-aps-workspace",
   "properties": {
     "AlertManagerDefinition": {
       "description": "The alert manager definition, a YAML configuration for the alert manager in your Amazon Managed Service for Prometheus workspace.\n\nFor details about the alert manager definition, see [Creating an alert manager configuration files](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-alertmanager-config.html) in the *Amazon Managed Service for Prometheus User Guide* .\n\nThe following example shows part of a CloudFormation YAML file with an embedded alert manager definition (following the `- |-` ).\n\n`Workspace: Type: AWS::APS::Workspace .... Properties: .... AlertManagerDefinition: Fn::Sub: - |- alertmanager_config: | templates: - 'default_template' route: receiver: example-sns receivers: - name: example-sns sns_configs: - topic_arn: 'arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${TopicName}' -`",

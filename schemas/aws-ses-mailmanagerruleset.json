@@ -1,6 +1,6 @@
 {
   "$id": "aws-ses-mailmanagerruleset",
-  "$integrity": "sha512-VymXe6dGlkwWcNUVsnoSoFMiSFb0xWtR4UQpypU5wQwwOjV4vSHpxmIKpCLMyUBK3CooAQ+0fpKqV0+xQKlm3g==",
+  "$integrity": "sha512-T2efQYWKvj93gMIih+HD4KSEeUPw/P2U5Si+SlM2dhJUjeTU0QI3DBq7TXGOLTnn800eSpZBm+qHLv+1F6sAxg==",
   "additionalProperties": false,
   "definitions": {
     "ActionFailurePolicy": {
@@ -41,7 +41,7 @@
         "ResultField": {
           "maxLength": 256,
           "minLength": 1,
-          "pattern": "^[\\sa-zA-Z0-9_]+$",
+          "pattern": "^(addon\\.)?[\\sa-zA-Z0-9_]+$",
           "type": "string"
         }
       },
@@ -381,6 +381,19 @@
           ],
           "title": "Attribute",
           "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Analysis": {
+              "$ref": "#/definitions/Analysis"
+            }
+          },
+          "required": [
+            "Analysis"
+          ],
+          "title": "Analysis",
+          "type": "object"
         }
       ]
     },
@@ -519,9 +532,9 @@
         },
         "Values": {
           "items": {
-            "maxLength": 18,
+            "maxLength": 43,
             "minLength": 1,
-            "pattern": "^(([0-9]|.|/)*)$",
+            "pattern": "^(([0-9]|.|:|/)*)$",
             "type": "string"
           },
           "maxItems": 10,
@@ -691,6 +704,19 @@
             "MimeHeaderAttribute"
           ],
           "title": "MimeHeaderAttribute",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Analysis": {
+              "$ref": "#/definitions/Analysis"
+            }
+          },
+          "required": [
+            "Analysis"
+          ],
+          "title": "Analysis",
           "type": "object"
         }
       ]

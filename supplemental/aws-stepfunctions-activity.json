@@ -45,6 +45,7 @@
     }
   },
   "description": "An activity is a task that you write in any programming language and host on any machine that has access to AWS Step Functions . Activities must poll Step Functions using the `GetActivityTask` API action and respond using `SendTask*` API actions. This function makes Step Functions aware of your activity and returns an identifier for use in a state machine and when polling from the activity.\n\nFor information about creating an activity, see [Creating an Activity State Machine](https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-creating-activity-state-machine.html) in the *AWS Step Functions Developer Guide* and [CreateActivity](https://docs.aws.amazon.com/step-functions/latest/apireference/API_CreateActivity.html) in the *AWS Step Functions API Reference* .",
+  "id": "aws-stepfunctions-activity",
   "properties": {
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-activity.html#cfn-stepfunctions-activity-arn"
@@ -54,7 +55,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-activity.html#cfn-stepfunctions-activity-encryptionconfiguration"
     },
     "Name": {
-      "description": "The name of the activity.\n\nA name must *not* contain:\n\n- white space\n- brackets `< > { } [ ]`\n- wildcard characters `? *`\n- special characters `\" # % \\ ^ | ~ ` $ & , ; : /`\n- control characters ( `U+0000-001F` , `U+007F-009F` )\n\nTo enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.",
+      "description": "The name of the activity.\n\nA name must *not* contain:\n\n- white space\n- brackets `< > { } [ ]`\n- wildcard characters `? *`\n- special characters `\" # % \\ ^ | ~ ` $ & , ; : /`\n- control characters ( `U+0000-001F` , `U+007F-009F` , `U+FFFE-FFFF` )\n- surrogates ( `U+D800-DFFF` )\n- invalid characters ( `U+10FFFF` )\n\nTo enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-activity.html#cfn-stepfunctions-activity-name"
     },
     "Tags": {

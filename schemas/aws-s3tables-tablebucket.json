@@ -1,11 +1,30 @@
 {
   "$id": "aws-s3tables-tablebucket",
-  "$integrity": "sha512-QLfm2J09jDnX2o28+7eh3cWvLI/mqSQE/lk7K2pLWamt0pxOdcdjjNsgI03AjL78mHeL+qto8Hwg1+WZtzdI3A==",
+  "$integrity": "sha512-JbNl9CCqKmYGFdqoLCbxIVChQvTVIBytpdxW/BdzisR3o7ItLUXZacg6K0XiVMBshWpYC+xh/GlmtYj+9ZUsNg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TableBucketName"
   ],
   "definitions": {
+    "EncryptionConfiguration": {
+      "additionalProperties": false,
+      "description": "Specifies encryption settings for the table bucket",
+      "properties": {
+        "KMSKeyArn": {
+          "description": "ARN of the KMS key to use for encryption",
+          "type": "string"
+        },
+        "SSEAlgorithm": {
+          "description": "Server-side encryption algorithm",
+          "enum": [
+            "AES256",
+            "aws:kms"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "TableBucketARN": {
       "description": "The Amazon Resource Name (ARN) of the specified table bucket.",
       "examples": [
@@ -51,8 +70,11 @@
       "permissions": [
         "s3tables:CreateTableBucket",
         "s3tables:PutTableBucketMaintenanceConfiguration",
+        "s3tables:PutTableBucketEncryption",
         "s3tables:GetTableBucket",
-        "s3tables:GetTableBucketMaintenanceConfiguration"
+        "s3tables:GetTableBucketMaintenanceConfiguration",
+        "s3tables:GetTableBucketEncryption",
+        "kms:DescribeKey"
       ]
     },
     "delete": {
@@ -68,14 +90,18 @@
     "read": {
       "permissions": [
         "s3tables:GetTableBucket",
-        "s3tables:GetTableBucketMaintenanceConfiguration"
+        "s3tables:GetTableBucketMaintenanceConfiguration",
+        "s3tables:GetTableBucketEncryption"
       ]
     },
     "update": {
       "permissions": [
         "s3tables:PutTableBucketMaintenanceConfiguration",
+        "s3tables:PutTableBucketEncryption",
+        "s3tables:GetTableBucketMaintenanceConfiguration",
+        "s3tables:GetTableBucketEncryption",
         "s3tables:GetTableBucket",
-        "s3tables:GetTableBucketMaintenanceConfiguration"
+        "kms:DescribeKey"
       ]
     }
   },
@@ -83,6 +109,9 @@
     "/properties/TableBucketARN"
   ],
   "properties": {
+    "EncryptionConfiguration": {
+      "$ref": "#/definitions/EncryptionConfiguration"
+    },
     "TableBucketARN": {
       "$ref": "#/definitions/TableBucketARN"
     },

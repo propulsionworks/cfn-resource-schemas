@@ -56,9 +56,11 @@
     "JobComputePaymentConfig": {
       "properties": {
         "IsResponsible": {
+          "description": "Indicates whether the collaboration creator has configured the collaboration member to pay for query and job compute costs ( `TRUE` ) or has not configured the collaboration member to pay for query and job compute costs ( `FALSE` ).\n\nExactly one member can be configured to pay for query and job compute costs. An error is returned if the collaboration creator sets a `TRUE` value for more than one member in the collaboration.\n\nAn error is returned if the collaboration creator sets a `FALSE` value for the member who can run queries and jobs.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-jobcomputepaymentconfig.html#cfn-cleanrooms-collaboration-jobcomputepaymentconfig-isresponsible"
         }
       },
+      "description": "An object representing the collaboration member's payment responsibilities set by the collaboration creator for query and job compute costs.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-jobcomputepaymentconfig.html"
     },
     "MLMemberAbilities": {
@@ -150,6 +152,7 @@
     "PaymentConfiguration": {
       "properties": {
         "JobCompute": {
+          "description": "The compute configuration for the job.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-paymentconfiguration.html#cfn-cleanrooms-collaboration-paymentconfiguration-jobcompute"
         },
         "MachineLearning": {
@@ -187,6 +190,7 @@
     }
   },
   "description": "Creates a new collaboration.",
+  "id": "aws-cleanrooms-collaboration",
   "properties": {
     "AnalyticsEngine": {
       "description": "The analytics engine for the collaboration.",
@@ -207,7 +211,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-creatormlmemberabilities"
     },
     "CreatorMemberAbilities": {
-      "description": "The abilities granted to the collaboration creator.\n\n*Allowed values* `CAN_QUERY` | `CAN_RECEIVE_RESULTS`",
+      "description": "The abilities granted to the collaboration creator.\n\n*Allowed values* `CAN_QUERY` | `CAN_RECEIVE_RESULTS` | `CAN_RUN_JOB`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-creatormemberabilities"
     },
     "CreatorPaymentConfiguration": {
@@ -223,6 +227,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-description"
     },
     "JobLogStatus": {
+      "description": "An indicator as to whether job logging has been enabled or disabled for the collaboration.\n\nWhen `ENABLED` , AWS Clean Rooms logs details about jobs run within this collaboration and those logs can be viewed in Amazon CloudWatch Logs. The default value is `DISABLED` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-joblogstatus"
     },
     "Members": {

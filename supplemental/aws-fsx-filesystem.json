@@ -117,7 +117,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-perunitstoragethroughput"
         },
         "WeeklyMaintenanceStartTime": {
-          "description": "A recurring weekly time, in the format `D:HH:MM` .\n\n`D` is the day of the week, for which 1 represents Monday and 7 represents Sunday. For further details, see [the ISO-8601 spec as described on Wikipedia](https://docs.aws.amazon.com/https://en.wikipedia.org/wiki/ISO_week_date) .\n\n`HH` is the zero-padded hour of the day (0-23), and `MM` is the zero-padded minute of the hour.\n\nFor example, `1:05:00` specifies maintenance at 5 AM Monday.",
+          "description": "The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time zone, where d is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.\n\nFor example, `1:05:00` specifies maintenance at 5 AM Monday.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-weeklymaintenancestarttime"
         }
       },
@@ -192,7 +192,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-throughputcapacityperhapair"
         },
         "WeeklyMaintenanceStartTime": {
-          "description": "A recurring weekly time, in the format `D:HH:MM` .\n\n`D` is the day of the week, for which 1 represents Monday and 7 represents Sunday. For further details, see [the ISO-8601 spec as described on Wikipedia](https://docs.aws.amazon.com/https://en.wikipedia.org/wiki/ISO_week_date) .\n\n`HH` is the zero-padded hour of the day (0-23), and `MM` is the zero-padded minute of the hour.\n\nFor example, `1:05:00` specifies maintenance at 5 AM Monday.",
+          "description": "The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time zone, where d is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.\n\nFor example, `1:05:00` specifies maintenance at 5 AM Monday.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-weeklymaintenancestarttime"
         }
       },
@@ -254,7 +254,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-openzfsconfiguration.html#cfn-fsx-filesystem-openzfsconfiguration-throughputcapacity"
         },
         "WeeklyMaintenanceStartTime": {
-          "description": "A recurring weekly time, in the format `D:HH:MM` .\n\n`D` is the day of the week, for which 1 represents Monday and 7 represents Sunday. For further details, see [the ISO-8601 spec as described on Wikipedia](https://docs.aws.amazon.com/https://en.wikipedia.org/wiki/ISO_week_date) .\n\n`HH` is the zero-padded hour of the day (0-23), and `MM` is the zero-padded minute of the hour.\n\nFor example, `1:05:00` specifies maintenance at 5 AM Monday.",
+          "description": "The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time zone, where d is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.\n\nFor example, `1:05:00` specifies maintenance at 5 AM Monday.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-openzfsconfiguration.html#cfn-fsx-filesystem-openzfsconfiguration-weeklymaintenancestarttime"
         }
       },
@@ -420,6 +420,7 @@
     }
   },
   "description": "The `AWS::FSx::FileSystem` resource is an Amazon FSx resource type that specifies an Amazon FSx file system. You can create any of the following supported file system types:\n\n- Amazon FSx for Lustre\n- Amazon FSx for NetApp ONTAP\n- FSx for OpenZFS\n- Amazon FSx for Windows File Server",
+  "id": "aws-fsx-filesystem",
   "properties": {
     "BackupId": {
       "description": "The ID of the file system backup that you are using to create a file system. For more information, see [CreateFileSystemFromBackup](https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateFileSystemFromBackup.html) .",
@@ -473,7 +474,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-storagecapacity"
     },
     "StorageType": {
-      "description": "Sets the storage class for the file system that you're creating. Valid values are `SSD` , `HDD` , and `INTELLIGENT_TIERING` .\n\n- Set to `SSD` to use solid state drive storage. SSD is supported on all Windows, Lustre, ONTAP, and OpenZFS deployment types.\n- Set to `HDD` to use hard disk drive storage. HDD is supported on `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types, and on `PERSISTENT_1` Lustre file system deployment types.\n- Set to `INTELLIGENT_TIERING` to use fully elastic, intelligently-tiered storage. Intelligent-Tiering is only available for OpenZFS file systems with the Multi-AZ deployment type.\n\nDefault value is `SSD` . For more information, see [Storage type options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options) in the *FSx for Windows File Server User Guide* , [Multiple storage options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options) in the *FSx for Lustre User Guide* , and [Working with Intelligent-Tiering](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/performance-intelligent-tiering) in the *Amazon FSx for OpenZFS User Guide* .",
+      "description": "Sets the storage class for the file system that you're creating. Valid values are `SSD` , `HDD` , and `INTELLIGENT_TIERING` .\n\n- Set to `SSD` to use solid state drive storage. SSD is supported on all Windows, Lustre, ONTAP, and OpenZFS deployment types.\n- Set to `HDD` to use hard disk drive storage, which is supported on `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types, and on `PERSISTENT_1` Lustre file system deployment types.\n- Set to `INTELLIGENT_TIERING` to use fully elastic, intelligently-tiered storage. Intelligent-Tiering is only available for OpenZFS file systems with the Multi-AZ deployment type.\n\nDefault value is `SSD` . For more information, see [Storage type options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options) in the *FSx for Windows File Server User Guide* , [Multiple storage options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options) in the *FSx for Lustre User Guide* , and [Working with Intelligent-Tiering](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/performance-intelligent-tiering) in the *Amazon FSx for OpenZFS User Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-storagetype"
     },
     "SubnetIds": {

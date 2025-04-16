@@ -20,9 +20,11 @@
     "MembershipJobComputePaymentConfig": {
       "properties": {
         "IsResponsible": {
+          "description": "Indicates whether the collaboration member has accepted to pay for job compute costs ( `TRUE` ) or has not accepted to pay for query and job compute costs ( `FALSE` ).\n\nThere is only one member who pays for queries and jobs.\n\nAn error message is returned for the following reasons:\n\n- If you set the value to `FALSE` but you are responsible to pay for query and job compute costs.\n- If you set the value to `TRUE` but you are not responsible to pay for query and job compute costs.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipjobcomputepaymentconfig.html#cfn-cleanrooms-membership-membershipjobcomputepaymentconfig-isresponsible"
         }
       },
+      "description": "An object representing the payment responsibilities accepted by the collaboration member for query and job compute costs.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipjobcomputepaymentconfig.html"
     },
     "MembershipJobLogStatus": {
@@ -66,6 +68,7 @@
     "MembershipPaymentConfiguration": {
       "properties": {
         "JobCompute": {
+          "description": "The payment responsibilities accepted by the collaboration member for job compute costs.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershippaymentconfiguration.html#cfn-cleanrooms-membership-membershippaymentconfiguration-jobcompute"
         },
         "MachineLearning": {
@@ -83,20 +86,25 @@
     "MembershipProtectedJobOutputConfiguration": {
       "properties": {
         "S3": {
+          "description": "Contains the configuration to write the job results to S3.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipprotectedjoboutputconfiguration.html#cfn-cleanrooms-membership-membershipprotectedjoboutputconfiguration-s3"
         }
       },
+      "description": "Contains configurations for protected job results.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipprotectedjoboutputconfiguration.html"
     },
     "MembershipProtectedJobResultConfiguration": {
       "properties": {
         "OutputConfiguration": {
+          "description": "The output configuration for a protected job result.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipprotectedjobresultconfiguration.html#cfn-cleanrooms-membership-membershipprotectedjobresultconfiguration-outputconfiguration"
         },
         "RoleArn": {
+          "description": "The unique ARN for an IAM role that is used by AWS Clean Rooms to write protected job results to the result location, given by the member who can receive results.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipprotectedjobresultconfiguration.html#cfn-cleanrooms-membership-membershipprotectedjobresultconfiguration-rolearn"
         }
       },
+      "description": "Contains configurations for protected job results.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipprotectedjobresultconfiguration.html"
     },
     "MembershipProtectedQueryOutputConfiguration": {
@@ -144,12 +152,15 @@
     "ProtectedJobS3OutputConfigurationInput": {
       "properties": {
         "Bucket": {
+          "description": "The S3 bucket for job output.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-protectedjobs3outputconfigurationinput.html#cfn-cleanrooms-membership-protectedjobs3outputconfigurationinput-bucket"
         },
         "KeyPrefix": {
+          "description": "The S3 prefix to unload the protected job results.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-protectedjobs3outputconfigurationinput.html#cfn-cleanrooms-membership-protectedjobs3outputconfigurationinput-keyprefix"
         }
       },
+      "description": "Contains input information for protected jobs with an S3 output type.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-protectedjobs3outputconfigurationinput.html"
     },
     "ProtectedQueryS3OutputConfiguration": {
@@ -191,6 +202,7 @@
     }
   },
   "description": "Creates a membership for a specific collaboration identifier and joins the collaboration.",
+  "id": "aws-cleanrooms-membership",
   "properties": {
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-arn"
@@ -206,6 +218,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-collaborationidentifier"
     },
     "DefaultJobResultConfiguration": {
+      "description": "The default job result configuration for the membership.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-defaultjobresultconfiguration"
     },
     "DefaultResultConfiguration": {
@@ -213,6 +226,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-defaultresultconfiguration"
     },
     "JobLogStatus": {
+      "description": "An indicator as to whether job logging has been enabled or disabled for the collaboration.\n\nWhen `ENABLED` , AWS Clean Rooms logs details about jobs run within this collaboration and those logs can be viewed in Amazon CloudWatch Logs. The default value is `DISABLED` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-joblogstatus"
     },
     "MembershipIdentifier": {

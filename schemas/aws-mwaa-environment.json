@@ -1,6 +1,6 @@
 {
   "$id": "aws-mwaa-environment",
-  "$integrity": "sha512-KWHrvBqBP/20Md1W5Kx1LGgklEVQO3m9B8k5dfZupQwydR3nuuqc/Ei4pg4rMvC7yb9NbRdfAw88NYmxyFD0mg==",
+  "$integrity": "sha512-tHl0TCjM2WdnTdlaobycmsrXsdJe/gMMJWOysA4hACAlEb0vqGShlSexfpVp3OBkGZt4W2S74q6t9YAplkku8A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -370,12 +370,40 @@
   "handlers": {
     "create": {
       "permissions": [
-        "airflow:CreateEnvironment"
+        "airflow:GetEnvironment",
+        "airflow:CreateEnvironment",
+        "airflow:TagResource",
+        "airflow:UntagResource",
+        "iam:PassRole",
+        "iam:ListRoles",
+        "iam:CreatePolicy",
+        "iam:AttachRolePolicy",
+        "iam:CreateRole",
+        "iam:CreateServiceLinkedRole",
+        "s3:GetBucketLocation",
+        "s3:ListAllMyBuckets",
+        "s3:ListBucket",
+        "s3:ListBucketVersions",
+        "s3:CreateBucket",
+        "s3:PutObject",
+        "s3:GetEncryptionConfiguration",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeRouteTables",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateVpcEndpoint",
+        "ec2:CreateNetworkInterface",
+        "kms:CreateGrant",
+        "kms:DescribeKey",
+        "kms:ListAliases"
       ],
       "timeoutInMinutes": 180
     },
     "delete": {
       "permissions": [
+        "airflow:GetEnvironment",
         "airflow:DeleteEnvironment"
       ]
     },
@@ -391,9 +419,23 @@
     },
     "update": {
       "permissions": [
+        "airflow:GetEnvironment",
         "airflow:UpdateEnvironment",
         "airflow:TagResource",
-        "airflow:UntagResource"
+        "airflow:UntagResource",
+        "iam:PassRole",
+        "iam:ListRoles",
+        "iam:AttachRolePolicy",
+        "s3:GetBucketLocation",
+        "s3:ListBucket",
+        "s3:ListBucketVersions",
+        "s3:GetEncryptionConfiguration",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeRouteTables",
+        "kms:DescribeKey",
+        "kms:ListAliases"
       ],
       "timeoutInMinutes": 480
     }

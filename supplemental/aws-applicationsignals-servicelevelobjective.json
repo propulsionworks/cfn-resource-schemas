@@ -52,12 +52,15 @@
     "DependencyConfig": {
       "properties": {
         "DependencyKeyAttributes": {
+          "description": "If this SLO is related to a metric collected by Application Signals, you must use this field to specify which dependency the SLO metric is related to.\n\n- `Type` designates the type of object this is.\n- `ResourceType` specifies the type of the resource. This field is used only when the value of the `Type` field is `Resource` or `AWS::Resource` .\n- `Name` specifies the name of the object. This is used only if the value of the `Type` field is `Service` , `RemoteService` , or `AWS::Service` .\n- `Identifier` identifies the resource objects of this resource. This is used only if the value of the `Type` field is `Resource` or `AWS::Resource` .\n- `Environment` specifies the location where this object is hosted, or what it belongs to.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-dependencyconfig.html#cfn-applicationsignals-servicelevelobjective-dependencyconfig-dependencykeyattributes"
         },
         "DependencyOperationName": {
+          "description": "When the SLO monitors a specific operation of the dependency, this field specifies the name of that operation in the dependency.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-dependencyconfig.html#cfn-applicationsignals-servicelevelobjective-dependencyconfig-dependencyoperationname"
         }
       },
+      "description": "Identifies the dependency using the `DependencyKeyAttributes` and `DependencyOperationName` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-dependencyconfig.html"
     },
     "DependencyKeyAttributes": {
@@ -89,23 +92,23 @@
     "ExclusionWindow": {
       "properties": {
         "Reason": {
-          "description": "A description explaining why this time period should be excluded from SLO calculations.",
+          "description": "The reason for the time exclusion windows. For example, maintenance.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-exclusionwindow.html#cfn-applicationsignals-servicelevelobjective-exclusionwindow-reason"
         },
         "RecurrenceRule": {
-          "description": "The recurrence rule for the SLO time window exclusion. Supports both cron and rate expressions.",
+          "description": "The recurrence rule for the time exclusion window.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-exclusionwindow.html#cfn-applicationsignals-servicelevelobjective-exclusionwindow-recurrencerule"
         },
         "StartTime": {
-          "description": "The start of the SLO time window exclusion. Defaults to current time if not specified.",
+          "description": "The start time of the time exclusion window.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-exclusionwindow.html#cfn-applicationsignals-servicelevelobjective-exclusionwindow-starttime"
         },
         "Window": {
-          "description": "The SLO time window exclusion .",
+          "description": "The time exclusion window.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-exclusionwindow.html#cfn-applicationsignals-servicelevelobjective-exclusionwindow-window"
         }
       },
-      "description": "The core SLO time window exclusion object that includes Window, StartTime, RecurrenceRule, and Reason.",
+      "description": "The time window to be excluded from the SLO performance metrics.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-exclusionwindow.html"
     },
     "ExclusionWindows": {
@@ -235,11 +238,11 @@
     "RecurrenceRule": {
       "properties": {
         "Expression": {
-          "description": "A cron or rate expression that specifies the schedule for the exclusion window.",
+          "description": "The following two rules are supported:\n\n- rate(value unit) - The value must be a positive integer and the unit can be hour|day|month.\n- cron - An expression which consists of six fields separated by white spaces: (minutes hours day_of_month month day_of_week year).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-recurrencerule.html#cfn-applicationsignals-servicelevelobjective-recurrencerule-expression"
         }
       },
-      "description": "The recurrence rule for the SLO time window exclusion .",
+      "description": "The recurrence rule for the time exclusion window.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-recurrencerule.html"
     },
     "RequestBasedSli": {
@@ -263,6 +266,7 @@
     "RequestBasedSliMetric": {
       "properties": {
         "DependencyConfig": {
+          "description": "Identifies the dependency using the `DependencyKeyAttributes` and `DependencyOperationName` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-requestbasedslimetric.html#cfn-applicationsignals-servicelevelobjective-requestbasedslimetric-dependencyconfig"
         },
         "KeyAttributes": {
@@ -324,6 +328,7 @@
     "SliMetric": {
       "properties": {
         "DependencyConfig": {
+          "description": "Identifies the dependency using the `DependencyKeyAttributes` and `DependencyOperationName` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-slimetric.html#cfn-applicationsignals-servicelevelobjective-slimetric-dependencyconfig"
         },
         "KeyAttributes": {
@@ -372,19 +377,20 @@
     "Window": {
       "properties": {
         "Duration": {
-          "description": "The number of time units for the exclusion window length.",
+          "description": "The start and end time of the time exclusion window.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-window.html#cfn-applicationsignals-servicelevelobjective-window-duration"
         },
         "DurationUnit": {
-          "description": "The unit of time for the exclusion window duration. Valid values: MINUTE, HOUR, DAY, MONTH.",
+          "description": "The unit of measurement to use during the time window exclusion.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-window.html#cfn-applicationsignals-servicelevelobjective-window-durationunit"
         }
       },
-      "description": "The object that defines the time length of an exclusion window.",
+      "description": "The start and end time of the time exclusion window.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-servicelevelobjective-window.html"
     }
   },
-  "description": "Creates or updates a service level objective (SLO), which can help you ensure that your critical business operations are meeting customer expectations. Use SLOs to set and track specific target levels for the reliability and availability of your applications and services. SLOs use service level indicators (SLIs) to calculate whether the application is performing at the level that you want.\n\nCreate an SLO to set a target for a service or operation’s availability or latency. CloudWatch measures this target frequently you can find whether it has been breached.\n\nThe target performance quality that is defined for an SLO is the *attainment goal* . An attainment goal is the percentage of time or requests that the SLI is expected to meet the threshold over each time interval. For example, an attainment goal of 99.9% means that within your interval, you are targeting 99.9% of the periods to be in healthy state.\n\nWhen you create an SLO, you specify whether it is a *period-based SLO* or a *request-based SLO* . Each type of SLO has a different way of evaluating your application's performance against its attainment goal.\n\n- A *period-based SLO* uses defined *periods* of time within a specified total time interval. For each period of time, Application Signals determines whether the application met its goal. The attainment rate is calculated as the `number of good periods/number of total periods` .\n\nFor example, for a period-based SLO, meeting an attainment goal of 99.9% means that within your interval, your application must meet its performance goal during at least 99.9% of the time periods.\n- A *request-based SLO* doesn't use pre-defined periods of time. Instead, the SLO measures `number of good requests/number of total requests` during the interval. At any time, you can find the ratio of good requests to total requests for the interval up to the time stamp that you specify, and measure that ratio against the goal set in your SLO.\n\nAfter you have created an SLO, you can retrieve error budget reports for it. An *error budget* is the amount of time or amount of requests that your application can be non-compliant with the SLO's goal, and still have your application meet the goal.\n\n- For a period-based SLO, the error budget starts at a number defined by the highest number of periods that can fail to meet the threshold, while still meeting the overall goal. The *remaining error budget* decreases with every failed period that is recorded. The error budget within one interval can never increase.\n\nFor example, an SLO with a threshold that 99.95% of requests must be completed under 2000ms every month translates to an error budget of 21.9 minutes of downtime per month.\n- For a request-based SLO, the remaining error budget is dynamic and can increase or decrease, depending on the ratio of good requests to total requests.\n\nWhen you call this operation, Application Signals creates the *AWSServiceRoleForCloudWatchApplicationSignals* service-linked role, if it doesn't already exist in your account. This service- linked role has the following permissions:\n\n- `xray:GetServiceGraph`\n- `logs:StartQuery`\n- `logs:GetQueryResults`\n- `cloudwatch:GetMetricData`\n- `cloudwatch:ListMetrics`\n- `tag:GetResources`\n- `autoscaling:DescribeAutoScalingGroups`\n\nYou can easily set SLO targets for your applications that are discovered by Application Signals, using critical metrics such as latency and availability. You can also set SLOs against any CloudWatch metric or math expression that produces a time series.\n\n> You can't create an SLO for a service operation that was discovered by Application Signals until after that operation has reported standard metrics to Application Signals. \n\nYou cannot change from a period-based SLO to a request-based SLO, or change from a request-based SLO to a period-based SLO.\n\nFor more information about SLOs, see [Service level objectives (SLOs)](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-ServiceLevelObjectives.html) .",
+  "description": "Creates or updates a service level objective (SLO), which can help you ensure that your critical business operations are meeting customer expectations. Use SLOs to set and track specific target levels for the reliability and availability of your applications and services. SLOs use service level indicators (SLIs) to calculate whether the application is performing at the level that you want.\n\nCreate an SLO to set a target for a service operation, or service dependency's availability or latency. CloudWatch measures this target frequently you can find whether it has been breached.\n\nThe target performance quality that is defined for an SLO is the *attainment goal* . An attainment goal is the percentage of time or requests that the SLI is expected to meet the threshold over each time interval. For example, an attainment goal of 99.9% means that within your interval, you are targeting 99.9% of the periods to be in healthy state.\n\nWhen you create an SLO, you specify whether it is a *period-based SLO* or a *request-based SLO* . Each type of SLO has a different way of evaluating your application's performance against its attainment goal.\n\n- A *period-based SLO* uses defined *periods* of time within a specified total time interval. For each period of time, Application Signals determines whether the application met its goal. The attainment rate is calculated as the `number of good periods/number of total periods` .\n\nFor example, for a period-based SLO, meeting an attainment goal of 99.9% means that within your interval, your application must meet its performance goal during at least 99.9% of the time periods.\n- A *request-based SLO* doesn't use pre-defined periods of time. Instead, the SLO measures `number of good requests/number of total requests` during the interval. At any time, you can find the ratio of good requests to total requests for the interval up to the time stamp that you specify, and measure that ratio against the goal set in your SLO.\n\nAfter you have created an SLO, you can retrieve error budget reports for it. An *error budget* is the amount of time or amount of requests that your application can be non-compliant with the SLO's goal, and still have your application meet the goal.\n\n- For a period-based SLO, the error budget starts at a number defined by the highest number of periods that can fail to meet the threshold, while still meeting the overall goal. The *remaining error budget* decreases with every failed period that is recorded. The error budget within one interval can never increase.\n\nFor example, an SLO with a threshold that 99.95% of requests must be completed under 2000ms every month translates to an error budget of 21.9 minutes of downtime per month.\n- For a request-based SLO, the remaining error budget is dynamic and can increase or decrease, depending on the ratio of good requests to total requests.\n\nWhen you call this operation, Application Signals creates the *AWSServiceRoleForCloudWatchApplicationSignals* service-linked role, if it doesn't already exist in your account. This service- linked role has the following permissions:\n\n- `xray:GetServiceGraph`\n- `logs:StartQuery`\n- `logs:GetQueryResults`\n- `cloudwatch:GetMetricData`\n- `cloudwatch:ListMetrics`\n- `tag:GetResources`\n- `autoscaling:DescribeAutoScalingGroups`\n\nYou can easily set SLO targets for your applications, and their dependencies, that are discovered by Application Signals, using critical metrics such as latency and availability. You can also set SLOs against any CloudWatch metric or math expression that produces a time series.\n\n> You can't create an SLO for a service operation that was discovered by Application Signals until after that operation has reported standard metrics to Application Signals. \n\nYou cannot change from a period-based SLO to a request-based SLO, or change from a request-based SLO to a period-based SLO.\n\nFor more information about SLOs, see [Service level objectives (SLOs)](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-ServiceLevelObjectives.html) .",
+  "id": "aws-applicationsignals-servicelevelobjective",
   "properties": {
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-servicelevelobjective.html#cfn-applicationsignals-servicelevelobjective-arn"
@@ -404,7 +410,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-servicelevelobjective.html#cfn-applicationsignals-servicelevelobjective-evaluationtype"
     },
     "ExclusionWindows": {
-      "description": "Each object in this array defines a time exclusion window for this SLO. The time exclusion window is used to exclude breaching data points from affecting attainment rate, error budget, and burn rate metrics.",
+      "description": "The time window to be excluded from the SLO performance metrics.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-servicelevelobjective.html#cfn-applicationsignals-servicelevelobjective-exclusionwindows"
     },
     "Goal": {

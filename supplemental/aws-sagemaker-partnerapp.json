@@ -3,7 +3,7 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#aws-resource-sagemaker-partnerapp-return-values",
     "properties": {
       "Arn": {
-        "description": "The ARN of the SageMaker Partner AI App."
+        "description": "The Amazon Resource Name (ARN) of the created PartnerApp."
       },
       "BaseUrl": {
         "description": "The AppServerUrl based on app and account-info."
@@ -18,25 +18,25 @@
     "PartnerAppConfig": {
       "properties": {
         "AdminUsers": {
-          "description": "The list of users that are given admin access to the SageMaker Partner AI App.",
+          "description": "A list of users that will have administrative access to the Partner AI App.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-partnerapp-partnerappconfig.html#cfn-sagemaker-partnerapp-partnerappconfig-adminusers"
         },
         "Arguments": {
-          "description": "This is a map of required inputs for a SageMaker Partner AI App. Based on the application type, the map is populated with a key and value pair that is specific to the user and application.",
+          "description": "Additional arguments passed to the Partner AI App during initialization or runtime.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-partnerapp-partnerappconfig.html#cfn-sagemaker-partnerapp-partnerappconfig-arguments"
         }
       },
-      "description": "Configuration settings for the SageMaker Partner AI App.",
+      "description": "A collection of configuration settings for the PartnerApp.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-partnerapp-partnerappconfig.html"
     },
     "PartnerAppMaintenanceConfig": {
       "properties": {
         "MaintenanceWindowStart": {
-          "description": "The day and time of the week in Coordinated Universal Time (UTC) 24-hour standard time that weekly maintenance updates are scheduled. This value must take the following format: `3-letter-day:24-h-hour:minute` . For example: `TUE:03:30` .",
+          "description": "The maintenance window start day and time for the PartnerApp.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-partnerapp-partnerappmaintenanceconfig.html#cfn-sagemaker-partnerapp-partnerappmaintenanceconfig-maintenancewindowstart"
         }
       },
-      "description": "Maintenance configuration settings for the SageMaker Partner AI App.",
+      "description": "A collection of settings that specify the maintenance schedule for the PartnerApp.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-partnerapp-partnerappmaintenanceconfig.html"
     },
     "Tag": {
@@ -51,17 +51,18 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-partnerapp-tag.html"
     }
   },
-  "description": "Creates an Amazon SageMaker Partner AI App.",
+  "description": "The `AWS::SageMaker::PartnerApp` resource creates an Amazon SageMaker Partner AI App. For more information, see [Partner AI Apps](https://docs.aws.amazon.com/sagemaker/latest/dg/partner-apps.html) .",
+  "id": "aws-sagemaker-partnerapp",
   "properties": {
     "ApplicationConfig": {
-      "description": "A collection of configuration settings for the PartnerApp.",
+      "description": "Configuration settings for the Partner AI App.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-applicationconfig"
     },
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-arn"
     },
     "AuthType": {
-      "description": "The Auth type of PartnerApp.",
+      "description": "Defines the authentication type used for the Partner AI App.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-authtype"
     },
     "BaseUrl": {
@@ -76,7 +77,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-enableiamsessionbasedidentity"
     },
     "ExecutionRoleArn": {
-      "description": "The execution role for the user.",
+      "description": "The Amazon Resource Name (ARN) of the IAM role of the user.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-executionrolearn"
     },
     "KmsKeyId": {
@@ -88,7 +89,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-maintenanceconfig"
     },
     "Name": {
-      "description": "The name of the SageMaker Partner AI App.",
+      "description": "The name of the Partner AI App. This name must be unique within your account and region.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-name"
     },
     "Tags": {
@@ -96,11 +97,11 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-tags"
     },
     "Tier": {
-      "description": "The tier of the PartnerApp.",
+      "description": "Specifies the tier or level of the Partner AI App. The tier size impacts the speed and capabilities of the application. For more information, see [Set up Partner AI Apps](https://docs.aws.amazon.com/sagemaker/latest/dg/partner-app-onboard.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-tier"
     },
     "Type": {
-      "description": "The type of SageMaker Partner AI App to create. Must be one of the following: `lakera-guard` , `comet` , `deepchecks-llm-evaluation` , or `fiddler` .",
+      "description": "Specifies the type of Partner AI App being created.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html#cfn-sagemaker-partnerapp-type"
     }
   },

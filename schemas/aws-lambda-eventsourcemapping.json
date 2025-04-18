@@ -1,6 +1,6 @@
 {
   "$id": "aws-lambda-eventsourcemapping",
-  "$integrity": "sha512-Meiqa2iTuFWia0xm4KpAmt2HqA08bSaZy6qwp2wMY5JNHLi0WTudipvXTjU37NipzPK0dncv2z+27y4v+XIOpw==",
+  "$integrity": "sha512-pLZ1EKV9YQh2nrOky+6Xw4q2oQIKYttlXchU8x4F5jOwBIVL7DduxpjkwkGhk5SO6yhxNM65ALnCQV2Eiidtxg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/EventSourceArn",
@@ -297,7 +297,6 @@
       "permissions": [
         "lambda:UpdateEventSourceMapping",
         "lambda:GetEventSourceMapping",
-        "lambda:ListTags",
         "lambda:TagResource",
         "lambda:UntagResource",
         "kms:DescribeKey",
@@ -321,7 +320,7 @@
       "type": "integer"
     },
     "BisectBatchOnFunctionError": {
-      "description": "(Kinesis and DynamoDB Streams only) If the function returns an error, split the batch in two and retry. The default value is false.",
+      "description": "(Kinesis and DynamoDB Streams only) If the function returns an error, split the batch in two and retry. The default value is false.\n  When using ``BisectBatchOnFunctionError``, check the ``BatchSize`` parameter in the ``OnFailure`` destination message's metadata. The ``BatchSize`` could be greater than 1 since LAM consolidates failed messages metadata when writing to the ``OnFailure`` destination.",
       "type": "boolean"
     },
     "DestinationConfig": {
@@ -507,6 +506,11 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": true,
+    "permissions": [
+      "lambda:ListTags",
+      "lambda:TagResource",
+      "lambda:UntagResource"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,

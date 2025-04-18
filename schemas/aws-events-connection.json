@@ -1,6 +1,6 @@
 {
   "$id": "aws-events-connection",
-  "$integrity": "sha512-BZf0u08rpAiNolMW8h6k8hNozgdcvrsOGVck6bXVhex+noNc65Rg8lNWjOG7VQeUlCcVDd1L0f+rm7pUAFoh3A==",
+  "$integrity": "sha512-Zc6ip8ghsfR/dhYvJWBRqTxsX53a6Zv6kqEP7KoGbJ6iXfUiVSXGGaXiVTEYo2i6+JRZFb5MM/fm1HGenR0+Mw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -217,7 +217,9 @@
         "secretsmanager:CreateSecret",
         "secretsmanager:GetSecretValue",
         "secretsmanager:PutSecretValue",
-        "iam:CreateServiceLinkedRole"
+        "iam:CreateServiceLinkedRole",
+        "kms:DescribeKey",
+        "kms:GenerateDataKey"
       ]
     },
     "delete": {
@@ -233,7 +235,8 @@
     },
     "read": {
       "permissions": [
-        "events:DescribeConnection"
+        "events:DescribeConnection",
+        "kms:Decrypt"
       ]
     },
     "update": {
@@ -243,7 +246,11 @@
         "secretsmanager:CreateSecret",
         "secretsmanager:UpdateSecret",
         "secretsmanager:GetSecretValue",
-        "secretsmanager:PutSecretValue"
+        "secretsmanager:PutSecretValue",
+        "kms:Decrypt",
+        "kms:DescribeKey",
+        "kms:Encrypt",
+        "kms:GenerateDataKey"
       ]
     }
   },
@@ -289,6 +296,11 @@
         "ResourceParameters"
       ],
       "type": "object"
+    },
+    "KmsKeyIdentifier": {
+      "maxLength": 2048,
+      "pattern": "^[a-zA-Z0-9_\\-/:]*$",
+      "type": "string"
     },
     "Name": {
       "description": "Name of the connection.",

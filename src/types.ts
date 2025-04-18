@@ -1,3 +1,10 @@
+export type JsonPrimitive = boolean | null | number | string;
+
+export type JsonValue =
+  | JsonPrimitive
+  | JsonValue[]
+  | { [key: string]: JsonValue };
+
 /**
  * A {@link ResourceTypeSchema} with additional metadata.
  */
@@ -52,11 +59,11 @@ export type JsonSchemaObject = {
   additionalProperties?: JsonSchema | undefined;
   allOf?: JsonSchema[] | undefined;
   anyOf?: JsonSchema[] | undefined;
-  const?: unknown;
+  const?: JsonValue;
   contains?: JsonSchema | undefined;
   contentEncoding?: string | undefined;
   contentMediaType?: string | undefined;
-  default?: unknown;
+  default?: JsonValue;
   /**
    * @default {}
    */
@@ -64,8 +71,8 @@ export type JsonSchemaObject = {
   dependencies?: Record<string, JsonSchema | string[]> | undefined;
   description?: string | undefined;
   else?: JsonSchema | undefined;
-  enum?: unknown[] | undefined;
-  examples?: unknown[] | undefined;
+  enum?: JsonValue[] | undefined;
+  examples?: JsonValue[] | undefined;
   exclusiveMaximum?: number | undefined;
   exclusiveMinimum?: number | undefined;
   format?: string | undefined;
@@ -306,16 +313,16 @@ export type PropertySchema = {
    * @default Standard
    */
   arrayType?: "Standard" | "AttributeList" | undefined;
-  const?: unknown;
+  const?: JsonValue;
   /**
    * @default true
    */
   contains?: JsonSchema | undefined;
-  default?: unknown;
+  default?: JsonValue;
   dependencies?: Record<string, PropertySchema | string[]> | undefined;
   description?: string | undefined;
-  enum?: unknown[] | undefined;
-  examples?: unknown[] | undefined;
+  enum?: JsonValue[] | undefined;
+  examples?: JsonValue[] | undefined;
   exclusiveMaximum?: number | undefined;
   exclusiveMinimum?: number | undefined;
   format?: string | undefined;
@@ -360,7 +367,7 @@ export type PropertySchema = {
   multipleOf?: number | undefined;
   oneOf?: PropertySchema[] | undefined;
   pattern?: string | undefined;
-  patternProperties?: Record<string, unknown> | undefined;
+  patternProperties?: Record<string, PropertySchema> | undefined;
   properties?: Record<string, PropertySchema> | undefined;
   relationshipRef?: RelationshipRef | undefined;
   /**

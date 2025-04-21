@@ -2,7 +2,7 @@ import { createReadStream } from "node:fs";
 import { type TransformCallback, Transform } from "node:stream";
 import { StringDecoder } from "node:string_decoder";
 import { createGunzip } from "node:zlib";
-import { Bundles } from "./paths.ts";
+import { Bundles } from "../lib/paths.ts";
 import type {
   ResourceSupplemental,
   ResourceTypeSchemaWithMeta,

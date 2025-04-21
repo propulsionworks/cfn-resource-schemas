@@ -15,8 +15,8 @@ import { pipeline } from "node:stream/promises";
 import { createDeflate, createGunzip } from "node:zlib";
 import { fromData } from "ssri";
 import { ZipReader } from "zip24/reader";
-import { Sources } from "../paths.ts";
-import type { ResourceTypeSchema } from "../types.ts";
+import type { ResourceTypeSchema } from "../exports/types.ts";
+import { Sources } from "../lib/paths.ts";
 
 const result = await downloadSchemas();
 

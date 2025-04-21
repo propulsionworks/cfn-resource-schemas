@@ -16,12 +16,12 @@
   },
   "exports": {
     ".": {
-      "default": "./out/schemas.js",
-      "types": "./out/schemas.d.ts"
+      "default": "./out/exports/main.js",
+      "types": "./out/exports/main.d.ts"
     },
     "./types": {
-      "default": "./out/types.js",
-      "types": "./out/types.d.ts"
+      "default": "./out/lib/types.js",
+      "types": "./out/lib/types.d.ts"
     }
   },
   "imports": {
@@ -31,23 +31,23 @@
     }
   },
   "files": [
-    "src/",
-    "!src/build/",
+    "exports/",
+    "lib/",
     "out/",
-    "!out/build/",
     "*.ndjson.gz",
     "package.*"
   ],
   "scripts": {
     "build": "npm run clean && npm run compile",
-    "bundle": "node --experimental-strip-types ./src/build/bundle.ts",
+    "bundle": "node --experimental-strip-types ./build-scripts/bundle.ts",
     "check": "tsc -p tsconfig.json",
-    "ci-build": "node --enable-source-maps --experimental-strip-types ./src/build/ci.ts",
+    "ci-build": "node --enable-source-maps --experimental-strip-types ./build-scripts/ci.ts",
     "clean": "rimraf out/ *.tsbuildinfo",
     "compile": "tsc -p tsconfig.lib.json",
-    "download": "node --experimental-strip-types ./src/build/download.ts",
-    "supplemental": "node --experimental-strip-types ./src/build/supplemental.ts",
-    "test": "node --enable-source-maps --experimental-strip-types ./src/build/test.ts"
+    "download": "node --experimental-strip-types ./build-scripts/download.ts",
+    "lint": "eslint",
+    "supplemental": "node --experimental-strip-types ./build-scripts/supplemental.ts",
+    "test": "node --enable-source-maps --experimental-strip-types ./build-scripts/test.ts"
   },
   "devDependencies": {
     "@aws-cdk/aws-service-spec": "^0.1.67",

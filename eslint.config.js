@@ -5,15 +5,15 @@ export default config(
     ignores: ["node_modules/", "out/"],
   },
   {
-    files: ["src/**/*.js", "src/**/*.ts"],
+    files: ["**/*.js", "**/*.ts"],
     extends: [propulsionworks.configs.js],
   },
   {
-    files: ["src/**/*.ts"],
+    files: ["**/*.ts"],
     extends: [propulsionworks.configs.ts],
   },
   {
-    files: ["src/build/*.ts"],
+    files: ["build-scripts/*.ts"],
     rules: {
       "@typescript-eslint/no-unused-expressions": [
         "error",

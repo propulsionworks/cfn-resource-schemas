@@ -24,17 +24,20 @@ jobs:
           cache: "npm"
           registry-url: "https://registry.npmjs.org"
 
-      - name: NPM install
-        run: npm ci
-
       - name: Configure Git
         shell: bash
         run: |
           git config user.email "actions@github.com"
           git config user.name "Github Actions"
 
+      - name: NPM install
+        run: npm ci
+
       - name: Check typescript
         run: npm run check
+
+      - name: Lint
+        run: npm run lint
 
       - name: Build and publish
         env:

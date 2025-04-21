@@ -6,14 +6,14 @@
  */
 
 import { loadAwsServiceSpec } from "@aws-cdk/aws-service-spec";
-import type { PropertySchema, ResourceTypeSchema } from "../types.ts";
-import { choose } from "./lib/ui.ts";
+import { choose } from "../build-lib/ui.ts";
 import {
   makeAwsDocumentationUrl,
   readPolicyFile,
   readSchemaSources,
   savePolicyFile,
-} from "./lib/util.ts";
+} from "../build-lib/util.ts";
+import type { PropertySchema, ResourceTypeSchema } from "../exports/types.ts";
 
 const PolicyProperty = /Policy(Document|Text)?$/;
 

@@ -2,8 +2,11 @@ import canonicalize from "canonicalize";
 import assert from "node:assert";
 import { checkData } from "ssri";
 import { chalk } from "zx";
-import { loadSchemas, loadSupplemental } from "../schemas.ts";
-import { readSchemaSources, readSupplementalSources } from "./lib/util.ts";
+import {
+  readSchemaSources,
+  readSupplementalSources,
+} from "../build-lib/util.ts";
+import { loadSchemas, loadSupplemental } from "../exports/main.ts";
 
 // extract all the schemas, compare with local, check the integrity
 

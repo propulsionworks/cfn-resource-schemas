@@ -3,11 +3,11 @@ import assert from "node:assert";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { format, resolveConfig } from "prettier";
-import { Sources } from "../../paths.ts";
 import type {
   ResourceSupplemental,
   ResourceTypeSchemaWithMeta,
-} from "../../types.ts";
+} from "../exports/types.ts";
+import { Sources } from "../lib/paths.ts";
 
 export const Attributes = Symbol();
 export type Attributes = typeof Attributes;

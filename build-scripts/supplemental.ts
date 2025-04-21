@@ -10,15 +10,18 @@
 import { loadAwsServiceSpec } from "@aws-cdk/aws-service-spec";
 import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
-import { Sources } from "../paths.ts";
-import type { ObjectSupplemental, ResourceSupplemental } from "../types.ts";
 import {
   Attributes,
   makeAwsDocumentationUrl,
   readPolicyFile,
   readSchemaSources,
   writeJsonFile,
-} from "./lib/util.ts";
+} from "../build-lib/util.ts";
+import type {
+  ObjectSupplemental,
+  ResourceSupplemental,
+} from "../exports/types.ts";
+import { Sources } from "../lib/paths.ts";
 
 await mkdir(Sources.supplemental, { recursive: true });
 

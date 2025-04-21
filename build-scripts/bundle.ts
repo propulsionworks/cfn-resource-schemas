@@ -12,8 +12,11 @@ import {
 } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import { createGzip } from "node:zlib";
-import { Bundles } from "../paths.ts";
-import { readSchemaSources, readSupplementalSources } from "./lib/util.ts";
+import {
+  readSchemaSources,
+  readSupplementalSources,
+} from "../build-lib/util.ts";
+import { Bundles } from "../lib/paths.ts";
 
 class ToNdJsonTransform extends Transform {
   public constructor(opts?: TransformOptions) {

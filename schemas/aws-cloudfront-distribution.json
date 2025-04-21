@@ -1,6 +1,6 @@
 {
   "$id": "aws-cloudfront-distribution",
-  "$integrity": "sha512-lKMNECVjjZ/91m1FZiuVfIacgPdSCKxAtuKqAy/YgtiDF7xW/FTJT4jnavpypwjKDDg4fZClmR6PMKxWEafkuA==",
+  "$integrity": "sha512-km6lmT6IBr6ESg1809s57mLYJlxdVmDA3G9RfoIAJOsByKFEE2iUyWbBrc3YIMC+VU7uVdXzSyE69fok9HB7RQ==",
   "additionalProperties": false,
   "definitions": {
     "CacheBehavior": {
@@ -136,6 +136,13 @@
         "ViewerProtocolPolicy"
       ],
       "type": "object"
+    },
+    "ConnectionMode": {
+      "enum": [
+        "direct",
+        "tenant-only"
+      ],
+      "type": "string"
     },
     "Cookies": {
       "additionalProperties": false,
@@ -402,6 +409,10 @@
           "description": "A comment to describe the distribution. The comment cannot be longer than 128 characters.",
           "type": "string"
         },
+        "ConnectionMode": {
+          "$ref": "#/definitions/ConnectionMode",
+          "description": ""
+        },
         "ContinuousDeploymentPolicyId": {
           "description": "The identifier of a continuous deployment policy. For more information, see ``CreateContinuousDeploymentPolicy``.",
           "type": "string"
@@ -478,6 +489,19 @@
         "Staging": {
           "description": "A Boolean that indicates whether this is a staging distribution. When this value is ``true``, this is a staging distribution. When this value is ``false``, this is not a staging distribution.",
           "type": "boolean"
+        },
+        "TenantConfig": {
+          "additionalProperties": false,
+          "description": "",
+          "properties": {
+            "ParameterDefinitions": {
+              "items": {
+                "$ref": "#/definitions/ParameterDefinition"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
         },
         "ViewerCertificate": {
           "$ref": "#/definitions/ViewerCertificate",
@@ -885,6 +909,44 @@
       },
       "type": "object"
     },
+    "ParameterDefinition": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "Definition": {
+          "additionalProperties": false,
+          "properties": {
+            "StringSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "Comment": {
+                  "type": "string"
+                },
+                "DefaultValue": {
+                  "type": "string"
+                },
+                "Required": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "Required"
+              ],
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Name",
+        "Definition"
+      ],
+      "type": "object"
+    },
     "Restrictions": {
       "additionalProperties": false,
       "description": "A complex type that identifies ways in which you want to restrict distribution of your content.",
@@ -1013,8 +1075,10 @@
   "handlers": {
     "create": {
       "permissions": [
+        "cloudfront:CreateConnectionGroup",
         "cloudfront:CreateDistribution",
         "cloudfront:CreateDistributionWithTags",
+        "cloudfront:GetConnectionGroup",
         "cloudfront:GetDistribution",
         "cloudfront:GetDistributionConfig",
         "cloudfront:TagResource"
@@ -1029,6 +1093,7 @@
     },
     "list": {
       "permissions": [
+        "cloudfront:ListTagsForResource",
         "cloudfront:ListDistributions"
       ]
     },
@@ -1040,6 +1105,8 @@
     },
     "update": {
       "permissions": [
+        "cloudfront:CreateConnectionGroup",
+        "cloudfront:GetConnectionGroup",
         "cloudfront:GetDistribution",
         "cloudfront:GetDistributionConfig",
         "cloudfront:UpdateDistribution",
@@ -1084,9 +1151,15 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": false,
-    "tagOnCreate": false,
-    "tagUpdatable": false,
-    "taggable": false
+    "permissions": [
+      "cloudfront:TagResource",
+      "cloudfront:ListTagsForResource",
+      "cloudfront:UntagResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
   },
   "typeName": "AWS::CloudFront::Distribution"
 }

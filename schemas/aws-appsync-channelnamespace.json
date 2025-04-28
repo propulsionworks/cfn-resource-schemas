@@ -1,6 +1,6 @@
 {
   "$id": "aws-appsync-channelnamespace",
-  "$integrity": "sha512-W8sJv6SQcKy6LxdSko3Wxq4tRcBFw5ThTWfDkD8ISMgOFgrMtKO8+hsi0dD7czcdl+dIgsokkdiLRDbXgFikNw==",
+  "$integrity": "sha512-ns9J7yd3KH2bDpipS99pColCc4sfWQU6bYpI9W3HXzpFwY1zf/GAH3NT4Ta4N/3oGnDGL3XmV2aCWhBke/p00Q==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ApiId",
@@ -44,6 +44,81 @@
       "maxLength": 32768,
       "minLength": 1,
       "type": "string"
+    },
+    "HandlerBehavior": {
+      "description": "Integration behavior for a handler configuration.",
+      "enum": [
+        "CODE",
+        "DIRECT"
+      ],
+      "type": "string"
+    },
+    "HandlerConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "Behavior": {
+          "$ref": "#/definitions/HandlerBehavior"
+        },
+        "Integration": {
+          "$ref": "#/definitions/Integration"
+        }
+      },
+      "required": [
+        "Behavior",
+        "Integration"
+      ],
+      "type": "object"
+    },
+    "HandlerConfigs": {
+      "additionalProperties": false,
+      "properties": {
+        "OnPublish": {
+          "$ref": "#/definitions/HandlerConfig"
+        },
+        "OnSubscribe": {
+          "$ref": "#/definitions/HandlerConfig"
+        }
+      },
+      "type": "object"
+    },
+    "Integration": {
+      "additionalProperties": false,
+      "properties": {
+        "DataSourceName": {
+          "description": "Data source to invoke for this integration.",
+          "maxLength": 512,
+          "minLength": 1,
+          "pattern": "([_A-Za-z][_0-9A-Za-z]{0,511})?",
+          "type": "string"
+        },
+        "LambdaConfig": {
+          "$ref": "#/definitions/LambdaConfig"
+        }
+      },
+      "required": [
+        "DataSourceName"
+      ],
+      "type": "object"
+    },
+    "InvokeType": {
+      "description": "Invocation type for direct lambda integrations.",
+      "enum": [
+        "REQUEST_RESPONSE",
+        "EVENT"
+      ],
+      "type": "string"
+    },
+    "LambdaConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "InvokeType": {
+          "$ref": "#/definitions/InvokeType"
+        }
+      },
+      "required": [
+        "InvokeType"
+      ],
+      "type": "object"
     },
     "Namespace": {
       "description": "Namespace indentifier.",
@@ -151,6 +226,9 @@
     "CodeS3Location": {
       "description": "The Amazon S3 endpoint where the code is located.",
       "type": "string"
+    },
+    "HandlerConfigs": {
+      "$ref": "#/definitions/HandlerConfigs"
     },
     "Name": {
       "$ref": "#/definitions/Namespace"

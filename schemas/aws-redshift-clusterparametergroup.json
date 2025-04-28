@@ -1,6 +1,6 @@
 {
   "$id": "aws-redshift-clusterparametergroup",
-  "$integrity": "sha512-udZ8s38icxjA9GlNl2oW8isX/epFbTzZ1HQoxY+bPOTStnQMQUMIYt4n8zEYzFaxFzf9vN2nHOPo8DiHrECLfA==",
+  "$integrity": "sha512-z00Y4XPQkERuMqS6AILdfi+H59De0DQKh10Sn7AaUf3aDSPkYYv7U2XwWqDtnqFXQsJYNwcwU8Zcm2yep8XVIw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ParameterGroupName",
@@ -75,6 +75,7 @@
     "delete": {
       "permissions": [
         "redshift:DescribeTags",
+        "redshift:DeleteTags",
         "redshift:DescribeClusterParameterGroups",
         "redshift:DeleteClusterParameterGroup",
         "redshift:DescribeClusterParameters",
@@ -149,12 +150,16 @@
     "ParameterGroupFamily"
   ],
   "tagging": {
+    "cloudFormationSystemTags": false,
+    "permissions": [
+      "redshift:DescribeTags",
+      "redshift:CreateTags",
+      "redshift:DeleteTags"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::Redshift::ClusterParameterGroup",
-  "writeOnlyProperties": [
-    "/properties/Tags",
-    "/properties/Tags/*/Key",
-    "/properties/Tags/*/Value"
-  ]
+  "typeName": "AWS::Redshift::ClusterParameterGroup"
 }

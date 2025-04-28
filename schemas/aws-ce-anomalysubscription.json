@@ -1,6 +1,6 @@
 {
   "$id": "aws-ce-anomalysubscription",
-  "$integrity": "sha512-TFi4IyhQxwBCeM5T2og0Uwn5lpSdRsVGSQPf+GB6kTSpCwG4GJeIxj/Sfzsz/QeZXGglwPSAXU465OSUhaTiIw==",
+  "$integrity": "sha512-xjTfLAlfnDv/YdeK69w0T/V4vRICBKlPkN+BKMnNLxzu8HMNYqe+9+e6dgiTXMSsa95unNwK1mndHEA6jxAg1w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ResourceTags"
@@ -84,7 +84,8 @@
     },
     "read": {
       "permissions": [
-        "ce:GetAnomalySubscriptions"
+        "ce:GetAnomalySubscriptions",
+        "ce:ListTagsForResource"
       ]
     },
     "update": {
@@ -170,8 +171,15 @@
     "SubscriptionName"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
-  "typeName": "AWS::CE::AnomalySubscription",
-  "writeOnlyProperties": [
-    "/properties/ResourceTags"
-  ]
+  "tagging": {
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "ce:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/ResourceTags",
+    "tagUpdatable": false,
+    "taggable": true
+  },
+  "typeName": "AWS::CE::AnomalySubscription"
 }

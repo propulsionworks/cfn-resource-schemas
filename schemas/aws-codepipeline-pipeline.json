@@ -1,6 +1,6 @@
 {
   "$id": "aws-codepipeline-pipeline",
-  "$integrity": "sha512-5EPn7uVrs1mWmhTkiPbPOo5hgeefEo6+ncvSWqVifrofByeerRJPM9NJb0uvtQ7Zypnom1KWffcLKXkX0tbQAQ==",
+  "$integrity": "sha512-XPa4h+mR0MUW0WE9+w9bHR+o57QMmNZAmriyNYLE95Lv4GtmLZjwPyqY88/TZhvKCcjINY13TZ00ork1bNYW3A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -24,6 +24,14 @@
         "Configuration": {
           "description": "The action's configuration. These are key-value pairs that specify input values for an action.",
           "type": "object"
+        },
+        "EnvironmentVariables": {
+          "description": "The list of environment variables that are input to a compute based action.",
+          "items": {
+            "$ref": "#/definitions/EnvironmentVariable"
+          },
+          "type": "array",
+          "uniqueItems": true
         },
         "InputArtifacts": {
           "items": {
@@ -230,6 +238,25 @@
       "required": [
         "Type",
         "Id"
+      ],
+      "type": "object"
+    },
+    "EnvironmentVariable": {
+      "additionalProperties": false,
+      "description": "Represents information about the environment variable of an action.",
+      "properties": {
+        "Name": {
+          "description": "The name of the environment variable.",
+          "type": "string"
+        },
+        "Value": {
+          "description": "The value of the environment variable.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Name",
+        "Value"
       ],
       "type": "object"
     },

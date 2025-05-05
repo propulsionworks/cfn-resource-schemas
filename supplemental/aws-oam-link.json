@@ -14,7 +14,7 @@
     "LinkConfiguration": {
       "properties": {
         "LogGroupConfiguration": {
-          "description": "Use this structure to filter which log groups are to send log events from the source account to the monitoring account.",
+          "description": "Use this structure to filter which log groups are to share log events from this source account to the monitoring account.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-oam-link-linkconfiguration.html#cfn-oam-link-linkconfiguration-loggroupconfiguration"
         },
         "MetricConfiguration": {
@@ -28,9 +28,11 @@
     "LinkFilter": {
       "properties": {
         "Filter": {
+          "description": "When used in `MetricConfiguration` this field specifies which metric namespaces are to be shared with the monitoring account\n\nWhen used in `LogGroupConfiguration` this field specifies which log groups are to share their log events with the monitoring account. Use the term `LogGroupName` and one or more of the following operands.\n\nUse single quotation marks (') around log group names and metric namespaces.\n\nThe matching of log group names and metric namespaces is case sensitive. Each filter has a limit of five conditional operands. Conditional operands are `AND` and `OR` .\n\n- `=` and `!=`\n- `AND`\n- `OR`\n- `LIKE` and `NOT LIKE` . These can be used only as prefix searches. Include a `%` at the end of the string that you want to search for and include.\n- `IN` and `NOT IN` , using parentheses `( )`\n\nExamples:\n\n- `Namespace NOT LIKE 'AWS/%'` includes only namespaces that don't start with `AWS/` , such as custom namespaces.\n- `Namespace IN ('AWS/EC2', 'AWS/ELB', 'AWS/S3')` includes only the metrics in the EC2, Elastic Load Balancing , and Amazon S3 namespaces.\n- `Namespace = 'AWS/EC2' OR Namespace NOT LIKE 'AWS/%'` includes only the EC2 namespace and your custom namespaces.\n- `LogGroupName IN ('This-Log-Group', 'Other-Log-Group')` includes only the log groups with names `This-Log-Group` and `Other-Log-Group` .\n- `LogGroupName NOT IN ('Private-Log-Group', 'Private-Log-Group-2')` includes all log groups except the log groups with names `Private-Log-Group` and `Private-Log-Group-2` .\n- `LogGroupName LIKE 'aws/lambda/%' OR LogGroupName LIKE 'AWSLogs%'` includes all log groups that have names that start with `aws/lambda/` or `AWSLogs` .\n\n> If you are updating a link that uses filters, you can specify `*` as the only value for the `filter` parameter to delete the filter and share all log groups with the monitoring account.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-oam-link-linkfilter.html#cfn-oam-link-linkfilter-filter"
         }
       },
+      "description": "When used in `MetricConfiguration` this field specifies which metric namespaces are to be shared with the monitoring account\n\nWhen used in `LogGroupConfiguration` this field specifies which log groups are to share their log events with the monitoring account. Use the term `LogGroupName` and one or more of the following operands.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-oam-link-linkfilter.html"
     },
     "ResourceType": {
@@ -48,7 +50,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-oam-link.html#cfn-oam-link-label"
     },
     "LabelTemplate": {
-      "description": "Specify a friendly human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.\n\nYou can include the following variables in your template:\n\n- `$AccountName` is the name of the account\n- `$AccountEmail` is a globally-unique email address, which includes the email domain, such as `mariagarcia@example.com`\n- `$AccountEmailNoDomain` is an email address without the domain name, such as `mariagarcia`",
+      "description": "Specify a friendly human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.\n\nYou can include the following variables in your template:\n\n- `$AccountName` is the name of the account\n- `$AccountEmail` is a globally-unique email address, which includes the email domain, such as `mariagarcia@example.com`\n- `$AccountEmailNoDomain` is an email address without the domain name, such as `mariagarcia`\n\n> In the  and  Regions, the only supported option is to use custom labels, and the `$AccountName` , `$AccountEmail` , and `$AccountEmailNoDomain` variables all resolve as *account-id* instead of the specified variable.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-oam-link.html#cfn-oam-link-labeltemplate"
     },
     "LinkConfiguration": {
@@ -56,7 +58,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-oam-link.html#cfn-oam-link-linkconfiguration"
     },
     "ResourceTypes": {
-      "description": "An array of strings that define which types of data that the source account shares with the monitoring account. Valid values are `AWS::CloudWatch::Metric | AWS::Logs::LogGroup | AWS::XRay::Trace | AWS::ApplicationInsights::Application | AWS::InternetMonitor::Monitor | AWS::ApplicationSignals::Service | AWS::ApplicationSignals::ServiceLevelObjective` .",
+      "description": "An array of strings that define which types of data that the source account shares with the monitoring account. Valid values are `AWS::CloudWatch::Metric | AWS::Logs::LogGroup | AWS::XRay::Trace | AWS::ApplicationInsights::Application | AWS::InternetMonitor::Monitor` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-oam-link.html#cfn-oam-link-resourcetypes"
     },
     "SinkIdentifier": {

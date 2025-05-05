@@ -1,6 +1,6 @@
 {
   "$id": "aws-cassandra-table",
-  "$integrity": "sha512-1UXT/HP41sDwJ7Y/xp7NycbXFQ8HmUb5X9f1IUjaDC/Hfr0K2uXN2qHr0o1LOuBHz4agCAZlvzTmBylEMXm9zg==",
+  "$integrity": "sha512-KdFZayeWk83vFJz97pkfNp28JYCbnR4pt3/bJtDCucAKP+tBJaJuZJc+8i316M4QO8QfHid/FgYETUsEVKZ8sQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/KeyspaceName",
@@ -414,6 +414,11 @@
       "type": "array",
       "uniqueItems": true
     }
+  },
+  "propertyTransform": {
+    "/properties/ClusteringKeyColumns/*/Column/ColumnType": "$lowercase(ColumnType)",
+    "/properties/PartitionKeyColumns/*/ColumnType": "$lowercase(ColumnType)",
+    "/properties/RegularColumns/*/ColumnType": "$lowercase(ColumnType)"
   },
   "required": [
     "KeyspaceName",

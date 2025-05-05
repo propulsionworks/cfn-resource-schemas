@@ -1,6 +1,6 @@
 {
   "$id": "aws-cognito-userpoolclient",
-  "$integrity": "sha512-VXKlCErdykeNT4P/grnMxQ3G39fkqAyDXYf0vzt28XaRHK2ZF58ldgIQwr+86HH5SadctPECZbK+eNarwhaAug==",
+  "$integrity": "sha512-MjKyV0ezcRIH6CL6IG8vQrdWS+qd8vZOKy1kGHwEtTQtPGthrNhNFAsZIS4UH9ze7EXZWYix2CEMzpbCvEyB7w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/GenerateSecret",
@@ -24,6 +24,23 @@
         },
         "UserDataShared": {
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "RefreshTokenRotation": {
+      "properties": {
+        "Feature": {
+          "enum": [
+            "ENABLED",
+            "DISABLED"
+          ],
+          "type": "string"
+        },
+        "RetryGracePeriodSeconds": {
+          "maximum": 60,
+          "minimum": 0,
+          "type": "integer"
         }
       },
       "type": "object"
@@ -182,6 +199,9 @@
         "type": "string"
       },
       "type": "array"
+    },
+    "RefreshTokenRotation": {
+      "$ref": "#/definitions/RefreshTokenRotation"
     },
     "RefreshTokenValidity": {
       "maximum": 315360000,

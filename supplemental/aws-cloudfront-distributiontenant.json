@@ -2,85 +2,114 @@
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#aws-resource-cloudfront-distributiontenant-return-values",
     "properties": {
-      "Id": {},
-      "Arn": {},
+      "Id": {
+        "description": "The ID of the distribution tenant."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the distribution tenant."
+      },
       "DomainResults": {},
       "ETag": {
-        "description": "A complex type that contains `Tag` key and `Tag` value."
+        "description": "The current version of the distribution tenant."
       },
-      "Status": {},
-      "CreatedTime": {},
-      "LastModifiedTime": {}
+      "Status": {
+        "description": "The status of the distribution tenant."
+      },
+      "CreatedTime": {
+        "description": "The date and time when the distribution tenant was created."
+      },
+      "LastModifiedTime": {
+        "description": "The date and time when the distribution tenant was updated."
+      }
     }
   },
   "definitions": {
     "Certificate": {
       "properties": {
         "Arn": {
+          "description": "The Amazon Resource Name (ARN) of the ACM certificate.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-certificate.html#cfn-cloudfront-distributiontenant-certificate-arn"
         }
       },
+      "description": "The AWS Certificate Manager (ACM) certificate associated with your distribution.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-certificate.html"
     },
     "Customizations": {
       "properties": {
         "Certificate": {
+          "description": "The AWS Certificate Manager (ACM) certificate.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-customizations.html#cfn-cloudfront-distributiontenant-customizations-certificate"
         },
         "GeoRestrictions": {
+          "description": "The geographic restrictions.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-customizations.html#cfn-cloudfront-distributiontenant-customizations-georestrictions"
         },
         "WebAcl": {
+          "description": "The AWS WAF web ACL.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-customizations.html#cfn-cloudfront-distributiontenant-customizations-webacl"
         }
       },
+      "description": "Customizations for the distribution tenant. For each distribution tenant, you can specify the geographic restrictions, and the Amazon Resource Names (ARNs) for the ACM certificate and AWS WAF web ACL. These are specific values that you can override or disable from the multi-tenant distribution that was used to create the distribution tenant.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-customizations.html"
     },
     "DomainResult": {
       "properties": {
         "Domain": {
+          "description": "The specified domain.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-domainresult.html#cfn-cloudfront-distributiontenant-domainresult-domain"
         },
         "Status": {
+          "description": "Whether the domain is active or inactive.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-domainresult.html#cfn-cloudfront-distributiontenant-domainresult-status"
         }
       },
+      "description": "The details about the domain result.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-domainresult.html"
     },
     "GeoRestrictionCustomization": {
       "properties": {
         "Locations": {
+          "description": "The locations for geographic restrictions.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-georestrictioncustomization.html#cfn-cloudfront-distributiontenant-georestrictioncustomization-locations"
         },
         "RestrictionType": {
+          "description": "The method that you want to use to restrict distribution of your content by country:\n\n- `none` : No geographic restriction is enabled, meaning access to content is not restricted by client geo location.\n- `blacklist` : The `Location` elements specify the countries in which you don't want CloudFront to distribute your content.\n- `whitelist` : The `Location` elements specify the countries in which you want CloudFront to distribute your content.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-georestrictioncustomization.html#cfn-cloudfront-distributiontenant-georestrictioncustomization-restrictiontype"
         }
       },
+      "description": "The customizations that you specified for the distribution tenant for geographic restrictions.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-georestrictioncustomization.html"
     },
     "ManagedCertificateRequest": {
       "properties": {
         "CertificateTransparencyLoggingPreference": {
+          "description": "You can opt out of certificate transparency logging by specifying the `disabled` option. Opt in by specifying `enabled` . For more information, see [Certificate Transparency Logging](https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency) in the *AWS Certificate Manager User Guide* .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-managedcertificaterequest.html#cfn-cloudfront-distributiontenant-managedcertificaterequest-certificatetransparencyloggingpreference"
         },
         "PrimaryDomainName": {
+          "description": "The primary domain name associated with the CloudFront managed ACM certificate.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-managedcertificaterequest.html#cfn-cloudfront-distributiontenant-managedcertificaterequest-primarydomainname"
         },
         "ValidationTokenHost": {
+          "description": "Specify how the HTTP validation token will be served when requesting the CloudFront managed ACM certificate.\n\n- For `cloudfront` , CloudFront will automatically serve the validation token. Choose this mode if you can point the domain's DNS to CloudFront immediately.\n- For `self-hosted` , you serve the validation token from your existing infrastructure. Choose this mode when you need to maintain current traffic flow while your certificate is being issued. You can place the validation token at the well-known path on your existing web server, wait for ACM to validate and issue the certificate, and then update your DNS to point to CloudFront.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-managedcertificaterequest.html#cfn-cloudfront-distributiontenant-managedcertificaterequest-validationtokenhost"
         }
       },
+      "description": "An object that represents the request for the Amazon CloudFront managed ACM certificate.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-managedcertificaterequest.html"
     },
     "Parameter": {
       "properties": {
         "Name": {
+          "description": "The parameter name.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-parameter.html#cfn-cloudfront-distributiontenant-parameter-name"
         },
         "Value": {
+          "description": "The parameter value.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-parameter.html#cfn-cloudfront-distributiontenant-parameter-value"
         }
       },
+      "description": "A list of parameter values to add to the resource. A parameter is specified as a key-value pair. A valid parameter value must exist for any parameter that is marked as required in the multi-tenant distribution.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-parameter.html"
     },
     "Tag": {
@@ -97,44 +126,51 @@
     "WebAclCustomization": {
       "properties": {
         "Action": {
+          "description": "The action for the AWS WAF web ACL customization. You can specify `override` to specify a separate AWS WAF web ACL for the distribution tenant. If you specify `disable` , the distribution tenant won't have AWS WAF web ACL protections and won't inherit from the multi-tenant distribution.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-webaclcustomization.html#cfn-cloudfront-distributiontenant-webaclcustomization-action"
         },
         "Arn": {
+          "description": "The Amazon Resource Name (ARN) of the AWS WAF web ACL.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-webaclcustomization.html#cfn-cloudfront-distributiontenant-webaclcustomization-arn"
         }
       },
+      "description": "The AWS WAF web ACL customization specified for the distribution tenant.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distributiontenant-webaclcustomization.html"
     }
   },
-  "description": "Resource Type definition for AWS::CloudFront::DistributionTenant",
+  "description": "The distribution tenant.",
   "id": "aws-cloudfront-distributiontenant",
   "properties": {
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-arn"
     },
     "ConnectionGroupId": {
+      "description": "The ID of the connection group for the distribution tenant. If you don't specify a connection group, CloudFront uses the default connection group.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-connectiongroupid"
     },
     "CreatedTime": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-createdtime"
     },
     "Customizations": {
+      "description": "Customizations for the distribution tenant. For each distribution tenant, you can specify the geographic restrictions, and the Amazon Resource Names (ARNs) for the ACM certificate and AWS WAF web ACL. These are specific values that you can override or disable from the multi-tenant distribution that was used to create the distribution tenant.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-customizations"
     },
     "DistributionId": {
-      "description": "The distribution's identifier. For example: `E1U5RQF7T870K0` .",
+      "description": "The ID of the multi-tenant distribution.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-distributionid"
     },
     "DomainResults": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-domainresults"
     },
     "Domains": {
+      "description": "The domains associated with the distribution tenant.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-domains"
     },
     "ETag": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-etag"
     },
     "Enabled": {
+      "description": "Indicates whether the distribution tenant is in an enabled state. If disabled, the distribution tenant won't serve traffic.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-enabled"
     },
     "Id": {
@@ -144,12 +180,15 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-lastmodifiedtime"
     },
     "ManagedCertificateRequest": {
+      "description": "An object that represents the request for the Amazon CloudFront managed ACM certificate.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-managedcertificaterequest"
     },
     "Name": {
+      "description": "The name of the distribution tenant.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-name"
     },
     "Parameters": {
+      "description": "A list of parameter values to add to the resource. A parameter is specified as a key-value pair. A valid parameter value must exist for any parameter that is marked as required in the multi-tenant distribution.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distributiontenant.html#cfn-cloudfront-distributiontenant-parameters"
     },
     "Status": {

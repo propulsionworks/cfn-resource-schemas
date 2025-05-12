@@ -1,10 +1,12 @@
 {
   "$id": "aws-ecs-service",
-  "$integrity": "sha512-CnufjQBsS2kPOoBQfwXGP4x3L/L7SnbZ1YmAl5jXRQYHPhwhvQh59jscrtA/Qcm2MG1BMQzDK+eCHZ8IxWrksQ==",
+  "$integrity": "sha512-2utbgWkZMOZ0tVowctd8FQws+tkxA2UEKqM7JdyZ7d2rG/UOn152RACrr965j58BqJKGXH13zCEflYsgE1GZsg==",
   "additionalProperties": false,
+  "conditionalCreateOnlyProperties": [
+    "/properties/DeploymentController"
+  ],
   "createOnlyProperties": [
     "/properties/Cluster",
-    "/properties/DeploymentController",
     "/properties/LaunchType",
     "/properties/Role",
     "/properties/SchedulingStrategy",
@@ -458,6 +460,10 @@
         },
         "Throughput": {
           "description": "The throughput to provision for a volume, in MiB/s, with a maximum of 1,000 MiB/s. This parameter maps 1:1 with the ``Throughput`` parameter of the [CreateVolume API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVolume.html) in the *Amazon EC2 API Reference*.\n  This parameter is only supported for the ``gp3`` volume type.",
+          "type": "integer"
+        },
+        "VolumeInitializationRate": {
+          "description": "",
           "type": "integer"
         },
         "VolumeType": {

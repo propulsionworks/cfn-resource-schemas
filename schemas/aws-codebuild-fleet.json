@@ -1,6 +1,6 @@
 {
   "$id": "aws-codebuild-fleet",
-  "$integrity": "sha512-r58S1IaPBpl5r5ikShgGh9VbBfpLIfWTq6jvZzfxAAXFTBBdoq8jOFhLE1ESvcYlVeTpJ/kpnM1WUuce/1G7Vw==",
+  "$integrity": "sha512-IC8MhN4orYTegw03JHIzdL6IlkRnfrLKyx4eZI4RRG5oY8LN7//x+U9iPi3h80+7ksWCQQiIc2GNv6coiE8l+A==",
   "additionalProperties": false,
   "definitions": {
     "ComputeConfiguration": {
@@ -8,6 +8,9 @@
       "properties": {
         "disk": {
           "type": "integer"
+        },
+        "instanceType": {
+          "type": "string"
         },
         "machineType": {
           "enum": [
@@ -212,7 +215,8 @@
         "BUILD_GENERAL1_LARGE",
         "BUILD_GENERAL1_XLARGE",
         "BUILD_GENERAL1_2XLARGE",
-        "ATTRIBUTE_BASED_COMPUTE"
+        "ATTRIBUTE_BASED_COMPUTE",
+        "CUSTOM_INSTANCE_TYPE"
       ],
       "type": "string"
     },
@@ -272,6 +276,10 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": true,
+    "permissions": [
+      "codebuild:CreateFleet",
+      "codebuild:UpdateFleet"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,

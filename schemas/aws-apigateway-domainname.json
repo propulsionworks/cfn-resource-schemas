@@ -1,6 +1,6 @@
 {
   "$id": "aws-apigateway-domainname",
-  "$integrity": "sha512-ooynvQYsI9S81rpaVSPI6XqE4bUPtyYCRSSlRvQM23Oy2T88cvPiKspQhDP6zHaCcXq55ux0lcrc8UVKnJl2LQ==",
+  "$integrity": "sha512-DbcTJYS+b/iDPf2cYdQp8xbIC+eudG9blnseBOkUB6FSIxZtCxJ//82LnebdNC8LiIqvoIiYPsNJ82UOpbqjZw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainName"
@@ -8,11 +8,14 @@
   "definitions": {
     "EndpointConfiguration": {
       "additionalProperties": false,
+      "description": "The ``EndpointConfiguration`` property type specifies the endpoint types of an Amazon API Gateway domain name.\n ``EndpointConfiguration`` is a property of the [AWS::ApiGateway::DomainName](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-domainname.html) resource.",
       "properties": {
         "IpAddressType": {
+          "description": "",
           "type": "string"
         },
         "Types": {
+          "description": "",
           "items": {
             "type": "string"
           },
@@ -23,11 +26,14 @@
     },
     "MutualTlsAuthentication": {
       "additionalProperties": false,
+      "description": "",
       "properties": {
         "TruststoreUri": {
+          "description": "",
           "type": "string"
         },
         "TruststoreVersion": {
+          "description": "",
           "type": "string"
         }
       },
@@ -35,6 +41,7 @@
     },
     "Tag": {
       "additionalProperties": false,
+      "description": "",
       "properties": {
         "Key": {
           "type": "string"
@@ -46,7 +53,7 @@
       "type": "object"
     }
   },
-  "description": "Resource Type definition for AWS::ApiGateway::DomainName.",
+  "description": "The ``AWS::ApiGateway::DomainName`` resource specifies a custom domain name for your API in API Gateway.\n You can use a custom domain name to provide a URL that's more intuitive and easier to recall. For more information about using custom domain names, see [Set up Custom Domain Name for an API in API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html) in the *API Gateway Developer Guide*.",
   "handlers": {
     "create": {
       "permissions": [
@@ -84,39 +91,55 @@
   ],
   "properties": {
     "CertificateArn": {
+      "description": "",
       "type": "string"
     },
     "DistributionDomainName": {
+      "description": "",
       "type": "string"
     },
     "DistributionHostedZoneId": {
+      "description": "",
       "type": "string"
     },
     "DomainName": {
+      "description": "",
+      "type": "string"
+    },
+    "DomainNameArn": {
+      "description": "",
       "type": "string"
     },
     "EndpointConfiguration": {
-      "$ref": "#/definitions/EndpointConfiguration"
+      "$ref": "#/definitions/EndpointConfiguration",
+      "description": ""
     },
     "MutualTlsAuthentication": {
-      "$ref": "#/definitions/MutualTlsAuthentication"
+      "$ref": "#/definitions/MutualTlsAuthentication",
+      "description": ""
     },
     "OwnershipVerificationCertificateArn": {
+      "description": "The ARN of the public certificate issued by ACM to validate ownership of your custom domain. Only required when configuring mutual TLS and using an ACM imported or private CA certificate ARN as the RegionalCertificateArn.",
       "type": "string"
     },
     "RegionalCertificateArn": {
+      "description": "",
       "type": "string"
     },
     "RegionalDomainName": {
+      "description": "",
       "type": "string"
     },
     "RegionalHostedZoneId": {
+      "description": "",
       "type": "string"
     },
     "SecurityPolicy": {
+      "description": "",
       "type": "string"
     },
     "Tags": {
+      "description": "",
       "items": {
         "$ref": "#/definitions/Tag"
       },
@@ -124,6 +147,7 @@
     }
   },
   "readOnlyProperties": [
+    "/properties/DomainNameArn",
     "/properties/RegionalHostedZoneId",
     "/properties/DistributionDomainName",
     "/properties/RegionalDomainName",

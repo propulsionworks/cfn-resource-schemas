@@ -1,8 +1,28 @@
 {
   "$id": "aws-verifiedpermissions-policystore",
-  "$integrity": "sha512-vE4QAAO1NvnOsLt9GAJehTnB3lVJuZ8E9Dp7XJnOdW4TWHK4S3+Ry9aHwFhWgoah0ZLHN53KrXsyqa4FpCIatQ==",
+  "$integrity": "sha512-dR3elF9LvumaYM5u3tKoKiiurO5iTAvqX/7sWP719wvkEcJPF4kyWVWxTdFp1OZTiawkgjUn/rGEdLOCdZb2Fg==",
   "additionalProperties": false,
   "definitions": {
+    "DeletionMode": {
+      "default": "DISABLED",
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "type": "string"
+    },
+    "DeletionProtection": {
+      "additionalProperties": false,
+      "properties": {
+        "Mode": {
+          "$ref": "#/definitions/DeletionMode"
+        }
+      },
+      "required": [
+        "Mode"
+      ],
+      "type": "object"
+    },
     "SchemaDefinition": {
       "additionalProperties": false,
       "properties": {
@@ -101,6 +121,9 @@
       "minLength": 1,
       "pattern": "^arn:[^:]*:[^:]*:[^:]*:[^:]*:.*$",
       "type": "string"
+    },
+    "DeletionProtection": {
+      "$ref": "#/definitions/DeletionProtection"
     },
     "Description": {
       "maxLength": 150,

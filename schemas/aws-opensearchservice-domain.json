@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchservice-domain",
-  "$integrity": "sha512-o+RENQlbEsR6wxzX3XmWCQ2i/e9pCBZ1jU463dXK6zHeRtAZ/rC9gdmQN05bsb/ekUMrY1tcOdeOXB7yco/aiA==",
+  "$integrity": "sha512-pgGu01BFndIlXFsUTCz1m2incJhvS8BMfdS9k8TxxsnQDpxX35o5KOkCLc5idso0VSQ8pEtIWNvyHn8E/Kwu6Q==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/EncryptionAtRestOptions/properties",
@@ -491,7 +491,8 @@
         "es:CreateDomain",
         "es:DescribeDomain",
         "es:AddTags",
-        "es:ListTags"
+        "es:ListTags",
+        "es:DescribeDomainChangeProgress"
       ]
     },
     "delete": {
@@ -641,6 +642,18 @@
     "/properties/IdentityCenterOptions/IdentityStoreId"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
+  "tagging": {
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "es:AddTags",
+      "es:RemoveTags",
+      "es:ListTags"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::OpenSearchService::Domain",
   "writeOnlyProperties": [
     "/properties/AdvancedSecurityOptions/MasterUserOptions",

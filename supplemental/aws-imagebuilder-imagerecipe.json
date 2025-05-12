@@ -124,7 +124,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagerecipe-systemsmanageragent.html"
     }
   },
-  "description": "An Image Builder image recipe is a document that defines the base image and the components to be applied to the base image to produce the desired configuration for the output image. You can use an image recipe to duplicate builds. Image Builder image recipes can be shared, branched, and edited using the console wizard, the AWS CLI , or the API. You can use image recipes with your version control software to maintain shareable versioned image recipes.",
+  "description": "Creates a new image recipe. Image recipes define how images are configured, tested, and assessed.",
   "id": "aws-imagebuilder-imagerecipe",
   "properties": {
     "AdditionalInstanceConfiguration": {
@@ -139,7 +139,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagerecipe.html#cfn-imagebuilder-imagerecipe-blockdevicemappings"
     },
     "Components": {
-      "description": "The components of the image recipe. Components are orchestration documents that define a sequence of steps for downloading, installing, configuring, and testing software packages. They also define validation and security hardening steps. A component is defined using a YAML document format.",
+      "description": "The components that are included in the image recipe. Recipes require a minimum of one build component, and can have a maximum of 20 build and test components in any combination.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagerecipe.html#cfn-imagebuilder-imagerecipe-components"
     },
     "Description": {
@@ -151,7 +151,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagerecipe.html#cfn-imagebuilder-imagerecipe-name"
     },
     "ParentImage": {
-      "description": "The parent image of the image recipe. The string must be either an Image ARN or an AMI ID.",
+      "description": "The base image for customizations specified in the image recipe. You can specify the parent image using one of the following options:\n\n- AMI ID\n- Image Builder image Amazon Resource Name (ARN)\n- AWS Systems Manager (SSM) Parameter Store Parameter, prefixed by `ssm:` , followed by the parameter name or ARN.\n- AWS Marketplace product ID",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagerecipe.html#cfn-imagebuilder-imagerecipe-parentimage"
     },
     "Tags": {
@@ -159,7 +159,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagerecipe.html#cfn-imagebuilder-imagerecipe-tags"
     },
     "Version": {
-      "description": "The semantic version of the image recipe.",
+      "description": "The version of the image recipe.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagerecipe.html#cfn-imagebuilder-imagerecipe-version"
     },
     "WorkingDirectory": {

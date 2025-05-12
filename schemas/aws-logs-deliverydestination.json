@@ -1,6 +1,6 @@
 {
   "$id": "aws-logs-deliverydestination",
-  "$integrity": "sha512-sE4oHiYZ3wIuujHe+NtQ4Kekkj+QV2qmQRipcyRoqO2i+ZZP+i0VDG+RpYTO+7TvDDJiACTgQCt/+dnE9Szgng==",
+  "$integrity": "sha512-U/UCA+j1U98fRhbtN242tEvvu6KKPt/Tfi6X9fp60zbpJ7NB1T2sn+A6sHzETjiRMCc8gEigzxB/nEPZkMesBg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -26,15 +26,9 @@
         },
         "DeliveryDestinationPolicy": {
           "description": "The contents of the policy attached to the delivery destination",
-          "maxLength": 51200,
-          "minLength": 1,
-          "type": "string"
+          "type": "object"
         }
       },
-      "required": [
-        "DeliveryDestinationName",
-        "DeliveryDestinationPolicy"
-      ],
       "type": "object"
     },
     "Tag": {
@@ -115,10 +109,8 @@
       "description": "The Amazon Resource Name (ARN) that uniquely identifies this delivery destination."
     },
     "DeliveryDestinationPolicy": {
+      "$ref": "#/definitions/DestinationPolicy",
       "description": "IAM policy that grants permissions to CloudWatch Logs to deliver logs cross-account to a specified destination in this account.\n\nThe policy must be in JSON string format.\n\nLength Constraints: Maximum length of 51200",
-      "items": {
-        "$ref": "#/definitions/DestinationPolicy"
-      },
       "type": "object"
     },
     "DeliveryDestinationType": {

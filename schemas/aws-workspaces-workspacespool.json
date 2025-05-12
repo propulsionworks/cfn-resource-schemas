@@ -1,6 +1,6 @@
 {
   "$id": "aws-workspaces-workspacespool",
-  "$integrity": "sha512-D5Hd+3l/37G+7PZvPbSPklYZKfNm5iMkG+sr1leTgkiZBAYMP/L3dB2Cf8UdfXEwxufbk6AiPTox50cJxwqDNA==",
+  "$integrity": "sha512-/QAgSupLdiF0LvynSkjaw8dQE+tQoxK/HUUWa4xuKZ/wzAjMVSyzAzer8cTjU1LT4g3+jbT0n7vx9H8rzNy5Rg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/PoolName"
@@ -42,6 +42,13 @@
         "DesiredUserSessions"
       ],
       "type": "object"
+    },
+    "RunningMode": {
+      "enum": [
+        "ALWAYS_ON",
+        "AUTO_STOP"
+      ],
+      "type": "string"
     },
     "Tag": {
       "additionalProperties": false,
@@ -165,6 +172,9 @@
     "PoolName": {
       "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$",
       "type": "string"
+    },
+    "RunningMode": {
+      "$ref": "#/definitions/RunningMode"
     },
     "Tags": {
       "insertionOrder": false,

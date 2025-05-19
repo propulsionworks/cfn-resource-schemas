@@ -1,14 +1,16 @@
 {
-  "$id": "aws-omics-workflow",
-  "$integrity": "sha512-cp0W5FNRmX4Ql5O0Mr36ppQgCF94RldYRmH93tgticoxpzXL2W8WabADNxO54f6DpwGkdHWm81VRoryxgHK6JQ==",
+  "$id": "aws-omics-workflowversion",
+  "$integrity": "sha512-fB/Xtrb6q5+K5rFDd0xGp7VyX6QiFbY2XPcQ8Z2L/PUggFbkSHIsnz43T6gsC6+cQjf98bPrKmBP9AONnl2JXw==",
   "additionalProperties": false,
   "createOnlyProperties": [
+    "/properties/WorkflowId",
+    "/properties/VersionName",
     "/properties/DefinitionUri",
     "/properties/Engine",
     "/properties/Main",
     "/properties/ParameterTemplate",
-    "/properties/StorageCapacity",
-    "/properties/Accelerators"
+    "/properties/Accelerators",
+    "/properties/WorkflowBucketOwnerId"
   ],
   "definitions": {
     "Accelerators": {
@@ -40,10 +42,6 @@
         }
       },
       "type": "object"
-    },
-    "Uuid": {
-      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
-      "type": "string"
     },
     "WorkflowEngine": {
       "enum": [
@@ -87,7 +85,8 @@
         "ACTIVE",
         "UPDATING",
         "DELETED",
-        "FAILED"
+        "FAILED",
+        "INACTIVE"
       ],
       "maxLength": 64,
       "minLength": 1,
@@ -95,19 +94,22 @@
     },
     "WorkflowType": {
       "enum": [
-        "PRIVATE"
+        "PRIVATE",
+        "READY2RUN"
       ],
       "maxLength": 64,
       "minLength": 1,
       "type": "string"
     }
   },
-  "description": "Definition of AWS::Omics::Workflow Resource Type",
+  "description": "Definition of AWS::Omics::WorkflowVersion Resource Type.",
   "handlers": {
     "create": {
       "permissions": [
         "omics:CreateWorkflow",
         "omics:GetWorkflow",
+        "omics:CreateWorkflowVersion",
+        "omics:GetWorkflowVersion",
         "omics:TagResource",
         "s3:PutObject",
         "s3:GetObject",
@@ -123,24 +125,25 @@
     },
     "delete": {
       "permissions": [
-        "omics:DeleteWorkflow",
-        "omics:GetWorkflow"
+        "omics:DeleteWorkflowVersion",
+        "omics:GetWorkflowVersion"
       ]
     },
     "list": {
       "permissions": [
-        "omics:ListWorkflows"
+        "omics:ListWorkflowVersions"
       ]
     },
     "read": {
       "permissions": [
-        "omics:GetWorkflow"
+        "omics:GetWorkflowVersion",
+        "omics:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
-        "omics:UpdateWorkflow",
-        "omics:GetWorkflow",
+        "omics:UpdateWorkflowVersion",
+        "omics:GetWorkflowVersion",
         "omics:TagResource",
         "omics:ListTagsForResource",
         "omics:UntagResource"
@@ -148,7 +151,7 @@
     }
   },
   "primaryIdentifier": [
-    "/properties/Id"
+    "/properties/Arn"
   ],
   "properties": {
     "Accelerators": {
@@ -179,19 +182,7 @@
     "Engine": {
       "$ref": "#/definitions/WorkflowEngine"
     },
-    "Id": {
-      "maxLength": 18,
-      "minLength": 1,
-      "pattern": "^[0-9]+$",
-      "type": "string"
-    },
     "Main": {
-      "maxLength": 128,
-      "minLength": 1,
-      "pattern": "^[\\p{L}||\\p{M}||\\p{Z}||\\p{S}||\\p{N}||\\p{P}]+$",
-      "type": "string"
-    },
-    "Name": {
       "maxLength": 128,
       "minLength": 1,
       "pattern": "^[\\p{L}||\\p{M}||\\p{Z}||\\p{S}||\\p{N}||\\p{P}]+$",
@@ -218,16 +209,40 @@
       "$ref": "#/definitions/WorkflowType"
     },
     "Uuid": {
-      "$ref": "#/definitions/Uuid"
+      "maxLength": 36,
+      "minLength": 1,
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "type": "string"
+    },
+    "VersionName": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9\\-\\._]*$",
+      "type": "string"
+    },
+    "WorkflowBucketOwnerId": {
+      "maxLength": 12,
+      "minLength": 1,
+      "pattern": "^[0-9]{12}$",
+      "type": "string"
+    },
+    "WorkflowId": {
+      "maxLength": 18,
+      "minLength": 1,
+      "pattern": "^[0-9]+$",
+      "type": "string"
     }
   },
   "readOnlyProperties": [
     "/properties/Arn",
     "/properties/CreationTime",
-    "/properties/Id",
     "/properties/Status",
     "/properties/Type",
     "/properties/Uuid"
+  ],
+  "required": [
+    "WorkflowId",
+    "VersionName"
   ],
   "tagging": {
     "cloudFormationSystemTags": false,
@@ -241,7 +256,7 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::Omics::Workflow",
+  "typeName": "AWS::Omics::WorkflowVersion",
   "writeOnlyProperties": [
     "/properties/DefinitionUri"
   ]

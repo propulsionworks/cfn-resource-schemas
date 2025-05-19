@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-eipassociation",
-  "$integrity": "sha512-27jelcvvLQ2Tu0E01Ai2fbJZaKPgJPGiP6jBC1t8MeqPSHMbZL9/M3lIYm4RqFg6D6Z4LEHX31klPFzekQa9sg==",
+  "$integrity": "sha512-eXx+MseaHZdFCzl1uVjjWIltLli2V77BinnAdPGnk7KmNs3lRaXlzLl01AeKsVcXbNBGDUZPrVvTTO7F1DUORg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AllocationId",
@@ -46,6 +46,20 @@
       "type": "string"
     },
     "EIP": {
+      "anyOf": [
+        {
+          "relationshipRef": {
+            "propertyPath": "/properties/PublicIp",
+            "typeName": "AWS::EC2::EIP"
+          }
+        },
+        {
+          "relationshipRef": {
+            "propertyPath": "/properties/AllocationId",
+            "typeName": "AWS::EC2::EIP"
+          }
+        }
+      ],
       "description": "",
       "type": "string"
     },

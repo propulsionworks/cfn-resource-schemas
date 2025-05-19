@@ -26,6 +26,10 @@
     }
   },
   "definitions": {
+    "AppInstanceType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-appinstancetype.html"
+    },
     "AppLifecycleManagement": {
       "properties": {
         "IdleSettings": {
@@ -45,6 +49,10 @@
         "AppLifecycleManagement": {
           "description": "Settings that are used to configure and manage the lifecycle of CodeEditor applications.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-codeeditorappsettings.html#cfn-sagemaker-domain-codeeditorappsettings-applifecyclemanagement"
+        },
+        "BuiltInLifecycleConfigArn": {
+          "description": "The lifecycle configuration that runs before the default lifecycle configuration.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-codeeditorappsettings.html#cfn-sagemaker-domain-codeeditorappsettings-builtinlifecycleconfigarn"
         },
         "CustomImages": {
           "description": "A list of custom SageMaker images that are configured to run as a Code Editor app.",
@@ -243,6 +251,18 @@
       "description": "The settings for assigning a custom Amazon FSx for Lustre file system to a user profile or space for an Amazon SageMaker Domain.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-fsxlustrefilesystemconfig.html"
     },
+    "HiddenSageMakerImage": {
+      "properties": {
+        "SageMakerImageName": {
+          "description": "The SageMaker image name that you are hiding from the Studio user interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-hiddensagemakerimage.html#cfn-sagemaker-domain-hiddensagemakerimage-sagemakerimagename"
+        },
+        "VersionAliases": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-hiddensagemakerimage.html#cfn-sagemaker-domain-hiddensagemakerimage-versionaliases"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-hiddensagemakerimage.html"
+    },
     "IdleSettings": {
       "properties": {
         "IdleTimeoutInMinutes": {
@@ -274,6 +294,10 @@
         "AppLifecycleManagement": {
           "description": "Indicates whether idle shutdown is activated for JupyterLab applications.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterlabappsettings.html#cfn-sagemaker-domain-jupyterlabappsettings-applifecyclemanagement"
+        },
+        "BuiltInLifecycleConfigArn": {
+          "description": "The lifecycle configuration that runs before the default lifecycle configuration.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-jupyterlabappsettings.html#cfn-sagemaker-domain-jupyterlabappsettings-builtinlifecycleconfigarn"
         },
         "CodeRepositories": {
           "description": "A list of Git repositories that SageMaker automatically displays to users for cloning in the JupyterLab application.",
@@ -447,9 +471,17 @@
           "description": "The [Applications supported in Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-apps.html) that are hidden from the Studio left navigation pane.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-studiowebportalsettings.html#cfn-sagemaker-domain-studiowebportalsettings-hiddenapptypes"
         },
+        "HiddenInstanceTypes": {
+          "description": "The instance types you are hiding from the Studio user interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-studiowebportalsettings.html#cfn-sagemaker-domain-studiowebportalsettings-hiddeninstancetypes"
+        },
         "HiddenMlTools": {
           "description": "The machine learning tools that are hidden from the Studio left navigation pane.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-studiowebportalsettings.html#cfn-sagemaker-domain-studiowebportalsettings-hiddenmltools"
+        },
+        "HiddenSageMakerImageVersionAliases": {
+          "description": "The version aliases you are hiding from the Studio user interface.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-studiowebportalsettings.html#cfn-sagemaker-domain-studiowebportalsettings-hiddensagemakerimageversionaliases"
         }
       },
       "description": "Studio settings. If these settings are applied on a user level, they take priority over the settings applied on a domain level.",
@@ -468,6 +500,10 @@
     },
     "UserSettings": {
       "properties": {
+        "AutoMountHomeEFS": {
+          "description": "Indicates whether auto-mounting of an EFS volume is supported for the user profile. ",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-automounthomeefs"
+        },
         "CodeEditorAppSettings": {
           "description": "The Code Editor application settings.\n\nSageMaker applies these settings only to private spaces that the user creates in the domain. SageMaker doesn't apply these settings to shared spaces.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-domain-usersettings.html#cfn-sagemaker-domain-usersettings-codeeditorappsettings"

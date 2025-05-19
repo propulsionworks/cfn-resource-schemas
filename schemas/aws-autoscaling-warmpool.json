@@ -1,6 +1,6 @@
 {
   "$id": "aws-autoscaling-warmpool",
-  "$integrity": "sha512-iMnc+we0fadtKQoOMKuz9iRAfRJCpWOUMHKF6OMPvvhqANiSiGM2PqZmigm1Rn4KaPnlcmXFk/ZdyZvzXrNFZQ==",
+  "$integrity": "sha512-MKny6KKXdx9hfmqvoIly6jc2M/GdEz4BsRzjx+IVXtLJEpMViQJyAvP6Fs4UOGCXRIL7Vtzb3OQS5CW7/+yrdA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AutoScalingGroupName"
@@ -28,6 +28,21 @@
     "delete": {
       "permissions": [
         "autoscaling:DeleteWarmPool",
+        "autoscaling:DescribeWarmPool"
+      ]
+    },
+    "list": {
+      "handlerSchema": {
+        "properties": {
+          "AutoScalingGroupName": {
+            "$ref": "resource-schema.json#/properties/AutoScalingGroupName"
+          }
+        },
+        "required": [
+          "AutoScalingGroupName"
+        ]
+      },
+      "permissions": [
         "autoscaling:DescribeWarmPool"
       ]
     },

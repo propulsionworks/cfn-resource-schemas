@@ -1,6 +1,6 @@
 {
   "$id": "aws-ssmcontacts-contact",
-  "$integrity": "sha512-TW7oD4YicLp7gSUHie5kW1fYMhH5xnS8iU5lc8s3xVrVm/Ry4M+lu9R+r7X0QI9mqJeYYpUVXx2MtqP3IuYDlQ==",
+  "$integrity": "sha512-jBETmYH4QzU6++9Lx8KqBlHLnHxnabZTPHdquHBfpJ3w7BCACMjrKgK/4ttPxA6uZVAgDX/9P7aKT0yq8I3+tA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Alias",
@@ -83,6 +83,29 @@
       },
       "type": "object"
     },
+    "Tag": {
+      "additionalProperties": false,
+      "description": "A key-value pair to associate with a resource.",
+      "properties": {
+        "Key": {
+          "description": "The key name of the tag",
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Value": {
+          "description": "The value for the tag.",
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
+    },
     "Targets": {
       "additionalProperties": false,
       "description": "The contacts or contact methods that the escalation plan or engagement plan is engaging.",
@@ -115,7 +138,9 @@
       "permissions": [
         "ssm-contacts:CreateContact",
         "ssm-contacts:GetContact",
-        "ssm-contacts:AssociateContact"
+        "ssm-contacts:AssociateContact",
+        "ssm-contacts:TagResource",
+        "ssm-contacts:ListTagsForResource"
       ]
     },
     "delete": {
@@ -127,19 +152,24 @@
     },
     "list": {
       "permissions": [
-        "ssm-contacts:ListContacts"
+        "ssm-contacts:ListContacts",
+        "ssm-contacts:ListTagsForResource"
       ]
     },
     "read": {
       "permissions": [
-        "ssm-contacts:GetContact"
+        "ssm-contacts:GetContact",
+        "ssm-contacts:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
         "ssm-contacts:UpdateContact",
         "ssm-contacts:GetContact",
-        "ssm-contacts:AssociateContact"
+        "ssm-contacts:AssociateContact",
+        "ssm-contacts:TagResource",
+        "ssm-contacts:UntagResource",
+        "ssm-contacts:ListTagsForResource"
       ]
     }
   },
@@ -172,6 +202,14 @@
       },
       "type": "array"
     },
+    "Tags": {
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
     "Type": {
       "description": "Contact type, which specify type of contact. Currently supported values: “PERSONAL”, “SHARED”, “OTHER“.",
       "enum": [
@@ -191,6 +229,18 @@
     "Type"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
+  "tagging": {
+    "cloudFormationSystemTags": false,
+    "permissions": [
+      "ssm-contacts:TagResource",
+      "ssm-contacts:UntagResource",
+      "ssm-contacts:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::SSMContacts::Contact",
   "writeOnlyProperties": [
     "/properties/Plan"

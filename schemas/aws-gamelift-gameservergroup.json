@@ -1,6 +1,6 @@
 {
   "$id": "aws-gamelift-gameservergroup",
-  "$integrity": "sha512-uZNyqEqUN70ZkgLkWIKo3sdCNjjxPVqCota1AtwDOxepEvEihR7oLvprNwkAeLITOEDRVaGS89rtPrY/WOsR4g==",
+  "$integrity": "sha512-0cFV7MtoSGViAFRh10JzQvVDdyKgEIlyqgZTTaOwSpgd1QCCoNYu8K9u5lgcDg5zlZv4/IWXt+GEAIJZ5WruxA==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "definitions": {
@@ -236,7 +236,7 @@
       "type": "object"
     },
     "Tags": {
-      "description": "A list of labels to assign to the new game server group resource. Updating game server group tags with CloudFormation will not take effect. Please update this property using AWS GameLift APIs instead.",
+      "description": "A list of labels to assign to the new game server group resource.",
       "insertionOrder": false,
       "items": {
         "$ref": "#/definitions/Tag"
@@ -290,6 +290,7 @@
     "create": {
       "permissions": [
         "gamelift:CreateGameServerGroup",
+        "gamelift:ListTagsForResource",
         "gamelift:TagResource",
         "gamelift:DescribeGameServerGroup",
         "iam:assumeRole",
@@ -348,12 +349,16 @@
     },
     "read": {
       "permissions": [
-        "gamelift:DescribeGameServerGroup"
+        "gamelift:DescribeGameServerGroup",
+        "gamelift:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
         "gamelift:UpdateGameServerGroup",
+        "gamelift:TagResource",
+        "gamelift:UntagResource",
+        "gamelift:ListTagsForResource",
         "iam:assumeRole",
         "iam:PassRole",
         "autoscaling:DescribeAutoScalingGroups",
@@ -452,7 +457,6 @@
     "/properties/MinSize",
     "/properties/MaxSize",
     "/properties/AutoScalingPolicy",
-    "/properties/VpcSubnets",
-    "/properties/Tags"
+    "/properties/VpcSubnets"
   ]
 }

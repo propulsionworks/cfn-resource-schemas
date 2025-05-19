@@ -1,6 +1,6 @@
 {
   "$id": "aws-ssmcontacts-rotation",
-  "$integrity": "sha512-ihpqbKHtXipbviz5Ap+tYXcsTh2bk4eaH36Z+fOsG4Mfj1doxuN2kMOJ92dCnrCRPv/WFWS0zxzSGwJydioeWQ==",
+  "$integrity": "sha512-kQV1yKuidZLvuEZF4vCRB4on1Ig14ugi73205GT/CjymLKdF1v0IPa3qJh9hDsemgjwP4iayVVyop3s7B+uAQw==",
   "additionalProperties": false,
   "definitions": {
     "CoverageTime": {
@@ -214,8 +214,7 @@
         "ssm-contacts:CreateRotation",
         "ssm-contacts:GetRotation",
         "ssm-contacts:TagResource",
-        "ssm-contacts:ListTagsForResource",
-        "ssm-contacts:UntagResource"
+        "ssm-contacts:ListTagsForResource"
       ]
     },
     "delete": {
@@ -236,9 +235,7 @@
     "read": {
       "permissions": [
         "ssm-contacts:GetRotation",
-        "ssm-contacts:TagResource",
-        "ssm-contacts:ListTagsForResource",
-        "ssm-contacts:UntagResource"
+        "ssm-contacts:ListTagsForResource"
       ]
     },
     "update": {
@@ -306,8 +303,14 @@
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
   "tagging": {
     "cloudFormationSystemTags": false,
+    "permissions": [
+      "ssm-contacts:TagResource",
+      "ssm-contacts:UntagResource",
+      "ssm-contacts:ListTagsForResource"
+    ],
     "tagOnCreate": true,
-    "tagUpdatable": false,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::SSMContacts::Rotation"

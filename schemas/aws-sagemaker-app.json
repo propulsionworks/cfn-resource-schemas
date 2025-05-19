@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-app",
-  "$integrity": "sha512-EMCYnArZA58iR7aGaDBLJPXhe+n4wGvUbywYtwa8yzGmsPt6z4IS2YAfoFN6wojdSnjfB6lN1inQbTMn4i2JOg==",
+  "$integrity": "sha512-dZRiCKxdU1ZYX7O3CQtCaV3RmnW25oH2EEBss3m74+/XX+BLxOGyGyyxN+QyHi2k0ezeQXXWjwYhBMZIem2sng==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AppName",
@@ -86,7 +86,7 @@
         "LifecycleConfigArn": {
           "description": "The Amazon Resource Name (ARN) of the Lifecycle Configuration to attach to the Resource.",
           "maxLength": 256,
-          "pattern": "arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:studio-lifecycle-config/.*",
+          "pattern": "^(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:studio-lifecycle-config/.*|None)$",
           "type": "string"
         },
         "SageMakerImageArn": {
@@ -185,11 +185,21 @@
       ],
       "type": "string"
     },
+    "BuiltInLifecycleConfigArn": {
+      "description": "The lifecycle configuration that runs before the default lifecycle configuration.",
+      "maxLength": 256,
+      "pattern": "^(arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:studio-lifecycle-config/.*|None)$",
+      "type": "string"
+    },
     "DomainId": {
       "description": "The domain ID.",
       "maxLength": 63,
       "minLength": 1,
       "type": "string"
+    },
+    "RecoveryMode": {
+      "description": "Indicates whether the application is launched in recovery mode.",
+      "type": "boolean"
     },
     "ResourceSpec": {
       "$ref": "#/definitions/ResourceSpec",
@@ -214,7 +224,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/AppArn"
+    "/properties/AppArn",
+    "/properties/BuiltInLifecycleConfigArn"
   ],
   "required": [
     "AppName",

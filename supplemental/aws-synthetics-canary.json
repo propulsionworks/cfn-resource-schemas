@@ -72,6 +72,14 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-resourcetotag.html"
     },
+    "RetryConfig": {
+      "properties": {
+        "MaxRetries": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-retryconfig.html#cfn-synthetics-canary-retryconfig-maxretries"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-retryconfig.html"
+    },
     "RunConfig": {
       "properties": {
         "ActiveTracing": {
@@ -117,6 +125,9 @@
         "Expression": {
           "description": "A `rate` expression or a `cron` expression that defines how often the canary is to run.\n\nFor a rate expression, The syntax is `rate( *number unit* )` . *unit* can be `minute` , `minutes` , or `hour` .\n\nFor example, `rate(1 minute)` runs the canary once a minute, `rate(10 minutes)` runs it once every 10 minutes, and `rate(1 hour)` runs it once every hour. You can specify a frequency between `rate(1 minute)` and `rate(1 hour)` .\n\nSpecifying `rate(0 minute)` or `rate(0 hour)` is a special value that causes the canary to run only once when it is started.\n\nUse `cron( *expression* )` to specify a cron expression. You can't schedule a canary to wait for more than a year before running. For information about the syntax for cron expressions, see [Scheduling canary runs using cron](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_cron.html) .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-schedule.html#cfn-synthetics-canary-schedule-expression"
+        },
+        "RetryConfig": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-schedule.html#cfn-synthetics-canary-schedule-retryconfig"
         }
       },
       "description": "This structure specifies how often a canary is to make runs and the date and time when it should stop making runs.",
@@ -188,6 +199,9 @@
     "DeleteLambdaResourcesOnCanaryDeletion": {
       "description": "Deletes associated lambda resources created by Synthetics if set to True. Default is False",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-synthetics-canary.html#cfn-synthetics-canary-deletelambdaresourcesoncanarydeletion"
+    },
+    "DryRunAndUpdate": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-synthetics-canary.html#cfn-synthetics-canary-dryrunandupdate"
     },
     "ExecutionRoleArn": {
       "description": "The ARN of the IAM role to be used to run the canary. This role must already exist, and must include `lambda.amazonaws.com` as a principal in the trust policy. The role must also have the following permissions:\n\n- `s3:PutObject`\n- `s3:GetBucketLocation`\n- `s3:ListAllMyBuckets`\n- `cloudwatch:PutMetricData`\n- `logs:CreateLogGroup`\n- `logs:CreateLogStream`\n- `logs:PutLogEvents`",

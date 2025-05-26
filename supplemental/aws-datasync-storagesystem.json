@@ -1,29 +1,45 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#aws-resource-datasync-storagesystem-return-values",
-    "properties": {}
+    "properties": {
+      "ConnectivityStatus": {
+        "description": "Indicates whether your DataSync agent can connect to your on-premises storage system."
+      },
+      "StorageSystemArn": {
+        "description": "The ARN of the on-premises storage system that you're using with DataSync Discovery."
+      },
+      "SecretsManagerArn": {
+        "description": "The ARN of the secret that stores your on-premises storage system's credentials. DataSync Discovery stores these credentials in [AWS Secrets Manager](https://docs.aws.amazon.com/datasync/latest/userguide/discovery-configure-storage.html#discovery-add-storage) ."
+      }
+    }
   },
   "definitions": {
     "ServerConfiguration": {
       "properties": {
         "ServerHostname": {
+          "description": "The domain name or IP address of your storage system's management interface.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-storagesystem-serverconfiguration.html#cfn-datasync-storagesystem-serverconfiguration-serverhostname"
         },
         "ServerPort": {
+          "description": "The network port for accessing the storage system's management interface.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-storagesystem-serverconfiguration.html#cfn-datasync-storagesystem-serverconfiguration-serverport"
         }
       },
+      "description": "The network settings that DataSync Discovery uses to connect with your on-premises storage system's management interface.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-storagesystem-serverconfiguration.html"
     },
     "ServerCredentials": {
       "properties": {
         "Password": {
+          "description": "Specifies the password for your storage system's management interface.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-storagesystem-servercredentials.html#cfn-datasync-storagesystem-servercredentials-password"
         },
         "Username": {
+          "description": "Specifies the user name for your storage system's management interface.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-storagesystem-servercredentials.html#cfn-datasync-storagesystem-servercredentials-username"
         }
       },
+      "description": "The credentials that provide DataSync Discovery read access to your on-premises storage system's management interface.\n\nDataSync Discovery stores these credentials in [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html) . For more information, see [Accessing your on-premises storage system](https://docs.aws.amazon.com/datasync/latest/userguide/discovery-configure-storage.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-storagesystem-servercredentials.html"
     },
     "Tag": {
@@ -38,36 +54,45 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-datasync-storagesystem-tag.html"
     }
   },
+  "description": "The `AWS::DataSync::StorageSystem` resource creates an AWS resource for an on-premises storage system that you want DataSync Discovery to collect information about. For more information, see [discovering your storage with DataSync Discovery.](https://docs.aws.amazon.com/datasync/latest/userguide/understanding-your-storage.html)",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html",
   "id": "aws-datasync-storagesystem",
   "properties": {
     "AgentArns": {
+      "description": "Specifies the Amazon Resource Name (ARN) of the DataSync agent that connects to and reads from your on-premises storage system's management interface. You can only specify one ARN.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-agentarns"
     },
     "CloudWatchLogGroupArn": {
+      "description": "Specifies the ARN of the Amazon CloudWatch log group for monitoring and logging discovery job events.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-cloudwatchloggrouparn"
     },
     "ConnectivityStatus": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-connectivitystatus"
     },
     "Name": {
+      "description": "Specifies a familiar name for your on-premises storage system.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-name"
     },
     "SecretsManagerArn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-secretsmanagerarn"
     },
     "ServerConfiguration": {
+      "description": "Specifies the server name and network port required to connect with the management interface of your on-premises storage system.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-serverconfiguration"
     },
     "ServerCredentials": {
+      "description": "Specifies the user name and password for accessing your on-premises storage system's management interface.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-servercredentials"
     },
     "StorageSystemArn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-storagesystemarn"
     },
     "SystemType": {
+      "description": "Specifies the type of on-premises storage system that you want DataSync Discovery to collect information about.\n\n> DataSync Discovery currently supports NetApp Fabric-Attached Storage (FAS) and All Flash FAS (AFF) systems running ONTAP 9.7 or later.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-systemtype"
     },
     "Tags": {
+      "description": "Specifies labels that help you categorize, filter, and search for your AWS resources. We recommend creating at least a name tag for your on-premises storage system.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-storagesystem.html#cfn-datasync-storagesystem-tags"
     }
   },

@@ -61,7 +61,6 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-enablecontinuousbackup"
         },
         "IndexActions": {
-          "description": "There can up to one IndexAction in each BackupRule, as each backup can have 0 or 1 backup index associated with it.\n\nWithin the array is ResourceTypes. Only 1 resource type will be accepted for each BackupRule. Valid values:\n\n- `EBS` for Amazon Elastic Block Store\n- `S3` for Amazon Simple Storage Service (Amazon S3)",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-backupruleresourcetype.html#cfn-backup-backupplan-backupruleresourcetype-indexactions"
         },
         "Lifecycle": {
@@ -113,21 +112,19 @@
     "IndexActionsResourceType": {
       "properties": {
         "ResourceTypes": {
-          "description": "0 or 1 index action will be accepted for each BackupRule.\n\nValid values:\n\n- `EBS` for Amazon Elastic Block Store\n- `S3` for Amazon Simple Storage Service (Amazon S3)",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-indexactionsresourcetype.html#cfn-backup-backupplan-indexactionsresourcetype-resourcetypes"
         }
       },
-      "description": "Specifies index actions.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-indexactionsresourcetype.html"
     },
     "LifecycleResourceType": {
       "properties": {
         "DeleteAfterDays": {
-          "description": "The number of days after creation that a recovery point is deleted. This value must be at least 90 days after the number of days specified in `MoveToColdStorageAfterDays` .",
+          "description": "Specifies the number of days after creation that a recovery point is deleted. Must be greater than `MoveToColdStorageAfterDays` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-lifecycleresourcetype.html#cfn-backup-backupplan-lifecycleresourcetype-deleteafterdays"
         },
         "MoveToColdStorageAfterDays": {
-          "description": "The number of days after creation that a recovery point is moved to cold storage.",
+          "description": "Specifies the number of days after creation that a recovery point is moved to cold storage.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupplan-lifecycleresourcetype.html#cfn-backup-backupplan-lifecycleresourcetype-movetocoldstorageafterdays"
         },
         "OptInToArchiveForSupportedResources": {
@@ -148,6 +145,7 @@
     }
   },
   "description": "Contains an optional backup plan display name and an array of `BackupRule` objects, each of which specifies a backup rule. Each rule in a backup plan is a separate scheduled task and can back up a different selection of AWS resources.\n\nFor a sample AWS CloudFormation template, see the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/assigning-resources.html#assigning-resources-cfn) .",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupplan.html",
   "id": "aws-backup-backupplan",
   "properties": {
     "BackupPlan": {

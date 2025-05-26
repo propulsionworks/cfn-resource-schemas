@@ -9,7 +9,7 @@
         "description": "The ARN of the connection that was created by the request."
       },
       "ArnForPolicy": {
-        "description": "Returns the Amazon Resource Name (ARN) of a connection in resource format, so it can be used in the `Resource` element of IAM permission policy statements. For more information, see [Resource types defined by Amazon EventBridge](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoneventbridge.html#amazoneventbridge-resources-for-iam-policies) in the *Service Authorization Reference* .\n\nFor example, the following resource defines an IAM policy that grants permission to update a specific connection.\n\n`Resources: ExamplePolicy: Type: AWS::IAM::Policy Properties: PolicyName: ExamplePolicy PolicyDocument: Version: '2012-10-17' Statement: - Effect: Allow Action: - events:UpdateConnection Resource: - !GetAtt myConnection.ArnForPolicy`"
+        "description": "The arn of the connection resource to be used in IAM policies."
       },
       "AuthParameters.ConnectivityParameters.ResourceParameters.ResourceAssociationArn": {
         "description": "For connections to private APIs, the Amazon Resource Name (ARN) of the resource association EventBridge created between the connection and the private API's resource configuration.\n\n> The value of this property is set by EventBridge . Any value you specify in your template is ignored."
@@ -172,6 +172,7 @@
     }
   },
   "description": "Creates a connection. A connection defines the authorization type and credentials to use for authorization with an API destination HTTP endpoint.\n\nFor more information, see [Connections for endpoint targets](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-target-connection.html) in the *Amazon EventBridge User Guide* .",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-connection.html",
   "id": "aws-events-connection",
   "properties": {
     "Arn": {
@@ -197,7 +198,6 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-connection.html#cfn-events-connection-invocationconnectivityparameters"
     },
     "KmsKeyIdentifier": {
-      "description": "The identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.\n\nIf you do not specify a customer managed key identifier, EventBridge uses an AWS owned key to encrypt the connection.\n\nFor more information, see [Identify and view keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html) in the *AWS Key Management Service Developer Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-connection.html#cfn-events-connection-kmskeyidentifier"
     },
     "Name": {

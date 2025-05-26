@@ -199,7 +199,6 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-ebs.html#cfn-ec2-launchtemplate-ebs-throughput"
         },
         "VolumeInitializationRate": {
-          "description": "Specifies the Amazon EBS Provisioned Rate for Volume Initialization (volume initialization rate), in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume. This is also known as *volume initialization* . Specifying a volume initialization rate ensures that the volume is initialized at a predictable and consistent rate after creation.\n\nThis parameter is supported only for volumes created from snapshots. Omit this parameter if:\n\n- You want to create the volume using fast snapshot restore. You must specify a snapshot that is enabled for fast snapshot restore. In this case, the volume is fully initialized at creation.\n\n> If you specify a snapshot that is enabled for fast snapshot restore and a volume initialization rate, the volume will be initialized at the specified rate instead of fast snapshot restore.\n- You want to create a volume that is initialized at the default rate.\n\nFor more information, see [Initialize Amazon EBS volumes](https://docs.aws.amazon.com/ebs/latest/userguide/initalize-volume.html) in the *Amazon EC2 User Guide* .\n\nValid range: 100 - 300 MiB/s",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-ebs.html#cfn-ec2-launchtemplate-ebs-volumeinitializationrate"
         },
         "VolumeSize": {
@@ -315,7 +314,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-instancerequirements.html#cfn-ec2-launchtemplate-instancerequirements-acceleratortotalmemorymib"
         },
         "AcceleratorTypes": {
-          "description": "The accelerator types that must be on the instance type.\n\n- For instance types with FPGA accelerators, specify `fpga` .\n- For instance types with GPU accelerators, specify `gpu` .\n- For instance types with Inference accelerators, specify `inference` .\n\nDefault: Any accelerator type",
+          "description": "The accelerator types that must be on the instance type.\n\n- For instance types with FPGA accelerators, specify `fpga` .\n- For instance types with GPU accelerators, specify `gpu` .\n\nDefault: Any accelerator type",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-instancerequirements.html#cfn-ec2-launchtemplate-instancerequirements-acceleratortypes"
         },
         "AllowedInstanceTypes": {
@@ -979,6 +978,7 @@
     }
   },
   "description": "Specifies the properties for creating a launch template.\n\nThe minimum required properties for specifying a launch template are as follows:\n\n- You must specify at least one property for the launch template data.\n- You can optionally specify a name for the launch template. If you do not specify a name, AWS CloudFormation creates a name for you.\n\nA launch template can contain some or all of the configuration information to launch an instance. When you launch an instance using a launch template, instance properties that are not specified in the launch template use default values, except the `ImageId` property, which has no default value. If you do not specify an AMI ID for the launch template `ImageId` property, you must specify an AMI ID for the instance `ImageId` property.\n\nFor more information, see [Launch an instance from a launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) in the *Amazon EC2 User Guide* .",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html",
   "id": "aws-ec2-launchtemplate",
   "properties": {
     "DefaultVersionNumber": {

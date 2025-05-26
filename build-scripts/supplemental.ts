@@ -46,6 +46,7 @@ for await (const schema of readSchemaSources()) {
     },
     definitions: {},
     description: dbResource?.documentation,
+    documentationUrl: makeAwsDocumentationUrl(schema.typeName),
     id,
     properties: {},
     typeName: schema.typeName,

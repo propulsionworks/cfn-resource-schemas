@@ -41,6 +41,7 @@
     }
   },
   "description": "Creates a new MSK configuration. To see an example of how to use this operation, first save the following text to a file and name the file `config-file.txt` .\n\n`auto.create.topics.enable = true zookeeper.connection.timeout.ms = 1000 log.roll.ms = 604800000` \n\nNow run the following Python 3.6 script in the folder where you saved `config-file.txt` . This script uses the properties specified in `config-file.txt` to create a configuration named `SalesClusterConfiguration` . This configuration can work with Apache Kafka versions 1.1.1 and 2.1.0.\n\n```PYTHON\nimport boto3 client = boto3.client('kafka') config_file = open('config-file.txt', 'r') server_properties = config_file.read() response = client.create_configuration( Name='SalesClusterConfiguration', Description='The configuration to use on all sales clusters.', KafkaVersions=['1.1.1', '2.1.0'], ServerProperties=server_properties\n) print(response)\n```",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-configuration.html",
   "id": "aws-msk-configuration",
   "properties": {
     "Arn": {

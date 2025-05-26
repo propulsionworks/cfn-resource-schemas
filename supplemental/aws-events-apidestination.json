@@ -6,12 +6,13 @@
         "description": "The ARN of the API destination that was created by the request."
       },
       "ArnForPolicy": {
-        "description": "Returns the Amazon Resource Name (ARN) of an API destination in resource format, so it can be used in the `Resource` element of IAM permission policy statements. For more information, see [Resource types defined by Amazon EventBridge](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoneventbridge.html#amazoneventbridge-resources-for-iam-policies) in the *Service Authorization Reference* .\n\nFor example, the following resource defines an IAM policy that grants permission to update a specific API destination.\n\n`Resources: ExamplePolicy: Type: AWS::IAM::Policy Properties: PolicyName: ExamplePolicy PolicyDocument: Version: '2012-10-17' Statement: - Effect: Allow Action: - events:UpdateApiDestination Resource: - !GetAtt myApiDestination.ArnForPolicy`"
+        "description": "The arn of the api destination to be used in IAM policies."
       }
     }
   },
   "definitions": {},
   "description": "Creates an API destination, which is an HTTP invocation endpoint configured as a target for events.\n\nWhen using ApiDesinations with OAuth authentication we recommend these best practices:\n\n- Create a secret in Secrets Manager with your OAuth credentials.\n- Reference that secret in your CloudFormation template for `AWS::Events::Connection` using CloudFormation dynamic reference syntax. For more information, see [Secrets Manager secrets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/dynamic-references.html#dynamic-references-secretsmanager) .\n\nWhen the Connection resource is created the secret will be passed to EventBridge and stored in the customer account using “Service Linked Secrets,” effectively creating two secrets. This will minimize the cost because the original secret is only accessed when a CloudFormation template is created or updated, not every time an event is sent to the ApiDestination. The secret stored in the customer account by EventBridge is the one used for each event sent to the ApiDestination and AWS is responsible for the fees.\n\n> The secret stored in the customer account by EventBridge can’t be updated directly, only when a CloudFormation template is updated. \n\nFor examples of CloudFormation templates that use secrets, see [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-connection.html#aws-resource-events-connection--examples) .",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-apidestination.html",
   "id": "aws-events-apidestination",
   "properties": {
     "Arn": {

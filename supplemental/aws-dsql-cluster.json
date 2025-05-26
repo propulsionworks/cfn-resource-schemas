@@ -3,16 +3,19 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html#aws-resource-dsql-cluster-return-values",
     "properties": {
       "ResourceArn": {
-        "description": "The Amazon Resource Name (ARN) for the cluster."
+        "description": "The Amazon Resource Name (ARN) of the cluster. Used for IAM permissions and resource identification."
       },
       "Identifier": {
-        "description": "The ID of the created cluster."
+        "description": "The unique identifier assigned to the cluster upon creation."
       },
       "CreationTime": {
-        "description": "The time of when the cluster was created in ISO-8601 format."
+        "description": "The timestamp when the cluster was created, in ISO 8601 format."
       },
       "Status": {
-        "description": "The status of the cluster."
+        "description": "The current status of the cluster. Possible values include: CREATING, ACTIVE, DELETING, FAILED."
+      },
+      "VpcEndpointServiceName": {
+        "description": "The VPC Endpoint Service name for the cluster. This can be used to create a VPC endpoint to connect to the cluster from within a VPC."
       }
     }
   },
@@ -29,7 +32,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dsql-cluster-tag.html"
     }
   },
-  "description": "Resource Type definition for AWS::DSQL::Cluster",
+  "description": "The CreateCluster API allows you to create both single-region clusters and multi-Region clusters. With the addition of the *multiRegionProperties* parameter, you can create a cluster with witness Region support and establish peer relationships with clusters in other Regions during creation.\n\n> Creating multi-Region clusters requires additional IAM permissions beyond those needed for single-Region clusters, as detailed in the *Required permissions* section below. \n\n*Required permissions*\n\n- **dsql:CreateCluster** - Required to create a cluster.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:TagResource** - Permission to add tags to a resource.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:PutMultiRegionProperties** - Permission to configure multi-region properties for a cluster.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:AddPeerCluster** - When specifying `multiRegionProperties.clusters` , permission to add peer clusters.\n\nResources:\n\n- Local cluster: `arn:aws:dsql:region:account-id:cluster/*`\n- Each peer cluster: exact ARN of each specified peer cluster\n- **dsql:PutWitnessRegion** - When specifying `multiRegionProperties.witnessRegion` , permission to set a witness Region. This permission is checked both in the cluster Region and in the witness Region.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n\nCondition Keys: `dsql:WitnessRegion` (matching the specified witness region)\n\n> - The witness Region specified in `multiRegionProperties.witnessRegion` cannot be the same as the cluster's Region.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html",
   "id": "aws-dsql-cluster",
   "properties": {
@@ -37,7 +40,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html#cfn-dsql-cluster-creationtime"
     },
     "DeletionProtectionEnabled": {
-      "description": "Whether deletion protection is enabled in this cluster.",
+      "description": "Whether deletion protection is enabled on this cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html#cfn-dsql-cluster-deletionprotectionenabled"
     },
     "Identifier": {
@@ -50,6 +53,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html#cfn-dsql-cluster-status"
     },
     "Tags": {
+      "description": "A map of key and value pairs this cluster is tagged with.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html#cfn-dsql-cluster-tags"
     },
     "VpcEndpointServiceName": {

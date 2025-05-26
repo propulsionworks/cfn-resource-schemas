@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrock-flowversion",
-  "$integrity": "sha512-i+aE//SLVo5518OE6Q3AV5Abj5lvR+oME1WNAAjDf+SC8m46ihlqmEdvneJxLnmD5g/90Tb0OFbrusHcEukmGw==",
+  "$integrity": "sha512-l7Va3GzaCRaZMq1nfkEUVz2QS1ALO4FuDncmJ6UjtbX7rZIo53XPw9z4M7gcMKK9Inhgf2M+1ZxXQMsJNwyp9A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Description",
@@ -401,6 +401,19 @@
           ],
           "title": "Collector",
           "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "InlineCode": {
+              "$ref": "#/definitions/InlineCodeFlowNodeConfiguration"
+            }
+          },
+          "required": [
+            "InlineCode"
+          ],
+          "title": "InlineCode",
+          "type": "object"
         }
       ]
     },
@@ -474,7 +487,8 @@
         "Iterator",
         "Collector",
         "Storage",
-        "Retrieval"
+        "Retrieval",
+        "InlineCode"
       ],
       "type": "string"
     },
@@ -504,6 +518,25 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "InlineCodeFlowNodeConfiguration": {
+      "additionalProperties": false,
+      "description": "Inline code config strucuture, contains code configs",
+      "properties": {
+        "Code": {
+          "description": "The inline code entered by customers. max size is 5MB.",
+          "maxLength": 5000000,
+          "type": "string"
+        },
+        "Language": {
+          "$ref": "#/definitions/SupportedLanguages"
+        }
+      },
+      "required": [
+        "Code",
+        "Language"
+      ],
       "type": "object"
     },
     "InputFlowNodeConfiguration": {
@@ -851,6 +884,13 @@
           "type": "object"
         }
       ]
+    },
+    "SupportedLanguages": {
+      "description": "Enum encodes the supported language type",
+      "enum": [
+        "Python_3"
+      ],
+      "type": "string"
     },
     "TextPromptTemplateConfiguration": {
       "additionalProperties": false,

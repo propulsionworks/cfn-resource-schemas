@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrock-flow",
-  "$integrity": "sha512-hDhHT/D9oIzPYg9RdjXIwunIFqhtKpcZJgHt4TI9Co7TCXCYvjKNYvCesMWizs6EFcgLiJnyjQ7iVbuTCMa+qQ==",
+  "$integrity": "sha512-Jv6z1gmBzaytT8XZJfnXiF9yfcNC2IbEJUh2I4zQVW/Iu9hdtz7XgmEq+JTPNZ9kSmCW3ETVbhgMeaFrXkSaqw==",
   "additionalIdentifiers": [
     [
       "/properties/Id"
@@ -239,7 +239,7 @@
           "items": {
             "$ref": "#/definitions/FlowNodeInput"
           },
-          "maxItems": 5,
+          "maxItems": 20,
           "type": "array"
         },
         "Name": {
@@ -424,6 +424,19 @@
           ],
           "title": "Retrieval",
           "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "InlineCode": {
+              "$ref": "#/definitions/InlineCodeFlowNodeConfiguration"
+            }
+          },
+          "required": [
+            "InlineCode"
+          ],
+          "title": "InlineCode",
+          "type": "object"
         }
       ]
     },
@@ -497,7 +510,8 @@
         "Storage",
         "Retrieval",
         "Iterator",
-        "Collector"
+        "Collector",
+        "InlineCode"
       ],
       "type": "string"
     },
@@ -549,6 +563,25 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "InlineCodeFlowNodeConfiguration": {
+      "additionalProperties": false,
+      "description": "Inline code config strucuture, contains code configs",
+      "properties": {
+        "Code": {
+          "description": "The inline code entered by customers. max size is 5MB.",
+          "maxLength": 5000000,
+          "type": "string"
+        },
+        "Language": {
+          "$ref": "#/definitions/SupportedLanguages"
+        }
+      },
+      "required": [
+        "Code",
+        "Language"
+      ],
       "type": "object"
     },
     "InputFlowNodeConfiguration": {
@@ -926,6 +959,13 @@
           "type": "object"
         }
       ]
+    },
+    "SupportedLanguages": {
+      "description": "Enum encodes the supported language type",
+      "enum": [
+        "Python_3"
+      ],
+      "type": "string"
     },
     "TagsMap": {
       "additionalProperties": false,

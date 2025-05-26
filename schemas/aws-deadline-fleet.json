@@ -1,6 +1,6 @@
 {
   "$id": "aws-deadline-fleet",
-  "$integrity": "sha512-tbijh1/l8UhVAiDuhtRsPRoGEasBOmauEswisZL45B5hq6FocKEQJ6dLRCGH4XJiPPwk54shqK9J1ODX829y4w==",
+  "$integrity": "sha512-xVqTo1e1POrR+wiAvmmrh5TKaDgC1TtkMLV3B0wZcUEb0f7UA2HX4Z0jic70SZGxlGoLnNkSm954GPYUV6ivog==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/FarmId"
@@ -115,6 +115,9 @@
         "StorageProfileId": {
           "pattern": "^sp-[0-9a-f]{32}$",
           "type": "string"
+        },
+        "TagPropagationMode": {
+          "$ref": "#/definitions/TagPropagationMode"
         },
         "WorkerCapabilities": {
           "$ref": "#/definitions/CustomerManagedWorkerCapabilities"
@@ -326,6 +329,26 @@
       ],
       "type": "string"
     },
+    "HostConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "ScriptBody": {
+          "maxLength": 15000,
+          "minLength": 0,
+          "type": "string"
+        },
+        "ScriptTimeoutSeconds": {
+          "default": 300,
+          "maximum": 3600,
+          "minimum": 300,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ScriptBody"
+      ],
+      "type": "object"
+    },
     "MemoryMiBRange": {
       "additionalProperties": false,
       "properties": {
@@ -467,6 +490,13 @@
       ],
       "type": "object"
     },
+    "TagPropagationMode": {
+      "enum": [
+        "NO_PROPAGATION",
+        "PROPAGATE_TAGS_TO_WORKERS_AT_LAUNCH"
+      ],
+      "type": "string"
+    },
     "VCpuCountRange": {
       "additionalProperties": false,
       "properties": {
@@ -576,6 +606,9 @@
     "FleetId": {
       "pattern": "^fleet-[0-9a-f]{32}$",
       "type": "string"
+    },
+    "HostConfiguration": {
+      "$ref": "#/definitions/HostConfiguration"
     },
     "MaxWorkerCount": {
       "maximum": 2147483647,

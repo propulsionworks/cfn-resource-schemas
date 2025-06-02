@@ -1,6 +1,6 @@
 {
   "$id": "aws-medialive-input",
-  "$integrity": "sha512-76caeFKh9afhg+JP9ki/aLNC7QB6vcPQJmo7pCZIm6p6Z3UL9iyGK4Hafau1TdKD4lhGqdTHvKifXSpBGV4yFw==",
+  "$integrity": "sha512-jF+lGjR3Eq0Dg3FPmOOSjJ+fw/W27sv5tNpmFJNiycEyY51xuNFn0Fwrf3w5TTs6LwMpqeY7K3fT72mJZTnSRA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Vpc",
@@ -46,6 +46,18 @@
           "type": "string"
         },
         "Gateway": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InputSdpLocation": {
+      "additionalProperties": false,
+      "properties": {
+        "MediaIndex": {
+          "type": "integer"
+        },
+        "SdpUrl": {
           "type": "string"
         }
       },
@@ -116,6 +128,51 @@
         },
         "Url": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Smpte2110ReceiverGroup": {
+      "additionalProperties": false,
+      "properties": {
+        "SdpSettings": {
+          "$ref": "#/definitions/Smpte2110ReceiverGroupSdpSettings"
+        }
+      },
+      "type": "object"
+    },
+    "Smpte2110ReceiverGroupSdpSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "AncillarySdps": {
+          "items": {
+            "$ref": "#/definitions/InputSdpLocation"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "AudioSdps": {
+          "items": {
+            "$ref": "#/definitions/InputSdpLocation"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "VideoSdp": {
+          "$ref": "#/definitions/InputSdpLocation"
+        }
+      },
+      "type": "object"
+    },
+    "Smpte2110ReceiverGroupSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "Smpte2110ReceiverGroups": {
+          "items": {
+            "$ref": "#/definitions/Smpte2110ReceiverGroup"
+          },
+          "type": "array",
+          "uniqueItems": false
         }
       },
       "type": "object"
@@ -217,6 +274,16 @@
     },
     "RoleArn": {
       "type": "string"
+    },
+    "SdiSources": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "Smpte2110ReceiverGroupSettings": {
+      "$ref": "#/definitions/Smpte2110ReceiverGroupSettings"
     },
     "Sources": {
       "items": {

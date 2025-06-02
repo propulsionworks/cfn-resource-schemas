@@ -9,28 +9,35 @@
     "IcebergConfiguration": {
       "properties": {
         "Location": {
+          "description": "Specifies a directory in which to look for orphan files (defaults to the table's location). You may choose a sub-directory rather than the top-level table location.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-icebergconfiguration.html#cfn-glue-tableoptimizer-icebergconfiguration-location"
         },
         "OrphanFileRetentionPeriodInDays": {
+          "description": "The specific number of days you want to keep the orphan files.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-icebergconfiguration.html#cfn-glue-tableoptimizer-icebergconfiguration-orphanfileretentionperiodindays"
         }
       },
+      "description": "IcebergConfiguration is a property type within the `AWS::Glue::TableOptimizer` resource in AWS CloudFormation. This configuration is used when setting up table optimization for Iceberg tables in AWS Glue .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-icebergconfiguration.html"
     },
     "OrphanFileDeletionConfiguration": {
       "properties": {
         "IcebergConfiguration": {
+          "description": "The `IcebergConfiguration` property helps optimize your Iceberg tables in AWS Glue by allowing you to specify format-specific settings that control how data is stored, compressed, and managed.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-orphanfiledeletionconfiguration.html#cfn-glue-tableoptimizer-orphanfiledeletionconfiguration-icebergconfiguration"
         }
       },
+      "description": "Configuration for removing files that are are not tracked by the Iceberg table metadata, and are older than your configured age limit. This configuration helps optimize storage usage and costs by automatically cleaning up files that are no longer needed by the table.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-orphanfiledeletionconfiguration.html"
     },
     "RetentionConfiguration": {
       "properties": {
         "IcebergConfiguration": {
+          "description": "The configuration for an Iceberg snapshot retention optimizer.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-retentionconfiguration.html#cfn-glue-tableoptimizer-retentionconfiguration-icebergconfiguration"
         }
       },
+      "description": "The configuration for a snapshot retention optimizer for Apache Iceberg tables.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-retentionconfiguration.html"
     },
     "TableOptimizerConfiguration": {
@@ -40,9 +47,11 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-tableoptimizerconfiguration.html#cfn-glue-tableoptimizer-tableoptimizerconfiguration-enabled"
         },
         "OrphanFileDeletionConfiguration": {
+          "description": "`OrphanFileDeletionConfiguration` is a property that can be included within the TableOptimizer resource. It controls the automatic deletion of orphaned files - files that are not tracked by the table metadata, and older than the configured age limit.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-tableoptimizerconfiguration.html#cfn-glue-tableoptimizer-tableoptimizerconfiguration-orphanfiledeletionconfiguration"
         },
         "RetentionConfiguration": {
+          "description": "The configuration for a snapshot retention optimizer for Apache Iceberg tables.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-tableoptimizerconfiguration.html#cfn-glue-tableoptimizer-tableoptimizerconfiguration-retentionconfiguration"
         },
         "RoleArn": {
@@ -50,6 +59,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-tableoptimizerconfiguration.html#cfn-glue-tableoptimizer-tableoptimizerconfiguration-rolearn"
         },
         "VpcConfiguration": {
+          "description": "An object that describes the VPC configuration for a table optimizer. This configuration is necessary to perform optimization on tables that are in a customer VPC.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-tableoptimizerconfiguration.html#cfn-glue-tableoptimizer-tableoptimizerconfiguration-vpcconfiguration"
         }
       },
@@ -59,13 +69,15 @@
     "VpcConfiguration": {
       "properties": {
         "GlueConnectionName": {
+          "description": "The name of the AWS Glue connection used for the VPC for the table optimizer.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-vpcconfiguration.html#cfn-glue-tableoptimizer-vpcconfiguration-glueconnectionname"
         }
       },
+      "description": "An object that describes the VPC configuration for a table optimizer. This configuration is necessary to perform optimization on tables that are in a customer VPC.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-tableoptimizer-vpcconfiguration.html"
     }
   },
-  "description": "A resource that describes the AWS Glue resource for enabling compaction to improve read performance for open table formats.",
+  "description": "An AWS Glue resource for enabling table optimizers to improve read performance for open table formats.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-tableoptimizer.html",
   "id": "aws-glue-tableoptimizer",
   "properties": {
@@ -89,7 +101,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-tableoptimizer.html#cfn-glue-tableoptimizer-tableoptimizerconfiguration"
     },
     "Type": {
-      "description": "The type of table optimizer. Currently, the only valid value is compaction.",
+      "description": "The type of table optimizer. The valid values are:\n\n- compaction - for managing compaction with a table optimizer.\n- retention - for managing the retention of snapshot with a table optimizer.\n- orphan_file_deletion - for managing the deletion of orphan files with a table optimizer.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-tableoptimizer.html#cfn-glue-tableoptimizer-type"
     }
   },

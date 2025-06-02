@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-app",
-  "$integrity": "sha512-dZRiCKxdU1ZYX7O3CQtCaV3RmnW25oH2EEBss3m74+/XX+BLxOGyGyyxN+QyHi2k0ezeQXXWjwYhBMZIem2sng==",
+  "$integrity": "sha512-JA1r2jNWOM8dMT4G/SY/+/QkpxelAs80vPZlFdbWC4T/zRXvT37uUKm4WsrxSAZh2zobXzEOYzx8fsvQnEJ62A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AppName",
@@ -132,24 +132,30 @@
     "create": {
       "permissions": [
         "sagemaker:CreateApp",
-        "sagemaker:DescribeApp"
+        "sagemaker:DescribeApp",
+        "sagemaker:AddTags",
+        "sagemaker:ListTags"
       ]
     },
     "delete": {
       "permissions": [
         "sagemaker:DeleteApp",
-        "sagemaker:DescribeApp"
+        "sagemaker:DescribeApp",
+        "sagemaker:DeleteTags",
+        "sagemaker:ListTags"
       ]
     },
     "list": {
       "permissions": [
-        "sagemaker:ListApps"
+        "sagemaker:ListApps",
+        "sagemaker:ListTags"
       ]
     },
     "read": {
       "permissions": [
         "sagemaker:DescribeApp",
-        "sagemaker:DescribeApp"
+        "sagemaker:DescribeApp",
+        "sagemaker:ListTags"
       ]
     }
   },
@@ -233,8 +239,17 @@
     "DomainId",
     "UserProfileName"
   ],
-  "typeName": "AWS::SageMaker::App",
-  "writeOnlyProperties": [
-    "/properties/Tags"
-  ]
+  "tagging": {
+    "cloudFormationSystemTags": false,
+    "permissions": [
+      "sagemaker:AddTags",
+      "sagemaker:ListTags",
+      "sagemaker:DeleteTags"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": false,
+    "taggable": true
+  },
+  "typeName": "AWS::SageMaker::App"
 }

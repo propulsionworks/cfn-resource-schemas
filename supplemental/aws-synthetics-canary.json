@@ -49,11 +49,11 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-code.html#cfn-synthetics-canary-code-s3bucket"
         },
         "S3Key": {
-          "description": "The S3 key of your script. For more information, see [Working with Amazon S3 Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html) .",
+          "description": "The Amazon S3 key of your script. For more information, see [Working with Amazon S3 Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html) .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-code.html#cfn-synthetics-canary-code-s3key"
         },
         "S3ObjectVersion": {
-          "description": "The S3 version ID of your script.",
+          "description": "The Amazon S3 version ID of your script.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-code.html#cfn-synthetics-canary-code-s3objectversion"
         },
         "Script": {
@@ -75,10 +75,11 @@
     "RetryConfig": {
       "properties": {
         "MaxRetries": {
-          "description": "maximum times the canary will be retried upon the scheduled run failure",
+          "description": "The maximum number of retries. The value must be less than or equal to two.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-retryconfig.html#cfn-synthetics-canary-retryconfig-maxretries"
         }
       },
+      "description": "The canary's retry configuration information.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-retryconfig.html"
     },
     "RunConfig": {
@@ -128,6 +129,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-schedule.html#cfn-synthetics-canary-schedule-expression"
         },
         "RetryConfig": {
+          "description": "The canary's retry configuration information.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-schedule.html#cfn-synthetics-canary-schedule-retryconfig"
         }
       },
@@ -148,7 +150,7 @@
     "VPCConfig": {
       "properties": {
         "Ipv6AllowedForDualStack": {
-          "description": "Allow outbound IPv6 traffic on VPC canaries that are connected to dual-stack subnets if set to true",
+          "description": "Set this to `true` to allow outbound IPv6 traffic on VPC canaries that are connected to dual-stack subnets. The default is `false` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-synthetics-canary-vpcconfig.html#cfn-synthetics-canary-vpcconfig-ipv6allowedfordualstack"
         },
         "SecurityGroupIds": {
@@ -203,7 +205,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-synthetics-canary.html#cfn-synthetics-canary-deletelambdaresourcesoncanarydeletion"
     },
     "DryRunAndUpdate": {
-      "description": "Setting to control if UpdateCanary will perform a DryRun and validate it is PASSING before performing the Update. Default is FALSE.",
+      "description": "Specifies whether to perform a dry run before updating the canary. If set to `true` , CloudFormation will execute a dry run to validate the changes before applying them to the canary. If the dry run succeeds, the canary will be updated with the changes. If the dry run fails, the CloudFormation deployment will fail with the dry run’s failure reason.\n\nIf set to `false` or omitted, the canary will be updated directly without first performing a dry run. The default value is `false` .\n\nFor more information, see [Performing safe canary updates](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/performing-safe-canary-upgrades.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-synthetics-canary.html#cfn-synthetics-canary-dryrunandupdate"
     },
     "ExecutionRoleArn": {

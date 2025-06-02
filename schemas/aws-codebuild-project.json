@@ -1,6 +1,6 @@
 {
   "$id": "aws-codebuild-project",
-  "$integrity": "sha512-nHVN8VUgc5A0AiRIIl3X1rxvQFs8L7YLC5TU74tppUuVwAuYG49mWVUlN/OOfUP9hL6dayFKFgL8xIUvrEG3Mg==",
+  "$integrity": "sha512-SwTes4v8Ou6X+ENwd1bOtKBIfXFwLfbDcBxKMjJpmXlWxG3UN3WtVtoXf00SHKEyYI+I/clq2pQcvtszHr1fXA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -88,6 +88,25 @@
       ],
       "type": "object"
     },
+    "DockerServer": {
+      "additionalProperties": false,
+      "properties": {
+        "ComputeType": {
+          "type": "string"
+        },
+        "SecurityGroupIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "ComputeType"
+      ],
+      "type": "object"
+    },
     "Environment": {
       "additionalProperties": false,
       "properties": {
@@ -96,6 +115,9 @@
         },
         "ComputeType": {
           "type": "string"
+        },
+        "DockerServer": {
+          "$ref": "#/definitions/DockerServer"
         },
         "EnvironmentVariables": {
           "items": {

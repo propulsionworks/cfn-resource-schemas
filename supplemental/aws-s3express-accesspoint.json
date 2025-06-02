@@ -1,0 +1,105 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#aws-resource-s3express-accesspoint-return-values",
+    "properties": {
+      "NetworkOrigin": {
+        "description": "The network configuration of the access point."
+      },
+      "Arn": {
+        "description": "The ARN of the access point."
+      }
+    }
+  },
+  "definitions": {
+    "Arn": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-arn.html"
+    },
+    "PublicAccessBlockConfiguration": {
+      "properties": {
+        "BlockPublicAcls": {
+          "description": "Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket and objects in this bucket. Setting this element to `TRUE` causes the following behavior:\n\n- PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL is public.\n- PUT Object calls fail if the request includes a public ACL.\n- PUT Bucket calls fail if the request includes a public ACL.\n\nEnabling this setting doesn't affect existing policies or ACLs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-publicaccessblockconfiguration.html#cfn-s3express-accesspoint-publicaccessblockconfiguration-blockpublicacls"
+        },
+        "BlockPublicPolicy": {
+          "description": "Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this element to `TRUE` causes Amazon S3 to reject calls to PUT Bucket policy if the specified bucket policy allows public access.\n\nEnabling this setting doesn't affect existing bucket policies.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-publicaccessblockconfiguration.html#cfn-s3express-accesspoint-publicaccessblockconfiguration-blockpublicpolicy"
+        },
+        "IgnorePublicAcls": {
+          "description": "Specifies whether Amazon S3 should ignore public ACLs for this bucket and objects in this bucket. Setting this element to `TRUE` causes Amazon S3 to ignore all public ACLs on this bucket and objects in this bucket.\n\nEnabling this setting doesn't affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-publicaccessblockconfiguration.html#cfn-s3express-accesspoint-publicaccessblockconfiguration-ignorepublicacls"
+        },
+        "RestrictPublicBuckets": {
+          "description": "Specifies whether Amazon S3 should restrict public bucket policies for this bucket. Setting this element to `TRUE` restricts access to this bucket to only AWS service principals and authorized users within this account if the bucket has a public policy.\n\nEnabling this setting doesn't affect previously stored bucket policies, except that public and cross-account access within any public bucket policy, including non-public delegation to specific accounts, is blocked.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-publicaccessblockconfiguration.html#cfn-s3express-accesspoint-publicaccessblockconfiguration-restrictpublicbuckets"
+        }
+      },
+      "description": "Public access is blocked by default to access points for directory buckets.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-publicaccessblockconfiguration.html"
+    },
+    "Scope": {
+      "properties": {
+        "Permissions": {
+          "description": "You can include one or more API operations as permissions.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-scope.html#cfn-s3express-accesspoint-scope-permissions"
+        },
+        "Prefixes": {
+          "description": "You can specify any amount of prefixes, but the total length of characters of all prefixes must be less than 256 bytes in size.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-scope.html#cfn-s3express-accesspoint-scope-prefixes"
+        }
+      },
+      "description": "You can use the access point scope to restrict access to specific prefixes, API operations, or a combination of both.\n\nFor more information, see [Manage the scope of your access points for directory buckets.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets-manage-scope.html)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-scope.html"
+    },
+    "VpcConfiguration": {
+      "properties": {
+        "VpcId": {
+          "description": "If this field is specified, this access point will only allow connections from the specified VPC ID.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-vpcconfiguration.html#cfn-s3express-accesspoint-vpcconfiguration-vpcid"
+        }
+      },
+      "description": "The Virtual Private Cloud (VPC) configuration for a bucket access point.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3express-accesspoint-vpcconfiguration.html"
+    }
+  },
+  "description": "Access points simplify managing data access at scale for shared datasets in Amazon S3 . Access points are unique hostnames you create to enforce distinct permissions and network controls for all requests made through an access point. You can create hundreds of access points per bucket, each with a distinct name and permissions customized for each application. Each access point works in conjunction with the bucket policy that is attached to the underlying bucket. For more information, see [Managing access to shared datasets in directory buckets with access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html) .",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html",
+  "id": "aws-s3express-accesspoint",
+  "properties": {
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-arn"
+    },
+    "Bucket": {
+      "description": "The name of the bucket that you want to associate the access point with.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-bucket"
+    },
+    "BucketAccountId": {
+      "description": "The AWS account ID that owns the bucket associated with this access point.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-bucketaccountid"
+    },
+    "Name": {
+      "description": "An access point name consists of a base name you provide, followed by the zoneID ( AWS Local Zone) followed by the prefix `--xa-s3` . For example, accesspointname--zoneID--xa-s3.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-name"
+    },
+    "NetworkOrigin": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-networkorigin"
+    },
+    "Policy": {
+      "description": "The access point policy associated with the specified access point.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-policy"
+    },
+    "PublicAccessBlockConfiguration": {
+      "description": "Public access is blocked by default to access points for directory buckets.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-publicaccessblockconfiguration"
+    },
+    "Scope": {
+      "description": "You can use the access point scope to restrict access to specific prefixes, API operations, or a combination of both.\n\nFor more information, see [Manage the scope of your access points for directory buckets.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets-manage-scope.html)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-scope"
+    },
+    "VpcConfiguration": {
+      "description": "If you include this field, Amazon S3 restricts access to this access point to requests from the specified virtual private cloud (VPC).",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3express-accesspoint.html#cfn-s3express-accesspoint-vpcconfiguration"
+    }
+  },
+  "typeName": "AWS::S3Express::AccessPoint"
+}

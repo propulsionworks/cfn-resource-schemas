@@ -1,6 +1,6 @@
 {
   "$id": "aws-fsx-filesystem",
-  "$integrity": "sha512-9QM3CC3siiKx7lr5RFXC00nyvBdFuxAeFKGvi248Bsc42yjLRZWd/MfQguaq8Yq2cMhP0HCZFDyqE7XnEBv8Yg==",
+  "$integrity": "sha512-PEsMIMkdL1cN8aL3PRZOboI8LlzF7uRGyfAVgJn5n1LDMTqIuaDv1SGUfNeoRILqB/2mCLF47yYa7bJ1XYez7w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/KmsKeyId",
@@ -45,6 +45,18 @@
       },
       "type": "object"
     },
+    "DataReadCacheConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "SizeGiB": {
+          "type": "integer"
+        },
+        "SizingMode": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "DiskIopsConfiguration": {
       "additionalProperties": false,
       "properties": {
@@ -75,6 +87,9 @@
         "DataCompressionType": {
           "type": "string"
         },
+        "DataReadCacheConfiguration": {
+          "$ref": "#/definitions/DataReadCacheConfiguration"
+        },
         "DeploymentType": {
           "type": "string"
         },
@@ -97,6 +112,9 @@
           "$ref": "#/definitions/MetadataConfiguration"
         },
         "PerUnitStorageThroughput": {
+          "type": "integer"
+        },
+        "ThroughputCapacity": {
           "type": "integer"
         },
         "WeeklyMaintenanceStartTime": {

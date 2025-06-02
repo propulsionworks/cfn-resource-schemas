@@ -1,12 +1,18 @@
 {
   "$id": "aws-ses-mailmanagertrafficpolicy",
-  "$integrity": "sha512-csMDprgmNu45Egg8CURsQtI2Dd+4Lh6VBQysDBzLoJ3nXWYzpX0Es6xdPfZmAjo4srpBuRCImPl4JeHrxQOnCg==",
+  "$integrity": "sha512-0PhnC6KmCazbs1naq2aTgbjdfH7EjONjnujup1X3iP8Q+rynjZMtNg24A8vWCH8lJbzDRAN+J29v1p0JLmoitA==",
   "additionalProperties": false,
   "definitions": {
     "AcceptAction": {
       "enum": [
         "ALLOW",
         "DENY"
+      ],
+      "type": "string"
+    },
+    "IngressAddressListEmailAttribute": {
+      "enum": [
+        "RECIPIENT"
       ],
       "type": "string"
     },
@@ -66,6 +72,19 @@
             "Analysis"
           ],
           "title": "Analysis",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "IsInAddressList": {
+              "$ref": "#/definitions/IngressIsInAddressList"
+            }
+          },
+          "required": [
+            "IsInAddressList"
+          ],
+          "title": "IsInAddressList",
           "type": "object"
         }
       ]
@@ -171,6 +190,28 @@
           "type": "object"
         }
       ]
+    },
+    "IngressIsInAddressList": {
+      "additionalProperties": false,
+      "properties": {
+        "AddressLists": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "Attribute": {
+          "$ref": "#/definitions/IngressAddressListEmailAttribute"
+        }
+      },
+      "required": [
+        "AddressLists",
+        "Attribute"
+      ],
+      "type": "object"
     },
     "IngressStringEmailAttribute": {
       "enum": [

@@ -1,13 +1,12 @@
 {
   "$id": "aws-timestream-scheduledquery",
-  "$integrity": "sha512-XMrgbf0kz/94aWawT50N1x17PI0qDSIDSdtvmmo+ja2XOEGYy82+MyMB/X1m9mbPlnlQWDf9UhmkSjmhk+HrQA==",
+  "$integrity": "sha512-RZCHM5b/Znf1MEZxzkpL4valS2ZZFy6nI1u6X1n34jhdtYL+6GJJFG7zUnKdfcoyNdSNEEHhHNhHnmR9f6q0+A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ScheduledQueryName",
     "/properties/QueryString",
     "/properties/ScheduleConfiguration",
     "/properties/NotificationConfiguration",
-    "/properties/ClientToken",
     "/properties/ScheduledQueryExecutionRoleArn",
     "/properties/TargetConfiguration",
     "/properties/ErrorReportConfiguration",
@@ -424,12 +423,17 @@
     "create": {
       "permissions": [
         "timestream:CreateScheduledQuery",
-        "timestream:DescribeEndpoints"
+        "timestream:DescribeEndpoints",
+        "timestream:TagResource",
+        "iam:PassRole",
+        "kms:DescribeKey",
+        "kms:GenerateDataKey"
       ]
     },
     "delete": {
       "permissions": [
         "timestream:DeleteScheduledQuery",
+        "timestream:DescribeScheduledQuery",
         "timestream:DescribeEndpoints"
       ]
     },
@@ -443,7 +447,9 @@
       "permissions": [
         "timestream:DescribeScheduledQuery",
         "timestream:ListTagsForResource",
-        "timestream:DescribeEndpoints"
+        "timestream:DescribeEndpoints",
+        "kms:GenerateDataKey",
+        "kms:Decrypt"
       ]
     },
     "update": {
@@ -556,5 +562,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::Timestream::ScheduledQuery"
+  "typeName": "AWS::Timestream::ScheduledQuery",
+  "writeOnlyProperties": [
+    "/properties/ClientToken"
+  ]
 }

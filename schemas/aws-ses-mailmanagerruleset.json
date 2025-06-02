@@ -1,6 +1,6 @@
 {
   "$id": "aws-ses-mailmanagerruleset",
-  "$integrity": "sha512-B3I5+m3sqgW9s7meKfi5vXMbJlxeaMkpc6ISe1cRiMl5wGMq6v/F8kFPOS/h4a7CLrgGaug6+TuaFiM/cUrtCA==",
+  "$integrity": "sha512-anDhLvotP55ozeotykVoWkAXK+PY4U8j7hG042RGc27dI/DsqJ+DKKjQmgtGjyMiT+hJTJ8zdGruPWetolwMWw==",
   "additionalProperties": false,
   "definitions": {
     "ActionFailurePolicy": {
@@ -349,6 +349,17 @@
         }
       ]
     },
+    "RuleAddressListEmailAttribute": {
+      "enum": [
+        "RECIPIENT",
+        "MAIL_FROM",
+        "SENDER",
+        "FROM",
+        "TO",
+        "CC"
+      ],
+      "type": "string"
+    },
     "RuleBooleanEmailAttribute": {
       "enum": [
         "READ_RECEIPT_REQUESTED",
@@ -406,6 +417,19 @@
             "Analysis"
           ],
           "title": "Analysis",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "IsInAddressList": {
+              "$ref": "#/definitions/RuleIsInAddressList"
+            }
+          },
+          "required": [
+            "IsInAddressList"
+          ],
+          "title": "IsInAddressList",
           "type": "object"
         }
       ]
@@ -585,6 +609,28 @@
           "type": "object"
         }
       ]
+    },
+    "RuleIsInAddressList": {
+      "additionalProperties": false,
+      "properties": {
+        "AddressLists": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "Attribute": {
+          "$ref": "#/definitions/RuleAddressListEmailAttribute"
+        }
+      },
+      "required": [
+        "Attribute",
+        "AddressLists"
+      ],
+      "type": "object"
     },
     "RuleNumberEmailAttribute": {
       "enum": [

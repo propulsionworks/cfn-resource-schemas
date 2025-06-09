@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-taskdefinition",
-  "$integrity": "sha512-+v6RfTkNzY/EWXevYYg4e4L/HR+JH24gEwRcafwk1VKI/ur7mL1P9Bgwb2NJV516TgS7YyMUvdgPg8RWOsPjpA==",
+  "$integrity": "sha512-aK+m9GF0T6HN3GmIbr4yCZKTVak7uYGKskbqqGW9abu8El5CtTSJ5nqmffbfVFC1ganRtjSUZj56RRfAiTV4tA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Family",
@@ -1160,7 +1160,8 @@
     }
   },
   "propertyTransform": {
-    "/properties/TaskRoleArn": "TaskRoleArn $OR $split(TaskRoleArn, \"role/\")[-1]"
+    "/properties/ExecutionRoleArn": "ExecutionRoleArn $OR $join([\"arn:(aws)[-]{0,1}[a-z]{0,2}[-]{0,1}[a-z]{0,3}:iam::[0-9]{12}[:]role/\", ExecutionRoleArn])",
+    "/properties/TaskRoleArn": "TaskRoleArn $OR $split(TaskRoleArn, \"role/\")[-1] $OR $join([\"arn:(aws)[-]{0,1}[a-z]{0,2}[-]{0,1}[a-z]{0,3}:iam::[0-9]{12}[:]role/\", TaskRoleArn])"
   },
   "readOnlyProperties": [
     "/properties/TaskDefinitionArn"

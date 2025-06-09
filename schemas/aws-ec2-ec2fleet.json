@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-ec2fleet",
-  "$integrity": "sha512-X54b5PwrrCrKg1WC1q8gaVM6Xe+LzeOmyl6pmpcxp1GHEQUH55xORklhVCdJCdGRsYlIkVkVA2Wi68FiWhamZw==",
+  "$integrity": "sha512-8z1EpAshM+JR/G8js7R8+YwzgIUNtRqirVA7e8T2efTW9cGaX82MiBEmEwXo0rNgpquU+6TwIUPfkycfsKbAuQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/LaunchTemplateConfigs",
@@ -175,6 +175,13 @@
       "properties": {
         "AvailabilityZone": {
           "type": "string"
+        },
+        "BlockDeviceMappings": {
+          "items": {
+            "$ref": "#/definitions/BlockDeviceMapping"
+          },
+          "type": "array",
+          "uniqueItems": true
         },
         "InstanceRequirements": {
           "$ref": "#/definitions/InstanceRequirementsRequest"
@@ -800,5 +807,8 @@
     "TargetCapacitySpecification",
     "LaunchTemplateConfigs"
   ],
+  "tagging": {
+    "taggable": false
+  },
   "typeName": "AWS::EC2::EC2Fleet"
 }

@@ -65,6 +65,20 @@
       "description": "A single selector statement in an advanced event selector.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-advancedfieldselector.html"
     },
+    "ContextKeySelector": {
+      "properties": {
+        "Equals": {
+          "description": "A list of keys defined by Type to be included in CloudTrail enriched events.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-contextkeyselector.html#cfn-cloudtrail-eventdatastore-contextkeyselector-equals"
+        },
+        "Type": {
+          "description": "Specifies the type of the event record field in ContextKeySelector. Valid values include RequestContext, TagContext.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-contextkeyselector.html#cfn-cloudtrail-eventdatastore-contextkeyselector-type"
+        }
+      },
+      "description": "An object that contains information types to be included in CloudTrail enriched events.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-contextkeyselector.html"
+    },
     "InsightSelector": {
       "properties": {
         "InsightType": {
@@ -103,6 +117,10 @@
       "description": "The billing mode for the event data store determines the cost for ingesting events and the default and maximum retention period for the event data store.\n\nThe following are the possible values:\n\n- `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally recommended if you want a flexible retention period of up to 3653 days (about 10 years). The default retention period for this billing mode is 366 days.\n- `FIXED_RETENTION_PRICING` - This billing mode is recommended if you expect to ingest more than 25 TB of event data per month and need a retention period of up to 2557 days (about 7 years). The default retention period for this billing mode is 2557 days.\n\nThe default value is `EXTENDABLE_RETENTION_PRICING` .\n\nFor more information about CloudTrail pricing, see [AWS CloudTrail Pricing](https://docs.aws.amazon.com/cloudtrail/pricing/) and [Managing CloudTrail Lake costs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-billingmode"
     },
+    "ContextKeySelectors": {
+      "description": "The list of context key selectors that are configured for the event data store.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-contextkeyselectors"
+    },
     "CreatedTimestamp": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-createdtimestamp"
     },
@@ -132,6 +150,10 @@
     "KmsKeyId": {
       "description": "Specifies the AWS KMS key ID to use to encrypt the events delivered by CloudTrail. The value can be an alias name prefixed by `alias/` , a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.\n\n> Disabling or deleting the KMS key, or removing CloudTrail permissions on the key, prevents CloudTrail from logging events to the event data store, and prevents users from querying the data in the event data store that was encrypted with the key. After you associate an event data store with a KMS key, the KMS key cannot be removed or changed. Before you disable or delete a KMS key that you are using with an event data store, delete or back up your event data store. \n\nCloudTrail also supports AWS KMS multi-Region keys. For more information about multi-Region keys, see [Using multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *AWS Key Management Service Developer Guide* .\n\nExamples:\n\n- `alias/MyAliasName`\n- `arn:aws:kms:us-east-2:123456789012:alias/MyAliasName`\n- `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`\n- `12345678-1234-1234-1234-123456789012`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-kmskeyid"
+    },
+    "MaxEventSize": {
+      "description": "The maximum allowed size for events to be stored in the specified event data store. If you are using context key selectors, MaxEventSize must be set to Large.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-maxeventsize"
     },
     "MultiRegionEnabled": {
       "description": "Specifies whether the event data store includes events from all Regions, or only from the Region in which the event data store is created.",

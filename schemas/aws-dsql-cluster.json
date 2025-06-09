@@ -1,6 +1,6 @@
 {
   "$id": "aws-dsql-cluster",
-  "$integrity": "sha512-XCY4cuRWYUqj9ZTfMKlTBqWu+o3YCfxJi0qK1nPjl0jJFTpgD+Es3rA3Iwlu8Bps6Uq4D6XLJR1QdSXdQSJVrw==",
+  "$integrity": "sha512-/DGM6HLj8PI+N6C4G3qNIlscC+MzWoAQsZTQxT404z8Bri6D+HGc6WYBDZkVTLfHC0c2tj5sX4Pc1PSXVR0z8Q==",
   "additionalProperties": false,
   "definitions": {
     "Tag": {
@@ -36,7 +36,10 @@
         "dsql:TagResource",
         "dsql:GetVpcEndpointServiceName",
         "dsql:ListTagsForResource",
-        "iam:CreateServiceLinkedRole"
+        "iam:CreateServiceLinkedRole",
+        "dsql:PutMultiRegionProperties",
+        "dsql:AddPeerCluster",
+        "dsql:PutWitnessRegion"
       ]
     },
     "delete": {
@@ -70,7 +73,11 @@
         "dsql:UntagResource",
         "dsql:TagResource",
         "dsql:GetVpcEndpointServiceName",
-        "dsql:ListTagsForResource"
+        "dsql:ListTagsForResource",
+        "dsql:PutMultiRegionProperties",
+        "dsql:PutWitnessRegion",
+        "dsql:AddPeerCluster",
+        "dsql:RemovePeerCluster"
       ]
     }
   },
@@ -89,6 +96,26 @@
     "Identifier": {
       "description": "The ID of the created cluster.",
       "type": "string"
+    },
+    "MultiRegionProperties": {
+      "additionalProperties": false,
+      "description": "The Multi-region properties associated to this cluster.",
+      "properties": {
+        "Clusters": {
+          "insertionOrder": false,
+          "items": {
+            "description": "The cluster Amazon Resource Name (ARN) in a multi-region cluster.",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "WitnessRegion": {
+          "description": "The witness region in a multi-region cluster.",
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "ResourceArn": {
       "description": "The Amazon Resource Name (ARN) for the cluster.",

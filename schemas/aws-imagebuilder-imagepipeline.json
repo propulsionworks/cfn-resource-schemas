@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-imagepipeline",
-  "$integrity": "sha512-X2AnL3Zce6pGMVVImCCTc6Gb4Y3x3Y+Gyw+Y+H0nwwRTW6hqIimJtay+Le5F5D/I+E33MkxMih7frPZUo909Dw==",
+  "$integrity": "sha512-bnLpycMYcjI995hG/JxVdC3b2RNucJf3Yu1GmhHHEIqGWpetq+oKqqoqnnWV9Vt0M4cizLRN/YSkycGJyBCZcA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -149,7 +149,7 @@
     },
     "delete": {
       "permissions": [
-        "imagebuilder:UnTagResource",
+        "imagebuilder:UntagResource",
         "imagebuilder:GetImagePipeline",
         "imagebuilder:DeleteImagePipeline"
       ]
@@ -169,7 +169,9 @@
         "iam:PassRole",
         "imagebuilder:GetImagePipeline",
         "imagebuilder:UpdateImagePipeline",
-        "imagebuilder:GetWorkflow"
+        "imagebuilder:GetWorkflow",
+        "imagebuilder:TagResource",
+        "imagebuilder:UntagResource"
       ]
     }
   },
@@ -274,6 +276,10 @@
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-imagebuilder.git",
   "tagging": {
     "cloudFormationSystemTags": true,
+    "permissions": [
+      "imagebuilder:TagResource",
+      "imagebuilder:UntagResource"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,

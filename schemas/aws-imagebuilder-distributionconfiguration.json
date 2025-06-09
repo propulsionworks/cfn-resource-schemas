@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-distributionconfiguration",
-  "$integrity": "sha512-SYtpBgQZBcXn6sjSnW5QBtPFbIypXNQckkL0BTK3Dz/xUr1+OBJbXweUzzUlzyFtDt/XyWbW99D1aTNJYerFOg==",
+  "$integrity": "sha512-M8HHeDHAf7C5TIkGksAbdlnHQg00NINs7g+3VDfwfqJk8MohoAkpJEFYTVFn+tYUOcdY3p5Wpu7Qa/sEvi8qiQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -303,7 +303,7 @@
     "delete": {
       "permissions": [
         "imagebuilder:GetDistributionConfiguration",
-        "imagebuilder:UnTagResource",
+        "imagebuilder:UntagResource",
         "imagebuilder:DeleteDistributionConfiguration"
       ]
     },
@@ -324,7 +324,9 @@
         "ec2:ModifyLaunchTemplate",
         "ssm:GetParameter",
         "imagebuilder:GetDistributionConfiguration",
-        "imagebuilder:UpdateDistributionConfiguration"
+        "imagebuilder:UpdateDistributionConfiguration",
+        "imagebuilder:TagResource",
+        "imagebuilder:UntagResource"
       ]
     }
   },
@@ -373,6 +375,10 @@
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-imagebuilder.git",
   "tagging": {
     "cloudFormationSystemTags": true,
+    "permissions": [
+      "imagebuilder:TagResource",
+      "imagebuilder:UntagResource"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,

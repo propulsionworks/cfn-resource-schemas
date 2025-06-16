@@ -2,29 +2,49 @@
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#aws-resource-evs-environment-return-values",
     "properties": {
-      "EnvironmentId": {},
-      "Checks": {},
-      "EnvironmentArn": {},
-      "Credentials": {},
-      "EnvironmentState": {},
-      "StateDetails": {},
-      "CreatedAt": {},
-      "ModifiedAt": {}
+      "EnvironmentId": {
+        "description": "The unique ID for the environment. For example: `env-1234567890` ."
+      },
+      "Checks": {
+        "description": "A check on the environment to identify instance health and VMware VCF licensing issues. For example:\n\n`{ \"checks\": [ { \"type\": \"KEY_REUSE\", \"result\": \"PASSED\" }, { \"type\": \"KEY_COVERAGE\", \"result\": \"PASSED\" }, { \"type\": \"REACHABILITY\", \"result\": \"PASSED\" }, { \"type\": \"HOST_COUNT\", \"result\": \"PASSED\" } ] }`"
+      },
+      "EnvironmentArn": {
+        "description": "The Amazon Resource Name (ARN) that is associated with the environment. For example: `arn:aws:evs:us-east-1:000000000000:environment/env-1234567890` ."
+      },
+      "Credentials": {
+        "description": "The VCF credentials that are stored as Amazon EVS managed secrets in AWS Secrets Manager. Amazon EVS stores credentials that are needed to install vCenter Server, NSX, and SDDC Manager. For example:\n\n`{ [ { \"secretArn\": \"arn:aws:secretsmanager:us-east-1:000000000000:secret:evs!env-1234567890_vCenterAdmin-MnTMEi\" }, { \"secretArn\": \"arn:aws:secretsmanager:us-east-1:000000000000:secret:evs!env-1234567890_vCenterRoot-87VyCF\" }, { \"secretArn\": \"arn:aws:secretsmanager:us-east-1:000000000000:secret:evs!env-1234567890_NSXRoot-SR3k43\" }, { \"secretArn\": \"arn:aws:secretsmanager:us-east-1:000000000000:secret:evs!env-1234567890_NSXAdmin-L5LUiD\" }, { \"secretArn\": \"arn:aws:secretsmanager:us-east-1:000000000000:secret:evs!env-1234567890_NSXAudit-Q2oW46\" }, { \"secretArn\": \"arn:aws:secretsmanager:us-east-1:000000000000:secret:evs!env-1234567890_SDDCManagerRoot-bFulOq\" }, { \"secretArn\": \"arn:aws:secretsmanager:us-east-1:000000000000:secret:evs!env-1234567890_SDDCManagerVCF-Ec3gES\" }, { \"secretArn\": \"arn:aws:secretsmanager:us-east-1:000000000000:secret:evs!env-1234567890_SDDCManagerAdmin-JMTAAb\" } ] }`"
+      },
+      "EnvironmentState": {
+        "description": "The state of an environment. For example: `CREATED` ."
+      },
+      "StateDetails": {
+        "description": "A detailed description of the `environmentState` of an environment. For example: `Environment successfully created` ."
+      },
+      "CreatedAt": {
+        "description": "The date and time that the environment was created. For example: `1749081600.000` ."
+      },
+      "ModifiedAt": {
+        "description": "The date and time that the environment was modified. For example: `1749081600.000` ."
+      }
     }
   },
   "definitions": {
     "Check": {
       "properties": {
         "ImpairedSince": {
+          "description": "The time when environment health began to be impaired.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-check.html#cfn-evs-environment-check-impairedsince"
         },
         "Result": {
+          "description": "The check result.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-check.html#cfn-evs-environment-check-result"
         },
         "Type": {
+          "description": "The check type. Amazon EVS performs the following checks.\n\n- `KEY_REUSE` : checks that the VCF license key is not used by another Amazon EVS environment. This check fails if a used license is added to the environment.\n- `KEY_COVERAGE` : checks that your VCF license key allocates sufficient vCPU cores for all deployed hosts. The check fails when any assigned hosts in the EVS environment are not covered by license keys, or when any unassigned hosts cannot be covered by available vCPU cores in keys.\n- `REACHABILITY` : checks that the Amazon EVS control plane has a persistent connection to SDDC Manager. If Amazon EVS cannot reach the environment, this check fails.\n- `HOST_COUNT` : Checks that your environment has a minimum of 4 hosts, which is a requirement for VCF 5.2.1.\n\nIf this check fails, you will need to add hosts so that your environment meets this minimum requirement. Amazon EVS only supports environments with 4-16 hosts.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-check.html#cfn-evs-environment-check-type"
         }
       },
+      "description": "> Amazon EVS is in public preview release and is subject to change. \n\nA check on the environment to identify environment health and validate VMware VCF licensing compliance.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-check.html"
     },
     "CheckResult": {
@@ -38,21 +58,27 @@
     "HostInfoForCreate": {
       "properties": {
         "DedicatedHostId": {
+          "description": "The unique ID of the Amazon EC2 Dedicated Host.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-hostinfoforcreate.html#cfn-evs-environment-hostinfoforcreate-dedicatedhostid"
         },
         "HostName": {
+          "description": "The DNS hostname of the host. DNS hostnames for hosts must be unique across Amazon EVS environments and within VCF.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-hostinfoforcreate.html#cfn-evs-environment-hostinfoforcreate-hostname"
         },
         "InstanceType": {
+          "description": "The EC2 instance type that represents the host.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-hostinfoforcreate.html#cfn-evs-environment-hostinfoforcreate-instancetype"
         },
         "KeyName": {
+          "description": "The name of the SSH key that is used to access the host.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-hostinfoforcreate.html#cfn-evs-environment-hostinfoforcreate-keyname"
         },
         "PlacementGroupId": {
+          "description": "The unique ID of the placement group where the host is placed.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-hostinfoforcreate.html#cfn-evs-environment-hostinfoforcreate-placementgroupid"
         }
       },
+      "description": "> Amazon EVS is in public preview release and is subject to change. \n\nAn object that represents a host.\n\n> You cannot use `dedicatedHostId` and `placementGroupId` together in the same `HostInfoForCreate` object. This results in a `ValidationException` response.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-hostinfoforcreate.html"
     },
     "HostName": {
@@ -62,9 +88,11 @@
     "InitialVlanInfo": {
       "properties": {
         "Cidr": {
+          "description": "The CIDR block that you provide to create an Amazon EVS VLAN subnet. Amazon EVS VLAN subnets have a minimum CIDR block size of /28 and a maximum size of /24. Amazon EVS VLAN subnet CIDR blocks must not overlap with other subnets in the VPC.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-initialvlaninfo.html#cfn-evs-environment-initialvlaninfo-cidr"
         }
       },
+      "description": "> Amazon EVS is in public preview release and is subject to change. \n\nAn object that represents an initial VLAN subnet for the Amazon EVS environment. Amazon EVS creates initial VLAN subnets when you first create the environment. Amazon EVS creates the following 10 VLAN subnets: host management VLAN, vMotion VLAN, vSAN VLAN, VTEP VLAN, Edge VTEP VLAN, Management VM VLAN, HCX uplink VLAN, NSX uplink VLAN, expansion VLAN 1, expansion VLAN 2.\n\n> For each Amazon EVS VLAN subnet, you must specify a non-overlapping CIDR block. Amazon EVS VLAN subnets have a minimum CIDR block size of /28 and a maximum size of /24.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-initialvlaninfo.html"
     },
     "RouteServerPeering": {
@@ -74,9 +102,11 @@
     "Secret": {
       "properties": {
         "SecretArn": {
+          "description": "The Amazon Resource Name (ARN) of the secret.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-secret.html#cfn-evs-environment-secret-secretarn"
         }
       },
+      "description": "> Amazon EVS is in public preview release and is subject to change. \n\nA managed secret that contains the credentials for installing vCenter Server, NSX, and SDDC Manager. During environment creation, the Amazon EVS control plane uses AWS Secrets Manager to create, encrypt, validate, and store secrets. If you choose to delete your environment, Amazon EVS also deletes the secrets that are associated with your environment. Amazon EVS does not provide managed rotation of secrets. We recommend that you rotate secrets regularly to ensure that secrets are not long-lived.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-secret.html"
     },
     "SecurityGroupId": {
@@ -99,7 +129,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-evs-environment-timestamp.html"
     }
   },
-  "description": "An environment created within the EVS service",
+  "description": "> Amazon EVS is in public preview release and is subject to change. \n\nCreates an Amazon EVS environment that runs VCF software, such as SDDC Manager, NSX Manager, and vCenter Server.\n\nDuring environment creation, Amazon EVS performs validations on DNS settings, provisions VLAN subnets and hosts, and deploys the supplied version of VCF.\n\nIt can take several hours to create an environment. After the deployment completes, you can configure VCF in the vSphere user interface according to your needs.\n\n> You cannot use the `dedicatedHostId` and `placementGroupId` parameters together in the same `CreateEnvironment` action. This results in a `ValidationException` response.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html",
   "id": "aws-evs-environment",
   "properties": {
@@ -107,6 +137,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-checks"
     },
     "ConnectivityInfo": {
+      "description": "The connectivity configuration for the environment. Amazon EVS requires that you specify two route server peer IDs. During environment creation, the route server endpoints peer with the NSX uplink VLAN for connectivity to the NSX overlay network.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-connectivityinfo"
     },
     "CreatedAt": {
@@ -122,56 +153,64 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-environmentid"
     },
     "EnvironmentName": {
-      "description": "The name of an EVS environment",
+      "description": "The name of the environment.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-environmentname"
     },
     "EnvironmentState": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-environmentstate"
     },
     "Hosts": {
-      "description": "The initial hosts for environment only required upon creation. Modification after creation will have no effect",
+      "description": "Required for environment resource creation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-hosts"
     },
     "InitialVlans": {
-      "description": "The initial Vlan configuration only required upon creation. Modification after creation will have no effect",
+      "description": "> Amazon EVS is in public preview release and is subject to change. \n\nThe initial VLAN subnets for the environment. Amazon EVS VLAN subnets have a minimum CIDR block size of /28 and a maximum size of /24. Amazon EVS VLAN subnet CIDR blocks must not overlap with other subnets in the VPC.\n\nRequired for environment resource creation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-initialvlans"
     },
     "KmsKeyId": {
+      "description": "The AWS KMS key ID that AWS Secrets Manager uses to encrypt secrets that are associated with the environment. These secrets contain the VCF credentials that are needed to install vCenter Server, NSX, and SDDC Manager.\n\nBy default, Amazon EVS use the AWS Secrets Manager managed key `aws/secretsmanager` . You can also specify a customer managed key.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-kmskeyid"
     },
     "LicenseInfo": {
-      "description": "The license information for an EVS environment",
+      "description": "The license information that Amazon EVS requires to create an environment. Amazon EVS requires two license keys: a VCF solution key and a vSAN license key.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-licenseinfo"
     },
     "ModifiedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-modifiedat"
     },
     "ServiceAccessSecurityGroups": {
+      "description": "The security groups that allow traffic between the Amazon EVS control plane and your VPC for service access. If a security group is not specified, Amazon EVS uses the default security group in your account for service access.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-serviceaccesssecuritygroups"
     },
     "ServiceAccessSubnetId": {
+      "description": "The subnet that is used to establish connectivity between the Amazon EVS control plane and VPC. Amazon EVS uses this subnet to perform validations and create the environment.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-serviceaccesssubnetid"
     },
     "SiteId": {
+      "description": "The Broadcom Site ID that is associated with your Amazon EVS environment. Amazon EVS uses the Broadcom Site ID that you provide to meet Broadcom VCF license usage reporting requirements for Amazon EVS.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-siteid"
     },
     "StateDetails": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-statedetails"
     },
     "Tags": {
-      "description": "An array of key-value pairs to apply to this resource.",
+      "description": "Metadata that assists with categorization and organization. Each tag consists of a key and an optional value. You define both. Tags don't propagate to any other cluster or AWS resources.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-tags"
     },
     "TermsAccepted": {
+      "description": "Customer confirmation that the customer has purchased and will continue to maintain the required number of VCF software licenses to cover all physical processor cores in the Amazon EVS environment. Information about your VCF software in Amazon EVS will be shared with Broadcom to verify license compliance.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-termsaccepted"
     },
     "VcfHostnames": {
+      "description": "The DNS hostnames to be used by the VCF management appliances in your environment.\n\nFor environment creation to be successful, each hostname entry must resolve to a domain name that you've registered in your DNS service of choice and configured in the DHCP option set of your VPC. DNS hostnames cannot be changed after environment creation has started.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-vcfhostnames"
     },
     "VcfVersion": {
+      "description": "The VCF version of the environment.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-vcfversion"
     },
     "VpcId": {
+      "description": "The VPC associated with the environment.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-evs-environment.html#cfn-evs-environment-vpcid"
     }
   },

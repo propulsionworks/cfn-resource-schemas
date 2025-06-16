@@ -1,6 +1,6 @@
 {
   "$id": "aws-customerprofiles-objecttype",
-  "$integrity": "sha512-rkvx87WmUkyndHAcn6g3PuqD7ZIVr6LhNIf+mIDzV2JxftXGSZvYnFstmnv1WunlcHJCc+07oWJ6GjVgJ6OPXQ==",
+  "$integrity": "sha512-SUcFMmWOPFzItYucSTQS9QWwB/2pBsSFNvwfLbbS3IXgC+KSUTrQQjV6s4lIb96VG6x3lEq+l+z828kPQUMUnA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainName",
@@ -193,7 +193,7 @@
     },
     "Description": {
       "description": "Description of the profile object type.",
-      "maxLength": 1000,
+      "maxLength": 10000,
       "minLength": 1,
       "type": "string"
     },
@@ -236,6 +236,16 @@
       "description": "The time of this integration got last updated at.",
       "type": "string"
     },
+    "MaxAvailableProfileObjectCount": {
+      "description": "The maximum available number of profile objects",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "MaxProfileObjectCount": {
+      "description": "The maximum number of profile objects for this object type",
+      "minimum": 1,
+      "type": "integer"
+    },
     "ObjectTypeName": {
       "description": "The name of the profile object type.",
       "maxLength": 255,
@@ -268,7 +278,8 @@
   },
   "readOnlyProperties": [
     "/properties/LastUpdatedAt",
-    "/properties/CreatedAt"
+    "/properties/CreatedAt",
+    "/properties/MaxAvailableProfileObjectCount"
   ],
   "required": [
     "DomainName",

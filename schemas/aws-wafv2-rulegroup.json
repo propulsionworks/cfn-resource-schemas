@@ -1,6 +1,6 @@
 {
   "$id": "aws-wafv2-rulegroup",
-  "$integrity": "sha512-HznNLYRfpdcBXJfBX5Ls4ANgWSwFOEpNH48LUW0npqCCMbs+c1vTV6GFP/vKLnxEjDvJR5c9p5RH/V7edgEueA==",
+  "$integrity": "sha512-IWX5zB2Ba60d5yUKtFXL1e0Ph3v5EUyMRnGlsj0+NQH9BZzCPeaef1b8t/TuWS+RH+KaLAOEqPR8zKyCBsV0fg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -30,6 +30,23 @@
       "required": [
         "Statements"
       ],
+      "type": "object"
+    },
+    "AsnMatchStatement": {
+      "additionalProperties": false,
+      "properties": {
+        "AsnList": {
+          "items": {
+            "maximum": 4294967295,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ForwardedIPConfig": {
+          "$ref": "#/definitions/ForwardedIPConfiguration"
+        }
+      },
       "type": "object"
     },
     "BlockAction": {
@@ -778,6 +795,9 @@
       "additionalProperties": false,
       "description": "Specifies a single custom aggregate key for a rate-base rule.",
       "properties": {
+        "ASN": {
+          "$ref": "#/definitions/RateLimitAsn"
+        },
         "Cookie": {
           "$ref": "#/definitions/RateLimitCookie"
         },
@@ -818,6 +838,10 @@
       "maximum": 2000000000,
       "minimum": 10,
       "type": "integer"
+    },
+    "RateLimitAsn": {
+      "description": "Specifies the request's ASN as an aggregate key for a rate-based rule.",
+      "type": "object"
     },
     "RateLimitCookie": {
       "additionalProperties": false,
@@ -1250,6 +1274,9 @@
       "properties": {
         "AndStatement": {
           "$ref": "#/definitions/AndStatement"
+        },
+        "AsnMatchStatement": {
+          "$ref": "#/definitions/AsnMatchStatement"
         },
         "ByteMatchStatement": {
           "$ref": "#/definitions/ByteMatchStatement"

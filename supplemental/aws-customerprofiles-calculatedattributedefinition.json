@@ -7,6 +7,12 @@
       },
       "CreatedAt": {
         "description": "The timestamp of when the calculated attribute definition was created."
+      },
+      "Status": {
+        "description": "Status of the Calculated Attribute creation (whether all historical data has been indexed.)"
+      },
+      "Readiness": {
+        "description": "The readiness status of the calculated attribute."
       }
     }
   },
@@ -87,6 +93,14 @@
     },
     "Range": {
       "properties": {
+        "TimestampFormat": {
+          "description": "The format the timestamp field in your JSON object is specified. This value should be one of EPOCHMILLI or ISO_8601. E.g. if your object type is MyType and source JSON is {\"generatedAt\": {\"timestamp\": \"2001-07-04T12:08:56.235Z\"}}, then TimestampFormat should be \"ISO_8601\".",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-range.html#cfn-customerprofiles-calculatedattributedefinition-range-timestampformat"
+        },
+        "TimestampSource": {
+          "description": "An expression specifying the field in your JSON object from which the date should be parsed. The expression should follow the structure of \\\"{ObjectTypeName.<Location of timestamp field in JSON pointer format>}\\\". E.g. if your object type is MyType and source JSON is {\"generatedAt\": {\"timestamp\": \"1737587945945\"}}, then TimestampSource should be \"{MyType.generatedAt.timestamp}\".",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-range.html#cfn-customerprofiles-calculatedattributedefinition-range-timestampsource"
+        },
         "Unit": {
           "description": "The unit of time.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-range.html#cfn-customerprofiles-calculatedattributedefinition-range-unit"
@@ -94,6 +108,10 @@
         "Value": {
           "description": "The amount of time of the specified unit.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-range.html#cfn-customerprofiles-calculatedattributedefinition-range-value"
+        },
+        "ValueRange": {
+          "description": "A structure specifying the endpoints of the relative time period over which data is included in the aggregation.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-range.html#cfn-customerprofiles-calculatedattributedefinition-range-valuerange"
         }
       },
       "description": "The relative time period over which data is included in the aggregation.",
@@ -106,6 +124,20 @@
     "RangeValue": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-rangevalue.html"
+    },
+    "Readiness": {
+      "properties": {
+        "Message": {
+          "description": "Any information pertaining to the status of the calculated attribute if required.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-readiness.html#cfn-customerprofiles-calculatedattributedefinition-readiness-message"
+        },
+        "ProgressPercentage": {
+          "description": "The progress percentage for including historical data in your calculated attribute.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-readiness.html#cfn-customerprofiles-calculatedattributedefinition-readiness-progresspercentage"
+        }
+      },
+      "description": "The readiness status of the calculated attribute.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-readiness.html"
     },
     "Statistic": {
       "properties": {},
@@ -147,6 +179,20 @@
     "ThresholdValue": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-thresholdvalue.html"
+    },
+    "ValueRange": {
+      "properties": {
+        "End": {
+          "description": "The ending point for this range. Positive numbers indicate how many days in the past data should be included, and negative numbers indicate how many days in the future.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-valuerange.html#cfn-customerprofiles-calculatedattributedefinition-valuerange-end"
+        },
+        "Start": {
+          "description": "The starting point for this range. Positive numbers indicate how many days in the past data should be included, and negative numbers indicate how many days in the future.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-valuerange.html#cfn-customerprofiles-calculatedattributedefinition-valuerange-start"
+        }
+      },
+      "description": "A structure specifying the endpoints of the relative time period over which data is included in the aggregation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-valuerange.html"
     }
   },
   "description": "A calculated attribute definition for Customer Profiles",
@@ -183,13 +229,23 @@
     "LastUpdatedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-lastupdatedat"
     },
+    "Readiness": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-readiness"
+    },
     "Statistic": {
       "description": "The aggregation operation to perform for the calculated attribute.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-statistic"
     },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-status"
+    },
     "Tags": {
       "description": "An array of key-value pairs to apply to this resource.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-tags"
+    },
+    "UseHistoricalData": {
+      "description": "Whether historical data ingested before the Calculated Attribute was created should be included in calculations.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-usehistoricaldata"
     }
   },
   "typeName": "AWS::CustomerProfiles::CalculatedAttributeDefinition"

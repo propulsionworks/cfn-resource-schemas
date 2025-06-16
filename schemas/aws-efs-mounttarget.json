@@ -1,9 +1,11 @@
 {
   "$id": "aws-efs-mounttarget",
-  "$integrity": "sha512-3r9NKtOmHHMTOE9n1H5mIf2mKSmCreYNP5xJ37tNZAqqQYwbcy9yjHoZa4MNUkvemGZoe7UdHcfoOs5eg2El/g==",
+  "$integrity": "sha512-xaHnwcYUZtayi62QeXEQ4DwLbBnwThOAMCqJKhuIErPRUcviydYkKFqsavwWTu59I7X+Lzbo3LQ6s0n26qXNJw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/IpAddress",
+    "/properties/Ipv6Address",
+    "/properties/IpAddressType",
     "/properties/SubnetId",
     "/properties/FileSystemId"
   ],
@@ -67,6 +69,19 @@
       "description": "Valid IPv4 address within the address range of the specified subnet.",
       "type": "string"
     },
+    "IpAddressType": {
+      "description": "",
+      "enum": [
+        "IPV4_ONLY",
+        "IPV6_ONLY",
+        "DUAL_STACK"
+      ],
+      "type": "string"
+    },
+    "Ipv6Address": {
+      "description": "",
+      "type": "string"
+    },
     "SecurityGroups": {
       "description": "VPC security group IDs, of the form ``sg-xxxxxxxx``. These must be for the same VPC as the subnet specified. The maximum number of security groups depends on account quota. For more information, see [Amazon VPC Quotas](https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html) in the *Amazon VPC User Guide* (see the *Security Groups* table).",
       "insertionOrder": false,
@@ -93,5 +108,8 @@
   "tagging": {
     "taggable": false
   },
-  "typeName": "AWS::EFS::MountTarget"
+  "typeName": "AWS::EFS::MountTarget",
+  "writeOnlyProperties": [
+    "/properties/IpAddressType"
+  ]
 }

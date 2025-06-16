@@ -1,6 +1,6 @@
 {
   "$id": "aws-lambda-layerversionpermission",
-  "$integrity": "sha512-+vKaypPVfuycePwva+499AXS0x2yGj/vFM4vYcuCRbBe23DXSujvK2u7SBoJCYazGZJHir6BnceNa7uFNsyImg==",
+  "$integrity": "sha512-Ww4RHM2gmKpb/dhcq8sp6kkMg0JGXFILzvKr5eWuU6ig2TgaQGoOM+qS2eQ6XmVqkq0DupRqQMWo/m+WZVXYLQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/OrganizationId",
@@ -56,6 +56,9 @@
       "description": "An account ID, or * to grant layer usage permission to all accounts in an organization, or all AWS accounts (if organizationId is not specified).",
       "type": "string"
     }
+  },
+  "propertyTransform": {
+    "/properties/Principal": "Principal $OR $join([\".*AWS.*[arn:aws:iam::\", Principal, \":root].*\"]) $OR $join([\".*AWS.*[\", Principal, \"].*\"])"
   },
   "readOnlyProperties": [
     "/properties/Id"

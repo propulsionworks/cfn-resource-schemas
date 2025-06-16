@@ -1,6 +1,6 @@
 {
   "$id": "aws-kinesis-stream",
-  "$integrity": "sha512-QNQtghx9b/jimaT6s8i58MK64su9PAdztT7axcprizRMw/ToPUtz2tgiKMqdDXM/elAHgwSKkZBY+Luqd79J7w==",
+  "$integrity": "sha512-iAopVQ7RCu86RejnWSwe4zpOqypsc3klpSLYscvMLiJykerS6aihIGzS5AnDBfW8ozX2j6CdtDm0N8VsEVy5kg==",
   "$comment": "Do not set SystemTags to true without implementing a fail-open mechanism. It should not fail when adding systemTags for customers without AddTagsToStream Permission. Cloudformation will automatically add system tags even if customer does not have the AddTagsToStream permission. COE: https://www.coe.a2z.com/coe/236297/content",
   "additionalProperties": false,
   "createOnlyProperties": [
@@ -112,14 +112,16 @@
         "kinesis:IncreaseStreamRetentionPeriod",
         "kinesis:StartStreamEncryption",
         "kinesis:AddTagsToStream",
-        "kinesis:ListTagsForStream"
+        "kinesis:ListTagsForStream",
+        "kinesis:ListTagsForResource"
       ]
     },
     "delete": {
       "permissions": [
         "kinesis:DescribeStreamSummary",
         "kinesis:DeleteStream",
-        "kinesis:RemoveTagsFromStream"
+        "kinesis:RemoveTagsFromStream",
+        "kinesis:UntagResource"
       ]
     },
     "list": {
@@ -130,7 +132,8 @@
     "read": {
       "permissions": [
         "kinesis:DescribeStreamSummary",
-        "kinesis:ListTagsForStream"
+        "kinesis:ListTagsForStream",
+        "kinesis:ListTagsForResource"
       ]
     },
     "update": {
@@ -145,8 +148,11 @@
         "kinesis:StartStreamEncryption",
         "kinesis:StopStreamEncryption",
         "kinesis:AddTagsToStream",
+        "kinesis:TagResource",
         "kinesis:RemoveTagsFromStream",
-        "kinesis:ListTagsForStream"
+        "kinesis:UntagResource",
+        "kinesis:ListTagsForStream",
+        "kinesis:ListTagsForResource"
       ],
       "timeoutInMinutes": 240
     }
@@ -216,8 +222,11 @@
     "cloudFormationSystemTags": false,
     "permissions": [
       "kinesis:AddTagsToStream",
+      "kinesis:TagResource",
       "kinesis:RemoveTagsFromStream",
-      "kinesis:ListTagsForStream"
+      "kinesis:UntagResource",
+      "kinesis:ListTagsForStream",
+      "kinesis:ListTagsForResource"
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",

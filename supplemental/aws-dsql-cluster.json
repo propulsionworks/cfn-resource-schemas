@@ -12,7 +12,7 @@
         "description": "The timestamp when the cluster was created, in ISO 8601 format."
       },
       "Status": {
-        "description": "The current status of the cluster. Possible values include: CREATING, ACTIVE, DELETING, FAILED."
+        "description": "The current status of the cluster. Possible values include: CREATING, ACTIVE, DELETING, FAILED.\n\nThe cluster can have two additional status values when working with multi-Region clusters:\n\n`PENDING_SETUP` —Indicates the cluster is being configured\n\n`PENDING_DELETE` —Indicates the cluster is being deleted\n\n*Note:* These status values only appear for multi-Region cluster operations."
       },
       "VpcEndpointServiceName": {
         "description": "The VPC Endpoint Service name for the cluster. This can be used to create a VPC endpoint to connect to the cluster from within a VPC."
@@ -32,7 +32,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dsql-cluster-tag.html"
     }
   },
-  "description": "The CreateCluster API allows you to create both single-Region clusters and multi-Region clusters. With the addition of the *multiRegionProperties* parameter, you can create a cluster with witness Region support and establish peer relationships with clusters in other Regions during creation.\n\n> Creating multi-Region clusters requires additional IAM permissions beyond those needed for single-Region clusters, as detailed in the *Required permissions* section below. \n\n*Required permissions*\n\n- **dsql:CreateCluster** - Required to create a cluster.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:TagResource** - Permission to add tags to a resource.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:PutMultiRegionProperties** - Permission to configure multi-Region properties for a cluster.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:AddPeerCluster** - When specifying `multiRegionProperties.clusters` , permission to add peer clusters.\n\nResources:\n\n- Local cluster: `arn:aws:dsql:region:account-id:cluster/*`\n- Each peer cluster: exact ARN of each specified peer cluster\n- **dsql:PutWitnessRegion** - When specifying `multiRegionProperties.witnessRegion` , permission to set a witness Region. This permission is checked both in the cluster Region and in the witness Region.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n\nCondition Keys: `dsql:WitnessRegion` (matching the specified witness region)\n\n> - The witness Region specified in `multiRegionProperties.witnessRegion` cannot be the same as the cluster's Region.",
+  "description": "The `AWS::DSQL::Cluster` resource specifies an cluster. You can use this resource to create, modify, and manage clusters.\n\nThis resource supports both single-Region clusters and multi-Region clusters through the `MultiRegionProperties` parameter.\n\n> Creating multi-Region clusters requires additional IAM permissions beyond those needed for single-Region clusters. > - The witness Region specified in `multiRegionProperties.witnessRegion` cannot be the same as the cluster's Region. \n\n*Required permissions*\n\n- **dsql:CreateCluster** - Required to create a cluster.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:TagResource** - Permission to add tags to a resource.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:PutMultiRegionProperties** - Permission to configure multi-Region properties for a cluster.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n- **dsql:AddPeerCluster** - When specifying `multiRegionProperties.clusters` , permission to add peer clusters.\n\nResources:\n\n- Local cluster: `arn:aws:dsql:region:account-id:cluster/*`\n- Each peer cluster: exact ARN of each specified peer cluster\n- **dsql:PutWitnessRegion** - When specifying `multiRegionProperties.witnessRegion` , permission to set a witness Region. This permission is checked both in the cluster Region and in the witness Region.\n\nResources: `arn:aws:dsql:region:account-id:cluster/*`\n\nCondition Keys: `dsql:WitnessRegion` (matching the specified witness region)",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html",
   "id": "aws-dsql-cluster",
   "properties": {
@@ -47,7 +47,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html#cfn-dsql-cluster-identifier"
     },
     "MultiRegionProperties": {
-      "description": "The multi-Region cluster configuration details that were set during cluster creation",
+      "description": "Defines the structure for multi-Region cluster configurations, containing the witness Region and peered cluster settings.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html#cfn-dsql-cluster-multiregionproperties"
     },
     "ResourceArn": {

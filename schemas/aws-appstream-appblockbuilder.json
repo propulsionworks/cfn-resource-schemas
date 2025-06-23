@@ -1,6 +1,6 @@
 {
   "$id": "aws-appstream-appblockbuilder",
-  "$integrity": "sha512-N1sNAZRGXRGbrFyhQ+kuf06t+muUP7aZPjFraWcgm3MkcN9uJ14nTkMkxoiGTG1xANbnoDBWlqf/fTapSvNKmA==",
+  "$integrity": "sha512-Yfj7SsOW0bgQJlMqKIhPRMLUw0vtZT7nsfZus/iIjprx/r71GAz+lvvV6Er0Ik9+ldc9yRky98AtpfW2ofi4tg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -77,6 +77,7 @@
         "appstream:AssociateAppBlockBuilderAppBlock",
         "appstream:DescribeAppBlockBuilderAppBlockAssociations",
         "appstream:TagResource",
+        "appstream:ListTagsForResource",
         "iam:PassRole"
       ]
     },
@@ -95,7 +96,8 @@
     },
     "read": {
       "permissions": [
-        "appstream:DescribeAppBlockBuilders"
+        "appstream:DescribeAppBlockBuilders",
+        "appstream:ListTagsForResource"
       ]
     },
     "update": {
@@ -186,6 +188,11 @@
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-appstream.git",
   "tagging": {
     "cloudFormationSystemTags": false,
+    "permissions": [
+      "appstream:ListTagsForResource",
+      "appstream:TagResource",
+      "appstream:UntagResource"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,
@@ -193,7 +200,6 @@
   },
   "typeName": "AWS::AppStream::AppBlockBuilder",
   "writeOnlyProperties": [
-    "/properties/Tags",
     "/properties/AppBlockArns"
   ]
 }

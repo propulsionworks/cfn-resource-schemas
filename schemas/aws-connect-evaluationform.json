@@ -1,8 +1,19 @@
 {
   "$id": "aws-connect-evaluationform",
-  "$integrity": "sha512-jB1ftyvKB6/7Xbv7AxRKzPZZYme8NRfYU0ttRwE9XiPlkG+x9k0u0Zy3WRzHsgqFA5Z27ewyfzpXpBo6TKcEGQ==",
+  "$integrity": "sha512-wJkSHAiWgDun9giG+NiDO9cUa2DMAwtd7Q5r3dXLWa2sQM1t3WJMjEHZwoNY+idNPrQiet7N4yyEJXeBMyeFhg==",
   "additionalProperties": false,
   "definitions": {
+    "AutoEvaluationConfiguration": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "Enabled": {
+          "description": "Auto Evaluation enablement status.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "EvaluationFormBaseItem": {
       "additionalProperties": false,
       "description": "An item at the root level. All items must be sections.",
@@ -36,14 +47,14 @@
       "additionalProperties": false,
       "description": "Information about the automation configuration in numeric questions.",
       "properties": {
+        "AnswerSource": {
+          "description": ""
+        },
         "PropertyValue": {
           "$ref": "#/definitions/NumericQuestionPropertyValueAutomation",
           "description": "The property value of the automation."
         }
       },
-      "required": [
-        "PropertyValue"
-      ],
       "type": "object"
     },
     "EvaluationFormNumericQuestionOption": {
@@ -322,7 +333,10 @@
             "NUMBER_OF_INTERRUPTIONS",
             "CONTACT_DURATION",
             "AGENT_INTERACTION_DURATION",
-            "CUSTOMER_HOLD_TIME"
+            "CUSTOMER_HOLD_TIME",
+            "LONGEST_HOLD_DURATION",
+            "NUMBER_OF_HOLDS",
+            "AGENT_INTERACTION_AND_HOLD_DURATION"
           ],
           "type": "string"
         }
@@ -471,6 +485,10 @@
     "/properties/EvaluationFormArn"
   ],
   "properties": {
+    "AutoEvaluationConfiguration": {
+      "$ref": "#/definitions/AutoEvaluationConfiguration",
+      "description": ""
+    },
     "Description": {
       "description": "The description of the evaluation form.\n *Length Constraints*: Minimum length of 0. Maximum length of 1024.",
       "maxLength": 1024,

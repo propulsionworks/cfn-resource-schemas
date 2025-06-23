@@ -1,6 +1,6 @@
 {
   "$id": "aws-kendra-datasource",
-  "$integrity": "sha512-EYoiNVDxMw6CmNKXCnFRSNpSTdPYkJsZ1s1pOJFZETMfx+DLC/YCKUmvjM9BAvhUy3E1ET6C/CDTZpvVmDgDyg==",
+  "$integrity": "sha512-gjAdm7hJEVf2w1y6Csspg+09uudQkdcnLzJKgNj6lFTTaK4ePpn/o3f3ttK+S4jVKSiBeKi2SkpSzcI/kkcR0A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Type",
@@ -460,6 +460,11 @@
           "required": [
             "WorkDocsConfiguration"
           ]
+        },
+        {
+          "required": [
+            "TemplateConfiguration"
+          ]
         }
       ],
       "properties": {
@@ -486,6 +491,9 @@
         },
         "SharePointConfiguration": {
           "$ref": "#/definitions/SharePointConfiguration"
+        },
+        "TemplateConfiguration": {
+          "$ref": "#/definitions/TemplateConfiguration"
         },
         "WebCrawlerConfiguration": {
           "$ref": "#/definitions/WebCrawlerConfiguration"
@@ -1464,6 +1472,18 @@
       "maxItems": 200,
       "type": "array"
     },
+    "TemplateConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "Template": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "Template"
+      ],
+      "type": "object"
+    },
     "TenantDomain": {
       "maxLength": 256,
       "minLength": 1,
@@ -1486,7 +1506,8 @@
         "CONFLUENCE",
         "GOOGLEDRIVE",
         "WEBCRAWLER",
-        "WORKDOCS"
+        "WORKDOCS",
+        "TEMPLATE"
       ],
       "type": "string"
     },

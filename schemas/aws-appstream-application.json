@@ -1,6 +1,6 @@
 {
   "$id": "aws-appstream-application",
-  "$integrity": "sha512-WKYK5wQkFhXwRuIFm0eZgEnD4Qa99K+pB6vJbwc+N4tnBLbW7aS3xvdEPh51a9ODkDkb8vHHCMhaOrGyr/Jy9g==",
+  "$integrity": "sha512-OTLR0333YQHLi+JEMuk0KjjP6OLjV/x5RFmuedXCVKILMRlLGBPLipWuFNsv6uZsb9YslswzojdnnqgAqFALWQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -85,17 +85,22 @@
     },
     "delete": {
       "permissions": [
-        "appstream:DeleteApplication"
+        "appstream:DeleteApplication",
+        "appstream:DescribeApplications"
       ]
     },
     "read": {
       "permissions": [
-        "appstream:DescribeApplications"
+        "appstream:DescribeApplications",
+        "appstream:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
         "appstream:UpdateApplication",
+        "appstream:DescribeApplications",
+        "appstream:TagResource",
+        "appstream:UntagResource",
         "s3:GetObject"
       ]
     }
@@ -182,14 +187,18 @@
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-appstream.git",
   "tagging": {
     "cloudFormationSystemTags": false,
+    "permissions": [
+      "appstream:TagResource",
+      "appstream:ListTagsForResource",
+      "appstream:UntagResource"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::AppStream::Application",
   "writeOnlyProperties": [
-    "/properties/Tags",
     "/properties/AttributesToDelete"
   ]
 }

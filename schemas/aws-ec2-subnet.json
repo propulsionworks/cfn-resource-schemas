@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-subnet",
-  "$integrity": "sha512-yI/373Pbae4jxyoTx925Ns0JKQWLkEq6d6PHBbaWG/ZEvILm6mW42+jhIXX4catPxv3fWny15Mii8RRWOjAHZQ==",
+  "$integrity": "sha512-cwtmKOm6DIvyU2OqdvqExr7euemQxBlgixEm6FFJInhUKLA6ipv79TTzVWKo1M57HTlWNlTuzicmCvcB/oDRLg==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/Ipv6CidrBlock"
@@ -93,6 +93,17 @@
       "description": "The AZ ID of the subnet.",
       "type": "string"
     },
+    "BlockPublicAccessStates": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "InternetGatewayBlockMode": {
+          "description": "The mode of VPC BPA. Options here are off, block-bidirectional, block-ingress ",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "CidrBlock": {
       "description": "The IPv4 CIDR block assigned to the subnet.\n If you update this property, we create a new subnet, and then delete the existing one.",
       "type": "string"
@@ -138,7 +149,7 @@
       "type": "integer"
     },
     "MapPublicIpOnLaunch": {
-      "description": "Indicates whether instances launched in this subnet receive a public IPv4 address. The default value is ``false``.\n  AWS charges for all public IPv4 addresses, including public IPv4 addresses associated with running instances and Elastic IP addresses. For more information, see the *Public IPv4 Address* tab on the [VPC pricing page](https://docs.aws.amazon.com/vpc/pricing/).",
+      "description": "Indicates whether instances launched in this subnet receive a public IPv4 address. The default value is ``false``.\n AWS charges for all public IPv4 addresses, including public IPv4 addresses associated with running instances and Elastic IP addresses. For more information, see the *Public IPv4 Address* tab on the [VPC pricing page](https://docs.aws.amazon.com/vpc/pricing/).",
       "type": "boolean"
     },
     "NetworkAclAssociationId": {
@@ -185,7 +196,8 @@
   "readOnlyProperties": [
     "/properties/NetworkAclAssociationId",
     "/properties/SubnetId",
-    "/properties/Ipv6CidrBlocks"
+    "/properties/Ipv6CidrBlocks",
+    "/properties/BlockPublicAccessStates"
   ],
   "required": [
     "VpcId"

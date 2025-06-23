@@ -1,6 +1,6 @@
 {
   "$id": "aws-amplify-app",
-  "$integrity": "sha512-jKrLuoUiEkX+hRstYy3xe7kXU3Jf98Hvmqh5RrW4Ju65VDWIYm/3JYSQ5dMVbyWr9bTl48G/IldNFX1+opRbrQ==",
+  "$integrity": "sha512-f5WZ3kjrA0CqYJKz/z0qCUdQy5n4e/72JIJ80ynzEwWubJKdY3HmlitDY9186EhVC98cHjAw8Ajx1JEr6LpbrA==",
   "additionalProperties": false,
   "definitions": {
     "AutoBranchCreationConfig": {
@@ -148,6 +148,23 @@
       "required": [
         "Name",
         "Value"
+      ],
+      "type": "object"
+    },
+    "JobConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "BuildComputeType": {
+          "enum": [
+            "STANDARD_8GB",
+            "LARGE_16GB",
+            "XLARGE_72GB"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "BuildComputeType"
       ],
       "type": "object"
     },
@@ -319,6 +336,9 @@
       "minLength": 1,
       "pattern": "(?s).*",
       "type": "string"
+    },
+    "JobConfig": {
+      "$ref": "#/definitions/JobConfig"
     },
     "Name": {
       "maxLength": 255,

@@ -1,6 +1,6 @@
 {
   "$id": "aws-customerprofiles-segmentdefinition",
-  "$integrity": "sha512-Zk68WwHJcAC5lvzouK99Ua64pjnHpOsZvy40tClMsgWu8lceVxOUW2puJoyyBEHsspfp0g1bVtz/U8YBA6hpuQ==",
+  "$integrity": "sha512-kv2sf5o+er5Q7BPMTLex74qWMM6OH8y9NJwSjeQOi3k6T56ynizV9UsPHMKabYovs/JziXpePNSIdgnivoPLXw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainName",
@@ -323,6 +323,9 @@
         "PhoneNumber": {
           "$ref": "#/definitions/ProfileDimension"
         },
+        "ProfileType": {
+          "$ref": "#/definitions/ProfileTypeDimension"
+        },
         "ShippingAddress": {
           "$ref": "#/definitions/AddressDimension"
         }
@@ -353,6 +356,45 @@
         "Values"
       ],
       "type": "object"
+    },
+    "ProfileType": {
+      "description": "The type of profile.",
+      "enum": [
+        "ACCOUNT_PROFILE",
+        "PROFILE"
+      ],
+      "type": "string"
+    },
+    "ProfileTypeDimension": {
+      "additionalProperties": false,
+      "description": "Specifies profile type based criteria for a segment.",
+      "properties": {
+        "DimensionType": {
+          "$ref": "#/definitions/ProfileTypeDimensionType"
+        },
+        "Values": {
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/ProfileType"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "DimensionType",
+        "Values"
+      ],
+      "type": "object"
+    },
+    "ProfileTypeDimensionType": {
+      "description": "The type of segment dimension to use for a profile type dimension.",
+      "enum": [
+        "INCLUSIVE",
+        "EXCLUSIVE"
+      ],
+      "type": "string"
     },
     "RangeOverride": {
       "additionalProperties": false,

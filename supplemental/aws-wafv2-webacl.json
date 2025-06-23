@@ -68,14 +68,15 @@
     "AWSManagedRulesAntiDDoSRuleSet": {
       "properties": {
         "ClientSideActionConfig": {
-          "description": "Client side action config for AntiDDOS AMR.",
+          "description": "Configures the request handling that's applied by the managed rule group rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` during a distributed denial of service (DDoS) attack.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-awsmanagedrulesantiddosruleset.html#cfn-wafv2-webacl-awsmanagedrulesantiddosruleset-clientsideactionconfig"
         },
         "SensitivityToBlock": {
+          "description": "The sensitivity that the rule group rule `DDoSRequests` uses when matching against the DDoS suspicion labeling on a request. The managed rule group adds the labeling during DDoS events, before the `DDoSRequests` rule runs.\n\nThe higher the sensitivity, the more levels of labeling that the rule matches:\n\n- Low sensitivity is less sensitive, causing the rule to match only on the most likely participants in an attack, which are the requests with the high suspicion label `awswaf:managed:aws:anti-ddos:high-suspicion-ddos-request` .\n- Medium sensitivity causes the rule to match on the medium and high suspicion labels.\n- High sensitivity causes the rule to match on all of the suspicion labels: low, medium, and high.\n\nDefault: `LOW`",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-awsmanagedrulesantiddosruleset.html#cfn-wafv2-webacl-awsmanagedrulesantiddosruleset-sensitivitytoblock"
         }
       },
-      "description": "Configures how to use the AntiDDOS AWS managed rule group in the web ACL",
+      "description": "Configures the use of the anti-DDoS managed rule group, `AWSManagedRulesAntiDDoSRuleSet` . This configuration is used in `ManagedRuleGroupConfig` .\n\nThe configuration that you provide here determines whether and how the rules in the rule group are used.\n\nFor additional information about this and the other intelligent threat mitigation rule groups, see [Intelligent threat mitigation in AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-managed-protections) and [AWS Managed Rules rule groups list](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list) in the *AWS WAF Developer Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-awsmanagedrulesantiddosruleset.html"
     },
     "AWSManagedRulesBotControlRuleSet": {
@@ -119,12 +120,15 @@
     "AsnMatchStatement": {
       "properties": {
         "AsnList": {
+          "description": "Contains one or more Autonomous System Numbers (ASNs). ASNs are unique identifiers assigned to large internet networks managed by organizations such as internet service providers, enterprises, universities, or government agencies.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-asnmatchstatement.html#cfn-wafv2-webacl-asnmatchstatement-asnlist"
         },
         "ForwardedIPConfig": {
+          "description": "The configuration for inspecting IP addresses to match against an ASN in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. Commonly, this is the X-Forwarded-For (XFF) header, but you can specify any header name.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-asnmatchstatement.html#cfn-wafv2-webacl-asnmatchstatement-forwardedipconfig"
         }
       },
+      "description": "A rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address.\n\nFor additional details, see [ASN match rule statement](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-asn-match.html) in the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-asnmatchstatement.html"
     },
     "AssociationConfig": {
@@ -230,26 +234,29 @@
     "ClientSideAction": {
       "properties": {
         "ExemptUriRegularExpressions": {
+          "description": "The regular expression to match against the web request URI, used to identify requests that can't handle a silent browser challenge. When the `ClientSideAction` setting `UsageOfAction` is enabled, the managed rule group uses this setting to determine which requests to label with `awswaf:managed:aws:anti-ddos:challengeable-request` . If `UsageOfAction` is disabled, this setting has no effect and the managed rule group doesn't add the label to any requests.\n\nThe anti-DDoS managed rule group doesn't evaluate the rules `ChallengeDDoSRequests` or `ChallengeAllDuringEvent` for web requests whose URIs match this regex. This is true regardless of whether you override the rule action for either of the rules in your web ACL configuration.\n\nAWS recommends using a regular expression.\n\nThis setting is required if `UsageOfAction` is set to `ENABLED` . If required, you can provide between 1 and 5 regex objects in the array of settings.\n\nAWS recommends starting with the following setting. Review and update it for your application's needs:\n\n`\\/api\\/|\\.(acc|avi|css|gif|jpe?g|js|mp[34]|ogg|otf|pdf|png|tiff?|ttf|webm|webp|woff2?)$`",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-clientsideaction.html#cfn-wafv2-webacl-clientsideaction-exempturiregularexpressions"
         },
         "Sensitivity": {
+          "description": "The sensitivity that the rule group rule `ChallengeDDoSRequests` uses when matching against the DDoS suspicion labeling on a request. The managed rule group adds the labeling during DDoS events, before the `ChallengeDDoSRequests` rule runs.\n\nThe higher the sensitivity, the more levels of labeling that the rule matches:\n\n- Low sensitivity is less sensitive, causing the rule to match only on the most likely participants in an attack, which are the requests with the high suspicion label `awswaf:managed:aws:anti-ddos:high-suspicion-ddos-request` .\n- Medium sensitivity causes the rule to match on the medium and high suspicion labels.\n- High sensitivity causes the rule to match on all of the suspicion labels: low, medium, and high.\n\nDefault: `HIGH`",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-clientsideaction.html#cfn-wafv2-webacl-clientsideaction-sensitivity"
         },
         "UsageOfAction": {
+          "description": "Determines whether to use the `AWSManagedRulesAntiDDoSRuleSet` rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` in the rule group evaluation and the related label `awswaf:managed:aws:anti-ddos:challengeable-request` .\n\n- If usage is enabled:\n\n- The managed rule group adds the label `awswaf:managed:aws:anti-ddos:challengeable-request` to any web request whose URL does *NOT* match the regular expressions provided in the `ClientSideAction` setting `ExemptUriRegularExpressions` .\n- The two rules are evaluated against web requests for protected resources that are experiencing a DDoS attack. The two rules only apply their action to matching requests that have the label `awswaf:managed:aws:anti-ddos:challengeable-request` .\n- If usage is disabled:\n\n- The managed rule group doesn't add the label `awswaf:managed:aws:anti-ddos:challengeable-request` to any web requests.\n- The two rules are not evaluated.\n- None of the other `ClientSideAction` settings have any effect.\n\n> This setting only enables or disables the use of the two anti-DDOS rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` in the anti-DDoS managed rule group.\n> \n> This setting doesn't alter the action setting in the two rules. To override the actions used by the rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` , enable this setting, and then override the rule actions in the usual way, in your managed rule group configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-clientsideaction.html#cfn-wafv2-webacl-clientsideaction-usageofaction"
         }
       },
-      "description": "Client side action config for AntiDDOS AMR.",
+      "description": "This is part of the `AWSManagedRulesAntiDDoSRuleSet` `ClientSideActionConfig` configuration in `ManagedRuleGroupConfig` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-clientsideaction.html"
     },
     "ClientSideActionConfig": {
       "properties": {
         "Challenge": {
-          "description": "Client side action config for AntiDDOS AMR.",
+          "description": "Configuration for the use of the `AWSManagedRulesAntiDDoSRuleSet` rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` .\n\n> This setting isn't related to the configuration of the `Challenge` action itself. It only configures the use of the two anti-DDoS rules named here. \n\nYou can enable or disable the use of these rules, and you can configure how to use them when they are enabled.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-clientsideactionconfig.html#cfn-wafv2-webacl-clientsideactionconfig-challenge"
         }
       },
-      "description": "Client side action config for AntiDDOS AMR.",
+      "description": "This is part of the configuration for the managed rules `AWSManagedRulesAntiDDoSRuleSet` in `ManagedRuleGroupConfig` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-clientsideactionconfig.html"
     },
     "CookieMatchPattern": {
@@ -749,7 +756,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-managedrulegroupconfig.html#cfn-wafv2-webacl-managedrulegroupconfig-awsmanagedrulesatpruleset"
         },
         "AWSManagedRulesAntiDDoSRuleSet": {
-          "description": "Configures how to use the AntiDDOS AWS managed rule group in the web ACL",
+          "description": "Additional configuration for using the anti-DDoS managed rule group, `AWSManagedRulesAntiDDoSRuleSet` . Use this to configure anti-DDoS behavior for the rule group.\n\nFor information about using the anti-DDoS managed rule group, see [AWS WAF Anti-DDoS rule group](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-anti-ddos.html) and [Distributed Denial of Service (DDoS) prevention](https://docs.aws.amazon.com/waf/latest/developerguide/waf-anti-ddos.html) in the *AWS WAF Developer Guide* .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-managedrulegroupconfig.html#cfn-wafv2-webacl-managedrulegroupconfig-awsmanagedrulesantiddosruleset"
         },
         "AWSManagedRulesBotControlRuleSet": {
@@ -827,10 +834,11 @@
     "OnSourceDDoSProtectionConfig": {
       "properties": {
         "ALBLowReputationMode": {
+          "description": "The level of DDoS protection that applies to web ACLs associated with Application Load Balancers. `ACTIVE_UNDER_DDOS` protection is enabled by default whenever a web ACL is associated with an Application Load Balancer. In the event that an Application Load Balancer experiences high-load conditions or suspected DDoS attacks, the `ACTIVE_UNDER_DDOS` protection automatically rate limits traffic from known low reputation sources without disrupting Application Load Balancer availability. `ALWAYS_ON` protection provides constant, always-on monitoring of known low reputation sources for suspected DDoS attacks. While this provides a higher level of protection, there may be potential impacts on legitimate traffic.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-onsourceddosprotectionconfig.html#cfn-wafv2-webacl-onsourceddosprotectionconfig-alblowreputationmode"
         }
       },
-      "description": "Configures the options for on-source DDoS protection provided by supported resource type.",
+      "description": "Configures the level of DDoS protection that applies to web ACLs associated with Application Load Balancers.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-onsourceddosprotectionconfig.html"
     },
     "OrStatement": {
@@ -906,7 +914,7 @@
     "RateBasedStatementCustomKey": {
       "properties": {
         "ASN": {
-          "description": "Specifies the request's ASN as an aggregate key for a rate-based rule.",
+          "description": "Use an Autonomous System Number (ASN) derived from the request's originating or forwarded IP address as an aggregate key. Each distinct ASN contributes to the aggregation instance.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementcustomkey.html#cfn-wafv2-webacl-ratebasedstatementcustomkey-asn"
         },
         "Cookie": {
@@ -1072,10 +1080,11 @@
     "Regex": {
       "properties": {
         "RegexString": {
+          "description": "The string representing the regular expression.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-regex.html#cfn-wafv2-webacl-regex-regexstring"
         }
       },
-      "description": "Regex",
+      "description": "A single regular expression. This is used in a `RegexPatternSet` and also in the configuration for the AWS Managed Rules rule group `AWSManagedRulesAntiDDoSRuleSet` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-regex.html"
     },
     "RegexMatchStatement": {
@@ -1485,6 +1494,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statement.html#cfn-wafv2-webacl-statement-andstatement"
         },
         "AsnMatchStatement": {
+          "description": "A rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address.\n\nFor additional details, see [ASN match rule statement](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-asn-match.html) in the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html) .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statement.html#cfn-wafv2-webacl-statement-asnmatchstatement"
         },
         "ByteMatchStatement": {

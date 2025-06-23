@@ -1,6 +1,6 @@
 {
   "$id": "aws-datazone-projectprofile",
-  "$integrity": "sha512-G5DFHgBv/LRfOhcKwRTkOPq86cMMzkDdoV3YKSfLtgg/ZZZewW1O5RsO3api+jc2DUYwcIg5vBeoLBbjinAutw==",
+  "$integrity": "sha512-Soe08jMkoVtAwxXACDlmAJusXRt2S8X7T+/Voqn+MV0l5JLb2ipCpwA5LJy6POg83sS7Leu8SirubqGUfvn3ug==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainIdentifier"
@@ -117,11 +117,6 @@
             "$ref": "#/definitions/EnvironmentConfigurationParameter"
           },
           "type": "array"
-        },
-        "SsmPath": {
-          "maxLength": 2048,
-          "minLength": 1,
-          "type": "string"
         }
       },
       "type": "object"
@@ -172,7 +167,8 @@
     "create": {
       "permissions": [
         "datazone:CreateProjectProfile",
-        "datazone:GetProjectProfile"
+        "datazone:GetProjectProfile",
+        "ssm:GetParameter"
       ]
     },
     "delete": {
@@ -188,13 +184,15 @@
     },
     "read": {
       "permissions": [
-        "datazone:GetProjectProfile"
+        "datazone:GetProjectProfile",
+        "ssm:GetParameter"
       ]
     },
     "update": {
       "permissions": [
         "datazone:UpdateProjectProfile",
-        "datazone:GetProjectProfile"
+        "datazone:GetProjectProfile",
+        "ssm:GetParameter"
       ]
     }
   },
@@ -234,6 +232,12 @@
       "pattern": "^[a-z0-9_\\-]+$",
       "type": "string"
     },
+    "EnvironmentConfigurations": {
+      "items": {
+        "$ref": "#/definitions/EnvironmentConfiguration"
+      },
+      "type": "array"
+    },
     "Id": {
       "pattern": "^[a-zA-Z0-9_-]{1,36}$",
       "type": "string"
@@ -263,7 +267,9 @@
     "/properties/DomainUnitId",
     "/properties/Id",
     "/properties/Identifier",
-    "/properties/LastUpdatedAt"
+    "/properties/LastUpdatedAt",
+    "/properties/EnvironmentConfigurations/*/Id",
+    "/properties/EnvironmentConfigurations/*/ConfigurationParameters/ResolvedParameters"
   ],
   "required": [
     "Name"

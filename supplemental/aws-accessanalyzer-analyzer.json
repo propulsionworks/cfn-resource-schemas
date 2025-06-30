@@ -65,7 +65,7 @@
     "InternalAccessAnalysisRuleCriteria": {
       "properties": {
         "AccountIds": {
-          "description": "A list of AWS account IDs to apply to the internal access analysis rule criteria. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers and cannot include the organization owner account.",
+          "description": "A list of AWS account IDs to apply to the internal access analysis rule criteria. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-internalaccessanalysisrulecriteria.html#cfn-accessanalyzer-analyzer-internalaccessanalysisrulecriteria-accountids"
         },
         "ResourceArns": {
@@ -73,7 +73,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-internalaccessanalysisrulecriteria.html#cfn-accessanalyzer-analyzer-internalaccessanalysisrulecriteria-resourcearns"
         },
         "ResourceTypes": {
-          "description": "A list of resource types to apply to the internal access analysis rule criteria. The analyzer will only generate findings for resources of these types.",
+          "description": "A list of resource types to apply to the internal access analysis rule criteria. The analyzer will only generate findings for resources of these types. These resource types are currently supported for internal access analyzers:\n\n- `AWS::S3::Bucket`\n- `AWS::RDS::DBSnapshot`\n- `AWS::RDS::DBClusterSnapshot`\n- `AWS::S3Express::DirectoryBucket`\n- `AWS::DynamoDB::Table`\n- `AWS::DynamoDB::Stream`",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-internalaccessanalysisrulecriteria.html#cfn-accessanalyzer-analyzer-internalaccessanalysisrulecriteria-resourcetypes"
         }
       },
@@ -83,7 +83,7 @@
     "InternalAccessConfiguration": {
       "properties": {
         "InternalAccessAnalysisRule": {
-          "description": "Contains information about analysis rules for the internal access analyzer. Analysis rules determine which entities will generate findings based on the criteria you define when you create the rule.",
+          "description": "Contains information about analysis rules for the internal access analyzer. These rules determine which resources and access patterns will be analyzed.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-internalaccessconfiguration.html#cfn-accessanalyzer-analyzer-internalaccessconfiguration-internalaccessanalysisrule"
         }
       },
@@ -144,7 +144,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html#cfn-accessanalyzer-analyzer-tags"
     },
     "Type": {
-      "description": "The type represents the zone of trust for the analyzer.\n\n*Allowed Values* : ACCOUNT | ORGANIZATION | ACCOUNT_UNUSED_ACCESS | ORGANIZATION_UNUSED_ACCESS",
+      "description": "The type represents the zone of trust for the analyzer.\n\n*Allowed Values* : ACCOUNT | ORGANIZATION | ACCOUNT_UNUSED_ACCESS | ACCOUNT_INTERNAL_ACCESS | ORGANIZATION_INTERNAL_ACCESS | ORGANIZATION_UNUSED_ACCESS",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html#cfn-accessanalyzer-analyzer-type"
     }
   },

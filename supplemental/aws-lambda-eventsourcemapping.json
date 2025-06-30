@@ -18,7 +18,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-amazonmanagedkafkaeventsourceconfig.html#cfn-lambda-eventsourcemapping-amazonmanagedkafkaeventsourceconfig-consumergroupid"
         },
         "SchemaRegistryConfig": {
-          "description": "",
+          "description": "Specific configuration settings for a Kafka schema registry.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-amazonmanagedkafkaeventsourceconfig.html#cfn-lambda-eventsourcemapping-amazonmanagedkafkaeventsourceconfig-schemaregistryconfig"
         }
       },
@@ -138,44 +138,47 @@
     "SchemaRegistryAccessConfig": {
       "properties": {
         "Type": {
-          "description": "",
+          "description": "The type of authentication Lambda uses to access your schema registry.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemaregistryaccessconfig.html#cfn-lambda-eventsourcemapping-schemaregistryaccessconfig-type"
         },
         "URI": {
-          "description": "",
+          "description": "The URI of the secret (Secrets Manager secret ARN) to authenticate with your schema registry.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemaregistryaccessconfig.html#cfn-lambda-eventsourcemapping-schemaregistryaccessconfig-uri"
         }
       },
+      "description": "Specific access configuration settings that tell Lambda how to authenticate with your schema registry.\n\nIf you're working with an AWS Glue schema registry, don't provide authentication details in this object. Instead, ensure that your execution role has the required permissions for Lambda to access your cluster.\n\nIf you're working with a Confluent schema registry, choose the authentication method in the `Type` field, and provide the AWS Secrets Manager secret ARN in the `URI` field.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemaregistryaccessconfig.html"
     },
     "SchemaRegistryConfig": {
       "properties": {
         "AccessConfigs": {
-          "description": "",
+          "description": "An array of access configuration objects that tell Lambda how to authenticate with your schema registry.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemaregistryconfig.html#cfn-lambda-eventsourcemapping-schemaregistryconfig-accessconfigs"
         },
         "EventRecordFormat": {
-          "description": "",
+          "description": "The record format that Lambda delivers to your function after schema validation.\n\n- Choose `JSON` to have Lambda deliver the record to your function as a standard JSON object.\n- Choose `SOURCE` to have Lambda deliver the record to your function in its original source format. Lambda removes all schema metadata, such as the schema ID, before sending the record to your function.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemaregistryconfig.html#cfn-lambda-eventsourcemapping-schemaregistryconfig-eventrecordformat"
         },
         "SchemaRegistryURI": {
-          "description": "",
+          "description": "The URI for your schema registry. The correct URI format depends on the type of schema registry you're using.\n\n- For AWS Glue schema registries, use the ARN of the registry.\n- For Confluent schema registries, use the URL of the registry.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemaregistryconfig.html#cfn-lambda-eventsourcemapping-schemaregistryconfig-schemaregistryuri"
         },
         "SchemaValidationConfigs": {
-          "description": "",
+          "description": "An array of schema validation configuration objects, which tell Lambda the message attributes you want to validate and filter using your schema registry.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemaregistryconfig.html#cfn-lambda-eventsourcemapping-schemaregistryconfig-schemavalidationconfigs"
         }
       },
+      "description": "Specific configuration settings for a Kafka schema registry.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemaregistryconfig.html"
     },
     "SchemaValidationConfig": {
       "properties": {
         "Attribute": {
-          "description": "",
+          "description": "The attributes you want your schema registry to validate and filter for. If you selected `JSON` as the `EventRecordFormat` , Lambda also deserializes the selected message attributes.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemavalidationconfig.html#cfn-lambda-eventsourcemapping-schemavalidationconfig-attribute"
         }
       },
+      "description": "Specific schema validation configuration settings that tell Lambda the message attributes you want to validate and filter using your schema registry.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-schemavalidationconfig.html"
     },
     "SelfManagedEventSource": {
@@ -195,7 +198,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-selfmanagedkafkaeventsourceconfig.html#cfn-lambda-eventsourcemapping-selfmanagedkafkaeventsourceconfig-consumergroupid"
         },
         "SchemaRegistryConfig": {
-          "description": "",
+          "description": "Specific configuration settings for a Kafka schema registry.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-eventsourcemapping-selfmanagedkafkaeventsourceconfig.html#cfn-lambda-eventsourcemapping-selfmanagedkafkaeventsourceconfig-schemaregistryconfig"
         }
       },

@@ -1,6 +1,6 @@
 {
   "$id": "aws-dsql-cluster",
-  "$integrity": "sha512-/DGM6HLj8PI+N6C4G3qNIlscC+MzWoAQsZTQxT404z8Bri6D+HGc6WYBDZkVTLfHC0c2tj5sX4Pc1PSXVR0z8Q==",
+  "$integrity": "sha512-BCSZkSLth345wy4TlUlNw8bOt0e5WkkvVpUeWAvrpeaQwhjKEfMoQktRLk9+h7M6Rsx1DA3TPsNk3PIqdQM7IA==",
   "additionalProperties": false,
   "definitions": {
     "Tag": {
@@ -32,6 +32,7 @@
     "create": {
       "permissions": [
         "dsql:CreateCluster",
+        "dsql:UpdateCluster",
         "dsql:GetCluster",
         "dsql:TagResource",
         "dsql:GetVpcEndpointServiceName",
@@ -39,7 +40,11 @@
         "iam:CreateServiceLinkedRole",
         "dsql:PutMultiRegionProperties",
         "dsql:AddPeerCluster",
-        "dsql:PutWitnessRegion"
+        "dsql:PutWitnessRegion",
+        "kms:Decrypt",
+        "kms:Encrypt",
+        "kms:GenerateDataKey",
+        "kms:DescribeKey"
       ]
     },
     "delete": {
@@ -77,7 +82,11 @@
         "dsql:PutMultiRegionProperties",
         "dsql:PutWitnessRegion",
         "dsql:AddPeerCluster",
-        "dsql:RemovePeerCluster"
+        "dsql:RemovePeerCluster",
+        "kms:Decrypt",
+        "kms:Encrypt",
+        "kms:GenerateDataKey",
+        "kms:DescribeKey"
       ]
     }
   },
@@ -93,8 +102,31 @@
       "description": "Whether deletion protection is enabled in this cluster.",
       "type": "boolean"
     },
+    "EncryptionDetails": {
+      "additionalProperties": false,
+      "description": "The encryption configuration details for the cluster.",
+      "properties": {
+        "EncryptionStatus": {
+          "description": "The status of encryption for the cluster.",
+          "type": "string"
+        },
+        "EncryptionType": {
+          "description": "The type of encryption that protects data in the cluster.",
+          "type": "string"
+        },
+        "KmsKeyArn": {
+          "description": "The Amazon Resource Name (ARN) of the KMS key that encrypts data in the cluster.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Identifier": {
       "description": "The ID of the created cluster.",
+      "type": "string"
+    },
+    "KmsEncryptionKey": {
+      "description": "The KMS key that encrypts data on the cluster.",
       "type": "string"
     },
     "MultiRegionProperties": {
@@ -143,7 +175,8 @@
     "/properties/Identifier",
     "/properties/CreationTime",
     "/properties/Status",
-    "/properties/VpcEndpointServiceName"
+    "/properties/VpcEndpointServiceName",
+    "/properties/EncryptionDetails"
   ],
   "required": [],
   "tagging": {
@@ -158,5 +191,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::DSQL::Cluster"
+  "typeName": "AWS::DSQL::Cluster",
+  "writeOnlyProperties": [
+    "/properties/KmsEncryptionKey"
+  ]
 }

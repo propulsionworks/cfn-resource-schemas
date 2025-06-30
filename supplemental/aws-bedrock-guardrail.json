@@ -127,6 +127,16 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-filterstrength.html"
     },
+    "GuardrailCrossRegionConfig": {
+      "properties": {
+        "GuardrailProfileArn": {
+          "description": "The Amazon Resource Name (ARN) of the guardrail profile",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-guardrailcrossregionconfig.html#cfn-bedrock-guardrail-guardrailcrossregionconfig-guardrailprofilearn"
+        }
+      },
+      "description": "The system-defined guardrail profile that you're using with your guardrail. Guardrail profiles define the destination AWS Regions where guardrail inference requests can be automatically routed. Using guardrail profiles helps maintain guardrail performance and reliability when demand increases.\n\nFor more information, see the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-guardrailcrossregionconfig.html"
+    },
     "GuardrailStatus": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-guardrailstatus.html"
@@ -351,7 +361,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-guardrail-wordpolicyconfig.html"
     }
   },
-  "description": "Creates a guardrail to block topics and to implement safeguards for your generative AI applications.\n\nYou can configure the following policies in a guardrail to avoid undesirable and harmful content, filter out denied topics and words, and remove sensitive information for privacy protection.\n\n- *Content filters* - Adjust filter strengths to block input prompts or model responses containing harmful content.\n- *Denied topics* - Define a set of topics that are undesirable in the context of your application. These topics will be blocked if detected in user queries or model responses.\n- *Word filters* - Configure filters to block undesirable words, phrases, and profanity. Such words can include offensive terms, competitor names etc.\n- *Sensitive information filters* - Block or mask sensitive information such as personally identifiable information (PII) or custom regex in user inputs and model responses.\n\nIn addition to the above policies, you can also configure the messages to be returned to the user if a user input or model response is in violation of the policies defined in the guardrail.\n\nFor more information, see [Amazon Bedrock Guardrails](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html) in the *Amazon Bedrock User Guide* .",
+  "description": "Creates a guardrail to detect and filter harmful content in your generative AI application.\n\nAmazon Bedrock Guardrails provides the following safeguards (also known as policies) to detect and filter harmful content:\n\n- *Content filters* - Detect and filter harmful text or image content in input prompts or model responses. Filtering is done based on detection of certain predefined harmful content categories: Hate, Insults, Sexual, Violence, Misconduct and Prompt Attack. You also can adjust the filter strength for each of these categories.\n- *Denied topics* - Define a set of topics that are undesirable in the context of your application. The filter will help block them if detected in user queries or model responses.\n- *Word filters* - Configure filters to help block undesirable words, phrases, and profanity (exact match). Such words can include offensive terms, competitor names, etc.\n- *Sensitive information filters* - Configure filters to help block or mask sensitive information, such as personally identifiable information (PII), or custom regex in user inputs and model responses. Blocking or masking is done based on probabilistic detection of sensitive information in standard formats in entities such as SSN number, Date of Birth, address, etc. This also allows configuring regular expression based detection of patterns for identifiers.\n- *Contextual grounding check* - Help detect and filter hallucinations in model responses based on grounding in a source and relevance to the user query.\n\nFor more information, see [How Amazon Bedrock Guardrails works](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-how.html) .",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html",
   "id": "aws-bedrock-guardrail",
   "properties": {
@@ -373,6 +383,10 @@
     },
     "CreatedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-createdat"
+    },
+    "CrossRegionConfig": {
+      "description": "The system-defined guardrail profile that you’re using with your guardrail",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html#cfn-bedrock-guardrail-crossregionconfig"
     },
     "Description": {
       "description": "A description of the guardrail.",

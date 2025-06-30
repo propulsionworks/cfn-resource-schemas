@@ -15,7 +15,7 @@
         "description": "The Amazon Resource Name (ARN) of the resolver rule, such as `arn:aws:route53resolver:us-east-1:123456789012:resolver-rule/resolver-rule-a1bzhi` ."
       },
       "TargetIps": {
-        "description": "When the value of `RuleType` is `FORWARD` , the IP addresses that the outbound endpoint forwards DNS queries to, typically the IP addresses for DNS resolvers on your network. This value isn't applicable when `RuleType` is `SYSTEM` ."
+        "description": "When the value of `RuleType` is `FORWARD` , the IP addresses that the outbound endpoint forwards DNS queries to, typically the IP addresses for DNS resolvers on your network. This value isn't applicable when `RuleType` is `SYSTEM` .\n\n`TargetIps` is available only when the value of `RuleType` is `FORWARD` . You should not provide `TargetIps` when the `RuleType` is `DELEGATE` ."
       },
       "Name": {
         "description": "A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console."
@@ -68,6 +68,10 @@
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html#cfn-route53resolver-resolverrule-arn"
     },
+    "DelegationRecord": {
+      "description": "DNS queries with delegation records that point to this domain name are forwarded to resolvers on your network.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html#cfn-route53resolver-resolverrule-delegationrecord"
+    },
     "DomainName": {
       "description": "DNS queries for this domain name are forwarded to the IP addresses that are specified in `TargetIps` . If a query matches multiple Resolver rules (example.com and www.example.com), the query is routed using the Resolver rule that contains the most specific domain name (www.example.com).",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html#cfn-route53resolver-resolverrule-domainname"
@@ -84,7 +88,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html#cfn-route53resolver-resolverrule-resolverruleid"
     },
     "RuleType": {
-      "description": "When you want to forward DNS queries for specified domain name to resolvers on your network, specify `FORWARD` .\n\nWhen you have a forwarding rule to forward DNS queries for a domain to your network and you want Resolver to process queries for a subdomain of that domain, specify `SYSTEM` .\n\nFor example, to forward DNS queries for example.com to resolvers on your network, you create a rule and specify `FORWARD` for `RuleType` . To then have Resolver process queries for apex.example.com, you create a rule and specify `SYSTEM` for `RuleType` .\n\nCurrently, only Resolver can create rules that have a value of `RECURSIVE` for `RuleType` .",
+      "description": "When you want to forward DNS queries for specified domain name to resolvers on your network, specify `FORWARD` or `DELEGATE` . If a query matches multiple Resolver rules (example.com and www.example.com), outbound DNS queries are routed using the Resolver rule that contains the most specific domain name (www.example.com).\n\nWhen you have a forwarding rule to forward DNS queries for a domain to your network and you want Resolver to process queries for a subdomain of that domain, specify `SYSTEM` .\n\nFor example, to forward DNS queries for example.com to resolvers on your network, you create a rule and specify `FORWARD` for `RuleType` . To then have Resolver process queries for apex.example.com, you create a rule and specify `SYSTEM` for `RuleType` .\n\nCurrently, only Resolver can create rules that have a value of `RECURSIVE` for `RuleType` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html#cfn-route53resolver-resolverrule-ruletype"
     },
     "Tags": {

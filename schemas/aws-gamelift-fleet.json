@@ -1,10 +1,9 @@
 {
   "$id": "aws-gamelift-fleet",
-  "$integrity": "sha512-T39xb0wzUDfXrQRBJF4SG7t8DOBesXVsUGt0fa9LUJsTOyuumh/sCf1TXbQHTIu7eE+CRvYhNW6fzUjnlcdnvg==",
+  "$integrity": "sha512-Or0A7mn5ZnUzXYP160oMW/+uIzKwhdSJuDBv/F8J7707LbgkVXWKnFukQyFoB1SaIsZMn9/ajpGX8pcpakuxMg==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/ApplyCapacity",
     "/properties/BuildId",
     "/properties/CertificateConfiguration",
     "/properties/EC2InstanceType",
@@ -443,10 +442,11 @@
       "description": "Configuration for Anywhere fleet."
     },
     "ApplyCapacity": {
-      "description": "Determines whether to apply fleet or location capacities on fleet creation.",
+      "description": "Determines when and how to apply fleet or location capacities. If you choose ON_CREATE_AND_UPDATE_WITH_AUTOSCALING, MinSize and MaxSize will still be applied on creation and on updates, but DesiredEC2Instances will only be applied once on fleet creation and will be ignored during updates to prevent conflicts with auto-scaling.",
       "enum": [
         "ON_UPDATE",
-        "ON_CREATE_AND_UPDATE"
+        "ON_CREATE_AND_UPDATE",
+        "ON_CREATE_AND_UPDATE_WITH_AUTOSCALING"
       ],
       "type": "string"
     },

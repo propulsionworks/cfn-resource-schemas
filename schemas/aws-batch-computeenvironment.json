@@ -1,6 +1,6 @@
 {
   "$id": "aws-batch-computeenvironment",
-  "$integrity": "sha512-PjqaiCNLS5SOVi8fHiwRKHW7JRIcP59XBM9tJRDwuOU371/FEW31xkWdWWEmAXDT7RxVeP30SLgbJLLuX2oBZg==",
+  "$integrity": "sha512-2noHZlWqRrfMn2kk5hFjczVeKgiUbRM5e3SD88Qix5QB9u2hCgWnoObgG6dJ5sYifF0BOqos9qv6y7Pg7uNw+w==",
   "additionalIdentifiers": [
     [
       "/properties/ComputeEnvironmentName"
@@ -176,6 +176,13 @@
           "type": "array",
           "uniqueItems": false
         },
+        "UserdataType": {
+          "enum": [
+            "EKS_BOOTSTRAP_SH",
+            "EKS_NODEADM"
+          ],
+          "type": "string"
+        },
         "Version": {
           "type": "string"
         }
@@ -198,6 +205,13 @@
           },
           "type": "array",
           "uniqueItems": false
+        },
+        "UserdataType": {
+          "enum": [
+            "EKS_BOOTSTRAP_SH",
+            "EKS_NODEADM"
+          ],
+          "type": "string"
         },
         "Version": {
           "type": "string"
@@ -229,7 +243,8 @@
         "Batch:DescribeComputeEnvironments",
         "iam:CreateServiceLinkedRole",
         "Iam:PassRole",
-        "Eks:DescribeCluster"
+        "Eks:DescribeCluster",
+        "ec2:DescribeLaunchTemplateVersions"
       ]
     },
     "delete": {
@@ -238,7 +253,8 @@
         "Batch:DescribeComputeEnvironments",
         "Batch:UpdateComputeEnvironment",
         "Iam:PassRole",
-        "Eks:DescribeCluster"
+        "Eks:DescribeCluster",
+        "ec2:DescribeLaunchTemplateVersions"
       ]
     },
     "list": {
@@ -258,7 +274,8 @@
         "Batch:TagResource",
         "Batch:UnTagResource",
         "Iam:PassRole",
-        "Eks:DescribeCluster"
+        "Eks:DescribeCluster",
+        "ec2:DescribeLaunchTemplateVersions"
       ]
     }
   },

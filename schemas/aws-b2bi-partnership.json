@@ -1,6 +1,6 @@
 {
   "$id": "aws-b2bi-partnership",
-  "$integrity": "sha512-ioE5lqEdyf9D0sP0CnZpdIGXBz/6jW+QLTjiSX9IR8X5E7jI6EMxX9yjqzROJ7KT7IgPl6a3KiXmd0putlJPJw==",
+  "$integrity": "sha512-P7ofrGfiXC8+OZ0qUfl61+OFRPUWjD1lu07v56uzBhQJkhsCh6Qi6P60XXpzOZxZ8TDeRefDxFr1jVjd1ZZOig==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Email",
@@ -11,11 +11,31 @@
     "CapabilityOptions": {
       "additionalProperties": false,
       "properties": {
+        "InboundEdi": {
+          "$ref": "#/definitions/InboundEdiOptions"
+        },
         "OutboundEdi": {
           "$ref": "#/definitions/OutboundEdiOptions"
         }
       },
       "type": "object"
+    },
+    "InboundEdiOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "X12": {
+          "$ref": "#/definitions/X12InboundEdiOptions"
+        }
+      },
+      "type": "object"
+    },
+    "LineTerminator": {
+      "enum": [
+        "CRLF",
+        "LF",
+        "CR"
+      ],
+      "type": "string"
     },
     "OutboundEdiOptions": {
       "oneOf": [
@@ -54,6 +74,67 @@
       ],
       "type": "object"
     },
+    "WrapFormat": {
+      "enum": [
+        "SEGMENT",
+        "ONE_LINE",
+        "LINE_LENGTH"
+      ],
+      "type": "string"
+    },
+    "WrapOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "LineLength": {
+          "minimum": 1,
+          "type": "number"
+        },
+        "LineTerminator": {
+          "$ref": "#/definitions/LineTerminator"
+        },
+        "WrapBy": {
+          "$ref": "#/definitions/WrapFormat"
+        }
+      },
+      "type": "object"
+    },
+    "X12AcknowledgmentOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "FunctionalAcknowledgment": {
+          "$ref": "#/definitions/X12FunctionalAcknowledgment"
+        },
+        "TechnicalAcknowledgment": {
+          "$ref": "#/definitions/X12TechnicalAcknowledgment"
+        }
+      },
+      "required": [
+        "FunctionalAcknowledgment",
+        "TechnicalAcknowledgment"
+      ],
+      "type": "object"
+    },
+    "X12ControlNumbers": {
+      "additionalProperties": false,
+      "properties": {
+        "StartingFunctionalGroupControlNumber": {
+          "maximum": 999999999,
+          "minimum": 1,
+          "type": "number"
+        },
+        "StartingInterchangeControlNumber": {
+          "maximum": 999999999,
+          "minimum": 1,
+          "type": "number"
+        },
+        "StartingTransactionSetControlNumber": {
+          "maximum": 999999999,
+          "minimum": 1,
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "X12Delimiters": {
       "additionalProperties": false,
       "properties": {
@@ -83,9 +164,20 @@
       "properties": {
         "Common": {
           "$ref": "#/definitions/X12OutboundEdiHeaders"
+        },
+        "WrapOptions": {
+          "$ref": "#/definitions/WrapOptions"
         }
       },
       "type": "object"
+    },
+    "X12FunctionalAcknowledgment": {
+      "enum": [
+        "DO_NOT_GENERATE",
+        "GENERATE_ALL_SEGMENTS",
+        "GENERATE_WITHOUT_TRANSACTION_SET_RESPONSE_LOOP"
+      ],
+      "type": "string"
     },
     "X12FunctionalGroupHeaders": {
       "additionalProperties": false,
@@ -107,6 +199,23 @@
           "minLength": 1,
           "pattern": "^[a-zA-Z0-9]*$",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "X12GS05TimeFormat": {
+      "enum": [
+        "HHMM",
+        "HHMMSS",
+        "HHMMSSDD"
+      ],
+      "type": "string"
+    },
+    "X12InboundEdiOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "AcknowledgmentOptions": {
+          "$ref": "#/definitions/X12AcknowledgmentOptions"
         }
       },
       "type": "object"
@@ -161,11 +270,17 @@
     "X12OutboundEdiHeaders": {
       "additionalProperties": false,
       "properties": {
+        "ControlNumbers": {
+          "$ref": "#/definitions/X12ControlNumbers"
+        },
         "Delimiters": {
           "$ref": "#/definitions/X12Delimiters"
         },
         "FunctionalGroupHeaders": {
           "$ref": "#/definitions/X12FunctionalGroupHeaders"
+        },
+        "Gs05TimeFormat": {
+          "$ref": "#/definitions/X12GS05TimeFormat"
         },
         "InterchangeControlHeaders": {
           "$ref": "#/definitions/X12InterchangeControlHeaders"
@@ -175,6 +290,13 @@
         }
       },
       "type": "object"
+    },
+    "X12TechnicalAcknowledgment": {
+      "enum": [
+        "DO_NOT_GENERATE",
+        "GENERATE_ALL_SEGMENTS"
+      ],
+      "type": "string"
     }
   },
   "description": "Definition of AWS::B2BI::Partnership Resource Type",

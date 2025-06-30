@@ -1,6 +1,6 @@
 {
   "$id": "aws-gamelift-containerfleet",
-  "$integrity": "sha512-iFdaQstJbfP96jdU1vHsUZEt1frmFUGCbEb+B61s3hs8DMfTZi0SM6muAEDOlrSOETKwZDkYKGuV448FvdTWNg==",
+  "$integrity": "sha512-+BhCoOlA3OdLg85UJsks+rbDkNdAzx5aZSvlOz32RZu2Sxy8KkWPoglhbQMt1R+jy4lYGlcH7NAy88a/0TTCSg==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
@@ -188,6 +188,13 @@
       "properties": {
         "LogDestination": {
           "$ref": "#/definitions/LogDestination"
+        },
+        "LogGroupArn": {
+          "description": "If log destination is CLOUDWATCH, logs are sent to the specified log group in Amazon CloudWatch.",
+          "maxLength": 512,
+          "minLength": 1,
+          "pattern": "[a-zA-Z0-9:/\\-\\*]+",
+          "type": "string"
         },
         "S3BucketName": {
           "description": "The name of the S3 bucket to pull logs from if S3 is the LogDestination",

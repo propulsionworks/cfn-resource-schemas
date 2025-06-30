@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrock-guardrail",
-  "$integrity": "sha512-A4C2UaJGTTiExmsdZZj/bko1PK2G97g1q4AqCXdBsauaXUuMwFCw0JX8P7WNVXeB903L797oibIaWXpnQ/DpUQ==",
+  "$integrity": "sha512-SCb0sY2kyTS+Z4892yPFXiaBHAT+VpvzLP6c4i0GQdBpmCcrjTuDCb9aliSomJUgTq0YB7OhjXcgCr3gBALdpw==",
   "additionalProperties": false,
   "definitions": {
     "ContentFilterAction": {
@@ -157,6 +157,23 @@
         "HIGH"
       ],
       "type": "string"
+    },
+    "GuardrailCrossRegionConfig": {
+      "additionalProperties": false,
+      "description": "The system-defined guardrail profile that you’re using with your guardrail",
+      "properties": {
+        "GuardrailProfileArn": {
+          "description": "The Amazon Resource Name (ARN) of the guardrail profile",
+          "maxLength": 2048,
+          "minLength": 15,
+          "pattern": "^arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}:[0-9]{12}:guardrail-profile/[a-z0-9-]+[.]{1}guardrail[.]{1}v[0-9:]+$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "GuardrailProfileArn"
+      ],
+      "type": "object"
     },
     "GuardrailStatus": {
       "description": "Status of the guardrail",
@@ -592,6 +609,9 @@
       "description": "Time Stamp",
       "format": "date-time",
       "type": "string"
+    },
+    "CrossRegionConfig": {
+      "$ref": "#/definitions/GuardrailCrossRegionConfig"
     },
     "Description": {
       "description": "Description of the guardrail or its version",

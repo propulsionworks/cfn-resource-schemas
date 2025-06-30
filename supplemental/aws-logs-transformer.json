@@ -44,6 +44,10 @@
       "description": "This object defines one value to be copied with the [copyValue](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation-Processors.html#CloudWatch-Logs-Transformation-copyValue) processor.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-copyvalueentry.html"
     },
+    "EventSource": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-eventsource.html"
+    },
     "MatchPattern": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-matchpattern.html"
@@ -78,6 +82,10 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-nonemptystring.html"
     },
+    "OcsfVersion": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-ocsfversion.html"
+    },
     "ParseCloudfront": {
       "properties": {
         "Source": {
@@ -107,6 +115,24 @@
       },
       "description": "Use this processor to parse Route 53 vended logs, extract fields, and and convert them into a JSON format. This processor always processes the entire log event message. For more information about this processor including examples, see [parseRoute53](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation-Processors.html#CloudWatch-Logs-Transformation-parseRoute53) .\n\n> If you use this processor, it must be the first processor in your transformer.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-parseroute53.html"
+    },
+    "ParseToOCSF": {
+      "properties": {
+        "EventSource": {
+          "description": "Specify the service or process that produces the log events that will be converted with this processor.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-parsetoocsf.html#cfn-logs-transformer-parsetoocsf-eventsource"
+        },
+        "OcsfVersion": {
+          "description": "Specify which version of the OCSF schema to use for the transformed log events.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-parsetoocsf.html#cfn-logs-transformer-parsetoocsf-ocsfversion"
+        },
+        "Source": {
+          "description": "The path to the field in the log event that you want to parse. If you omit this value, the whole log message is parsed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-parsetoocsf.html#cfn-logs-transformer-parsetoocsf-source"
+        }
+      },
+      "description": "This processor converts logs into [Open Cybersecurity Schema Framework (OCSF)](https://docs.aws.amazon.com/https://ocsf.io) events.\n\nFor more information about this processor including examples, see [parseToOSCF](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-parseToOCSF) in the *CloudWatch Logs User Guide* .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-parsetoocsf.html"
     },
     "ParseVPC": {
       "properties": {
@@ -185,6 +211,10 @@
         "ParseRoute53": {
           "description": "Use this parameter to include the [parseRoute53](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation-Processors.html#CloudWatch-Logs-Transformation-parseRoute53) processor in your transformer.\n\nIf you use this processor, it must be the first processor in your transformer.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-processor.html#cfn-logs-transformer-processor-parseroute53"
+        },
+        "ParseToOCSF": {
+          "description": "Use this processor to convert logs into Open Cybersecurity Schema Framework (OCSF) format",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-transformer-processor.html#cfn-logs-transformer-processor-parsetoocsf"
         },
         "ParseVPC": {
           "description": "Use this parameter to include the [parseVPC](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation-Processors.html#CloudWatch-Logs-Transformation-parseVPC) processor in your transformer.\n\nIf you use this processor, it must be the first processor in your transformer.",

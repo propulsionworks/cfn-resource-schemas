@@ -1,8 +1,17 @@
 {
   "$id": "aws-b2bi-transformer",
-  "$integrity": "sha512-Wo9y1LLJQyHuPHiTfN1yZXUrZGS474DOC+66W8I+qT3oKqIZN/m4iPO6OWWC1OIOrPThysuKaLw5WnrdLRui5g==",
+  "$integrity": "sha512-AnJ+wKI4SVG5jL35orEwL0jF2RIT8GwZ1APHP9QK4L1FtoU5Seex2UVmBf/iDMjPv5c5RgUYyu3S6OpnvrC8mQ==",
   "additionalProperties": false,
   "definitions": {
+    "AdvancedOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "X12": {
+          "$ref": "#/definitions/X12AdvancedOptions"
+        }
+      },
+      "type": "object"
+    },
     "EdiType": {
       "oneOf": [
         {
@@ -54,6 +63,9 @@
     "InputConversion": {
       "additionalProperties": false,
       "properties": {
+        "AdvancedOptions": {
+          "$ref": "#/definitions/AdvancedOptions"
+        },
         "FormatOptions": {
           "$ref": "#/definitions/FormatOptions"
         },
@@ -175,6 +187,15 @@
       ],
       "type": "string"
     },
+    "X12AdvancedOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "SplitOptions": {
+          "$ref": "#/definitions/X12SplitOptions"
+        }
+      },
+      "type": "object"
+    },
     "X12Details": {
       "additionalProperties": false,
       "properties": {
@@ -183,6 +204,22 @@
         },
         "Version": {
           "$ref": "#/definitions/X12Version"
+        }
+      },
+      "type": "object"
+    },
+    "X12SplitBy": {
+      "enum": [
+        "NONE",
+        "TRANSACTION"
+      ],
+      "type": "string"
+    },
+    "X12SplitOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "SplitBy": {
+          "$ref": "#/definitions/X12SplitBy"
         }
       },
       "type": "object"

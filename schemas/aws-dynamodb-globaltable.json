@@ -1,6 +1,6 @@
 {
   "$id": "aws-dynamodb-globaltable",
-  "$integrity": "sha512-BgOPpVyLKJaJZlIwmSK6PqKcjJMGRy+yvt1RKYFNZSKKk4wMh6oQppUd7JcY9b9RoZcGd3upwWei0IxOAYfM7Q==",
+  "$integrity": "sha512-kmEAzqIGxye2ACswbtEERooRpGMo3V3VyD9CdnfRIoma2Q9SwItXn3U30G6oR2eH0MFAkuFOaZ3srhBzqsskKA==",
   "additionalIdentifiers": [
     [
       "/properties/Arn"
@@ -658,6 +658,16 @@
       "type": "array",
       "uniqueItems": true
     },
+    "GlobalTableWitnesses": {
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/GlobalTableWitness"
+      },
+      "maxItems": 1,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
     "KeySchema": {
       "items": {
         "$ref": "#/definitions/KeySchema"
@@ -674,6 +684,13 @@
       },
       "type": "array",
       "uniqueItems": true
+    },
+    "MultiRegionConsistency": {
+      "enum": [
+        "EVENTUAL",
+        "STRONG"
+      ],
+      "type": "string"
     },
     "Replicas": {
       "insertionOrder": false,

@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-containerrecipe",
-  "$integrity": "sha512-7rEj63QoNeWsBWepHL1/9uIxRP1ju9XJJBWaCmhjRHpVov5BAFdTkPNf/VkKA7VRUFMOEZf3kLpq3annmzkVzQ==",
+  "$integrity": "sha512-cSxa5G7KT2a6vUBgb7yMECWLXDrJxViXIV5GqWvKbsc/Vq1HhFdyVKYOmUuMXeC3rDFWwb/zyk1mJl9q2DrIog==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -16,8 +16,7 @@
     "/properties/KmsKeyId",
     "/properties/PlatformOverride",
     "/properties/WorkingDirectory",
-    "/properties/Components",
-    "/properties/Tags"
+    "/properties/Components"
   ],
   "definitions": {
     "ComponentConfiguration": {
@@ -213,23 +212,17 @@
         "imagebuilder:GetContainerRecipe",
         "kms:Decrypt"
       ]
+    },
+    "update": {
+      "permissions": [
+        "imagebuilder:TagResource",
+        "imagebuilder:UntagResource"
+      ]
     }
   },
   "oneOf": [
     {
       "required": [
-        "DockerfileTemplateData",
-        "Name",
-        "Version",
-        "Components",
-        "ParentImage",
-        "TargetRepository",
-        "ContainerType"
-      ]
-    },
-    {
-      "required": [
-        "DockerfileTemplateUri",
         "Name",
         "Version",
         "Components",
@@ -326,9 +319,6 @@
       "type": "string"
     }
   },
-  "propertyTransform": {
-    "/properties/InstanceConfiguration/BlockDeviceMappings/*/Ebs/VolumeType": "$uppercase(VolumeType)"
-  },
   "readOnlyProperties": [
     "/properties/Arn"
   ],
@@ -341,7 +331,7 @@
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::ImageBuilder::ContainerRecipe",

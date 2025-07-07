@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-component",
-  "$integrity": "sha512-BwCfq6LxzjlPTfCn8PGMHwvGVyrWgExoASDdEStwaly46RQbfbjAdQq8k/1Kb5bXubjOC2M10DGGC8KXCeH3Tw==",
+  "$integrity": "sha512-5tNjqhtMrD2WrFTISLqllQdZgCyaHn3RqqwrmXIJvx4E1hEAPn6LRiNdx2ysQf7/NEVSHPCFIToPlkiHGX06Ng==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -11,8 +11,7 @@
     "/properties/Data",
     "/properties/Uri",
     "/properties/KmsKeyId",
-    "/properties/SupportedOsVersions",
-    "/properties/Tags"
+    "/properties/SupportedOsVersions"
   ],
   "description": "Resource schema for AWS::ImageBuilder::Component",
   "handlers": {
@@ -62,20 +61,14 @@
         "imagebuilder:GetComponent",
         "kms:Decrypt"
       ]
+    },
+    "update": {
+      "permissions": [
+        "imagebuilder:TagResource",
+        "imagebuilder:UntagResource"
+      ]
     }
   },
-  "oneOf": [
-    {
-      "required": [
-        "Data"
-      ]
-    },
-    {
-      "required": [
-        "Uri"
-      ]
-    }
-  ],
   "primaryIdentifier": [
     "/properties/Arn"
   ],
@@ -173,7 +166,7 @@
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::ImageBuilder::Component",

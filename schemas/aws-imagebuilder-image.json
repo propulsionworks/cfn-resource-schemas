@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-image",
-  "$integrity": "sha512-ofI3csLjIYFopa24iyqfbKSudzmlTYuMEWEvSPHFTW7ghRkbiyodlEZ6n82GQIL1wVyFQHxrhwoJYD6earuAQg==",
+  "$integrity": "sha512-mgRsR6mpuyxPrFYF4cNL9ubsFWwPuXbm26viPdUX+pKcCDyyV+2xksOMcnk5Pxozwhj9kjHKYBGSxEFdh24P/g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ImageRecipeArn",
@@ -10,8 +10,7 @@
     "/properties/DistributionConfigurationArn",
     "/properties/ImageTestsConfiguration",
     "/properties/ImageScanningConfiguration",
-    "/properties/EnhancedImageMetadataEnabled",
-    "/properties/Tags"
+    "/properties/EnhancedImageMetadataEnabled"
   ],
   "definitions": {
     "EcrConfiguration": {
@@ -165,6 +164,12 @@
       "permissions": [
         "imagebuilder:GetImage"
       ]
+    },
+    "update": {
+      "permissions": [
+        "imagebuilder:TagResource",
+        "imagebuilder:UntagResource"
+      ]
     }
   },
   "oneOf": [
@@ -272,7 +277,7 @@
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::ImageBuilder::Image"

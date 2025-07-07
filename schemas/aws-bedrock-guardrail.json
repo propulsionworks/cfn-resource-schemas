@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrock-guardrail",
-  "$integrity": "sha512-SCb0sY2kyTS+Z4892yPFXiaBHAT+VpvzLP6c4i0GQdBpmCcrjTuDCb9aliSomJUgTq0YB7OhjXcgCr3gBALdpw==",
+  "$integrity": "sha512-zZSUmMKwSvQuCOXvsH0J8vZY6gkV0CMFarZi9avFm82cN5pbRt3UYPJgZ83YbdZR8Ju5+wKgYl56lQdrfze2gQ==",
   "additionalProperties": false,
   "definitions": {
     "ContentFilterAction": {
@@ -71,10 +71,31 @@
       ],
       "type": "string"
     },
+    "ContentFiltersTierName": {
+      "description": "Tier name for tier configuration in content filters policy",
+      "enum": [
+        "CLASSIC",
+        "STANDARD"
+      ],
+      "type": "string"
+    },
     "ContentPolicyConfig": {
       "additionalProperties": false,
       "description": "Content policy config for a guardrail.",
       "properties": {
+        "ContentFiltersTierConfig": {
+          "additionalProperties": false,
+          "description": "Guardrail tier config for content policy",
+          "properties": {
+            "TierName": {
+              "$ref": "#/definitions/ContentFiltersTierName"
+            }
+          },
+          "required": [
+            "TierName"
+          ],
+          "type": "object"
+        },
         "FiltersConfig": {
           "description": "List of content filter configs in content policy.",
           "items": {
@@ -464,6 +485,19 @@
           },
           "minItems": 1,
           "type": "array"
+        },
+        "TopicsTierConfig": {
+          "additionalProperties": false,
+          "description": "Guardrail tier config for topic policy",
+          "properties": {
+            "TierName": {
+              "$ref": "#/definitions/TopicsTierName"
+            }
+          },
+          "required": [
+            "TierName"
+          ],
+          "type": "object"
         }
       },
       "required": [
@@ -475,6 +509,14 @@
       "description": "Type of topic in a policy",
       "enum": [
         "DENY"
+      ],
+      "type": "string"
+    },
+    "TopicsTierName": {
+      "description": "Tier name for tier configuration in topic policy",
+      "enum": [
+        "CLASSIC",
+        "STANDARD"
       ],
       "type": "string"
     },

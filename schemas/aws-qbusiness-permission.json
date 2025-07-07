@@ -1,13 +1,46 @@
 {
   "$id": "aws-qbusiness-permission",
-  "$integrity": "sha512-9Qq3Cqh5Autv5vAg97x6SUT6aPmNPDSHuR6PM4mwmRDbTGa7I5hMIkUUqAeLHOfhf+1lXkBDRU6xT+ltC6tC0g==",
+  "$integrity": "sha512-KgA+IeFCX1iuJYBXeGT967XJchkOOCgTCn5buDjszOOKulG8+uZB2uEFGoaJKMurAbpK9Cz9CJjW8+TUEroyqg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ApplicationId",
     "/properties/StatementId",
     "/properties/Actions",
-    "/properties/Principal"
+    "/properties/Principal",
+    "/properties/Conditions"
   ],
+  "definitions": {
+    "Condition": {
+      "additionalProperties": false,
+      "properties": {
+        "ConditionKey": {
+          "pattern": "^aws:PrincipalTag/qbusiness-dataaccessor:[a-zA-Z]+",
+          "type": "string"
+        },
+        "ConditionOperator": {
+          "enum": [
+            "StringEquals"
+          ],
+          "type": "string"
+        },
+        "ConditionValues": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
+          "type": "array"
+        }
+      },
+      "required": [
+        "ConditionOperator",
+        "ConditionKey",
+        "ConditionValues"
+      ],
+      "type": "object"
+    }
+  },
   "description": "Definition of AWS::QBusiness::Permission Resource Type",
   "handlers": {
     "create": {
@@ -62,6 +95,14 @@
       "minLength": 36,
       "pattern": "^[a-zA-Z0-9][a-zA-Z0-9-]{35}$",
       "type": "string"
+    },
+    "Conditions": {
+      "items": {
+        "$ref": "#/definitions/Condition"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "type": "array"
     },
     "Principal": {
       "maxLength": 1284,

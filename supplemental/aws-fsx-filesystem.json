@@ -53,12 +53,15 @@
     "DataReadCacheConfiguration": {
       "properties": {
         "SizeGiB": {
+          "description": "Required if `SizingMode` is set to `USER_PROVISIONED` . Specifies the size of the file system's SSD read cache, in gibibytes (GiB).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-datareadcacheconfiguration.html#cfn-fsx-filesystem-datareadcacheconfiguration-sizegib"
         },
         "SizingMode": {
+          "description": "Specifies how the provisioned SSD read cache is sized, as follows:\n\n- Set to `NO_CACHE` if you do not want to use an SSD read cache with your Intelligent-Tiering file system.\n- Set to `USER_PROVISIONED` to specify the exact size of your SSD read cache.\n- Set to `PROPORTIONAL_TO_THROUGHPUT_CAPACITY` to have your SSD read cache automatically sized based on your throughput capacity.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-datareadcacheconfiguration.html#cfn-fsx-filesystem-datareadcacheconfiguration-sizingmode"
         }
       },
+      "description": "The configuration for the optional provisioned SSD read cache on Amazon FSx for Lustre file systems that use the Intelligent-Tiering storage class.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-datareadcacheconfiguration.html"
     },
     "DiskIopsConfiguration": {
@@ -98,6 +101,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-datacompressiontype"
         },
         "DataReadCacheConfiguration": {
+          "description": "Specifies the optional provisioned SSD read cache on FSx for Lustre file systems that use the Intelligent-Tiering storage class. Required when `StorageType` is set to `INTELLIGENT_TIERING` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-datareadcacheconfiguration"
         },
         "DeploymentType": {
@@ -109,6 +113,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-drivecachetype"
         },
         "EfaEnabled": {
+          "description": "(Optional) Specifies whether Elastic Fabric Adapter (EFA) and GPUDirect Storage (GDS) support is enabled for the Amazon FSx for Lustre file system.\n\n(Default = `false` )",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-efaenabled"
         },
         "ExportPath": {
@@ -124,6 +129,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-importedfilechunksize"
         },
         "MetadataConfiguration": {
+          "description": "The Lustre metadata performance configuration for the creation of an FSx for Lustre file system using a `PERSISTENT_2` deployment type.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-metadataconfiguration"
         },
         "PerUnitStorageThroughput": {
@@ -131,6 +137,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-perunitstoragethroughput"
         },
         "ThroughputCapacity": {
+          "description": "Specifies the throughput of an FSx for Lustre file system using the Intelligent-Tiering storage class, measured in megabytes per second (MBps). Valid values are 4000 MBps or multiples of 4000 MBps. You pay for the amount of throughput that you provision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-throughputcapacity"
         },
         "WeeklyMaintenanceStartTime": {
@@ -144,12 +151,15 @@
     "MetadataConfiguration": {
       "properties": {
         "Iops": {
+          "description": "The number of Metadata IOPS provisioned for the file system.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-metadataconfiguration.html#cfn-fsx-filesystem-metadataconfiguration-iops"
         },
         "Mode": {
+          "description": "Specifies whether the file system is using the AUTOMATIC setting of metadata IOPS or if it is using a USER_PROVISIONED value.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-metadataconfiguration.html#cfn-fsx-filesystem-metadataconfiguration-mode"
         }
       },
+      "description": "The configuration that allows you to specify the performance of metadata operations for an FSx for Lustre file system.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-metadataconfiguration.html"
     },
     "NfsExports": {
@@ -267,7 +277,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-openzfsconfiguration.html#cfn-fsx-filesystem-openzfsconfiguration-routetableids"
         },
         "ThroughputCapacity": {
-          "description": "Specifies the throughput of an Amazon FSx for OpenZFS file system, measured in megabytes per second (MBps). Valid values depend on the `DeploymentType` that you choose, as follows:\n\n- For `MULTI_AZ_1` and `SINGLE_AZ_2` , valid values are 160, 320, 640, 1280, 2560, 3840, 5120, 7680, or 10240 MBps.\n- For `SINGLE_AZ_1` , valid values are 64, 128, 256, 512, 1024, 2048, 3072, or 4096 MBps.\n\nYou pay for additional throughput capacity that you provision.",
+          "description": "Specifies the throughput of an Amazon FSx for OpenZFS file system, measured in megabytes per second (MBps). Required if you are creating a new file system.\n\nValid values depend on the `DeploymentType` that you choose, as follows:\n\n- For `MULTI_AZ_1` and `SINGLE_AZ_2` , valid values are 160, 320, 640, 1280, 2560, 3840, 5120, 7680, or 10240 MBps.\n- For `SINGLE_AZ_1` , valid values are 64, 128, 256, 512, 1024, 2048, 3072, or 4096 MBps.\n\nYou pay for additional throughput capacity that you provision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-openzfsconfiguration.html#cfn-fsx-filesystem-openzfsconfiguration-throughputcapacity"
         },
         "WeeklyMaintenanceStartTime": {
@@ -459,22 +469,22 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-id"
     },
     "KmsKeyId": {
-      "description": "The ID of the AWS Key Management Service ( AWS KMS ) key used to encrypt Amazon FSx file system data. Used as follows with Amazon FSx file system types:\n\n- Amazon FSx for Lustre `PERSISTENT_1` and `PERSISTENT_2` deployment types only.\n\n`SCRATCH_1` and `SCRATCH_2` types are encrypted using the Amazon FSx service AWS KMS key for your account.\n- Amazon FSx for NetApp ONTAP\n- Amazon FSx for OpenZFS\n- Amazon FSx for Windows File Server",
+      "description": "The ID of the AWS Key Management Service ( AWS KMS ) key used to encrypt Amazon FSx file system data. Used as follows with Amazon FSx file system types:\n\n- Amazon FSx for Lustre `PERSISTENT_1` and `PERSISTENT_2` deployment types only.\n\n`SCRATCH_1` and `SCRATCH_2` types are encrypted using the Amazon FSx service AWS KMS key for your account.\n- Amazon FSx for NetApp ONTAP\n- Amazon FSx for OpenZFS\n- Amazon FSx for Windows File Server\n\nIf this ID isn't specified, the Amazon FSx-managed key for your account is used. For more information, see [Encrypt](https://docs.aws.amazon.com//kms/latest/APIReference/API_Encrypt.html) in the *AWS Key Management Service API Reference* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-kmskeyid"
     },
     "LustreConfiguration": {
-      "description": "The Lustre configuration for the file system being created.\n\n> The following parameters are not supported when creating Lustre file systems with a data repository association.\n> \n> - `AutoImportPolicy`\n> - `ExportPath`\n> - `ImportedChunkSize`\n> - `ImportPath`",
+      "description": "The Lustre configuration for the file system being created. This configuration is required if the `FileSystemType` is set to `LUSTRE` .\n\n> The following parameters are not supported when creating Lustre file systems with a data repository association.\n> \n> - `AutoImportPolicy`\n> - `ExportPath`\n> - `ImportedChunkSize`\n> - `ImportPath`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-lustreconfiguration"
     },
     "LustreMountName": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-lustremountname"
     },
     "OntapConfiguration": {
-      "description": "The ONTAP configuration properties of the FSx for ONTAP file system that you are creating.",
+      "description": "The ONTAP configuration properties of the FSx for ONTAP file system that you are creating. This configuration is required if the `FileSystemType` is set to `ONTAP` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-ontapconfiguration"
     },
     "OpenZFSConfiguration": {
-      "description": "The Amazon FSx for OpenZFS configuration properties for the file system that you are creating.",
+      "description": "The Amazon FSx for OpenZFS configuration properties for the file system that you are creating. This configuration is required if the `FileSystemType` is set to `OPENZFS` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-openzfsconfiguration"
     },
     "ResourceARN": {
@@ -504,7 +514,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-tags"
     },
     "WindowsConfiguration": {
-      "description": "The configuration object for the Microsoft Windows file system you are creating.\n\nThis value is required if `FileSystemType` is set to `WINDOWS` .",
+      "description": "The configuration object for the Microsoft Windows file system you are creating. This configuration is required if `FileSystemType` is set to `WINDOWS` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-windowsconfiguration"
     }
   },

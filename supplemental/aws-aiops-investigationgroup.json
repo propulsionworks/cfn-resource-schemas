@@ -3,19 +3,19 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#aws-resource-aiops-investigationgroup-return-values",
     "properties": {
       "CreatedBy": {
-        "description": "User friendly name for resources."
+        "description": "The name of the user who created the investigation group."
       },
       "CreatedAt": {
-        "description": "The timestamp value."
+        "description": "The date and time that the investigation group was created."
       },
       "LastModifiedBy": {
-        "description": "User friendly name for resources."
+        "description": "The name of the user who most recently modified the investigation group."
       },
       "LastModifiedAt": {
-        "description": "User friendly name for resources."
+        "description": "The date and time that the investigation group was most recently modified."
       },
       "Arn": {
-        "description": "The Investigation Group's ARN."
+        "description": "The Amazon Resource Name (ARN) of the investigation group. For example, `arn:aws:aiops: *Region* : *account-id* :investigation-group: *investigation-group-id*`"
       }
     }
   },
@@ -29,6 +29,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aiops-investigationgroup-chatbotnotificationchannel.html#cfn-aiops-investigationgroup-chatbotnotificationchannel-snstopicarn"
         }
       },
+      "description": "This structure is a string array. The first string is the ARN of a Amazon SNS topic. The array of strings display the ARNs of Amazon Q in chat applications configurations that are associated with that topic. For more information about these configuration ARNs, see [Getting started with Amazon Q in chat applications](https://docs.aws.amazon.com/chatbot/latest/adminguide/getting-started.html) and [Resource type defined by AWS Chatbot](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awschatbot.html#awschatbot-resources-for-iam-policies) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aiops-investigationgroup-chatbotnotificationchannel.html"
     },
     "CrossAccountConfiguration": {
@@ -46,6 +47,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aiops-investigationgroup-encryptionconfigmap.html#cfn-aiops-investigationgroup-encryptionconfigmap-encryptionconfigurationtype"
         },
         "KmsKeyId": {
+          "description": "If the investigation group uses a customer managed key for encryption, this field displays the ID of that key.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aiops-investigationgroup-encryptionconfigmap.html#cfn-aiops-investigationgroup-encryptionconfigmap-kmskeyid"
         }
       },
@@ -79,7 +81,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aiops-investigationgroup-timestamp.html"
     }
   },
-  "description": "Definition of AWS::AIOps::InvestigationGroup Resource Type",
+  "description": "Creates an *investigation group* in your account. Creating an investigation group is a one-time setup task for each Region in your account. It is a necessary task to be able to perform investigations.\n\nSettings in the investigation group help you centrally manage the common properties of your investigations, such as the following:\n\n- Who can access the investigations\n- Whether investigation data is encrypted with a customer managed AWS Key Management Service key.\n- How long investigations and their data are retained by default.\n\nCurrently, you can have one investigation group in each Region in your account. Each investigation in a Region is a part of the investigation group in that Region\n\nTo create an investigation group and set up Amazon Q Developer operational investigations, you must be signed in to an IAM principal that has the either the `AIOpsConsoleAdminPolicy` or the `AdministratorAccess` IAM policy attached, or to an account that has similar permissions.\n\n> You can optionally configure CloudWatch alarms to start investigations and add events to investigations. The examples section on this page demonstrates creating an investigation group and an alarm at the same time.\n> \n> For more information about configuring CloudWatch alarms to work with Amazon Q Developer operational investigations, see",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html",
   "id": "aws-aiops-investigationgroup",
   "properties": {
@@ -87,7 +89,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-arn"
     },
     "ChatbotNotificationChannels": {
-      "description": "An array of key-value pairs of notification channels to apply to this resource.",
+      "description": "Use this property to integrate Amazon Q Developer operational investigations with Amazon Q in chat applications. This property is an array. For the first string, specify the ARN of an Amazon SNS topic. For the array of strings, specify the ARNs of one or more Amazon Q in chat applications configurations that you want to associate with that topic. For more information about these configuration ARNs, see [Getting started with Amazon Q in chat applications](https://docs.aws.amazon.com/chatbot/latest/adminguide/getting-started.html) and [Resource type defined by AWS Chatbot](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awschatbot.html#awschatbot-resources-for-iam-policies) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-chatbotnotificationchannels"
     },
     "CreatedAt": {
@@ -101,6 +103,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-crossaccountconfigurations"
     },
     "EncryptionConfig": {
+      "description": "Use this property to specify a customer managed AWS KMS key to encrypt your investigation data. If you omit this property, Amazon Q Developer operational investigations will use an AWS key to encrypt the data. For more information, see [Encryption of investigation data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Investigations-Security.html#Investigations-KMS) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-encryptionconfig"
     },
     "InvestigationGroupPolicy": {
@@ -108,7 +111,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-investigationgrouppolicy"
     },
     "IsCloudTrailEventHistoryEnabled": {
-      "description": "Flag to enable cloud trail history",
+      "description": "Specify `true` to enable Amazon Q Developer operational investigations to have access to change events that are recorded by CloudTrail . The default is `true` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-iscloudtraileventhistoryenabled"
     },
     "LastModifiedAt": {
@@ -118,22 +121,23 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-lastmodifiedby"
     },
     "Name": {
-      "description": "User friendly name for resources.",
+      "description": "A name for the investigation group.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-name"
     },
     "RetentionInDays": {
-      "description": "The number of days to retain the investigation group",
+      "description": "Specify how long that investigation data is kept. For more information, see [Operational investigation data retention](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Investigations-Retention.html) .\n\nIf you omit this parameter, the default of 90 days is used.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-retentionindays"
     },
     "RoleArn": {
-      "description": "The Investigation Role's ARN.",
+      "description": "Specify the ARN of the IAM role that Amazon Q Developer operational investigations will use when it gathers investigation data. The permissions in this role determine which of your resources that Amazon Q Developer operational investigations will have access to during investigations.\n\nFor more information, see [How to control what data Amazon Q has access to during investigations](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Investigations-Security.html#Investigations-Security-Data) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-rolearn"
     },
     "TagKeyBoundaries": {
+      "description": "Enter the existing custom tag keys for custom applications in your system. Resource tags help Amazon Q narrow the search space when it is unable to discover definite relationships between resources. For example, to discover that an Amazon ECS service depends on an Amazon RDS database, Amazon Q can discover this relationship using data sources such as X-Ray and CloudWatch Application Signals. However, if you haven't deployed these features, Amazon Q will attempt to identify possible relationships. Tag boundaries can be used to narrow the resources that will be discovered by Amazon Q in these cases.\n\nYou don't need to enter tags created by myApplications or AWS CloudFormation , because Amazon Q can automatically detect those tags.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-tagkeyboundaries"
     },
     "Tags": {
-      "description": "An array of key-value pairs to apply to this resource.",
+      "description": "A list of key-value pairs to associate with the investigation group. You can associate as many as 50 tags with an investigation group.\n\nTags can help you organize and categorize your resources.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-tags"
     }
   },

@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-domain",
-  "$integrity": "sha512-YxH12daauBpnKUDQrgDGIJKRWonwRzngJRlqKo9VMZ6vDHV7zxeTmtwkeN1TPTsiMuGuBzaCY9dKxPr4jAn6nA==",
+  "$integrity": "sha512-jlMMKgCGOzJDn56iPluabd7iyX7exKNYJaTVghxWRSpXr0JY8rZbBiD7TbZjEVYNz3a05CfO/bffcqAUUHk31Q==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AuthMode",
@@ -1021,6 +1021,11 @@
           "pattern": "[\\w\\.-]+$",
           "type": "string"
         },
+        "SingleSignOnApplicationArn": {
+          "description": "The ARN of the DataZone application managed by SageMaker Unified Studio in the AWS IAM Identity Center.",
+          "pattern": "^arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso::[0-9]+:application/[a-zA-Z0-9-_.]+/apl-[a-zA-Z0-9]+$",
+          "type": "string"
+        },
         "StudioWebPortalAccess": {
           "description": "Sets whether you can access the domain in Amazon SageMaker Studio:\n\nENABLED\nYou can access the domain in Amazon SageMaker Studio. If you migrate the domain to Amazon SageMaker Unified Studio, you can access it in both studio interfaces.\nDISABLED\nYou can't access the domain in Amazon SageMaker Studio. If you migrate the domain to Amazon SageMaker Unified Studio, you can access it only in that studio interface.\n",
           "enum": [
@@ -1313,9 +1318,7 @@
   "required": [
     "AuthMode",
     "DefaultUserSettings",
-    "DomainName",
-    "SubnetIds",
-    "VpcId"
+    "DomainName"
   ],
   "typeName": "AWS::SageMaker::Domain",
   "writeOnlyProperties": [

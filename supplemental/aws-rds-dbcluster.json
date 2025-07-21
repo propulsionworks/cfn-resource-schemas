@@ -173,7 +173,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-backupretentionperiod"
     },
     "ClusterScalabilityType": {
-      "description": "Specifies the scalability mode of the Aurora DB cluster. When set to `limitless` , the cluster operates as an Aurora Limitless Database, allowing you to create a DB shard group for horizontal scaling (sharding) capabilities. When set to `standard` (the default), the cluster uses normal DB instance creation.",
+      "description": "Specifies the scalability mode of the Aurora DB cluster. When set to `limitless` , the cluster operates as an Aurora Limitless Database, allowing you to create a DB shard group for horizontal scaling (sharding) capabilities. When set to `standard` (the default), the cluster uses normal DB instance creation.\n\n*Important:* Automated backup retention isn't supported with Aurora Limitless Database clusters. If you set this property to `limitless` , you cannot set `DeleteAutomatedBackups` to `false` . To create a backup, use manual snapshots instead.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-clusterscalabilitytype"
     },
     "CopyTagsToSnapshot": {
@@ -217,6 +217,9 @@
     "DatabaseName": {
       "description": "The name of your database. If you don't provide a name, then Amazon RDS won't create a database in this DB cluster. For naming constraints, see [Naming Constraints](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_Limits.html#RDS_Limits.Constraints) in the *Amazon Aurora User Guide* .\n\nValid for: Aurora DB clusters and Multi-AZ DB clusters",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-databasename"
+    },
+    "DeleteAutomatedBackups": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-deleteautomatedbackups"
     },
     "DeletionProtection": {
       "description": "A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.\n\nValid for: Aurora DB clusters and Multi-AZ DB clusters",
@@ -365,7 +368,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-snapshotidentifier"
     },
     "SourceDBClusterIdentifier": {
-      "description": "When restoring a DB cluster to a point in time, the identifier of the source DB cluster from which to restore.\n\nConstraints:\n\n- Must match the identifier of an existing DBCluster.\n\nValid for: Aurora DB clusters and Multi-AZ DB clusters",
+      "description": "When restoring a DB cluster to a point in time, the identifier of the source DB cluster from which to restore.\n\nConstraints:\n\n- Must match the identifier of an existing DBCluster.\n- Cannot be specified if `SourceDbClusterResourceId` is specified. You must specify either `SourceDBClusterIdentifier` or `SourceDbClusterResourceId` , but not both.\n\nValid for: Aurora DB clusters and Multi-AZ DB clusters",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-sourcedbclusteridentifier"
     },
     "SourceRegion": {

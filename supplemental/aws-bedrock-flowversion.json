@@ -64,11 +64,11 @@
     "FieldForReranking": {
       "properties": {
         "FieldName": {
-          "description": "The name of a metadata field to include in or exclude from consideration when reranking.",
+          "description": "The name of the metadata field to be used during the reranking process.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-fieldforreranking.html#cfn-bedrock-flowversion-fieldforreranking-fieldname"
         }
       },
-      "description": "Contains information for a metadata field to include in or exclude from consideration when reranking.",
+      "description": "Specifies a field to be used during the reranking process in a Knowledge Base vector search. This structure identifies metadata fields that should be considered when reordering search results to improve relevance.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-fieldforreranking.html"
     },
     "FieldsForReranking": {
@@ -393,15 +393,15 @@
     "MetadataConfigurationForReranking": {
       "properties": {
         "SelectionMode": {
-          "description": "Specifies whether to consider all metadata when reranking, or only the metadata that you select. If you specify `SELECTIVE` , include the `selectiveModeConfiguration` field.",
+          "description": "The mode for selecting which metadata fields to include in the reranking process. Valid values are ALL (use all available metadata fields) or SELECTIVE (use only specified fields).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-metadataconfigurationforreranking.html#cfn-bedrock-flowversion-metadataconfigurationforreranking-selectionmode"
         },
         "SelectiveModeConfiguration": {
-          "description": "Contains configurations for the metadata fields to include or exclude when considering reranking.",
+          "description": "Configuration for selective mode, which allows you to explicitly include or exclude specific metadata fields during reranking. This is only used when selectionMode is set to SELECTIVE.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-metadataconfigurationforreranking.html#cfn-bedrock-flowversion-metadataconfigurationforreranking-selectivemodeconfiguration"
         }
       },
-      "description": "Contains configurations for the metadata to use in reranking.",
+      "description": "Configuration for how metadata should be used during the reranking process in Knowledge Base vector searches. This determines which metadata fields are included or excluded when reordering search results.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-metadataconfigurationforreranking.html"
     },
     "OutputFlowNodeConfiguration": {
@@ -525,7 +525,7 @@
     },
     "RerankingMetadataSelectiveModeConfiguration": {
       "properties": {},
-      "description": "Contains configurations for the metadata fields to include or exclude when considering reranking. If you include the `fieldsToExclude` field, the reranker ignores all the metadata fields that you specify. If you include the `fieldsToInclude` field, the reranker uses only the metadata fields that you specify and ignores all others. You can include only one of these fields.",
+      "description": "Configuration for selectively including or excluding metadata fields during the reranking process. This allows you to control which metadata attributes are considered when reordering search results.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-rerankingmetadataselectivemodeconfiguration.html"
     },
     "RetrievalFlowNodeConfiguration": {
@@ -599,47 +599,47 @@
     "VectorSearchBedrockRerankingConfiguration": {
       "properties": {
         "MetadataConfiguration": {
-          "description": "Contains configurations for the metadata to use in reranking.",
+          "description": "Configuration for how document metadata should be used during the reranking process. This determines which metadata fields are included when reordering search results.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchbedrockrerankingconfiguration.html#cfn-bedrock-flowversion-vectorsearchbedrockrerankingconfiguration-metadataconfiguration"
         },
         "ModelConfiguration": {
-          "description": "Contains configurations for the reranker model.",
+          "description": "Configuration for the Amazon Bedrock foundation model used for reranking. This includes the model ARN and any additional request fields required by the model.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchbedrockrerankingconfiguration.html#cfn-bedrock-flowversion-vectorsearchbedrockrerankingconfiguration-modelconfiguration"
         },
         "NumberOfRerankedResults": {
-          "description": "The number of results to return after reranking.",
+          "description": "The maximum number of results to rerank. This limits how many of the initial vector search results will be processed by the reranking model. A smaller number improves performance but may exclude potentially relevant results.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchbedrockrerankingconfiguration.html#cfn-bedrock-flowversion-vectorsearchbedrockrerankingconfiguration-numberofrerankedresults"
         }
       },
-      "description": "Contains configurations for reranking with an Amazon Bedrock reranker model.",
+      "description": "Configuration for using Amazon Bedrock foundation models to rerank Knowledge Base vector search results. This enables more sophisticated relevance ranking using large language models.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchbedrockrerankingconfiguration.html"
     },
     "VectorSearchBedrockRerankingModelConfiguration": {
       "properties": {
         "AdditionalModelRequestFields": {
-          "description": "A JSON object whose keys are request fields for the model and whose values are values for those fields.",
+          "description": "A list of additional fields to include in the model request during reranking. These fields provide extra context or configuration options specific to the selected foundation model.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchbedrockrerankingmodelconfiguration.html#cfn-bedrock-flowversion-vectorsearchbedrockrerankingmodelconfiguration-additionalmodelrequestfields"
         },
         "ModelArn": {
-          "description": "The ARN of the reranker model to use.",
+          "description": "The Amazon Resource Name (ARN) of the foundation model to use for reranking. This model processes the query and search results to determine a more relevant ordering.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchbedrockrerankingmodelconfiguration.html#cfn-bedrock-flowversion-vectorsearchbedrockrerankingmodelconfiguration-modelarn"
         }
       },
-      "description": "Contains configurations for an Amazon Bedrock reranker model.",
+      "description": "Configuration for the Amazon Bedrock foundation model used for reranking vector search results. This specifies which model to use and any additional parameters required by the model.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchbedrockrerankingmodelconfiguration.html"
     },
     "VectorSearchRerankingConfiguration": {
       "properties": {
         "BedrockRerankingConfiguration": {
-          "description": "Contains configurations for an Amazon Bedrock reranker model.",
+          "description": "Configuration for using Amazon Bedrock foundation models to rerank search results. This is required when the reranking type is set to BEDROCK.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchrerankingconfiguration.html#cfn-bedrock-flowversion-vectorsearchrerankingconfiguration-bedrockrerankingconfiguration"
         },
         "Type": {
-          "description": "The type of reranker model.",
+          "description": "The type of reranking to apply to vector search results. Currently, the only supported value is BEDROCK, which uses Amazon Bedrock foundation models for reranking.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchrerankingconfiguration.html#cfn-bedrock-flowversion-vectorsearchrerankingconfiguration-type"
         }
       },
-      "description": "Contains configurations for reranking the retrieved results.",
+      "description": "Configuration for reranking vector search results to improve relevance. Reranking applies additional relevance models to reorder the initial vector search results based on more sophisticated criteria.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-flowversion-vectorsearchrerankingconfiguration.html"
     },
     "VectorSearchRerankingConfigurationType": {

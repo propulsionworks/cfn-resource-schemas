@@ -27,7 +27,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-stackset-autodeployment.html#cfn-cloudformation-stackset-autodeployment-retainstacksonaccountremoval"
         }
       },
-      "description": "[ `Service-managed` permissions] Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to a target organizational unit (OU).",
+      "description": "Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to a target organization or organizational unit (OU). For more information, see [Enable or disable automatic deployments for StackSets in AWS Organizations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-manage-auto-deployment.html) in the *AWS CloudFormation User Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-stackset-autodeployment.html"
     },
     "Capability": {
@@ -41,7 +41,7 @@
     "DeploymentTargets": {
       "properties": {
         "AccountFilterType": {
-          "description": "Limit deployment targets to individual accounts or include additional accounts with provided OUs.\n\nThe following is a list of possible values for the `AccountFilterType` operation.\n\n- `INTERSECTION` : StackSet deploys to the accounts specified in the `Accounts` parameter.\n- `DIFFERENCE` : StackSet deploys to the OU, excluding the accounts specified in the `Accounts` parameter.\n- `UNION` StackSet deploys to the OU, and the accounts specified in the `Accounts` parameter. `UNION` is not supported for create operations when using StackSet as a resource.",
+          "description": "Refines which accounts to deploy stacks to by specifying how to use the `Accounts` and `OrganizationalUnitIds` properties together.\n\nThe following values determine how CloudFormation selects target accounts:\n\n- `INTERSECTION` : StackSet deploys to the accounts specified in the `Accounts` property.\n- `DIFFERENCE` : StackSet deploys to the OU, excluding the accounts specified in the `Accounts` property.\n- `UNION` : StackSet deploys to the OU, and the accounts specified in the `Accounts` property. `UNION` is not supported for create operations when using StackSet as a resource or the `CreateStackInstances` API.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-stackset-deploymenttargets.html#cfn-cloudformation-stackset-deploymenttargets-accountfiltertype"
         },
         "Accounts": {
@@ -49,7 +49,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-stackset-deploymenttargets.html#cfn-cloudformation-stackset-deploymenttargets-accounts"
         },
         "AccountsUrl": {
-          "description": "The Amazon S3 URL path to a file that contains a list of AWS account IDs. The file format must be either `.csv` or `.txt` , and the data can be comma-separated or new-line-separated. There is currently a 10MB limit for the data (approximately 800,000 accounts).",
+          "description": "The Amazon S3 URL path to a file that contains a list of AWS account IDs. The file format must be either `.csv` or `.txt` , and the data can be comma-separated or new-line-separated. There is currently a 10MB limit for the data (approximately 800,000 accounts).\n\nThis property serves the same purpose as `Accounts` but allows you to specify a large number of accounts.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-stackset-deploymenttargets.html#cfn-cloudformation-stackset-deploymenttargets-accountsurl"
         },
         "OrganizationalUnitIds": {
@@ -57,7 +57,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-stackset-deploymenttargets.html#cfn-cloudformation-stackset-deploymenttargets-organizationalunitids"
         }
       },
-      "description": "The AWS `OrganizationalUnitIds` or `Accounts` for which to create stack instances in the specified Regions.",
+      "description": "The AWS Organizations accounts or AWS accounts to deploy stacks to in the specified Regions.\n\nWhen deploying to AWS Organizations accounts with `SERVICE_MANAGED` permissions:\n\n- You must specify the `OrganizationalUnitIds` property.\n- If you specify organizational units (OUs) for `OrganizationalUnitIds` and use either the `Accounts` or `AccountsUrl` property, you must also specify the `AccountFilterType` property.\n\nWhen deploying to AWS accounts with `SELF_MANAGED` permissions:\n\n- You must specify either the `Accounts` or `AccountsUrl` property, but not both.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-stackset-deploymenttargets.html"
     },
     "OperationPreferences": {
@@ -123,7 +123,7 @@
     "StackInstances": {
       "properties": {
         "DeploymentTargets": {
-          "description": "The AWS `OrganizationalUnitIds` or `Accounts` for which to create stack instances in the specified Regions.",
+          "description": "The AWS Organizations accounts or AWS accounts to deploy stacks to in the specified Regions.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudformation-stackset-stackinstances.html#cfn-cloudformation-stackset-stackinstances-deploymenttargets"
         },
         "ParameterOverrides": {

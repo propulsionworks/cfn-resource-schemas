@@ -1,6 +1,6 @@
 {
   "$id": "aws-gamelift-containerfleet",
-  "$integrity": "sha512-+BhCoOlA3OdLg85UJsks+rbDkNdAzx5aZSvlOz32RZu2Sxy8KkWPoglhbQMt1R+jy4lYGlcH7NAy88a/0TTCSg==",
+  "$integrity": "sha512-ShmmJonjAcKVlsxnvsffnmZFx6g77GgOgLbyjf7/rY1ylrAmq0e6HEB05gUjkYk+05smRtPaUmgfFthNLT0Ihg==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
@@ -141,7 +141,7 @@
       "description": "Current resource capacity settings in a specified fleet or location. The location value might refer to a fleet's remote location or its home Region.",
       "properties": {
         "DesiredEC2Instances": {
-          "description": "The number of EC2 instances you want to maintain in the specified fleet location. This value must fall between the minimum and maximum size limits.",
+          "description": "The number of EC2 instances you want to maintain in the specified fleet location. This value must fall between the minimum and maximum size limits. If any auto-scaling policy is defined for the container fleet, the desired instance will only be applied once during fleet creation and will be ignored in updates to avoid conflicts with auto-scaling. During updates with any auto-scaling policy defined, if current desired instance is lower than the new MinSize, it will be increased to the new MinSize; if current desired instance is larger than the new MaxSize, it will be decreased to the new MaxSize.",
           "minimum": 0,
           "type": "integer"
         },

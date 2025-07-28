@@ -1,6 +1,6 @@
 {
   "$id": "aws-ses-contactlist",
-  "$integrity": "sha512-Q3qMTMzkw20JYjnWM2K+Ydrzp5cotD9Xa4NT4j3YTbXrU2Iv7o2fT7T2XJldaQaiIpmBkmvEnH7JuYVjr4/SbA==",
+  "$integrity": "sha512-voBQM785esFPVoHZmLZ5CJ1zHquLUdynIRf6Kq1pywZc92PjW3kt1ppzxfVrw2wlhDdqVch1F+M6r8YEFeUtcQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ContactListName"
@@ -62,12 +62,16 @@
   "handlers": {
     "create": {
       "permissions": [
-        "ses:CreateContactList"
+        "ses:CreateContactList",
+        "ses:UntagResource",
+        "ses:TagResource",
+        "ses:GetContactList"
       ]
     },
     "delete": {
       "permissions": [
-        "ses:DeleteContactList"
+        "ses:DeleteContactList",
+        "ses:GetContactList"
       ]
     },
     "list": {
@@ -77,14 +81,16 @@
     },
     "read": {
       "permissions": [
-        "ses:GetContactList"
+        "ses:GetContactList",
+        "ses:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
         "ses:UpdateContactList",
         "ses:UntagResource",
-        "ses:TagResource"
+        "ses:TagResource",
+        "ses:GetContactList"
       ]
     }
   },
@@ -124,5 +130,17 @@
     }
   },
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-ses.git",
+  "tagging": {
+    "cloudFormationSystemTags": false,
+    "permissions": [
+      "ses:TagResource",
+      "ses:UntagResource",
+      "ses:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::SES::ContactList"
 }

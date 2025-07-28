@@ -1,6 +1,6 @@
 {
   "$id": "aws-ses-emailidentity",
-  "$integrity": "sha512-COH2GXbDbDGbFOV3FhiswJnilZG9AAa9f33JyID/0XoJEPgJ+AJBKAPkecn5lIKO3rBaH78zSVPY2pJxaERaKA==",
+  "$integrity": "sha512-k8qMSNMtr4OAvkeP+ZlABY3mwZWdAazFUcZXL19uVr3buHDF7KfFWlfWMr6OP17SqIPRjX01sFs+mviJQ7xEEQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/EmailIdentity"
@@ -74,6 +74,26 @@
         }
       },
       "type": "object"
+    },
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Value": {
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
     }
   },
   "description": "Resource Type definition for AWS::SES::EmailIdentity",
@@ -84,7 +104,9 @@
         "ses:PutEmailIdentityMailFromAttributes",
         "ses:PutEmailIdentityFeedbackAttributes",
         "ses:PutEmailIdentityDkimAttributes",
-        "ses:GetEmailIdentity"
+        "ses:GetEmailIdentity",
+        "ses:TagResource",
+        "ses:UntagResource"
       ]
     },
     "delete": {
@@ -109,7 +131,9 @@
         "ses:PutEmailIdentityConfigurationSetAttributes",
         "ses:PutEmailIdentityDkimSigningAttributes",
         "ses:PutEmailIdentityDkimAttributes",
-        "ses:GetEmailIdentity"
+        "ses:GetEmailIdentity",
+        "ses:TagResource",
+        "ses:UntagResource"
       ]
     }
   },
@@ -153,6 +177,16 @@
     },
     "MailFromAttributes": {
       "$ref": "#/definitions/MailFromAttributes"
+    },
+    "Tags": {
+      "description": "The tags (keys and values) associated with the email identity.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "maxItems": 50,
+      "minItems": 0,
+      "type": "array"
     }
   },
   "readOnlyProperties": [
@@ -167,6 +201,17 @@
     "EmailIdentity"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-ses.git",
+  "tagging": {
+    "cloudFormationSystemTags": false,
+    "permissions": [
+      "ses:TagResource",
+      "ses:UntagResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::SES::EmailIdentity",
   "writeOnlyProperties": [
     "/properties/DkimSigningAttributes/DomainSigningSelector",

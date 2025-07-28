@@ -1,6 +1,6 @@
 {
   "$id": "aws-logs-accountpolicy",
-  "$integrity": "sha512-U2Qmaa/nimQN5LWfHu3kqbwcO2gLOe8VgxXJLXahn6rHwwFzFv57FSTglTGjsS5vuX7+NNKVD7swLpNPdxu9UA==",
+  "$integrity": "sha512-s/QqPqN74iCp8JZdHP3Mtk7fSjTysUH0idYafrHUkXQKZI8Co8/wm8lWFfRFo+6qMhu22akYnEjtbi3ACmodJg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/PolicyName",
@@ -20,6 +20,7 @@
         "logs:PutSubscriptionFilter",
         "logs:DeleteSubscriptionFilter",
         "logs:PutTransformer",
+        "logs:PutMetricExtractionPolicy",
         "iam:PassRole"
       ]
     },
@@ -31,6 +32,7 @@
         "logs:DescribeAccountPolicies",
         "logs:DeleteSubscriptionFilter",
         "logs:DeleteTransformer",
+        "logs:DeleteMetricExtractionPolicy",
         "iam:PassRole"
       ]
     },
@@ -47,13 +49,15 @@
       },
       "permissions": [
         "logs:DescribeAccountPolicies",
-        "logs:GetTransformer"
+        "logs:GetTransformer",
+        "logs:GetMetricExtractionPolicy"
       ]
     },
     "read": {
       "permissions": [
         "logs:DescribeAccountPolicies",
-        "logs:GetTransformer"
+        "logs:GetTransformer",
+        "logs:GetMetricExtractionPolicy"
       ]
     },
     "update": {
@@ -70,6 +74,8 @@
         "logs:DeleteSubscriptionFilter",
         "logs:PutTransformer",
         "logs:DeleteTransformer",
+        "logs:PutMetricExtractionPolicy",
+        "logs:DeleteMetricExtractionPolicy",
         "s3:REST.PUT.OBJECT",
         "firehose:TagDeliveryStream",
         "iam:PassRole"
@@ -106,7 +112,8 @@
         "DATA_PROTECTION_POLICY",
         "SUBSCRIPTION_FILTER_POLICY",
         "FIELD_INDEX_POLICY",
-        "TRANSFORMER_POLICY"
+        "TRANSFORMER_POLICY",
+        "METRIC_EXTRACTION_POLICY"
       ],
       "type": "string"
     },

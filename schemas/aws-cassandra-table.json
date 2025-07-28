@@ -1,6 +1,6 @@
 {
   "$id": "aws-cassandra-table",
-  "$integrity": "sha512-YSJVASCb3KK1Mf4HFAF/yB39I0Tmei0yTCXEPdEyC5TOOdBN+QtXjxx2HVV5IZuhxSHNbXbL1iuXVLPN2UNTKw==",
+  "$integrity": "sha512-deAdLpqA8AUFEhR96cX/bFyUeWmeBkzdE6uNNvuzl7VsWtPDce5jA7LCl+03bDcnqMoa+oin5Nhd/uoJV6F9CQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/KeyspaceName",
@@ -66,6 +66,16 @@
       "properties": {
         "Status": {
           "$ref": "#/definitions/CdcStatus"
+        },
+        "Tags": {
+          "description": "An array of key-value pairs to apply to the CDC stream resource",
+          "items": {
+            "$ref": "#/definitions/Tag"
+          },
+          "maxItems": 50,
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
         },
         "ViewType": {
           "$ref": "#/definitions/CdcViewType"

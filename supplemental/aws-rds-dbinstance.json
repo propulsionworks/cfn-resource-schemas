@@ -29,11 +29,41 @@
       "MasterUserSecret.SecretArn": {
         "description": "The Amazon Resource Name (ARN) of the secret. This parameter is a return value that you can retrieve using the `Fn::GetAtt` intrinsic function. For more information, see [Return values](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#aws-resource-rds-dbinstance-return-values) ."
       },
+      "CertificateDetails": {
+        "description": "The details of the DB instance’s server certificate.\n For more information, see [Using SSL/TLS to encrypt a connection to a DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html) in the *Amazon RDS User Guide* and [Using SSL/TLS to encrypt a connection to a DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html) in the *Amazon Aurora User Guide*."
+      },
       "Endpoint": {
         "description": "This data type represents the information you need to connect to an Amazon RDS DB instance. This data type is used as a response element in the following actions:\n  +   ``CreateDBInstance`` \n  +   ``DescribeDBInstances`` \n  +   ``DeleteDBInstance`` \n  \n For the data structure that represents Amazon Aurora DB cluster endpoints, see ``DBClusterEndpoint``."
       },
-      "CertificateDetails": {
-        "description": "The details of the DB instance’s server certificate.\n For more information, see [Using SSL/TLS to encrypt a connection to a DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html) in the *Amazon RDS User Guide* and [Using SSL/TLS to encrypt a connection to a DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html) in the *Amazon Aurora User Guide*."
+      "DBInstanceStatus": {
+        "description": "The current state of this DB instance."
+      },
+      "InstanceCreateTime": {
+        "description": "The date and time when the DB instance was created."
+      },
+      "IsStorageConfigUpgradeAvailable": {
+        "description": "Indicates whether an upgrade is recommended for the storage file system configuration on the DB instance."
+      },
+      "LatestRestorableTime": {
+        "description": "The latest time to which a database in this DB instance can be restored with point-in-time restore."
+      },
+      "ListenerEndpoint": {
+        "description": "This data type represents the information you need to connect to an Amazon RDS DB instance. This data type is used as a response element in the following actions:\n  +   ``CreateDBInstance`` \n  +   ``DescribeDBInstances`` \n  +   ``DeleteDBInstance`` \n  \n For the data structure that represents Amazon Aurora DB cluster endpoints, see ``DBClusterEndpoint``."
+      },
+      "ListenerEndpoint.Address": {
+        "description": "Specifies the DNS address of the DB instance."
+      },
+      "ListenerEndpoint.Port": {
+        "description": "Specifies the port that the database engine is listening on."
+      },
+      "ListenerEndpoint.HostedZoneId": {
+        "description": "Specifies the ID that Amazon Route 53 assigns when you create a hosted zone."
+      },
+      "ReadReplicaDBClusterIdentifiers": {
+        "description": "The identifiers of Aurora DB clusters to which the RDS DB instance is replicated as a read replica."
+      },
+      "ReadReplicaDBInstanceIdentifiers": {
+        "description": "The identifiers of the read replicas associated with this DB instance."
       }
     }
   },
@@ -214,6 +244,9 @@
       "description": "A name for the DB instance. If you specify a name, AWS CloudFormation converts it to lowercase. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the DB instance. For more information, see [Name Type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html) .\n\nFor information about constraints that apply to DB instance identifiers, see [Naming constraints in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html#RDS_Limits.Constraints) in the *Amazon RDS User Guide* .\n\n> If you specify a name, you can't perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-dbinstanceidentifier"
     },
+    "DBInstanceStatus": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-dbinstancestatus"
+    },
     "DBName": {
       "description": "The meaning of this parameter differs according to the database engine you use.\n\n> If you specify the `[DBSnapshotIdentifier](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-dbsnapshotidentifier)` property, this property only applies to RDS for Oracle. \n\n*Amazon Aurora*\n\nNot applicable. The database name is managed by the DB cluster.\n\n*Db2*\n\nThe name of the database to create when the DB instance is created. If this parameter isn't specified, no database is created in the DB instance.\n\nConstraints:\n\n- Must contain 1 to 64 letters or numbers.\n- Must begin with a letter. Subsequent characters can be letters, underscores, or digits (0-9).\n- Can't be a word reserved by the specified database engine.\n\n*MySQL*\n\nThe name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance.\n\nConstraints:\n\n- Must contain 1 to 64 letters or numbers.\n- Can't be a word reserved by the specified database engine\n\n*MariaDB*\n\nThe name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance.\n\nConstraints:\n\n- Must contain 1 to 64 letters or numbers.\n- Can't be a word reserved by the specified database engine\n\n*PostgreSQL*\n\nThe name of the database to create when the DB instance is created. If this parameter is not specified, the default `postgres` database is created in the DB instance.\n\nConstraints:\n\n- Must begin with a letter. Subsequent characters can be letters, underscores, or digits (0-9).\n- Must contain 1 to 63 characters.\n- Can't be a word reserved by the specified database engine\n\n*Oracle*\n\nThe Oracle System ID (SID) of the created DB instance. If you specify `null` , the default value `ORCL` is used. You can't specify the string NULL, or any other reserved word, for `DBName` .\n\nDefault: `ORCL`\n\nConstraints:\n\n- Can't be longer than 8 characters\n\n*SQL Server*\n\nNot applicable. Must be null.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-dbname"
@@ -308,17 +341,29 @@
       "description": "The version number of the database engine to use.\n\nFor a list of valid engine versions, use the `DescribeDBEngineVersions` action.\n\nThe following are the database engines and links to information about the major and minor versions that are available with Amazon RDS. Not every database engine is available for every AWS Region.\n\n*Amazon Aurora*\n\nNot applicable. The version number of the database engine to be used by the DB instance is managed by the DB cluster.\n\n*Db2*\n\nSee [Amazon RDS for Db2](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Db2.html#Db2.Concepts.VersionMgmt) in the *Amazon RDS User Guide.*\n\n*MariaDB*\n\nSee [MariaDB on Amazon RDS Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt) in the *Amazon RDS User Guide.*\n\n*Microsoft SQL Server*\n\nSee [Microsoft SQL Server Versions on Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport) in the *Amazon RDS User Guide.*\n\n*MySQL*\n\nSee [MySQL on Amazon RDS Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt) in the *Amazon RDS User Guide.*\n\n*Oracle*\n\nSee [Oracle Database Engine Release Notes](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html) in the *Amazon RDS User Guide.*\n\n*PostgreSQL*\n\nSee [Supported PostgreSQL Database Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions) in the *Amazon RDS User Guide.*",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-engineversion"
     },
+    "InstanceCreateTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-instancecreatetime"
+    },
     "Iops": {
       "description": "The number of I/O operations per second (IOPS) that the database provisions. The value must be equal to or greater than 1000.\n\nIf you specify this property, you must follow the range of allowed ratios of your requested IOPS rate to the amount of storage that you allocate (IOPS to allocated storage). For example, you can provision an Oracle database instance with 1000 IOPS and 200 GiB of storage (a ratio of 5:1), or specify 2000 IOPS with 200 GiB of storage (a ratio of 10:1). For more information, see [Amazon RDS Provisioned IOPS Storage to Improve Performance](https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/CHAP_Storage.html#USER_PIOPS) in the *Amazon RDS User Guide* .\n\n> If you specify `io1` for the `StorageType` property, then you must also specify the `Iops` property. \n\nConstraints:\n\n- For RDS for Db2, MariaDB, MySQL, Oracle, and PostgreSQL - Must be a multiple between .5 and 50 of the storage amount for the DB instance.\n- For RDS for SQL Server - Must be a multiple between 1 and 50 of the storage amount for the DB instance.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-iops"
+    },
+    "IsStorageConfigUpgradeAvailable": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-isstorageconfigupgradeavailable"
     },
     "KmsKeyId": {
       "description": "The ARN of the AWS KMS key that's used to encrypt the DB instance, such as `arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef` . If you enable the StorageEncrypted property but don't specify this property, AWS CloudFormation uses the default KMS key. If you specify this property, you must set the StorageEncrypted property to true.\n\nIf you specify the `SourceDBInstanceIdentifier` or `SourceDbiResourceId` property, don't specify this property. The value is inherited from the source DB instance, and if the DB instance is encrypted, the specified `KmsKeyId` property is used. However, if the source DB instance is in a different AWS Region, you must specify a KMS key ID.\n\nIf you specify the `SourceDBInstanceAutomatedBackupsArn` property, don't specify this property. The value is inherited from the source DB instance automated backup, and if the automated backup is encrypted, the specified `KmsKeyId` property is used.\n\nIf you create an encrypted read replica in a different AWS Region, then you must specify a KMS key for the destination AWS Region. KMS encryption keys are specific to the region that they're created in, and you can't use encryption keys from one region in another region.\n\nIf you specify the `DBSnapshotIdentifier` property, don't specify this property. The `StorageEncrypted` property value is inherited from the snapshot. If the DB instance is encrypted, the specified `KmsKeyId` property is also inherited from the snapshot.\n\nIf you specify `DBSecurityGroups` , AWS CloudFormation ignores this property. To specify both a security group and this property, you must use a VPC security group. For more information about Amazon RDS and VPC, see [Using Amazon RDS with Amazon VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.html) in the *Amazon RDS User Guide* .\n\n*Amazon Aurora*\n\nNot applicable. The KMS key identifier is managed by the DB cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-kmskeyid"
     },
+    "LatestRestorableTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-latestrestorabletime"
+    },
     "LicenseModel": {
       "description": "License model information for this DB instance.\n\nValid Values:\n\n- Aurora MySQL - `general-public-license`\n- Aurora PostgreSQL - `postgresql-license`\n- RDS for Db2 - `bring-your-own-license` . For more information about RDS for Db2 licensing, see [](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-licensing.html) in the *Amazon RDS User Guide.*\n- RDS for MariaDB - `general-public-license`\n- RDS for Microsoft SQL Server - `license-included`\n- RDS for MySQL - `general-public-license`\n- RDS for Oracle - `bring-your-own-license` or `license-included`\n- RDS for PostgreSQL - `postgresql-license`\n\n> If you've specified `DBSecurityGroups` and then you update the license model, AWS CloudFormation replaces the underlying DB instance. This will incur some interruptions to database availability.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-licensemodel"
+    },
+    "ListenerEndpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-listenerendpoint"
     },
     "ManageMasterUserPassword": {
       "description": "Specifies whether to manage the master user password with AWS Secrets Manager.\n\nFor more information, see [Password management with AWS Secrets Manager](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html) in the *Amazon RDS User Guide.*\n\nConstraints:\n\n- Can't manage the master user password with AWS Secrets Manager if `MasterUserPassword` is specified.",
@@ -395,6 +440,12 @@
     "PubliclyAccessible": {
       "description": "Indicates whether the DB instance is an internet-facing instance. If you specify true, AWS CloudFormation creates an instance with a publicly resolvable DNS name, which resolves to a public IP address. If you specify false, AWS CloudFormation creates an internal instance with a DNS name that resolves to a private IP address.\n\nThe default behavior value depends on your VPC setup and the database subnet group. For more information, see the `PubliclyAccessible` parameter in the [CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html) in the *Amazon RDS API Reference* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-publiclyaccessible"
+    },
+    "ReadReplicaDBClusterIdentifiers": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-readreplicadbclusteridentifiers"
+    },
+    "ReadReplicaDBInstanceIdentifiers": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-readreplicadbinstanceidentifiers"
     },
     "ReplicaMode": {
       "description": "The open mode of an Oracle read replica. For more information, see [Working with Oracle Read Replicas for Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html) in the *Amazon RDS User Guide* .\n\nThis setting is only supported in RDS for Oracle.\n\nDefault: `open-read-only`\n\nValid Values: `open-read-only` or `mounted`",

@@ -1,6 +1,6 @@
 {
   "$id": "aws-ses-configurationseteventdestination",
-  "$integrity": "sha512-9NGq2IgM763i6AObVcHvZp89F4niGD27T2edEOIwp5gc0eTGdX+LBUUWNaWCFD8wZfpmYKDvvUaXTiV81i8k0w==",
+  "$integrity": "sha512-Gx049q0tM7/2SIIALTTWS/mf/mIOswOKjMQ+1s9Jgyh58A8vIjOmrwrYDaQt3xDhOHzIpq5rgQUzSQbP7KCK3g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ConfigurationSetName"
@@ -161,6 +161,22 @@
         "ses:DeleteConfigurationSetEventDestination"
       ]
     },
+    "list": {
+      "handlerSchema": {
+        "properties": {
+          "ConfigurationSetName": {
+            "$ref": "resource-schema.json#/properties/ConfigurationSetName"
+          }
+        },
+        "required": [
+          "ConfigurationSetName"
+        ]
+      },
+      "permissions": [
+        "ses:GetConfigurationSetEventDestinations",
+        "ses:DescribeConfigurationSet"
+      ]
+    },
     "read": {
       "permissions": [
         "ses:GetConfigurationSetEventDestinations",
@@ -198,6 +214,8 @@
     "EventDestination"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-ses.git",
-  "taggable": false,
+  "tagging": {
+    "taggable": false
+  },
   "typeName": "AWS::SES::ConfigurationSetEventDestination"
 }

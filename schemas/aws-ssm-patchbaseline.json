@@ -1,6 +1,6 @@
 {
   "$id": "aws-ssm-patchbaseline",
-  "$integrity": "sha512-Gk1jxzs5wRiN1H+wNtzYNJEuUlm8KMlPPuqAShlT/uK49/+c06WBJuahpECGUpHEoJXihJfhWJ982fn+/nUTuA==",
+  "$integrity": "sha512-m4QZrY1jba9J+b4YK2YRu8a/HZXiMGvdJvx0SjB0TILIBZBxdllzfAnrQaNf2bUFYtJtnjeEuqTtQJlaY4IkiA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/OperatingSystem"
@@ -250,6 +250,14 @@
       "default": false,
       "description": "Indicates whether the list of approved patches includes non-security updates that should be applied to the instances. The default value is 'false'. Applies to Linux instances only.",
       "type": "boolean"
+    },
+    "AvailableSecurityUpdatesComplianceStatus": {
+      "description": "The compliance status for vendor recommended security updates that are not approved by this patch baseline.",
+      "enum": [
+        "NON_COMPLIANT",
+        "COMPLIANT"
+      ],
+      "type": "string"
     },
     "DefaultBaseline": {
       "default": false,

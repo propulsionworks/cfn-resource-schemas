@@ -1,6 +1,6 @@
 {
   "$id": "aws-medialive-channel",
-  "$integrity": "sha512-YYW8wcUaD7vlHitZegZmTNEK0AgEyCP6wXr3hSqdCeXnobks/znmcN/iRY8oYInthQblQNNS8d/XLXt6p9RKuw==",
+  "$integrity": "sha512-FesxXGRjAiUNfo7zzZr919jca6PdCiRRciidnITeA69HN3tPlN1l558wtpBS+mXhWXDEEonSM+RUNWn6mbxBxw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Vpc"
@@ -2456,6 +2456,9 @@
       "properties": {
         "Destination": {
           "$ref": "#/definitions/OutputLocationRef"
+        },
+        "MediapackageV2GroupSettings": {
+          "$ref": "#/definitions/MediaPackageV2GroupSettings"
         }
       },
       "type": "object"
@@ -2477,6 +2480,42 @@
     },
     "MediaPackageOutputSettings": {
       "additionalProperties": false,
+      "properties": {
+        "MediaPackageV2DestinationSettings": {
+          "$ref": "#/definitions/MediaPackageV2DestinationSettings"
+        }
+      },
+      "type": "object"
+    },
+    "MediaPackageV2DestinationSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "AudioGroupId": {
+          "type": "string"
+        },
+        "AudioRenditionSets": {
+          "type": "string"
+        },
+        "HlsAutoSelect": {
+          "type": "string"
+        },
+        "HlsDefault": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MediaPackageV2GroupSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "CaptionLanguageMappings": {
+          "items": {
+            "$ref": "#/definitions/CaptionLanguageMapping"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
       "type": "object"
     },
     "MotionGraphicsConfiguration": {

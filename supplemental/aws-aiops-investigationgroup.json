@@ -86,7 +86,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aiops-investigationgroup-timestamp.html"
     }
   },
-  "description": "Creates an *investigation group* in your account. Creating an investigation group is a one-time setup task for each Region in your account. It is a necessary task to be able to perform investigations.\n\nSettings in the investigation group help you centrally manage the common properties of your investigations, such as the following:\n\n- Who can access the investigations\n- Whether investigation data is encrypted with a customer managed AWS Key Management Service key.\n- How long investigations and their data are retained by default.\n\nCurrently, you can have one investigation group in each Region in your account. Each investigation in a Region is a part of the investigation group in that Region\n\nTo create an investigation group and set up CloudWatch investigations, you must be signed in to an IAM principal that has the either the `AIOpsConsoleAdminPolicy` or the `AdministratorAccess` IAM policy attached, or to an account that has similar permissions.\n\n> You can configure CloudWatch alarms to start investigations and add events to investigations. If you create your investigation group with `CreateInvestigationGroup` and you want to enable alarms to do this, you must use `PutInvestigationGroupPolicy` to create a resource policy that grants this permission to CloudWatch alarms.\n> \n> For more information about configuring CloudWatch alarms to work with CloudWatch investigations, see",
+  "description": "Creates an *investigation group* in your account. Creating an investigation group is a one-time setup task for each Region in your account. It is a necessary task to be able to perform investigations.\n\nSettings in the investigation group help you centrally manage the common properties of your investigations, such as the following:\n\n- Who can access the investigations\n- Whether investigation data is encrypted with a customer managed AWS Key Management Service key.\n- How long investigations and their data are retained by default.\n\nCurrently, you can have one investigation group in each Region in your account. Each investigation in a Region is a part of the investigation group in that Region\n\nTo create an investigation group and set up CloudWatch investigations, you must be signed in to an IAM principal that has either the `AIOpsConsoleAdminPolicy` or the `AdministratorAccess` IAM policy attached, or to an account that has similar permissions.\n\n> You can configure CloudWatch alarms to start investigations and add events to investigations. If you create your investigation group with `CreateInvestigationGroup` and you want to enable alarms to do this, you must use `PutInvestigationGroupPolicy` to create a resource policy that grants this permission to CloudWatch alarms.\n> \n> For more information about configuring CloudWatch alarms, see [Using Amazon CloudWatch alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html",
   "id": "aws-aiops-investigationgroup",
   "properties": {
@@ -104,7 +104,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-createdby"
     },
     "CrossAccountConfigurations": {
-      "description": "Number of `sourceAccountId` values that have been configured for cross-account access.",
+      "description": "List of `sourceRoleArn` values that have been configured for cross-account access.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-crossaccountconfigurations"
     },
     "EncryptionConfig": {
@@ -112,7 +112,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-encryptionconfig"
     },
     "InvestigationGroupPolicy": {
-      "description": "Returns the IAM resource policy that is associated with the specified investigation group.",
+      "description": "Returns the JSON of the IAM resource policy associated with the specified investigation group in a string. For example, `{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"Service\\\":\\\"aiops.alarms.cloudwatch.amazonaws.com\\\"},\\\"Action\\\":[\\\"aiops:CreateInvestigation\\\",\\\"aiops:CreateInvestigationEvent\\\"],\\\"Resource\\\":\\\"*\\\",\\\"Condition\\\":{\\\"StringEquals\\\":{\\\"aws:SourceAccount\\\":\\\"111122223333\\\"},\\\"ArnLike\\\":{\\\"aws:SourceArn\\\":\\\"arn:aws:cloudwatch:us-east-1:111122223333:alarm:*\\\"}}}]}` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-investigationgrouppolicy"
     },
     "IsCloudTrailEventHistoryEnabled": {
@@ -126,7 +126,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-lastmodifiedby"
     },
     "Name": {
-      "description": "Specify either the name or the ARN of the investigation group that you want to view.",
+      "description": "Specify either the name or the ARN of the investigation group that you want to view. This is used to set the name of the investigation group.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html#cfn-aiops-investigationgroup-name"
     },
     "RetentionInDays": {

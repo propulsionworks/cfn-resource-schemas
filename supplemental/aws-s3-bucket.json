@@ -22,6 +22,21 @@
       },
       "MetadataTableConfiguration.S3TablesDestination.TableArn": {
         "description": "The Amazon Resource Name (ARN) for the metadata table in the metadata table configuration. The specified metadata table name must be unique within the `aws_s3_metadata` namespace in the destination table bucket."
+      },
+      "MetadataConfiguration.Destination": {
+        "description": "The destination information for the S3 Metadata configuration."
+      },
+      "MetadataConfiguration.JournalTableConfiguration.TableName": {
+        "description": "The name of the journal table."
+      },
+      "MetadataConfiguration.JournalTableConfiguration.TableArn": {
+        "description": "The Amazon Resource Name (ARN) for the journal table."
+      },
+      "MetadataConfiguration.InventoryTableConfiguration.TableName": {
+        "description": "The name of the inventory table."
+      },
+      "MetadataConfiguration.InventoryTableConfiguration.TableArn": {
+        "description": "The Amazon Resource Name (ARN) for the inventory table."
       }
     }
   },
@@ -293,35 +308,45 @@
     "InventoryTableConfiguration": {
       "properties": {
         "ConfigurationState": {
+          "description": "The configuration state of the inventory table, indicating whether the inventory table is enabled or disabled.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-inventorytableconfiguration.html#cfn-s3-bucket-inventorytableconfiguration-configurationstate"
         },
         "EncryptionConfiguration": {
+          "description": "The encryption configuration for the inventory table.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-inventorytableconfiguration.html#cfn-s3-bucket-inventorytableconfiguration-encryptionconfiguration"
         },
         "TableArn": {
+          "description": "The Amazon Resource Name (ARN) for the inventory table.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-inventorytableconfiguration.html#cfn-s3-bucket-inventorytableconfiguration-tablearn"
         },
         "TableName": {
+          "description": "The name of the inventory table.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-inventorytableconfiguration.html#cfn-s3-bucket-inventorytableconfiguration-tablename"
         }
       },
+      "description": "The inventory table configuration for an S3 Metadata configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-inventorytableconfiguration.html"
     },
     "JournalTableConfiguration": {
       "properties": {
         "EncryptionConfiguration": {
+          "description": "The encryption configuration for the journal table.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-journaltableconfiguration.html#cfn-s3-bucket-journaltableconfiguration-encryptionconfiguration"
         },
         "RecordExpiration": {
+          "description": "The journal table record expiration settings for the journal table.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-journaltableconfiguration.html#cfn-s3-bucket-journaltableconfiguration-recordexpiration"
         },
         "TableArn": {
+          "description": "The Amazon Resource Name (ARN) for the journal table.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-journaltableconfiguration.html#cfn-s3-bucket-journaltableconfiguration-tablearn"
         },
         "TableName": {
+          "description": "The name of the journal table.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-journaltableconfiguration.html#cfn-s3-bucket-journaltableconfiguration-tablename"
         }
       },
+      "description": "The journal table configuration for an S3 Metadata configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-journaltableconfiguration.html"
     },
     "LambdaConfiguration": {
@@ -377,29 +402,37 @@
     "MetadataConfiguration": {
       "properties": {
         "Destination": {
+          "description": "The destination information for the S3 Metadata configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadataconfiguration.html#cfn-s3-bucket-metadataconfiguration-destination"
         },
         "InventoryTableConfiguration": {
+          "description": "The inventory table configuration for a metadata configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadataconfiguration.html#cfn-s3-bucket-metadataconfiguration-inventorytableconfiguration"
         },
         "JournalTableConfiguration": {
+          "description": "The journal table configuration for a metadata configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadataconfiguration.html#cfn-s3-bucket-metadataconfiguration-journaltableconfiguration"
         }
       },
+      "description": "Creates a V2 Amazon S3 Metadata configuration of a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadataconfiguration.html"
     },
     "MetadataDestination": {
       "properties": {
         "TableBucketArn": {
+          "description": "The Amazon Resource Name (ARN) of the table bucket where the metadata configuration is stored.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatadestination.html#cfn-s3-bucket-metadatadestination-tablebucketarn"
         },
         "TableBucketType": {
+          "description": "The type of the table bucket where the metadata configuration is stored. The `aws` value indicates an AWS managed table bucket, and the `customer` value indicates a customer-managed table bucket. V2 metadata configurations are stored in AWS managed table buckets, and V1 metadata configurations are stored in customer-managed table buckets.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatadestination.html#cfn-s3-bucket-metadatadestination-tablebuckettype"
         },
         "TableNamespace": {
+          "description": "The namespace in the table bucket where the metadata tables for a metadata configuration are stored.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatadestination.html#cfn-s3-bucket-metadatadestination-tablenamespace"
         }
       },
+      "description": "The destination information for the S3 Metadata configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatadestination.html"
     },
     "MetadataTableConfiguration": {
@@ -409,18 +442,21 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatatableconfiguration.html#cfn-s3-bucket-metadatatableconfiguration-s3tablesdestination"
         }
       },
-      "description": "The metadata table configuration of an Amazon S3 general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) and [Setting up permissions for configuring metadata tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html) .",
+      "description": "> We recommend that you create your S3 Metadata configurations by using the V2 [MetadataConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-s3-bucket-metadataconfiguration.html) resource type. We no longer recommend using the V1 `MetadataTableConfiguration` resource type.\n> \n> If you created your S3 Metadata configuration before July 15, 2025, we recommend that you delete and re-create your configuration by using the [MetadataConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-s3-bucket-metadataconfiguration.html) resource type so that you can expire journal table records and create a live inventory table. \n\nCreates a V1 S3 Metadata configuration for a general purpose bucket. For more information, see [Accelerating data discovery with S3 Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html) in the *Amazon S3 User Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatatableconfiguration.html"
     },
     "MetadataTableEncryptionConfiguration": {
       "properties": {
         "KmsKeyArn": {
+          "description": "If server-side encryption with AWS Key Management Service ( AWS KMS ) keys (SSE-KMS) is specified, you must also specify the KMS key Amazon Resource Name (ARN). You must specify a customer-managed KMS key that's located in the same Region as the general purpose bucket that corresponds to the metadata table configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatatableencryptionconfiguration.html#cfn-s3-bucket-metadatatableencryptionconfiguration-kmskeyarn"
         },
         "SseAlgorithm": {
+          "description": "The encryption type specified for a metadata table. To specify server-side encryption with AWS Key Management Service ( AWS KMS ) keys (SSE-KMS), use the `aws:kms` value. To specify server-side encryption with Amazon S3 managed keys (SSE-S3), use the `AES256` value.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatatableencryptionconfiguration.html#cfn-s3-bucket-metadatatableencryptionconfiguration-ssealgorithm"
         }
       },
+      "description": "The encryption settings for an S3 Metadata journal table or inventory table configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-metadatatableencryptionconfiguration.html"
     },
     "Metrics": {
@@ -620,12 +656,15 @@
     "RecordExpiration": {
       "properties": {
         "Days": {
+          "description": "If you enable journal table record expiration, you can set the number of days to retain your journal table records. Journal table records must be retained for a minimum of 7 days. To set this value, specify any whole number from `7` to `2147483647` . For example, to retain your journal table records for one year, set this value to `365` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-recordexpiration.html#cfn-s3-bucket-recordexpiration-days"
         },
         "Expiration": {
+          "description": "Specifies whether journal table record expiration is enabled or disabled.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-recordexpiration.html#cfn-s3-bucket-recordexpiration-expiration"
         }
       },
+      "description": "The journal table record expiration settings for a journal table in an S3 Metadata configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-recordexpiration.html"
     },
     "RedirectAllRequestsTo": {
@@ -947,7 +986,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-s3tablesdestination.html#cfn-s3-bucket-s3tablesdestination-tablenamespace"
         }
       },
-      "description": "The destination information for a V1 S3 Metadata configuration. The destination table bucket must be in the same Region and AWS account as the general purpose bucket. The specified metadata table name must be unique within the `aws_s3_metadata` namespace in the destination table bucket.\n\n> If you created your S3 Metadata configuration before July 15, 2025, we recommend that you delete and re-create your configuration by using [CreateBucketMetadataConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucketMetadataConfiguration.html) so that you can expire journal table records and create a live inventory table.",
+      "description": "The destination information for a V1 S3 Metadata configuration. The destination table bucket must be in the same Region and AWS account as the general purpose bucket. The specified metadata table name must be unique within the `aws_s3_metadata` namespace in the destination table bucket.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-s3tablesdestination.html"
     },
     "ServerSideEncryptionByDefault": {
@@ -1183,6 +1222,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html#cfn-s3-bucket-loggingconfiguration"
     },
     "MetadataConfiguration": {
+      "description": "The S3 Metadata configuration for a general purpose bucket.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html#cfn-s3-bucket-metadataconfiguration"
     },
     "MetadataTableConfiguration": {

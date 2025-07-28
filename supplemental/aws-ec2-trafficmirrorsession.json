@@ -2,7 +2,9 @@
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-trafficmirrorsession.html#aws-resource-ec2-trafficmirrorsession-return-values",
     "properties": {
-      "Id": {}
+      "Id": {
+        "description": "The ID of a Traffic Mirror session."
+      }
     }
   },
   "definitions": {
@@ -16,6 +18,10 @@
         }
       },
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-trafficmirrorsession-tag.html"
+    },
+    "TrafficMirrorSessionField": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-trafficmirrorsession-trafficmirrorsessionfield.html"
     }
   },
   "description": "Creates a Traffic Mirror session.\n\nA Traffic Mirror session actively copies packets from a Traffic Mirror source to a Traffic Mirror target. Create a filter, and then assign it to the session to define a subset of the traffic to mirror, for example all TCP traffic.\n\nThe Traffic Mirror source and the Traffic Mirror target (monitoring appliances) can be in the same VPC, or in a different VPC connected via VPC peering or a transit gateway.\n\nBy default, no traffic is mirrored. Use [AWS::EC2::TrafficMirrorFilterRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-trafficmirrorfilterrule.html) to specify filter rules that specify the traffic to mirror.",
@@ -32,6 +38,10 @@
     "NetworkInterfaceId": {
       "description": "The ID of the source network interface.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-trafficmirrorsession.html#cfn-ec2-trafficmirrorsession-networkinterfaceid"
+    },
+    "OwnerId": {
+      "description": "The ID of the account that owns the Traffic Mirror session.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-trafficmirrorsession.html#cfn-ec2-trafficmirrorsession-ownerid"
     },
     "PacketLength": {
       "description": "The number of bytes in each packet to mirror. These are bytes after the VXLAN header. Do not specify this parameter when you want to mirror the entire packet. To mirror a subset of the packet, set this to the length (in bytes) that you want to mirror. For example, if you set this value to 100, then the first 100 bytes that meet the filter criteria are copied to the target.\n\nIf you do not want to mirror the entire packet, use the `PacketLength` parameter to specify the number of bytes in each packet to mirror.\n\nFor sessions with Network Load Balancer (NLB) Traffic Mirror targets the default `PacketLength` will be set to 8500. Valid values are 1-8500. Setting a `PacketLength` greater than 8500 will result in an error response.",

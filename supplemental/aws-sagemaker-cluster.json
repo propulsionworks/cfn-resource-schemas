@@ -68,6 +68,10 @@
         "ThreadsPerCore": {
           "description": "The number of threads per CPU core you specified under `CreateCluster` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterinstancegroup.html#cfn-sagemaker-cluster-clusterinstancegroup-threadspercore"
+        },
+        "TrainingPlanArn": {
+          "description": "The Amazon Resource Name (ARN) of the training plan to use for this cluster instance group. For more information about how to reserve GPU capacity for your SageMaker HyperPod clusters using Amazon SageMaker Training Plan, see CreateTrainingPlan.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterinstancegroup.html#cfn-sagemaker-cluster-clusterinstancegroup-trainingplanarn"
         }
       },
       "description": "The configuration information of the instance group within the HyperPod cluster.",
@@ -110,13 +114,91 @@
       "description": "The configuration for the Amazon EKS cluster that is used as the orchestrator for the SageMaker HyperPod cluster. This includes the Amazon Resource Name (ARN) of the EKS cluster",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterorchestratoreksconfig.html"
     },
+    "ClusterRestrictedInstanceGroup": {
+      "properties": {
+        "CurrentCount": {
+          "description": "The number of instances that are currently in the restricted instance group of a SageMaker HyperPod cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-currentcount"
+        },
+        "EnvironmentConfig": {
+          "description": "The configuration for the restricted instance groups (RIG) environment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-environmentconfig"
+        },
+        "ExecutionRole": {
+          "description": "The execution role for the instance group to assume.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-executionrole"
+        },
+        "InstanceCount": {
+          "description": "The number of instances you specified to add to the restricted instance group of a SageMaker HyperPod cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-instancecount"
+        },
+        "InstanceGroupName": {
+          "description": "The name of the instance group of a SageMaker HyperPod cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-instancegroupname"
+        },
+        "InstanceStorageConfigs": {
+          "description": "The instance storage configuration for the instance group.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-instancestorageconfigs"
+        },
+        "InstanceType": {
+          "description": "The instance type of the instance group of a SageMaker HyperPod cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-instancetype"
+        },
+        "OnStartDeepHealthChecks": {
+          "description": "Nodes will undergo advanced stress test to detect and replace faulty instances, based on the type of deep health check(s) passed in.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-onstartdeephealthchecks"
+        },
+        "OverrideVpcConfig": {
+          "description": "Specifies an Amazon Virtual Private Cloud (VPC) that your SageMaker jobs, hosted models, and compute resources have access to. You can control access to and from your resources by configuring a VPC.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-overridevpcconfig"
+        },
+        "ThreadsPerCore": {
+          "description": "The number you specified to TreadsPerCore in CreateCluster for enabling or disabling multithreading. For instance types that support multithreading, you can specify 1 for disabling multithreading and 2 for enabling multithreading.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-threadspercore"
+        },
+        "TrainingPlanArn": {
+          "description": "The Amazon Resource Name (ARN) of the training plan to use for this cluster restricted instance group. For more information about how to reserve GPU capacity for your SageMaker HyperPod clusters using Amazon SageMaker Training Plan, see CreateTrainingPlan.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html#cfn-sagemaker-cluster-clusterrestrictedinstancegroup-trainingplanarn"
+        }
+      },
+      "description": "Details of a restricted instance group in a SageMaker HyperPod cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroup.html"
+    },
+    "ClusterRestrictedInstanceGroupsList": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroupslist.html"
+    },
     "DeepHealthCheckType": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-deephealthchecktype.html"
     },
+    "EnvironmentConfig": {
+      "properties": {
+        "FSxLustreConfig": {
+          "description": "Configuration settings for an Amazon FSx for Lustre file system to be used with the cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-environmentconfig.html#cfn-sagemaker-cluster-environmentconfig-fsxlustreconfig"
+        }
+      },
+      "description": "The configuration for the restricted instance groups (RIG) environment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-environmentconfig.html"
+    },
     "ExecutionRole": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-executionrole.html"
+    },
+    "FSxLustreConfig": {
+      "properties": {
+        "PerUnitStorageThroughput": {
+          "description": "The throughput capacity of the FSx for Lustre file system, measured in MB/s per TiB of storage.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-fsxlustreconfig.html#cfn-sagemaker-cluster-fsxlustreconfig-perunitstoragethroughput"
+        },
+        "SizeInGiB": {
+          "description": "The storage capacity of the FSx for Lustre file system, specified in gibibytes (GiB).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-fsxlustreconfig.html#cfn-sagemaker-cluster-fsxlustreconfig-sizeingib"
+        }
+      },
+      "description": "Configuration settings for an Amazon FSx for Lustre file system to be used with the cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-fsxlustreconfig.html"
     },
     "InstanceGroupName": {
       "properties": {},
@@ -197,6 +279,10 @@
     "Orchestrator": {
       "description": "The orchestrator type for the SageMaker HyperPod cluster. Currently, `'eks'` is the only available option.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-cluster.html#cfn-sagemaker-cluster-orchestrator"
+    },
+    "RestrictedInstanceGroups": {
+      "description": "The restricted instance groups of the SageMaker HyperPod cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-cluster.html#cfn-sagemaker-cluster-restrictedinstancegroups"
     },
     "Tags": {
       "description": "A tag object that consists of a key and an optional value, used to manage metadata for SageMaker AWS resources.\n\nYou can add tags to notebook instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams, endpoint configurations, and endpoints. For more information on adding tags to SageMaker resources, see [AddTags](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html) .\n\nFor more information on adding metadata to your AWS resources with tagging, see [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) . For advice on best practices for managing AWS resources with tagging, see [Tagging Best Practices: Implement an Effective AWS Resource Tagging Strategy](https://docs.aws.amazon.com/https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf) .",

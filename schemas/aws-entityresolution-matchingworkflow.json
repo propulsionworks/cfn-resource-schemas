@@ -1,6 +1,6 @@
 {
   "$id": "aws-entityresolution-matchingworkflow",
-  "$integrity": "sha512-ZKk2bWXPUcx0HbnDDIDiTj/yxffb//3qFh8LDPETYl0v944Cw4vFPe6GpZHeGTd+sqnavjbyurC6SnO49VL5HQ==",
+  "$integrity": "sha512-SDqzTgjROkjJKM3lX4ha3MN+pC70GcNYObUsVqTQeMkzmMo/3swR96Ly3gEd/vJyvZq1wc/kWQ4Vmre5jcet3g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/WorkflowName"
@@ -168,6 +168,9 @@
         },
         "RuleBasedProperties": {
           "$ref": "#/definitions/RuleBasedProperties"
+        },
+        "RuleConditionProperties": {
+          "$ref": "#/definitions/RuleConditionProperties"
         }
       },
       "type": "object"
@@ -234,6 +237,36 @@
       },
       "required": [
         "AttributeMatchingModel",
+        "Rules"
+      ],
+      "type": "object"
+    },
+    "RuleCondition": {
+      "additionalProperties": false,
+      "properties": {
+        "Condition": {
+          "type": "string"
+        },
+        "RuleName": {
+          "$ref": "#/definitions/AttributeName"
+        }
+      },
+      "type": "object"
+    },
+    "RuleConditionProperties": {
+      "additionalProperties": false,
+      "properties": {
+        "Rules": {
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/RuleCondition"
+          },
+          "maxItems": 15,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
         "Rules"
       ],
       "type": "object"

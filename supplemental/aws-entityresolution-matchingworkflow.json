@@ -33,11 +33,11 @@
     "IncrementalRunConfig": {
       "properties": {
         "IncrementalRunType": {
-          "description": "The type of incremental run. The only valid value is `IMMEDIATE` . This appears as \"Automatic\" in the console.\n\n> For workflows where `resolutionType` is `ML_MATCHING` , incremental processing is not supported.",
+          "description": "The type of incremental run. The only valid value is `IMMEDIATE` . This appears as \"Automatic\" in the console.\n\n> For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER` , incremental processing is not supported.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-incrementalrunconfig.html#cfn-entityresolution-matchingworkflow-incrementalrunconfig-incrementalruntype"
         }
       },
-      "description": "Optional. An object that defines the incremental run type. This object contains only the `incrementalRunType` field, which appears as \"Automatic\" in the console.\n\n> For workflows where `resolutionType` is `ML_MATCHING` , incremental processing is not supported.",
+      "description": "Optional. An object that defines the incremental run type. This object contains only the `incrementalRunType` field, which appears as \"Automatic\" in the console.\n\n> For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER` , incremental processing is not supported.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-incrementalrunconfig.html"
     },
     "InputSource": {
@@ -47,7 +47,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-inputsource.html#cfn-entityresolution-matchingworkflow-inputsource-applynormalization"
         },
         "InputSourceARN": {
-          "description": "An object containing `InputSourceARN` , `SchemaName` , and `ApplyNormalization` .",
+          "description": "An object containing `inputSourceARN` , `schemaName` , and `applyNormalization` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-inputsource.html#cfn-entityresolution-matchingworkflow-inputsource-inputsourcearn"
         },
         "SchemaArn": {
@@ -55,7 +55,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-inputsource.html#cfn-entityresolution-matchingworkflow-inputsource-schemaarn"
         }
       },
-      "description": "An object containing `InputSourceARN` , `SchemaName` , and `ApplyNormalization` .",
+      "description": "An object containing `inputSourceARN` , `schemaName` , and `applyNormalization` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-inputsource.html"
     },
     "IntermediateSourceConfiguration": {
@@ -137,12 +137,15 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-resolutiontechniques.html#cfn-entityresolution-matchingworkflow-resolutiontechniques-providerproperties"
         },
         "ResolutionType": {
-          "description": "The type of matching. There are three types of matching: `RULE_MATCHING` , `ML_MATCHING` , and `PROVIDER` .",
+          "description": "The type of matching workflow to create. Specify one of the following types:\n\n- `RULE_MATCHING` : Match records using configurable rule-based criteria\n- `ML_MATCHING` : Match records using machine learning models\n- `PROVIDER` : Match records using a third-party matching provider",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-resolutiontechniques.html#cfn-entityresolution-matchingworkflow-resolutiontechniques-resolutiontype"
         },
         "RuleBasedProperties": {
-          "description": "An object which defines the list of matching rules to run and has a field `Rules` , which is a list of rule objects.",
+          "description": "An object which defines the list of matching rules to run and has a field `rules` , which is a list of rule objects.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-resolutiontechniques.html#cfn-entityresolution-matchingworkflow-resolutiontechniques-rulebasedproperties"
+        },
+        "RuleConditionProperties": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-resolutiontechniques.html#cfn-entityresolution-matchingworkflow-resolutiontechniques-ruleconditionproperties"
         }
       },
       "description": "An object which defines the `resolutionType` and the `ruleBasedProperties` .",
@@ -163,13 +166,13 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-rule.html#cfn-entityresolution-matchingworkflow-rule-rulename"
         }
       },
-      "description": "An object containing `RuleName` , and `MatchingKeys` .",
+      "description": "An object containing the `ruleName` and `matchingKeys` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-rule.html"
     },
     "RuleBasedProperties": {
       "properties": {
         "AttributeMatchingModel": {
-          "description": "The comparison type. You can either choose `ONE_TO_ONE` or `MANY_TO_MANY` as the `attributeMatchingModel` .\n\nIf you choose `MANY_TO_MANY` , the system can match attributes across the sub-types of an attribute type. For example, if the value of the `Email` field of Profile A and the value of `BusinessEmail` field of Profile B matches, the two profiles are matched on the `Email` attribute type.\n\nIf you choose `ONE_TO_ONE` , the system can only match attributes if the sub-types are an exact match. For example, for the `Email` attribute type, the system will only consider it a match if the value of the `Email` field of Profile A matches the value of the `Email` field of Profile B.",
+          "description": "The comparison type. You can choose `ONE_TO_ONE` or `MANY_TO_MANY` as the `attributeMatchingModel` .\n\nIf you choose `ONE_TO_ONE` , the system can only match attributes if the sub-types are an exact match. For example, for the `Email` attribute type, the system will only consider it a match if the value of the `Email` field of Profile A matches the value of the `Email` field of Profile B.\n\nIf you choose `MANY_TO_MANY` , the system can match attributes across the sub-types of an attribute type. For example, if the value of the `Email` field of Profile A and the value of `BusinessEmail` field of Profile B matches, the two profiles are matched on the `Email` attribute type.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-rulebasedproperties.html#cfn-entityresolution-matchingworkflow-rulebasedproperties-attributematchingmodel"
         },
         "MatchPurpose": {
@@ -181,8 +184,27 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-rulebasedproperties.html#cfn-entityresolution-matchingworkflow-rulebasedproperties-rules"
         }
       },
-      "description": "An object which defines the list of matching rules to run in a matching workflow. RuleBasedProperties contain a `Rules` field, which is a list of rule objects.",
+      "description": "An object which defines the list of matching rules to run in a matching workflow.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-rulebasedproperties.html"
+    },
+    "RuleCondition": {
+      "properties": {
+        "Condition": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-rulecondition.html#cfn-entityresolution-matchingworkflow-rulecondition-condition"
+        },
+        "RuleName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-rulecondition.html#cfn-entityresolution-matchingworkflow-rulecondition-rulename"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-rulecondition.html"
+    },
+    "RuleConditionProperties": {
+      "properties": {
+        "Rules": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-ruleconditionproperties.html#cfn-entityresolution-matchingworkflow-ruleconditionproperties-rules"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-ruleconditionproperties.html"
     },
     "SchemaMappingArn": {
       "properties": {},
@@ -204,7 +226,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-entityresolution-matchingworkflow-updatedat.html"
     }
   },
-  "description": "Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use `UpdateMatchingWorkflow` .\n\n> For workflows where `resolutionType` is ML_MATCHING, incremental processing is not supported.",
+  "description": "Creates a matching workflow that defines the configuration for a data processing job. The workflow name must be unique. To modify an existing workflow, use `UpdateMatchingWorkflow` .\n\n> For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER` , incremental processing is not supported.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-entityresolution-matchingworkflow.html",
   "id": "aws-entityresolution-matchingworkflow",
   "properties": {
@@ -216,7 +238,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-entityresolution-matchingworkflow.html#cfn-entityresolution-matchingworkflow-description"
     },
     "IncrementalRunConfig": {
-      "description": "Optional. An object that defines the incremental run type. This object contains only the `incrementalRunType` field, which appears as \"Automatic\" in the console.\n\n> For workflows where `resolutionType` is `ML_MATCHING` , incremental processing is not supported.",
+      "description": "Optional. An object that defines the incremental run type. This object contains only the `incrementalRunType` field, which appears as \"Automatic\" in the console.\n\n> For workflows where `resolutionType` is `ML_MATCHING` or `PROVIDER` , incremental processing is not supported.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-entityresolution-matchingworkflow.html#cfn-entityresolution-matchingworkflow-incrementalrunconfig"
     },
     "InputSourceConfig": {
@@ -224,7 +246,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-entityresolution-matchingworkflow.html#cfn-entityresolution-matchingworkflow-inputsourceconfig"
     },
     "OutputSourceConfig": {
-      "description": "A list of `OutputSource` objects, each of which contains fields `OutputS3Path` , `ApplyNormalization` , and `Output` .",
+      "description": "A list of `OutputSource` objects, each of which contains fields `outputS3Path` , `applyNormalization` , `KMSArn` , and `output` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-entityresolution-matchingworkflow.html#cfn-entityresolution-matchingworkflow-outputsourceconfig"
     },
     "ResolutionTechniques": {

@@ -1,27 +1,49 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-domain.html#aws-resource-lightsail-domain-return-values",
-    "properties": {}
+    "properties": {
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the domain recordset ( `arn:aws:lightsail:global:123456789101:Domain/824cede0-abc7-4f84-8dbc-12345EXAMPLE` )."
+      },
+      "SupportCode": {
+        "description": "The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily."
+      },
+      "CreatedAt": {
+        "description": "The date when the domain recordset was created."
+      },
+      "Location": {
+        "description": "The AWS Region and Availability Zone where the domain was created (read-only)."
+      },
+      "ResourceType": {
+        "description": "The resource type."
+      }
+    }
   },
   "definitions": {
     "DomainEntry": {
       "properties": {
         "Id": {
+          "description": "The ID of the domain recordset entry.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-domain-domainentry.html#cfn-lightsail-domain-domainentry-id"
         },
         "IsAlias": {
+          "description": "When `true` , specifies whether the domain entry is an alias used by the Lightsail load balancer, Lightsail container service, Lightsail content delivery network (CDN) distribution, or another AWS resource. You can include an alias (A type) record in your request, which points to the DNS name of a load balancer, container service, CDN distribution, or other AWS resource and routes traffic to that resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-domain-domainentry.html#cfn-lightsail-domain-domainentry-isalias"
         },
         "Name": {
+          "description": "The name of the domain.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-domain-domainentry.html#cfn-lightsail-domain-domainentry-name"
         },
         "Target": {
+          "description": "The target IP address ( `192.0.2.0` ), or AWS name server ( `ns-111.awsdns-22.com.` ).\n\nFor Lightsail load balancers, the value looks like `ab1234c56789c6b86aba6fb203d443bc-123456789.us-east-2.elb.amazonaws.com` . For Lightsail distributions, the value looks like `exampled1182ne.cloudfront.net` . For Lightsail container services, the value looks like `container-service-1.example23scljs.us-west-2.cs.amazonlightsail.com` . Be sure to also set `isAlias` to `true` when setting up an A record for a Lightsail load balancer, distribution, or container service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-domain-domainentry.html#cfn-lightsail-domain-domainentry-target"
         },
         "Type": {
+          "description": "The type of domain entry, such as address for IPv4 (A), address for IPv6 (AAAA), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT).\n\nThe following domain entry types can be used:\n\n- `A`\n- `AAAA`\n- `CNAME`\n- `MX`\n- `NS`\n- `SOA`\n- `SRV`\n- `TXT`",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-domain-domainentry.html#cfn-lightsail-domain-domainentry-type"
         }
       },
+      "description": "Describes a domain recordset entry.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-domain-domainentry.html"
     },
     "Tag": {
@@ -36,6 +58,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lightsail-domain-tag.html"
     }
   },
+  "description": "Describes a domain where you are storing recordsets.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-domain.html",
   "id": "aws-lightsail-domain",
   "properties": {
@@ -46,9 +69,11 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-domain.html#cfn-lightsail-domain-createdat"
     },
     "DomainEntries": {
+      "description": "An array of key-value pairs containing information about the domain entries.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-domain.html#cfn-lightsail-domain-domainentries"
     },
     "DomainName": {
+      "description": "The fully qualified domain name in the certificate request.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-domain.html#cfn-lightsail-domain-domainname"
     },
     "Location": {
@@ -61,6 +86,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-domain.html#cfn-lightsail-domain-supportcode"
     },
     "Tags": {
+      "description": "The tag keys and optional values for the resource. For more information about tags in Lightsail, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-tags) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-domain.html#cfn-lightsail-domain-tags"
     }
   },

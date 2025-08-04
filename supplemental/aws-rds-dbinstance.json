@@ -29,6 +29,9 @@
       "MasterUserSecret.SecretArn": {
         "description": "The Amazon Resource Name (ARN) of the secret. This parameter is a return value that you can retrieve using the `Fn::GetAtt` intrinsic function. For more information, see [Return values](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#aws-resource-rds-dbinstance-return-values) ."
       },
+      "AutomaticRestartTime": {
+        "description": ""
+      },
       "CertificateDetails": {
         "description": "The details of the DB instance’s server certificate.\n For more information, see [Using SSL/TLS to encrypt a connection to a DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html) in the *Amazon RDS User Guide* and [Using SSL/TLS to encrypt a connection to a DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html) in the *Amazon Aurora User Guide*."
       },
@@ -59,11 +62,20 @@
       "ListenerEndpoint.HostedZoneId": {
         "description": "Specifies the ID that Amazon Route 53 assigns when you create a hosted zone."
       },
+      "PercentProgress": {
+        "description": ""
+      },
       "ReadReplicaDBClusterIdentifiers": {
         "description": "The identifiers of Aurora DB clusters to which the RDS DB instance is replicated as a read replica."
       },
       "ReadReplicaDBInstanceIdentifiers": {
         "description": "The identifiers of the read replicas associated with this DB instance."
+      },
+      "ResumeFullAutomationModeTime": {
+        "description": ""
+      },
+      "SecondaryAvailabilityZone": {
+        "description": ""
       }
     }
   },
@@ -95,6 +107,27 @@
       },
       "description": "Information about an AWS Identity and Access Management (IAM) role that is associated with a DB instance.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbinstance-dbinstancerole.html"
+    },
+    "DBInstanceStatusInfo": {
+      "properties": {
+        "Message": {
+          "description": "Details of the error if there is an error for the instance. If the instance isn't in an error state, this value is blank.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbinstance-dbinstancestatusinfo.html#cfn-rds-dbinstance-dbinstancestatusinfo-message"
+        },
+        "Normal": {
+          "description": "Indicates whether the instance is operating normally (TRUE) or is in an error state (FALSE).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbinstance-dbinstancestatusinfo.html#cfn-rds-dbinstance-dbinstancestatusinfo-normal"
+        },
+        "Status": {
+          "description": "The status of the DB instance. For a StatusType of read replica, the values can be replicating, replication stop point set, replication stop point reached, error, stopped, or terminated.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbinstance-dbinstancestatusinfo.html#cfn-rds-dbinstance-dbinstancestatusinfo-status"
+        },
+        "StatusType": {
+          "description": "The status type of the DB instance.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbinstance-dbinstancestatusinfo.html#cfn-rds-dbinstance-dbinstancestatusinfo-statustype"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbinstance-dbinstancestatusinfo.html"
     },
     "Endpoint": {
       "properties": {
@@ -189,6 +222,9 @@
     "AutomaticBackupReplicationRetentionPeriod": {
       "description": "The retention period for automated backups in a different AWS Region. Use this parameter to set a unique retention period that only applies to cross-Region automated backups. To enable automated backups in a different Region, specify a positive value for the `AutomaticBackupReplicationRegion` parameter.\n\nIf not specified, this parameter defaults to the value of the `BackupRetentionPeriod` parameter. The maximum allowed value is 35.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-automaticbackupreplicationretentionperiod"
+    },
+    "AutomaticRestartTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-automaticrestarttime"
     },
     "AvailabilityZone": {
       "description": "The Availability Zone (AZ) where the database will be created. For information on AWS Regions and Availability Zones, see [Regions and Availability Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) .\n\nFor Amazon Aurora, each Aurora DB cluster hosts copies of its storage in three separate Availability Zones. Specify one of these Availability Zones. Aurora automatically chooses an appropriate Availability Zone if you don't specify one.\n\nDefault: A random, system-chosen Availability Zone in the endpoint's AWS Region .\n\nConstraints:\n\n- The `AvailabilityZone` parameter can't be specified if the DB instance is a Multi-AZ deployment.\n- The specified Availability Zone must be in the same AWS Region as the current endpoint.\n\nExample: `us-east-1d`",
@@ -409,6 +445,9 @@
       "description": "Indicates that the DB instance should be associated with the specified option group.\n\nPermanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option group. Also, that option group can't be removed from a DB instance once it is associated with a DB instance.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-optiongroupname"
     },
+    "PercentProgress": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-percentprogress"
+    },
     "PerformanceInsightsKMSKeyId": {
       "description": "The AWS KMS key identifier for encryption of Performance Insights data.\n\nThe KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.\n\nIf you do not specify a value for `PerformanceInsightsKMSKeyId` , then Amazon RDS uses your default KMS key. There is a default KMS key for your AWS account. Your AWS account has a different default KMS key for each AWS Region.\n\nFor information about enabling Performance Insights, see [EnablePerformanceInsights](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-enableperformanceinsights) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-performanceinsightskmskeyid"
@@ -455,6 +494,12 @@
       "description": "The date and time to restore from. This parameter applies to point-in-time recovery. For more information, see [Restoring a DB instance to a specified time](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html) in the in the *Amazon RDS User Guide* .\n\nConstraints:\n\n- Must be a time in Universal Coordinated Time (UTC) format.\n- Must be before the latest restorable time for the DB instance.\n- Can't be specified if the `UseLatestRestorableTime` parameter is enabled.\n\nExample: `2009-09-07T23:45:00Z`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-restoretime"
     },
+    "ResumeFullAutomationModeTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-resumefullautomationmodetime"
+    },
+    "SecondaryAvailabilityZone": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-secondaryavailabilityzone"
+    },
     "SourceDBClusterIdentifier": {
       "description": "The identifier of the Multi-AZ DB cluster that will act as the source for the read replica. Each DB cluster can have up to 15 read replicas.\n\nConstraints:\n\n- Must be the identifier of an existing Multi-AZ DB cluster.\n- Can't be specified if the `SourceDBInstanceIdentifier` parameter is also specified.\n- The specified DB cluster must have automatic backups enabled, that is, its backup retention period must be greater than 0.\n- The source DB cluster must be in the same AWS Region as the read replica. Cross-Region replication isn't supported.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-sourcedbclusteridentifier"
@@ -474,6 +519,10 @@
     "SourceRegion": {
       "description": "The ID of the region that contains the source DB instance for the read replica.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-sourceregion"
+    },
+    "StatusInfos": {
+      "description": "",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-statusinfos"
     },
     "StorageEncrypted": {
       "description": "A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.\n\nIf you specify the `KmsKeyId` property, then you must enable encryption.\n\nIf you specify the `SourceDBInstanceIdentifier` or `SourceDbiResourceId` property, don't specify this property. The value is inherited from the source DB instance, and if the DB instance is encrypted, the specified `KmsKeyId` property is used.\n\nIf you specify the `SourceDBInstanceAutomatedBackupsArn` property, don't specify this property. The value is inherited from the source DB instance automated backup.\n\nIf you specify `DBSnapshotIdentifier` property, don't specify this property. The value is inherited from the snapshot.\n\n*Amazon Aurora*\n\nNot applicable. The encryption for DB instances is managed by the DB cluster.",

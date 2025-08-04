@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecr-repository",
-  "$integrity": "sha512-QyBeyOszAdmDyjW/+fnAhiTS9j2WBQRVFXIrgXCBwzViByF7s6FfV9p5CBPr5J45fiopqTHUCaXLycKXhh6iQQ==",
+  "$integrity": "sha512-16+DeBi8Ha41ywDCG8/OO00alCszI6Ktf1/+J5vaoeapixTKDv4D4h2JVyFasXdvcyO4NI+xRVR/fHAv3C4W2g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/RepositoryName",
@@ -50,6 +50,37 @@
         }
       },
       "type": "object"
+    },
+    "ImageTagMutabilityExclusionFilter": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "ImageTagMutabilityExclusionFilterType": {
+          "$ref": "#/definitions/ImageTagMutabilityExclusionFilterType"
+        },
+        "ImageTagMutabilityExclusionFilterValue": {
+          "$ref": "#/definitions/ImageTagMutabilityExclusionFilterValue"
+        }
+      },
+      "required": [
+        "ImageTagMutabilityExclusionFilterType",
+        "ImageTagMutabilityExclusionFilterValue"
+      ],
+      "type": "object"
+    },
+    "ImageTagMutabilityExclusionFilterType": {
+      "description": "Specifies the type of filter to use for excluding image tags from the repository's mutability setting.",
+      "enum": [
+        "WILDCARD"
+      ],
+      "type": "string"
+    },
+    "ImageTagMutabilityExclusionFilterValue": {
+      "description": "The value to use when filtering image tags.",
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[0-9a-zA-Z._*-]{1,128}",
+      "type": "string"
     },
     "KmsKey": {
       "description": "If you use the KMS or KMS_DSSE encryption type, specify the CMK to use for encryption. The alias, key ID, or full ARN of the CMK can be specified. The key must exist in the same Region as the repository. If no key is specified, the default AWS managed CMK for Amazon ECR will be used.",
@@ -186,9 +217,21 @@
       "description": "The tag mutability setting for the repository. If this parameter is omitted, the default setting of ``MUTABLE`` will be used which will allow image tags to be overwritten. If ``IMMUTABLE`` is specified, all image tags within the repository will be immutable which will prevent them from being overwritten.",
       "enum": [
         "MUTABLE",
-        "IMMUTABLE"
+        "IMMUTABLE",
+        "MUTABLE_WITH_EXCLUSION",
+        "IMMUTABLE_WITH_EXCLUSION"
       ],
       "type": "string"
+    },
+    "ImageTagMutabilityExclusionFilters": {
+      "description": "",
+      "insertionOrder": true,
+      "items": {
+        "$ref": "#/definitions/ImageTagMutabilityExclusionFilter"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "type": "array"
     },
     "LifecyclePolicy": {
       "$ref": "#/definitions/LifecyclePolicy",

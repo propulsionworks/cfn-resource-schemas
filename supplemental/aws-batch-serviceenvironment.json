@@ -1,0 +1,59 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html#aws-resource-batch-serviceenvironment-return-values",
+    "properties": {
+      "ServiceEnvironmentArn": {
+        "description": "The Amazon Resource Name (ARN) of the service environment."
+      }
+    }
+  },
+  "definitions": {
+    "CapacityLimit": {
+      "properties": {
+        "CapacityUnit": {
+          "description": "The unit of measure for the capacity limit. This defines how the maxCapacity value should be interpreted. For `SAGEMAKER_TRAINING` jobs, use `NUM_INSTANCES` .",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-serviceenvironment-capacitylimit.html#cfn-batch-serviceenvironment-capacitylimit-capacityunit"
+        },
+        "MaxCapacity": {
+          "description": "The maximum capacity available for the service environment. This value represents the maximum amount of resources that can be allocated to service jobs.\n\nFor example, `maxCapacity=50` , `capacityUnit=NUM_INSTANCES` . This indicates that the maximum number of instances that can be run on this service environment is 50. You could then run 5 SageMaker Training jobs that each use 10 instances. However, if you submit another job that requires 10 instances, it will wait in the queue.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-serviceenvironment-capacitylimit.html#cfn-batch-serviceenvironment-capacitylimit-maxcapacity"
+        }
+      },
+      "description": "Defines the capacity limit for a service environment. This structure specifies the maximum amount of resources that can be used by service jobs in the environment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-serviceenvironment-capacitylimit.html"
+    },
+    "CapacityLimits": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-serviceenvironment-capacitylimits.html"
+    }
+  },
+  "description": "Creates a service environment for running service jobs. Service environments define capacity limits for specific service types such as SageMaker Training jobs.",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html",
+  "id": "aws-batch-serviceenvironment",
+  "properties": {
+    "CapacityLimits": {
+      "description": "The capacity limits for the service environment. This defines the maximum resources that can be used by service jobs in this environment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html#cfn-batch-serviceenvironment-capacitylimits"
+    },
+    "ServiceEnvironmentArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html#cfn-batch-serviceenvironment-serviceenvironmentarn"
+    },
+    "ServiceEnvironmentName": {
+      "description": "The name of the service environment.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html#cfn-batch-serviceenvironment-serviceenvironmentname"
+    },
+    "ServiceEnvironmentType": {
+      "description": "The type of service environment. For SageMaker Training jobs, this value is `SAGEMAKER_TRAINING` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html#cfn-batch-serviceenvironment-serviceenvironmenttype"
+    },
+    "State": {
+      "description": "The state of the service environment. Valid values are `ENABLED` and `DISABLED` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html#cfn-batch-serviceenvironment-state"
+    },
+    "Tags": {
+      "description": "The tags associated with the service environment. Each tag consists of a key and an optional value. For more information, see [Tagging your AWS Batch resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html) .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html#cfn-batch-serviceenvironment-tags"
+    }
+  },
+  "typeName": "AWS::Batch::ServiceEnvironment"
+}

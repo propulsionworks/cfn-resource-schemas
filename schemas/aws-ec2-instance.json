@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-instance",
-  "$integrity": "sha512-kIdtnNfF/VvT3QNke01qUsFFw42Emj4UHkvGvFpMwiHAaoz0zxtvz2THNURBtbHBLi0woYLCEVs0hKdRWr2NEw==",
+  "$integrity": "sha512-O9mKfNRsTOiNkjyq+eaVyFCcVifOw4TJhaF7qNYONq9qQc/1iFBndloaw5Ak3Et6+yxk4Lr7qDgSndz4+UtImw==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
@@ -123,7 +123,7 @@
       "additionalProperties": false,
       "properties": {
         "Type": {
-          "description": "The type of Elastic Graphics accelerator.",
+          "description": "The type of Elastic Graphics accelerator. Amazon Elastic Graphics is no longer available.",
           "type": "string"
         }
       },
@@ -136,12 +136,12 @@
       "additionalProperties": false,
       "properties": {
         "Count": {
-          "description": "The number of elastic inference accelerators to attach to the instance.",
+          "description": "The number of elastic inference accelerators to attach to the instance. Amazon Elastic Inference is no longer available.",
           "minimum": 0,
           "type": "integer"
         },
         "Type": {
-          "description": "The type of elastic inference accelerator.",
+          "description": "The type of elastic inference accelerator. Amazon Elastic Inference is no longer available.",
           "type": "string"
         }
       },
@@ -475,7 +475,6 @@
       "permissions": [
         "iam:PassRole",
         "ec2:ModifyPrivateDnsNameOptions",
-        "ec2:DescribeElasticGpus",
         "ec2:DescribeNetworkInterfaces",
         "ec2:DescribeVolumes",
         "ec2:RunInstances",
@@ -500,7 +499,6 @@
         "ec2:CreateTags",
         "ec2:ReplaceIamInstanceProfileAssociation",
         "ec2:StartInstances",
-        "elastic-inference:DescribeAccelerators",
         "ssm:CreateAssociation",
         "ssm:DescribeAssociation",
         "ssm:ListAssociations"
@@ -510,14 +508,12 @@
       "permissions": [
         "ec2:DescribeInstances",
         "ec2:TerminateInstances",
-        "ec2:DescribeElasticGpus",
         "ec2:DescribeNetworkInterfaces",
         "ec2:DescribeVolumes",
         "ec2:DescribeInstances",
         "ec2:DescribeInstanceAttribute",
         "ec2:DescribeInstanceCreditSpecifications",
         "ec2:DescribeLaunchTemplates",
-        "elastic-inference:DescribeAccelerators",
         "ssm:DescribeAssociation",
         "ssm:ListAssociations"
       ]
@@ -529,21 +525,18 @@
     },
     "read": {
       "permissions": [
-        "ec2:DescribeElasticGpus",
         "ec2:DescribeNetworkInterfaces",
         "ec2:DescribeVolumes",
         "ec2:DescribeInstances",
         "ec2:DescribeInstanceAttribute",
         "ec2:DescribeInstanceCreditSpecifications",
         "ec2:DescribeLaunchTemplates",
-        "elastic-inference:DescribeAccelerators",
         "ssm:DescribeAssociation",
         "ssm:ListAssociations"
       ]
     },
     "update": {
       "permissions": [
-        "ec2:DescribeElasticGpus",
         "ec2:ModifyPrivateDnsNameOptions",
         "ec2:DescribeNetworkInterfaces",
         "ec2:AssociateIamInstanceProfile",
@@ -571,7 +564,6 @@
         "ec2:StartInstances",
         "ec2:StopInstances",
         "ec2:UnmonitorInstances",
-        "elastic-inference:DescribeAccelerators",
         "ssm:CreateAssociation",
         "ssm:DeleteAssociation",
         "ssm:DescribeAssociation",

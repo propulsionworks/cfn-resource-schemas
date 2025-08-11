@@ -1,7 +1,20 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#aws-resource-arcregionswitch-plan-return-values",
-    "properties": {}
+    "properties": {
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the plan."
+      },
+      "Owner": {
+        "description": "The owner of a plan."
+      },
+      "Version": {
+        "description": "The version for the plan."
+      },
+      "HealthChecksForPlan": {
+        "description": "Represents a Region switch plan. A plan defines the steps required to shift traffic from one AWS Region to another."
+      }
+    }
   },
   "definitions": {
     "AlarmCondition": {
@@ -15,18 +28,23 @@
     "ArcRoutingControlConfiguration": {
       "properties": {
         "CrossAccountRole": {
+          "description": "The cross account role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-arcroutingcontrolconfiguration.html#cfn-arcregionswitch-plan-arcroutingcontrolconfiguration-crossaccountrole"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-arcroutingcontrolconfiguration.html#cfn-arcregionswitch-plan-arcroutingcontrolconfiguration-externalid"
         },
         "RegionAndRoutingControls": {
+          "description": "The Region and ARC routing controls for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-arcroutingcontrolconfiguration.html#cfn-arcregionswitch-plan-arcroutingcontrolconfiguration-regionandroutingcontrols"
         },
         "TimeoutMinutes": {
+          "description": "The timeout value specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-arcroutingcontrolconfiguration.html#cfn-arcregionswitch-plan-arcroutingcontrolconfiguration-timeoutminutes"
         }
       },
+      "description": "Configuration for ARC routing controls used in a Region switch plan. Routing controls are simple on/off switches that you can use to shift traffic away from an impaired Region.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-arcroutingcontrolconfiguration.html"
     },
     "ArcRoutingControlState": {
@@ -43,32 +61,41 @@
     "Asg": {
       "properties": {
         "Arn": {
+          "description": "The Amazon Resource Name (ARN) of the EC2 Auto Scaling group.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-asg.html#cfn-arcregionswitch-plan-asg-arn"
         },
         "CrossAccountRole": {
+          "description": "The cross account role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-asg.html#cfn-arcregionswitch-plan-asg-crossaccountrole"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-asg.html#cfn-arcregionswitch-plan-asg-externalid"
         }
       },
+      "description": "Configuration for an Amazon EC2 Auto Scaling group used in a Region switch plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-asg.html"
     },
     "AssociatedAlarm": {
       "properties": {
         "AlarmType": {
+          "description": "The alarm type for an associated alarm. An associated CloudWatch alarm can be an application health alarm or a trigger alarm.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-associatedalarm.html#cfn-arcregionswitch-plan-associatedalarm-alarmtype"
         },
         "CrossAccountRole": {
+          "description": "The cross account role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-associatedalarm.html#cfn-arcregionswitch-plan-associatedalarm-crossaccountrole"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-associatedalarm.html#cfn-arcregionswitch-plan-associatedalarm-externalid"
         },
         "ResourceIdentifier": {
+          "description": "The resource identifier for alarms that you associate with a plan.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-associatedalarm.html#cfn-arcregionswitch-plan-associatedalarm-resourceidentifier"
         }
       },
+      "description": "An Amazon CloudWatch alarm associated with a Region switch plan. These alarms can be used to trigger automatic execution of the plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-associatedalarm.html"
     },
     "AssociatedAlarmMap": {
@@ -78,41 +105,53 @@
     "CustomActionLambdaConfiguration": {
       "properties": {
         "Lambdas": {
+          "description": "The AWS Lambda functions for the execution block.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-customactionlambdaconfiguration.html#cfn-arcregionswitch-plan-customactionlambdaconfiguration-lambdas"
         },
         "RegionToRun": {
+          "description": "The AWS Region for the function to run in.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-customactionlambdaconfiguration.html#cfn-arcregionswitch-plan-customactionlambdaconfiguration-regiontorun"
         },
         "RetryIntervalMinutes": {
+          "description": "The retry interval specified.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-customactionlambdaconfiguration.html#cfn-arcregionswitch-plan-customactionlambdaconfiguration-retryintervalminutes"
         },
         "TimeoutMinutes": {
+          "description": "The timeout value specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-customactionlambdaconfiguration.html#cfn-arcregionswitch-plan-customactionlambdaconfiguration-timeoutminutes"
         },
         "Ungraceful": {
+          "description": "The settings for ungraceful execution.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-customactionlambdaconfiguration.html#cfn-arcregionswitch-plan-customactionlambdaconfiguration-ungraceful"
         }
       },
+      "description": "Configuration for AWS Lambda functions that perform custom actions during a Region switch.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-customactionlambdaconfiguration.html"
     },
     "Ec2AsgCapacityIncreaseConfiguration": {
       "properties": {
         "Asgs": {
+          "description": "The EC2 Auto Scaling groups for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration-asgs"
         },
         "CapacityMonitoringApproach": {
+          "description": "The monitoring approach that you specify EC2 Auto Scaling groups for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration-capacitymonitoringapproach"
         },
         "TargetPercent": {
+          "description": "The target percentage that you specify for EC2 Auto Scaling groups.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration-targetpercent"
         },
         "TimeoutMinutes": {
+          "description": "The timeout value specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration-timeoutminutes"
         },
         "Ungraceful": {
+          "description": "The settings for ungraceful execution.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration-ungraceful"
         }
       },
+      "description": "Configuration for increasing the capacity of Amazon EC2 Auto Scaling groups during a Region switch.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ec2asgcapacityincreaseconfiguration.html"
     },
     "Ec2AsgCapacityMonitoringApproach": {
@@ -122,29 +161,37 @@
     "Ec2Ungraceful": {
       "properties": {
         "MinimumSuccessPercentage": {
+          "description": "The minimum success percentage that you specify for EC2 Auto Scaling groups.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ec2ungraceful.html#cfn-arcregionswitch-plan-ec2ungraceful-minimumsuccesspercentage"
         }
       },
+      "description": "Configuration for handling failures when performing operations on EC2 resources.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ec2ungraceful.html"
     },
     "EcsCapacityIncreaseConfiguration": {
       "properties": {
         "CapacityMonitoringApproach": {
+          "description": "The monitoring approach specified for the configuration, for example, `Most_Recent` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ecscapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ecscapacityincreaseconfiguration-capacitymonitoringapproach"
         },
         "Services": {
+          "description": "The services specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ecscapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ecscapacityincreaseconfiguration-services"
         },
         "TargetPercent": {
+          "description": "The target percentage specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ecscapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ecscapacityincreaseconfiguration-targetpercent"
         },
         "TimeoutMinutes": {
+          "description": "The timeout value specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ecscapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ecscapacityincreaseconfiguration-timeoutminutes"
         },
         "Ungraceful": {
+          "description": "The settings for ungraceful execution.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ecscapacityincreaseconfiguration.html#cfn-arcregionswitch-plan-ecscapacityincreaseconfiguration-ungraceful"
         }
       },
+      "description": "The configuration for an AWS ECS capacity increase.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ecscapacityincreaseconfiguration.html"
     },
     "EcsCapacityMonitoringApproach": {
@@ -154,9 +201,11 @@
     "EcsUngraceful": {
       "properties": {
         "MinimumSuccessPercentage": {
+          "description": "The minimum success percentage specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ecsungraceful.html#cfn-arcregionswitch-plan-ecsungraceful-minimumsuccesspercentage"
         }
       },
+      "description": "The settings for ungraceful execution.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ecsungraceful.html"
     },
     "EksCapacityMonitoringApproach": {
@@ -166,64 +215,82 @@
     "EksCluster": {
       "properties": {
         "ClusterArn": {
+          "description": "The Amazon Resource Name (ARN) of an AWS EKS cluster.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ekscluster.html#cfn-arcregionswitch-plan-ekscluster-clusterarn"
         },
         "CrossAccountRole": {
+          "description": "The cross account role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ekscluster.html#cfn-arcregionswitch-plan-ekscluster-crossaccountrole"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ekscluster.html#cfn-arcregionswitch-plan-ekscluster-externalid"
         }
       },
+      "description": "The AWS EKS cluster execution block configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-ekscluster.html"
     },
     "EksResourceScalingConfiguration": {
       "properties": {
         "CapacityMonitoringApproach": {
+          "description": "The monitoring approach for the configuration, that is, whether it was sampled in the last 24 hours or autoscaled in the last 24 hours.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingconfiguration.html#cfn-arcregionswitch-plan-eksresourcescalingconfiguration-capacitymonitoringapproach"
         },
         "EksClusters": {
+          "description": "The clusters for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingconfiguration.html#cfn-arcregionswitch-plan-eksresourcescalingconfiguration-eksclusters"
         },
         "KubernetesResourceType": {
+          "description": "The Kubernetes resource type for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingconfiguration.html#cfn-arcregionswitch-plan-eksresourcescalingconfiguration-kubernetesresourcetype"
         },
         "ScalingResources": {
+          "description": "The scaling resources for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingconfiguration.html#cfn-arcregionswitch-plan-eksresourcescalingconfiguration-scalingresources"
         },
         "TargetPercent": {
+          "description": "The target percentage for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingconfiguration.html#cfn-arcregionswitch-plan-eksresourcescalingconfiguration-targetpercent"
         },
         "TimeoutMinutes": {
+          "description": "The timeout value specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingconfiguration.html#cfn-arcregionswitch-plan-eksresourcescalingconfiguration-timeoutminutes"
         },
         "Ungraceful": {
+          "description": "The settings for ungraceful execution.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingconfiguration.html#cfn-arcregionswitch-plan-eksresourcescalingconfiguration-ungraceful"
         }
       },
+      "description": "The AWS EKS resource scaling configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingconfiguration.html"
     },
     "EksResourceScalingUngraceful": {
       "properties": {
         "MinimumSuccessPercentage": {
+          "description": "The minimum success percentage for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingungraceful.html#cfn-arcregionswitch-plan-eksresourcescalingungraceful-minimumsuccesspercentage"
         }
       },
+      "description": "The ungraceful settings for AWS EKS resource scaling.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-eksresourcescalingungraceful.html"
     },
     "ExecutionApprovalConfiguration": {
       "properties": {
         "ApprovalRole": {
+          "description": "The IAM approval role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-executionapprovalconfiguration.html#cfn-arcregionswitch-plan-executionapprovalconfiguration-approvalrole"
         },
         "TimeoutMinutes": {
+          "description": "The timeout value specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-executionapprovalconfiguration.html#cfn-arcregionswitch-plan-executionapprovalconfiguration-timeoutminutes"
         }
       },
+      "description": "Configuration for approval steps in a Region switch plan execution. Approval steps require manual intervention before the execution can proceed.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-executionapprovalconfiguration.html"
     },
     "ExecutionBlockConfiguration": {
       "properties": {},
+      "description": "Execution block configurations for a workflow in a Region switch plan. An execution block represents a specific type of action to perform during a Region switch.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-executionblockconfiguration.html"
     },
     "ExecutionBlockType": {
@@ -233,27 +300,35 @@
     "GlobalAuroraConfiguration": {
       "properties": {
         "Behavior": {
+          "description": "The behavior for a global database, that is, only allow switchover or also allow failover.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraconfiguration.html#cfn-arcregionswitch-plan-globalauroraconfiguration-behavior"
         },
         "CrossAccountRole": {
+          "description": "The cross account role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraconfiguration.html#cfn-arcregionswitch-plan-globalauroraconfiguration-crossaccountrole"
         },
         "DatabaseClusterArns": {
+          "description": "The database cluster Amazon Resource Names (ARNs) for a global database.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraconfiguration.html#cfn-arcregionswitch-plan-globalauroraconfiguration-databaseclusterarns"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraconfiguration.html#cfn-arcregionswitch-plan-globalauroraconfiguration-externalid"
         },
         "GlobalClusterIdentifier": {
+          "description": "The global cluster identifier for a global database.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraconfiguration.html#cfn-arcregionswitch-plan-globalauroraconfiguration-globalclusteridentifier"
         },
         "TimeoutMinutes": {
+          "description": "The timeout value specified for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraconfiguration.html#cfn-arcregionswitch-plan-globalauroraconfiguration-timeoutminutes"
         },
         "Ungraceful": {
+          "description": "The settings for ungraceful execution.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraconfiguration.html#cfn-arcregionswitch-plan-globalauroraconfiguration-ungraceful"
         }
       },
+      "description": "Configuration for Amazon Aurora global databases used in a Region switch plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraconfiguration.html"
     },
     "GlobalAuroraDefaultBehavior": {
@@ -263,9 +338,11 @@
     "GlobalAuroraUngraceful": {
       "properties": {
         "Ungraceful": {
+          "description": "The settings for ungraceful execution.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraungraceful.html#cfn-arcregionswitch-plan-globalauroraungraceful-ungraceful"
         }
       },
+      "description": "Configuration for handling failures when performing operations on Aurora global databases.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-globalauroraungraceful.html"
     },
     "GlobalAuroraUngracefulBehavior": {
@@ -286,12 +363,15 @@
     "KubernetesResourceType": {
       "properties": {
         "ApiVersion": {
+          "description": "The API version type for the Kubernetes resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-kubernetesresourcetype.html#cfn-arcregionswitch-plan-kubernetesresourcetype-apiversion"
         },
         "Kind": {
+          "description": "The kind for the Kubernetes resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-kubernetesresourcetype.html#cfn-arcregionswitch-plan-kubernetesresourcetype-kind"
         }
       },
+      "description": "Defines the type of Kubernetes resource to scale in an Amazon EKS cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-kubernetesresourcetype.html"
     },
     "KubernetesScalingApplication": {
@@ -301,23 +381,29 @@
     "KubernetesScalingResource": {
       "properties": {
         "HpaName": {
+          "description": "The hpaname for the Kubernetes resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-kubernetesscalingresource.html#cfn-arcregionswitch-plan-kubernetesscalingresource-hpaname"
         },
         "Name": {
+          "description": "The name for the Kubernetes resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-kubernetesscalingresource.html#cfn-arcregionswitch-plan-kubernetesscalingresource-name"
         },
         "Namespace": {
+          "description": "The namespace for the Kubernetes resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-kubernetesscalingresource.html#cfn-arcregionswitch-plan-kubernetesscalingresource-namespace"
         }
       },
+      "description": "Defines a Kubernetes resource to scale in an Amazon EKS cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-kubernetesscalingresource.html"
     },
     "LambdaUngraceful": {
       "properties": {
         "Behavior": {
+          "description": "The ungraceful behavior for a Lambda function, which must be set to `skip` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-lambdaungraceful.html#cfn-arcregionswitch-plan-lambdaungraceful-behavior"
         }
       },
+      "description": "Configuration for handling failures when invoking Lambda functions.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-lambdaungraceful.html"
     },
     "LambdaUngracefulBehavior": {
@@ -327,23 +413,29 @@
     "Lambdas": {
       "properties": {
         "Arn": {
+          "description": "The Amazon Resource Name (ARN) of the Lambda function.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-lambdas.html#cfn-arcregionswitch-plan-lambdas-arn"
         },
         "CrossAccountRole": {
+          "description": "The cross account role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-lambdas.html#cfn-arcregionswitch-plan-lambdas-crossaccountrole"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-lambdas.html#cfn-arcregionswitch-plan-lambdas-externalid"
         }
       },
+      "description": "Configuration for AWS Lambda functions used in a Region switch plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-lambdas.html"
     },
     "ParallelExecutionBlockConfiguration": {
       "properties": {
         "Steps": {
+          "description": "The steps for a parallel execution block.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-parallelexecutionblockconfiguration.html#cfn-arcregionswitch-plan-parallelexecutionblockconfiguration-steps"
         }
       },
+      "description": "Configuration for steps that should be executed in parallel during a Region switch.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-parallelexecutionblockconfiguration.html"
     },
     "RecoveryApproach": {
@@ -357,15 +449,19 @@
     "RegionSwitchPlanConfiguration": {
       "properties": {
         "Arn": {
+          "description": "The Amazon Resource Name (ARN) of the plan configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-regionswitchplanconfiguration.html#cfn-arcregionswitch-plan-regionswitchplanconfiguration-arn"
         },
         "CrossAccountRole": {
+          "description": "The cross account role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-regionswitchplanconfiguration.html#cfn-arcregionswitch-plan-regionswitchplanconfiguration-crossaccountrole"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-regionswitchplanconfiguration.html#cfn-arcregionswitch-plan-regionswitchplanconfiguration-externalid"
         }
       },
+      "description": "Configuration for nested Region switch plans. This allows one Region switch plan to trigger another plan as part of its execution.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-regionswitchplanconfiguration.html"
     },
     "RegionToRunIn": {
@@ -379,24 +475,31 @@
     "Route53HealthCheckConfiguration": {
       "properties": {
         "CrossAccountRole": {
+          "description": "The cross account role for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53healthcheckconfiguration.html#cfn-arcregionswitch-plan-route53healthcheckconfiguration-crossaccountrole"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53healthcheckconfiguration.html#cfn-arcregionswitch-plan-route53healthcheckconfiguration-externalid"
         },
         "HostedZoneId": {
+          "description": "The Amazon Route 53 health check configuration hosted zone ID.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53healthcheckconfiguration.html#cfn-arcregionswitch-plan-route53healthcheckconfiguration-hostedzoneid"
         },
         "RecordName": {
+          "description": "The Amazon Route 53 health check configuration record name.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53healthcheckconfiguration.html#cfn-arcregionswitch-plan-route53healthcheckconfiguration-recordname"
         },
         "RecordSets": {
+          "description": "The Amazon Route 53 health check configuration record sets.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53healthcheckconfiguration.html#cfn-arcregionswitch-plan-route53healthcheckconfiguration-recordsets"
         },
         "TimeoutMinutes": {
+          "description": "The Amazon Route 53 health check configuration time out (in minutes).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53healthcheckconfiguration.html#cfn-arcregionswitch-plan-route53healthcheckconfiguration-timeoutminutes"
         }
       },
+      "description": "The Amazon Route 53 health check configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53healthcheckconfiguration.html"
     },
     "Route53HealthChecks": {
@@ -406,12 +509,15 @@
     "Route53ResourceRecordSet": {
       "properties": {
         "RecordSetIdentifier": {
+          "description": "The Amazon Route 53 record set identifier.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53resourcerecordset.html#cfn-arcregionswitch-plan-route53resourcerecordset-recordsetidentifier"
         },
         "Region": {
+          "description": "The Amazon Route 53 record set Region.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53resourcerecordset.html#cfn-arcregionswitch-plan-route53resourcerecordset-region"
         }
       },
+      "description": "The Amazon Route 53 record set.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-route53resourcerecordset.html"
     },
     "RoutingControlStateChange": {
@@ -421,35 +527,45 @@
     "Service": {
       "properties": {
         "ClusterArn": {
+          "description": "The cluster Amazon Resource Name (ARN) for a service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-service.html#cfn-arcregionswitch-plan-service-clusterarn"
         },
         "CrossAccountRole": {
+          "description": "The cross account role for a service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-service.html#cfn-arcregionswitch-plan-service-crossaccountrole"
         },
         "ExternalId": {
+          "description": "The external ID (secret key) for the service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-service.html#cfn-arcregionswitch-plan-service-externalid"
         },
         "ServiceArn": {
+          "description": "The Amazon Resource Name (ARN) for a service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-service.html#cfn-arcregionswitch-plan-service-servicearn"
         }
       },
+      "description": "The service for a cross account role.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-service.html"
     },
     "Step": {
       "properties": {
         "Description": {
+          "description": "The description of a step in a workflow.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-step.html#cfn-arcregionswitch-plan-step-description"
         },
         "ExecutionBlockConfiguration": {
+          "description": "The configuration for an execution block in a workflow.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-step.html#cfn-arcregionswitch-plan-step-executionblockconfiguration"
         },
         "ExecutionBlockType": {
+          "description": "The type of an execution block in a workflow.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-step.html#cfn-arcregionswitch-plan-step-executionblocktype"
         },
         "Name": {
+          "description": "The name of a step in a workflow.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-step.html#cfn-arcregionswitch-plan-step-name"
         }
       },
+      "description": "Represents a step in a Region switch plan workflow. Each step performs a specific action during the Region switch process.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-step.html"
     },
     "Tags": {
@@ -459,49 +575,63 @@
     "Trigger": {
       "properties": {
         "Action": {
+          "description": "The action to perform when the trigger fires. Valid values include ACTIVATE and DEACTIVATE.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-trigger.html#cfn-arcregionswitch-plan-trigger-action"
         },
         "Conditions": {
+          "description": "The conditions that must be met for the trigger to fire.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-trigger.html#cfn-arcregionswitch-plan-trigger-conditions"
         },
         "Description": {
+          "description": "The description for a trigger.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-trigger.html#cfn-arcregionswitch-plan-trigger-description"
         },
         "MinDelayMinutesBetweenExecutions": {
+          "description": "The minimum time, in minutes, that must elapse between automatic executions of the plan.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-trigger.html#cfn-arcregionswitch-plan-trigger-mindelayminutesbetweenexecutions"
         },
         "TargetRegion": {
+          "description": "The AWS Region for a trigger.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-trigger.html#cfn-arcregionswitch-plan-trigger-targetregion"
         }
       },
+      "description": "Defines a condition that can automatically trigger the execution of a Region switch plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-trigger.html"
     },
     "TriggerCondition": {
       "properties": {
         "AssociatedAlarmName": {
+          "description": "The name of the CloudWatch alarm associated with the condition.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-triggercondition.html#cfn-arcregionswitch-plan-triggercondition-associatedalarmname"
         },
         "Condition": {
+          "description": "The condition that must be met. Valid values include ALARM and OK.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-triggercondition.html#cfn-arcregionswitch-plan-triggercondition-condition"
         }
       },
+      "description": "Defines a condition that must be met for a trigger to fire.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-triggercondition.html"
     },
     "Workflow": {
       "properties": {
         "Steps": {
+          "description": "The steps that make up the workflow.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-workflow.html#cfn-arcregionswitch-plan-workflow-steps"
         },
         "WorkflowDescription": {
+          "description": "The description of the workflow.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-workflow.html#cfn-arcregionswitch-plan-workflow-workflowdescription"
         },
         "WorkflowTargetAction": {
+          "description": "The action that the workflow performs. Valid values include ACTIVATE and DEACTIVATE.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-workflow.html#cfn-arcregionswitch-plan-workflow-workflowtargetaction"
         },
         "WorkflowTargetRegion": {
+          "description": "The AWS Region that the workflow targets.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-workflow.html#cfn-arcregionswitch-plan-workflow-workflowtargetregion"
         }
       },
+      "description": "Represents a workflow in a Region switch plan. A workflow defines a sequence of steps to execute during a Region switch.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-workflow.html"
     },
     "WorkflowTargetAction": {
@@ -509,6 +639,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-arcregionswitch-plan-workflowtargetaction.html"
     }
   },
+  "description": "Represents a Region switch plan. A plan defines the steps required to shift traffic from one AWS Region to another.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html",
   "id": "aws-arcregionswitch-plan",
   "properties": {
@@ -516,45 +647,55 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-arn"
     },
     "AssociatedAlarms": {
+      "description": "The associated application health alarms for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-associatedalarms"
     },
     "Description": {
+      "description": "The description for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-description"
     },
     "ExecutionRole": {
+      "description": "The execution role for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-executionrole"
     },
     "HealthChecksForPlan": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-healthchecksforplan"
     },
     "Name": {
+      "description": "The name for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-name"
     },
     "Owner": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-owner"
     },
     "PrimaryRegion": {
+      "description": "The primary Region for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-primaryregion"
     },
     "RecoveryApproach": {
+      "description": "The recovery approach for a Region switch plan, which can be active/active (activeActive) or active/passive (activePassive).",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-recoveryapproach"
     },
     "RecoveryTimeObjectiveMinutes": {
+      "description": "The recovery time objective for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-recoverytimeobjectiveminutes"
     },
     "Regions": {
+      "description": "The AWS Regions for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-regions"
     },
     "Tags": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-tags"
     },
     "Triggers": {
+      "description": "The triggers for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-triggers"
     },
     "Version": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-version"
     },
     "Workflows": {
+      "description": "The workflows for a plan.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html#cfn-arcregionswitch-plan-workflows"
     }
   },

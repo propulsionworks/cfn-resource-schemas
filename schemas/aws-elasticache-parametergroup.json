@@ -1,6 +1,6 @@
 {
   "$id": "aws-elasticache-parametergroup",
-  "$integrity": "sha512-HAPmrdwMmCPSx+aCmLU4oQdpiYrQ73T1xTUg7q2Ewjc6jVdBH5yvHw0OQF7qKor/y09YL2aBF90vex6VWAXVFg==",
+  "$integrity": "sha512-0cE2Tx998E8x3hw4cH/W9syzXn7tOuZPz3nhCPkZ2XyKnI3C93aTs87lgvIkMHRqPtpUlPsnrIhGqpZN+TrYxg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/CacheParameterGroupFamily"
@@ -27,40 +27,40 @@
   "handlers": {
     "create": {
       "permissions": [
-        "ElastiCache:CreateCacheParameterGroup",
-        "ElastiCache:DescribeCacheParameterGroups",
-        "ElastiCache:AddTagsToResource",
-        "ElastiCache:ModifyCacheParameterGroup",
+        "elasticache:CreateCacheParameterGroup",
+        "elasticache:DescribeCacheParameterGroups",
+        "elasticache:AddTagsToResource",
+        "elasticache:ModifyCacheParameterGroup",
         "iam:CreateServiceLinkedRole",
         "iam:PutRolePolicy"
       ]
     },
     "delete": {
       "permissions": [
-        "ElastiCache:DescribeCacheParameterGroups",
-        "ElastiCache:DeleteCacheParameterGroup"
+        "elasticache:DescribeCacheParameterGroups",
+        "elasticache:DeleteCacheParameterGroup"
       ]
     },
     "list": {
       "permissions": [
-        "ElastiCache:DescribeCacheParameterGroups"
+        "elasticache:DescribeCacheParameterGroups"
       ]
     },
     "read": {
       "permissions": [
-        "ElastiCache:DescribeCacheParameterGroups",
-        "ElastiCache:DescribeCacheParameters",
-        "ElastiCache:ListTagsForResource"
+        "elasticache:DescribeCacheParameterGroups",
+        "elasticache:DescribeCacheParameters",
+        "elasticache:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
-        "ElastiCache:ModifyCacheParameterGroup",
-        "ElastiCache:DescribeCacheParameterGroups",
-        "ElastiCache:DescribeCacheParameters",
-        "ElastiCache:DescribeEngineDefaultParameters",
-        "ElastiCache:AddTagsToResource",
-        "ElastiCache:RemoveTagsFromResource"
+        "elasticache:ModifyCacheParameterGroup",
+        "elasticache:DescribeCacheParameterGroups",
+        "elasticache:DescribeCacheParameters",
+        "elasticache:DescribeEngineDefaultParameters",
+        "elasticache:AddTagsToResource",
+        "elasticache:RemoveTagsFromResource"
       ]
     }
   },
@@ -109,6 +109,11 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": false,
+    "permissions": [
+      "elasticache:AddTagsToResource",
+      "elasticache:RemoveTagsFromResource",
+      "elasticache:ListTagsForResource"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,

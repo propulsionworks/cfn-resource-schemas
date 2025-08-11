@@ -1,6 +1,6 @@
 {
   "$id": "aws-networkfirewall-rulegroup",
-  "$integrity": "sha512-jWotMLHGshvwOQQXjO6omRNL/iRR3A5aYqgcHrpnZzNvjmfioKi7Xe6EmiW5+u6rh3Y8Or/VfDGo7j1puSWYBQ==",
+  "$integrity": "sha512-u02ftd44ul4AN3ShpR8n/g3M/4XL/Am+MAThxRV3yfZ4SqNv0RACNMT24jOgH/pTmbmRVhO8AjaseA5n8pQlDg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/RuleGroupName",
@@ -541,6 +541,14 @@
       ],
       "type": "object"
     },
+    "SummaryRuleOption": {
+      "enum": [
+        "SID",
+        "MSG",
+        "METADATA"
+      ],
+      "type": "string"
+    },
     "TCPFlag": {
       "enum": [
         "FIN",
@@ -687,6 +695,20 @@
       "minLength": 1,
       "pattern": "^[a-zA-Z0-9-]+$",
       "type": "string"
+    },
+    "SummaryConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "RuleOptions": {
+          "insertionOrder": true,
+          "items": {
+            "$ref": "#/definitions/SummaryRuleOption"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "type": "object"
     },
     "Tags": {
       "insertionOrder": false,

@@ -1,6 +1,6 @@
 {
   "$id": "aws-codebuild-project",
-  "$integrity": "sha512-SwTes4v8Ou6X+ENwd1bOtKBIfXFwLfbDcBxKMjJpmXlWxG3UN3WtVtoXf00SHKEyYI+I/clq2pQcvtszHr1fXA==",
+  "$integrity": "sha512-fUw9/nPyM6RAAHYhK7luJ1mHLLNAwLvoZUKhxa0GtKpxxNiade5dm6es5+Q0XsEr68jntDSNnVYGPI1BlDWNkw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -309,6 +309,9 @@
           "type": "array",
           "uniqueItems": false
         },
+        "PullRequestBuildPolicy": {
+          "$ref": "#/definitions/PullRequestBuildPolicy"
+        },
         "ScopeConfiguration": {
           "$ref": "#/definitions/ScopeConfiguration"
         },
@@ -316,6 +319,25 @@
           "type": "boolean"
         }
       },
+      "type": "object"
+    },
+    "PullRequestBuildPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "ApproverRoles": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "RequiresCommentApproval": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "RequiresCommentApproval"
+      ],
       "type": "object"
     },
     "RegistryCredential": {

@@ -1,12 +1,25 @@
 {
   "$id": "aws-networkfirewall-firewall",
-  "$integrity": "sha512-uNQ4/vU7XzrFiiH+83tDar4b2FBDUjWjQ4ZBlsjo5g2htSi8YjtVs17B7L8upW/bOubu6v+D/EACTdCwEEL6uQ==",
+  "$integrity": "sha512-97fn6Blvh3DRVGmp588uGj2I68ZDVI/R0yLkxImbF1tSyfrPZ7wc2t3Aj5jregSVtiltWuR+o7+x0bMed6jlGA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/VpcId",
     "/properties/FirewallName"
   ],
   "definitions": {
+    "AvailabilityZoneMapping": {
+      "additionalProperties": false,
+      "properties": {
+        "AvailabilityZone": {
+          "description": "A AvailabilityZone",
+          "type": "string"
+        }
+      },
+      "required": [
+        "AvailabilityZone"
+      ],
+      "type": "object"
+    },
     "EnabledAnalysisType": {
       "description": "An analysis type.",
       "enum": [
@@ -78,6 +91,7 @@
         "network-firewall:DescribeRuleGroup",
         "network-firewall:TagResource",
         "network-firewall:AssociateSubnets",
+        "network-firewall:AssociateAvailabilityZones",
         "network-firewall:AssociateFirewallPolicy",
         "network-firewall:DescribeFirewall"
       ]
@@ -118,7 +132,10 @@
         "network-firewall:TagResource",
         "network-firewall:UntagResource",
         "network-firewall:DescribeFirewall",
-        "network-firewall:UpdateFirewallAnalysisSettings"
+        "network-firewall:UpdateFirewallAnalysisSettings",
+        "network-firewall:DisassociateAvailabilityZones",
+        "network-firewall:AssociateAvailabilityZones",
+        "network-firewall:UpdateAvailabilityZoneChangeProtection"
       ]
     }
   },
@@ -126,6 +143,17 @@
     "/properties/FirewallArn"
   ],
   "properties": {
+    "AvailabilityZoneChangeProtection": {
+      "type": "boolean"
+    },
+    "AvailabilityZoneMappings": {
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/AvailabilityZoneMapping"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
     "DeleteProtection": {
       "type": "boolean"
     },
@@ -178,7 +206,6 @@
       "items": {
         "$ref": "#/definitions/SubnetMapping"
       },
-      "minItems": 1,
       "type": "array",
       "uniqueItems": true
     },
@@ -189,6 +216,11 @@
       },
       "type": "array",
       "uniqueItems": true
+    },
+    "TransitGatewayId": {
+      "maxLength": 128,
+      "pattern": "^tgw-[0-9a-z]+$",
+      "type": "string"
     },
     "VpcId": {
       "maxLength": 128,
@@ -204,9 +236,7 @@
   ],
   "required": [
     "FirewallName",
-    "FirewallPolicyArn",
-    "VpcId",
-    "SubnetMappings"
+    "FirewallPolicyArn"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-networkfirewall.git",
   "tagging": {

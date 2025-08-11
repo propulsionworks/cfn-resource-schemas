@@ -1,6 +1,6 @@
 {
   "$id": "aws-appconfig-deployment",
-  "$integrity": "sha512-r94vw2nqN7kyzHcgTXQR0j/iR7NjruXICwZUYI1sGacWu5LQtolIGxSvK+izvfpQFdkDWLRd0TLOUbodTSI0jA==",
+  "$integrity": "sha512-aD1BuUXg39JTba6l278oSjXLC5FRFGVoNbkiILJ5Rb7JwazWwhbh2hiXveJPUZbYqEOan+DFusXKRiRbt+PQ8g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ApplicationId",
@@ -134,6 +134,19 @@
       "pattern": "^[\\da-f]{8}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{12}|alias/[a-zA-Z0-9/_-]{1,250}|arn:aws[a-zA-Z-]*:kms:[a-z]{2}(-gov|-iso(b?))?-[a-z]+-\\d{1}:\\d{12}:(key/[0-9a-f-]{36}|alias/[a-zA-Z0-9/_-]{1,250})$",
       "type": "string"
     },
+    "State": {
+      "description": "The state of the deployment.",
+      "enum": [
+        "BAKING",
+        "VALIDATING",
+        "DEPLOYING",
+        "COMPLETE",
+        "ROLLING_BACK",
+        "ROLLED_BACK",
+        "REVERTED"
+      ],
+      "type": "string"
+    },
     "Tags": {
       "description": "An array of key-value pairs to apply to this resource.",
       "insertionOrder": false,
@@ -145,7 +158,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/DeploymentNumber"
+    "/properties/DeploymentNumber",
+    "/properties/State"
   ],
   "required": [
     "ApplicationId",

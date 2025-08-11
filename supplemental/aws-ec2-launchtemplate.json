@@ -214,16 +214,6 @@
       "description": "Parameters for a block device for an EBS volume in an Amazon EC2 launch template.\n\n`Ebs` is a property of [AWS::EC2::LaunchTemplate BlockDeviceMapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-blockdevicemapping.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-ebs.html"
     },
-    "ElasticGpuSpecification": {
-      "properties": {
-        "Type": {
-          "description": "The type of Elastic Graphics accelerator.",
-          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-elasticgpuspecification.html#cfn-ec2-launchtemplate-elasticgpuspecification-type"
-        }
-      },
-      "description": "> Amazon Elastic Graphics reached end of life on January 8, 2024. \n\nSpecifies a specification for an Elastic GPU for an Amazon EC2 launch template.\n\n`ElasticGpuSpecification` is a property of [AWS::EC2::LaunchTemplate LaunchTemplateData](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html) .",
-      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-elasticgpuspecification.html"
-    },
     "EnaSrdSpecification": {
       "properties": {
         "EnaSrdEnabled": {
@@ -462,14 +452,6 @@
           "description": "Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html#cfn-ec2-launchtemplate-launchtemplatedata-ebsoptimized"
         },
-        "ElasticGpuSpecifications": {
-          "description": "Deprecated.\n\n> Amazon Elastic Graphics reached end of life on January 8, 2024.",
-          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html#cfn-ec2-launchtemplate-launchtemplatedata-elasticgpuspecifications"
-        },
-        "ElasticInferenceAccelerators": {
-          "description": "> Amazon Elastic Inference is no longer available. \n\nAn elastic inference accelerator to associate with the instance. Elastic inference accelerators are a resource you can attach to your Amazon EC2 instances to accelerate your Deep Learning (DL) inference workloads.\n\nYou cannot specify accelerators from different generations in the same request.",
-          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html#cfn-ec2-launchtemplate-launchtemplatedata-elasticinferenceaccelerators"
-        },
         "EnclaveOptions": {
           "description": "Indicates whether the instance is enabled for AWS Nitro Enclaves. For more information, see [What is Nitro Enclaves?](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html) in the *AWS Nitro Enclaves User Guide* .\n\nYou can't enable AWS Nitro Enclaves and hibernation on the same instance.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html#cfn-ec2-launchtemplate-launchtemplatedata-enclaveoptions"
@@ -565,20 +547,6 @@
       },
       "description": "The information to include in the launch template.\n\n> You must specify at least one parameter for the launch template data.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html"
-    },
-    "LaunchTemplateElasticInferenceAccelerator": {
-      "properties": {
-        "Count": {
-          "description": "The number of elastic inference accelerators to attach to the instance.\n\nDefault: 1",
-          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator.html#cfn-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator-count"
-        },
-        "Type": {
-          "description": "The type of elastic inference accelerator. The possible values are eia1.medium, eia1.large, and eia1.xlarge.",
-          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator.html#cfn-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator-type"
-        }
-      },
-      "description": "> Amazon Elastic Inference is no longer available. \n\nSpecifies an elastic inference accelerator.\n\n`LaunchTemplateElasticInferenceAccelerator` is a property of [AWS::EC2::LaunchTemplate LaunchTemplateData](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html) .",
-      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator.html"
     },
     "LaunchTemplateTagSpecification": {
       "properties": {
@@ -717,6 +685,10 @@
         "DeviceIndex": {
           "description": "The device index for the network interface attachment. The primary network interface has a device index of 0. If the network interface is of type `interface` , you must specify a device index.\n\nIf you create a launch template that includes secondary network interfaces but no primary network interface, and you specify it using the `LaunchTemplate` property of `AWS::EC2::Instance` , then you must include a primary network interface using the `NetworkInterfaces` property of `AWS::EC2::Instance` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-deviceindex"
+        },
+        "EnaQueueCount": {
+          "description": "",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-enaqueuecount"
         },
         "EnaSrdSpecification": {
           "description": "The ENA Express configuration for the network interface.",

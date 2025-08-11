@@ -3,17 +3,27 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html#aws-resource-networkfirewall-firewall-return-values",
     "properties": {
       "FirewallArn": {
-        "description": "The Amazon Resource Name (ARN) of the `Firewall` ."
+        "description": "The Amazon Resource Name (ARN) of the firewall."
       },
       "EndpointIds": {
         "description": "The unique IDs of the firewall endpoints for all of the subnets that you attached to the firewall. The subnets are not listed in any particular order. For example: `[\"us-west-2c:vpce-111122223333\", \"us-west-2a:vpce-987654321098\", \"us-west-2b:vpce-012345678901\"]` ."
       },
       "FirewallId": {
-        "description": "The name of the `Firewall` resource."
+        "description": "The name of the firewallresource."
       }
     }
   },
   "definitions": {
+    "AvailabilityZoneMapping": {
+      "properties": {
+        "AvailabilityZone": {
+          "description": "The ID of the Availability Zone where the firewall endpoint is located. For example, `us-east-2a` . The Availability Zone must be in the same Region as the transit gateway.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewall-availabilityzonemapping.html#cfn-networkfirewall-firewall-availabilityzonemapping-availabilityzone"
+        }
+      },
+      "description": "Defines the mapping between an Availability Zone and a firewall endpoint for a transit gateway-attached firewall. Each mapping represents where the firewall can process traffic. You use these mappings when calling `CreateFirewall` , `AssociateAvailabilityZones` , and `DisassociateAvailabilityZones` .\n\nTo retrieve the current Availability Zone mappings for a firewall, use `DescribeFirewall` .",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewall-availabilityzonemapping.html"
+    },
     "EnabledAnalysisType": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewall-enabledanalysistype.html"
@@ -52,10 +62,18 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewall-tag.html"
     }
   },
-  "description": "Use the `Firewall` to provide stateful, managed, network firewall and intrusion detection and prevention filtering for your VPCs in Amazon VPC .\n\nThe firewall defines the configuration settings for an AWS Network Firewall firewall. The settings include the firewall policy, the subnets in your VPC to use for the firewall endpoints, and any tags that are attached to the firewall AWS resource.",
+  "description": "Use the firewall to provide stateful, managed, network firewall and intrusion detection and prevention filtering for your VPCs in Amazon VPC .\n\nThe firewall defines the configuration settings for an AWS Network Firewall firewall. The settings include the firewall policy, the subnets in your VPC to use for the firewall endpoints, and any tags that are attached to the firewall AWS resource.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html",
   "id": "aws-networkfirewall-firewall",
   "properties": {
+    "AvailabilityZoneChangeProtection": {
+      "description": "A setting indicating whether the firewall is protected against changes to its Availability Zone configuration. When set to `TRUE` , you must first disable this protection before adding or removing Availability Zones.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html#cfn-networkfirewall-firewall-availabilityzonechangeprotection"
+    },
+    "AvailabilityZoneMappings": {
+      "description": "The Availability Zones where the firewall endpoints are created for a transit gateway-attached firewall. Each mapping specifies an Availability Zone where the firewall processes traffic.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html#cfn-networkfirewall-firewall-availabilityzonemappings"
+    },
     "DeleteProtection": {
       "description": "A flag indicating whether it is possible to delete the firewall. A setting of `TRUE` indicates that the firewall is protected against deletion. Use this setting to protect against accidentally deleting a firewall that is in use. When you create a firewall, the operation initializes this flag to `TRUE` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html#cfn-networkfirewall-firewall-deleteprotection"
@@ -100,6 +118,10 @@
     "Tags": {
       "description": "An array of key-value pairs to apply to this resource.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html#cfn-networkfirewall-firewall-tags"
+    },
+    "TransitGatewayId": {
+      "description": "The unique identifier of the transit gateway associated with this firewall. This field is only present for transit gateway-attached firewalls.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html#cfn-networkfirewall-firewall-transitgatewayid"
     },
     "VpcId": {
       "description": "The unique identifier of the VPC where the firewall is in use. You can't change the VPC of a firewall after you create the firewall.",

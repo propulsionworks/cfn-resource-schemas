@@ -3,10 +3,10 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewallpolicy.html#aws-resource-networkfirewall-firewallpolicy-return-values",
     "properties": {
       "FirewallPolicyArn": {
-        "description": "The Amazon Resource Name (ARN) of the `FirewallPolicy` ."
+        "description": "The Amazon Resource Name (ARN) of the firewall policy."
       },
       "FirewallPolicyId": {
-        "description": "The unique ID of the `FirewallPolicy` resource."
+        "description": "The unique ID of the firewall policy resource."
       }
     }
   },
@@ -32,7 +32,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-customaction.html#cfn-networkfirewall-firewallpolicy-customaction-actionname"
         }
       },
-      "description": "An optional, non-standard action to use for stateless packet handling. You can define this in addition to the standard action that you must specify.\n\nYou define and name the custom actions that you want to be able to use, and then you reference them by name in your actions settings.\n\nYou can use custom actions in the following places:\n\n- In an `RuleGroup.StatelessRulesAndCustomActions` . The custom actions are available for use by name inside the `StatelessRulesAndCustomActions` where you define them. You can use them for your stateless rule actions to specify what to do with a packet that matches the rule's match attributes.\n- In an `FirewallPolicy` specification, in `StatelessCustomActions` . The custom actions are available for use inside the policy where you define them. You can use them for the policy's default stateless actions settings to specify what to do with packets that don't match any of the policy's stateless rules.",
+      "description": "An optional, non-standard action to use for stateless packet handling. You can define this in addition to the standard action that you must specify.\n\nYou define and name the custom actions that you want to be able to use, and then you reference them by name in your actions settings.\n\nYou can use custom actions in the following places:\n\n- In an `StatelessRulesAndCustomActions` . The custom actions are available for use by name inside the `StatelessRulesAndCustomActions` where you define them. You can use them for your stateless rule actions to specify what to do with a packet that matches the rule's match attributes.\n- In an firewall policy specification, in `StatelessCustomActions` . The custom actions are available for use inside the policy where you define them. You can use them for the policy's default stateless actions settings to specify what to do with packets that don't match any of the policy's stateless rules.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-customaction.html"
     },
     "Dimension": {
@@ -94,7 +94,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-ipset.html#cfn-networkfirewall-firewallpolicy-ipset-definition"
         }
       },
-      "description": "A list of IP addresses and address ranges, in CIDR notation. This is part of a `RuleVariables` .",
+      "description": "A list of IP addresses and address ranges, in CIDR notation. This is part of a rule variable.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-ipset.html"
     },
     "OverrideAction": {
@@ -156,12 +156,16 @@
     },
     "StatefulRuleGroupReference": {
       "properties": {
+        "DeepThreatInspection": {
+          "description": "AWS Network Firewall plans to augment the active threat defense managed rule group with an additional deep threat inspection capability. When this capability is released, AWS will analyze service logs of network traffic processed by these rule groups to identify threat indicators across customers. AWS will use these threat indicators to improve the active threat defense managed rule groups and protect the security of AWS customers and services.\n\n> Customers can opt-out of deep threat inspection at any time through the AWS Network Firewall console or API. When customers opt out, AWS Network Firewall will not use the network traffic processed by those customers' active threat defense rule groups for rule group improvement.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-statefulrulegroupreference.html#cfn-networkfirewall-firewallpolicy-statefulrulegroupreference-deepthreatinspection"
+        },
         "Override": {
           "description": "The action that allows the policy owner to override the behavior of the rule group within a policy.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-statefulrulegroupreference.html#cfn-networkfirewall-firewallpolicy-statefulrulegroupreference-override"
         },
         "Priority": {
-          "description": "An integer setting that indicates the order in which to run the stateful rule groups in a single `FirewallPolicy` . This setting only applies to firewall policies that specify the `STRICT_ORDER` rule order in the stateful engine options settings.\n\nNetwork Firewall evalutes each stateful rule group against a packet starting with the group that has the lowest priority setting. You must ensure that the priority settings are unique within each policy.\n\nYou can change the priority settings of your rule groups at any time. To make it easier to insert rule groups later, number them so there's a wide range in between, for example use 100, 200, and so on.",
+          "description": "An integer setting that indicates the order in which to run the stateful rule groups in a single firewall policy. This setting only applies to firewall policies that specify the `STRICT_ORDER` rule order in the stateful engine options settings.\n\nNetwork Firewall evalutes each stateful rule group against a packet starting with the group that has the lowest priority setting. You must ensure that the priority settings are unique within each policy.\n\nYou can change the priority settings of your rule groups at any time. To make it easier to insert rule groups later, number them so there's a wide range in between, for example use 100, 200, and so on.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-statefulrulegroupreference.html#cfn-networkfirewall-firewallpolicy-statefulrulegroupreference-priority"
         },
         "ResourceArn": {
@@ -175,7 +179,7 @@
     "StatelessRuleGroupReference": {
       "properties": {
         "Priority": {
-          "description": "An integer setting that indicates the order in which to run the stateless rule groups in a single `FirewallPolicy` . Network Firewall applies each stateless rule group to a packet starting with the group that has the lowest priority setting. You must ensure that the priority settings are unique within each policy.",
+          "description": "An integer setting that indicates the order in which to run the stateless rule groups in a single firewall policy. Network Firewall applies each stateless rule group to a packet starting with the group that has the lowest priority setting. You must ensure that the priority settings are unique within each policy.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-statelessrulegroupreference.html#cfn-networkfirewall-firewallpolicy-statelessrulegroupreference-priority"
         },
         "ResourceArn": {
@@ -206,7 +210,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-variabledefinition.html"
     }
   },
-  "description": "Use the `FirewallPolicy` to define the stateless and stateful network traffic filtering behavior for your `Firewall` . You can use one firewall policy for multiple firewalls.",
+  "description": "Use the firewall policy to define the stateless and stateful network traffic filtering behavior for your firewall. You can use one firewall policy for multiple firewalls.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewallpolicy.html",
   "id": "aws-networkfirewall-firewallpolicy",
   "properties": {

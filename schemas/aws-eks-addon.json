@@ -1,10 +1,11 @@
 {
   "$id": "aws-eks-addon",
-  "$integrity": "sha512-F8xPk9WkCc8qF++P8e1Sqj9ZJD3pnXfYXUC1meYT9itYsaJ0brMVceLKr7zARhfx8IX+BD3X/aftMY//b76xrw==",
+  "$integrity": "sha512-Iz3PVmfYZsl7yQbjzTaTwO2AvXx7yZRXWUSLXo8EKQxP0euHj0qpjTCeq0MPFYN3tnkJZl14lqmVODfUAExmZQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ClusterName",
-    "/properties/AddonName"
+    "/properties/AddonName",
+    "/properties/NamespaceConfig"
   ],
   "definitions": {
     "PodIdentityAssociation": {
@@ -133,6 +134,20 @@
       "description": "The configuration values to use with the add-on",
       "minLength": 1,
       "type": "string"
+    },
+    "NamespaceConfig": {
+      "additionalProperties": false,
+      "description": "The custom namespace configuration to use with the add-on",
+      "properties": {
+        "Namespace": {
+          "description": "The custom namespace for creating the add-on",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Namespace"
+      ],
+      "type": "object"
     },
     "PodIdentityAssociations": {
       "description": "An array of pod identities to apply to this add-on.",

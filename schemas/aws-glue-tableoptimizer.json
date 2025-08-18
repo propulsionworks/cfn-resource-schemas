@@ -1,6 +1,6 @@
 {
   "$id": "aws-glue-tableoptimizer",
-  "$integrity": "sha512-HBrISnyjz/La/qZLfHFGQbyUzduGvhPSngfHBdjFOkCBqzudmFNuRKe9KYmElOYvH2HwERTBflHuNt/YF+oHYw==",
+  "$integrity": "sha512-5eAPFxRQxdqbW1/OxlJ7zYPw5rbPL9bkCKspToUVxtnacuThBGoilZ1elGIdUOjNeAYLJMgI/qkffPsyD3PTyA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TableName",
@@ -21,6 +21,21 @@
       },
       "type": "object"
     },
+    "IcebergRetentionConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "CleanExpiredFiles": {
+          "type": "boolean"
+        },
+        "NumberOfSnapshotsToRetain": {
+          "type": "integer"
+        },
+        "SnapshotRetentionPeriodInDays": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "OrphanFileDeletionConfiguration": {
       "additionalProperties": false,
       "properties": {
@@ -34,7 +49,7 @@
       "additionalProperties": false,
       "properties": {
         "IcebergConfiguration": {
-          "$ref": "#/definitions/IcebergConfiguration"
+          "$ref": "#/definitions/IcebergRetentionConfiguration"
         }
       },
       "type": "object"

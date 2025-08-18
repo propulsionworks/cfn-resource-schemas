@@ -1,13 +1,12 @@
 {
   "$id": "aws-sagemaker-app",
-  "$integrity": "sha512-JA1r2jNWOM8dMT4G/SY/+/QkpxelAs80vPZlFdbWC4T/zRXvT37uUKm4WsrxSAZh2zobXzEOYzx8fsvQnEJ62A==",
+  "$integrity": "sha512-MPMSQHc4Ur/K5GILAAdqqmXiaYrPISsOmpx5u4b0dUEsG9Evsr+PRfNHTm+MVhhncCkSRjIOt6X6NtgVgQEPOQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AppName",
     "/properties/AppType",
     "/properties/DomainId",
     "/properties/UserProfileName",
-    "/properties/Tags",
     "/properties/ResourceSpec"
   ],
   "definitions": {
@@ -157,6 +156,14 @@
         "sagemaker:DescribeApp",
         "sagemaker:ListTags"
       ]
+    },
+    "update": {
+      "permissions": [
+        "sagemaker:DescribeApp",
+        "sagemaker:AddTags",
+        "sagemaker:DeleteTags",
+        "sagemaker:ListTags"
+      ]
     }
   },
   "primaryIdentifier": [
@@ -248,7 +255,7 @@
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::SageMaker::App"

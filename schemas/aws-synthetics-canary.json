@@ -1,6 +1,6 @@
 {
   "$id": "aws-synthetics-canary",
-  "$integrity": "sha512-XOfNUyv3O7ni94v++J2j9Q57Si2FVBYPKBKVcRyBeFqZpGTnGeVLyzvQ0dmXsBxKRoVixPXyTZwZxgEcJvhOfw==",
+  "$integrity": "sha512-No6cPnM32pBH1w/1g4xcRMXFxZsQmtEdYoaNMc6cBvo8OPDAGz8GSI5MkwQNBtB72omE6hc/UAv92Bt1/KnkjA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -52,6 +52,14 @@
         }
       ],
       "properties": {
+        "Dependencies": {
+          "description": "List of Lambda layers to attach to the canary",
+          "items": {
+            "$ref": "#/definitions/Dependency"
+          },
+          "maxItems": 1,
+          "type": "array"
+        },
         "Handler": {
           "type": "string"
         },
@@ -73,6 +81,29 @@
       },
       "required": [
         "Handler"
+      ],
+      "type": "object"
+    },
+    "Dependency": {
+      "additionalProperties": false,
+      "properties": {
+        "Reference": {
+          "description": "ARN of the Lambda layer",
+          "maxLength": 140,
+          "minLength": 1,
+          "pattern": "arn:[a-zA-Z0-9-]+:lambda:[a-zA-Z0-9-]+:\\d{12}:layer:[a-zA-Z0-9-_]+:[0-9]+",
+          "type": "string"
+        },
+        "Type": {
+          "description": "Type of dependency",
+          "enum": [
+            "LambdaLayer"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Reference"
       ],
       "type": "object"
     },

@@ -1,6 +1,6 @@
 {
   "$id": "aws-iot-mitigationaction",
-  "$integrity": "sha512-8F36joadhC7Fd9iqXc6fnKT2iyAIRJBIGOs4oSi19StIIB7BfZ+xJPIeGqbKkn5OFPO8ZYiKcwI5YIgohLNFQw==",
+  "$integrity": "sha512-418y9juA0duKUcJCk/7MEogTvgh3J5IjTbIlzhSNbDnWnS8QjDstOMJSedNP3A2eK8Z4ZM6HcwFwkq5uQ9xq5w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ActionName"
@@ -76,7 +76,7 @@
         "RoleArnForLogging": {
           "description": " The ARN of the IAM role used for logging.",
           "maxLength": 2048,
-          "minLength": 20,
+          "minLength": 11,
           "type": "string"
         }
       },
@@ -93,7 +93,7 @@
         "TopicArn": {
           "description": "The ARN of the topic to which you want to publish the findings.",
           "maxLength": 2048,
-          "minLength": 20,
+          "minLength": 11,
           "type": "string"
         }
       },
@@ -257,5 +257,17 @@
     "ActionParams"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-iot.git",
+  "tagging": {
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "iot:TagResource",
+      "iot:UntagResource",
+      "iot:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::IoT::MitigationAction"
 }

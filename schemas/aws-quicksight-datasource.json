@@ -1,6 +1,6 @@
 {
   "$id": "aws-quicksight-datasource",
-  "$integrity": "sha512-msdeF2UxeukWgKg5BtM9n6/KB62lJ0HypBKRIEujm5MYpeKMxCuMwSSlz53QdXLuxkSH0/BqGFoff98fENUGPQ==",
+  "$integrity": "sha512-upJDZecSuK92PsIcyMAkHZViz/ZMUE68CcvGTC8LDOM1W6fNo0+N3WopgbHpHHRuK45w4VZ9hQ80ml+TXjaGtQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AwsAccountId",
@@ -393,6 +393,33 @@
           "type": "boolean"
         }
       },
+      "type": "object"
+    },
+    "ImpalaParameters": {
+      "additionalProperties": false,
+      "properties": {
+        "Host": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Port": {
+          "default": 0,
+          "maximum": 65535,
+          "minimum": 1,
+          "type": "number"
+        },
+        "SqlEndpointPath": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "Host",
+        "Port",
+        "SqlEndpointPath"
+      ],
       "type": "object"
     },
     "ManifestFileLocation": {

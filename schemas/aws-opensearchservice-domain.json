@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchservice-domain",
-  "$integrity": "sha512-pgGu01BFndIlXFsUTCz1m2incJhvS8BMfdS9k8TxxsnQDpxX35o5KOkCLc5idso0VSQ8pEtIWNvyHn8E/Kwu6Q==",
+  "$integrity": "sha512-k1PjgFO9yLuUnszvWshpW+B2kVB1gUUQtympSy3nIvQeqenWGDHLXJzayIRBKSWpiJWcRcd1cZJDWluEB0fWbg==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/EncryptionAtRestOptions/properties",
@@ -21,6 +21,9 @@
         },
         "Enabled": {
           "type": "boolean"
+        },
+        "IAMFederationOptions": {
+          "$ref": "#/definitions/IAMFederationOptions"
         },
         "InternalUserDatabaseEnabled": {
           "type": "boolean"
@@ -161,6 +164,21 @@
           "type": "boolean"
         },
         "KmsKeyId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IAMFederationOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "Enabled": {
+          "type": "boolean"
+        },
+        "RolesKey": {
+          "type": "string"
+        },
+        "SubjectKey": {
           "type": "string"
         }
       },
@@ -628,6 +646,9 @@
     "VPCOptions": {
       "$ref": "#/definitions/VPCOptions"
     }
+  },
+  "propertyTransform": {
+    "/properties/EncryptionAtRestOptions/KmsKeyId": "$split(EncryptionAtRestOptions.KmsKeyId, \"/\")[-1] $OR EncryptionAtRestOptions.KmsKeyId"
   },
   "readOnlyProperties": [
     "/properties/Id",

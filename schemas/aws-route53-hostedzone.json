@@ -1,6 +1,6 @@
 {
   "$id": "aws-route53-hostedzone",
-  "$integrity": "sha512-w6/ZkCobkgEpuHd7msemvInrq91AsTbNogC7XTKXXiVvjROmKCbzvPR6EecDtkWjb2O5A5RRzANpbg1EEvKYJg==",
+  "$integrity": "sha512-Afb+wubwVPNaIBWuyFwTiVYi9x9HJ5wMMmfLCEf9WpPzZrK26nfJRkYYLDQf3jy/yer52vFiLhZBndrUV9i0DA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -173,7 +173,7 @@
     }
   },
   "propertyTransform": {
-    "/properties/Name": "Name $OR $join([Name, \".\"])"
+    "/properties/Name": "Name $OR $join([Name, \".\"]) $OR $lowercase(Name) $OR $lowercase($join([Name, \".\"]))"
   },
   "readOnlyProperties": [
     "/properties/Id",
@@ -186,7 +186,7 @@
       "route53:ChangeTagsForResource",
       "route53:ListTagsForResource"
     ],
-    "tagOnCreate": true,
+    "tagOnCreate": false,
     "tagProperty": "/properties/HostedZoneTags",
     "tagUpdatable": true,
     "taggable": true

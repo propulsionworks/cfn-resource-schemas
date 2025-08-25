@@ -1,6 +1,6 @@
 {
   "$id": "aws-entityresolution-idmappingworkflow",
-  "$integrity": "sha512-/taiU3TGkj4nxwqeQfjy59Qw8fSKYKHKmOtGgA4ts/qT6SIeZgWEbaRF7/Sowx/Y9jwn5Kq1rc9IODlHuqmkiA==",
+  "$integrity": "sha512-NMMV4Mnx0YsS7IIfHI3T8A57IpnAygwZRtuxZVfOaDz/o5XDfgHHB8o+dw6rR4+oZIkv4jL7fkEeGBeTR9v2ag==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/WorkflowName"
@@ -26,6 +26,21 @@
       "minLength": 0,
       "pattern": "^[a-zA-Z_0-9-]*$",
       "type": "string"
+    },
+    "IdMappingIncrementalRunConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "IncrementalRunType": {
+          "enum": [
+            "ON_DEMAND"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "IncrementalRunType"
+      ],
+      "type": "object"
     },
     "IdMappingRuleBasedProperties": {
       "additionalProperties": false,
@@ -288,6 +303,9 @@
     "Description": {
       "$ref": "#/definitions/Description",
       "description": "The description of the IdMappingWorkflow"
+    },
+    "IdMappingIncrementalRunConfig": {
+      "$ref": "#/definitions/IdMappingIncrementalRunConfig"
     },
     "IdMappingTechniques": {
       "$ref": "#/definitions/IdMappingTechniques"

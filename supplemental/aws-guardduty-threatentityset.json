@@ -2,61 +2,81 @@
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#aws-resource-guardduty-threatentityset-return-values",
     "properties": {
-      "Id": {},
-      "Status": {},
-      "CreatedAt": {},
-      "UpdatedAt": {},
-      "ErrorDetails": {}
+      "Id": {
+        "description": "Returns the unique ID associated with the newly created threat entity set."
+      },
+      "Status": {
+        "description": "The status of your `ThreatEntitySet` . For information about valid status values, see [Understanding list statuses](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_upload-lists.html#guardduty-entity-list-statuses) in the *Amazon GuardDuty User Guide* ."
+      },
+      "CreatedAt": {
+        "description": "The timestamp when the threat entity set was created."
+      },
+      "UpdatedAt": {
+        "description": "The timestamp when the threat entity set was updated."
+      },
+      "ErrorDetails": {
+        "description": "The details associated with the *Error* status of your threat entity list."
+      }
     }
   },
   "definitions": {
     "TagItem": {
       "properties": {
         "Key": {
+          "description": "The tag key.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-threatentityset-tagitem.html#cfn-guardduty-threatentityset-tagitem-key"
         },
         "Value": {
+          "description": "The tag value. This is optional.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-threatentityset-tagitem.html#cfn-guardduty-threatentityset-tagitem-value"
         }
       },
+      "description": "Describes a tag. For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-guardduty-threatentityset-tagitem.html"
     }
   },
-  "description": "Resource Type definition for AWS::GuardDuty::ThreatEntitySet",
+  "description": "The `AWS::GuardDuty::ThreatEntitySet` resource helps you create a list of known malicious IP addresses and domain names in your AWS environment. Once you activate this list, GuardDuty will use the entries in this list as an additional source of threat detection and generate findings when there is an activity associated with these known malicious IP addresses and domain names. GuardDuty continues to monitor independently of this custom threat entity set.\n\nOnly the users of the GuardDuty administrator account can manage this list. These settings automatically apply to the member accounts.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html",
   "id": "aws-guardduty-threatentityset",
   "properties": {
     "Activate": {
+      "description": "A boolean value that determines if GuardDuty can start using this list for custom threat detection. For GuardDuty to consider the entries in this list and generate findings based on associated activity, this list must be active.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-activate"
     },
     "CreatedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-createdat"
     },
     "DetectorId": {
+      "description": "The unique regional detector ID of the GuardDuty account for which you want to create a threat entity set.\n\nTo find the `detectorId` in the current Region, see the Settings page in the GuardDuty console, or run the [ListDetectors](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html) API.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-detectorid"
     },
     "ErrorDetails": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-errordetails"
     },
     "ExpectedBucketOwner": {
+      "description": "The AWS account ID that owns the Amazon S3 bucket specified in the *Location* field.\n\nWhether or not you provide the account ID for this optional field, GuardDuty validates that the account ID associated with the `DetectorId` owns the S3 bucket in the `Location` field. If GuardDuty finds that this S3 bucket doesn't belong to the specified account ID, you will get an error at the time of activating this list.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-expectedbucketowner"
     },
     "Format": {
+      "description": "The format of the file that contains the threat entity set. For information about supported formats, see [List formats](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_upload-lists.html#prepare_list) in the *Amazon GuardDuty User Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-format"
     },
     "Id": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-id"
     },
     "Location": {
+      "description": "The URI of the file that contains the threat entity set.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-location"
     },
     "Name": {
+      "description": "The user-friendly name to identify the threat entity set. Valid characters are alphanumeric, whitespace, dash (-), and underscores (_).",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-name"
     },
     "Status": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-status"
     },
     "Tags": {
+      "description": "The tags to be added to a new threat entity set resource. Each tag consists of a key and an optional value, both of which you define.\n\nFor more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-threatentityset.html#cfn-guardduty-threatentityset-tags"
     },
     "UpdatedAt": {

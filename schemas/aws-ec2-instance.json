@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-instance",
-  "$integrity": "sha512-O9mKfNRsTOiNkjyq+eaVyFCcVifOw4TJhaF7qNYONq9qQc/1iFBndloaw5Ak3Et6+yxk4Lr7qDgSndz4+UtImw==",
+  "$integrity": "sha512-7tQf+99c4HcmJgaNh07PG6CFpm4/9b3UD4Obp9hcRHciS/F4I+WX0OnzL5SSqldXfp8WfgcBikx0Bk4epRuwZQ==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
@@ -12,10 +12,10 @@
     "/properties/KernelId",
     "/properties/PrivateDnsNameOptions",
     "/properties/RamdiskId",
-    "/properties/SecurityGroupIds",
     "/properties/Tenancy",
     "/properties/UserData",
-    "/properties/BlockDeviceMappings"
+    "/properties/BlockDeviceMappings",
+    "/properties/SecurityGroupIds"
   ],
   "createOnlyProperties": [
     "/properties/AvailabilityZone",
@@ -632,7 +632,7 @@
       "type": "boolean"
     },
     "ElasticGpuSpecifications": {
-      "description": "An elastic GPU to associate with the instance.",
+      "description": "An elastic GPU to associate with the instance. Amazon Elastic Graphics is no longer available.",
       "insertionOrder": false,
       "items": {
         "$ref": "#/definitions/ElasticGpuSpecification"
@@ -641,7 +641,7 @@
       "uniqueItems": false
     },
     "ElasticInferenceAccelerators": {
-      "description": "An elastic inference accelerator to associate with the instance.",
+      "description": "An elastic inference accelerator to associate with the instance. Amazon Elastic Inference is no longer available.",
       "insertionOrder": false,
       "items": {
         "$ref": "#/definitions/ElasticInferenceAccelerator"

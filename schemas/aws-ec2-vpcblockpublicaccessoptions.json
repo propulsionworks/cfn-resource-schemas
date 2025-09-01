@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-vpcblockpublicaccessoptions",
-  "$integrity": "sha512-PTWfAst5WHLXdITZLyHeekG6kkAR2rHwtwOZL8w+T0m8AvRtFxehLYjoSFLNDpDGZPelkb7pbUYRADC1szr6rg==",
+  "$integrity": "sha512-oUsXuftSD0QcjVGmNHTMoxkxoL3kimMCdcdmrEejINOD/CnDybLUg49yk9JpY06fClsvrljbt8qyjZiQ1xn0uA==",
   "additionalProperties": false,
   "description": "Resource Type definition for AWS::EC2::VPCBlockPublicAccessOptions",
   "handlers": {
@@ -36,6 +36,10 @@
       "description": "The identifier for the specified AWS account.",
       "type": "string"
     },
+    "ExclusionsAllowed": {
+      "description": "Determines if exclusions are allowed. If you have enabled VPC BPA at the Organization level, exclusions may be not-allowed. Otherwise, they are allowed.",
+      "type": "string"
+    },
     "InternetGatewayBlockMode": {
       "description": "The desired Block Public Access mode for Internet Gateways in your account. We do not allow to create in a off mode as this is the default value",
       "enum": [
@@ -46,7 +50,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/AccountId"
+    "/properties/AccountId",
+    "/properties/ExclusionsAllowed"
   ],
   "required": [
     "InternetGatewayBlockMode"

@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-processingjob",
-  "$integrity": "sha512-0MAIDYn+/lQs1i8pRktyMkqfw95axkAejIbvi5A9i+VhbLWI28tLlkzDVGtY+SzVf7T7WsijGzC0TXJAgoex6w==",
+  "$integrity": "sha512-AOLblljBE/sGlCLikTCEwu1+Wymog9zkIkqPb6262WXNWNG/82xiAonYz79YpovrKz+YAr1/czU9ViqV/YN+pw==",
   "additionalIdentifiers": [
     [
       "/properties/ProcessingJobName"
@@ -35,7 +35,7 @@
             "type": "string"
           },
           "maxItems": 100,
-          "minItems": 1,
+          "minItems": 0,
           "type": "array",
           "uniqueItems": false
         },
@@ -49,7 +49,7 @@
             "type": "string"
           },
           "maxItems": 100,
-          "minItems": 1,
+          "minItems": 0,
           "type": "array",
           "uniqueItems": false
         },
@@ -713,7 +713,7 @@
             "type": "string"
           },
           "maxItems": 5,
-          "minItems": 1,
+          "minItems": 0,
           "type": "array",
           "uniqueItems": false
         },
@@ -727,7 +727,7 @@
             "type": "string"
           },
           "maxItems": 16,
-          "minItems": 1,
+          "minItems": 0,
           "type": "array",
           "uniqueItems": false
         }
@@ -743,6 +743,18 @@
   "handlers": {
     "create": {
       "permissions": [
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups",
+        "kms:CreateGrant",
+        "kms:Decrypt",
+        "kms:DescribeKey",
         "sagemaker:CreateProcessingJob",
         "sagemaker:DescribeProcessingJob",
         "sagemaker:AddTags",
@@ -752,6 +764,12 @@
     },
     "delete": {
       "permissions": [
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups",
         "sagemaker:StopProcessingJob",
         "sagemaker:DescribeProcessingJob",
         "sagemaker:ListTags",

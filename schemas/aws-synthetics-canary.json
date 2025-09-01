@@ -1,6 +1,6 @@
 {
   "$id": "aws-synthetics-canary",
-  "$integrity": "sha512-No6cPnM32pBH1w/1g4xcRMXFxZsQmtEdYoaNMc6cBvo8OPDAGz8GSI5MkwQNBtB72omE6hc/UAv92Bt1/KnkjA==",
+  "$integrity": "sha512-uS8yGHPjMs6arVQM9pCpRtGuMMRzT/KXYr9C+/YO7tTuL8WVMOryiGyfL5SXyPAvMpyPRqYykEEu3wT6JEb0Hw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -35,6 +35,25 @@
         "ScreenshotName"
       ],
       "type": "object"
+    },
+    "BrowserConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "BrowserType": {
+          "$ref": "#/definitions/BrowserType"
+        }
+      },
+      "required": [
+        "BrowserType"
+      ],
+      "type": "object"
+    },
+    "BrowserType": {
+      "enum": [
+        "CHROME",
+        "FIREFOX"
+      ],
+      "type": "string"
     },
     "Code": {
       "additionalProperties": false,
@@ -257,6 +276,9 @@
             "$ref": "#/definitions/BaseScreenshot"
           },
           "type": "array"
+        },
+        "BrowserType": {
+          "$ref": "#/definitions/BrowserType"
         }
       },
       "required": [
@@ -266,7 +288,8 @@
     }
   },
   "deprecatedProperties": [
-    "/properties/DeleteLambdaResourcesOnCanaryDeletion"
+    "/properties/DeleteLambdaResourcesOnCanaryDeletion",
+    "/properties/VisualReference"
   ],
   "description": "Resource Type definition for AWS::Synthetics::Canary",
   "handlers": {
@@ -367,6 +390,15 @@
       "pattern": "^(s3|S3)://",
       "type": "string"
     },
+    "BrowserConfigs": {
+      "description": "List of browser configurations for the canary",
+      "items": {
+        "$ref": "#/definitions/BrowserConfig"
+      },
+      "maxItems": 2,
+      "minItems": 1,
+      "type": "array"
+    },
     "Code": {
       "$ref": "#/definitions/Code",
       "description": "Provide the canary script source"
@@ -450,6 +482,15 @@
     "VisualReference": {
       "$ref": "#/definitions/VisualReference",
       "description": "Visual reference configuration for visual testing"
+    },
+    "VisualReferences": {
+      "description": "List of visual references for the canary",
+      "items": {
+        "$ref": "#/definitions/VisualReference"
+      },
+      "maxItems": 2,
+      "minItems": 1,
+      "type": "array"
     }
   },
   "readOnlyProperties": [
@@ -488,6 +529,7 @@
     "/properties/ResourcesToReplicateTags",
     "/properties/RunConfig/EnvironmentVariables",
     "/properties/VisualReference",
+    "/properties/VisualReferences",
     "/properties/DryRunAndUpdate"
   ]
 }

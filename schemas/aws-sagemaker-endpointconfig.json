@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-endpointconfig",
-  "$integrity": "sha512-KNCkc8yj8Beg1GvCXxYCFGmYyExZQXzBDNY47Z+Rcm2xH6JlYmyV6y3mmDg2GMGI6Mcj7/hKz9mwoQzUMo9Ulw==",
+  "$integrity": "sha512-JZdhRmNnStGiIrTBxt1CCm93ClMF4oqp1NtJc1ukTCzNNpVLrMV3YQ5OWw7BO9YbBzqB1aSLvZ0FJlcoA4P2bQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/KmsKeyId",
@@ -71,6 +71,18 @@
           "type": "string"
         },
         "S3OutputPath": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "CapacityReservationConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "CapacityReservationPreference": {
+          "type": "string"
+        },
+        "MlReservationArn": {
           "type": "string"
         }
       },
@@ -300,6 +312,9 @@
     "ProductionVariant": {
       "additionalProperties": false,
       "properties": {
+        "CapacityReservationConfig": {
+          "$ref": "#/definitions/CapacityReservationConfig"
+        },
         "ContainerStartupHealthCheckTimeoutInSeconds": {
           "type": "integer"
         },

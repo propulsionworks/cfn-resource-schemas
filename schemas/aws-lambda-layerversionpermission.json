@@ -1,6 +1,6 @@
 {
   "$id": "aws-lambda-layerversionpermission",
-  "$integrity": "sha512-Ww4RHM2gmKpb/dhcq8sp6kkMg0JGXFILzvKr5eWuU6ig2TgaQGoOM+qS2eQ6XmVqkq0DupRqQMWo/m+WZVXYLQ==",
+  "$integrity": "sha512-DIX21887PbibJSTC+q8d5FymTj7E22YV9UgOEkFyXxZR1xNlIwaziAKyf9YJf3sFpZAIIAytZWMRPkDYb133EA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/OrganizationId",
@@ -58,7 +58,7 @@
     }
   },
   "propertyTransform": {
-    "/properties/Principal": "Principal $OR $join([\".*AWS.*[arn:aws:iam::\", Principal, \":root].*\"]) $OR $join([\".*AWS.*[\", Principal, \"].*\"])"
+    "/properties/Principal": "Principal $OR $join([\"^arn:aws[a-zA-Z-]*:iam::\",Principal,\":[a-zA-Z-]*\"]) $OR $join([\".*AWS.*[\", Principal, \"].*\"]) $OR $replace(Principal, /^arn:aws-([a-zA-Z]+)(-)?([a-zA-Z]+)?:/, \"arn:aws[a-zA-Z-]*:\")"
   },
   "readOnlyProperties": [
     "/properties/Id"

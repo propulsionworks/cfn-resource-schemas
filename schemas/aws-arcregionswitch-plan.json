@@ -1,6 +1,6 @@
 {
   "$id": "aws-arcregionswitch-plan",
-  "$integrity": "sha512-+/rMxsXhyIV2ffRaCiSaxPeD0bSCtlf4pO7sC/AIltohsXJEecdhnGdVs10tg0t6pGspSCs1kuGtnrhrtrs5sg==",
+  "$integrity": "sha512-Ta40By/g9CupXTuMWfVJupdDh7KXv2ZUbeMHrbfPHOBFXceyrB7NKdUZt33McsNp1Hc/Q/m34SS8/Uyzv6dsvw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -593,6 +593,18 @@
       },
       "type": "array"
     },
+    "HealthCheckRecordNames": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "HealthCheckRegions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "HealthCheckState": {
       "additionalProperties": false,
       "properties": {
@@ -604,6 +616,14 @@
         }
       },
       "type": "object"
+    },
+    "HealthChecks": {
+      "items": {
+        "$ref": "#/definitions/HealthCheckState"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
     },
     "HostedZoneIds": {
       "items": {
@@ -709,12 +729,6 @@
       ],
       "type": "object"
     },
-    "RecordNames": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
-    },
     "RecoveryApproach": {
       "enum": [
         "activeActive",
@@ -770,12 +784,6 @@
       },
       "type": "object"
     },
-    "Regions": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
-    },
     "Route53HealthCheckConfiguration": {
       "additionalProperties": false,
       "properties": {
@@ -813,14 +821,6 @@
         "RecordName"
       ],
       "type": "object"
-    },
-    "Route53HealthChecks": {
-      "items": {
-        "$ref": "#/definitions/HealthCheckState"
-      },
-      "maxItems": 2,
-      "minItems": 2,
-      "type": "array"
     },
     "Route53ResourceRecordSet": {
       "additionalProperties": false,
@@ -1050,7 +1050,7 @@
       "additionalProperties": false,
       "patternProperties": {
         ".+": {
-          "$ref": "#/definitions/Route53HealthChecks"
+          "$ref": "#/definitions/HealthChecks"
         }
       },
       "type": "object"
@@ -1096,10 +1096,10 @@
           "$ref": "#/definitions/HostedZoneIds"
         },
         "RecordNames": {
-          "$ref": "#/definitions/RecordNames"
+          "$ref": "#/definitions/HealthCheckRecordNames"
         },
         "Regions": {
-          "$ref": "#/definitions/Regions"
+          "$ref": "#/definitions/HealthCheckRegions"
         }
       },
       "type": "object"

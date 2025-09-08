@@ -12,7 +12,7 @@
         "description": "The generated unique ID of the compute node group."
       },
       "Status": {
-        "description": "The provisioning status of the compute node group. The provisioning status doesn't indicate the overall health of the compute node group."
+        "description": "The provisioning status of the compute node group.\n\n> The provisioning status doesn't indicate the overall health of the compute node group. > The resource enters the `SUSPENDING` and `SUSPENDED` states when the scheduler is beyond end of life and we have suspended the cluster. When in these states, you can't use the cluster. The cluster controller is down and all compute instances are terminated. The resources still count toward your service quotas. You can delete a resource if its status is `SUSPENDED` . For more information, see [Frequently asked questions about Slurm versions in AWS PCS](https://docs.aws.amazon.com//pcs/latest/userguide/slurm-versions_faq.html) in the *AWS PCS User Guide* ."
       }
     }
   },
@@ -28,7 +28,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-computenodegroup-errorinfo.html#cfn-pcs-computenodegroup-errorinfo-message"
         }
       },
-      "description": "The list of errors that occurred during compute node group provisioning.",
+      "description": "An error that occurred during resource creation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-computenodegroup-errorinfo.html"
     },
     "InstanceConfig": {
@@ -44,7 +44,7 @@
     "SlurmCustomSetting": {
       "properties": {
         "ParameterName": {
-          "description": "AWS PCS supports configuration of the following Slurm parameters:\n\n- For *clusters*\n\n- [`Prolog`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Prolog_1)\n- [`Epilog`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Epilog_1)\n- [`SelectTypeParameters`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_SelectTypeParameters)\n- For *compute node groups*\n\n- [`Weight`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Weight)\n- [`RealMemory`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Weight)",
+          "description": "AWS PCS supports configuration of the following Slurm parameters:\n\n- For *clusters*\n\n- [`Prolog`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Prolog_1)\n- [`Epilog`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Epilog_1)\n- [`SelectTypeParameters`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_SelectTypeParameters)\n- [`AccountingStorageEnforce`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_AccountingStorageEnforce)\n\n> AWS PCS supports a subset of the options for `AccountingStorageEnforce` . For more information, see [Slurm accounting in AWS PCS](https://docs.aws.amazon.com//pcs/latest/userguide/slurm-accounting.html) in the *AWS PCS User Guide* .\n- For *compute node groups*\n\n- [`Weight`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Weight)\n- [`RealMemory`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Weight)",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-computenodegroup-slurmcustomsetting.html#cfn-pcs-computenodegroup-slurmcustomsetting-parametername"
         },
         "ParameterValue": {
@@ -60,7 +60,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-computenodegroup-subnetid.html"
     }
   },
-  "description": "The `AWS::PCS::ComputeNodeGroup` resource creates an AWS PCS compute node group.",
+  "description": "Creates an AWS PCS compute node group resource. For more information, see [Creating a compute node group in AWS PCS](https://docs.aws.amazon.com/pcs/latest/userguide/working-with_cng_create.html) in the *AWS PCS User Guide* .",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html",
   "id": "aws-pcs-computenodegroup",
   "properties": {
@@ -83,14 +83,14 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-errorinfo"
     },
     "IamInstanceProfileArn": {
-      "description": "The Amazon Resource Name (ARN) of the IAM instance profile used to pass an IAM role when launching EC2 instances. The role contained in your instance profile must have pcs:RegisterComputeNodeGroupInstance permissions attached to provision instances correctly.",
+      "description": "The Amazon Resource Name (ARN) of the IAM instance profile used to pass an IAM role when launching EC2 instances. The role contained in your instance profile must have the `pcs:RegisterComputeNodeGroupInstance` permission and the role name must start with `AWSPCS` or must have the path `/aws-pcs/` . For more information, see [IAM instance profiles for AWS PCS](https://docs.aws.amazon.com//pcs/latest/userguide/security-instance-profiles.html) in the *AWS PCS User Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-iaminstanceprofilearn"
     },
     "Id": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-id"
     },
     "InstanceConfigs": {
-      "description": "A list of EC2 instance configurations that AWS PCS can provision in the compute node group.",
+      "description": "A list of EC2 instance configurations that AWS AWS PCS can provision in the compute node group.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-instanceconfigs"
     },
     "Name": {
@@ -98,7 +98,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-name"
     },
     "PurchaseOption": {
-      "description": "Specifies how EC2 instances are purchased on your behalf. AWS PCS supports On-Demand and Spot instances. For more information, see Instance purchasing options in the Amazon Elastic Compute Cloud User Guide. If you don't provide this option, it defaults to On-Demand.",
+      "description": "Specifies how EC2 instances are purchased on your behalf. AWS AWS PCS supports On-Demand and Spot instances. For more information, see [Instance purchasing options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html) in the *Amazon Elastic Compute Cloud User Guide* . If you don't provide this option, it defaults to On-Demand.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-purchaseoption"
     },
     "ScalingConfiguration": {
@@ -110,7 +110,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-slurmconfiguration"
     },
     "SpotOptions": {
-      "description": "Additional configuration when you specify `SPOT` as the `purchaseOption` .",
+      "description": "Additional configuration when you specify `SPOT` as the `purchaseOption` for the `CreateComputeNodeGroup` API action.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-spotoptions"
     },
     "Status": {

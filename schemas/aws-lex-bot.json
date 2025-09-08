@@ -1,6 +1,6 @@
 {
   "$id": "aws-lex-bot",
-  "$integrity": "sha512-0NidGaXtjtYRzPCWCyM06GaWLescEOLWvCQpAU7ktf+57no6SLlp8g+YCNpRqF+GJ6ZHeorfAwasAWoYSrZq4w==",
+  "$integrity": "sha512-7fvqqN1YIhyxcg1yPphJmQ6KV0uihV4DyzwG3djv/byOjt9QaxxwPbIXrspv3UBzBFxFtrR7p233EejIdJymsg==",
   "additionalProperties": false,
   "definitions": {
     "AdvancedRecognitionSetting": {
@@ -689,6 +689,20 @@
       },
       "required": [
         "EnableCodeHookInvocation"
+      ],
+      "type": "object"
+    },
+    "ErrorLogSettings": {
+      "additionalProperties": false,
+      "description": "Error logs configuration for this bot. This is used by Amazon Lex to emit any errors that occur during Lex Runtime API invocations.",
+      "properties": {
+        "Enabled": {
+          "description": "Specify whether error log feature has been enabled",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Enabled"
       ],
       "type": "object"
     },
@@ -2461,6 +2475,18 @@
     },
     "Description": {
       "$ref": "#/definitions/Description"
+    },
+    "ErrorLogSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "Enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Enabled"
+      ],
+      "type": "object"
     },
     "Id": {
       "$ref": "#/definitions/Id"

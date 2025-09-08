@@ -9,7 +9,7 @@
         "description": "The warehouse location of the table."
       },
       "VersionToken": {
-        "description": "The version token of the table"
+        "description": "The version token of the table."
       }
     }
   },
@@ -17,7 +17,7 @@
     "Compaction": {
       "properties": {
         "Status": {
-          "description": "Indicates whether the Compaction maintenance action is enabled.",
+          "description": "The status of the maintenance configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-compaction.html#cfn-s3tables-table-compaction-status"
         },
         "TargetFileSizeMB": {
@@ -25,13 +25,13 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-compaction.html#cfn-s3tables-table-compaction-targetfilesizemb"
         }
       },
-      "description": "Settings governing the Compaction maintenance action. Contains details about the compaction settings for an Iceberg table.",
+      "description": "Contains details about the compaction settings for an Iceberg table.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-compaction.html"
     },
     "IcebergMetadata": {
       "properties": {
         "IcebergSchema": {
-          "description": "Contains details about the schema for an Iceberg table",
+          "description": "The schema for an Iceberg table.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-icebergmetadata.html#cfn-s3tables-table-icebergmetadata-icebergschema"
         }
       },
@@ -41,7 +41,7 @@
     "IcebergSchema": {
       "properties": {
         "SchemaFieldList": {
-          "description": "Contains details about the schema for an Iceberg table",
+          "description": "The schema fields for the table",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-icebergschema.html#cfn-s3tables-table-icebergschema-schemafieldlist"
         }
       },
@@ -89,11 +89,11 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-snapshotmanagement.html#cfn-s3tables-table-snapshotmanagement-minsnapshotstokeep"
         },
         "Status": {
-          "description": "Indicates whether the SnapshotManagement maintenance action is enabled.",
+          "description": "The status of the maintenance configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-snapshotmanagement.html#cfn-s3tables-table-snapshotmanagement-status"
         }
       },
-      "description": "Contains details about the snapshot management settings for an Iceberg table. A snapshot is expired when it exceeds MinSnapshotsToKeep and MaxSnapshotAgeHours.",
+      "description": "Contains details about the snapshot management settings for an Iceberg table. The oldest snapshot expires when its age exceeds the `maxSnapshotAgeHours` and the total number of snapshots exceeds the value for the minimum number of snapshots to keep `minSnapshotsToKeep` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-snapshotmanagement.html"
     },
     "TableARN": {
@@ -121,12 +121,12 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-table-withoutmetadata.html"
     }
   },
-  "description": "Creates a new table associated with the given namespace in a table bucket. For more information, see [Creating an Amazon S3 table](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-create.html) in the *Amazon Simple Storage Service User Guide* .\n\n- **Permissions** - - You must have the `s3tables:CreateTable` permission to use this operation.\n- If you use this operation with the optional `metadata` request parameter you must have the `s3tables:PutTableData` permission.\n- If you use this operation with the optional `encryptionConfiguration` request parameter you must have the `s3tables:PutTableEncryption` permission.\n\n> Additionally, If you choose SSE-KMS encryption you must grant the S3 Tables maintenance principal access to your KMS key. For more information, see [Permissions requirements for S3 Tables SSE-KMS encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-kms-permissions.html) .",
+  "description": "Creates a new table associated with the given namespace in a table bucket. For more information, see [Creating an Amazon S3 table](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-create.html) in the *Amazon Simple Storage Service User Guide* .\n\n- **Permissions** - - You must have the `s3tables:CreateTable` permission to use this operation.\n- If you use this operation with the optional `metadata` request parameter you must have the `s3tables:PutTableData` permission.\n- If you use this operation with the optional `encryptionConfiguration` request parameter you must have the `s3tables:PutTableEncryption` permission.\n\n> Additionally, If you choose SSE-KMS encryption you must grant the S3 Tables maintenance principal access to your KMS key. For more information, see [Permissions requirements for S3 Tables SSE-KMS encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-kms-permissions.html) .\n- **Cloud Development Kit** - To use S3 Tables AWS CDK constructs, add the `@aws-cdk/aws-s3tables-alpha` dependency with one of the following options:\n\n- NPM: `npm i @aws-cdk/aws-s3tables-alpha`\n- Yarn: `yarn add @aws-cdk/aws-s3tables-alpha`",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html",
   "id": "aws-s3tables-table",
   "properties": {
     "Compaction": {
-      "description": "Settings governing the Compaction maintenance action. Contains details about the compaction settings for an Iceberg table.",
+      "description": "Contains details about the compaction settings for an Iceberg table.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html#cfn-s3tables-table-compaction"
     },
     "IcebergMetadata": {
@@ -138,18 +138,18 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html#cfn-s3tables-table-namespace"
     },
     "OpenTableFormat": {
-      "description": "Format of the table.",
+      "description": "The format of the table.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html#cfn-s3tables-table-opentableformat"
     },
     "SnapshotManagement": {
-      "description": "Contains details about the snapshot management settings for an Iceberg table. A snapshot is expired when it exceeds MinSnapshotsToKeep and MaxSnapshotAgeHours.",
+      "description": "Contains details about the Iceberg snapshot management settings for the table.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html#cfn-s3tables-table-snapshotmanagement"
     },
     "TableARN": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html#cfn-s3tables-table-tablearn"
     },
     "TableBucketARN": {
-      "description": "The Amazon Resource Name (ARN) of the specified table bucket.",
+      "description": "The Amazon Resource Name (ARN) of the table bucket to create the table in.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html#cfn-s3tables-table-tablebucketarn"
     },
     "TableName": {
@@ -163,7 +163,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html#cfn-s3tables-table-warehouselocation"
     },
     "WithoutMetadata": {
-      "description": "Indicates that you don't want to specify a schema for the table. This property is mutually exclusive to 'IcebergMetadata', and its only possible value is 'Yes'.",
+      "description": "Indicates that you don't want to specify a schema for the table. This property is mutually exclusive to `IcebergMetadata` , and its only possible value is `Yes` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html#cfn-s3tables-table-withoutmetadata"
     }
   },

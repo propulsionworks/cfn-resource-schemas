@@ -15,7 +15,7 @@
         "description": "The generated unique ID of the cluster."
       },
       "Status": {
-        "description": "The provisioning status of the cluster. The provisioning status doesn't indicate the overall health of the cluster."
+        "description": "The provisioning status of the cluster.\n\n> The provisioning status doesn't indicate the overall health of the cluster. > The resource enters the `SUSPENDING` and `SUSPENDED` states when the scheduler is beyond end of life and we have suspended the cluster. When in these states, you can't use the cluster. The cluster controller is down and all compute instances are terminated. The resources still count toward your service quotas. You can delete a resource if its status is `SUSPENDED` . For more information, see [Frequently asked questions about Slurm versions in AWS PCS](https://docs.aws.amazon.com//pcs/latest/userguide/slurm-versions_faq.html) in the *AWS PCS User Guide* ."
       }
     }
   },
@@ -23,7 +23,7 @@
     "Accounting": {
       "properties": {
         "DefaultPurgeTimeInDays": {
-          "description": "The default value for all purge settings for `slurmdbd.conf` . For more information, see the [slurmdbd.conf documentation at SchedMD](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurmdbd.conf.html) .\n\nThe default value `-1` means there is no purge time and records persist as long as the cluster exists.\n\n> `0` isn't a valid value.",
+          "description": "The default value for all purge settings for `slurmdbd.conf` . For more information, see the [slurmdbd.conf documentation at SchedMD](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurmdbd.conf.html) .\n\nThe default value for `defaultPurgeTimeInDays` is `-1` .\n\nA value of `-1` means there is no purge time and records persist as long as the cluster exists.\n\n> `0` isn't a valid value.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-accounting.html#cfn-pcs-cluster-accounting-defaultpurgetimeindays"
         },
         "Mode": {
@@ -31,13 +31,13 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-accounting.html#cfn-pcs-cluster-accounting-mode"
         }
       },
-      "description": "The accounting configuration includes configurable settings for Slurm accounting. It's a property of the `ClusterSlurmConfiguration` object.",
+      "description": "The accounting configuration includes configurable settings for Slurm accounting.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-accounting.html"
     },
     "AuthKey": {
       "properties": {
         "SecretArn": {
-          "description": "The Amazon Resource Name (ARN) of the shared Slurm key.",
+          "description": "The Amazon Resource Name (ARN) of the the shared Slurm key.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-authkey.html#cfn-pcs-cluster-authkey-secretarn"
         },
         "SecretVersion": {
@@ -55,7 +55,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-endpoint.html#cfn-pcs-cluster-endpoint-ipv6address"
         },
         "Port": {
-          "description": "The endpoint's connection port number.",
+          "description": "The endpoint's connection port number.\n\nExample: `1234`",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-endpoint.html#cfn-pcs-cluster-endpoint-port"
         },
         "PrivateIpAddress": {
@@ -63,7 +63,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-endpoint.html#cfn-pcs-cluster-endpoint-privateipaddress"
         },
         "PublicIpAddress": {
-          "description": "The endpoint's public IP address.",
+          "description": "The endpoint's public IP address.\n\nExample: `192.0.2.1`",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-endpoint.html#cfn-pcs-cluster-endpoint-publicipaddress"
         },
         "Type": {
@@ -85,7 +85,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-errorinfo.html#cfn-pcs-cluster-errorinfo-message"
         }
       },
-      "description": "An error that occurred during resource provisioning.",
+      "description": "An error that occurred during resource creation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-errorinfo.html"
     },
     "SecurityGroupId": {
@@ -95,7 +95,7 @@
     "SlurmCustomSetting": {
       "properties": {
         "ParameterName": {
-          "description": "AWS PCS supports configuration of the following Slurm parameters:\n\n- For *clusters*\n\n- [`Prolog`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Prolog_1)\n- [`Epilog`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Epilog_1)\n- [`SelectTypeParameters`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_SelectTypeParameters)\n- For *compute node groups*\n\n- [`Weight`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Weight)\n- [`RealMemory`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Weight)",
+          "description": "AWS PCS supports configuration of the following Slurm parameters:\n\n- For *clusters*\n\n- [`Prolog`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Prolog_1)\n- [`Epilog`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Epilog_1)\n- [`SelectTypeParameters`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_SelectTypeParameters)\n- [`AccountingStorageEnforce`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_AccountingStorageEnforce)\n\n> AWS PCS supports a subset of the options for `AccountingStorageEnforce` . For more information, see [Slurm accounting in AWS PCS](https://docs.aws.amazon.com//pcs/latest/userguide/slurm-accounting.html) in the *AWS PCS User Guide* .\n- For *compute node groups*\n\n- [`Weight`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Weight)\n- [`RealMemory`](https://docs.aws.amazon.com/https://slurm.schedmd.com/slurm.conf.html#OPT_Weight)",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-slurmcustomsetting.html#cfn-pcs-cluster-slurmcustomsetting-parametername"
         },
         "ParameterValue": {
@@ -122,7 +122,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pcs-cluster-tag.html"
     }
   },
-  "description": "The `AWS::PCS::Cluster` resource creates an AWS PCS cluster.",
+  "description": "Creates an AWS PCS cluster resource. For more information, see [Creating a cluster in AWS Parallel Computing Service](https://docs.aws.amazon.com/pcs/latest/userguide/working-with_clusters_create.html) in the *AWS PCS User Guide* .",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-cluster.html",
   "id": "aws-pcs-cluster",
   "properties": {
@@ -151,7 +151,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-cluster.html#cfn-pcs-cluster-scheduler"
     },
     "Size": {
-      "description": "The size of the cluster.",
+      "description": "The size of the cluster.\n\n- `SMALL` : 32 compute nodes and 256 jobs\n- `MEDIUM` : 512 compute nodes and 8192 jobs\n- `LARGE` : 2048 compute nodes and 16,384 jobs",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-cluster.html#cfn-pcs-cluster-size"
     },
     "SlurmConfiguration": {

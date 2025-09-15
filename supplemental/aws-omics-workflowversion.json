@@ -22,6 +22,42 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-accelerators.html"
     },
+    "DefinitionRepository": {
+      "properties": {
+        "connectionArn": {
+          "description": "The Amazon Resource Name (ARN) of the connection to the source code repository.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-definitionrepository.html#cfn-omics-workflowversion-definitionrepository-connectionarn"
+        },
+        "excludeFilePatterns": {
+          "description": "A list of file patterns to exclude when retrieving the workflow definition from the repository.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-definitionrepository.html#cfn-omics-workflowversion-definitionrepository-excludefilepatterns"
+        },
+        "fullRepositoryId": {
+          "description": "The full repository identifier, including the repository owner and name. For example, 'repository-owner/repository-name'.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-definitionrepository.html#cfn-omics-workflowversion-definitionrepository-fullrepositoryid"
+        },
+        "sourceReference": {
+          "description": "The source reference for the repository, such as a branch name, tag, or commit ID.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-definitionrepository.html#cfn-omics-workflowversion-definitionrepository-sourcereference"
+        }
+      },
+      "description": "Contains information about a source code repository that hosts the workflow definition files.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-definitionrepository.html"
+    },
+    "SourceReference": {
+      "properties": {
+        "type": {
+          "description": "The type of source reference, such as branch, tag, or commit.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-sourcereference.html#cfn-omics-workflowversion-sourcereference-type"
+        },
+        "value": {
+          "description": "The value of the source reference, such as the branch name, tag name, or commit ID.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-sourcereference.html#cfn-omics-workflowversion-sourcereference-value"
+        }
+      },
+      "description": "Contains information about the source reference in a code repository, such as a branch, tag, or commit.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-sourcereference.html"
+    },
     "StorageType": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-omics-workflowversion-storagetype.html"
@@ -74,6 +110,10 @@
     "CreationTime": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-creationtime"
     },
+    "DefinitionRepository": {
+      "description": "Contains information about a source code repository that hosts the workflow definition files.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-definitionrepository"
+    },
     "DefinitionUri": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-definitionuri"
     },
@@ -89,6 +129,10 @@
     },
     "ParameterTemplate": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-parametertemplate"
+    },
+    "ParameterTemplatePath": {
+      "description": "Path to the primary workflow parameter template JSON file inside the repository",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-parametertemplatepath"
     },
     "Status": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-status"
@@ -119,6 +163,18 @@
     "WorkflowId": {
       "description": "The workflow's ID.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-workflowid"
+    },
+    "readmeMarkdown": {
+      "description": "The markdown content for the workflow's README file. This provides documentation and usage information for users of the workflow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-readmemarkdown"
+    },
+    "readmePath": {
+      "description": "The path to the workflow README markdown file within the repository. This file provides documentation and usage information for the workflow. If not specified, the README.md file from the root directory of the repository will be used.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-readmepath"
+    },
+    "readmeUri": {
+      "description": "The S3 URI of the README file for the workflow. This file provides documentation and usage information for the workflow. The S3 URI must begin with s3://USER-OWNED-BUCKET/. The requester must have access to the S3 bucket and object. The max README content length is 500 KiB.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html#cfn-omics-workflowversion-readmeuri"
     }
   },
   "typeName": "AWS::Omics::WorkflowVersion"

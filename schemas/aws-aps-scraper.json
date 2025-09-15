@@ -1,11 +1,39 @@
 {
   "$id": "aws-aps-scraper",
-  "$integrity": "sha512-Y9eV7YXfH+t7XPq/aNYjdG8pdNrbjOYZF9Kf76HUKa+0gdekgLAn0MOHEnzwXG4EMiNyyfTqvwHiZXFQ6CjvDA==",
+  "$integrity": "sha512-bsQSiOXmFXo6ihrJIfTNWJ74m1nsPT6IVGhjolXLs+dxYgvWaJm3bYnj2GRwvfpT3lve4vwmmNU2VYcW3AF29Q==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Source"
   ],
   "definitions": {
+    "CloudWatchLogDestination": {
+      "additionalProperties": false,
+      "description": "Represents a cloudwatch logs destination for scraper logging",
+      "properties": {
+        "LogGroupArn": {
+          "description": "ARN of the CloudWatch log group",
+          "maxLength": 512,
+          "minLength": 0,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ComponentConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "Options": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[A-Za-z0-9]+$": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "Destination": {
       "additionalProperties": false,
       "description": "Scraper metrics destination",
@@ -64,6 +92,62 @@
         "ConfigurationBlob": {
           "description": "Prometheus compatible scrape configuration in base64 encoded blob format",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ScraperComponent": {
+      "additionalProperties": false,
+      "properties": {
+        "Config": {
+          "$ref": "#/definitions/ComponentConfig"
+        },
+        "Type": {
+          "$ref": "#/definitions/ScraperComponentType"
+        }
+      },
+      "required": [
+        "Type"
+      ],
+      "type": "object"
+    },
+    "ScraperComponentType": {
+      "description": "Type of scraper component",
+      "enum": [
+        "SERVICE_DISCOVERY",
+        "COLLECTOR",
+        "EXPORTER"
+      ],
+      "type": "string"
+    },
+    "ScraperLoggingConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for scraper logging",
+      "properties": {
+        "LoggingDestination": {
+          "$ref": "#/definitions/ScraperLoggingDestination"
+        },
+        "ScraperComponents": {
+          "items": {
+            "$ref": "#/definitions/ScraperComponent"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "ScraperComponents",
+        "LoggingDestination"
+      ],
+      "type": "object"
+    },
+    "ScraperLoggingDestination": {
+      "additionalProperties": false,
+      "description": "Destination for scraper logging",
+      "properties": {
+        "CloudWatchLogs": {
+          "$ref": "#/definitions/CloudWatchLogDestination"
         }
       },
       "type": "object"
@@ -153,6 +237,7 @@
     "create": {
       "permissions": [
         "aps:CreateScraper",
+        "aps:UpdateScraperLoggingConfiguration",
         "aps:DescribeScraper",
         "aps:DescribeWorkspace",
         "aps:TagResource",
@@ -162,7 +247,11 @@
         "ec2:DescribeSubnets",
         "ec2:DescribeSecurityGroups",
         "iam:CreateServiceLinkedRole",
-        "iam:PassRole"
+        "iam:PassRole",
+        "logs:CreateLogDelivery",
+        "logs:GetLogDelivery",
+        "logs:ListLogDeliveries",
+        "logs:PutResourcePolicy"
       ]
     },
     "delete": {
@@ -170,11 +259,13 @@
         "aps:DeleteScraper",
         "aps:DescribeScraper",
         "aps:DescribeWorkspace",
+        "aps:DeleteScraperLoggingConfiguration",
         "eks:AssociateAccessPolicy",
         "eks:DescribeCluster",
         "ec2:DescribeSubnets",
         "ec2:DescribeSecurityGroups",
-        "iam:DeleteServiceLinkedRole"
+        "iam:DeleteServiceLinkedRole",
+        "logs:DeleteLogDelivery"
       ]
     },
     "list": {
@@ -186,6 +277,7 @@
     "read": {
       "permissions": [
         "aps:DescribeScraper",
+        "aps:DescribeScraperLoggingConfiguration",
         "aps:ListTagsForResource"
       ]
     },
@@ -195,10 +287,17 @@
         "aps:DescribeScraper",
         "aps:UpdateScraper",
         "aps:DescribeWorkspace",
+        "aps:DescribeScraperLoggingConfiguration",
+        "aps:DeleteScraperLoggingConfiguration",
+        "aps:UpdateScraperLoggingConfiguration",
         "aps:TagResource",
         "aps:UntagResource",
         "aps:ListTagsForResource",
-        "iam:PassRole"
+        "iam:PassRole",
+        "logs:CreateLogDelivery",
+        "logs:GetLogDelivery",
+        "logs:ListLogDeliveries",
+        "logs:PutResourcePolicy"
       ]
     }
   },
@@ -215,7 +314,7 @@
     },
     "Arn": {
       "description": "Scraper ARN.",
-      "pattern": "^arn:(aws|aws-us-gov|aws-cn):aps:(af|ap|ca|eu|me|sa|us)-(central|north|(north(?:east|west))|south|south(?:east|west)|east|west)-[0-9]+:[0-9]+:scraper/s-[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$",
+      "pattern": "^arn:(aws|aws-us-gov|aws-cn):aps:[a-z0-9-]+:[0-9]+:scraper/s-[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$",
       "type": "string"
     },
     "Destination": {
@@ -240,6 +339,9 @@
       "minLength": 1,
       "pattern": "^s-[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$",
       "type": "string"
+    },
+    "ScraperLoggingConfiguration": {
+      "$ref": "#/definitions/ScraperLoggingConfiguration"
     },
     "Source": {
       "$ref": "#/definitions/Source"

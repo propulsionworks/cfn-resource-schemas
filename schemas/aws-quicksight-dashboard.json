@@ -1,6 +1,6 @@
 {
   "$id": "aws-quicksight-dashboard",
-  "$integrity": "sha512-Cgy7JFArrqVH1mU6Xz59TAsRoNOsUE8O3fejgNCyNH4dBZ4ntOkOs7ICF3+3OUZEtp5lZ+75QEMebPRVC83kIQ==",
+  "$integrity": "sha512-pLHkcC1T7LOmtjWwnkZA/nZ3QQwUG803dLRl7Ek2DFGh1lvoBLsvTT5P3xYm0A371zHV95etp0DEEP+/pQx1EQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AwsAccountId",
@@ -160,6 +160,17 @@
     "AssetOptions": {
       "additionalProperties": false,
       "properties": {
+        "ExcludedDataSetArns": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 0,
+          "type": "array"
+        },
+        "QBusinessInsightsStatus": {
+          "$ref": "#/definitions/QBusinessInsightsStatus"
+        },
         "Timezone": {
           "type": "string"
         },
@@ -2138,6 +2149,9 @@
         "DataPointTooltipOption": {
           "$ref": "#/definitions/DataPointTooltipOption"
         },
+        "DataQAEnabledOption": {
+          "$ref": "#/definitions/DataQAEnabledOption"
+        },
         "ExportToCSVOption": {
           "$ref": "#/definitions/ExportToCSVOption"
         },
@@ -2607,6 +2621,15 @@
     "DataPointTooltipOption": {
       "additionalProperties": false,
       "description": "<p>The data point tooltip options.</p>",
+      "properties": {
+        "AvailabilityStatus": {
+          "$ref": "#/definitions/DashboardBehavior"
+        }
+      },
+      "type": "object"
+    },
+    "DataQAEnabledOption": {
+      "additionalProperties": false,
       "properties": {
         "AvailabilityStatus": {
           "$ref": "#/definitions/DashboardBehavior"
@@ -9115,6 +9138,13 @@
         }
       },
       "type": "object"
+    },
+    "QBusinessInsightsStatus": {
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "type": "string"
     },
     "RadarChartAggregatedFieldWells": {
       "additionalProperties": false,

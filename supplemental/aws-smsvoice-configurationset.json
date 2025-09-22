@@ -2,7 +2,9 @@
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html#aws-resource-smsvoice-configurationset-return-values",
     "properties": {
-      "Arn": {}
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the ConfigurationSet."
+      }
     }
   },
   "definitions": {
@@ -17,33 +19,37 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-cloudwatchlogsdestination.html#cfn-smsvoice-configurationset-cloudwatchlogsdestination-loggrouparn"
         }
       },
+      "description": "Contains the destination configuration to use when publishing message sending events.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-cloudwatchlogsdestination.html"
     },
     "EventDestination": {
       "properties": {
         "CloudWatchLogsDestination": {
+          "description": "An object that contains information about an event destination that sends logging events to Amazon CloudWatch logs.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-eventdestination.html#cfn-smsvoice-configurationset-eventdestination-cloudwatchlogsdestination"
         },
         "Enabled": {
-          "description": "When set to true events will be logged. By default this is set to true",
+          "description": "When set to true events will be logged.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-eventdestination.html#cfn-smsvoice-configurationset-eventdestination-enabled"
         },
         "EventDestinationName": {
-          "description": "The name that identifies the event destination.",
+          "description": "The name of the EventDestination.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-eventdestination.html#cfn-smsvoice-configurationset-eventdestination-eventdestinationname"
         },
         "KinesisFirehoseDestination": {
+          "description": "An object that contains information about an event destination for logging to Amazon Data Firehose.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-eventdestination.html#cfn-smsvoice-configurationset-eventdestination-kinesisfirehosedestination"
         },
         "MatchingEventTypes": {
-          "description": "An array of event types that determine which events to log. If 'ALL' is used, then AWS End User Messaging SMS and Voice logs every event type.",
+          "description": "An array of event types that determine which events to log.\n\n> The `TEXT_SENT` event type is not supported.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-eventdestination.html#cfn-smsvoice-configurationset-eventdestination-matchingeventtypes"
         },
         "SnsDestination": {
+          "description": "An object that contains information about an event destination that sends logging events to Amazon SNS.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-eventdestination.html#cfn-smsvoice-configurationset-eventdestination-snsdestination"
         }
       },
-      "description": "An event destination is a location where you send message events. The event options are Amazon CloudWatch, Amazon Data Firehose, or Amazon SNS. For example, when a message is delivered successfully, you can send information about that event to an event destination, or send notifications to endpoints that are subscribed to an Amazon SNS topic.",
+      "description": "Contains information about an event destination.\n\nEvent destinations are associated with configuration sets, which enable you to publish message sending events to CloudWatch, Firehose, or Amazon SNS.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-eventdestination.html"
     },
     "KinesisFirehoseDestination": {
@@ -53,10 +59,11 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-kinesisfirehosedestination.html#cfn-smsvoice-configurationset-kinesisfirehosedestination-deliverystreamarn"
         },
         "IamRoleArn": {
-          "description": "The Amazon Resource Name (ARN) of an AWS Identity and Access Management role that is able to write event data to an Amazon CloudWatch destination.",
+          "description": "The ARN of an AWS Identity and Access Management role that is able to write event data to an Amazon Data Firehose destination.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-kinesisfirehosedestination.html#cfn-smsvoice-configurationset-kinesisfirehosedestination-iamrolearn"
         }
       },
+      "description": "Contains the delivery stream Amazon Resource Name (ARN), and the ARN of the AWS Identity and Access Management (IAM) role associated with a Firehose event destination.\n\nEvent destinations, such as Firehose, are associated with configuration sets, which enable you to publish message sending events.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-kinesisfirehosedestination.html"
     },
     "SnsDestination": {
@@ -66,6 +73,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-snsdestination.html#cfn-smsvoice-configurationset-snsdestination-topicarn"
         }
       },
+      "description": "An object that defines an Amazon SNS destination for events. You can use Amazon SNS to send notification when certain events occur.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-snsdestination.html"
     },
     "Tag": {
@@ -80,7 +88,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-configurationset-tag.html"
     }
   },
-  "description": "Resource Type definition for AWS::SMSVOICE::ConfigurationSet",
+  "description": "Creates a new configuration set. After you create the configuration set, you can add one or more event destinations to it.\n\nA configuration set is a set of rules that you apply to the SMS and voice messages that you send.\n\nWhen you send a message, you can optionally specify a single configuration set.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html",
   "id": "aws-smsvoice-configurationset",
   "properties": {
@@ -88,27 +96,27 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html#cfn-smsvoice-configurationset-arn"
     },
     "ConfigurationSetName": {
-      "description": "The name to use for the configuration set.",
+      "description": "The name of the ConfigurationSet.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html#cfn-smsvoice-configurationset-configurationsetname"
     },
     "DefaultSenderId": {
-      "description": "The default sender ID to set for the ConfigurationSet.",
+      "description": "The default sender ID used by the ConfigurationSet.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html#cfn-smsvoice-configurationset-defaultsenderid"
     },
     "EventDestinations": {
-      "description": "An event destination is a location where you send message events.",
+      "description": "An array of EventDestination objects that describe any events to log and where to log them.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html#cfn-smsvoice-configurationset-eventdestinations"
     },
     "MessageFeedbackEnabled": {
-      "description": "Set to true to enable message feedback.",
+      "description": "Set to true to enable feedback for the message.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html#cfn-smsvoice-configurationset-messagefeedbackenabled"
     },
     "ProtectConfigurationId": {
-      "description": "The unique identifier for the protect configuration to be associated to the configuration set.",
+      "description": "The unique identifier for the protect configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html#cfn-smsvoice-configurationset-protectconfigurationid"
     },
     "Tags": {
-      "description": "An array of key-value pairs to apply to this resource.",
+      "description": "An array of key and value pair tags that's associated with the new configuration set.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html#cfn-smsvoice-configurationset-tags"
     }
   },

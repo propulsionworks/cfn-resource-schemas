@@ -14,7 +14,7 @@
     "CountryRule": {
       "properties": {
         "CountryCode": {
-          "description": "The two-letter ISO country code",
+          "description": "The two-character code, in ISO 3166-1 alpha-2 format, for the country or region.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-protectconfiguration-countryrule.html#cfn-smsvoice-protectconfiguration-countryrule-countrycode"
         },
         "ProtectStatus": {
@@ -22,20 +22,25 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-protectconfiguration-countryrule.html#cfn-smsvoice-protectconfiguration-countryrule-protectstatus"
         }
       },
+      "description": "Specifies the type of protection to use for a country.\n\nFor example, to set Canada as allowed, the `CountryRule` would be formatted as follows:\n\n`{ \"CountryCode\": \"CA\", \"ProtectStatus\": \"ALLOW\" }`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-protectconfiguration-countryrule.html"
     },
     "CountryRuleSet": {
       "properties": {
         "MMS": {
+          "description": "The set of `CountryRule` s to control which destination countries End User Messaging  can send your MMS messages to.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-protectconfiguration-countryruleset.html#cfn-smsvoice-protectconfiguration-countryruleset-mms"
         },
         "SMS": {
+          "description": "The set of `CountryRule` s to control which destination countries End User Messaging  can send your SMS messages to.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-protectconfiguration-countryruleset.html#cfn-smsvoice-protectconfiguration-countryruleset-sms"
         },
         "VOICE": {
+          "description": "The set of `CountryRule` s to control which destination countries End User Messaging  can send your VOICE messages to.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-protectconfiguration-countryruleset.html#cfn-smsvoice-protectconfiguration-countryruleset-voice"
         }
       },
+      "description": "The set of `CountryRules` you specify to control which countries End User Messaging  can send your messages to.\n\n> If you don't specify all available ISO country codes in the `CountryRuleSet` for each number capability, the AWS CloudFormation drift detection feature will detect drift. This is because End User Messaging  always returns all country codes.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-protectconfiguration-countryruleset.html"
     },
     "Tag": {
@@ -50,7 +55,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-protectconfiguration-tag.html"
     }
   },
-  "description": "Resource Type definition for AWS::SMSVOICE::ProtectConfiguration",
+  "description": "Create a new protect configuration. By default all country rule sets for each capability are set to `ALLOW` . A protect configurations name is stored as a Tag with the key set to `Name` and value as the name of the protect configuration.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-protectconfiguration.html",
   "id": "aws-smsvoice-protectconfiguration",
   "properties": {
@@ -58,17 +63,18 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-protectconfiguration.html#cfn-smsvoice-protectconfiguration-arn"
     },
     "CountryRuleSet": {
+      "description": "The set of `CountryRules` you specify to control which countries End User Messaging  can send your messages to.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-protectconfiguration.html#cfn-smsvoice-protectconfiguration-countryruleset"
     },
     "DeletionProtectionEnabled": {
-      "description": "When set to true deletion protection is enabled and protect configuration cannot be deleted. By default this is set to false.",
+      "description": "The status of deletion protection for the protect configuration. When set to true deletion protection is enabled. By default this is set to false.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-protectconfiguration.html#cfn-smsvoice-protectconfiguration-deletionprotectionenabled"
     },
     "ProtectConfigurationId": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-protectconfiguration.html#cfn-smsvoice-protectconfiguration-protectconfigurationid"
     },
     "Tags": {
-      "description": "An array of key-value pairs to apply to this resource.",
+      "description": "An array of key and value pair tags that are associated with the resource.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-protectconfiguration.html#cfn-smsvoice-protectconfiguration-tags"
     }
   },

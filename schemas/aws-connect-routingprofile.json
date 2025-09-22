@@ -1,6 +1,6 @@
 {
   "$id": "aws-connect-routingprofile",
-  "$integrity": "sha512-qq0o4WKatbyob74q1X0+/K44XcAz46MsBptPiNUksU5xyjA4QWBvAkq6O+AWOhRimKQQWzcYIZPuKElIFQsJ9A==",
+  "$integrity": "sha512-EI+foXJNo16gdrctrEMGRTbW8IZn6/2sbKH23fa+YdSIXiycijfMV6n1Sa6HJTK5k2OIp0IlOyw3OnDvjNC92A==",
   "additionalProperties": false,
   "definitions": {
     "BehaviorType": {
@@ -76,6 +76,19 @@
       "description": "The Amazon Resource Name (ARN) for the queue.",
       "pattern": "^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/queue/[-a-zA-Z0-9]*$",
       "type": "string"
+    },
+    "RoutingProfileManualAssignmentQueueConfig": {
+      "additionalProperties": false,
+      "description": "Contains information about the manual assignment queue and channel",
+      "properties": {
+        "QueueReference": {
+          "$ref": "#/definitions/RoutingProfileQueueReference"
+        }
+      },
+      "required": [
+        "QueueReference"
+      ],
+      "type": "object"
     },
     "RoutingProfileQueueConfig": {
       "additionalProperties": false,
@@ -166,13 +179,15 @@
       },
       "permissions": [
         "connect:ListRoutingProfiles",
-        "connect:ListRoutingProfileQueues"
+        "connect:ListRoutingProfileQueues",
+        "connect:ListRoutingProfileManualAssignmentQueues"
       ]
     },
     "read": {
       "permissions": [
         "connect:DescribeRoutingProfile",
-        "connect:ListRoutingProfileQueues"
+        "connect:ListRoutingProfileQueues",
+        "connect:ListRoutingProfileManualAssignmentQueues"
       ]
     },
     "update": {
@@ -186,6 +201,7 @@
         "connect:TagResource",
         "connect:UntagResource",
         "connect:ListRoutingProfileQueues",
+        "connect:ListRoutingProfileManualAssignmentQueues",
         "connect:UpdateRoutingProfileAgentAvailabilityTimer"
       ]
     }
@@ -217,6 +233,16 @@
       "description": "The identifier of the Amazon Connect instance.",
       "pattern": "^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$",
       "type": "string"
+    },
+    "ManualAssignmentQueueConfigs": {
+      "description": "The manual assignment queues to associate with this routing profile.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/RoutingProfileManualAssignmentQueueConfig"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "type": "array"
     },
     "MediaConcurrencies": {
       "description": "The channels agents can handle in the Contact Control Panel (CCP) for this routing profile.",

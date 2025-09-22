@@ -1,6 +1,6 @@
 {
   "$id": "aws-cleanrooms-analysistemplate",
-  "$integrity": "sha512-yakTZ4n3FlOYyb2OEq27HPabgzHDI7lOdEEjmlkzf6QT3p3qRCpay8hx8BtAxrlt0+YAwx+d5NOW605lIhFI8A==",
+  "$integrity": "sha512-z1wO1VXR1nJ8ZTgIsivWWLijb+nDQ48tkK2tN9aN+Aq63xovjSEcFeKXgJqxiY2L98Psu6Hbp8HmDf/I8mTxRg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -8,7 +8,8 @@
     "/properties/Source",
     "/properties/Format",
     "/properties/AnalysisParameters",
-    "/properties/Schema"
+    "/properties/Schema",
+    "/properties/ErrorMessageConfiguration"
   ],
   "definitions": {
     "AnalysisParameter": {
@@ -184,6 +185,21 @@
       ],
       "type": "object"
     },
+    "ErrorMessageConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "Type": {
+          "enum": [
+            "DETAILED"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Type"
+      ],
+      "type": "object"
+    },
     "Hash": {
       "additionalProperties": false,
       "properties": {
@@ -336,6 +352,9 @@
       "maxLength": 255,
       "pattern": "^[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDBFF-\\uDC00\\uDFFF\\t\\r\\n]*$",
       "type": "string"
+    },
+    "ErrorMessageConfiguration": {
+      "$ref": "#/definitions/ErrorMessageConfiguration"
     },
     "Format": {
       "enum": [

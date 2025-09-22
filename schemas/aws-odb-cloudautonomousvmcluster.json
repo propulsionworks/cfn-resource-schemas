@@ -1,6 +1,6 @@
 {
   "$id": "aws-odb-cloudautonomousvmcluster",
-  "$integrity": "sha512-1QoH/YTGqNlrZMDWHLoYgr7ADDQV4YUxkfMxanRGT+z82P51ACgOFnNW5+C9GURQdBN5B/VBgxZ10OoP/iFNKQ==",
+  "$integrity": "sha512-xx33wp8/ewRP8OQXkLXTk3/ptprbNeWnRm2T+aph8AtqUJOsi5eqEZzJdO3mdpSvkdoZ+9mqTjcrQxvqHmHU0w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/OdbNetworkId",
@@ -376,6 +376,10 @@
       "type": "integer"
     }
   },
+  "propertyTransform": {
+    "/properties/CloudExadataInfrastructureId": "$split(CloudExadataInfrastructureId, \"cloud-exadata-infrastructure/\")[-1] $OR CloudExadataInfrastructureId",
+    "/properties/OdbNetworkId": "$split(OdbNetworkId, \"odb-network/\")[-1] $OR OdbNetworkId"
+  },
   "readOnlyProperties": [
     "/properties/CloudAutonomousVmClusterId",
     "/properties/CloudAutonomousVmClusterArn",
@@ -406,6 +410,7 @@
     "/properties/ReservedCpus",
     "/properties/Shape"
   ],
+  "replacementStrategy": "delete_then_create",
   "tagging": {
     "cloudFormationSystemTags": true,
     "permissions": [

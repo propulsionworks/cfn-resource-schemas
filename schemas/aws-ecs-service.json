@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-service",
-  "$integrity": "sha512-ruuk8+kn38XGdklu+UuYmVp7CS9QAfkkWB4PXj7mEGy7ZDh/UrdyXaVqexhKD+lKIO0EXb173VUYh2mXiwn08g==",
+  "$integrity": "sha512-Rn+2fbev/FvfcnUwWjZYh0+hba/ofPeSxIWkzI/SUuWGbMEDTEl56lkpBZBHpoDgOT+kPayFmo84xGHpwEFA+g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Cluster",
@@ -196,6 +196,13 @@
       "additionalProperties": false,
       "description": "A deployment lifecycle hook runs custom logic at specific stages of the deployment process. Currently, you can use Lambda functions as hook targets.\n For more information, see [Lifecycle hooks for Amazon ECS service deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-lifecycle-hooks.html) in the *Amazon Elastic Container Service Developer Guide*.",
       "properties": {
+        "HookDetails": {
+          "description": "",
+          "type": [
+            "string",
+            "object"
+          ]
+        },
         "HookTargetArn": {
           "description": "The Amazon Resource Name (ARN) of the hook target. Currently, only Lambda function ARNs are supported.\n You must provide this parameter when configuring a deployment lifecycle hook.",
           "type": "string"
@@ -260,15 +267,15 @@
     },
     "ForceNewDeployment": {
       "additionalProperties": false,
-      "description": "",
+      "description": "Determines whether to force a new deployment of the service. By default, deployments aren't forced. You can use this option to start a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (``my_image:latest``) or to roll Fargate tasks onto a newer platform version.",
       "properties": {
         "EnableForceNewDeployment": {
-          "description": "",
+          "description": "Determines whether to force a new deployment of the service. By default, deployments aren't forced. You can use this option to start a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (``my_image:latest``) or to roll Fargate tasks onto a newer platform version.",
           "type": "boolean"
         },
         "ForceNewDeploymentNonce": {
           "$comment": "A time-varying value that has at most a negligible chance of repeating; for example, a random value that is generated anew for each use, a time-stamp, a sequence number, or some combination of these.",
-          "description": "",
+          "description": "When you change the``ForceNewDeploymentNonce`` value in your template, it signals ECS to start a new deployment even though no other service parameters have changed. The value must be a unique, time- varying value like a timestamp, random string, or sequence number. Use this property when you want to ensure your tasks pick up the latest version of a Docker image that uses the same tag but has been updated in the registry.",
           "maxLength": 255,
           "minLength": 1,
           "type": "string"

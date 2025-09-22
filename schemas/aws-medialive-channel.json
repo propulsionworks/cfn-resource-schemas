@@ -1,6 +1,6 @@
 {
   "$id": "aws-medialive-channel",
-  "$integrity": "sha512-FesxXGRjAiUNfo7zzZr919jca6PdCiRRciidnITeA69HN3tPlN1l558wtpBS+mXhWXDEEonSM+RUNWn6mbxBxw==",
+  "$integrity": "sha512-XWv6qKFYRzqOKjGTb2EGK1sFnnuD2R/Gx7kF9wYFRo6ZwJKifnHOMupiI3flEh9NLrnzB1+yYhP5AHh5yHbOHw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Vpc"
@@ -65,6 +65,15 @@
         },
         "MetadataControl": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "AdditionalDestinations": {
+      "additionalProperties": false,
+      "properties": {
+        "Destination": {
+          "$ref": "#/definitions/OutputLocationRef"
         }
       },
       "type": "object"
@@ -621,6 +630,9 @@
         "ShadowYOffset": {
           "type": "integer"
         },
+        "SubtitleRows": {
+          "type": "string"
+        },
         "TeletextGridControl": {
           "type": "string"
         },
@@ -820,6 +832,13 @@
     "CmafIngestGroupSettings": {
       "additionalProperties": false,
       "properties": {
+        "AdditionalDestinations": {
+          "items": {
+            "$ref": "#/definitions/AdditionalDestinations"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
         "CaptionLanguageMappings": {
           "items": {
             "$ref": "#/definitions/CmafIngestCaptionLanguageMapping"
@@ -997,6 +1016,9 @@
         },
         "ShadowYOffset": {
           "type": "integer"
+        },
+        "SubtitleRows": {
+          "type": "string"
         },
         "TeletextGridControl": {
           "type": "string"

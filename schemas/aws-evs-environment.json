@@ -1,6 +1,6 @@
 {
   "$id": "aws-evs-environment",
-  "$integrity": "sha512-qR+KAHA0yiCBqe1k2XqtjuZRTG7WLZ1CW1W+jzhGRmLfxpleFEP/7msHzQz9O3iSjob4FiTNs2DMosVxmURlLg==",
+  "$integrity": "sha512-M5K2+KqNxWPjsX5wJ7HI7ghs0lc9vmhrYm9IEQNLoCEZfk4KSt/8eVrRniRVtT/lVqla/9ok+/+MWw/cCpfEqQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/EnvironmentName",
@@ -123,6 +123,10 @@
         "Cidr"
       ],
       "type": "object"
+    },
+    "NetworkAclId": {
+      "pattern": "^acl-[a-zA-Z0-9_-]+$",
+      "type": "string"
     },
     "RouteServerPeering": {
       "maxLength": 21,
@@ -321,6 +325,12 @@
         },
         "Hcx": {
           "$ref": "#/definitions/InitialVlanInfo"
+        },
+        "HcxNetworkAclId": {
+          "$ref": "#/definitions/NetworkAclId"
+        },
+        "IsHcxPublic": {
+          "type": "boolean"
         },
         "NsxUpLink": {
           "$ref": "#/definitions/InitialVlanInfo"

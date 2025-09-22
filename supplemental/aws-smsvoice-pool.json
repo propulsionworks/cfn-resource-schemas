@@ -2,33 +2,41 @@
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#aws-resource-smsvoice-pool-return-values",
     "properties": {
-      "Arn": {},
-      "PoolId": {}
+      "Arn": {
+        "description": "The Amazon Resource Name of the `Pool` ."
+      },
+      "PoolId": {
+        "description": "The unique identifier for the pool."
+      }
     }
   },
   "definitions": {
     "MandatoryKeyword": {
       "properties": {
         "Message": {
+          "description": "The message associated with the keyword.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-pool-mandatorykeyword.html#cfn-smsvoice-pool-mandatorykeyword-message"
         }
       },
-      "description": "A keyword is a word that you can search for on a particular phone number or pool. It is also a specific word or phrase that an end user can send to your number to elicit a response, such as an informational message or a special offer. When your number receives a message that begins with a keyword, AWS End User Messaging SMS and Voice responds with a customizable message. Keywords \"HELP\" and \"STOP\" are mandatory keywords",
+      "description": "The keywords `HELP` and `STOP` are mandatory keywords that each phone number must have. For more information, see [Keywords](https://docs.aws.amazon.com/sms-voice/latest/userguide/keywords.html) in the End User Messaging  User Guide.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-pool-mandatorykeyword.html"
     },
     "OptionalKeyword": {
       "properties": {
         "Action": {
+          "description": "The action to perform when the keyword is used.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-pool-optionalkeyword.html#cfn-smsvoice-pool-optionalkeyword-action"
         },
         "Keyword": {
+          "description": "The new keyword to add.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-pool-optionalkeyword.html#cfn-smsvoice-pool-optionalkeyword-keyword"
         },
         "Message": {
+          "description": "The message associated with the keyword.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-pool-optionalkeyword.html#cfn-smsvoice-pool-optionalkeyword-message"
         }
       },
-      "description": "A keyword is a word that you can search for on a particular phone number or pool. It is also a specific word or phrase that an end user can send to your number to elicit a response, such as an informational message or a special offer. When your number receives a message that begins with a keyword, AWS End User Messaging SMS and Voice responds with a customizable message.",
+      "description": "The pool's `OptionalKeyword` configuration. For more information, see [Keywords](https://docs.aws.amazon.com/sms-voice/latest/userguide/keywords.html) in the End User Messaging  User Guide.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-pool-optionalkeyword.html"
     },
     "Tag": {
@@ -43,7 +51,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-smsvoice-pool-tag.html"
     }
   },
-  "description": "Resource Type definition for AWS::SMSVOICE::Pool",
+  "description": "Creates a new pool and associates the specified origination identity to the pool. A pool can include one or more phone numbers and SenderIds that are associated with your AWS account.\n\nThe new pool inherits its configuration from the specified origination identity. This includes keywords, message type, opt-out list, two-way configuration, and self-managed opt-out configuration. Deletion protection isn't inherited from the origination identity and defaults to false.\n\nIf the origination identity is a phone number and is already associated with another pool, an error is returned. A sender ID can be associated with multiple pools.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html",
   "id": "aws-smsvoice-pool",
   "properties": {
@@ -51,42 +59,42 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-arn"
     },
     "DeletionProtectionEnabled": {
-      "description": "When set to true the pool can't be deleted. By default this is set to false.",
+      "description": "When set to true the pool can't be deleted.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-deletionprotectionenabled"
     },
     "MandatoryKeywords": {
-      "description": "A keyword is a word that you can search for on a particular phone number or pool. It is also a specific word or phrase that an end user can send to your number to elicit a response, such as an informational message or a special offer. When your number receives a message that begins with a keyword, AWS End User Messaging SMS and Voice responds with a customizable message. Keywords \"HELP\" and \"STOP\" are mandatory keywords",
+      "description": "Creates or updates the pool's `MandatoryKeyword` configuration. For more information, see [Keywords](https://docs.aws.amazon.com/sms-voice/latest/userguide/keywords.html) in the End User Messaging  User Guide.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-mandatorykeywords"
     },
     "OptOutListName": {
-      "description": "The name of the OptOutList to associate with the pool. You can use the OptOutListName or OptOutListArn.",
+      "description": "The name of the OptOutList associated with the pool.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-optoutlistname"
     },
     "OptionalKeywords": {
-      "description": "A keyword is a word that you can search for on a particular phone number or pool. It is also a specific word or phrase that an end user can send to your number to elicit a response, such as an informational message or a special offer. When your number receives a message that begins with a keyword, AWS End User Messaging SMS and Voice responds with a customizable message.",
+      "description": "Specifies any optional keywords to associate with the pool. For more information, see [Keywords](https://docs.aws.amazon.com/sms-voice/latest/userguide/keywords.html) in the End User Messaging  User Guide.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-optionalkeywords"
     },
     "OriginationIdentities": {
-      "description": "The origination identity to use such as a PhoneNumberId, PhoneNumberArn, SenderId or SenderIdArn and it's IsoCountryCode.",
+      "description": "The list of origination identities to apply to the pool, either `PhoneNumberArn` or `SenderIdArn` . For more information, see [Registrations](https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations.html) in the End User Messaging  User Guide.\n\n> If you are using a shared End User Messaging  resource then you must use the full Amazon Resource Name (ARN).",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-originationidentities"
     },
     "PoolId": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-poolid"
     },
     "SelfManagedOptOutsEnabled": {
-      "description": "By default this is set to false. When an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, AWS End User Messaging SMS and Voice automatically replies with a customizable message and adds the end recipient to the OptOutList. When set to true you're responsible for responding to HELP and STOP requests. You're also responsible for tracking and honoring opt-out requests.",
+      "description": "When set to false, an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, End User Messaging  automatically replies with a customizable message and adds the end recipient to the OptOutList. When set to true you're responsible for responding to HELP and STOP requests. You're also responsible for tracking and honoring opt-out requests. For more information see [Self-managed opt-outs](https://docs.aws.amazon.com//pinpoint/latest/userguide/settings-sms-managing.html#settings-account-sms-self-managed-opt-out)",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-selfmanagedoptoutsenabled"
     },
     "SharedRoutesEnabled": {
-      "description": "Indicates whether shared routes are enabled for the pool.",
+      "description": "Allows you to enable shared routes on your pool.\n\nBy default, this is set to `False` . If you set this value to `True` , your messages are sent using phone numbers or sender IDs (depending on the country) that are shared with other users. In some countries, such as the United States, senders aren't allowed to use shared routes and must use a dedicated phone number or short code.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-sharedroutesenabled"
     },
     "Tags": {
-      "description": "An array of key-value pairs to apply to this resource.",
+      "description": "An array of tags (key and value pairs) associated with the pool.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-tags"
     },
     "TwoWay": {
-      "description": "When you set up two-way SMS, you can receive incoming messages from your customers. When one of your customers sends a message to your phone number, the message body is sent to an Amazon SNS topic or Amazon Connect for processing.",
+      "description": "Describes the two-way SMS configuration for a phone number. For more information, see [Two-way SMS messaging](https://docs.aws.amazon.com/sms-voice/latest/userguide/two-way-sms.html) in the End User Messaging  User Guide.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html#cfn-smsvoice-pool-twoway"
     }
   },

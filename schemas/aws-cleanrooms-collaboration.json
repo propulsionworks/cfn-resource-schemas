@@ -1,6 +1,6 @@
 {
   "$id": "aws-cleanrooms-collaboration",
-  "$integrity": "sha512-mUWXFNNVNVDPAoWq/TwgjcFs64iP58dDrgmdAxtBgashItL5M2NxTkT1xLRdDNktkm3EErN+8KRFMsKbupDLfA==",
+  "$integrity": "sha512-T0NBGL4Ub7VRXxy4zBL31+ouX2hACbEs8jhHVZL7c2bOy8+pyjkvqUxEv3usiIO7RUs1zkyj/Z/u8URXtsaPCA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/CreatorDisplayName",
@@ -10,7 +10,8 @@
     "/properties/JobLogStatus",
     "/properties/QueryLogStatus",
     "/properties/Members",
-    "/properties/CreatorPaymentConfiguration"
+    "/properties/CreatorPaymentConfiguration",
+    "/properties/AutoApprovedChangeTypes"
   ],
   "definitions": {
     "AnalyticsEngine": {
@@ -19,6 +20,20 @@
         "SPARK"
       ],
       "type": "string"
+    },
+    "AutoApprovedChangeType": {
+      "enum": [
+        "ADD_MEMBER"
+      ],
+      "type": "string"
+    },
+    "AutoApprovedChangeTypeList": {
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/AutoApprovedChangeType"
+      },
+      "type": "array",
+      "uniqueItems": true
     },
     "CollaborationJobLogStatus": {
       "enum": [
@@ -300,6 +315,9 @@
     "Arn": {
       "maxLength": 100,
       "type": "string"
+    },
+    "AutoApprovedChangeTypes": {
+      "$ref": "#/definitions/AutoApprovedChangeTypeList"
     },
     "CollaborationIdentifier": {
       "maxLength": 36,

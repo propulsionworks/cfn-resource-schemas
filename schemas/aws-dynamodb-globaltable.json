@@ -1,6 +1,6 @@
 {
   "$id": "aws-dynamodb-globaltable",
-  "$integrity": "sha512-qBuH1f2DzholM8TIJIaxAKGNoKH8J158zqwcdBH4FvhkJOGa18P4UHDTg8R9kAAczJVMjSe1xI9Kxl1vcV12Ew==",
+  "$integrity": "sha512-E+WWhMv8xHccvWSxIIIK20dMnNrxYlPtAPN5SJHSyD0hOW3AdFL9mAqKpaihb02+TgOBdc5SnUW3zg/6wzSpLw==",
   "additionalIdentifiers": [
     [
       "/properties/Arn"
@@ -13,7 +13,8 @@
   "createOnlyProperties": [
     "/properties/LocalSecondaryIndexes",
     "/properties/TableName",
-    "/properties/KeySchema"
+    "/properties/KeySchema",
+    "/properties/GlobalTableSourceArn"
   ],
   "definitions": {
     "AttributeDefinition": {
@@ -521,6 +522,7 @@
         "dynamodb:CreateTable",
         "dynamodb:CreateTableReplica",
         "dynamodb:Describe*",
+        "dynamodb:UpdateTable",
         "dynamodb:UpdateTimeToLive",
         "dynamodb:UpdateContributorInsights",
         "dynamodb:UpdateContinuousBackups",
@@ -536,7 +538,6 @@
         "dynamodb:EnableKinesisStreamingDestination",
         "dynamodb:DisableKinesisStreamingDestination",
         "dynamodb:UpdateTableReplicaAutoScaling",
-        "dynamodb:TagResource",
         "dynamodb:GetResourcePolicy",
         "dynamodb:PutResourcePolicy",
         "application-autoscaling:DeleteScalingPolicy",
@@ -661,6 +662,16 @@
       "type": "array",
       "uniqueItems": true
     },
+    "GlobalTableSettingsReplicationMode": {
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "type": "string"
+    },
+    "GlobalTableSourceArn": {
+      "type": "string"
+    },
     "GlobalTableWitnesses": {
       "insertionOrder": false,
       "items": {
@@ -747,6 +758,7 @@
     "/properties/Replicas/*/ReadProvisionedThroughputSettings/ReadCapacityAutoScalingSettings/SeedCapacity",
     "/properties/Replicas/*/GlobalSecondaryIndexes/*/ReadProvisionedThroughputSettings/ReadCapacityAutoScalingSettings/SeedCapacity",
     "/properties/WriteProvisionedThroughputSettings/WriteCapacityAutoScalingSettings/SeedCapacity",
-    "/properties/GlobalSecondaryIndexes/*/WriteProvisionedThroughputSettings/WriteCapacityAutoScalingSettings/SeedCapacity"
+    "/properties/GlobalSecondaryIndexes/*/WriteProvisionedThroughputSettings/WriteCapacityAutoScalingSettings/SeedCapacity",
+    "/properties/GlobalTableSourceArn"
   ]
 }

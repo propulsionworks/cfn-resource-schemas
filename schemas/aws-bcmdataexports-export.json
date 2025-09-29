@@ -1,6 +1,6 @@
 {
   "$id": "aws-bcmdataexports-export",
-  "$integrity": "sha512-0C4rsX+tuLO3LsRTh7rWIF2RrgckV9MUkQiSG2/9TGT8NqrspW4upwqdV2QyZzfNj76JGymSHV4LKl07oxfqtw==",
+  "$integrity": "sha512-RHNqra4r9mnp5tyA4ULgw1egTH4ZJeoaEoi5ZM0RwunEgSXk5obSAMXLcAWtdQt82AgHWqEjbKxNT1MPe+XW8Q==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Export/Name",
@@ -63,7 +63,7 @@
         "ExportArn": {
           "maxLength": 2048,
           "minLength": 20,
-          "pattern": "^arn:aws[-a-z0-9]*:[-a-z0-9]+:[-a-z0-9]*:[0-9]{12}:[-a-zA-Z0-9/:_]+$",
+          "pattern": "^arn:aws[-a-z0-9]*:(bcm-data-exports):[-a-z0-9]*:[0-9]{12}:[-a-zA-Z0-9/:_]+$",
           "type": "string"
         },
         "Name": {
@@ -212,7 +212,7 @@
       "additionalProperties": false,
       "patternProperties": {
         "^[\\S\\s]*$": {
-          "maxLength": 1024,
+          "maxLength": 16384,
           "minLength": 0,
           "pattern": "^[\\S\\s]*$",
           "type": "string"
@@ -269,7 +269,7 @@
     "ExportArn": {
       "maxLength": 2048,
       "minLength": 20,
-      "pattern": "^arn:aws[-a-z0-9]*:[-a-z0-9]+:[-a-z0-9]*:[0-9]{12}:[-a-zA-Z0-9/:_]+$",
+      "pattern": "^arn:aws[-a-z0-9]*:(bcm-data-exports):[-a-z0-9]*:[0-9]{12}:[-a-zA-Z0-9/:_]+$",
       "type": "string"
     },
     "Tags": {
@@ -282,7 +282,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/ExportArn"
+    "/properties/ExportArn",
+    "/properties/Export/ExportArn"
   ],
   "required": [
     "Export"

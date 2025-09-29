@@ -1,6 +1,6 @@
 {
   "$id": "aws-datazone-owner",
-  "$integrity": "sha512-Goev4xSV4ouKUMsh2SmXbFxX3eRc7MeSq5llIzQofQJrl8NbkRSCbUyOEbeEtwqXFFH9I5qWrBRO60EC1EnT0w==",
+  "$integrity": "sha512-ziAyoigszmGxGQ2IExmDLx8Rau5md8YTlrocBRVTx9raNIT40rPCfOx1wgOOywEszLIOMCYLSyDLiraV5k1jPQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainIdentifier",
@@ -174,8 +174,22 @@
     "Owner": {
       "$ref": "#/definitions/OwnerProperties",
       "description": "The owner that you want to add to the entity."
+    },
+    "OwnerIdentifier": {
+      "type": "string"
+    },
+    "OwnerType": {
+      "enum": [
+        "USER",
+        "GROUP"
+      ],
+      "type": "string"
     }
   },
+  "readOnlyProperties": [
+    "/properties/OwnerType",
+    "/properties/OwnerIdentifier"
+  ],
   "required": [
     "DomainIdentifier",
     "EntityIdentifier",

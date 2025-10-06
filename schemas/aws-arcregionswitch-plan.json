@@ -1,6 +1,6 @@
 {
   "$id": "aws-arcregionswitch-plan",
-  "$integrity": "sha512-Ta40By/g9CupXTuMWfVJupdDh7KXv2ZUbeMHrbfPHOBFXceyrB7NKdUZt33McsNp1Hc/Q/m34SS8/Uyzv6dsvw==",
+  "$integrity": "sha512-j0otoYd+psl/A8l43RGsiPHFZINIeb3S2v4F13s8kcU2/o0iQnqSJwmmQo0yRn7dcxB/YknurAeJOzOAuxxbFA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -984,7 +984,8 @@
     }
   },
   "deprecatedProperties": [
-    "/properties/HealthChecksForPlan"
+    "/properties/HealthChecksForPlan",
+    "/properties/Route53HealthChecks"
   ],
   "description": "Represents a plan that specifies Regions, IAM roles, and workflows of logic required to perform the desired change to your multi-Region application",
   "handlers": {
@@ -1065,6 +1066,12 @@
       "pattern": "^\\d{12}$",
       "type": "string"
     },
+    "PlanHealthChecks": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "PrimaryRegion": {
       "pattern": "^[a-z]{2}-[a-z-]+-\\d+$",
       "type": "string"
@@ -1128,7 +1135,8 @@
     "/properties/Owner",
     "/properties/Version",
     "/properties/HealthChecksForPlan",
-    "/properties/Route53HealthChecks"
+    "/properties/Route53HealthChecks",
+    "/properties/PlanHealthChecks"
   ],
   "required": [
     "ExecutionRole",

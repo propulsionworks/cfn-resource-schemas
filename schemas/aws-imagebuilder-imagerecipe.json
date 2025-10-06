@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-imagerecipe",
-  "$integrity": "sha512-MX16tI4muoNPNyaLWo2wMRLDFm6m3LlgyWZxvWpfLyNycpFUEO2ptJRgFUd6jxlm6lKEgADUlC3cLl1SKSfDtg==",
+  "$integrity": "sha512-HKl/dHULB2FfEqrvNgVrXN5ynBUb/QaYhPwPFezv0zg0YJcwdbtKXs/ngjenfO1yrchDOTqzPs7eAsy2AdDnxA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -197,6 +197,16 @@
     "AdditionalInstanceConfiguration": {
       "$ref": "#/definitions/AdditionalInstanceConfiguration",
       "description": "Specify additional settings and launch scripts for your build instances."
+    },
+    "AmiTags": {
+      "additionalProperties": false,
+      "description": "The tags to apply to the AMI created by this image recipe.",
+      "patternProperties": {
+        ".{1,}": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "Arn": {
       "description": "The Amazon Resource Name (ARN) of the image recipe.",

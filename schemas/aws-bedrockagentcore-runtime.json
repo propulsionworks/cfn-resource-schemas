@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-runtime",
-  "$integrity": "sha512-dNwUqDYolfc4wKs/JDh5TH9gxS18dF0hnrAl4TcUkKHB/ezN321Wde7sLvL4OyyhlrUkZtzmuAOd2T+EM631/g==",
+  "$integrity": "sha512-QrvkqWOVh3CL65OK1qGyReqMpdC6zJjgRsKrysCHh4zey8DPXMZs8/zCdthVnkynk4u4FEzT5+qc0Duq+eYayQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AgentRuntimeName"
@@ -164,6 +164,9 @@
       "properties": {
         "NetworkMode": {
           "$ref": "#/definitions/NetworkMode"
+        },
+        "NetworkModeConfig": {
+          "$ref": "#/definitions/VpcConfig"
         }
       },
       "required": [
@@ -174,7 +177,8 @@
     "NetworkMode": {
       "description": "Network mode configuration type",
       "enum": [
-        "PUBLIC"
+        "PUBLIC",
+        "VPC"
       ],
       "type": "string"
     },
@@ -196,6 +200,36 @@
       "pattern": "^\\d{12}\\.dkr\\.ecr\\.([a-z0-9-]+)\\.amazonaws\\.com/((?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*)([:@]\\S+)$",
       "type": "string"
     },
+    "SecurityGroupId": {
+      "description": "Security group id",
+      "pattern": "^sg-[0-9a-zA-Z]{8,17}$",
+      "type": "string"
+    },
+    "SecurityGroups": {
+      "description": "Security groups for VPC",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/SecurityGroupId"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "type": "array"
+    },
+    "SubnetId": {
+      "description": "Subnet id",
+      "pattern": "^subnet-[0-9a-zA-Z]{8,17}$",
+      "type": "string"
+    },
+    "Subnets": {
+      "description": "Subnets for VPC",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/SubnetId"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "type": "array"
+    },
     "TagsMap": {
       "additionalProperties": false,
       "description": "A map of tag keys and values",
@@ -208,6 +242,23 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "VpcConfig": {
+      "additionalProperties": false,
+      "description": "Network mode configuration for VPC",
+      "properties": {
+        "SecurityGroups": {
+          "$ref": "#/definitions/SecurityGroups"
+        },
+        "Subnets": {
+          "$ref": "#/definitions/Subnets"
+        }
+      },
+      "required": [
+        "SecurityGroups",
+        "Subnets"
+      ],
       "type": "object"
     },
     "WorkloadIdentityArn": {
@@ -241,6 +292,7 @@
         "bedrock-agentcore:CreateWorkloadIdentity",
         "bedrock-agentcore:TagResource",
         "bedrock-agentcore:ListTagsForResource",
+        "iam:CreateServiceLinkedRole",
         "iam:PassRole"
       ]
     },
@@ -274,6 +326,7 @@
         "bedrock-agentcore:TagResource",
         "bedrock-agentcore:UntagResource",
         "bedrock-agentcore:ListTagsForResource",
+        "iam:CreateServiceLinkedRole",
         "iam:PassRole"
       ]
     }

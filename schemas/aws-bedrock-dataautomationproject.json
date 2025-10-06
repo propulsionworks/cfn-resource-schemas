@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrock-dataautomationproject",
-  "$integrity": "sha512-AL7ptqOSdSlAzqQm1SDYSsqvyI/d0NsOBZ2TYn03TVTHAYlUzuC4I9vNaH4C9MgjrKEb8oaHYibssjWEcFQ09Q==",
+  "$integrity": "sha512-y6u5c33376TnRSDIK6dgLN0QhHKwt977K1kFf+oLrBpDGUdZzDcMW9aJJPG4Zg4ArRWzsxF5tzcrqq+O1WGsDQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ProjectName"
@@ -11,6 +11,9 @@
       "properties": {
         "State": {
           "$ref": "#/definitions/State"
+        },
+        "TypeConfiguration": {
+          "$ref": "#/definitions/AudioExtractionCategoryTypeConfiguration"
         },
         "Types": {
           "items": {
@@ -32,6 +35,15 @@
         "TOPIC_CONTENT_MODERATION"
       ],
       "type": "string"
+    },
+    "AudioExtractionCategoryTypeConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "Transcript": {
+          "$ref": "#/definitions/TranscriptConfiguration"
+        }
+      },
+      "type": "object"
     },
     "AudioOverrideConfiguration": {
       "additionalProperties": false,
@@ -125,6 +137,18 @@
         "LIVE"
       ],
       "type": "string"
+    },
+    "ChannelLabelingConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "State": {
+          "$ref": "#/definitions/State"
+        }
+      },
+      "required": [
+        "State"
+      ],
+      "type": "object"
     },
     "CustomOutputConfiguration": {
       "additionalProperties": false,
@@ -456,6 +480,18 @@
       },
       "type": "object"
     },
+    "SpeakerLabelingConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "State": {
+          "$ref": "#/definitions/State"
+        }
+      },
+      "required": [
+        "State"
+      ],
+      "type": "object"
+    },
     "SplitterConfiguration": {
       "additionalProperties": false,
       "properties": {
@@ -514,6 +550,18 @@
         "Key",
         "Value"
       ],
+      "type": "object"
+    },
+    "TranscriptConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "ChannelLabeling": {
+          "$ref": "#/definitions/ChannelLabelingConfiguration"
+        },
+        "SpeakerLabeling": {
+          "$ref": "#/definitions/SpeakerLabelingConfiguration"
+        }
+      },
       "type": "object"
     },
     "Unit": {

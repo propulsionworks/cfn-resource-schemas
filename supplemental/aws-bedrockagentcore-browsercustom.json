@@ -3,19 +3,19 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#aws-resource-bedrockagentcore-browsercustom-return-values",
     "properties": {
       "BrowserId": {
-        "description": "The id of the browser."
+        "description": "The ID for the custom browser."
       },
       "BrowserArn": {
-        "description": "The ARN of a Browser resource."
+        "description": "The ARN for the custom browser."
       },
       "Status": {
-        "description": "Status of browser"
+        "description": "The status of the custom browser."
       },
       "CreatedAt": {
-        "description": "Timestamp when the browser was created."
+        "description": "The time at which the custom browser was created."
       },
       "LastUpdatedAt": {
-        "description": "Timestamp when the browser was last updated."
+        "description": "The time at which the custom browser was last updated."
       }
     }
   },
@@ -31,11 +31,14 @@
     "BrowserNetworkConfiguration": {
       "properties": {
         "NetworkMode": {
-          "description": "Network modes supported by browser",
+          "description": "The network mode.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-browsernetworkconfiguration.html#cfn-bedrockagentcore-browsercustom-browsernetworkconfiguration-networkmode"
+        },
+        "VpcConfig": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-browsernetworkconfiguration.html#cfn-bedrockagentcore-browsercustom-browsernetworkconfiguration-vpcconfig"
         }
       },
-      "description": "Network configuration for browser",
+      "description": "The network configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-browsernetworkconfiguration.html"
     },
     "BrowserNetworkMode": {
@@ -79,14 +82,15 @@
     "RecordingConfig": {
       "properties": {
         "Enabled": {
+          "description": "The recording configuration for a browser. This structure defines how browser sessions are recorded.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-recordingconfig.html#cfn-bedrockagentcore-browsercustom-recordingconfig-enabled"
         },
         "S3Location": {
-          "description": "S3 Location Configuration",
+          "description": "The S3 location.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-recordingconfig.html#cfn-bedrockagentcore-browsercustom-recordingconfig-s3location"
         }
       },
-      "description": "Recording configuration for browser",
+      "description": "The recording configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-recordingconfig.html"
     },
     "RoleArn": {
@@ -96,21 +100,50 @@
     "S3Location": {
       "properties": {
         "Bucket": {
+          "description": "The S3 location bucket name.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-s3location.html#cfn-bedrockagentcore-browsercustom-s3location-bucket"
         },
         "Prefix": {
+          "description": "The S3 location object prefix.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-s3location.html#cfn-bedrockagentcore-browsercustom-s3location-prefix"
         }
       },
-      "description": "S3 Location Configuration",
+      "description": "The S3 location.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-s3location.html"
+    },
+    "SecurityGroupId": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-securitygroupid.html"
+    },
+    "SecurityGroups": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-securitygroups.html"
+    },
+    "SubnetId": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-subnetid.html"
+    },
+    "Subnets": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-subnets.html"
     },
     "TagsMap": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-tagsmap.html"
+    },
+    "VpcConfig": {
+      "properties": {
+        "SecurityGroups": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-vpcconfig.html#cfn-bedrockagentcore-browsercustom-vpcconfig-securitygroups"
+        },
+        "Subnets": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-vpcconfig.html#cfn-bedrockagentcore-browsercustom-vpcconfig-subnets"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-browsercustom-vpcconfig.html"
     }
   },
-  "description": "Resource definition for AWS::BedrockAgentCore::BrowserCustom",
+  "description": "> Amazon Bedrock AgentCore is in preview release and is subject to change. \n\nAgentCore Browser tool provides a fast, secure, cloud-based browser runtime to enable AI agents to interact with websites at scale.\n\nFor more information about using the custom browser, see [Interact with web applications using Amazon Bedrock AgentCore Browser](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/browser-tool.html) .\n\nSee the *Properties* section below for descriptions of both the required and optional properties.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html",
   "id": "aws-bedrockagentcore-browsercustom",
   "properties": {
@@ -124,33 +157,36 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-createdat"
     },
     "Description": {
-      "description": "The description of the browser.",
+      "description": "The custom browser.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-description"
     },
     "ExecutionRoleArn": {
-      "description": "The Amazon Resource Name (ARN) of the IAM role.",
+      "description": "The Amazon Resource Name (ARN) of the execution role.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-executionrolearn"
+    },
+    "FailureReason": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-failurereason"
     },
     "LastUpdatedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-lastupdatedat"
     },
     "Name": {
-      "description": "The name of the browser.",
+      "description": "The name of the custom browser.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-name"
     },
     "NetworkConfiguration": {
-      "description": "Network configuration for browser",
+      "description": "The network configuration for a code interpreter. This structure defines how the code interpreter connects to the network.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-networkconfiguration"
     },
     "RecordingConfig": {
-      "description": "Recording configuration for browser",
+      "description": "THe custom browser configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-recordingconfig"
     },
     "Status": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-status"
     },
     "Tags": {
-      "description": "A map of tag keys and values",
+      "description": "The tags for the custom browser.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html#cfn-bedrockagentcore-browsercustom-tags"
     }
   },

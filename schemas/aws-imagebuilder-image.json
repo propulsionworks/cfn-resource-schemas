@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-image",
-  "$integrity": "sha512-gh8BFDEHVTobVlkt9U0uwXuEDTOPaJezQITVH/T2zIHVkflGkX91jGB+s5KYcHMKeLkWb3H4Nd+z/QNiEm/ThQ==",
+  "$integrity": "sha512-EJOPdiqHCzOGGeRSDg+1l6J8/to6Rnv6xh8hCBC6L4Wp4xhlKSirFd0sg7F/J1oq7O9rSB+4l61q05VHdLG00Q==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ImageRecipeArn",
@@ -13,6 +13,20 @@
     "/properties/EnhancedImageMetadataEnabled"
   ],
   "definitions": {
+    "DeletionSettings": {
+      "additionalProperties": false,
+      "description": "The deletion settings of the image, indicating whether to delete the underlying resources in addition to the image.",
+      "properties": {
+        "ExecutionRole": {
+          "description": "The execution role to use for deleting the image, as well as underlying resources.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ExecutionRole"
+      ],
+      "type": "object"
+    },
     "EcrConfiguration": {
       "additionalProperties": false,
       "description": "Settings for Image Builder to configure the ECR repository and output container images that are scanned.",
@@ -27,6 +41,17 @@
         },
         "RepositoryName": {
           "description": "The name of the container repository that Amazon Inspector scans to identify findings for your container images. The name includes the path for the repository location. If you don’t provide this information, Image Builder creates a repository in your account named image-builder-image-scanning-repository to use for vulnerability scans for your output container images.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ImageLoggingConfiguration": {
+      "additionalProperties": false,
+      "description": "The logging configuration settings for the image.",
+      "properties": {
+        "LogGroupName": {
+          "description": "The name of the log group for image build logs.",
           "type": "string"
         }
       },
@@ -255,6 +280,10 @@
     "InfrastructureConfigurationArn": {
       "description": "The Amazon Resource Name (ARN) of the infrastructure configuration.",
       "type": "string"
+    },
+    "LoggingConfiguration": {
+      "$ref": "#/definitions/ImageLoggingConfiguration",
+      "description": "The logging configuration settings for the image."
     },
     "Name": {
       "description": "The name of the image.",

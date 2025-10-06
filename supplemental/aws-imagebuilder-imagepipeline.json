@@ -11,6 +11,16 @@
     }
   },
   "definitions": {
+    "AutoDisablePolicy": {
+      "properties": {
+        "FailureCount": {
+          "description": "The number of consecutive failures after which the pipeline should be automatically disabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-autodisablepolicy.html#cfn-imagebuilder-imagepipeline-autodisablepolicy-failurecount"
+        }
+      },
+      "description": "The auto-disable policy configuration for the image pipeline.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-autodisablepolicy.html"
+    },
     "EcrConfiguration": {
       "properties": {
         "ContainerTags": {
@@ -53,9 +63,24 @@
       "description": "When you create an image or container recipe with Image Builder , you can add the build or test components that your image pipeline uses to create the final image. You must have at least one build component to create a recipe, but test components are not required. Your pipeline runs tests after it builds the image, to ensure that the target image is functional and can be used reliably for launching Amazon EC2 instances.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-imagetestsconfiguration.html"
     },
+    "PipelineLoggingConfiguration": {
+      "properties": {
+        "ImageLogGroupName": {
+          "description": "The name of the log group for image build logs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-pipelineloggingconfiguration.html#cfn-imagebuilder-imagepipeline-pipelineloggingconfiguration-imageloggroupname"
+        },
+        "PipelineLogGroupName": {
+          "description": "The name of the log group for pipeline execution logs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-pipelineloggingconfiguration.html#cfn-imagebuilder-imagepipeline-pipelineloggingconfiguration-pipelineloggroupname"
+        }
+      },
+      "description": "The logging configuration settings for the image pipeline.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-pipelineloggingconfiguration.html"
+    },
     "Schedule": {
       "properties": {
         "AutoDisablePolicy": {
+          "description": "The policy that configures when Image Builder should automatically disable a pipeline that is failing.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-schedule.html#cfn-imagebuilder-imagepipeline-schedule-autodisablepolicy"
         },
         "PipelineExecutionStartCondition": {
@@ -153,6 +178,10 @@
     "InfrastructureConfigurationArn": {
       "description": "The Amazon Resource Name (ARN) of the infrastructure configuration associated with this image pipeline.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagepipeline.html#cfn-imagebuilder-imagepipeline-infrastructureconfigurationarn"
+    },
+    "LoggingConfiguration": {
+      "description": "The logging configuration settings for the image pipeline.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagepipeline.html#cfn-imagebuilder-imagepipeline-loggingconfiguration"
     },
     "Name": {
       "description": "The name of the image pipeline.",

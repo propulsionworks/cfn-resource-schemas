@@ -3,19 +3,19 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#aws-resource-bedrockagentcore-codeinterpretercustom-return-values",
     "properties": {
       "CodeInterpreterId": {
-        "description": "The id of the code interpreter."
+        "description": "The ID of the code interpreter."
       },
       "CodeInterpreterArn": {
-        "description": "The ARN of a CodeInterpreter resource."
+        "description": "The code interpreter Amazon Resource Name (ARN)."
       },
       "Status": {
-        "description": "Status of Code interpreter"
+        "description": "The status of the custom code interpreter."
       },
       "CreatedAt": {
-        "description": "Timestamp when the code interpreter was created."
+        "description": "The time at which the code interpreter was created."
       },
       "LastUpdatedAt": {
-        "description": "Timestamp when the code interpreter was last updated."
+        "description": "The time at which the code interpreter was last updated."
       }
     }
   },
@@ -31,11 +31,14 @@
     "CodeInterpreterNetworkConfiguration": {
       "properties": {
         "NetworkMode": {
-          "description": "Network modes supported by code interpreter",
+          "description": "The network mode.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-codeinterpreternetworkconfiguration.html#cfn-bedrockagentcore-codeinterpretercustom-codeinterpreternetworkconfiguration-networkmode"
+        },
+        "VpcConfig": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-codeinterpreternetworkconfiguration.html#cfn-bedrockagentcore-codeinterpretercustom-codeinterpreternetworkconfiguration-vpcconfig"
         }
       },
-      "description": "Network configuration for code interpreter",
+      "description": "The network configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-codeinterpreternetworkconfiguration.html"
     },
     "CodeInterpreterNetworkMode": {
@@ -88,12 +91,39 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-sandboxname.html"
     },
+    "SecurityGroupId": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-securitygroupid.html"
+    },
+    "SecurityGroups": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-securitygroups.html"
+    },
+    "SubnetId": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-subnetid.html"
+    },
+    "Subnets": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-subnets.html"
+    },
     "TagsMap": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-tagsmap.html"
+    },
+    "VpcConfig": {
+      "properties": {
+        "SecurityGroups": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-vpcconfig.html#cfn-bedrockagentcore-codeinterpretercustom-vpcconfig-securitygroups"
+        },
+        "Subnets": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-vpcconfig.html#cfn-bedrockagentcore-codeinterpretercustom-vpcconfig-subnets"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-codeinterpretercustom-vpcconfig.html"
     }
   },
-  "description": "Resource definition for AWS::BedrockAgentCore::CodeInterpreterCustom",
+  "description": "> Amazon Bedrock AgentCore is in preview release and is subject to change. \n\nThe AgentCore Code Interpreter tool enables agents to securely execute code in isolated sandbox environments. It offers advanced configuration support and seamless integration with popular frameworks.\n\nFor more information about using the custom code interpreter, see [Execute code and analyze data using Amazon Bedrock AgentCore Code Interpreter](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/code-interpreter-tool.html) .\n\nSee the *Properties* section below for descriptions of both the required and optional properties.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html",
   "id": "aws-bedrockagentcore-codeinterpretercustom",
   "properties": {
@@ -107,29 +137,32 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-createdat"
     },
     "Description": {
-      "description": "Description of the code interpreter.",
+      "description": "The code interpreter description.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-description"
     },
     "ExecutionRoleArn": {
-      "description": "The ARN of the IAM role.",
+      "description": "The Amazon Resource Name (ARN) of the execution role.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-executionrolearn"
+    },
+    "FailureReason": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-failurereason"
     },
     "LastUpdatedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-lastupdatedat"
     },
     "Name": {
-      "description": "The name of the sandbox.",
+      "description": "The name of the code interpreter.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-name"
     },
     "NetworkConfiguration": {
-      "description": "Network configuration for code interpreter",
+      "description": "The network configuration for a code interpreter. This structure defines how the code interpreter connects to the network.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-networkconfiguration"
     },
     "Status": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-status"
     },
     "Tags": {
-      "description": "A map of tag keys and values",
+      "description": "The tags for the code interpreter.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html#cfn-bedrockagentcore-codeinterpretercustom-tags"
     }
   },

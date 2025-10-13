@@ -2,7 +2,9 @@
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-groupingconfiguration.html#aws-resource-applicationsignals-groupingconfiguration-return-values",
     "properties": {
-      "UpdatedAt": {},
+      "UpdatedAt": {
+        "description": "The timestamp when this grouping configuration was last updated. When used in a raw HTTP Query API, it is formatted as epoch time in seconds."
+      },
       "AccountId": {
         "description": "The identifier for the specified AWS account."
       }
@@ -16,15 +18,19 @@
     "GroupingAttributeDefinition": {
       "properties": {
         "DefaultGroupingValue": {
+          "description": "The default value to use for this grouping attribute when no value can be derived from the source keys. This ensures all services have a grouping value even if the source data is missing.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-groupingconfiguration-groupingattributedefinition.html#cfn-applicationsignals-groupingconfiguration-groupingattributedefinition-defaultgroupingvalue"
         },
         "GroupingName": {
+          "description": "The friendly name for this grouping attribute, such as `BusinessUnit` or `Environment` . This name is used to identify the grouping in the console and APIs.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-groupingconfiguration-groupingattributedefinition.html#cfn-applicationsignals-groupingconfiguration-groupingattributedefinition-groupingname"
         },
         "GroupingSourceKeys": {
+          "description": "An array of source keys used to derive the grouping attribute value from telemetry data, AWS tags, or other sources. For example, [\"business_unit\", \"team\"] would look for values in those fields.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-groupingconfiguration-groupingattributedefinition.html#cfn-applicationsignals-groupingconfiguration-groupingattributedefinition-groupingsourcekeys"
         }
       },
+      "description": "A structure that defines how services should be grouped based on specific attributes. This includes the friendly name for the grouping, the source keys to derive values from, and an optional default value.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-groupingconfiguration-groupingattributedefinition.html"
     },
     "GroupingAttributeDefinitions": {
@@ -40,7 +46,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationsignals-groupingconfiguration-timestamp.html"
     }
   },
-  "description": "Resource Type definition for AWS::ApplicationSignals::GroupingConfiguration",
+  "description": "A structure that contains the complete grouping configuration for an account, including all defined grouping attributes and metadata about when it was last updated.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-groupingconfiguration.html",
   "id": "aws-applicationsignals-groupingconfiguration",
   "properties": {
@@ -48,6 +54,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-groupingconfiguration.html#cfn-applicationsignals-groupingconfiguration-accountid"
     },
     "GroupingAttributeDefinitions": {
+      "description": "An array of grouping attribute definitions that specify how services should be grouped based on various attributes and source keys.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-groupingconfiguration.html#cfn-applicationsignals-groupingconfiguration-groupingattributedefinitions"
     },
     "UpdatedAt": {

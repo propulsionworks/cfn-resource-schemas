@@ -1,11 +1,12 @@
 {
   "$id": "aws-logs-deliverydestination",
-  "$integrity": "sha512-U/UCA+j1U98fRhbtN242tEvvu6KKPt/Tfi6X9fp60zbpJ7NB1T2sn+A6sHzETjiRMCc8gEigzxB/nEPZkMesBg==",
+  "$integrity": "sha512-Pc3fiw1DhoI4KjQzoldkCsz2zx6/sDovcLMZ8ArdiIwKeg10yaUh3Ihlc7Amvd7p9/dKQof7SPNce9rAC0zqyA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
     "/properties/OutputFormat",
-    "/properties/DestinationResourceArn"
+    "/properties/DestinationResourceArn",
+    "/properties/DeliveryDestinationType"
   ],
   "definitions": {
     "Arn": {
@@ -114,7 +115,7 @@
       "type": "object"
     },
     "DeliveryDestinationType": {
-      "description": "Displays whether this delivery destination is CloudWatch Logs, Amazon S3, or Kinesis Data Firehose.",
+      "description": "Displays whether this delivery destination is CloudWatch Logs, Amazon S3, Kinesis Data Firehose, or XRay.",
       "maxLength": 12,
       "minLength": 1,
       "pattern": "^[0-9A-Za-z]+$",
@@ -149,8 +150,7 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/Arn",
-    "/properties/DeliveryDestinationType"
+    "/properties/Arn"
   ],
   "required": [
     "Name"

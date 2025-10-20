@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecr-repository",
-  "$integrity": "sha512-OlKFjM0zkRs75TZjfo2bk653GxZnG/YdSts5++yc5mPZ1y7uuUAeOmGiHYl3RHq5CqwDwCEQgycC2FrGwKQX3g==",
+  "$integrity": "sha512-HAR2gxawsRjAv+KEmIgHVjAOGibOX7ilhj/Dl62ETaGyISI8RcopbZAgsUhOS5vZCEQ0t7JtCGYp88O4175DCw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/RepositoryName",
@@ -53,7 +53,7 @@
     },
     "ImageTagMutabilityExclusionFilter": {
       "additionalProperties": false,
-      "description": "Overrides the default image tag mutability setting of the repository for image tags that match the specified filters.",
+      "description": "A filter that specifies which image tags should be excluded from the repository's image tag mutability setting.",
       "properties": {
         "ImageTagMutabilityExclusionFilterType": {
           "$ref": "#/definitions/ImageTagMutabilityExclusionFilterType",
@@ -213,7 +213,7 @@
     },
     "ImageScanningConfiguration": {
       "$ref": "#/definitions/ImageScanningConfiguration",
-      "description": "The image scanning configuration for the repository. This determines whether images are scanned for known vulnerabilities after being pushed to the repository."
+      "description": "The ``imageScanningConfiguration`` parameter is being deprecated, in favor of specifying the image scanning configuration at the registry level. For more information, see ``PutRegistryScanningConfiguration``.\n  The image scanning configuration for the repository. This determines whether images are scanned for known vulnerabilities after being pushed to the repository."
     },
     "ImageTagMutability": {
       "description": "The tag mutability setting for the repository. If this parameter is omitted, the default setting of ``MUTABLE`` will be used which will allow image tags to be overwritten. If ``IMMUTABLE`` is specified, all image tags within the repository will be immutable which will prevent them from being overwritten.",
@@ -226,7 +226,7 @@
       "type": "string"
     },
     "ImageTagMutabilityExclusionFilters": {
-      "description": "The image tag mutability exclusion filters associated with the repository. These filters specify which image tags can override the repository's default image tag mutability setting.",
+      "description": "A list of filters that specify which image tags are excluded from the repository's image tag mutability setting.",
       "insertionOrder": true,
       "items": {
         "$ref": "#/definitions/ImageTagMutabilityExclusionFilter"

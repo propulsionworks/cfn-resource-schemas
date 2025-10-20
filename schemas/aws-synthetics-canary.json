@@ -1,6 +1,6 @@
 {
   "$id": "aws-synthetics-canary",
-  "$integrity": "sha512-uS8yGHPjMs6arVQM9pCpRtGuMMRzT/KXYr9C+/YO7tTuL8WVMOryiGyfL5SXyPAvMpyPRqYykEEu3wT6JEb0Hw==",
+  "$integrity": "sha512-e79eEahaOZzj1fo7ssT/uLcA/f06Vu97gYRzIpFN+NZ46i+2U3S3KSQmuZ+u6/9D09mxtW1pk9/YEaUM2ySfag==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -60,17 +60,39 @@
       "oneOf": [
         {
           "required": [
+            "Handler",
             "S3Bucket",
             "S3Key"
           ]
         },
         {
           "required": [
+            "BlueprintTypes",
+            "S3Bucket",
+            "S3Key"
+          ]
+        },
+        {
+          "required": [
+            "Handler",
+            "Script"
+          ]
+        },
+        {
+          "required": [
+            "BlueprintTypes",
             "Script"
           ]
         }
       ],
       "properties": {
+        "BlueprintTypes": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1,
+          "type": "array"
+        },
         "Dependencies": {
           "description": "List of Lambda layers to attach to the canary",
           "items": {
@@ -98,9 +120,6 @@
           "type": "string"
         }
       },
-      "required": [
-        "Handler"
-      ],
       "type": "object"
     },
     "Dependency": {

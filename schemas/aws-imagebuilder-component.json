@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-component",
-  "$integrity": "sha512-WE8vIbRZoEHXRaEqX9Rw1l3ennhfe5SSdTcraRw3MmQi9QVsP+zURT0JDpGXExtxLenqnCOAU5gp6nQ5uD6rqQ==",
+  "$integrity": "sha512-ne/QOBLHRJ4FVlXhI/nTBrnDJFfJDnQg2mnnpWcSpNlIOJUZmBx0wNnenMSri0RWcZ/tbLCp1lEozKjiEZlgqg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -13,7 +13,31 @@
     "/properties/KmsKeyId",
     "/properties/SupportedOsVersions"
   ],
-  "definitions": {},
+  "definitions": {
+    "LatestVersion": {
+      "additionalProperties": false,
+      "description": "The latest version references of the component.",
+      "properties": {
+        "Arn": {
+          "description": "The latest version ARN of the created component.",
+          "type": "string"
+        },
+        "Major": {
+          "description": "The latest version ARN of the created component, with the same major version.",
+          "type": "string"
+        },
+        "Minor": {
+          "description": "The latest version ARN of the created component, with the same minor version.",
+          "type": "string"
+        },
+        "Patch": {
+          "description": "The latest version ARN of the created component, with the same patch version.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
   "description": "Resource schema for AWS::ImageBuilder::Component",
   "handlers": {
     "create": {
@@ -97,6 +121,10 @@
       "description": "The KMS key identifier used to encrypt the component.",
       "type": "string"
     },
+    "LatestVersion": {
+      "$ref": "#/definitions/LatestVersion",
+      "description": "The latest version references of the component."
+    },
     "Name": {
       "description": "The name of the component.",
       "type": "string"
@@ -148,7 +176,12 @@
   "readOnlyProperties": [
     "/properties/Arn",
     "/properties/Type",
-    "/properties/Encrypted"
+    "/properties/Encrypted",
+    "/properties/LatestVersion",
+    "/properties/LatestVersion/Arn",
+    "/properties/LatestVersion/Major",
+    "/properties/LatestVersion/Minor",
+    "/properties/LatestVersion/Patch"
   ],
   "required": [
     "Name",

@@ -13,6 +13,21 @@
       },
       "Name": {
         "description": "Returns the name of the image."
+      },
+      "LatestVersion": {
+        "description": "The latest version references of the image."
+      },
+      "LatestVersion.Arn": {
+        "description": "The Amazon Resource Name (ARN) of the image.\n\n> Semantic versioning is included in each object's Amazon Resource Name (ARN), at the level that applies to that object as follows:\n> \n> - Versionless ARNs and Name ARNs do not include specific values in any of the nodes. The nodes are either left off entirely, or they are specified as wildcards, for example: x.x.x.\n> - Version ARNs have only the first three nodes: <major>.<minor>.<patch>\n> - Build version ARNs have all four nodes, and point to a specific build for a specific version of an object."
+      },
+      "LatestVersion.Major": {
+        "description": "The latest version ARN of the created image, with the same major version."
+      },
+      "LatestVersion.Minor": {
+        "description": "The latest version ARN of the created image, with the same minor version."
+      },
+      "LatestVersion.Patch": {
+        "description": "The latest version ARN of the created image, with the same patch version."
       }
     }
   },
@@ -87,6 +102,28 @@
       },
       "description": "When you create an image or container recipe with Image Builder , you can add the build or test components that are used to create the final image. You must have at least one build component to create a recipe, but test components are not required. If you have added tests, they run after the image is created, to ensure that the target image is functional and can be used reliably for launching Amazon EC2 instances.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagetestsconfiguration.html"
+    },
+    "LatestVersion": {
+      "properties": {
+        "Arn": {
+          "description": "The Amazon Resource Name (ARN) of the image.\n\n> Semantic versioning is included in each object's Amazon Resource Name (ARN), at the level that applies to that object as follows:\n> \n> - Versionless ARNs and Name ARNs do not include specific values in any of the nodes. The nodes are either left off entirely, or they are specified as wildcards, for example: x.x.x.\n> - Version ARNs have only the first three nodes: <major>.<minor>.<patch>\n> - Build version ARNs have all four nodes, and point to a specific build for a specific version of an object.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-arn"
+        },
+        "Major": {
+          "description": "The latest version ARN of the created image, with the same major version.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-major"
+        },
+        "Minor": {
+          "description": "The latest version ARN of the created image, with the same minor version.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-minor"
+        },
+        "Patch": {
+          "description": "The latest version ARN of the created image, with the same patch version.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-patch"
+        }
+      },
+      "description": "The latest version references of the image.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html"
     },
     "WorkflowConfiguration": {
       "properties": {
@@ -173,6 +210,9 @@
     "InfrastructureConfigurationArn": {
       "description": "The Amazon Resource Name (ARN) of the infrastructure configuration that defines the environment in which your image will be built and tested.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-infrastructureconfigurationarn"
+    },
+    "LatestVersion": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-latestversion"
     },
     "LoggingConfiguration": {
       "description": "The logging configuration that's defined for the image. Image Builder uses the defined settings to direct execution log output during image creation.",

@@ -1,6 +1,6 @@
 {
   "$id": "aws-cloudfront-anycastiplist",
-  "$integrity": "sha512-9OffvDLD3x0danFKAfd0jZ2sIuxVOF6BsRe9ukb8Lpebo/IdnMmXPQH1FhFvAHrx2EHCI2TcQUFBhNPXnwBg9w==",
+  "$integrity": "sha512-/L3xhgsAfMQ/V0Qbvs5FB5S6KdCJfcx+6sLSEAq9Uj797+pdMCSwhYSSlZFpDj5hQs672Pf88f0VrOMM2m9wMw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/IpCount",
@@ -26,6 +26,10 @@
         "Id": {
           "description": "The ID of the Anycast static IP list.",
           "type": "string"
+        },
+        "IpAddressType": {
+          "$ref": "#/definitions/IpAddressType",
+          "description": ""
         },
         "IpCount": {
           "description": "The number of IP addresses in the Anycast static IP list.",
@@ -58,6 +62,13 @@
         "Status"
       ],
       "type": "object"
+    },
+    "IpAddressType": {
+      "enum": [
+        "ipv4",
+        "dualstack"
+      ],
+      "type": "string"
     },
     "Tag": {
       "additionalProperties": false,
@@ -122,6 +133,15 @@
         "cloudfront:GetAnycastIpList",
         "cloudfront:ListTagsForResource"
       ]
+    },
+    "update": {
+      "permissions": [
+        "cloudfront:UpdateAnycastIpList",
+        "cloudfront:GetAnycastIpList",
+        "cloudfront:ListTagsForResource",
+        "cloudfront:TagResource",
+        "cloudfront:UntagResource"
+      ]
     }
   },
   "primaryIdentifier": [
@@ -139,6 +159,10 @@
     "Id": {
       "description": "",
       "type": "string"
+    },
+    "IpAddressType": {
+      "$ref": "#/definitions/IpAddressType",
+      "description": ""
     },
     "IpCount": {
       "description": "The number of IP addresses in the Anycast static IP list.",
@@ -169,6 +193,7 @@
     "cloudFormationSystemTags": false,
     "permissions": [
       "cloudfront:TagResource",
+      "cloudfront:UntagResource",
       "cloudfront:ListTagsForResource"
     ],
     "tagOnCreate": true,

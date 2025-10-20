@@ -1,36 +1,15 @@
 {
   "$id": "aws-ec2-natgateway",
-  "$integrity": "sha512-UblGkhOf36wsEctlg9ZGWOhV2aG18C4BE7KfnIE3uY/rHdvwjupOGWsffXRk7GSbxNm8DHSwL6irfQR4nad+ng==",
+  "$integrity": "sha512-3vzUsDRysL8LVFZ2d/lCTUZ4JGXQkPBvy7geKmOxXsW2ZKc7Wpitr3gcEnm3el1KP4dSlLeD9OJFlOtsP/lmzQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
+    "/properties/VpcId",
     "/properties/SubnetId",
     "/properties/ConnectivityType",
     "/properties/AllocationId",
     "/properties/PrivateIpAddress"
   ],
   "definitions": {
-    "AvailabilityZoneAddress": {
-      "additionalProperties": false,
-      "description": "",
-      "properties": {
-        "AllocationIds": {
-          "insertionOrder": false,
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "AvailabilityZone": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "AvailabilityZone",
-        "AllocationIds"
-      ],
-      "type": "object"
-    },
     "Tag": {
       "additionalProperties": false,
       "description": "Specifies a tag. For more information, see [Resource tags](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html).",
@@ -85,7 +64,8 @@
         "ec2:DisassociateNatGatewayAddress",
         "ec2:AssignPrivateNatGatewayAddress",
         "ec2:UnassignPrivateNatGatewayAddress"
-      ]
+      ],
+      "timeoutInMinutes": 90
     }
   },
   "primaryIdentifier": [
@@ -98,6 +78,10 @@
     },
     "ConnectivityType": {
       "description": "Indicates whether the NAT gateway supports public or private connectivity. The default is public connectivity.",
+      "type": "string"
+    },
+    "EniId": {
+      "description": "",
       "type": "string"
     },
     "MaxDrainDurationSeconds": {
@@ -147,10 +131,15 @@
       },
       "type": "array",
       "uniqueItems": false
+    },
+    "VpcId": {
+      "description": "",
+      "type": "string"
     }
   },
   "readOnlyProperties": [
-    "/properties/NatGatewayId"
+    "/properties/NatGatewayId",
+    "/properties/EniId"
   ],
   "tagging": {
     "cloudFormationSystemTags": true,

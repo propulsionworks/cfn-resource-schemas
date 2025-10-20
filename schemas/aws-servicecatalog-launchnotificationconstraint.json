@@ -1,12 +1,53 @@
 {
   "$id": "aws-servicecatalog-launchnotificationconstraint",
-  "$integrity": "sha512-XN3ftM29grCfPVeel5uQp8f+UbChd7AwdMheumbjVl8ESRO8AEKHNyDOvdX8xVaNHxgBgViiC2j2VsEDyshRfg==",
+  "$integrity": "sha512-DptfEidieQxx9UGEvCEFEZLOiAD0b7rMzPqrChMLtlGI8R3eMGwY4f1zktHqsLEV//ohpSj7O6+cNuxhChmjtA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/PortfolioId",
     "/properties/ProductId"
   ],
   "description": "Resource Type definition for AWS::ServiceCatalog::LaunchNotificationConstraint",
+  "handlers": {
+    "create": {
+      "permissions": [
+        "servicecatalog:CreateConstraint",
+        "servicecatalog:DescribeConstraint",
+        "sns:GetTopicAttributes"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "servicecatalog:DeleteConstraint"
+      ]
+    },
+    "list": {
+      "handlerSchema": {
+        "properties": {
+          "PortfolioId": {
+            "$ref": "resource-schema.json#/properties/PortfolioId"
+          }
+        },
+        "required": [
+          "PortfolioId"
+        ]
+      },
+      "permissions": [
+        "servicecatalog:ListConstraintsForPortfolio"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "servicecatalog:DescribeConstraint"
+      ]
+    },
+    "update": {
+      "permissions": [
+        "servicecatalog:UpdateConstraint",
+        "servicecatalog:DescribeConstraint",
+        "sns:GetTopicAttributes"
+      ]
+    }
+  },
   "primaryIdentifier": [
     "/properties/Id"
   ],
@@ -18,6 +59,7 @@
       "type": "string"
     },
     "Id": {
+      "description": "Unique identifier for the constraint",
       "type": "string"
     },
     "NotificationArns": {
@@ -42,5 +84,12 @@
     "PortfolioId",
     "ProductId"
   ],
-  "typeName": "AWS::ServiceCatalog::LaunchNotificationConstraint"
+  "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-servicecatalog/tree/main/aws-servicecatalog-launchnotificationconstraint",
+  "tagging": {
+    "taggable": false
+  },
+  "typeName": "AWS::ServiceCatalog::LaunchNotificationConstraint",
+  "writeOnlyProperties": [
+    "/properties/AcceptLanguage"
+  ]
 }

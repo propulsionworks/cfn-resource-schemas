@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-image",
-  "$integrity": "sha512-EJOPdiqHCzOGGeRSDg+1l6J8/to6Rnv6xh8hCBC6L4Wp4xhlKSirFd0sg7F/J1oq7O9rSB+4l61q05VHdLG00Q==",
+  "$integrity": "sha512-4Oqwfi/oYNfASA7eSQtWWeX9T34W9NMr/9JxJ6zW+nO+xX7H5w572eytD/tlD19wL05xfaIf59H6tQqldSe2qg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ImageRecipeArn",
@@ -100,6 +100,29 @@
           "maximum": 1440,
           "minimum": 60,
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "LatestVersion": {
+      "additionalProperties": false,
+      "description": "The latest version references of the image.",
+      "properties": {
+        "Arn": {
+          "description": "The latest version ARN of the created image.",
+          "type": "string"
+        },
+        "Major": {
+          "description": "The latest version ARN of the created image, with the same major version.",
+          "type": "string"
+        },
+        "Minor": {
+          "description": "The latest version ARN of the created image, with the same minor version.",
+          "type": "string"
+        },
+        "Patch": {
+          "description": "The latest version ARN of the created image, with the same patch version.",
+          "type": "string"
         }
       },
       "type": "object"
@@ -281,6 +304,10 @@
       "description": "The Amazon Resource Name (ARN) of the infrastructure configuration.",
       "type": "string"
     },
+    "LatestVersion": {
+      "$ref": "#/definitions/LatestVersion",
+      "description": "The latest version references of the image."
+    },
     "LoggingConfiguration": {
       "$ref": "#/definitions/ImageLoggingConfiguration",
       "description": "The logging configuration settings for the image."
@@ -312,7 +339,12 @@
     "/properties/Arn",
     "/properties/Name",
     "/properties/ImageId",
-    "/properties/ImageUri"
+    "/properties/ImageUri",
+    "/properties/LatestVersion",
+    "/properties/LatestVersion/Arn",
+    "/properties/LatestVersion/Major",
+    "/properties/LatestVersion/Minor",
+    "/properties/LatestVersion/Patch"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-imagebuilder",
   "tagging": {

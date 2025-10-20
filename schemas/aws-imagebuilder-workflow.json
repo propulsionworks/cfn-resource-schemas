@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-workflow",
-  "$integrity": "sha512-a5aOVBBImoNPl2okCliE7li5e4YyzPSzXeNxo3pDn0Mv1w77WMmCLElcTPgd8l/bzDlxZvawLs4Mgx4QC2P5pA==",
+  "$integrity": "sha512-Jt6BKOC7OwoLEl10Iu+KJS/s2Msl1/aiNFk7GOhQZO2Dwerfamc68AAr7mVUWCdHWenHKwrGDIJXQQhTk3UHVQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -12,7 +12,31 @@
     "/properties/Type",
     "/properties/KmsKeyId"
   ],
-  "definitions": {},
+  "definitions": {
+    "LatestVersion": {
+      "additionalProperties": false,
+      "description": "The latest version references of the workflow.",
+      "properties": {
+        "Arn": {
+          "description": "The latest version ARN of the created workflow.",
+          "type": "string"
+        },
+        "Major": {
+          "description": "The latest version ARN of the created workflow, with the same major version.",
+          "type": "string"
+        },
+        "Minor": {
+          "description": "The latest version ARN of the created workflow, with the same minor version.",
+          "type": "string"
+        },
+        "Patch": {
+          "description": "The latest version ARN of the created workflow, with the same patch version.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
   "description": "Resource schema for AWS::ImageBuilder::Workflow",
   "handlers": {
     "create": {
@@ -91,6 +115,10 @@
       "description": "The KMS key identifier used to encrypt the workflow.",
       "type": "string"
     },
+    "LatestVersion": {
+      "$ref": "#/definitions/LatestVersion",
+      "description": "The latest version references of the workflow."
+    },
     "Name": {
       "description": "The name of the workflow.",
       "type": "string"
@@ -124,7 +152,12 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/Arn"
+    "/properties/Arn",
+    "/properties/LatestVersion",
+    "/properties/LatestVersion/Arn",
+    "/properties/LatestVersion/Major",
+    "/properties/LatestVersion/Minor",
+    "/properties/LatestVersion/Patch"
   ],
   "required": [
     "Name",

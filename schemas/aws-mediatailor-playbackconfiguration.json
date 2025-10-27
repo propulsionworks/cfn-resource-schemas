@@ -1,6 +1,6 @@
 {
   "$id": "aws-mediatailor-playbackconfiguration",
-  "$integrity": "sha512-/6KpeCAU3BikisXahGFf9GuHk8tu7QU0QKf8lQk/LUELtPV1wa7EmTwu+tOzZrEaLWYu8+zXhUH06Vbe+TBdWQ==",
+  "$integrity": "sha512-ENxopiRxlpr8oqKZUV99zrP8BE6qQDYZMlskgMcTgYjsUICosA4n1VFcajBtUZ8WSALdqx2tzBUegLJRoZoayQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -258,12 +258,14 @@
         "mediatailor:ConfigureLogsForPlaybackConfiguration",
         "iam:CreateServiceLinkedRole",
         "mediatailor:UntagResource",
-        "mediatailor:TagResource"
+        "mediatailor:TagResource",
+        "mediatailor:GetPlaybackConfiguration"
       ]
     },
     "delete": {
       "permissions": [
-        "mediatailor:DeletePlaybackConfiguration"
+        "mediatailor:DeletePlaybackConfiguration",
+        "mediatailor:GetPlaybackConfiguration"
       ]
     },
     "list": {
@@ -282,7 +284,8 @@
         "mediatailor:ConfigureLogsForPlaybackConfiguration",
         "iam:CreateServiceLinkedRole",
         "mediatailor:UntagResource",
-        "mediatailor:TagResource"
+        "mediatailor:TagResource",
+        "mediatailor:GetPlaybackConfiguration"
       ]
     }
   },
@@ -397,6 +400,13 @@
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-mediatailor.git",
   "tagging": {
     "cloudFormationSystemTags": false,
+    "permissions": [
+      "mediatailor:TagResource",
+      "mediatailor:UntagResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::MediaTailor::PlaybackConfiguration"

@@ -1,6 +1,6 @@
 {
   "$id": "aws-elasticloadbalancingv2-listener",
-  "$integrity": "sha512-tnp767GJSOn2gUo0cNia6a91m91GkE07JPrRAS5FFQFSucvQRWR066tRnM3OpPRdC3RSl8uBqr1F5zvEihxALw==",
+  "$integrity": "sha512-E7O7fWT63KjscrJ27osV2fwUtjVPR4Bg0dK6OQfIDmCrwZjpPryE+DWPw/Cf51u3y0pn181fjzol8peP+9hAdQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/LoadBalancerArn"
@@ -24,7 +24,7 @@
         },
         "ForwardConfig": {
           "$ref": "#/definitions/ForwardConfig",
-          "description": "Information for creating an action that distributes requests among one or more target groups. For Network Load Balancers, you can specify a single target group. Specify only when ``Type`` is ``forward``. If you specify both ``ForwardConfig`` and ``TargetGroupArn``, you can specify only one target group using ``ForwardConfig`` and it must be the same target group specified in ``TargetGroupArn``."
+          "description": "Information for creating an action that distributes requests among multiple target groups. Specify only when ``Type`` is ``forward``.\n If you specify both ``ForwardConfig`` and ``TargetGroupArn``, you can specify only one target group using ``ForwardConfig`` and it must be the same target group specified in ``TargetGroupArn``."
         },
         "Order": {
           "description": "The order for the action. This value is required for rules with multiple actions. The action with the lowest value for order is performed first.",
@@ -35,7 +35,7 @@
           "description": "[Application Load Balancer] Information for creating a redirect action. Specify only when ``Type`` is ``redirect``."
         },
         "TargetGroupArn": {
-          "description": "The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is ``forward`` and you want to route to a single target group. To route to one or more target groups, use ``ForwardConfig`` instead.",
+          "description": "The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is ``forward`` and you want to route to a single target group. To route to multiple target groups, you must use ``ForwardConfig`` instead.",
           "type": "string"
         },
         "Type": {
@@ -239,7 +239,7 @@
     },
     "ForwardConfig": {
       "additionalProperties": false,
-      "description": "Information for creating an action that distributes requests among one or more target groups. For Network Load Balancers, you can specify a single target group. Specify only when ``Type`` is ``forward``. If you specify both ``ForwardConfig`` and ``TargetGroupArn``, you can specify only one target group using ``ForwardConfig`` and it must be the same target group specified in ``TargetGroupArn``.",
+      "description": "Information for creating an action that distributes requests among multiple target groups. Specify only when ``Type`` is ``forward``.\n If you specify both ``ForwardConfig`` and ``TargetGroupArn``, you can specify only one target group using ``ForwardConfig`` and it must be the same target group specified in ``TargetGroupArn``.",
       "properties": {
         "TargetGroupStickinessConfig": {
           "$ref": "#/definitions/TargetGroupStickinessConfig",
@@ -333,7 +333,7 @@
       "description": "Information about the target group stickiness for a rule.",
       "properties": {
         "DurationSeconds": {
-          "description": "The time period, in seconds, during which requests from a client should be routed to the same target group. The range is 1-604800 seconds (7 days). You must specify this value when enabling target group stickiness.",
+          "description": "[Application Load Balancers] The time period, in seconds, during which requests from a client should be routed to the same target group. The range is 1-604800 seconds (7 days). You must specify this value when enabling target group stickiness.",
           "type": "integer"
         },
         "Enabled": {

@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-service",
-  "$integrity": "sha512-d7WO9cc3JY/ByvHxp8Tjl3eni6HSrRS8yF/1PEEwPeoTF7U9L++wUiEuq15+fGfIyBr+EYsiWUBYWh44WegtyQ==",
+  "$integrity": "sha512-RKp+ZIPN2BFz/nK8qeZOVRKt8CJ6nXFspSa9g3fOXHMNz4o+ESUc9GGyv/kpn9ccnroSXcOf64caQLgwA5Y5Tg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Cluster",
@@ -78,7 +78,7 @@
         },
         "CanaryPercent": {
           "maximum": 100,
-          "minimum": 1,
+          "minimum": 0.1,
           "multipleOf": 0.1,
           "type": "number"
         }
@@ -323,7 +323,7 @@
         },
         "StepPercent": {
           "maximum": 100,
-          "minimum": 1,
+          "minimum": 3,
           "multipleOf": 0.1,
           "type": "number"
         }
@@ -881,7 +881,7 @@
       "type": "integer"
     },
     "LaunchType": {
-      "description": "The launch type on which to run your service. For more information, see [Amazon ECS Launch Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html) in the *Amazon Elastic Container Service Developer Guide*.",
+      "description": "The launch type on which to run your service. For more information, see [Amazon ECS Launch Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html) in the *Amazon Elastic Container Service Developer Guide*.\n  If you want to use Managed Instances, you must use the ``capacityProviderStrategy`` request parameter",
       "enum": [
         "EC2",
         "FARGATE",

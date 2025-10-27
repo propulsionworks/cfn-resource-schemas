@@ -1,6 +1,6 @@
 {
   "$id": "aws-organizations-account",
-  "$integrity": "sha512-QqEMwaeMD4QvWax67KEDyKdbe8luN2n65qvN4EtXfsr370Gy3mEvVSeZlhuPZpJ+yYT16xbUqx3EJ4K3+rpTpg==",
+  "$integrity": "sha512-8tTbJLsRIxsgToCdzGCK/hHkNN5lgnEsXSu3pLCZozBCookTFTAn/KHFnROnVGygeQoJuxoFdNkgjBlZfCpjWg==",
   "additionalProperties": false,
   "definitions": {
     "Tag": {
@@ -131,6 +131,17 @@
       "pattern": "[\\w+=,.@-]{1,64}",
       "type": "string"
     },
+    "State": {
+      "description": "The state of the account in the organization.",
+      "enum": [
+        "PENDING_ACTIVATION",
+        "ACTIVE",
+        "SUSPENDED",
+        "PENDING_CLOSURE",
+        "CLOSED"
+      ],
+      "type": "string"
+    },
     "Status": {
       "description": "The status of the account in the organization.",
       "enum": [
@@ -153,6 +164,7 @@
   "readOnlyProperties": [
     "/properties/AccountId",
     "/properties/Status",
+    "/properties/State",
     "/properties/JoinedTimestamp",
     "/properties/JoinedMethod",
     "/properties/Arn"

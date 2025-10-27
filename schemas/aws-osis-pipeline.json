@@ -1,6 +1,6 @@
 {
   "$id": "aws-osis-pipeline",
-  "$integrity": "sha512-I0oq1lEQbGFEdE2jjffszpqiWN8n/CfYVBa7f0je/lkt5+Zpwn+vQVeFRmrIE+VkJvij1JDXM2xI+YAiJzYwfw==",
+  "$integrity": "sha512-8udEEkvbSZplg1hco/AQqVFI49haJn4xxJGJYq7btTMuGrrUYA7oRuz7HZ2gIONBNLbVcH/pXz1EDdOCgGBWkg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/PipelineName"
@@ -59,6 +59,18 @@
           "type": "boolean"
         }
       },
+      "type": "object"
+    },
+    "ResourcePolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "Policy": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "Policy"
+      ],
       "type": "object"
     },
     "Tag": {
@@ -171,6 +183,8 @@
         "osis:GetPipeline",
         "osis:TagResource",
         "osis:ListTagsForResource",
+        "osis:GetResourcePolicy",
+        "osis:PutResourcePolicy",
         "iam:PassRole",
         "iam:CreateServiceLinkedRole",
         "logs:CreateLogDelivery",
@@ -194,7 +208,8 @@
     "read": {
       "permissions": [
         "osis:GetPipeline",
-        "osis:ListTagsForResource"
+        "osis:ListTagsForResource",
+        "osis:GetResourcePolicy"
       ]
     },
     "update": {
@@ -204,6 +219,9 @@
         "osis:ListTagsForResource",
         "osis:TagResource",
         "osis:UntagResource",
+        "osis:GetResourcePolicy",
+        "osis:PutResourcePolicy",
+        "osis:DeleteResourcePolicy",
         "iam:PassRole",
         "logs:GetLogDelivery",
         "logs:UpdateLogDelivery",
@@ -247,7 +265,7 @@
     },
     "PipelineArn": {
       "description": "The Amazon Resource Name (ARN) of the pipeline.",
-      "maxLength": 76,
+      "maxLength": 78,
       "minLength": 46,
       "pattern": "^arn:(aws|aws\\-cn|aws\\-us\\-gov|aws\\-iso|aws\\-iso\\-b):osis:.+:pipeline\\/.+$",
       "type": "string"
@@ -264,6 +282,16 @@
       "minLength": 3,
       "pattern": "[a-z][a-z0-9\\-]+",
       "type": "string"
+    },
+    "PipelineRoleArn": {
+      "description": "The Pipeline Role (ARN) for the pipeline.",
+      "maxLength": 2048,
+      "minLength": 20,
+      "pattern": "^arn:(aws|aws\\-cn|aws\\-us\\-gov|aws\\-iso|aws\\-iso\\-b|aws\\-iso\\-e|aws\\-iso\\-f):iam::[0-9]+:role\\/.*$",
+      "type": "string"
+    },
+    "ResourcePolicy": {
+      "$ref": "#/definitions/ResourcePolicy"
     },
     "Tags": {
       "description": "An array of key-value pairs to apply to this resource.",

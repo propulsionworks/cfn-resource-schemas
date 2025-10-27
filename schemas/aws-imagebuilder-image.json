@@ -1,7 +1,10 @@
 {
   "$id": "aws-imagebuilder-image",
-  "$integrity": "sha512-4Oqwfi/oYNfASA7eSQtWWeX9T34W9NMr/9JxJ6zW+nO+xX7H5w572eytD/tlD19wL05xfaIf59H6tQqldSe2qg==",
+  "$integrity": "sha512-tAsVLZVk0G5TiavjoSeu/eMf5F3N98m0ypRng7DSsW98c27y92gIokytG4DvCnm749aMLlqOroO7qWxrcfH5tQ==",
   "additionalProperties": false,
+  "conditionalCreateOnlyProperties": [
+    "/properties/ImagePipelineExecutionSettings"
+  ],
   "createOnlyProperties": [
     "/properties/ImageRecipeArn",
     "/properties/ContainerRecipeArn",
@@ -284,6 +287,61 @@
       "description": "The AMI ID of the EC2 AMI in current region.",
       "type": "string"
     },
+    "ImagePipelineExecutionSettings": {
+      "$ref": "#/definitions/ImagePipelineExecutionSettings",
+      "dependencies": {
+        "ImagePipelineExecutionSettings": {
+          "oneOf": [
+            {
+              "required": [
+                "ImageRecipeArn"
+              ]
+            },
+            {
+              "required": [
+                "ContainerRecipeArn"
+              ]
+            },
+            {
+              "required": [
+                "InfrastructureConfigurationArn"
+              ]
+            },
+            {
+              "required": [
+                "Workflows"
+              ]
+            },
+            {
+              "required": [
+                "DistributionConfigurationArn"
+              ]
+            },
+            {
+              "required": [
+                "ImageTestsConfiguration"
+              ]
+            },
+            {
+              "required": [
+                "ImageScanningConfiguration"
+              ]
+            },
+            {
+              "required": [
+                "EnhancedImageMetadataEnabled"
+              ]
+            },
+            {
+              "required": [
+                "ImportDiskImageSettings"
+              ]
+            }
+          ]
+        }
+      },
+      "description": "The image pipeline execution settings of the image."
+    },
     "ImageRecipeArn": {
       "description": "The Amazon Resource Name (ARN) of the image recipe that defines how images are configured, tested, and assessed.",
       "type": "string"
@@ -358,5 +416,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::ImageBuilder::Image"
+  "typeName": "AWS::ImageBuilder::Image",
+  "writeOnlyProperties": [
+    "/properties/ImagePipelineExecutionSettings"
+  ]
 }

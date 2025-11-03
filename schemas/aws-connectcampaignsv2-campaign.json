@@ -1,11 +1,26 @@
 {
   "$id": "aws-connectcampaignsv2-campaign",
-  "$integrity": "sha512-JqKpIj95D9UVZv4ZyWC81j2L/HF7JYkYAsYloCIxSehwDLusr3Bg0w+rYmRN393qq3jmuHHo9ewb9Leq01I0Ow==",
+  "$integrity": "sha512-TZmZ9bkICLe67SV6OEXuCzaDxjRTJcP6Qxa80mF66VTnpzTZmd8exmEfiRR4iqznPDyPSwbyb69uPf2PV6Y0Jg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ConnectInstanceId"
   ],
   "definitions": {
+    "AgentAction": {
+      "description": "Actions that can performed on a contact by an agent",
+      "enum": [
+        "DISCARD"
+      ],
+      "type": "string"
+    },
+    "AgentActions": {
+      "description": "Actions that can be performed by agent during preview phase",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/AgentAction"
+      },
+      "type": "array"
+    },
     "AgentlessConfig": {
       "additionalProperties": false,
       "description": "Agentless config",
@@ -365,6 +380,26 @@
       ],
       "type": "object"
     },
+    "PreviewConfig": {
+      "additionalProperties": false,
+      "description": "Preview config",
+      "properties": {
+        "AgentActions": {
+          "$ref": "#/definitions/AgentActions"
+        },
+        "BandwidthAllocation": {
+          "$ref": "#/definitions/BandwidthAllocation"
+        },
+        "TimeoutConfig": {
+          "$ref": "#/definitions/TimeoutConfig"
+        }
+      },
+      "required": [
+        "BandwidthAllocation",
+        "TimeoutConfig"
+      ],
+      "type": "object"
+    },
     "ProgressiveConfig": {
       "additionalProperties": false,
       "description": "Progressive config",
@@ -611,6 +646,11 @@
           "required": [
             "AgentlessConfig"
           ]
+        },
+        {
+          "required": [
+            "PreviewConfig"
+          ]
         }
       ],
       "properties": {
@@ -619,6 +659,9 @@
         },
         "PredictiveConfig": {
           "$ref": "#/definitions/PredictiveConfig"
+        },
+        "PreviewConfig": {
+          "$ref": "#/definitions/PreviewConfig"
         },
         "ProgressiveConfig": {
           "$ref": "#/definitions/ProgressiveConfig"
@@ -675,6 +718,21 @@
     "TimeZone": {
       "description": "Time Zone Id in the IANA format",
       "type": "string"
+    },
+    "TimeoutConfig": {
+      "description": "Timeout Config for preview contacts",
+      "properties": {
+        "DurationInSeconds": {
+          "$ref": "#/definitions/TimeoutDuration"
+        }
+      },
+      "type": "object"
+    },
+    "TimeoutDuration": {
+      "description": "Timeout duration for a preview contact in seconds",
+      "maximum": 300,
+      "minimum": 10,
+      "type": "integer"
     }
   },
   "description": "Definition of AWS::ConnectCampaignsV2::Campaign Resource Type",

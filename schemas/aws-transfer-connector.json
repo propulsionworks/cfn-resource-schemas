@@ -1,8 +1,57 @@
 {
   "$id": "aws-transfer-connector",
-  "$integrity": "sha512-682fknSx4Wi2kNafNoF7beX1nc+Vi2/RHUYCO7pC67khDQF+2ytUVnFPJSNjqjF35JWx8iLGRxUc4YwvIy3/MA==",
+  "$integrity": "sha512-y8fNq001DDdYfSqxzRvCkHjF0ZSpoVKX9z51iGy3EPQl5IHn2SvDvPao+bcEHZRtM3E5GCd3s/rEis9ITt1XbA==",
   "additionalProperties": false,
   "definitions": {
+    "ConnectorEgressConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "VpcLattice": {
+          "$ref": "#/definitions/ConnectorVpcLatticeEgressConfig"
+        }
+      },
+      "required": [
+        "VpcLattice"
+      ],
+      "type": "object"
+    },
+    "ConnectorEgressType": {
+      "enum": [
+        "SERVICE_MANAGED",
+        "VPC_LATTICE"
+      ],
+      "type": "string"
+    },
+    "ConnectorStatus": {
+      "enum": [
+        "ACTIVE",
+        "PENDING",
+        "ERRORED"
+      ],
+      "type": "string"
+    },
+    "ConnectorVpcLatticeEgressConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "PortNumber": {
+          "description": "Port to connect to on the target VPC Lattice resource",
+          "maximum": 65535,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "ResourceConfigurationArn": {
+          "description": "ARN of the VPC Lattice resource configuration",
+          "maxLength": 2048,
+          "minLength": 1,
+          "pattern": "^arn:[a-z0-9\\-]+:vpc-lattice:[a-zA-Z0-9\\-]+:\\d{12}:resourceconfiguration/rcfg-[0-9a-z]{17}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ResourceConfigurationArn"
+      ],
+      "type": "object"
+    },
     "SftpConnectorTrustedHostKey": {
       "description": "The public host key for the external server to which you are connecting.",
       "maxLength": 2048,
@@ -38,8 +87,12 @@
     "create": {
       "permissions": [
         "transfer:CreateConnector",
+        "transfer:DescribeConnector",
         "transfer:TagResource",
-        "iam:PassRole"
+        "iam:PassRole",
+        "vpc-lattice:CreateServiceNetworkResourceAssociation",
+        "vpc-lattice:GetResourceConfiguration",
+        "vpc-lattice:AssociateViaAWSService"
       ]
     },
     "delete": {
@@ -60,9 +113,13 @@
     "update": {
       "permissions": [
         "transfer:UpdateConnector",
+        "transfer:DescribeConnector",
         "transfer:UnTagResource",
         "transfer:TagResource",
-        "iam:PassRole"
+        "iam:PassRole",
+        "vpc-lattice:CreateServiceNetworkResourceAssociation",
+        "vpc-lattice:GetResourceConfiguration",
+        "vpc-lattice:AssociateViaAWSService"
       ]
     }
   },
@@ -183,6 +240,14 @@
       "pattern": "^c-([0-9a-f]{17})$",
       "type": "string"
     },
+    "EgressConfig": {
+      "$ref": "#/definitions/ConnectorEgressConfig",
+      "description": "Egress configuration for the connector."
+    },
+    "EgressType": {
+      "$ref": "#/definitions/ConnectorEgressType",
+      "description": "Specifies the egress type for the connector."
+    },
     "LoggingRole": {
       "description": "Specifies the logging role for the connector.",
       "maxLength": 2048,
@@ -235,6 +300,9 @@
       },
       "type": "object"
     },
+    "Status": {
+      "$ref": "#/definitions/ConnectorStatus"
+    },
     "Tags": {
       "description": "Key-value pairs that can be used to group and search for connectors. Tags are metadata attached to connectors for any purpose.",
       "insertionOrder": false,
@@ -254,11 +322,11 @@
   "readOnlyProperties": [
     "/properties/Arn",
     "/properties/ConnectorId",
-    "/properties/ServiceManagedEgressIpAddresses"
+    "/properties/ServiceManagedEgressIpAddresses",
+    "/properties/Status"
   ],
   "required": [
-    "AccessRole",
-    "Url"
+    "AccessRole"
   ],
   "tagging": {
     "cloudFormationSystemTags": true,

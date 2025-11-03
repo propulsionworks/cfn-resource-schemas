@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-image",
-  "$integrity": "sha512-tAsVLZVk0G5TiavjoSeu/eMf5F3N98m0ypRng7DSsW98c27y92gIokytG4DvCnm749aMLlqOroO7qWxrcfH5tQ==",
+  "$integrity": "sha512-dc+rnz2iU1XSc20nnIq2OaUTJKYC7OUdlxGTeJjy1n0lj+mmG4UxFYdnnT3zsF57N4KLgkHetpHQhdNuPRFF4w==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/ImagePipelineExecutionSettings"
@@ -271,6 +271,10 @@
       "description": "The Amazon Resource Name (ARN) of the container recipe that defines how images are configured and tested.",
       "type": "string"
     },
+    "DeletionSettings": {
+      "$ref": "#/definitions/DeletionSettings",
+      "description": "The deletion settings of the image, indicating whether to delete the underlying resources in addition to the image."
+    },
     "DistributionConfigurationArn": {
       "description": "The Amazon Resource Name (ARN) of the distribution configuration.",
       "type": "string"
@@ -418,6 +422,7 @@
   },
   "typeName": "AWS::ImageBuilder::Image",
   "writeOnlyProperties": [
+    "/properties/DeletionSettings",
     "/properties/ImagePipelineExecutionSettings"
   ]
 }

@@ -1,27 +1,25 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbuspolicy.html#aws-resource-events-eventbuspolicy-return-values",
-    "properties": {
-      "Id": {}
-    }
+    "properties": {}
   },
   "definitions": {
     "Condition": {
       "properties": {
         "Key": {
-          "description": "Specifies the key for the condition. Currently the only supported key is `aws:PrincipalOrgID` .",
+          "description": "Specifies the value for the key. Currently, this must be the ID of the organization.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-eventbuspolicy-condition.html#cfn-events-eventbuspolicy-condition-key"
         },
         "Type": {
-          "description": "Specifies the type of condition. Currently the only supported value is `StringEquals` .",
+          "description": "Specifies the type of condition. Currently the only supported value is StringEquals.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-eventbuspolicy-condition.html#cfn-events-eventbuspolicy-condition-type"
         },
         "Value": {
-          "description": "Specifies the value for the key. Currently, this must be the ID of the organization.",
+          "description": "Specifies the key for the condition. Currently the only supported key is aws:PrincipalOrgID.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-eventbuspolicy-condition.html#cfn-events-eventbuspolicy-condition-value"
         }
       },
-      "description": "A JSON string which you can use to limit the event bus permissions you are granting to only accounts that fulfill the condition. Currently, the only supported condition is membership in a certain AWS organization. The string must contain `Type` , `Key` , and `Value` fields. The `Value` field specifies the ID of the AWS organization. Following is an example value for `Condition` :\n\n`'{\"Type\" : \"StringEquals\", \"Key\": \"aws:PrincipalOrgID\", \"Value\": \"o-1234567890\"}'`",
+      "description": "This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-eventbuspolicy-condition.html"
     }
   },
@@ -34,7 +32,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbuspolicy.html#cfn-events-eventbuspolicy-action"
     },
     "Condition": {
-      "description": "This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization. For more information about AWS Organizations, see [What Is AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html) in the *AWS Organizations User Guide* .\n\nIf you specify `Condition` with an AWS organization ID, and specify \"*\" as the value for `Principal` , you grant permission to all the accounts in the named organization.\n\nThe `Condition` is a JSON string which must contain `Type` , `Key` , and `Value` fields.",
+      "description": "This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbuspolicy.html#cfn-events-eventbuspolicy-condition"
     },
     "EventBusName": {
@@ -42,7 +40,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbuspolicy.html#cfn-events-eventbuspolicy-eventbusname"
     },
     "Principal": {
-      "description": "The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify \"*\" to permit any account to put events to your default event bus.\n\nIf you specify \"*\" without specifying `Condition` , avoid creating rules that may match undesirable events. To create more secure rules, make sure that the event pattern for each rule contains an `account` field with a specific account ID from which to receive events. Rules with an account field do not match any events sent from other accounts.",
+      "description": "The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify \"*\" to permit any account to put events to your default event bus.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbuspolicy.html#cfn-events-eventbuspolicy-principal"
     },
     "Statement": {

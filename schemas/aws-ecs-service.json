@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-service",
-  "$integrity": "sha512-RKp+ZIPN2BFz/nK8qeZOVRKt8CJ6nXFspSa9g3fOXHMNz4o+ESUc9GGyv/kpn9ccnroSXcOf64caQLgwA5Y5Tg==",
+  "$integrity": "sha512-ESnVvCF81ugWwRF9USafrMb29Y1VTBUCe1AJ8yTM9tnwUKJwn++M8Mw/itcx+eNRZWmxUVwUhNxjsNy+XZfdyw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Cluster",
@@ -165,6 +165,7 @@
           "type": "integer"
         },
         "CanaryConfiguration": {
+          "$ref": "#/definitions/CanaryConfiguration",
           "description": ""
         },
         "DeploymentCircuitBreaker": {
@@ -179,6 +180,7 @@
           "type": "array"
         },
         "LinearConfiguration": {
+          "$ref": "#/definitions/LinearConfiguration",
           "description": ""
         },
         "MaximumPercent": {
@@ -461,6 +463,30 @@
       ],
       "type": "object"
     },
+    "ServiceConnectAccessLogConfiguration": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "Format": {
+          "enum": [
+            "TEXT",
+            "JSON"
+          ],
+          "type": "string"
+        },
+        "IncludeQueryParameters": {
+          "enum": [
+            "DISABLED",
+            "ENABLED"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Format"
+      ],
+      "type": "object"
+    },
     "ServiceConnectClientAlias": {
       "additionalProperties": false,
       "description": "Each alias (\"endpoint\") is a fully-qualified name and port number that other tasks (\"clients\") can use to connect to this service.\n Each name and port mapping must be unique within the namespace.\n Tasks that run in a namespace can use short names to connect to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. Tasks connect through a managed proxy container that collects logs and metrics for increased visibility. Only the tasks that Amazon ECS services create are supported with Service Connect. For more information, see [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in the *Amazon Elastic Container Service Developer Guide*.",
@@ -487,6 +513,10 @@
       "additionalProperties": false,
       "description": "The Service Connect configuration of your Amazon ECS service. The configuration for this service to discover and connect to services, and be discovered by, and connected from, other services within a namespace.\n Tasks that run in a namespace can use short names to connect to services in the namespace. Tasks can connect to services across all of the clusters in the namespace. Tasks connect through a managed proxy container that collects logs and metrics for increased visibility. Only the tasks that Amazon ECS services create are supported with Service Connect. For more information, see [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in the *Amazon Elastic Container Service Developer Guide*.",
       "properties": {
+        "AccessLogConfiguration": {
+          "$ref": "#/definitions/ServiceConnectAccessLogConfiguration",
+          "description": ""
+        },
         "Enabled": {
           "description": "Specifies whether to use Service Connect with this service.",
           "type": "boolean"

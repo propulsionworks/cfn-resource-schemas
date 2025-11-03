@@ -1,10 +1,12 @@
 {
   "$id": "aws-billingconductor-customlineitem",
-  "$integrity": "sha512-bcOHJHY2OkF8sUx3UapSJ9aqaWY5PBakX7S7GaTMu3zQ7uhZJ4wtMJkzdw62z9YjBVp91KLJHVp841LpkKWv6A==",
+  "$integrity": "sha512-MsKWLoBhVEZ9CbqFq+oDX07dSgloonsyjjlpRIBb9BxyJNLPLeKE9WWEhx1oYvBzD3wInszOxS1bhwkaogeWJw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BillingGroupArn",
     "/properties/AccountId",
+    "/properties/ComputationRule",
+    "/properties/PresentationDetails",
     "/properties/BillingPeriodRange/InclusiveStartBillingPeriod",
     "/properties/BillingPeriodRange/ExclusiveEndBillingPeriod",
     "/properties/CustomLineItemChargeDetails/Type"
@@ -234,6 +236,13 @@
     "BillingPeriodRange": {
       "$ref": "#/definitions/BillingPeriodRange"
     },
+    "ComputationRule": {
+      "description": "The display settings of the Custom Line Item.",
+      "enum": [
+        "CONSOLIDATED"
+      ],
+      "type": "string"
+    },
     "CreationTime": {
       "description": "Creation timestamp in UNIX epoch time format",
       "type": "integer"
@@ -261,6 +270,19 @@
       "minLength": 1,
       "pattern": "[a-zA-Z0-9_\\+=\\.\\-@]+",
       "type": "string"
+    },
+    "PresentationDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "Service": {
+          "pattern": "^[a-zA-Z0-9]+$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Service"
+      ],
+      "type": "object"
     },
     "ProductCode": {
       "maxLength": 29,

@@ -1,6 +1,6 @@
 {
   "$id": "aws-sso-permissionset",
-  "$integrity": "sha512-xi3EsO4lsEQ8HXqgUPbKMnAhvu9oJ8NKFboD26klR0B+jVo2m4hWIx+s7lfYY1zbOHdbURmXs5Ibf01bDA2ncQ==",
+  "$integrity": "sha512-NtybuQjkoL2plJ3llxWzkz6sFZyuRDuQmSA2tlQYoz2fChjO/OOBdJnGBmFfpcqDjhwFBRFnYrLNTAr2laXaBA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/InstanceArn",
@@ -94,6 +94,20 @@
       ]
     },
     "list": {
+      "handlerSchema": {
+        "properties": {
+          "InstanceArn": {
+            "$ref": "resource-schema.json#/properties/InstanceArn"
+          },
+          "PermissionSetArn": {
+            "$ref": "resource-schema.json#/properties/PermissionSetArn"
+          }
+        },
+        "required": [
+          "InstanceArn",
+          "PermissionSetArn"
+        ]
+      },
       "permissions": [
         "sso:DescribePermissionSet"
       ]

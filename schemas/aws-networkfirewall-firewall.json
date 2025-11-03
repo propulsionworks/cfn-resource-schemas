@@ -1,6 +1,6 @@
 {
   "$id": "aws-networkfirewall-firewall",
-  "$integrity": "sha512-97fn6Blvh3DRVGmp588uGj2I68ZDVI/R0yLkxImbF1tSyfrPZ7wc2t3Aj5jregSVtiltWuR+o7+x0bMed6jlGA==",
+  "$integrity": "sha512-jrE7ZpVntmShNilryvfj/3G34bNskyYEUwPMTd7lullASFL/bMHTC3t+VP3X19gp35y56alAG0fHW3gnqoZ9Xg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/VpcId",
@@ -217,6 +217,12 @@
       "type": "array",
       "uniqueItems": true
     },
+    "TransitGatewayAttachmentId": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^tgw-attach-[0-9a-z]+$",
+      "type": "string"
+    },
     "TransitGatewayId": {
       "maxLength": 128,
       "pattern": "^tgw-[0-9a-z]+$",
@@ -232,6 +238,7 @@
   "readOnlyProperties": [
     "/properties/FirewallArn",
     "/properties/FirewallId",
+    "/properties/TransitGatewayAttachmentId",
     "/properties/EndpointIds"
   ],
   "required": [

@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchserverless-collection",
-  "$integrity": "sha512-ugP+0sNFmqigsZI0r/+AW8dbtowKvHAyRwm18bQczWaGccFD4QVkt3bDyhEFyxmVitLmnaSZJds1hfei0BrHbQ==",
+  "$integrity": "sha512-LznHXHlPW2intKZo4YRV52zos27APhDJtTeWm0Z5sPr+11h8IIcOmmVAd/u8z/gviiQ4WuMP9kAyHszIChNGfw==",
   "additionalIdentifiers": [
     [
       "/properties/Name"
@@ -13,7 +13,8 @@
   "createOnlyProperties": [
     "/properties/Name",
     "/properties/Tags",
-    "/properties/Type"
+    "/properties/Type",
+    "/properties/StandbyReplicas"
   ],
   "definitions": {
     "CollectionType": {
@@ -116,6 +117,10 @@
       "minLength": 3,
       "type": "string"
     },
+    "KmsKeyArn": {
+      "description": "The ARN of the AWS KMS key used to encrypt the collection.",
+      "type": "string"
+    },
     "Name": {
       "description": "The name of the collection.\n\nThe name must meet the following criteria:\nUnique to your account and AWS Region\nStarts with a lowercase letter\nContains only lowercase letters a-z, the numbers 0-9 and the hyphen (-)\nContains between 3 and 32 characters\n",
       "maxLength": 32,
@@ -144,7 +149,8 @@
     "/properties/Id",
     "/properties/Arn",
     "/properties/CollectionEndpoint",
-    "/properties/DashboardEndpoint"
+    "/properties/DashboardEndpoint",
+    "/properties/KmsKeyArn"
   ],
   "required": [
     "Name"

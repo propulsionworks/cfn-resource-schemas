@@ -3,7 +3,7 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html#aws-resource-aps-anomalydetector-return-values",
     "properties": {
       "Arn": {
-        "description": "The AnomalyDetector ARN."
+        "description": "The Amazon Resource Name (ARN) of the anomaly detector."
       }
     }
   },
@@ -11,65 +11,79 @@
     "AnomalyDetectorConfiguration": {
       "properties": {
         "RandomCutForest": {
+          "description": "The Random Cut Forest algorithm configuration for anomaly detection.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-anomalydetectorconfiguration.html#cfn-aps-anomalydetector-anomalydetectorconfiguration-randomcutforest"
         }
       },
+      "description": "The configuration for the anomaly detection algorithm.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-anomalydetectorconfiguration.html"
     },
     "IgnoreNearExpected": {
       "properties": {
         "Amount": {
+          "description": "The absolute amount by which values can differ from expected values before being considered anomalous.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-ignorenearexpected.html#cfn-aps-anomalydetector-ignorenearexpected-amount"
         },
         "Ratio": {
+          "description": "The ratio by which values can differ from expected values before being considered anomalous.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-ignorenearexpected.html#cfn-aps-anomalydetector-ignorenearexpected-ratio"
         }
       },
+      "description": "Configuration for threshold settings that determine when values near expected values should be ignored during anomaly detection.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-ignorenearexpected.html"
     },
     "Label": {
       "properties": {
         "Key": {
-          "description": "The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -.",
+          "description": "The key of the label.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-label.html#cfn-aps-anomalydetector-label-key"
         },
         "Value": {
-          "description": "The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -.",
+          "description": "The value for this label.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-label.html#cfn-aps-anomalydetector-label-value"
         }
       },
-      "description": "A key-value pair to provide meta-data and multi-dimensional data analysis for filtering and aggregation.",
+      "description": "The Amazon Managed Service for Prometheus metric labels associated with the anomaly detector.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-label.html"
     },
     "MissingDataAction": {
       "properties": {
         "MarkAsAnomaly": {
+          "description": "Marks missing data points as anomalies.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-missingdataaction.html#cfn-aps-anomalydetector-missingdataaction-markasanomaly"
         },
         "Skip": {
+          "description": "Skips evaluation when data is missing.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-missingdataaction.html#cfn-aps-anomalydetector-missingdataaction-skip"
         }
       },
+      "description": "Specifies the action to take when data is missing during anomaly detection evaluation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-missingdataaction.html"
     },
     "RandomCutForestConfiguration": {
       "properties": {
         "IgnoreNearExpectedFromAbove": {
+          "description": "Configuration for ignoring values that are near expected values from above during anomaly detection.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-randomcutforestconfiguration.html#cfn-aps-anomalydetector-randomcutforestconfiguration-ignorenearexpectedfromabove"
         },
         "IgnoreNearExpectedFromBelow": {
+          "description": "Configuration for ignoring values that are near expected values from below during anomaly detection.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-randomcutforestconfiguration.html#cfn-aps-anomalydetector-randomcutforestconfiguration-ignorenearexpectedfrombelow"
         },
         "Query": {
+          "description": "The Prometheus query used to retrieve the time-series data for anomaly detection.\n\n> Random Cut Forest queries must be wrapped by a supported PromQL aggregation operator. For more information, see [Aggregation operators](https://docs.aws.amazon.com/https://prometheus.io/docs/prometheus/latest/querying/operators/#aggregation-operators) on the *Prometheus docs* website.\n> \n> *Supported PromQL aggregation operators* : `avg` , `count` , `group` , `max` , `min` , `quantile` , `stddev` , `stdvar` , and `sum` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-randomcutforestconfiguration.html#cfn-aps-anomalydetector-randomcutforestconfiguration-query"
         },
         "SampleSize": {
+          "description": "The number of data points sampled from the input stream for the Random Cut Forest algorithm. The default number is 256 consecutive data points.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-randomcutforestconfiguration.html#cfn-aps-anomalydetector-randomcutforestconfiguration-samplesize"
         },
         "ShingleSize": {
+          "description": "The number of consecutive data points used to create a shingle for the Random Cut Forest algorithm. The default number is 8 consecutive data points.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-randomcutforestconfiguration.html#cfn-aps-anomalydetector-randomcutforestconfiguration-shinglesize"
         }
       },
+      "description": "Configuration for the Random Cut Forest algorithm used for anomaly detection in time-series data.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-randomcutforestconfiguration.html"
     },
     "Tag": {
@@ -84,33 +98,35 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-aps-anomalydetector-tag.html"
     }
   },
-  "description": "AnomalyDetector schema for cloudformation.",
+  "description": "Anomaly detection uses the Random Cut Forest algorithm for time-series analysis. The anomaly detector analyzes Amazon Managed Service for Prometheus metrics to identify unusual patterns and behaviors.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html",
   "id": "aws-aps-anomalydetector",
   "properties": {
     "Alias": {
-      "description": "The AnomalyDetector alias.",
+      "description": "The user-friendly name of the anomaly detector.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html#cfn-aps-anomalydetector-alias"
     },
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html#cfn-aps-anomalydetector-arn"
     },
     "Configuration": {
+      "description": "The algorithm configuration of the anomaly detector.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html#cfn-aps-anomalydetector-configuration"
     },
     "EvaluationIntervalInSeconds": {
-      "description": "The AnomalyDetector period of detection and metric generation.",
+      "description": "The frequency, in seconds, at which the anomaly detector evaluates metrics.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html#cfn-aps-anomalydetector-evaluationintervalinseconds"
     },
     "Labels": {
-      "description": "An array of key-value pairs to provide meta-data.",
+      "description": "The Amazon Managed Service for Prometheus metric labels associated with the anomaly detector.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html#cfn-aps-anomalydetector-labels"
     },
     "MissingDataAction": {
+      "description": "The action taken when data is missing during evaluation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html#cfn-aps-anomalydetector-missingdataaction"
     },
     "Tags": {
-      "description": "An array of key-value pairs to apply to this resource.",
+      "description": "The tags applied to the anomaly detector.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html#cfn-aps-anomalydetector-tags"
     },
     "Workspace": {

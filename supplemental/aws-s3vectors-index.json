@@ -3,10 +3,10 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#aws-resource-s3vectors-index-return-values",
     "properties": {
       "CreationTime": {
-        "description": "Date and time when the vector index was created."
+        "description": "Returns the date and time when the vector index was created.\n\nExample: `2024-12-21T10:30:00Z`"
       },
       "IndexArn": {
-        "description": "The Amazon Resource Name (ARN) of the index"
+        "description": "Returns the Amazon Resource Name (ARN) of the specified index.\n\nExample: `arn:aws:s3vectors:us-east-1:123456789012:bucket/amzn-s3-demo-vector-bucket/index/my-index`"
       }
     }
   },
@@ -38,11 +38,11 @@
     "MetadataConfiguration": {
       "properties": {
         "NonFilterableMetadataKeys": {
-          "description": "Non-filterable metadata keys allow you to enrich vectors with additional context during storage and retrieval. Unlike default metadata keys, these keys cannot be used as query filters. Non-filterable metadata keys can be retrieved but cannot be searched, queried, or filtered. You can access non-filterable metadata keys of your vectors after finding the vectors.",
+          "description": "Non-filterable metadata keys allow you to enrich vectors with additional context during storage and retrieval. Unlike default metadata keys, these keys can't be used as query filters. Non-filterable metadata keys can be retrieved but can't be searched, queried, or filtered. You can access non-filterable metadata keys of your vectors after finding the vectors.\n\nYou can specify 1 to 10 non-filterable metadata keys. Each key must be 1 to 63 characters long.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3vectors-index-metadataconfiguration.html#cfn-s3vectors-index-metadataconfiguration-nonfilterablemetadatakeys"
         }
       },
-      "description": "The metadata configuration for the vector index.",
+      "description": "The metadata configuration for the vector index. This configuration allows you to specify which metadata keys should be treated as non-filterable.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3vectors-index-metadataconfiguration.html"
     },
     "VectorBucketArn": {
@@ -54,7 +54,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3vectors-index-vectorbucketname.html"
     }
   },
-  "description": "Resource Type definition for AWS::S3Vectors::Index",
+  "description": "The `AWS::S3Vectors::Index` resource defines a vector index within an Amazon S3 vector bucket. For more information, see [Creating a vector index in a vector bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-create-index.html) in the *Amazon Simple Storage Service User Guide* .\n\nYou must specify either `VectorBucketName` or `VectorBucketArn` to identify the bucket that contains the index.\n\nTo control how AWS CloudFormation handles the vector index when the stack is deleted, you can set a deletion policy for your index. You can choose to *retain* the index or to *delete* the index. For more information, see [DeletionPolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html) .\n\n- **Permissions** - The required permissions for CloudFormation to use are based on the operations that are performed on the stack.\n\n- Create\n\n- s3vectors:CreateIndex\n- s3vectors:GetIndex\n- Read\n\n- s3vectors:GetIndex\n- Delete\n\n- s3vectors:DeleteIndex\n- s3vectors:GetIndex\n- List\n\n- s3vectors:ListIndexes",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html",
   "id": "aws-s3vectors-index",
   "properties": {
@@ -62,22 +62,22 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#cfn-s3vectors-index-creationtime"
     },
     "DataType": {
-      "description": "The data type of the vectors to be inserted into the vector index.",
+      "description": "The data type of the vectors to be inserted into the vector index. Currently, only `float32` is supported, which represents 32-bit floating-point numbers.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#cfn-s3vectors-index-datatype"
     },
     "Dimension": {
-      "description": "The dimensions of the vectors to be inserted into the vector index.",
+      "description": "The dimensions of the vectors to be inserted into the vector index. This value must be between 1 and 4096, inclusive. All vectors stored in the index must have the same number of dimensions.\n\nThe dimension value affects the storage requirements and search performance. Higher dimensions require more storage space and may impact search latency.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#cfn-s3vectors-index-dimension"
     },
     "DistanceMetric": {
-      "description": "The distance metric to be used for similarity search.",
+      "description": "The distance metric to be used for similarity search. Valid values are:\n\n- `cosine` - Measures the cosine of the angle between two vectors.\n- `euclidean` - Measures the straight-line distance between two points in multi-dimensional space. Lower values indicate greater similarity.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#cfn-s3vectors-index-distancemetric"
     },
     "IndexArn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#cfn-s3vectors-index-indexarn"
     },
     "IndexName": {
-      "description": "The name of the vector index to create.",
+      "description": "The name of the vector index to create. The index name must be between 3 and 63 characters long and can contain only lowercase letters, numbers, hyphens (-), and dots (.). The index name must be unique within the vector bucket.\n\nIf you don't specify a name, AWS CloudFormation generates a unique ID and uses that ID for the index name.\n\n> If you specify a name, you can't perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you need to replace the resource, specify a new name.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#cfn-s3vectors-index-indexname"
     },
     "MetadataConfiguration": {
@@ -85,7 +85,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#cfn-s3vectors-index-metadataconfiguration"
     },
     "VectorBucketArn": {
-      "description": "The Amazon Resource Name (ARN) of the vector bucket.",
+      "description": "The Amazon Resource Name (ARN) of the vector bucket that contains the vector index.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html#cfn-s3vectors-index-vectorbucketarn"
     },
     "VectorBucketName": {

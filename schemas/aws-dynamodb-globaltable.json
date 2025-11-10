@@ -1,6 +1,6 @@
 {
   "$id": "aws-dynamodb-globaltable",
-  "$integrity": "sha512-TvcLkbBdrYyhyqa8Q19uKrkxgzhFyYPeVD1uvx/BovxBjeLNuY9ERnur5jexOWU0uQvlK6hnJAr+QgunVMO3hw==",
+  "$integrity": "sha512-QlLcCIaQOL7A3zqBXcjZkvd0QwaTaoSrho+C+1nQZMffQSAyUQAqOGYdaJU+Ies2e19zEni2+IpZ9TQhkCX04w==",
   "additionalIdentifiers": [
     [
       "/properties/Arn"
@@ -91,7 +91,7 @@
           "items": {
             "$ref": "#/definitions/KeySchema"
           },
-          "maxItems": 2,
+          "maxItems": 8,
           "minItems": 1,
           "type": "array",
           "uniqueItems": true
@@ -364,14 +364,23 @@
     },
     "ReplicaStreamSpecification": {
       "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "ResourcePolicy"
+          ]
+        },
+        {
+          "required": [
+            "Tags"
+          ]
+        }
+      ],
       "properties": {
         "ResourcePolicy": {
           "$ref": "#/definitions/ResourcePolicy"
         }
       },
-      "required": [
-        "ResourcePolicy"
-      ],
       "type": "object"
     },
     "ResourcePolicy": {

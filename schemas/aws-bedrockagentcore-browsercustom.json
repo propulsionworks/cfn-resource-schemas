@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-browsercustom",
-  "$integrity": "sha512-7d8FoCYGVd+Yl/ur8hw47MPdeKUDHKBkl73rbwbc3ClsEhC4/AJ0O/TNNuq9amilYBEVUslh/uB3amNL16EVQA==",
+  "$integrity": "sha512-tLgnGLJ85aCj0lI2DvaV+tO8U6DGR9xaJAfJpvuAxFkWnNgOSxRwB6H85Mb5LkF5WidAuhdW4W8PHELMOM/clw==",
   "additionalIdentifiers": [
     [
       "/properties/BrowserArn"
@@ -12,6 +12,7 @@
     "/properties/Description",
     "/properties/NetworkConfiguration",
     "/properties/RecordingConfig",
+    "/properties/BrowserSigning",
     "/properties/ExecutionRoleArn"
   ],
   "definitions": {
@@ -49,6 +50,17 @@
         "VPC"
       ],
       "type": "string"
+    },
+    "BrowserSigning": {
+      "additionalProperties": false,
+      "description": "Browser signing configuration",
+      "properties": {
+        "Enabled": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "type": "object"
     },
     "BrowserStatus": {
       "description": "Status of browser",
@@ -255,6 +267,10 @@
     "BrowserId": {
       "$ref": "#/definitions/BrowserId",
       "description": "The id of the browser."
+    },
+    "BrowserSigning": {
+      "$ref": "#/definitions/BrowserSigning",
+      "description": "Browser signing configuration."
     },
     "CreatedAt": {
       "description": "Timestamp when the browser was created.",

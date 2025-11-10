@@ -1,13 +1,44 @@
 {
   "$id": "aws-cleanrooms-privacybudgettemplate",
-  "$integrity": "sha512-sofcVgkSata+IlIs25pfnAsbw9NsYJEAwdN0ZyUIrEj8n1JXzOHaReViC9Z5KjKoVmQzPUD7bmn3/QiWCNsBLg==",
+  "$integrity": "sha512-rvvPCrGxJqCZPzGTS8bQ2dcWqwxFvLVVth6MTsUeOJsdCuVRt8dqEsDj5wTA5OMW3gEkLc5qyXOtoo7hcJO4fA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/MembershipIdentifier",
     "/properties/PrivacyBudgetType",
-    "/properties/AutoRefresh"
+    "/properties/AutoRefresh",
+    "/properties/Parameters/ResourceArn"
   ],
   "definitions": {
+    "BudgetParameter": {
+      "additionalProperties": false,
+      "properties": {
+        "AutoRefresh": {
+          "enum": [
+            "ENABLED",
+            "DISABLED"
+          ],
+          "type": "string"
+        },
+        "Budget": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "Type": {
+          "enum": [
+            "CALENDAR_DAY",
+            "CALENDAR_MONTH",
+            "CALENDAR_WEEK",
+            "LIFETIME"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Type",
+        "Budget"
+      ],
+      "type": "object"
+    },
     "Tag": {
       "additionalProperties": false,
       "properties": {
@@ -119,10 +150,23 @@
     "Parameters": {
       "additionalProperties": false,
       "properties": {
+        "BudgetParameters": {
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/BudgetParameter"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "type": "array"
+        },
         "Epsilon": {
           "maximum": 20,
           "minimum": 1,
           "type": "integer"
+        },
+        "ResourceArn": {
+          "maxLength": 200,
+          "type": "string"
         },
         "UsersNoisePerQuery": {
           "maximum": 100,
@@ -130,10 +174,6 @@
           "type": "integer"
         }
       },
-      "required": [
-        "Epsilon",
-        "UsersNoisePerQuery"
-      ],
       "type": "object"
     },
     "PrivacyBudgetTemplateIdentifier": {
@@ -144,7 +184,8 @@
     },
     "PrivacyBudgetType": {
       "enum": [
-        "DIFFERENTIAL_PRIVACY"
+        "DIFFERENTIAL_PRIVACY",
+        "ACCESS_BUDGET"
       ],
       "type": "string"
     },

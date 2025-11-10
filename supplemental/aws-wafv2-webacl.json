@@ -117,6 +117,34 @@
       "description": "A logical rule statement used to combine other rule statements with AND logic. You provide more than one `Statement` within the `AndStatement` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-andstatement.html"
     },
+    "ApplicationAttribute": {
+      "properties": {
+        "Name": {
+          "description": "Specifies the attribute name.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-applicationattribute.html#cfn-wafv2-webacl-applicationattribute-name"
+        },
+        "Values": {
+          "description": "Specifies the attribute value.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-applicationattribute.html#cfn-wafv2-webacl-applicationattribute-values"
+        }
+      },
+      "description": "Application details defined during the web ACL creation process. Application attributes help AWS WAF give recommendations for protection packs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-applicationattribute.html"
+    },
+    "ApplicationAttributes": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-applicationattributes.html"
+    },
+    "ApplicationConfig": {
+      "properties": {
+        "Attributes": {
+          "description": "Contains the attribute name and a list of values for that attribute.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-applicationconfig.html#cfn-wafv2-webacl-applicationconfig-attributes"
+        }
+      },
+      "description": "A list of `ApplicationAttribute` s that contains information about the application.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-applicationconfig.html"
+    },
     "AsnMatchStatement": {
       "properties": {
         "AsnList": {
@@ -140,6 +168,18 @@
       },
       "description": "Specifies custom configurations for the associations between the web ACL and protected resources.\n\nUse this to customize the maximum size of the request body that your protected resources forward to AWS WAF for inspection. You can customize this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or Verified Access resources. The default setting is 16 KB (16,384 bytes).\n\n> You are charged additional fees when your protected resources forward body sizes that are larger than the default. For more information, see [AWS WAF Pricing](https://docs.aws.amazon.com/waf/pricing/) . \n\nFor Application Load Balancer and AWS AppSync , the limit is fixed at 8 KB (8,192 bytes).",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-associationconfig.html"
+    },
+    "AttributeName": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-attributename.html"
+    },
+    "AttributeValue": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-attributevalue.html"
+    },
+    "AttributeValues": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-attributevalues.html"
     },
     "BlockAction": {
       "properties": {
@@ -1649,6 +1689,10 @@
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html",
   "id": "aws-wafv2-webacl",
   "properties": {
+    "ApplicationConfig": {
+      "description": "Returns a list of `ApplicationAttribute` s.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-applicationconfig"
+    },
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-arn"
     },

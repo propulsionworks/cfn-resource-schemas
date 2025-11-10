@@ -3,10 +3,10 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-vectorbucket.html#aws-resource-s3vectors-vectorbucket-return-values",
     "properties": {
       "VectorBucketArn": {
-        "description": "The Amazon Resource Name (ARN) of the vector bucket."
+        "description": "Returns the Amazon Resource Name (ARN) of the specified vector bucket.\n\nExample: `arn:aws:s3vectors:us-east-1:123456789012:bucket/amzn-s3-demo-vector-bucket`"
       },
       "CreationTime": {
-        "description": "Date and time when the vector bucket was created."
+        "description": "Returns the date and time when the vector bucket was created.\n\nExample: `2024-12-21T10:30:00Z`"
       }
     }
   },
@@ -18,15 +18,15 @@
     "EncryptionConfiguration": {
       "properties": {
         "KmsKeyArn": {
-          "description": "AWS Key Management Service (KMS) customer managed key ID to use for the encryption configuration. This parameter is allowed if and only if sseType is set to aws:kms",
+          "description": "AWS Key Management Service (KMS) customer managed key ARN to use for the encryption configuration. This parameter is required if and only if `SseType` is set to `aws:kms` .\n\nYou must specify the full ARN of the KMS key. Key IDs or key aliases aren't supported.\n\n> Amazon S3 Vectors only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in AWS KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *AWS Key Management Service Developer Guide* .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3vectors-vectorbucket-encryptionconfiguration.html#cfn-s3vectors-vectorbucket-encryptionconfiguration-kmskeyarn"
         },
         "SseType": {
-          "description": "The server-side encryption type to use for the encryption configuration of the vector bucket. By default, if you don't specify, all new vectors in Amazon S3 vector buckets use server-side encryption with Amazon S3 managed keys (SSE-S3), specifically AES256.",
+          "description": "The server-side encryption type to use for the encryption configuration of the vector bucket. Valid values are `AES256` for Amazon S3 managed keys and `aws:kms` for AWS KMS keys.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3vectors-vectorbucket-encryptionconfiguration.html#cfn-s3vectors-vectorbucket-encryptionconfiguration-ssetype"
         }
       },
-      "description": "The encryption configuration for the vector bucket.",
+      "description": "Specifies the encryption configuration for the vector bucket. By default, all new vectors in Amazon S3 vector buckets use server-side encryption with Amazon S3 managed keys (SSE-S3), specifically AES256.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3vectors-vectorbucket-encryptionconfiguration.html"
     },
     "VectorBucketArn": {
@@ -38,7 +38,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3vectors-vectorbucket-vectorbucketname.html"
     }
   },
-  "description": "Resource Type definition for AWS::S3Vectors::VectorBucket",
+  "description": "Defines an Amazon S3 vector bucket in the same AWS Region where you create the AWS CloudFormation stack.\n\nVector buckets are specialized storage containers designed for storing and managing vector data used in machine learning and AI applications. They provide optimized storage and retrieval capabilities for high-dimensional vector data.\n\nTo control how AWS CloudFormation handles the bucket when the stack is deleted, you can set a deletion policy for your bucket. You can choose to *retain* the bucket or to *delete* the bucket. For more information, see [DeletionPolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html) .\n\n> You can only delete empty vector buckets. Deletion fails for buckets that have contents. \n\n- **Permissions** - The required permissions for CloudFormation to use are based on the operations that are performed on the stack.\n\n- Create\n\n- s3vectors:CreateVectorBucket\n- s3vectors:GetVectorBucket\n- kms:GenerateDataKey (if using KMS encryption)\n- Read\n\n- s3vectors:GetVectorBucket\n- kms:GenerateDataKey (if using KMS encryption)\n- Delete\n\n- s3vectors:DeleteVectorBucket\n- s3vectors:GetVectorBucket\n- kms:GenerateDataKey (if using KMS encryption)\n- List\n\n- s3vectors:ListVectorBuckets\n- kms:GenerateDataKey (if using KMS encryption)",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-vectorbucket.html",
   "id": "aws-s3vectors-vectorbucket",
   "properties": {
@@ -53,7 +53,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-vectorbucket.html#cfn-s3vectors-vectorbucket-vectorbucketarn"
     },
     "VectorBucketName": {
-      "description": "The name of the vector bucket.",
+      "description": "A name for the vector bucket. The bucket name must contain only lowercase letters, numbers, and hyphens (-). The bucket name must be unique in the same AWS account for each AWS Region. If you don't specify a name, AWS CloudFormation generates a unique ID and uses that ID for the bucket name.\n\nThe bucket name must be between 3 and 63 characters long and must not contain uppercase characters or underscores.\n\n> If you specify a name, you can't perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you need to replace the resource, specify a new name.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-vectorbucket.html#cfn-s3vectors-vectorbucket-vectorbucketname"
     }
   },

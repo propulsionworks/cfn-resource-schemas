@@ -1,6 +1,6 @@
 {
   "$id": "aws-kinesis-stream",
-  "$integrity": "sha512-DLpu/a/W2EM007Y6A6jfprPetZL9rrvwBkCYB5SyLYboN3lRMUJG5jwi7HHmIYmRCJkhIh4+P3q0pMNUjxZ1cw==",
+  "$integrity": "sha512-JwtRyBoZ4dtgMsEruUh0624OdPA/G9yNjgfgJn/GAPH+dVBZyKe/TCKLqUMTm8QHaxueEYWvTewNqootJKa9Ew==",
   "$comment": "Do not set SystemTags to true without implementing a fail-open mechanism. It should not fail when adding systemTags for customers without AddTagsToStream Permission. Cloudformation will automatically add system tags even if customer does not have the AddTagsToStream permission. COE: https://www.coe.a2z.com/coe/236297/content",
   "additionalProperties": false,
   "createOnlyProperties": [
@@ -100,6 +100,21 @@
         "Value"
       ],
       "type": "object"
+    },
+    "WarmThroughputObject": {
+      "additionalProperties": false,
+      "description": "Warm throughput configuration details for the stream. Only present for ON_DEMAND streams.",
+      "properties": {
+        "CurrentMiBps": {
+          "description": "Current warm throughput in MiB/s",
+          "type": "integer"
+        },
+        "TargetMiBps": {
+          "description": "Target warm throughput in MiB/s that a customer can write to a stream at any given time",
+          "type": "integer"
+        }
+      },
+      "type": "object"
     }
   },
   "description": "Resource Type definition for AWS::Kinesis::Stream",
@@ -114,7 +129,8 @@
         "kinesis:AddTagsToStream",
         "kinesis:ListTagsForStream",
         "kinesis:ListTagsForResource",
-        "kinesis:UpdateMaxRecordSize"
+        "kinesis:UpdateMaxRecordSize",
+        "kinesis:UpdateStreamWarmThroughput"
       ]
     },
     "delete": {
@@ -154,7 +170,8 @@
         "kinesis:UntagResource",
         "kinesis:ListTagsForStream",
         "kinesis:ListTagsForResource",
-        "kinesis:UpdateMaxRecordSize"
+        "kinesis:UpdateMaxRecordSize",
+        "kinesis:UpdateStreamWarmThroughput"
       ],
       "timeoutInMinutes": 240
     }
@@ -212,7 +229,7 @@
       "description": "The mode in which the stream is running."
     },
     "Tags": {
-      "description": "An arbitrary set of tags (key–value pairs) to associate with the Kinesis stream.",
+      "description": "An arbitrary set of tags (key-value pairs) to associate with the Kinesis stream.",
       "insertionOrder": false,
       "items": {
         "$ref": "#/definitions/Tag"
@@ -220,10 +237,19 @@
       "maxItems": 50,
       "type": "array",
       "uniqueItems": false
+    },
+    "WarmThroughputMiBps": {
+      "description": "Target warm throughput in MiB/s for the stream. This property can ONLY be set when StreamMode is ON_DEMAND.",
+      "type": "integer"
+    },
+    "WarmThroughputObject": {
+      "$ref": "#/definitions/WarmThroughputObject",
+      "description": "Warm throughput configuration details for the stream. Only present for ON_DEMAND streams."
     }
   },
   "readOnlyProperties": [
-    "/properties/Arn"
+    "/properties/Arn",
+    "/properties/WarmThroughputObject"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-kinesis.git",
   "tagging": {
@@ -241,5 +267,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::Kinesis::Stream"
+  "typeName": "AWS::Kinesis::Stream",
+  "writeOnlyProperties": [
+    "/properties/WarmThroughputMiBps"
+  ]
 }

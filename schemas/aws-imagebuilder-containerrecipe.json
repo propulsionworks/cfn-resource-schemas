@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-containerrecipe",
-  "$integrity": "sha512-tWEzayVGk7R/p7l7BtFy4WHAHx7rt+urMStNfU7ZfrKxsPtD5dsZ4qaqH45Lu6oLyw9Z3en0tmENCBD7quLt6Q==",
+  "$integrity": "sha512-1c8p/y663cpQ6aYDWZFK6UMYMt5LMIZMMSLEb+SmlosGECmeRzYtU38y9U+O1MHuJAxrOEj3M5W8eDINEZY4ag==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -151,6 +151,29 @@
       },
       "type": "object"
     },
+    "LatestVersion": {
+      "additionalProperties": false,
+      "description": "The latest version references of the container recipe.",
+      "properties": {
+        "Arn": {
+          "description": "The latest version ARN of the created container recipe.",
+          "type": "string"
+        },
+        "Major": {
+          "description": "The latest version ARN of the created container recipe, with the same major version.",
+          "type": "string"
+        },
+        "Minor": {
+          "description": "The latest version ARN of the created container recipe, with the same minor version.",
+          "type": "string"
+        },
+        "Patch": {
+          "description": "The latest version ARN of the created container recipe, with the same patch version.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "TargetContainerRepository": {
       "additionalProperties": false,
       "description": "The container repository where the output container image is stored.",
@@ -279,6 +302,10 @@
       "description": "Identifies which KMS key is used to encrypt the container image.",
       "type": "string"
     },
+    "LatestVersion": {
+      "$ref": "#/definitions/LatestVersion",
+      "description": "The latest version references of the container recipe."
+    },
     "Name": {
       "description": "The name of the container recipe.",
       "type": "string"
@@ -319,7 +346,12 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/Arn"
+    "/properties/Arn",
+    "/properties/LatestVersion",
+    "/properties/LatestVersion/Arn",
+    "/properties/LatestVersion/Major",
+    "/properties/LatestVersion/Minor",
+    "/properties/LatestVersion/Patch"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-imagebuilder.git",
   "tagging": {

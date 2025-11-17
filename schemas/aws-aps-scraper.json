@@ -1,6 +1,6 @@
 {
   "$id": "aws-aps-scraper",
-  "$integrity": "sha512-bsQSiOXmFXo6ihrJIfTNWJ74m1nsPT6IVGhjolXLs+dxYgvWaJm3bYnj2GRwvfpT3lve4vwmmNU2VYcW3AF29Q==",
+  "$integrity": "sha512-5xCTLaxCA+eKDQkGZwTm8llJaiNgvirC7i/hrqUiNaRbfVRObLdqYuGz5OoxjPVZ1YTgEB7YIpau9vxBs2q3Hw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Source"
@@ -165,6 +165,11 @@
           "required": [
             "EksConfiguration"
           ]
+        },
+        {
+          "required": [
+            "VpcConfiguration"
+          ]
         }
       ],
       "properties": {
@@ -196,6 +201,33 @@
           },
           "required": [
             "ClusterArn",
+            "SubnetIds"
+          ],
+          "type": "object"
+        },
+        "VpcConfiguration": {
+          "additionalProperties": false,
+          "description": "Configuration for VPC metrics source",
+          "properties": {
+            "SecurityGroupIds": {
+              "description": "List of security group IDs",
+              "insertionOrder": false,
+              "items": {
+                "$ref": "#/definitions/SecurityGroupId"
+              },
+              "type": "array"
+            },
+            "SubnetIds": {
+              "description": "List of subnet IDs",
+              "insertionOrder": false,
+              "items": {
+                "$ref": "#/definitions/SubnetId"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "SecurityGroupIds",
             "SubnetIds"
           ],
           "type": "object"
@@ -246,12 +278,25 @@
         "eks:DescribeCluster",
         "ec2:DescribeSubnets",
         "ec2:DescribeSecurityGroups",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:CreateNetworkInterface",
+        "ec2:DeleteNetworkInterface",
+        "ec2:AttachNetworkInterface",
+        "ec2:DetachNetworkInterface",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:DescribeVpcs",
+        "kafka:DescribeCluster",
+        "kafka:DescribeClusterV2",
+        "kafka:GetBootstrapBrokers",
+        "kafka:ListClusters",
+        "kafka:ListNodes",
         "iam:CreateServiceLinkedRole",
         "iam:PassRole",
         "logs:CreateLogDelivery",
         "logs:GetLogDelivery",
         "logs:ListLogDeliveries",
-        "logs:PutResourcePolicy"
+        "logs:PutResourcePolicy",
+        "logs:DescribeLogGroups"
       ]
     },
     "delete": {
@@ -264,6 +309,11 @@
         "eks:DescribeCluster",
         "ec2:DescribeSubnets",
         "ec2:DescribeSecurityGroups",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DetachNetworkInterface",
+        "ec2:DescribeVpcs",
+        "kafka:DescribeCluster",
         "iam:DeleteServiceLinkedRole",
         "logs:DeleteLogDelivery"
       ]
@@ -278,7 +328,8 @@
       "permissions": [
         "aps:DescribeScraper",
         "aps:DescribeScraperLoggingConfiguration",
-        "aps:ListTagsForResource"
+        "aps:ListTagsForResource",
+        "ec2:DescribeNetworkInterfaces"
       ]
     },
     "update": {
@@ -293,11 +344,21 @@
         "aps:TagResource",
         "aps:UntagResource",
         "aps:ListTagsForResource",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:DescribeVpcs",
+        "kafka:DescribeCluster",
+        "kafka:DescribeClusterV2",
+        "kafka:GetBootstrapBrokers",
         "iam:PassRole",
         "logs:CreateLogDelivery",
         "logs:GetLogDelivery",
+        "logs:UpdateLogDelivery",
         "logs:ListLogDeliveries",
-        "logs:PutResourcePolicy"
+        "logs:PutResourcePolicy",
+        "logs:DescribeLogGroups"
       ]
     }
   },

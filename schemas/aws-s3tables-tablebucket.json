@@ -1,6 +1,6 @@
 {
   "$id": "aws-s3tables-tablebucket",
-  "$integrity": "sha512-ZcTDV+AZK0UsLGb+mu+n+FTFuo57ZcwSPPSgM7ktgr70sLvz7OnKQHD8kUnfZo8hKZ7g8pUeCoM6dynKNJSJqw==",
+  "$integrity": "sha512-Fqe8kDGggnWVTayI7n66CnnFyVnmeX8TZ7aYy0IgKSjIpUUrZ5RpcyCULLSL/DXHb0SzHSGQTBfcRntZ13c9dQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TableBucketName"
@@ -38,6 +38,27 @@
       "minLength": 3,
       "type": "string"
     },
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "description": "Tag key must be between 1 to 128 characters in length. Tag key cannot start with 'aws:' and can only contain alphanumeric characters, spaces, _, ., /, =, +, -, and @.",
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Value": {
+          "description": "Tag value must be between 0 to 256 characters in length. Tag value can only contain alphanumeric characters, spaces, _, ., /, =, +, -, and @.",
+          "maxLength": 256,
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
+    },
     "UnreferencedFileRemoval": {
       "additionalProperties": false,
       "description": "Settings governing the Unreferenced File Removal maintenance action. Unreferenced file removal identifies and deletes all objects that are not referenced by any table snapshots.",
@@ -74,7 +95,9 @@
         "s3tables:GetTableBucket",
         "s3tables:GetTableBucketMaintenanceConfiguration",
         "s3tables:GetTableBucketEncryption",
-        "kms:DescribeKey"
+        "kms:DescribeKey",
+        "s3tables:TagResource",
+        "s3tables:ListTagsForResource"
       ]
     },
     "delete": {
@@ -91,7 +114,8 @@
       "permissions": [
         "s3tables:GetTableBucket",
         "s3tables:GetTableBucketMaintenanceConfiguration",
-        "s3tables:GetTableBucketEncryption"
+        "s3tables:GetTableBucketEncryption",
+        "s3tables:ListTagsForResource"
       ]
     },
     "update": {
@@ -102,7 +126,10 @@
         "s3tables:GetTableBucketEncryption",
         "s3tables:DeleteTableBucketEncryption",
         "s3tables:GetTableBucket",
-        "kms:DescribeKey"
+        "kms:DescribeKey",
+        "s3tables:TagResource",
+        "s3tables:UntagResource",
+        "s3tables:ListTagsForResource"
       ]
     }
   },
@@ -119,6 +146,15 @@
     "TableBucketName": {
       "$ref": "#/definitions/TableBucketName"
     },
+    "Tags": {
+      "description": "User tags (key-value pairs) to associate with the table bucket.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
     "UnreferencedFileRemoval": {
       "$ref": "#/definitions/UnreferencedFileRemoval"
     }
@@ -131,9 +167,15 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": false,
-    "tagOnCreate": false,
-    "tagUpdatable": false,
-    "taggable": false
+    "permissions": [
+      "s3tables:TagResource",
+      "s3tables:UntagResource",
+      "s3tables:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
   },
   "typeName": "AWS::S3Tables::TableBucket"
 }

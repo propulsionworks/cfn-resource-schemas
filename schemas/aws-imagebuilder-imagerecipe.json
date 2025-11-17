@@ -1,6 +1,6 @@
 {
   "$id": "aws-imagebuilder-imagerecipe",
-  "$integrity": "sha512-Hk9Nl0q93SHGx5vy54l5K73L/B+OoD6dfTwUJuGhTF0lIcCBXmZ9mm6XEOd9Fos50l4DWVNpywEzU5coxjviUA==",
+  "$integrity": "sha512-qKvHd73cDA0yIubkxrOYntkKvenAK/KnAOKth3auVOR9fNIlCMAYrPbB2LpV/E54ltlQSUB3ivnshoZX8nExgg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -140,6 +140,29 @@
       },
       "type": "object"
     },
+    "LatestVersion": {
+      "additionalProperties": false,
+      "description": "The latest version references of the image recipe.",
+      "properties": {
+        "Arn": {
+          "description": "The latest version ARN of the created image recipe.",
+          "type": "string"
+        },
+        "Major": {
+          "description": "The latest version ARN of the created image recipe, with the same major version.",
+          "type": "string"
+        },
+        "Minor": {
+          "description": "The latest version ARN of the created image recipe, with the same minor version.",
+          "type": "string"
+        },
+        "Patch": {
+          "description": "The latest version ARN of the created image recipe, with the same patch version.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "SystemsManagerAgent": {
       "additionalProperties": false,
       "description": "Contains settings for the SSM agent on your build instance.",
@@ -232,6 +255,10 @@
       "description": "The description of the image recipe.",
       "type": "string"
     },
+    "LatestVersion": {
+      "$ref": "#/definitions/LatestVersion",
+      "description": "The latest version references of the image recipe."
+    },
     "Name": {
       "description": "The name of the image recipe.",
       "type": "string"
@@ -260,7 +287,12 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/Arn"
+    "/properties/Arn",
+    "/properties/LatestVersion",
+    "/properties/LatestVersion/Arn",
+    "/properties/LatestVersion/Major",
+    "/properties/LatestVersion/Minor",
+    "/properties/LatestVersion/Patch"
   ],
   "required": [
     "Name",

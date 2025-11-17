@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-transitgateway",
-  "$integrity": "sha512-3my2vkfaOXwoS2bPWVbEBVtzvCoonkKCrYjGwYJLaf5kecoKnxHXy9c35Nc7R4RnOoRjTN87wyBMHF+j9iQkFg==",
+  "$integrity": "sha512-vapB2lTGR4atdgZVZFa5CgqjQDyVqvwSGjeUBztB3IlcKzvj2vIz22eVokKeu2Rk3hJu42O/rEXsXL+zrrYCDA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AmazonSideAsn",
@@ -95,6 +95,16 @@
     "DnsSupport": {
       "type": "string"
     },
+    "EncryptionSupport": {
+      "enum": [
+        "disable",
+        "enable"
+      ],
+      "type": "string"
+    },
+    "EncryptionSupportState": {
+      "type": "string"
+    },
     "Id": {
       "type": "string"
     },
@@ -129,7 +139,8 @@
   },
   "readOnlyProperties": [
     "/properties/Id",
-    "/properties/TransitGatewayArn"
+    "/properties/TransitGatewayArn",
+    "/properties/EncryptionSupportState"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-transitgateway",
   "tagging": {
@@ -143,5 +154,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::EC2::TransitGateway"
+  "typeName": "AWS::EC2::TransitGateway",
+  "writeOnlyProperties": [
+    "/properties/EncryptionSupport"
+  ]
 }

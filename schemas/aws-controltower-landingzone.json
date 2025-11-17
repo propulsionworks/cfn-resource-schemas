@@ -1,6 +1,6 @@
 {
   "$id": "aws-controltower-landingzone",
-  "$integrity": "sha512-Bcs+ktBOpkp8K3unbSn0kHzfWCgOmdhEMRcw3GfdX4zfqGqtEg7yM38fhyzoj+xAcGs0fK8zD/m8ePfZ560NwQ==",
+  "$integrity": "sha512-/o+Y/veMz0ZKFLYuXDwY7yvJoTN4mYkGwwMYQ0IvglbJVh0GMoycYhbp4RR4XkeFd0cVqVfaFIWlinodG79cFQ==",
   "additionalProperties": false,
   "definitions": {
     "LandingZoneDriftStatus": {
@@ -17,6 +17,15 @@
         "FAILED"
       ],
       "type": "string"
+    },
+    "RemediationTypes": {
+      "items": {
+        "enum": [
+          "INHERITANCE_DRIFT"
+        ],
+        "type": "string"
+      },
+      "type": "array"
     },
     "Tag": {
       "additionalProperties": false,
@@ -175,6 +184,9 @@
       "type": "string"
     },
     "Manifest": {},
+    "RemediationTypes": {
+      "$ref": "#/definitions/RemediationTypes"
+    },
     "Status": {
       "$ref": "#/definitions/LandingZoneStatus"
     },

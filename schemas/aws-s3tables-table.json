@@ -1,6 +1,6 @@
 {
   "$id": "aws-s3tables-table",
-  "$integrity": "sha512-1ksWPKPyPvwcxfQ6WbVZLAeXm4f4ebC0xeh9WtS+DS6QjauY4jnJ1O5kWrBDYZTahJCah4PKH9S1RDNNosuCnw==",
+  "$integrity": "sha512-IuuhqJAvcIDxxj/W3yJZCzg3TpVxUdGqhzNdnY0ZMqb3rQixHJTRf7QheK+kIy0Id1U3AxKY4P4wJfb3vfjk0w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TableBucketARN",
@@ -140,6 +140,27 @@
       "description": "The name for the table.",
       "type": "string"
     },
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "description": "Tag key must be between 1 to 128 characters in length. Tag key cannot start with 'aws:' and can only contain alphanumeric characters, spaces, _, ., /, =, +, -, and @.",
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Value": {
+          "description": "Tag value must be between 0 to 256 characters in length. Tag value can only contain alphanumeric characters, spaces, _, ., /, =, +, -, and @.",
+          "maxLength": 256,
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
+    },
     "VersionToken": {
       "description": "The version token of the table",
       "type": "string"
@@ -163,7 +184,10 @@
         "s3tables:CreateTable",
         "s3tables:PutTableData",
         "s3tables:GetTable",
-        "s3tables:PutTableMaintenanceConfiguration"
+        "s3tables:PutTableMaintenanceConfiguration",
+        "s3tables:GetTableMaintenanceConfiguration",
+        "s3tables:TagResource",
+        "s3tables:ListTagsForResource"
       ]
     },
     "delete": {
@@ -200,14 +224,19 @@
     "read": {
       "permissions": [
         "s3tables:GetTable",
-        "s3tables:GetTableMaintenanceConfiguration"
+        "s3tables:GetTableMaintenanceConfiguration",
+        "s3tables:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
         "s3tables:GetTable",
         "s3tables:RenameTable",
-        "s3tables:PutTableMaintenanceConfiguration"
+        "s3tables:PutTableMaintenanceConfiguration",
+        "s3tables:GetTableMaintenanceConfiguration",
+        "s3tables:TagResource",
+        "s3tables:UntagResource",
+        "s3tables:ListTagsForResource"
       ]
     }
   },
@@ -239,6 +268,15 @@
     "TableName": {
       "$ref": "#/definitions/TableName"
     },
+    "Tags": {
+      "description": "User tags (key-value pairs) to associate with the table.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
     "VersionToken": {
       "$ref": "#/definitions/VersionToken"
     },
@@ -262,9 +300,15 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": false,
-    "tagOnCreate": false,
-    "tagUpdatable": false,
-    "taggable": false
+    "permissions": [
+      "s3tables:TagResource",
+      "s3tables:UntagResource",
+      "s3tables:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
   },
   "typeName": "AWS::S3Tables::Table",
   "writeOnlyProperties": [

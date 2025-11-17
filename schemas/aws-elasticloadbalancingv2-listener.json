@@ -1,6 +1,6 @@
 {
   "$id": "aws-elasticloadbalancingv2-listener",
-  "$integrity": "sha512-E7O7fWT63KjscrJ27osV2fwUtjVPR4Bg0dK6OQfIDmCrwZjpPryE+DWPw/Cf51u3y0pn181fjzol8peP+9hAdQ==",
+  "$integrity": "sha512-30opEzee5ZJyoA2YTr5zNrPDSCaOEek1WW6Y6aHsA8lN55qCz1iMku8rYHIWjX8zZA/NPNXvOB3x9nz7MxTkUg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/LoadBalancerArn"
@@ -25,6 +25,10 @@
         "ForwardConfig": {
           "$ref": "#/definitions/ForwardConfig",
           "description": "Information for creating an action that distributes requests among multiple target groups. Specify only when ``Type`` is ``forward``.\n If you specify both ``ForwardConfig`` and ``TargetGroupArn``, you can specify only one target group using ``ForwardConfig`` and it must be the same target group specified in ``TargetGroupArn``."
+        },
+        "JwtValidationConfig": {
+          "$ref": "#/definitions/JwtValidationConfig",
+          "description": ""
         },
         "Order": {
           "description": "The order for the action. This value is required for rules with multiple actions. The action with the lowest value for order is performed first.",
@@ -254,6 +258,55 @@
           "uniqueItems": true
         }
       },
+      "type": "object"
+    },
+    "JwtValidationActionAdditionalClaim": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "Format": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "Format",
+        "Name",
+        "Values"
+      ],
+      "type": "object"
+    },
+    "JwtValidationConfig": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "AdditionalClaims": {
+          "items": {
+            "$ref": "#/definitions/JwtValidationActionAdditionalClaim"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "Issuer": {
+          "type": "string"
+        },
+        "JwksEndpoint": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "JwksEndpoint",
+        "Issuer"
+      ],
       "type": "object"
     },
     "ListenerAttribute": {

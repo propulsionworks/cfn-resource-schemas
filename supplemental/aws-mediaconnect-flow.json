@@ -36,6 +36,10 @@
       "description": "Specifies the configuration for audio stream metrics monitoring.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-audiomonitoringsetting.html"
     },
+    "AutomaticEncryptionKeyConfiguration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-automaticencryptionkeyconfiguration.html"
+    },
     "BlackFrames": {
       "properties": {
         "State": {
@@ -113,6 +117,27 @@
       },
       "description": "The settings for source failover.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-failoverconfig.html"
+    },
+    "FlowTransitEncryption": {
+      "properties": {
+        "EncryptionKeyConfiguration": {
+          "description": "Configuration settings for flow transit encryption keys.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-flowtransitencryption.html#cfn-mediaconnect-flow-flowtransitencryption-encryptionkeyconfiguration"
+        },
+        "EncryptionKeyType": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-flowtransitencryption.html#cfn-mediaconnect-flow-flowtransitencryption-encryptionkeytype"
+        }
+      },
+      "description": "The configuration that defines how content is encrypted during transit between the MediaConnect router and a MediaConnect flow.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-flowtransitencryption.html"
+    },
+    "FlowTransitEncryptionKeyConfiguration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-flowtransitencryptionkeyconfiguration.html"
+    },
+    "FlowTransitEncryptionKeyType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-flowtransitencryptionkeytype.html"
     },
     "Fmtp": {
       "properties": {
@@ -320,6 +345,20 @@
       "description": "Specifies the configuration settings for individual NDI discovery servers. A maximum of 3 servers is allowed.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-ndidiscoveryserverconfig.html"
     },
+    "SecretsManagerEncryptionKeyConfiguration": {
+      "properties": {
+        "RoleArn": {
+          "description": "The ARN of the IAM role used for transit encryption from the router output using AWS Secrets Manager.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-secretsmanagerencryptionkeyconfiguration.html#cfn-mediaconnect-flow-secretsmanagerencryptionkeyconfiguration-rolearn"
+        },
+        "SecretArn": {
+          "description": "The ARN of the AWS Secrets Manager secret used for transit encryption from the router output.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-secretsmanagerencryptionkeyconfiguration.html#cfn-mediaconnect-flow-secretsmanagerencryptionkeyconfiguration-secretarn"
+        }
+      },
+      "description": "The configuration settings for transit encryption of a flow source using AWS Secrets Manager, including the secret ARN and role ARN.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-secretsmanagerencryptionkeyconfiguration.html"
+    },
     "SilentAudio": {
       "properties": {
         "State": {
@@ -387,6 +426,13 @@
         "Protocol": {
           "description": "The protocol that is used by the source. AWS CloudFormation does not currently support CDI or ST 2110 JPEG XS source protocols.\n\n> AWS Elemental MediaConnect no longer supports the Fujitsu QoS protocol. This reference is maintained for legacy purposes only.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-protocol"
+        },
+        "RouterIntegrationState": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-routerintegrationstate"
+        },
+        "RouterIntegrationTransitDecryption": {
+          "description": "The configuration that defines how content is encrypted during transit between the MediaConnect router and a MediaConnect flow.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-flow-source.html#cfn-mediaconnect-flow-source-routerintegrationtransitdecryption"
         },
         "SenderControlPort": {
           "description": "The port that the flow uses to send outbound requests to initiate connection with the sender.",

@@ -1,11 +1,33 @@
 {
   "$id": "aws-ec2-ipamscope",
-  "$integrity": "sha512-eWboyoYyToEnRVN5yKrWK//2+uDyAbytiqfxO2NxMOlUZFGdtoSiTPmhXWdIGuIAIeXYkqHenJAHz73zp6e3xQ==",
+  "$integrity": "sha512-uxT31UOOmrL6xhawzIXazm6+1dAcs+xMAdhM+2Z+9dKGZXXin/A8jrmH/n9G5BlOHDqDv4WKksVFER9hnvISqQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/IpamId"
   ],
   "definitions": {
+    "IpamScopeExternalAuthorityConfiguration": {
+      "additionalProperties": false,
+      "description": "External service configuration to connect your AWS IPAM scope.",
+      "properties": {
+        "ExternalResourceIdentifier": {
+          "description": "Resource identifier of the scope in the external service connecting to your AWS IPAM scope.",
+          "type": "string"
+        },
+        "IpamScopeExternalAuthorityType": {
+          "description": "An external service connecting to your AWS IPAM scope.",
+          "enum": [
+            "infoblox"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "IpamScopeExternalAuthorityType",
+        "ExternalResourceIdentifier"
+      ],
+      "type": "object"
+    },
     "Tag": {
       "additionalProperties": false,
       "description": "A key-value pair to associate with a resource.",
@@ -75,6 +97,9 @@
     },
     "Description": {
       "type": "string"
+    },
+    "ExternalAuthorityConfiguration": {
+      "$ref": "#/definitions/IpamScopeExternalAuthorityConfiguration"
     },
     "IpamArn": {
       "description": "The Amazon Resource Name (ARN) of the IPAM this scope is a part of.",

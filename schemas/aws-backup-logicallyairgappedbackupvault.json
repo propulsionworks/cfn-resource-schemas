@@ -1,6 +1,6 @@
 {
   "$id": "aws-backup-logicallyairgappedbackupvault",
-  "$integrity": "sha512-zVw8S0uatHlQchGcN4XDL/SzeUz9V6tmUld/A1GyJipFF01gl2+12aB624SAArPWvTzcR7ARz//y+NzC9Sb9Gw==",
+  "$integrity": "sha512-lQI3W5t1fsOg72X8kg/t7/fMj8jH/MFgYbW1RU+b8468N/7Fku6fMMpdryKreX4zyLXo8RXWgx+XferAOHVecA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BackupVaultName",
@@ -39,12 +39,14 @@
     "create": {
       "permissions": [
         "backup:TagResource",
+        "backup:AssociateBackupVaultMpaApprovalTeam",
         "backup:CreateLogicallyAirGappedBackupVault",
         "backup:PutBackupVaultAccessPolicy",
         "backup:PutBackupVaultNotifications",
         "backup-storage:Mount",
         "backup-storage:MountCapsule",
-        "backup:DescribeBackupVault"
+        "backup:DescribeBackupVault",
+        "mpa:GetApprovalTeam"
       ]
     },
     "delete": {
@@ -67,6 +69,7 @@
     },
     "update": {
       "permissions": [
+        "backup:AssociateBackupVaultMpaApprovalTeam",
         "backup:DescribeBackupVault",
         "backup:DeleteBackupVaultAccessPolicy",
         "backup:DeleteBackupVaultNotifications",
@@ -77,7 +80,8 @@
         "backup:UntagResource",
         "backup:PutBackupVaultAccessPolicy",
         "backup:PutBackupVaultNotifications",
-        "backup:PutBackupVaultLockConfiguration"
+        "backup:PutBackupVaultLockConfiguration",
+        "mpa:GetApprovalTeam"
       ]
     }
   },
@@ -114,6 +118,9 @@
     },
     "MinRetentionDays": {
       "type": "integer"
+    },
+    "MpaApprovalTeamArn": {
+      "type": "string"
     },
     "Notifications": {
       "$ref": "#/definitions/NotificationObjectType"

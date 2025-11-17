@@ -1,6 +1,6 @@
 {
   "$id": "aws-apigateway-domainname",
-  "$integrity": "sha512-xmc06zyoJV9CTeZzOx0Kg/+i3eILrBgB4y8e0pMp3H6p3LpXLSpI4HZqHhOZ9amr+xF1L4tqTSIUzL41lCPHSA==",
+  "$integrity": "sha512-DwuzYGziSMHNJBooa+ao4byBk9qREUA/HK2yvH+VUYqsoExLHFIR+BZIVk6Y1g3WC6zC7TUbgtcUoVWRW6w77Q==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainName"
@@ -8,7 +8,7 @@
   "definitions": {
     "EndpointConfiguration": {
       "additionalProperties": false,
-      "description": "The ``EndpointConfiguration`` property type specifies the endpoint types of an Amazon API Gateway domain name.\n ``EndpointConfiguration`` is a property of the [AWS::ApiGateway::DomainName](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-domainname.html) resource.",
+      "description": "The ``EndpointConfiguration`` property type specifies the endpoint types and IP address types of an Amazon API Gateway domain name.\n ``EndpointConfiguration`` is a property of the [AWS::ApiGateway::DomainName](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-domainname.html) resource.",
       "properties": {
         "IpAddressType": {
           "description": "",
@@ -41,19 +41,21 @@
     },
     "Tag": {
       "additionalProperties": false,
-      "description": "",
+      "description": "An array of key-value pairs to apply to this resource.\n For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html).",
       "properties": {
         "Key": {
+          "description": "A string you can use to assign a value. The combination of tag keys and values can help you organize and categorize your resources.",
           "type": "string"
         },
         "Value": {
+          "description": "The value for the specified tag key.",
           "type": "string"
         }
       },
       "type": "object"
     }
   },
-  "description": "The ``AWS::ApiGateway::DomainName`` resource specifies a custom domain name for your API in API Gateway.\n You can use a custom domain name to provide a URL that's more intuitive and easier to recall. For more information about using custom domain names, see [Set up Custom Domain Name for an API in API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html) in the *API Gateway Developer Guide*.",
+  "description": "The ``AWS::ApiGateway::DomainName`` resource specifies a public custom domain name for your API in API Gateway.\n To create a custom domain name for private APIs, use [AWS::ApiGateway::DomainNameV2](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-domainnamev2.html).\n You can use a custom domain name to provide a URL that's more intuitive and easier to recall. For more information about using custom domain names, see [Set up Custom Domain Name for an API in API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html) in the *API Gateway Developer Guide*.",
   "handlers": {
     "create": {
       "permissions": [
@@ -112,7 +114,7 @@
     },
     "EndpointConfiguration": {
       "$ref": "#/definitions/EndpointConfiguration",
-      "description": ""
+      "description": "The endpoint configuration of this DomainName showing the endpoint types and IP address types of the domain name."
     },
     "MutualTlsAuthentication": {
       "$ref": "#/definitions/MutualTlsAuthentication",

@@ -1,6 +1,6 @@
 {
   "$id": "aws-connect-evaluationform",
-  "$integrity": "sha512-WfjXNgFui1F4QACoYp9HW5X3OPbwtsG/X+15su3lrRA4JGFce/CQvdK23be03tasNpEZzq84a0zTaGdOnnc1xA==",
+  "$integrity": "sha512-ebgMdFpmNqjAfKnXCtiguAsm3lHd70+PIWwuqKEEo+ufOQFvEDOQ7fdKjFm/lbHBbJKSYainGFiP/wgtqQTX8g==",
   "additionalProperties": false,
   "definitions": {
     "AutoEvaluationConfiguration": {
@@ -132,7 +132,9 @@
           "description": "Specifies the comparison method to determine if the source value matches any of the specified values.",
           "enum": [
             "IN",
-            "NOT_IN"
+            "NOT_IN",
+            "ALL_IN",
+            "EXACT"
           ],
           "type": "string"
         },
@@ -296,7 +298,9 @@
           "enum": [
             "NUMERIC",
             "SINGLESELECT",
-            "TEXT"
+            "TEXT",
+            "MULTISELECT",
+            "DATETIME"
           ],
           "type": "string"
         },
@@ -331,7 +335,7 @@
       "description": "",
       "properties": {
         "SourceType": {
-          "description": "The type of the answer sourcr",
+          "description": "The type of the answer source",
           "enum": [
             "CONTACT_LENS_DATA",
             "GEN_AI"
@@ -549,7 +553,8 @@
             "CUSTOMER_HOLD_TIME",
             "LONGEST_HOLD_DURATION",
             "NUMBER_OF_HOLDS",
-            "AGENT_INTERACTION_AND_HOLD_DURATION"
+            "AGENT_INTERACTION_AND_HOLD_DURATION",
+            "CUSTOMER_SENTIMENT_SCORE_WITHOUT_AGENT"
           ],
           "type": "string"
         }

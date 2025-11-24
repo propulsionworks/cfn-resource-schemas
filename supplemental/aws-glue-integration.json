@@ -1,0 +1,110 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#aws-resource-glue-integration-return-values",
+    "properties": {
+      "IntegrationArn": {
+        "description": "The Amazon Resource Name (ARN) for the created integration."
+      },
+      "CreateTime": {
+        "description": "The time when the integration was created, in UTC."
+      },
+      "Status": {
+        "description": "The status of the integration being created.\n\nThe possible statuses are:\n\n- CREATING: The integration is being created.\n- ACTIVE: The integration creation succeeds.\n- MODIFYING: The integration is being modified.\n- FAILED: The integration creation fails.\n- DELETING: The integration is deleted.\n- SYNCING: The integration is synchronizing.\n- NEEDS_ATTENTION: The integration needs attention, such as synchronization."
+      }
+    }
+  },
+  "definitions": {
+    "IntegrationAdditionalEncryptionContextMap": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-integrationadditionalencryptioncontextmap.html"
+    },
+    "IntegrationConfig": {
+      "properties": {
+        "ContinuousSync": {
+          "description": "Enables continuous synchronization for on-demand data extractions from SaaS applications to AWS data services like Amazon Redshift and Amazon S3.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-integrationconfig.html#cfn-glue-integration-integrationconfig-continuoussync"
+        },
+        "RefreshInterval": {
+          "description": "Specifies the frequency at which CDC (Change Data Capture) pulls or incremental loads should occur. This parameter provides flexibility to align the refresh rate with your specific data update patterns, system load considerations, and performance optimization goals. Time increment can be set from 15 minutes to 8640 minutes (six days).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-integrationconfig.html#cfn-glue-integration-integrationconfig-refreshinterval"
+        },
+        "SourceProperties": {
+          "description": "A collection of key-value pairs that specify additional properties for the integration source. These properties provide configuration options that can be used to customize the behavior of the ODB source during data integration operations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-integrationconfig.html#cfn-glue-integration-integrationconfig-sourceproperties"
+        }
+      },
+      "description": "Properties associated with the integration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-integrationconfig.html"
+    },
+    "SourceProperties": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-sourceproperties.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-tag.html#cfn-glue-integration-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-tag.html#cfn-glue-integration-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-tag.html"
+    },
+    "Tags": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-glue-integration-tags.html"
+    }
+  },
+  "description": "The `AWS::Glue::Integration` resource specifies an AWS Glue zero-ETL integration from a data source to a target. For more information, see [zero-ETL integration supported by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/zero-etl-using.html) and [integration structure](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-integrations.html) in the AWS Glue developer guide.",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html",
+  "id": "aws-glue-integration",
+  "properties": {
+    "AdditionalEncryptionContext": {
+      "description": "An optional set of non-secret key–value pairs that contains additional contextual information for encryption. This can only be provided if `KMSKeyId` is provided.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-additionalencryptioncontext"
+    },
+    "CreateTime": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-createtime"
+    },
+    "DataFilter": {
+      "description": "Selects source tables for the integration using Maxwell filter syntax.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-datafilter"
+    },
+    "Description": {
+      "description": "A description for the integration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-description"
+    },
+    "IntegrationArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-integrationarn"
+    },
+    "IntegrationConfig": {
+      "description": "The structure used to define properties associated with the zero-ETL integration. For more information, see [IntegrationConfig structure.](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-integrations.html#aws-glue-api-integrations-IntegrationConfig)",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-integrationconfig"
+    },
+    "IntegrationName": {
+      "description": "A unique name for the integration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-integrationname"
+    },
+    "KmsKeyId": {
+      "description": "The ARN of a KMS key used for encrypting the channel.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-kmskeyid"
+    },
+    "SourceArn": {
+      "description": "The ARN for the source of the integration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-sourcearn"
+    },
+    "Status": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-status"
+    },
+    "Tags": {
+      "description": "Metadata assigned to the resource consisting of a list of key-value pairs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-tags"
+    },
+    "TargetArn": {
+      "description": "The ARN for the target of the integration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html#cfn-glue-integration-targetarn"
+    }
+  },
+  "typeName": "AWS::Glue::Integration"
+}

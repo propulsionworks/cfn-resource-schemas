@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-vpcendpoint",
-  "$integrity": "sha512-1RnX8Q/j6VDCrJssL4KPmNP0va8U4k+RJ4XSoSeriWxiWUEgqrgNumGaio1pubI+lfNcZCJLsMB5KW7XEhay/Q==",
+  "$integrity": "sha512-6JLkUU0n9RwUK1JJOWgmyEbTkNndtvjfG35XJMUdoP6eaGwnPkcAFI+OhhZYlmgPUj5wjJ1Ephk8JUnnE1HZ8w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ServiceName",
@@ -8,7 +8,9 @@
     "/properties/VpcId",
     "/properties/ServiceNetworkArn",
     "/properties/ResourceConfigurationArn",
-    "/properties/ServiceRegion"
+    "/properties/ServiceRegion",
+    "/properties/DnsOptions/PrivateDnsPreference",
+    "/properties/DnsOptions/PrivateDnsSpecifiedDomains"
   ],
   "definitions": {
     "DnsOptionsSpecification": {
@@ -34,6 +36,27 @@
             "NotSpecified"
           ],
           "type": "string"
+        },
+        "PrivateDnsPreference": {
+          "description": "",
+          "enum": [
+            "VERIFIED_DOMAINS_ONLY",
+            "ALL_DOMAINS",
+            "VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS",
+            "SPECIFIED_DOMAINS_ONLY"
+          ],
+          "type": "string"
+        },
+        "PrivateDnsSpecifiedDomains": {
+          "description": "",
+          "items": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "type": "array"
         }
       },
       "type": "object"

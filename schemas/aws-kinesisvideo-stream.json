@@ -1,11 +1,27 @@
 {
   "$id": "aws-kinesisvideo-stream",
-  "$integrity": "sha512-BM+9q703+8p6pYbgEZIWFco9zf6U8h8IMuD88UguJs+EBZOuCLjKgtiBTxW77Hjhn/LCOfaDjzv357h278WXaA==",
+  "$integrity": "sha512-tDjPveqkQwaizo3RloKsoaeNixsrmlIuPcealz1Gus/FJPotvOFL8JFiitsxgcFy12s7jj32mFdNYjv/274rpA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
   ],
   "definitions": {
+    "StreamStorageConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for the storage tier of the Kinesis Video Stream.",
+      "properties": {
+        "DefaultStorageTier": {
+          "default": "HOT",
+          "description": "The storage tier for the Kinesis Video Stream. Determines the storage class used for stream data.",
+          "enum": [
+            "HOT",
+            "WARM"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Tag": {
       "additionalProperties": false,
       "description": "A key-value pair to associated with the Kinesis Video Stream.",
@@ -53,7 +69,8 @@
     "read": {
       "permissions": [
         "kinesisvideo:DescribeStream",
-        "kinesisvideo:ListTagsForStream"
+        "kinesisvideo:ListTagsForStream",
+        "kinesisvideo:DescribeStreamStorageConfiguration"
       ]
     },
     "update": {
@@ -108,6 +125,10 @@
       "minLength": 1,
       "pattern": "[a-zA-Z0-9_.-]+",
       "type": "string"
+    },
+    "StreamStorageConfiguration": {
+      "$ref": "#/definitions/StreamStorageConfiguration",
+      "description": "Configuration for the storage tier of the Kinesis Video Stream."
     },
     "Tags": {
       "description": "An array of key-value pairs associated with the Kinesis Video Stream.",

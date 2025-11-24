@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-partnerapp",
-  "$integrity": "sha512-6WYa/52lmg3AWl0a8vMyp9rxHFocKWyGX4CabQkPDC9n1y707grhXcqoSlcvYcdFJmOpMG64cQPMXaWYB2Ye9g==",
+  "$integrity": "sha512-dwZ0oxJe3r2W2Sz5E53hmMVW2mZH4/Sl1Bt1f9coQpJFjP0FEGZuG0TO8S5CPL6Og3MmgOQfOQ6HKK2LuU+fIA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -139,6 +139,12 @@
     "/properties/Arn"
   ],
   "properties": {
+    "AppVersion": {
+      "description": "The version of the PartnerApp.",
+      "maxLength": 64,
+      "minLength": 1,
+      "type": "string"
+    },
     "ApplicationConfig": {
       "$ref": "#/definitions/PartnerAppConfig",
       "description": "A collection of settings that specify the maintenance schedule for the PartnerApp."
@@ -168,6 +174,14 @@
       "minLength": 1,
       "pattern": "^[a-zA-Z0-9-]+$",
       "type": "string"
+    },
+    "CurrentVersionEolDate": {
+      "description": "The end-of-life date for the current version of the PartnerApp.",
+      "type": "string"
+    },
+    "EnableAutoMinorVersionUpgrade": {
+      "description": "Enables automatic minor version upgrades for the PartnerApp.",
+      "type": "boolean"
     },
     "EnableIamSessionBasedIdentity": {
       "description": "Enables IAM Session based Identity for PartnerApp.",
@@ -227,7 +241,8 @@
   },
   "readOnlyProperties": [
     "/properties/Arn",
-    "/properties/BaseUrl"
+    "/properties/BaseUrl",
+    "/properties/CurrentVersionEolDate"
   ],
   "replacementStrategy": "delete_then_create",
   "required": [

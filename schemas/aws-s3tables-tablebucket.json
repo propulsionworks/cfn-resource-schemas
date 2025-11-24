@@ -1,6 +1,6 @@
 {
   "$id": "aws-s3tables-tablebucket",
-  "$integrity": "sha512-Fqe8kDGggnWVTayI7n66CnnFyVnmeX8TZ7aYy0IgKSjIpUUrZ5RpcyCULLSL/DXHb0SzHSGQTBfcRntZ13c9dQ==",
+  "$integrity": "sha512-PAvNoXTif/+f3VGj5hk9ttmPVFx7mg7iuucmP2Dc05/OP8pKjH/Y9BZWBD/d4Ez/jXCnS/8ZBblACT7s8EhJFw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TableBucketName"
@@ -19,6 +19,22 @@
           "enum": [
             "AES256",
             "aws:kms"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MetricsConfiguration": {
+      "additionalProperties": false,
+      "description": "Settings governing the Metric configuration for the table bucket.",
+      "properties": {
+        "Status": {
+          "default": "Disabled",
+          "description": "Indicates whether Metrics are enabled.",
+          "enum": [
+            "Enabled",
+            "Disabled"
           ],
           "type": "string"
         }
@@ -91,9 +107,11 @@
       "permissions": [
         "s3tables:CreateTableBucket",
         "s3tables:PutTableBucketMaintenanceConfiguration",
+        "s3tables:PutTableBucketMetricsConfiguration",
         "s3tables:PutTableBucketEncryption",
         "s3tables:GetTableBucket",
         "s3tables:GetTableBucketMaintenanceConfiguration",
+        "s3tables:GetTableBucketMetricsConfiguration",
         "s3tables:GetTableBucketEncryption",
         "kms:DescribeKey",
         "s3tables:TagResource",
@@ -114,15 +132,19 @@
       "permissions": [
         "s3tables:GetTableBucket",
         "s3tables:GetTableBucketMaintenanceConfiguration",
+        "s3tables:GetTableBucketMetricsConfiguration",
         "s3tables:GetTableBucketEncryption",
         "s3tables:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
+        "s3tables:DeleteTableBucketMetricsConfiguration",
         "s3tables:PutTableBucketMaintenanceConfiguration",
+        "s3tables:PutTableBucketMetricsConfiguration",
         "s3tables:PutTableBucketEncryption",
         "s3tables:GetTableBucketMaintenanceConfiguration",
+        "s3tables:GetTableBucketMetricsConfiguration",
         "s3tables:GetTableBucketEncryption",
         "s3tables:DeleteTableBucketEncryption",
         "s3tables:GetTableBucket",
@@ -139,6 +161,9 @@
   "properties": {
     "EncryptionConfiguration": {
       "$ref": "#/definitions/EncryptionConfiguration"
+    },
+    "MetricsConfiguration": {
+      "$ref": "#/definitions/MetricsConfiguration"
     },
     "TableBucketARN": {
       "$ref": "#/definitions/TableBucketARN"

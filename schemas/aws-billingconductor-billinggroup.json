@@ -1,7 +1,33 @@
 {
   "$id": "aws-billingconductor-billinggroup",
-  "$integrity": "sha512-mAN3pSozbaqJfzSQ2pzd8knCT3xS4/S+L62jjQpsZdBuaVHUHvNzRba3cFOBA/jOlLcKcNVWlALaz4YGSOqeUg==",
+  "$integrity": "sha512-p2vFr9IgKc9j6tGT39yc5pydWXzynUfbsLxvFEEQ307+lKTQ9MGbwYpGtXp0GeIxKz8ibxWFkV4Ge2dlXA//yg==",
   "additionalProperties": false,
+  "anyOf": [
+    {
+      "properties": {
+        "AccountGrouping": {
+          "required": [
+            "LinkedAccountIds"
+          ]
+        }
+      },
+      "required": [
+        "PrimaryAccountId"
+      ]
+    },
+    {
+      "properties": {
+        "AccountGrouping": {
+          "required": [
+            "ResponsibilityTransferArn"
+          ]
+        }
+      },
+      "required": [
+        "AccountGrouping"
+      ]
+    }
+  ],
   "createOnlyProperties": [
     "/properties/PrimaryAccountId"
   ],
@@ -21,11 +47,12 @@
           "minItems": 1,
           "type": "array",
           "uniqueItems": true
+        },
+        "ResponsibilityTransferArn": {
+          "pattern": "arn:[a-z0-9][a-z0-9-.]{0,62}:organizations::[0-9]{12}:transfer/o-[a-z0-9]{10,32}/(billing)/(inbound|outbound)/rt-[0-9a-z]{8,32}",
+          "type": "string"
         }
       },
-      "required": [
-        "LinkedAccountIds"
-      ],
       "type": "object"
     },
     "BillingGroupStatus": {
@@ -78,7 +105,8 @@
         "billingconductor:AssociateAccounts",
         "billingconductor:ListBillingGroups",
         "billingconductor:TagResource",
-        "billingconductor:ListTagsForResource"
+        "billingconductor:ListTagsForResource",
+        "organizations:DescribeResponsibilityTransfer"
       ]
     },
     "delete": {
@@ -127,7 +155,7 @@
     },
     "Arn": {
       "description": "Billing Group ARN",
-      "pattern": "arn:aws(-cn)?:billingconductor::[0-9]{12}:billinggroup/?[0-9]{12}",
+      "pattern": "arn:aws(-cn)?:billingconductor::[0-9]{12}:billinggroup/?[a-zA-Z0-9]{10,12}",
       "type": "string"
     },
     "ComputationPreference": {
@@ -186,7 +214,6 @@
   "required": [
     "Name",
     "AccountGrouping",
-    "PrimaryAccountId",
     "ComputationPreference"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-billing-conductor.git",

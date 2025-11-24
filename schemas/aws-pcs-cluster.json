@@ -1,6 +1,6 @@
 {
   "$id": "aws-pcs-cluster",
-  "$integrity": "sha512-1e1t3CoS0qOAe1MvGlyXIkOXb04sV+b1dBZ9Q0YWFC9nPODJaYil1JhjAORMUVI/lkFwqQRblxIAX86gew7oaA==",
+  "$integrity": "sha512-EM29gPT3iQAegQiCIMCNY9/pypAEMTr+yCXDoP2nbD/Ubpt+X2V1h4OAApVXjhbMqLeyZib5g4TKwIja3MX5jA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -77,7 +77,8 @@
           "description": "Indicates the type of endpoint running at the specific IP address.",
           "enum": [
             "SLURMCTLD",
-            "SLURMDBD"
+            "SLURMDBD",
+            "SLURMRESTD"
           ],
           "type": "string"
         }
@@ -104,6 +105,35 @@
       },
       "type": "object"
     },
+    "JwtAuth": {
+      "additionalProperties": false,
+      "description": "JWT authentication configuration for Slurm.",
+      "properties": {
+        "JwtKey": {
+          "$ref": "#/definitions/JwtKey"
+        }
+      },
+      "type": "object"
+    },
+    "JwtKey": {
+      "additionalProperties": false,
+      "description": "JWT key configuration.",
+      "properties": {
+        "SecretArn": {
+          "description": "The Amazon Resource Name (ARN) of the JWT key secret.",
+          "type": "string"
+        },
+        "SecretVersion": {
+          "description": "The version of the JWT key secret.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "SecretArn",
+        "SecretVersion"
+      ],
+      "type": "object"
+    },
     "SecurityGroupId": {
       "description": "A VPC security group ID.",
       "type": "string"
@@ -124,6 +154,25 @@
       "required": [
         "ParameterName",
         "ParameterValue"
+      ],
+      "type": "object"
+    },
+    "SlurmRest": {
+      "additionalProperties": false,
+      "description": "The SlurmRest configuration includes configurable settings for Slurm Rest.",
+      "properties": {
+        "Mode": {
+          "default": "NONE",
+          "description": "The default value is `STANDARD`. A value of `STANDARD` means that Slurm Rest is enabled.",
+          "enum": [
+            "STANDARD",
+            "NONE"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Mode"
       ],
       "type": "object"
     },
@@ -308,6 +357,9 @@
         "AuthKey": {
           "$ref": "#/definitions/AuthKey"
         },
+        "JwtAuth": {
+          "$ref": "#/definitions/JwtAuth"
+        },
         "ScaleDownIdleTimeInSeconds": {
           "description": "The time before an idle node is scaled down.",
           "minimum": 1,
@@ -320,6 +372,9 @@
             "$ref": "#/definitions/SlurmCustomSetting"
           },
           "type": "array"
+        },
+        "SlurmRest": {
+          "$ref": "#/definitions/SlurmRest"
         }
       },
       "type": "object"

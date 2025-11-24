@@ -1,7 +1,35 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#aws-resource-mediaconnect-routerinput-return-values",
-    "properties": {}
+    "properties": {
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the router input."
+      },
+      "CreatedAt": {
+        "description": "The timestamp when the router input was created."
+      },
+      "Id": {
+        "description": "The unique identifier of the router input."
+      },
+      "InputType": {
+        "description": "The type of the router input."
+      },
+      "IpAddress": {
+        "description": "The IP address of the router input."
+      },
+      "MaintenanceType": {
+        "description": "The type of maintenance configuration applied to this router input."
+      },
+      "RoutedOutputs": {
+        "description": "The number of router outputs associated with the router input."
+      },
+      "State": {
+        "description": "The current state of the router input."
+      },
+      "UpdatedAt": {
+        "description": "The timestamp when the router input was last updated."
+      }
+    }
   },
   "definitions": {
     "AutomaticEncryptionKeyConfiguration": {
@@ -23,18 +51,22 @@
     "FailoverRouterInputConfiguration": {
       "properties": {
         "NetworkInterfaceArn": {
+          "description": "The ARN of the network interface to use for this failover router input.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-failoverrouterinputconfiguration.html#cfn-mediaconnect-routerinput-failoverrouterinputconfiguration-networkinterfacearn"
         },
         "PrimarySourceIndex": {
+          "description": "The index (0 or 1) that specifies which source in the protocol configurations list is currently active. Used to control which of the two failover sources is currently selected. This field is ignored when sourcePriorityMode is set to NO_PRIORITY",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-failoverrouterinputconfiguration.html#cfn-mediaconnect-routerinput-failoverrouterinputconfiguration-primarysourceindex"
         },
         "ProtocolConfigurations": {
+          "description": "A list of exactly two protocol configurations for the failover input sources. Both must use the same protocol type.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-failoverrouterinputconfiguration.html#cfn-mediaconnect-routerinput-failoverrouterinputconfiguration-protocolconfigurations"
         },
         "SourcePriorityMode": {
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-failoverrouterinputconfiguration.html#cfn-mediaconnect-routerinput-failoverrouterinputconfiguration-sourceprioritymode"
         }
       },
+      "description": "Configuration settings for a failover router input that allows switching between two input sources.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-failoverrouterinputconfiguration.html"
     },
     "FailoverRouterInputProtocolConfiguration": {
@@ -44,12 +76,14 @@
     "FlowTransitEncryption": {
       "properties": {
         "EncryptionKeyConfiguration": {
+          "description": "Configuration settings for flow transit encryption keys.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-flowtransitencryption.html#cfn-mediaconnect-routerinput-flowtransitencryption-encryptionkeyconfiguration"
         },
         "EncryptionKeyType": {
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-flowtransitencryption.html#cfn-mediaconnect-routerinput-flowtransitencryption-encryptionkeytype"
         }
       },
+      "description": "The configuration that defines how content is encrypted during transit between the MediaConnect router and a MediaConnect flow.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-flowtransitencryption.html"
     },
     "FlowTransitEncryptionKeyConfiguration": {
@@ -75,29 +109,37 @@
     "MediaConnectFlowRouterInputConfiguration": {
       "properties": {
         "FlowArn": {
+          "description": "The ARN of the flow to connect to.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-mediaconnectflowrouterinputconfiguration.html#cfn-mediaconnect-routerinput-mediaconnectflowrouterinputconfiguration-flowarn"
         },
         "FlowOutputArn": {
+          "description": "The ARN of the flow output to connect to this router input.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-mediaconnectflowrouterinputconfiguration.html#cfn-mediaconnect-routerinput-mediaconnectflowrouterinputconfiguration-flowoutputarn"
         },
         "SourceTransitDecryption": {
+          "description": "The configuration that defines how content is encrypted during transit between the MediaConnect router and a MediaConnect flow.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-mediaconnectflowrouterinputconfiguration.html#cfn-mediaconnect-routerinput-mediaconnectflowrouterinputconfiguration-sourcetransitdecryption"
         }
       },
+      "description": "Configuration settings for connecting a router input to a flow output.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-mediaconnectflowrouterinputconfiguration.html"
     },
     "MergeRouterInputConfiguration": {
       "properties": {
         "MergeRecoveryWindowMilliseconds": {
+          "description": "The time window in milliseconds for merging the two input sources.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-mergerouterinputconfiguration.html#cfn-mediaconnect-routerinput-mergerouterinputconfiguration-mergerecoverywindowmilliseconds"
         },
         "NetworkInterfaceArn": {
+          "description": "The ARN of the network interface to use for this merge router input.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-mergerouterinputconfiguration.html#cfn-mediaconnect-routerinput-mergerouterinputconfiguration-networkinterfacearn"
         },
         "ProtocolConfigurations": {
+          "description": "A list of exactly two protocol configurations for the merge input sources. Both must use the same protocol type.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-mergerouterinputconfiguration.html#cfn-mediaconnect-routerinput-mergerouterinputconfiguration-protocolconfigurations"
         }
       },
+      "description": "Configuration settings for a merge router input that combines two input sources.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-mergerouterinputconfiguration.html"
     },
     "MergeRouterInputProtocolConfiguration": {
@@ -110,20 +152,25 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-preferreddaytimemaintenanceconfiguration.html#cfn-mediaconnect-routerinput-preferreddaytimemaintenanceconfiguration-day"
         },
         "Time": {
+          "description": "The preferred time for maintenance operations.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-preferreddaytimemaintenanceconfiguration.html#cfn-mediaconnect-routerinput-preferreddaytimemaintenanceconfiguration-time"
         }
       },
+      "description": "Configuration for preferred day and time maintenance settings.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-preferreddaytimemaintenanceconfiguration.html"
     },
     "RistRouterInputConfiguration": {
       "properties": {
         "Port": {
+          "description": "The port number used for the RIST protocol in the router input configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-ristrouterinputconfiguration.html#cfn-mediaconnect-routerinput-ristrouterinputconfiguration-port"
         },
         "RecoveryLatencyMilliseconds": {
+          "description": "The recovery latency in milliseconds for the RIST protocol in the router input configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-ristrouterinputconfiguration.html#cfn-mediaconnect-routerinput-ristrouterinputconfiguration-recoverylatencymilliseconds"
         }
       },
+      "description": "The configuration settings for a router input using the RIST (Reliable Internet Stream Transport) protocol, including the port and recovery latency.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-ristrouterinputconfiguration.html"
     },
     "RouterInputConfiguration": {
@@ -149,12 +196,14 @@
     "RouterInputTransitEncryption": {
       "properties": {
         "EncryptionKeyConfiguration": {
+          "description": "Defines the configuration settings for transit encryption keys.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-routerinputtransitencryption.html#cfn-mediaconnect-routerinput-routerinputtransitencryption-encryptionkeyconfiguration"
         },
         "EncryptionKeyType": {
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-routerinputtransitencryption.html#cfn-mediaconnect-routerinput-routerinputtransitencryption-encryptionkeytype"
         }
       },
+      "description": "The transit encryption settings for a router input.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-routerinputtransitencryption.html"
     },
     "RouterInputTransitEncryptionKeyConfiguration": {
@@ -179,76 +228,96 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-rtprouterinputconfiguration.html#cfn-mediaconnect-routerinput-rtprouterinputconfiguration-forwarderrorcorrection"
         },
         "Port": {
+          "description": "The port number used for the RTP protocol in the router input configuration.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-rtprouterinputconfiguration.html#cfn-mediaconnect-routerinput-rtprouterinputconfiguration-port"
         }
       },
+      "description": "The configuration settings for a Router Input using the RTP (Real-Time Transport Protocol) protocol, including the port and forward error correction state.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-rtprouterinputconfiguration.html"
     },
     "SecretsManagerEncryptionKeyConfiguration": {
       "properties": {
         "RoleArn": {
+          "description": "The ARN of the IAM role assumed by MediaConnect to access the AWS Secrets Manager secret.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-secretsmanagerencryptionkeyconfiguration.html#cfn-mediaconnect-routerinput-secretsmanagerencryptionkeyconfiguration-rolearn"
         },
         "SecretArn": {
+          "description": "The ARN of the AWS Secrets Manager secret used for transit encryption.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-secretsmanagerencryptionkeyconfiguration.html#cfn-mediaconnect-routerinput-secretsmanagerencryptionkeyconfiguration-secretarn"
         }
       },
+      "description": "The configuration settings for transit encryption using AWS Secrets Manager, including the secret ARN and role ARN.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-secretsmanagerencryptionkeyconfiguration.html"
     },
     "SrtCallerRouterInputConfiguration": {
       "properties": {
         "DecryptionConfiguration": {
+          "description": "Contains the configuration settings for decrypting SRT streams, including the encryption key details and decryption parameters.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtcallerrouterinputconfiguration.html#cfn-mediaconnect-routerinput-srtcallerrouterinputconfiguration-decryptionconfiguration"
         },
         "MinimumLatencyMilliseconds": {
+          "description": "The minimum latency in milliseconds for the SRT protocol in caller mode.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtcallerrouterinputconfiguration.html#cfn-mediaconnect-routerinput-srtcallerrouterinputconfiguration-minimumlatencymilliseconds"
         },
         "SourceAddress": {
+          "description": "The source IP address for the SRT protocol in caller mode.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtcallerrouterinputconfiguration.html#cfn-mediaconnect-routerinput-srtcallerrouterinputconfiguration-sourceaddress"
         },
         "SourcePort": {
+          "description": "The source port number for the SRT protocol in caller mode.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtcallerrouterinputconfiguration.html#cfn-mediaconnect-routerinput-srtcallerrouterinputconfiguration-sourceport"
         },
         "StreamId": {
+          "description": "The stream ID for the SRT protocol in caller mode.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtcallerrouterinputconfiguration.html#cfn-mediaconnect-routerinput-srtcallerrouterinputconfiguration-streamid"
         }
       },
+      "description": "The configuration settings for a router input using the SRT (Secure Reliable Transport) protocol in caller mode, including the source address and port, minimum latency, stream ID, and decryption key configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtcallerrouterinputconfiguration.html"
     },
     "SrtDecryptionConfiguration": {
       "properties": {
         "EncryptionKey": {
+          "description": "The configuration settings for transit encryption using AWS Secrets Manager, including the secret ARN and role ARN.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtdecryptionconfiguration.html#cfn-mediaconnect-routerinput-srtdecryptionconfiguration-encryptionkey"
         }
       },
+      "description": "Contains the configuration settings for decrypting SRT streams, including the encryption key details and decryption parameters.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtdecryptionconfiguration.html"
     },
     "SrtListenerRouterInputConfiguration": {
       "properties": {
         "DecryptionConfiguration": {
+          "description": "Contains the configuration settings for decrypting SRT streams, including the encryption key details and decryption parameters.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtlistenerrouterinputconfiguration.html#cfn-mediaconnect-routerinput-srtlistenerrouterinputconfiguration-decryptionconfiguration"
         },
         "MinimumLatencyMilliseconds": {
+          "description": "The minimum latency in milliseconds for the SRT protocol in listener mode.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtlistenerrouterinputconfiguration.html#cfn-mediaconnect-routerinput-srtlistenerrouterinputconfiguration-minimumlatencymilliseconds"
         },
         "Port": {
+          "description": "The port number for the SRT protocol in listener mode.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtlistenerrouterinputconfiguration.html#cfn-mediaconnect-routerinput-srtlistenerrouterinputconfiguration-port"
         }
       },
+      "description": "The configuration settings for a router input using the SRT (Secure Reliable Transport) protocol in listener mode, including the port, minimum latency, and decryption key configuration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-srtlistenerrouterinputconfiguration.html"
     },
     "StandardRouterInputConfiguration": {
       "properties": {
         "NetworkInterfaceArn": {
+          "description": "The Amazon Resource Name (ARN) of the network interface associated with the standard router input.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-standardrouterinputconfiguration.html#cfn-mediaconnect-routerinput-standardrouterinputconfiguration-networkinterfacearn"
         },
         "Protocol": {
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-standardrouterinputconfiguration.html#cfn-mediaconnect-routerinput-standardrouterinputconfiguration-protocol"
         },
         "ProtocolConfiguration": {
+          "description": "The protocol configuration settings for a router input.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-standardrouterinputconfiguration.html#cfn-mediaconnect-routerinput-standardrouterinputconfiguration-protocolconfiguration"
         }
       },
+      "description": "The configuration settings for a standard router input, including the protocol, protocol-specific configuration, network interface, and availability zone.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-standardrouterinputconfiguration.html"
     },
     "Tag": {
@@ -267,6 +336,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediaconnect-routerinput-unit.html"
     }
   },
+  "description": "Represents a router input in AWS Elemental MediaConnect that is used to ingest content to be transmitted to router outputs",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html",
   "id": "aws-mediaconnect-routerinput",
   "properties": {
@@ -274,9 +344,11 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-arn"
     },
     "AvailabilityZone": {
+      "description": "The Availability Zone of the router input.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-availabilityzone"
     },
     "Configuration": {
+      "description": "The configuration settings for a router input.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-configuration"
     },
     "CreatedAt": {
@@ -292,36 +364,44 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-ipaddress"
     },
     "MaintenanceConfiguration": {
+      "description": "The maintenance configuration settings applied to this router input.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-maintenanceconfiguration"
     },
     "MaintenanceType": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-maintenancetype"
     },
     "MaximumBitrate": {
+      "description": "The maximum bitrate for the router input.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-maximumbitrate"
     },
     "Name": {
+      "description": "The name of the router input.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-name"
     },
     "RegionName": {
+      "description": "The AWS Region where the router input is located.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-regionname"
     },
     "RoutedOutputs": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-routedoutputs"
     },
     "RoutingScope": {
+      "description": "Indicates whether the router input is configured for Regional or global routing.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-routingscope"
     },
     "State": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-state"
     },
     "Tags": {
+      "description": "Key-value pairs that can be used to tag and organize this router input.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-tags"
     },
     "Tier": {
+      "description": "The tier level of the router input.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-tier"
     },
     "TransitEncryption": {
+      "description": "Encryption information.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html#cfn-mediaconnect-routerinput-transitencryption"
     },
     "UpdatedAt": {

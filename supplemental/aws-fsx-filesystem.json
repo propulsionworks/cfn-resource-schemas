@@ -210,7 +210,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-preferredsubnetid"
         },
         "RouteTableIds": {
-          "description": "(Multi-AZ only) Specifies the route tables in which Amazon FSx creates the rules for routing traffic to the correct file server. You should specify all virtual private cloud (VPC) route tables associated with the subnets in which your clients are located. By default, Amazon FSx selects your VPC's default route table.\n\n> Amazon FSx manages these route tables for Multi-AZ file systems using tag-based authentication. These route tables are tagged with `Key: AmazonFSx; Value: ManagedByAmazonFSx` . When creating FSx for ONTAP Multi-AZ file systems using AWS CloudFormation we recommend that you add the `Key: AmazonFSx; Value: ManagedByAmazonFSx` tag manually.",
+          "description": "(Multi-AZ only) Specifies the route tables in which Amazon FSx creates the rules for routing traffic to the correct file server. You should specify all virtual private cloud (VPC) route tables associated with the subnets in which your clients are located. By default, Amazon FSx selects your VPC's default route table.\n\n> Amazon FSx manages these route tables for Multi-AZ file systems using tag-based authentication. These route tables are tagged with `Key: AmazonFSx; Value: ManagedByAmazonFSx` . When creating FSx for ONTAP Multi-AZ file systems using CloudFormation we recommend that you add the `Key: AmazonFSx; Value: ManagedByAmazonFSx` tag manually.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-routetableids"
         },
         "ThroughputCapacity": {
@@ -345,6 +345,9 @@
           "description": "A list of up to three IP addresses of DNS servers or domain controllers in the self-managed AD directory.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-selfmanagedactivedirectoryconfiguration.html#cfn-fsx-filesystem-selfmanagedactivedirectoryconfiguration-dnsips"
         },
+        "DomainJoinServiceAccountSecret": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-selfmanagedactivedirectoryconfiguration.html#cfn-fsx-filesystem-selfmanagedactivedirectoryconfiguration-domainjoinserviceaccountsecret"
+        },
         "DomainName": {
           "description": "The fully qualified domain name of the self-managed AD directory, such as `corp.example.com` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-selfmanagedactivedirectoryconfiguration.html#cfn-fsx-filesystem-selfmanagedactivedirectoryconfiguration-domainname"
@@ -476,7 +479,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-id"
     },
     "KmsKeyId": {
-      "description": "The ID of the AWS Key Management Service ( AWS KMS ) key used to encrypt Amazon FSx file system data. Used as follows with Amazon FSx file system types:\n\n- Amazon FSx for Lustre `PERSISTENT_1` and `PERSISTENT_2` deployment types only.\n\n`SCRATCH_1` and `SCRATCH_2` types are encrypted using the Amazon FSx service AWS KMS key for your account.\n- Amazon FSx for NetApp ONTAP\n- Amazon FSx for OpenZFS\n- Amazon FSx for Windows File Server\n\nIf this ID isn't specified, the Amazon FSx-managed key for your account is used. For more information, see [Encrypt](https://docs.aws.amazon.com//kms/latest/APIReference/API_Encrypt.html) in the *AWS Key Management Service API Reference* .",
+      "description": "The ID of the AWS Key Management Service ( AWS  ) key used to encrypt Amazon FSx file system data. Used as follows with Amazon FSx file system types:\n\n- Amazon FSx for Lustre `PERSISTENT_1` and `PERSISTENT_2` deployment types only.\n\n`SCRATCH_1` and `SCRATCH_2` types are encrypted using the Amazon FSx service AWS  key for your account.\n- Amazon FSx for NetApp ONTAP\n- Amazon FSx for OpenZFS\n- Amazon FSx for Windows File Server\n\nIf this ID isn't specified, the Amazon FSx-managed key for your account is used. For more information, see [Encrypt](https://docs.aws.amazon.com//kms/latest/APIReference/API_Encrypt.html) in the *AWS Key Management Service API Reference* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-kmskeyid"
     },
     "LustreConfiguration": {

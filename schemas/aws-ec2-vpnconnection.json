@@ -1,12 +1,13 @@
 {
   "$id": "aws-ec2-vpnconnection",
-  "$integrity": "sha512-8nrBSipn/9LOcT4+2On+BvAjhQia6h+Rpff/KlP5xzHllIzVKxVeowMPiprlJFdl6/yzrnbI2Bqo6Mvg8fXZbA==",
+  "$integrity": "sha512-8PeNSAJr4+a8CdgeEWx5YcCi2bbVyOAIkLo1ov49usNoh3S869kku9Fb5HdDt8mNcSk5wRIXTxoKRGabAfNPFA==",
   "$schema": "https://raw.githubusercontent.com/aws-cloudformation/cloudformation-resource-schema/blob/master/src/main/resources/schema/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Type",
     "/properties/CustomerGatewayId",
     "/properties/VpnGatewayId",
+    "/properties/VpnConcentratorId",
     "/properties/TransitGatewayId",
     "/properties/EnableAcceleration",
     "/properties/LocalIpv4NetworkCidr",
@@ -18,6 +19,7 @@
     "/properties/TransportTransitGatewayAttachmentId",
     "/properties/TunnelInsideIpVersion",
     "/properties/PreSharedKeyStorage",
+    "/properties/TunnelBandwidth",
     "/properties/VpnTunnelOptionsSpecifications"
   ],
   "definitions": {
@@ -25,6 +27,22 @@
       "additionalProperties": false,
       "description": "Options for sending VPN tunnel logs to CloudWatch.",
       "properties": {
+        "BgpLogEnabled": {
+          "description": "",
+          "type": "boolean"
+        },
+        "BgpLogGroupArn": {
+          "description": "",
+          "type": "string"
+        },
+        "BgpLogOutputFormat": {
+          "description": "",
+          "enum": [
+            "json",
+            "text"
+          ],
+          "type": "string"
+        },
         "LogEnabled": {
           "description": "Enable or disable VPN tunnel logging feature. Default value is ``False``.\n Valid values: ``True`` | ``False``",
           "type": "boolean"
@@ -444,12 +462,25 @@
       "description": "The transit gateway attachment ID to use for the VPN tunnel.\n Required if ``OutsideIpAddressType`` is set to ``PrivateIpv4``.",
       "type": "string"
     },
+    "TunnelBandwidth": {
+      "default": "standard",
+      "description": "",
+      "enum": [
+        "standard",
+        "large"
+      ],
+      "type": "string"
+    },
     "TunnelInsideIpVersion": {
       "description": "Indicate whether the VPN tunnels process IPv4 or IPv6 traffic.\n Default: ``ipv4``",
       "type": "string"
     },
     "Type": {
       "description": "The type of VPN connection.",
+      "type": "string"
+    },
+    "VpnConcentratorId": {
+      "description": "",
       "type": "string"
     },
     "VpnConnectionId": {

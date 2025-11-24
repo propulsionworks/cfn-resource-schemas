@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrock-dataautomationproject",
-  "$integrity": "sha512-y6u5c33376TnRSDIK6dgLN0QhHKwt977K1kFf+oLrBpDGUdZzDcMW9aJJPG4Zg4ArRWzsxF5tzcrqq+O1WGsDQ==",
+  "$integrity": "sha512-jgueIqHxCa3Kejud3iZ7tTH1QDedqC6bOu46nt9RFiJW4M1zFZX6GGXxEYBYIuFRxOxRVZlw3p1iuBpCvqudnQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ProjectName"
@@ -45,9 +45,37 @@
       },
       "type": "object"
     },
+    "AudioGenerativeOutputLanguage": {
+      "enum": [
+        "DEFAULT",
+        "EN"
+      ],
+      "type": "string"
+    },
+    "AudioLanguageConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "GenerativeOutputLanguage": {
+          "$ref": "#/definitions/AudioGenerativeOutputLanguage"
+        },
+        "IdentifyMultipleLanguages": {
+          "type": "boolean"
+        },
+        "InputLanguages": {
+          "items": {
+            "$ref": "#/definitions/Language"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "AudioOverrideConfiguration": {
       "additionalProperties": false,
       "properties": {
+        "LanguageConfiguration": {
+          "$ref": "#/definitions/AudioLanguageConfiguration"
+        },
         "ModalityProcessing": {
           "$ref": "#/definitions/ModalityProcessingConfiguration"
         }
@@ -429,6 +457,22 @@
         }
       },
       "type": "object"
+    },
+    "Language": {
+      "enum": [
+        "EN",
+        "DE",
+        "ES",
+        "FR",
+        "IT",
+        "PT",
+        "JA",
+        "KO",
+        "CN",
+        "TW",
+        "HK"
+      ],
+      "type": "string"
     },
     "ModalityProcessingConfiguration": {
       "additionalProperties": false,

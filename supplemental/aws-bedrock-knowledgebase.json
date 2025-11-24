@@ -676,6 +676,20 @@
       "description": "A storage location in an Amazon S3 bucket.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-s3location.html"
     },
+    "S3VectorsConfiguration": {
+      "properties": {
+        "IndexArn": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-s3vectorsconfiguration.html#cfn-bedrock-knowledgebase-s3vectorsconfiguration-indexarn"
+        },
+        "IndexName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-s3vectorsconfiguration.html#cfn-bedrock-knowledgebase-s3vectorsconfiguration-indexname"
+        },
+        "VectorBucketArn": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-s3vectorsconfiguration.html#cfn-bedrock-knowledgebase-s3vectorsconfiguration-vectorbucketarn"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-s3vectorsconfiguration.html"
+    },
     "SecretArn": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-secretarn.html"
@@ -723,6 +737,9 @@
         "RdsConfiguration": {
           "description": "Contains details about the storage configuration of the knowledge base in Amazon RDS. For more information, see [Create a vector index in Amazon RDS](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup-rds.html) .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-storageconfiguration.html#cfn-bedrock-knowledgebase-storageconfiguration-rdsconfiguration"
+        },
+        "S3VectorsConfiguration": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-storageconfiguration.html#cfn-bedrock-knowledgebase-storageconfiguration-s3vectorsconfiguration"
         },
         "Type": {
           "description": "The vector store service in which the knowledge base is stored.",
@@ -791,7 +808,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-workgrouparn.html"
     }
   },
-  "description": "Specifies a knowledge base as a resource in a top-level template. Minimally, you must specify the following properties:\n\n- Name – Specify a name for the knowledge base.\n- RoleArn – Specify the Amazon Resource Name (ARN) of the IAM role with permissions to invoke API operations on the knowledge base. For more information, see [Create a service role for Knowledge base for Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-permissions.html) .\n- KnowledgeBaseConfiguration – Specify the embeddings configuration of the knowledge base. The following sub-properties are required:\n\n- Type – Specify the value `VECTOR` .\n- StorageConfiguration – Specify information about the vector store in which the data source is stored. The following sub-properties are required:\n\n- Type – Specify the vector store service that you are using.\n\n> Redis Enterprise Cloud vector stores are currently unsupported in AWS CloudFormation .\n\nFor more information about using knowledge bases in Amazon Bedrock , see [Knowledge base for Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html) .\n\nSee the *Properties* section below for descriptions of both the required and optional properties.",
+  "description": "Specifies a knowledge base as a resource in a top-level template. Minimally, you must specify the following properties:\n\n- Name – Specify a name for the knowledge base.\n- RoleArn – Specify the Amazon Resource Name (ARN) of the IAM role with permissions to invoke API operations on the knowledge base. For more information, see [Create a service role for Knowledge base for Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-permissions.html) .\n- KnowledgeBaseConfiguration – Specify the embeddings configuration of the knowledge base. The following sub-properties are required:\n\n- Type – Specify the value `VECTOR` .\n- StorageConfiguration – Specify information about the vector store in which the data source is stored. The following sub-properties are required:\n\n- Type – Specify the vector store service that you are using.\n\n> Redis Enterprise Cloud vector stores are currently unsupported in CloudFormation .\n\nFor more information about using knowledge bases in Amazon Bedrock , see [Knowledge base for Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html) .\n\nSee the *Properties* section below for descriptions of both the required and optional properties.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-knowledgebase.html",
   "id": "aws-bedrock-knowledgebase",
   "properties": {

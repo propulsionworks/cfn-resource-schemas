@@ -1,15 +1,40 @@
 {
   "$id": "aws-ec2-natgateway",
-  "$integrity": "sha512-ZPgNmH0yOblCugpAg9QzKmpp9XnxjTa5LPisPA7NRWTYgyzNWjrcZzo5S7QKee4WMip0S1c7LBZ5OC/ajmq4dQ==",
+  "$integrity": "sha512-fpyk3L7DgAP03OV6eNptSRKsmZB5XSXhe0+i7VV4VnirLE8RPG7h6nSoBQqr3iTbHT4kUyli6n+4tjALiw9X8w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/VpcId",
     "/properties/SubnetId",
     "/properties/ConnectivityType",
     "/properties/AllocationId",
-    "/properties/PrivateIpAddress"
+    "/properties/PrivateIpAddress",
+    "/properties/AvailabilityMode"
   ],
   "definitions": {
+    "AvailabilityZoneAddress": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "AllocationIds": {
+          "insertionOrder": false,
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "AvailabilityZone": {
+          "type": "string"
+        },
+        "AvailabilityZoneId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "AllocationIds"
+      ],
+      "type": "object"
+    },
     "Tag": {
       "additionalProperties": false,
       "description": "Specifies a tag. For more information, see [Resource tags](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html).",
@@ -76,6 +101,27 @@
       "description": "[Public NAT gateway only] The allocation ID of the Elastic IP address that's associated with the NAT gateway. This property is required for a public NAT gateway and cannot be specified with a private NAT gateway.",
       "type": "string"
     },
+    "AutoProvisionZones": {
+      "description": "",
+      "type": "string"
+    },
+    "AutoScalingIps": {
+      "description": "",
+      "type": "string"
+    },
+    "AvailabilityMode": {
+      "description": "",
+      "type": "string"
+    },
+    "AvailabilityZoneAddresses": {
+      "description": "",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/AvailabilityZoneAddress"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
     "ConnectivityType": {
       "description": "Indicates whether the NAT gateway supports public or private connectivity. The default is public connectivity.",
       "type": "string"
@@ -94,6 +140,10 @@
     },
     "PrivateIpAddress": {
       "description": "The private IPv4 address to assign to the NAT gateway. If you don't provide an address, a private IPv4 address will be automatically assigned.",
+      "type": "string"
+    },
+    "RouteTableId": {
+      "description": "",
       "type": "string"
     },
     "SecondaryAllocationIds": {
@@ -139,7 +189,10 @@
   },
   "readOnlyProperties": [
     "/properties/NatGatewayId",
-    "/properties/EniId"
+    "/properties/EniId",
+    "/properties/AutoProvisionZones",
+    "/properties/AutoScalingIps",
+    "/properties/RouteTableId"
   ],
   "tagging": {
     "cloudFormationSystemTags": true,

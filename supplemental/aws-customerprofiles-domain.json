@@ -13,6 +13,9 @@
       },
       "Stats": {
         "description": "Usage-specific statistics about the domain."
+      },
+      "DataStore.Readiness": {
+        "description": "Progress information for data store setup."
       }
     }
   },
@@ -84,6 +87,20 @@
       },
       "description": "A list of matching attributes that represent matching criteria. If two profiles meet at least one of the requirements in the matching attributes list, they will be merged.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-consolidation.html"
+    },
+    "DataStore": {
+      "properties": {
+        "Enabled": {
+          "description": "Whether the data store is enabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-datastore.html#cfn-customerprofiles-domain-datastore-enabled"
+        },
+        "Readiness": {
+          "description": "Progress information for data store setup.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-datastore.html#cfn-customerprofiles-domain-datastore-readiness"
+        }
+      },
+      "description": "Configuration and status of the data store for the domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-datastore.html"
     },
     "DomainStats": {
       "properties": {
@@ -171,6 +188,20 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-matchingruleattributelist.html"
     },
+    "Readiness": {
+      "properties": {
+        "Message": {
+          "description": "A message describing the current progress.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-readiness.html#cfn-customerprofiles-domain-readiness-message"
+        },
+        "ProgressPercentage": {
+          "description": "The percentage of progress completed.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-readiness.html#cfn-customerprofiles-domain-readiness-progresspercentage"
+        }
+      },
+      "description": "Progress information for data store setup.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-domain-readiness.html"
+    },
     "RuleBasedMatching": {
       "properties": {
         "AttributeTypesSelector": {
@@ -241,6 +272,10 @@
   "properties": {
     "CreatedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-createdat"
+    },
+    "DataStore": {
+      "description": "Configuration and status of the data store for the domain.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html#cfn-customerprofiles-domain-datastore"
     },
     "DeadLetterQueueUrl": {
       "description": "The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting data from third party applications. You must set up a policy on the `DeadLetterQueue` for the `SendMessage` operation to enable Amazon Connect Customer Profiles to send messages to the `DeadLetterQueue` .",

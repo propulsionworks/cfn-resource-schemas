@@ -1,6 +1,6 @@
 {
   "$id": "aws-s3-bucket",
-  "$integrity": "sha512-nwPcFZRboyuzSivoeWYr4JlXPbB2uKzPLRqIisQmbakvnC6EIQDcCmutSooQztHnSaZkDA7OGb4wj7JaoVuI5Q==",
+  "$integrity": "sha512-NHm7GIXZfIisugU2FKjoNpoujMswEEcuISdJbfliFje/hq9nP8g1bWZb+SJU884PAj4O2KMu8sOVj5xlPU4SnA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BucketName",
@@ -90,6 +90,29 @@
     "Arn": {
       "description": "the Amazon Resource Name (ARN) of the specified bucket.",
       "type": "string"
+    },
+    "BlockedEncryptionTypeList": {
+      "description": "List of encryption types.",
+      "insertionOrder": true,
+      "items": {
+        "enum": [
+          "NONE",
+          "SSE-C"
+        ],
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "BlockedEncryptionTypes": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "EncryptionType": {
+          "$ref": "#/definitions/BlockedEncryptionTypeList"
+        }
+      },
+      "type": "object"
     },
     "BucketEncryption": {
       "additionalProperties": false,
@@ -1434,6 +1457,10 @@
       "additionalProperties": false,
       "description": "Specifies the default server-side encryption configuration.\n   +  *General purpose buckets* - If you're specifying a customer managed KMS key, we recommend using a fully qualified KMS key ARN. If you use a KMS key alias instead, then KMS resolves the key within the requester’s account. This behavior can result in data that's encrypted with a KMS key that belongs to the requester, and not the bucket owner.\n  +  *Directory buckets* - When you specify an [customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk) for encryption in your directory bucket, only use the key ID or key ARN. The key alias format of the KMS key isn't supported.",
       "properties": {
+        "BlockedEncryptionTypes": {
+          "$ref": "#/definitions/BlockedEncryptionTypes",
+          "description": ""
+        },
         "BucketKeyEnabled": {
           "description": "Specifies whether Amazon S3 should use an S3 Bucket Key with server-side encryption using KMS (SSE-KMS) for new objects in the bucket. Existing objects are not affected. Setting the ``BucketKeyEnabled`` element to ``true`` causes Amazon S3 to use an S3 Bucket Key. By default, S3 Bucket Key is not enabled.\n For more information, see [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) in the *Amazon S3 User Guide*.",
           "type": "boolean"
@@ -1695,6 +1722,8 @@
       "permissions": [
         "s3:CreateBucket",
         "s3:PutBucketTagging",
+        "s3:TagResource",
+        "s3:PutBucketAbac",
         "s3:PutAnalyticsConfiguration",
         "s3:PutEncryptionConfiguration",
         "s3:PutBucketCORS",
@@ -1724,6 +1753,7 @@
         "s3tables:CreateTable",
         "s3tables:CreateTableBucket",
         "s3tables:GetTable",
+        "s3tables:PutTableBucketPolicy",
         "s3tables:PutTableEncryption",
         "s3tables:PutTablePolicy",
         "s3tables:GetTableMetadataLocation",
@@ -1759,6 +1789,8 @@
         "s3:GetBucketPublicAccessBlock",
         "s3:GetBucketObjectLockConfiguration",
         "s3:GetBucketTagging",
+        "s3:ListTagsForResource",
+        "s3:GetBucketAbac",
         "s3:GetBucketOwnershipControls",
         "s3:GetIntelligentTieringConfiguration",
         "s3:GetBucketMetadataTableConfiguration",
@@ -1769,6 +1801,9 @@
       "permissions": [
         "s3:PutBucketAcl",
         "s3:PutBucketTagging",
+        "s3:TagResource",
+        "s3:UntagResource",
+        "s3:PutBucketAbac",
         "s3:PutAnalyticsConfiguration",
         "s3:PutEncryptionConfiguration",
         "s3:PutBucketCORS",
@@ -1788,6 +1823,7 @@
         "s3tables:CreateTable",
         "s3tables:CreateTableBucket",
         "s3tables:GetTable",
+        "s3tables:PutTableBucketPolicy",
         "s3tables:PutTableEncryption",
         "s3tables:PutTablePolicy",
         "s3tables:GetTableMetadataLocation",
@@ -1816,6 +1852,14 @@
     "/properties/BucketName"
   ],
   "properties": {
+    "AbacStatus": {
+      "description": "",
+      "enum": [
+        "Enabled",
+        "Disabled"
+      ],
+      "type": "string"
+    },
     "AccelerateConfiguration": {
       "$ref": "#/definitions/AccelerateConfiguration",
       "description": "Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see [Amazon S3 Transfer Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html) in the *Amazon S3 User Guide*."
@@ -2000,7 +2044,10 @@
     "permissions": [
       "s3:PutBucketTagging",
       "s3:GetBucketTagging",
-      "s3:DeleteBucketTagging"
+      "s3:DeleteBucketTagging",
+      "s3:TagResource",
+      "s3:UntagResource",
+      "s3:ListTagsForResource"
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",

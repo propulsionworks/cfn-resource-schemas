@@ -1,6 +1,6 @@
 {
   "$id": "aws-msk-cluster",
-  "$integrity": "sha512-02NZTEf4bBUkwpsQ6x/mEVog6S/KF075967zCM8KC65O1HRMpf+Fvjc5kv1cfX3ucqXI8CTpSmNCJDiv8SlCJg==",
+  "$integrity": "sha512-IHdOjnb7lrvDoMGi1AD2jESC5QwM34oa/QSKK1WSgyd4fn41fYomrkfvCkcqZnVigMh028vpSLy1Xft17Eai0A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BrokerNodeGroupInfo/BrokerAZDistribution",
@@ -291,6 +291,22 @@
       },
       "type": "object"
     },
+    "Rebalancing": {
+      "additionalProperties": false,
+      "properties": {
+        "Status": {
+          "enum": [
+            "PAUSED",
+            "ACTIVE"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Status"
+      ],
+      "type": "object"
+    },
     "S3": {
       "additionalProperties": false,
       "properties": {
@@ -499,6 +515,7 @@
         "kafka:UpdateStorage",
         "kafka:UpdateSecurity",
         "kafka:UpdateConnectivity",
+        "kafka:UpdateRebalancing",
         "kafka:DescribeCluster",
         "kafka:DescribeClusterOperation",
         "kafka:TagResource",
@@ -506,6 +523,7 @@
         "ec2:DescribeSubnets",
         "ec2:DescribeVpcs",
         "ec2:DescribeSecurityGroups",
+        "ec2:DescribeRouteTables",
         "iam:AttachRolePolicy",
         "iam:CreateServiceLinkedRole",
         "iam:PutRolePolicy",
@@ -579,6 +597,9 @@
     "OpenMonitoring": {
       "$ref": "#/definitions/OpenMonitoring"
     },
+    "Rebalancing": {
+      "$ref": "#/definitions/Rebalancing"
+    },
     "StorageMode": {
       "enum": [
         "LOCAL",
@@ -600,7 +621,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/Arn"
+    "/properties/Arn",
+    "/properties/CurrentVersion"
   ],
   "required": [
     "BrokerNodeGroupInfo",

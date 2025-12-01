@@ -20,7 +20,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-volume-tag.html"
     }
   },
-  "description": "Specifies an Amazon Elastic Block Store (Amazon EBS) volume.\n\nWhen you use AWS CloudFormation to update an Amazon EBS volume that modifies `Iops` , `Size` , or `VolumeType` , there is a cooldown period before another operation can occur. This can cause your stack to report being in `UPDATE_IN_PROGRESS` or `UPDATE_ROLLBACK_IN_PROGRESS` for long periods of time.\n\nAmazon EBS does not support sizing down an Amazon EBS volume. AWS CloudFormation does not attempt to modify an Amazon EBS volume to a smaller size on rollback.\n\nSome common scenarios when you might encounter a cooldown period for Amazon EBS include:\n\n- You successfully update an Amazon EBS volume and the update succeeds. When you attempt another update within the cooldown window, that update will be subject to a cooldown period.\n- You successfully update an Amazon EBS volume and the update succeeds but another change in your `update-stack` call fails. The rollback will be subject to a cooldown period.\n\nFor more information, see [Requirements for EBS volume modifications](https://docs.aws.amazon.com/ebs/latest/userguide/modify-volume-requirements.html) .\n\n*DeletionPolicy attribute*\n\nTo control how AWS CloudFormation handles the volume when the stack is deleted, set a deletion policy for your volume. You can choose to retain the volume, to delete the volume, or to create a snapshot of the volume. For more information, see [DeletionPolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html) .\n\n> If you set a deletion policy that creates a snapshot, all tags on the volume are included in the snapshot.",
+  "description": "Specifies an Amazon Elastic Block Store (Amazon EBS) volume. You can create an empty volume, a volume from a snapshot, or a volume copy from an existing source volume.\n\n> - When you use AWS CloudFormation to update an Amazon EBS volume that modifies `Iops` , `Size` , or `VolumeType` , there is a cooldown period before another operation can occur. This can cause your stack to report being in `UPDATE_IN_PROGRESS` or `UPDATE_ROLLBACK_IN_PROGRESS` for long periods of time. Some common scenarios when you might encounter a cooldown period for Amazon EBS include:\n> \n> - You successfully update an Amazon EBS volume and the update succeeds. When you attempt another update within the cooldown window, that update will be subject to a cooldown period.\n> - You successfully update an Amazon EBS volume and the update succeeds but another change in your `update-stack` call fails. The rollback will be subject to a cooldown period.\n> \n> For more information, see [Requirements for EBS volume modifications](https://docs.aws.amazon.com/ebs/latest/userguide/modify-volume-requirements.html) .\n> - Amazon EBS does not support sizing down an Amazon EBS volume. AWS CloudFormation does not attempt to modify an Amazon EBS volume to a smaller size on rollback. \n\n*DeletionPolicy attribute*\n\nTo control how AWS CloudFormation handles the volume when the stack is deleted, set a deletion policy for your volume. You can choose to retain the volume, to delete the volume, or to create a snapshot of the volume. For more information, see [DeletionPolicy attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html) .\n\n> If you set a deletion policy that creates a snapshot, all tags on the volume are included in the snapshot.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html",
   "id": "aws-ec2-volume",
   "properties": {
@@ -29,15 +29,15 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-autoenableio"
     },
     "AvailabilityZone": {
-      "description": "The ID of the Availability Zone in which to create the volume. For example, `us-east-1a` .\n\nEither `AvailabilityZone` or `AvailabilityZoneId` must be specified, but not both.",
+      "description": "The ID of the Availability Zone in which to create the volume. For example, `us-east-1a` .\n\nEither `AvailabilityZone` or `AvailabilityZoneId` must be specified, but not both.\n\nIf you are creating a volume copy, omit this parameter. The volume copy is created in the same Availability Zone as the source volume.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-availabilityzone"
     },
     "AvailabilityZoneId": {
-      "description": "The ID of the Availability Zone for the volume.",
+      "description": "The ID of the Availability Zone in which to create the volume. For example, `use1-az1` .\n\nEither `AvailabilityZone` or `AvailabilityZoneId` must be specified, but not both.\n\nIf you are creating a volume copy, omit this parameter. The volume copy is created in the same Availability Zone as the source volume.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-availabilityzoneid"
     },
     "Encrypted": {
-      "description": "Indicates whether the volume should be encrypted. The effect of setting the encryption state to `true` depends on the volume origin (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more information, see [Encryption by default](https://docs.aws.amazon.com/ebs/latest/userguide/work-with-ebs-encr.html#encryption-by-default) in the *Amazon EBS User Guide* .\n\nEncrypted Amazon EBS volumes must be attached to instances that support Amazon EBS encryption. For more information, see [Supported instance types](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption-requirements.html#ebs-encryption_supported_instances) .",
+      "description": "Indicates whether the volume should be encrypted. The effect of setting the encryption state to `true` depends on the volume origin (new, from a snapshot, or from an existing volume), starting encryption state, ownership, and whether encryption by default is enabled. For more information, see [Encryption by default](https://docs.aws.amazon.com/ebs/latest/userguide/work-with-ebs-encr.html#encryption-by-default) in the *Amazon EBS User Guide* .\n\nIf you are creating a volume copy, omit this parameter. The volume is automatically encrypted with the same KMS key as the source volume. You can't copy unencrypted volumes.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-encrypted"
     },
     "Iops": {
@@ -45,7 +45,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-iops"
     },
     "KmsKeyId": {
-      "description": "The identifier of the AWS KMS key to use for Amazon EBS encryption. If `KmsKeyId` is specified, the encrypted state must be `true` .\n\nIf you omit this property and your account is enabled for encryption by default, or *Encrypted* is set to `true` , then the volume is encrypted using the default key specified for your account. If your account does not have a default key, then the volume is encrypted using the AWS managed key .\n\nAlternatively, if you want to specify a different key, you can specify one of the following:\n\n- Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.\n- Key alias. Specify the alias for the key, prefixed with `alias/` . For example, for a key with the alias `my_cmk` , use `alias/my_cmk` . Or to specify the AWS managed key , use `alias/aws/ebs` .\n- Key ARN. For example, arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.\n- Alias ARN. For example, arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.",
+      "description": "The identifier of the AWS KMS key to use for Amazon EBS encryption. If `KmsKeyId` is specified, the encrypted state must be `true` .\n\nIf you omit this property and your account is enabled for encryption by default, or *Encrypted* is set to `true` , then the volume is encrypted using the default key specified for your account. If your account does not have a default key, then the volume is encrypted using the AWS managed key .\n\nAlternatively, if you want to specify a different key, you can specify one of the following:\n\n- Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.\n- Key alias. Specify the alias for the key, prefixed with `alias/` . For example, for a key with the alias `my_cmk` , use `alias/my_cmk` . Or to specify the AWS managed key , use `alias/aws/ebs` .\n- Key ARN. For example, arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.\n- Alias ARN. For example, arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.\n\nIf you are creating a volume copy, omit this parameter. The volume is automatically encrypted with the same KMS key as the source volume. You can't copy unencrypted volumes.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-kmskeyid"
     },
     "MultiAttachEnabled": {
@@ -53,19 +53,19 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-multiattachenabled"
     },
     "OutpostArn": {
-      "description": "The Amazon Resource Name (ARN) of the Outpost.",
+      "description": "The Amazon Resource Name (ARN) of the Outpost on which to create the volume.\n\nIf you intend to use a volume with an instance running on an outpost, then you must create the volume on the same outpost as the instance. You can't use a volume created in an AWS Region with an instance on an AWS outpost, or the other way around.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-outpostarn"
     },
     "Size": {
-      "description": "The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size. If you specify a snapshot, the default is the snapshot size, and you can specify a volume size that is equal to or larger than the snapshot size.\n\nValid sizes:\n\n- gp2: `1 - 16,384` GiB\n- gp3: `1 - 65,536` GiB\n- io1: `4 - 16,384` GiB\n- io2: `4 - 65,536` GiB\n- st1 and sc1: `125 - 16,384` GiB\n- standard: `1 - 1024` GiB",
+      "description": "The size of the volume, in GiBs.\n\n- Required for new empty volumes.\n- Optional for volumes created from snapshots and volume copies. In this case, the size defaults to the size of the snapshot or source volume. You can optionally specify a size that is equal to or larger than the size of the source snapshot or volume.\n\nSupported volume sizes:\n\n- gp2: `1 - 16,384` GiB\n- gp3: `1 - 65,536` GiB\n- io1: `4 - 16,384` GiB\n- io2: `4 - 65,536` GiB\n- st1 and sc1: `125 - 16,384` GiB\n- standard: `1 - 1024` GiB",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-size"
     },
     "SnapshotId": {
-      "description": "The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.",
+      "description": "The snapshot from which to create the volume. Only specify to create a volume from a snapshot. To create a new empty volume, omit this parameter and specify a value for `Size` instead. To create a volume copy, omit this parameter and specify `SourceVolumeId` instead.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-snapshotid"
     },
     "SourceVolumeId": {
-      "description": "The ID of the source volume from which the volume copy was created. Only for volume copies.",
+      "description": "The ID of the source EBS volume to copy. When specified, the volume is created as an exact copy of the specified volume. Only specify to create a volume copy. To create a new empty volume or to create a volume from a snapshot, omit this parameter,",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-sourcevolumeid"
     },
     "Tags": {
@@ -84,7 +84,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-volumeinitializationrate"
     },
     "VolumeType": {
-      "description": "The volume type. This parameter can be one of the following values:\n\n- General Purpose SSD: `gp2` | `gp3`\n- Provisioned IOPS SSD: `io1` | `io2`\n- Throughput Optimized HDD: `st1`\n- Cold HDD: `sc1`\n- Magnetic: `standard`\n\nFor more information, see [Amazon EBS volume types](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html) .\n\nDefault: `gp2`",
+      "description": "The volume type. This parameter can be one of the following values:\n\n- General Purpose SSD: `gp2` | `gp3`\n- Provisioned IOPS SSD: `io1` | `io2`\n- Throughput Optimized HDD: `st1`\n- Cold HDD: `sc1`\n- Magnetic: `standard`\n\n> Throughput Optimized HDD ( `st1` ) and Cold HDD ( `sc1` ) volumes can't be used as boot volumes. \n\nFor more information, see [Amazon EBS volume types](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html) in the *Amazon EBS User Guide* .\n\nDefault: `gp2`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html#cfn-ec2-volume-volumetype"
     }
   },

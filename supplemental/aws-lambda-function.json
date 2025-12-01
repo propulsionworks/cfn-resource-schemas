@@ -17,6 +17,14 @@
     }
   },
   "definitions": {
+    "CapacityProviderConfig": {
+      "properties": {
+        "LambdaManagedInstancesCapacityProviderConfig": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-capacityproviderconfig.html#cfn-lambda-function-capacityproviderconfig-lambdamanagedinstancescapacityproviderconfig"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-capacityproviderconfig.html"
+    },
     "Code": {
       "properties": {
         "ImageUri": {
@@ -40,11 +48,11 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html#cfn-lambda-function-code-sourcekmskeyarn"
         },
         "ZipFile": {
-          "description": "(Node.js and Python) The source code of your Lambda function. If you include your function source inline with this parameter, CloudFormation places it in a file named `index` and zips it to create a [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) . This zip file cannot exceed 4MB. For the `Handler` property, the first part of the handler identifier must be `index` . For example, `index.handler` .\n\n> When you specify source code inline for a Node.js function, the `index` file that CloudFormation creates uses the extension `.js` . This means that Lambda treats the file as a CommonJS module. ES modules aren't supported for inline functions. \n\nFor JSON, you must escape quotes and special characters such as newline ( `\\n` ) with a backslash.\n\nIf you specify a function that interacts with an AWS CloudFormation custom resource, you don't have to write your own functions to send responses to the custom resource that invoked the function. AWS CloudFormation provides a response module ( [cfn-response](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-lambda-function-code-cfnresponsemodule.html) ) that simplifies sending responses. See [Using AWS Lambda with AWS CloudFormation](https://docs.aws.amazon.com/lambda/latest/dg/services-cloudformation.html) for details.",
+          "description": "(Node.js and Python) The source code of your Lambda function. If you include your function source inline with this parameter, CloudFormation places it in a file named `index` and zips it to create a [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) . This zip file cannot exceed 4MB. For the `Handler` property, the first part of the handler identifier must be `index` . For example, `index.handler` .\n\n> When you specify source code inline for a Node.js function, the `index` file that CloudFormation creates uses the extension `.js` . This means that Node.js treats the file as a CommonJS module.\n> \n> When using Node.js 24 or later, Node.js can automatically detect if a `.js` file should be treated as CommonJS or as an ES module. To enable auto-detection, add the `--experimental-detect-module` flag to the `NODE_OPTIONS` environment variable. For more information, see [Experimental Node.js features](https://docs.aws.amazon.com//lambda/latest/dg/lambda-nodejs.html#nodejs-experimental-features) . \n\nFor JSON, you must escape quotes and special characters such as newline ( `\\n` ) with a backslash.\n\nIf you specify a function that interacts with an AWS CloudFormation custom resource, you don't have to write your own functions to send responses to the custom resource that invoked the function. AWS CloudFormation provides a response module ( [cfn-response](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-lambda-function-code-cfnresponsemodule.html) ) that simplifies sending responses. See [Using AWS Lambda with AWS CloudFormation](https://docs.aws.amazon.com/lambda/latest/dg/services-cloudformation.html) for details.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html#cfn-lambda-function-code-zipfile"
         }
       },
-      "description": "The [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) for a Lambda function. To deploy a function defined as a container image, you specify the location of a container image in the Amazon ECR registry. For a .zip file deployment package, you can specify the location of an object in Amazon S3. For Node.js and Python functions, you can specify the function code inline in the template.\n\n> When you specify source code inline for a Node.js function, the `index` file that CloudFormation creates uses the extension `.js` . This means that Lambda treats the file as a CommonJS module. ES modules aren't supported for inline functions. \n\nChanges to a deployment package in Amazon S3 or a container image in ECR are not detected automatically during stack updates. To update the function code, change the object key or version in the template.",
+      "description": "The [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) for a Lambda function. To deploy a function defined as a container image, you specify the location of a container image in the Amazon ECR registry. For a .zip file deployment package, you can specify the location of an object in Amazon S3. For Node.js and Python functions, you can specify the function code inline in the template.\n\n> When you specify source code inline for a Node.js function, the `index` file that CloudFormation creates uses the extension `.js` . This means that Node.js treats the file as a CommonJS module. \n\nChanges to a deployment package in Amazon S3 or a container image in ECR are not detected automatically during stack updates. To update the function code, change the object key or version in the template.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html"
     },
     "DeadLetterConfig": {
@@ -91,6 +99,17 @@
       "description": "Details about the connection between a Lambda function and an [Amazon EFS file system](https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-filesystemconfig.html"
     },
+    "FunctionScalingConfig": {
+      "properties": {
+        "MaxExecutionEnvironments": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-functionscalingconfig.html#cfn-lambda-function-functionscalingconfig-maxexecutionenvironments"
+        },
+        "MinExecutionEnvironments": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-functionscalingconfig.html#cfn-lambda-function-functionscalingconfig-minexecutionenvironments"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-functionscalingconfig.html"
+    },
     "ImageConfig": {
       "properties": {
         "Command": {
@@ -108,6 +127,20 @@
       },
       "description": "Configuration values that override the container image Dockerfile settings. For more information, see [Container image settings](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-imageconfig.html"
+    },
+    "LambdaManagedInstancesCapacityProviderConfig": {
+      "properties": {
+        "CapacityProviderArn": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-lambdamanagedinstancescapacityproviderconfig.html#cfn-lambda-function-lambdamanagedinstancescapacityproviderconfig-capacityproviderarn"
+        },
+        "ExecutionEnvironmentMemoryGiBPerVCpu": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-lambdamanagedinstancescapacityproviderconfig.html#cfn-lambda-function-lambdamanagedinstancescapacityproviderconfig-executionenvironmentmemorygibpervcpu"
+        },
+        "PerExecutionEnvironmentMaxConcurrency": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-lambdamanagedinstancescapacityproviderconfig.html#cfn-lambda-function-lambdamanagedinstancescapacityproviderconfig-perexecutionenvironmentmaxconcurrency"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-lambdamanagedinstancescapacityproviderconfig.html"
     },
     "LoggingConfig": {
       "properties": {
@@ -234,6 +267,9 @@
     "Arn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-arn"
     },
+    "CapacityProviderConfig": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-capacityproviderconfig"
+    },
     "Code": {
       "description": "The code for the function. You can define your function code in multiple ways:\n\n- For .zip deployment packages, you can specify the Amazon S3 location of the .zip file in the `S3Bucket` , `S3Key` , and `S3ObjectVersion` properties.\n- For .zip deployment packages, you can alternatively define the function code inline in the `ZipFile` property. This method works only for Node.js and Python functions.\n- For container images, specify the URI of your container image in the Amazon ECR registry in the `ImageUri` property.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-code"
@@ -266,6 +302,9 @@
       "description": "The name of the Lambda function, up to 64 characters in length. If you don't specify a name, CloudFormation generates one.\n\nIf you specify a name, you cannot perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-functionname"
     },
+    "FunctionScalingConfig": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-functionscalingconfig"
+    },
     "Handler": {
       "description": "The name of the method within your code that Lambda calls to run your function. Handler is required if the deployment package is a .zip file archive. The format includes the file name. It can also include namespaces and other qualifiers, depending on the runtime. For more information, see [Lambda programming model](https://docs.aws.amazon.com/lambda/latest/dg/foundation-progmodel.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-handler"
@@ -293,6 +332,9 @@
     "PackageType": {
       "description": "The type of deployment package. Set to `Image` for container image and set `Zip` for .zip file archive.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-packagetype"
+    },
+    "PublishToLatestPublished": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-publishtolatestpublished"
     },
     "RecursiveLoop": {
       "description": "The status of your function's recursive loop detection configuration.\n\nWhen this value is set to `Allow` and Lambda detects your function being invoked as part of a recursive loop, it doesn't take any action.\n\nWhen this value is set to `Terminate` and Lambda detects your function being invoked as part of a recursive loop, it stops your function being invoked and notifies you.",

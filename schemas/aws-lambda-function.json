@@ -1,6 +1,6 @@
 {
   "$id": "aws-lambda-function",
-  "$integrity": "sha512-pvCw5SndfFyiPMMPqhpGON4u5nx6K3Rcun/eja1moWBoZSkK6FqwjRsumoFYQWEuukfNtr6ywJ7xmDnf5WoYKA==",
+  "$integrity": "sha512-febTwxjwi53SnLCC/fhGh+DZfeOdfhtLbu0xIsaBGWTwZk+Rj7D16CC6mX55Q92uv6nTbzjzyKfyWKtDpjaw2A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/FunctionName",
@@ -8,6 +8,19 @@
     "/properties/TenancyConfig"
   ],
   "definitions": {
+    "CapacityProviderConfig": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "LambdaManagedInstancesCapacityProviderConfig": {
+          "$ref": "#/definitions/LambdaManagedInstancesCapacityProviderConfig"
+        }
+      },
+      "required": [
+        "LambdaManagedInstancesCapacityProviderConfig"
+      ],
+      "type": "object"
+    },
     "Code": {
       "additionalProperties": false,
       "description": "The [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) for a Lambda function. To deploy a function defined as a container image, you specify the location of a container image in the Amazon ECR registry. For a .zip file deployment package, you can specify the location of an object in Amazon S3. For Node.js and Python functions, you can specify the function code inline in the template.\n  When you specify source code inline for a Node.js function, the ``index`` file that CFN creates uses the extension ``.js``. This means that LAM treats the file as a CommonJS module. ES modules aren't supported for inline functions.\n  Changes to a deployment package in Amazon S3 or a container image in ECR are not detected automatically during stack updates. To update the function code, change the object key or version in the template.",
@@ -115,6 +128,25 @@
       ],
       "type": "object"
     },
+    "FunctionScalingConfig": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "MaxExecutionEnvironments": {
+          "description": "The maximum number of execution environments that can be provisioned for the function.",
+          "maximum": 15000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "MinExecutionEnvironments": {
+          "description": "The minimum number of execution environments to maintain for the function.",
+          "maximum": 15000,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "ImageConfig": {
       "additionalProperties": false,
       "description": "Configuration values that override the container image Dockerfile settings. For more information, see [Container image settings](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms).",
@@ -142,6 +174,35 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "LambdaManagedInstancesCapacityProviderConfig": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "CapacityProviderArn": {
+          "description": "The Amazon Resource Name (ARN) of the capacity provider.",
+          "maxLength": 140,
+          "minLength": 1,
+          "pattern": "^arn:aws[a-zA-Z-]*:lambda:(eusc-)?[a-z]{2}((-gov)|(-iso([a-z]?)))?-[a-z]+-\\d{1}:\\d{12}:capacity-provider:[a-zA-Z0-9-_]+$",
+          "type": "string"
+        },
+        "ExecutionEnvironmentMemoryGiBPerVCpu": {
+          "description": "The amount of memory in GiB allocated per vCPU for execution environments.",
+          "maximum": 8,
+          "minimum": 2,
+          "type": "number"
+        },
+        "PerExecutionEnvironmentMaxConcurrency": {
+          "description": "The maximum number of concurrent execution environments that can run on each compute instance.",
+          "maximum": 1600,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "CapacityProviderArn"
+      ],
       "type": "object"
     },
     "LoggingConfig": {
@@ -368,7 +429,9 @@
         "lambda:PutRuntimeManagementConfig",
         "lambda:TagResource",
         "lambda:PutFunctionRecursionConfig",
-        "lambda:GetFunctionRecursionConfig"
+        "lambda:GetFunctionRecursionConfig",
+        "lambda:PutFunctionScalingConfig",
+        "lambda:PassCapacityProvider"
       ]
     },
     "delete": {
@@ -387,7 +450,9 @@
       "permissions": [
         "lambda:GetFunction",
         "lambda:GetFunctionCodeSigningConfig",
-        "lambda:GetFunctionRecursionConfig"
+        "lambda:GetFunctionRecursionConfig",
+        "lambda:GetRuntimeManagementConfig",
+        "lambda:GetFunctionScalingConfig"
       ]
     },
     "update": {
@@ -416,7 +481,10 @@
         "lambda:GetCodeSigningConfig",
         "lambda:GetFunctionCodeSigningConfig",
         "lambda:PutFunctionRecursionConfig",
-        "lambda:GetFunctionRecursionConfig"
+        "lambda:GetFunctionRecursionConfig",
+        "lambda:PutFunctionScalingConfig",
+        "lambda:PublishVersion",
+        "lambda:PassCapacityProvider"
       ]
     }
   },
@@ -441,6 +509,10 @@
     "Arn": {
       "description": "",
       "type": "string"
+    },
+    "CapacityProviderConfig": {
+      "$ref": "#/definitions/CapacityProviderConfig",
+      "description": ""
     },
     "Code": {
       "$ref": "#/definitions/Code",
@@ -481,6 +553,10 @@
       "minLength": 1,
       "type": "string"
     },
+    "FunctionScalingConfig": {
+      "$ref": "#/definitions/FunctionScalingConfig",
+      "description": ""
+    },
     "Handler": {
       "description": "The name of the method within your code that Lambda calls to run your function. Handler is required if the deployment package is a .zip file archive. The format includes the file name. It can also include namespaces and other qualifiers, depending on the runtime. For more information, see [Lambda programming model](https://docs.aws.amazon.com/lambda/latest/dg/foundation-progmodel.html).",
       "maxLength": 128,
@@ -519,6 +595,10 @@
         "Zip"
       ],
       "type": "string"
+    },
+    "PublishToLatestPublished": {
+      "description": "",
+      "type": "boolean"
     },
     "RecursiveLoop": {
       "$ref": "#/definitions/RecursiveLoop",
@@ -608,6 +688,7 @@
     "/properties/Code/S3Key",
     "/properties/Code/S3ObjectVersion",
     "/properties/Code/ZipFile",
-    "/properties/Code/SourceKMSKeyArn"
+    "/properties/Code/SourceKMSKeyArn",
+    "/properties/PublishToLatestPublished"
   ]
 }

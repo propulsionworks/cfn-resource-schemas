@@ -35,7 +35,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rbin-rule-retentionperiod.html#cfn-rbin-rule-retentionperiod-retentionperiodunit"
         },
         "RetentionPeriodValue": {
-          "description": "The period value for which the retention rule is to retain resources. The period is measured using the unit specified for *RetentionPeriodUnit* .",
+          "description": "The period value for which the retention rule is to retain resources, measured in days. The supported retention periods are:\n\n- EBS volumes: 1 - 7 days\n- EBS snapshots and EBS-backed AMIs: 1 - 365 days",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rbin-rule-retentionperiod.html#cfn-rbin-rule-retentionperiod-retentionperiodvalue"
         }
       },
@@ -56,7 +56,7 @@
     "UnlockDelay": {
       "properties": {
         "UnlockDelayUnit": {
-          "description": "The unit of time in which to measure the unlock delay. Currently, the unlock delay can be measure only in days.",
+          "description": "The unit of time in which to measure the unlock delay. Currently, the unlock delay can be measured only in days.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rbin-rule-unlockdelay.html#cfn-rbin-rule-unlockdelay-unlockdelayunit"
         },
         "UnlockDelayValue": {
@@ -98,7 +98,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rbin-rule.html#cfn-rbin-rule-resourcetags"
     },
     "ResourceType": {
-      "description": "The resource type to be retained by the retention rule. Currently, only Amazon EBS snapshots and EBS-backed AMIs are supported. To retain snapshots, specify `EBS_SNAPSHOT` . To retain EBS-backed AMIs, specify `EC2_IMAGE` .",
+      "description": "The resource type to be retained by the retention rule. Currently, only EBS volumes, EBS snapshots, and EBS-backed AMIs are supported.\n\n- To retain EBS volumes, specify `EBS_VOLUME` .\n- To retain EBS snapshots, specify `EBS_SNAPSHOT`\n- To retain EBS-backed AMIs, specify `EC2_IMAGE` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rbin-rule.html#cfn-rbin-rule-resourcetype"
     },
     "RetentionPeriod": {

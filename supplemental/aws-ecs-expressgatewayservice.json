@@ -1,7 +1,21 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#aws-resource-ecs-expressgatewayservice-return-values",
-    "properties": {}
+    "properties": {
+      "ServiceArn": {
+        "description": "The ARN that identifies the Express service."
+      },
+      "ActiveConfigurations": {
+        "description": "The list of active service configurations for the Express service."
+      },
+      "Status": {},
+      "CreatedAt": {
+        "description": "The Unix timestamp for when the Express service was created."
+      },
+      "UpdatedAt": {
+        "description": "The Unix timestamp for when the Express service was last updated."
+      }
+    }
   },
   "definitions": {
     "AccessType": {
@@ -11,112 +25,145 @@
     "ExpressGatewayContainer": {
       "properties": {
         "AwsLogsConfiguration": {
+          "description": "The log configuration for the container.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewaycontainer.html#cfn-ecs-expressgatewayservice-expressgatewaycontainer-awslogsconfiguration"
         },
         "Command": {
+          "description": "The command that is passed to the container.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewaycontainer.html#cfn-ecs-expressgatewayservice-expressgatewaycontainer-command"
         },
         "ContainerPort": {
+          "description": "The port number on the container that receives traffic from the load balancer. Default is 80.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewaycontainer.html#cfn-ecs-expressgatewayservice-expressgatewaycontainer-containerport"
         },
         "Environment": {
+          "description": "The environment variables to pass to the container.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewaycontainer.html#cfn-ecs-expressgatewayservice-expressgatewaycontainer-environment"
         },
         "Image": {
+          "description": "The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with either `repository-url/image:tag` or `repository-url/image@digest` .\n\nFor Express services, the image typically contains a web application that listens on the specified container port. The image can be stored in Amazon ECR, Docker Hub, or any other container registry accessible to your execution role.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewaycontainer.html#cfn-ecs-expressgatewayservice-expressgatewaycontainer-image"
         },
         "RepositoryCredentials": {
+          "description": "The configuration for repository credentials for private registry authentication.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewaycontainer.html#cfn-ecs-expressgatewayservice-expressgatewaycontainer-repositorycredentials"
         },
         "Secrets": {
+          "description": "The secrets to pass to the container.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewaycontainer.html#cfn-ecs-expressgatewayservice-expressgatewaycontainer-secrets"
         }
       },
+      "description": "Defines the configuration for the primary container in an Express service. This container receives traffic from the Application Load Balancer and runs your application code.\n\nThe container configuration includes the container image, port mapping, logging settings, environment variables, and secrets. The container image is the only required parameter, with sensible defaults provided for other settings.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewaycontainer.html"
     },
     "ExpressGatewayRepositoryCredentials": {
       "properties": {
         "CredentialsParameter": {
+          "description": "The Amazon Resource Name (ARN) of the secret containing the private repository credentials.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayrepositorycredentials.html#cfn-ecs-expressgatewayservice-expressgatewayrepositorycredentials-credentialsparameter"
         }
       },
+      "description": "The repository credentials for private registry authentication to pass to the container.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayrepositorycredentials.html"
     },
     "ExpressGatewayScalingTarget": {
       "properties": {
         "AutoScalingMetric": {
+          "description": "The metric used for auto-scaling decisions. The default metric used for an Express service is `CPUUtilization` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayscalingtarget.html#cfn-ecs-expressgatewayservice-expressgatewayscalingtarget-autoscalingmetric"
         },
         "AutoScalingTargetValue": {
+          "description": "The target value for the auto-scaling metric. The default value for an Express service is 60.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayscalingtarget.html#cfn-ecs-expressgatewayservice-expressgatewayscalingtarget-autoscalingtargetvalue"
         },
         "MaxTaskCount": {
+          "description": "The maximum number of tasks to run in the Express service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayscalingtarget.html#cfn-ecs-expressgatewayservice-expressgatewayscalingtarget-maxtaskcount"
         },
         "MinTaskCount": {
+          "description": "The minimum number of tasks to run in the Express service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayscalingtarget.html#cfn-ecs-expressgatewayservice-expressgatewayscalingtarget-mintaskcount"
         }
       },
+      "description": "Defines the auto-scaling configuration for an Express service. This determines how the service automatically adjusts the number of running tasks based on demand metrics such as CPU utilization, memory utilization, or request count per target.\n\nAuto-scaling helps ensure your application can handle varying levels of traffic while optimizing costs by scaling down during low-demand periods. You can specify the minimum and maximum number of tasks, the scaling metric, and the target value for that metric.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayscalingtarget.html"
     },
     "ExpressGatewayServiceAwsLogsConfiguration": {
       "properties": {
         "LogGroup": {
+          "description": "The name of the CloudWatch Logs log group to send container logs to.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceawslogsconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceawslogsconfiguration-loggroup"
         },
         "LogStreamPrefix": {
+          "description": "The prefix for the CloudWatch Logs log stream names. The default for an Express service is `ecs` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceawslogsconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceawslogsconfiguration-logstreamprefix"
         }
       },
+      "description": "Specifies the Amazon CloudWatch Logs configuration for the Express service container.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceawslogsconfiguration.html"
     },
     "ExpressGatewayServiceConfiguration": {
       "properties": {
         "Cpu": {
+          "description": "The CPU allocation for tasks in this service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-cpu"
         },
         "CreatedAt": {
+          "description": "The Unix timestamp for when this service revision was created.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-createdat"
         },
         "ExecutionRoleArn": {
+          "description": "The ARN of the task execution role for the service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-executionrolearn"
         },
         "HealthCheckPath": {
+          "description": "The health check path for this service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-healthcheckpath"
         },
         "IngressPaths": {
+          "description": "The entry point into this service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-ingresspaths"
         },
         "Memory": {
+          "description": "The memory allocation for tasks in this service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-memory"
         },
         "NetworkConfiguration": {
+          "description": "The network configuration for tasks in this service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-networkconfiguration"
         },
         "PrimaryContainer": {
+          "description": "The primary container configuration for this service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-primarycontainer"
         },
         "ScalingTarget": {
+          "description": "The auto-scaling configuration for this service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-scalingtarget"
         },
         "ServiceRevisionArn": {
+          "description": "The ARN of the service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-servicerevisionarn"
         },
         "TaskRoleArn": {
+          "description": "The ARN of the task role for the service revision.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayserviceconfiguration-taskrolearn"
         }
       },
+      "description": "Represents a specific configuration revision of an Express service, containing all the settings and parameters for that revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayserviceconfiguration.html"
     },
     "ExpressGatewayServiceNetworkConfiguration": {
       "properties": {
         "SecurityGroups": {
+          "description": "The IDs of the security groups associated with the Express service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayservicenetworkconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayservicenetworkconfiguration-securitygroups"
         },
         "Subnets": {
+          "description": "The IDs of the subnets associated with the Express service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayservicenetworkconfiguration.html#cfn-ecs-expressgatewayservice-expressgatewayservicenetworkconfiguration-subnets"
         }
       },
+      "description": "The network configuration for an Express service. By default, an Express service utilizes subnets and security groups associated with the default VPC.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayservicenetworkconfiguration.html"
     },
     "ExpressGatewayServiceScalingMetric": {
@@ -126,9 +173,11 @@
     "ExpressGatewayServiceStatus": {
       "properties": {
         "StatusCode": {
+          "description": "The status of the Express service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayservicestatus.html#cfn-ecs-expressgatewayservice-expressgatewayservicestatus-statuscode"
         }
       },
+      "description": "An object that defines the status of Express service creation and information about the status of the service.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-expressgatewayservicestatus.html"
     },
     "ExpressGatewayServiceStatusCode": {
@@ -138,34 +187,43 @@
     "IngressPathSummary": {
       "properties": {
         "AccessType": {
+          "description": "The type of access to the endpoint for the Express service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-ingresspathsummary.html#cfn-ecs-expressgatewayservice-ingresspathsummary-accesstype"
         },
         "Endpoint": {
+          "description": "The endpoint for access to the service.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-ingresspathsummary.html#cfn-ecs-expressgatewayservice-ingresspathsummary-endpoint"
         }
       },
+      "description": "The entry point into an Express service.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-ingresspathsummary.html"
     },
     "KeyValuePair": {
       "properties": {
         "Name": {
+          "description": "The name of the key-value pair. For environment variables, this is the name of the environment variable.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-keyvaluepair.html#cfn-ecs-expressgatewayservice-keyvaluepair-name"
         },
         "Value": {
+          "description": "The value of the key-value pair. For environment variables, this is the value of the environment variable.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-keyvaluepair.html#cfn-ecs-expressgatewayservice-keyvaluepair-value"
         }
       },
+      "description": "A key-value pair object.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-keyvaluepair.html"
     },
     "Secret": {
       "properties": {
         "Name": {
+          "description": "The name of the secret.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-secret.html#cfn-ecs-expressgatewayservice-secret-name"
         },
         "ValueFrom": {
+          "description": "The secret to expose to the container. The supported values are either the full ARN of the AWS Secrets Manager secret or the full ARN of the parameter in the SSM Parameter Store.\n\nFor information about the require AWS Identity and Access Management permissions, see [Required IAM permissions for Amazon ECS secrets](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data-secrets.html#secrets-iam) (for Secrets Manager) or [Required IAM permissions for Amazon ECS secrets](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data-parameters.html) (for Systems Manager Parameter store) in the *Amazon Elastic Container Service Developer Guide* .\n\n> If the SSM Parameter Store parameter exists in the same Region as the task you're launching, then you can use either the full ARN or name of the parameter. If the parameter exists in a different Region, then the full ARN must be specified.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-secret.html#cfn-ecs-expressgatewayservice-secret-valuefrom"
         }
       },
+      "description": "An object representing the secret to expose to your container. Secrets can be exposed to a container in the following ways:\n\n- To inject sensitive data into your containers as environment variables, use the `secrets` container definition parameter.\n- To reference sensitive information in the log configuration of a container, use the `secretOptions` container definition parameter.\n\nFor more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-secret.html"
     },
     "Tag": {
@@ -180,6 +238,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-expressgatewayservice-tag.html"
     }
   },
+  "description": "Creates an Express service that simplifies deploying containerized web applications on Amazon ECS with managed AWS infrastructure. This operation provisions and configures Application Load Balancers, target groups, security groups, and auto-scaling policies automatically.\n\nSpecify a primary container configuration with your application image and basic settings. Amazon ECS creates the necessary AWS resources for traffic distribution, health monitoring, network access control, and capacity management.\n\nProvide an execution role for task operations and an infrastructure role for managing AWS resources on your behalf.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html",
   "id": "aws-ecs-expressgatewayservice",
   "properties": {
@@ -187,48 +246,60 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-activeconfigurations"
     },
     "Cluster": {
+      "description": "The short name or full ARN of the cluster that hosts the Express service.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-cluster"
     },
     "Cpu": {
+      "description": "The CPU allocation for tasks in this service revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-cpu"
     },
     "CreatedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-createdat"
     },
     "ExecutionRoleArn": {
+      "description": "The ARN of the task execution role for the service revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-executionrolearn"
     },
     "HealthCheckPath": {
+      "description": "The health check path for this service revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-healthcheckpath"
     },
     "InfrastructureRoleArn": {
+      "description": "The ARN of the infrastructure role that manages AWS resources for the Express service.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-infrastructurerolearn"
     },
     "Memory": {
+      "description": "The memory allocation for tasks in this service revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-memory"
     },
     "NetworkConfiguration": {
+      "description": "The network configuration for tasks in this service revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-networkconfiguration"
     },
     "PrimaryContainer": {
+      "description": "The primary container configuration for this service revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-primarycontainer"
     },
     "ScalingTarget": {
+      "description": "The auto-scaling configuration for this service revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-scalingtarget"
     },
     "ServiceArn": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-servicearn"
     },
     "ServiceName": {
+      "description": "The name of the Express service.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-servicename"
     },
     "Status": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-status"
     },
     "Tags": {
+      "description": "The metadata applied to the Express service.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-tags"
     },
     "TaskRoleArn": {
+      "description": "The ARN of the task role for the service revision.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html#cfn-ecs-expressgatewayservice-taskrolearn"
     },
     "UpdatedAt": {

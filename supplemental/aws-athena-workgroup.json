@@ -35,29 +35,37 @@
     "Classification": {
       "properties": {
         "Name": {
+          "description": "The name of the configuration classification.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-classification.html#cfn-athena-workgroup-classification-name"
         },
         "Properties": {
+          "description": "A set of properties specified within a configuration classification.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-classification.html#cfn-athena-workgroup-classification-properties"
         }
       },
+      "description": "A classification refers to a set of specific configurations.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-classification.html"
     },
     "CloudWatchLoggingConfiguration": {
       "properties": {
         "Enabled": {
+          "description": "Enables CloudWatch logging.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-cloudwatchloggingconfiguration.html#cfn-athena-workgroup-cloudwatchloggingconfiguration-enabled"
         },
         "LogGroup": {
+          "description": "The name of the log group in Amazon CloudWatch Logs where you want to publish your logs.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-cloudwatchloggingconfiguration.html#cfn-athena-workgroup-cloudwatchloggingconfiguration-loggroup"
         },
         "LogStreamNamePrefix": {
+          "description": "Prefix for the CloudWatch log stream name.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-cloudwatchloggingconfiguration.html#cfn-athena-workgroup-cloudwatchloggingconfiguration-logstreamnameprefix"
         },
         "LogTypes": {
+          "description": "The types of logs that you want to publish to CloudWatch.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-cloudwatchloggingconfiguration.html#cfn-athena-workgroup-cloudwatchloggingconfiguration-logtypes"
         }
       },
+      "description": "Configuration settings for delivering logs to Amazon CloudWatch log groups.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-cloudwatchloggingconfiguration.html"
     },
     "CustomerContentEncryptionConfiguration": {
@@ -99,24 +107,31 @@
     "EngineConfiguration": {
       "properties": {
         "AdditionalConfigs": {
+          "description": "Contains additional notebook engine `MAP<string, string>` parameter mappings in the form of key-value pairs. To specify an Athena notebook that the Jupyter server will download and serve, specify a value for the `StartSessionRequest$NotebookVersion` field, and then add a key named `NotebookId` to `AdditionalConfigs` that has the value of the Athena notebook ID.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-engineconfiguration.html#cfn-athena-workgroup-engineconfiguration-additionalconfigs"
         },
         "Classifications": {
+          "description": "The configuration classifications that can be specified for the engine.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-engineconfiguration.html#cfn-athena-workgroup-engineconfiguration-classifications"
         },
         "CoordinatorDpuSize": {
+          "description": "The number of DPUs to use for the coordinator. A coordinator is a special executor that orchestrates processing work and manages other executors in a notebook session. The default is 1.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-engineconfiguration.html#cfn-athena-workgroup-engineconfiguration-coordinatordpusize"
         },
         "DefaultExecutorDpuSize": {
+          "description": "The default number of DPUs to use for executors. An executor is the smallest unit of compute that a notebook session can request from Athena. The default is 1.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-engineconfiguration.html#cfn-athena-workgroup-engineconfiguration-defaultexecutordpusize"
         },
         "MaxConcurrentDpus": {
+          "description": "The maximum number of DPUs that can run concurrently.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-engineconfiguration.html#cfn-athena-workgroup-engineconfiguration-maxconcurrentdpus"
         },
         "SparkProperties": {
+          "description": "Specifies custom jar files and Spark properties for use cases like cluster encryption, table formats, and general Spark tuning.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-engineconfiguration.html#cfn-athena-workgroup-engineconfiguration-sparkproperties"
         }
       },
+      "description": "The engine configuration for the workgroup, which includes the minimum/maximum number of Data Processing Units (DPU) that queries should use when running in provisioned capacity. If not specified, Athena uses default values (Default value for min is 4 and for max is Minimum of 124 and allocated DPUs).\n\nTo specify DPU values for PC queries the WG containing EngineConfiguration should have the following values: The name of the Classifications should be `athena-query-engine-properties` , with the only allowed properties as `max-dpu-count` and `min-dpu-count` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-engineconfiguration.html"
     },
     "EngineVersion": {
@@ -148,12 +163,15 @@
     "ManagedLoggingConfiguration": {
       "properties": {
         "Enabled": {
+          "description": "Enables mamanged log persistence.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-managedloggingconfiguration.html#cfn-athena-workgroup-managedloggingconfiguration-enabled"
         },
         "KmsKey": {
+          "description": "The KMS key ARN to encrypt the logs stored in managed log persistence.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-managedloggingconfiguration.html#cfn-athena-workgroup-managedloggingconfiguration-kmskey"
         }
       },
+      "description": "Configuration settings for delivering logs to Amazon S3 buckets.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-managedloggingconfiguration.html"
     },
     "ManagedQueryResultsConfiguration": {
@@ -183,15 +201,19 @@
     "MonitoringConfiguration": {
       "properties": {
         "CloudWatchLoggingConfiguration": {
+          "description": "Configuration settings for delivering logs to Amazon CloudWatch log groups.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-monitoringconfiguration.html#cfn-athena-workgroup-monitoringconfiguration-cloudwatchloggingconfiguration"
         },
         "ManagedLoggingConfiguration": {
+          "description": "Configuration settings for managed log persistence.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-monitoringconfiguration.html#cfn-athena-workgroup-monitoringconfiguration-managedloggingconfiguration"
         },
         "S3LoggingConfiguration": {
+          "description": "Configuration settings for delivering logs to Amazon S3 buckets.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-monitoringconfiguration.html#cfn-athena-workgroup-monitoringconfiguration-s3loggingconfiguration"
         }
       },
+      "description": "Contains the configuration settings for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-monitoringconfiguration.html"
     },
     "OutputLocation": {
@@ -297,15 +319,19 @@
     "S3LoggingConfiguration": {
       "properties": {
         "Enabled": {
+          "description": "Enables S3 log delivery.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-s3loggingconfiguration.html#cfn-athena-workgroup-s3loggingconfiguration-enabled"
         },
         "KmsKey": {
+          "description": "The KMS key ARN to encrypt the logs published to the given Amazon S3 destination.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-s3loggingconfiguration.html#cfn-athena-workgroup-s3loggingconfiguration-kmskey"
         },
         "LogLocation": {
+          "description": "The Amazon S3 destination URI for log publishing.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-s3loggingconfiguration.html#cfn-athena-workgroup-s3loggingconfiguration-loglocation"
         }
       },
+      "description": "Configuration settings for delivering logs to Amazon S3 buckets.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-s3loggingconfiguration.html"
     },
     "SelectedEngineVersion": {
@@ -346,6 +372,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfiguration.html#cfn-athena-workgroup-workgroupconfiguration-enforceworkgroupconfiguration"
         },
         "EngineConfiguration": {
+          "description": "The engine configuration for running queries.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfiguration.html#cfn-athena-workgroup-workgroupconfiguration-engineconfiguration"
         },
         "EngineVersion": {
@@ -361,6 +388,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfiguration.html#cfn-athena-workgroup-workgroupconfiguration-managedqueryresultsconfiguration"
         },
         "MonitoringConfiguration": {
+          "description": "Contains the configuration settings for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfiguration.html#cfn-athena-workgroup-workgroupconfiguration-monitoringconfiguration"
         },
         "PublishCloudWatchMetricsEnabled": {
@@ -398,6 +426,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfigurationupdates.html#cfn-athena-workgroup-workgroupconfigurationupdates-enforceworkgroupconfiguration"
         },
         "EngineConfiguration": {
+          "description": "The engine configuration for running queries.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfigurationupdates.html#cfn-athena-workgroup-workgroupconfigurationupdates-engineconfiguration"
         },
         "EngineVersion": {
@@ -405,7 +434,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfigurationupdates.html#cfn-athena-workgroup-workgroupconfigurationupdates-engineversion"
         },
         "ExecutionRole": {
-          "description": "Execution Role ARN required to run Athena Spark Calculations",
+          "description": "The ARN of the execution role used to access user resources for Spark sessions and Identity Center enabled workgroups. This property applies only to Spark enabled workgroups and Identity Center enabled workgroups.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfigurationupdates.html#cfn-athena-workgroup-workgroupconfigurationupdates-executionrole"
         },
         "ManagedQueryResultsConfiguration": {
@@ -413,6 +442,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfigurationupdates.html#cfn-athena-workgroup-workgroupconfigurationupdates-managedqueryresultsconfiguration"
         },
         "MonitoringConfiguration": {
+          "description": "Contains the configuration settings for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfigurationupdates.html#cfn-athena-workgroup-workgroupconfigurationupdates-monitoringconfiguration"
         },
         "PublishCloudWatchMetricsEnabled": {

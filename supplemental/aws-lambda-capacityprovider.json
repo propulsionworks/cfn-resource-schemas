@@ -1,7 +1,14 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#aws-resource-lambda-capacityprovider-return-values",
-    "properties": {}
+    "properties": {
+      "State": {
+        "description": "The current state of the capacity provider. Indicates whether the provider is being created, is active and ready for use, has failed, or is being deleted."
+      },
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the capacity provider. This is a read-only property that is automatically generated when the capacity provider is created."
+      }
+    }
   },
   "definitions": {
     "Architecture": {
@@ -11,9 +18,11 @@
     "CapacityProviderPermissionsConfig": {
       "properties": {
         "CapacityProviderOperatorRoleArn": {
+          "description": "The ARN of the IAM role that Lambda assumes to manage the capacity provider.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityproviderpermissionsconfig.html#cfn-lambda-capacityprovider-capacityproviderpermissionsconfig-capacityprovideroperatorrolearn"
         }
       },
+      "description": "IAM permissions configuration for the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityproviderpermissionsconfig.html"
     },
     "CapacityProviderPredefinedMetricType": {
@@ -23,15 +32,19 @@
     "CapacityProviderScalingConfig": {
       "properties": {
         "MaxVCpuCount": {
+          "description": "The maximum number of EC2 instances that the capacity provider can scale up to.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityproviderscalingconfig.html#cfn-lambda-capacityprovider-capacityproviderscalingconfig-maxvcpucount"
         },
         "ScalingMode": {
+          "description": "The scaling mode for the capacity provider.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityproviderscalingconfig.html#cfn-lambda-capacityprovider-capacityproviderscalingconfig-scalingmode"
         },
         "ScalingPolicies": {
+          "description": "A list of target tracking scaling policies for the capacity provider.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityproviderscalingconfig.html#cfn-lambda-capacityprovider-capacityproviderscalingconfig-scalingpolicies"
         }
       },
+      "description": "The scaling configuration for the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityproviderscalingconfig.html"
     },
     "CapacityProviderScalingMode": {
@@ -45,26 +58,33 @@
     "CapacityProviderVpcConfig": {
       "properties": {
         "SecurityGroupIds": {
+          "description": "A list of security group IDs to associate with EC2 instances.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityprovidervpcconfig.html#cfn-lambda-capacityprovider-capacityprovidervpcconfig-securitygroupids"
         },
         "SubnetIds": {
+          "description": "A list of subnet IDs where the capacity provider can launch EC2 instances.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityprovidervpcconfig.html#cfn-lambda-capacityprovider-capacityprovidervpcconfig-subnetids"
         }
       },
+      "description": "VPC configuration for the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-capacityprovidervpcconfig.html"
     },
     "InstanceRequirements": {
       "properties": {
         "AllowedInstanceTypes": {
+          "description": "A list of instance types that the capacity provider can use. Supports wildcards (for example, m5.*).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-instancerequirements.html#cfn-lambda-capacityprovider-instancerequirements-allowedinstancetypes"
         },
         "Architectures": {
+          "description": "The instruction set architecture for EC2 instances. Specify either x86_64 or arm64.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-instancerequirements.html#cfn-lambda-capacityprovider-instancerequirements-architectures"
         },
         "ExcludedInstanceTypes": {
+          "description": "A list of instance types that the capacity provider should not use. Takes precedence over AllowedInstanceTypes.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-instancerequirements.html#cfn-lambda-capacityprovider-instancerequirements-excludedinstancetypes"
         }
       },
+      "description": "Specifications for the types of EC2 instances that the capacity provider can use.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-instancerequirements.html"
     },
     "Tag": {
@@ -81,15 +101,19 @@
     "TargetTrackingScalingPolicy": {
       "properties": {
         "PredefinedMetricType": {
+          "description": "The predefined metric for target tracking.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-targettrackingscalingpolicy.html#cfn-lambda-capacityprovider-targettrackingscalingpolicy-predefinedmetrictype"
         },
         "TargetValue": {
+          "description": "The target value for the metric as a percentage (for example, 70.0 for 70%).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-targettrackingscalingpolicy.html#cfn-lambda-capacityprovider-targettrackingscalingpolicy-targetvalue"
         }
       },
+      "description": "A target tracking scaling policy for the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-capacityprovider-targettrackingscalingpolicy.html"
     }
   },
+  "description": "Resource Type definition for AWS::Lambda::CapacityProvider",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html",
   "id": "aws-lambda-capacityprovider",
   "properties": {
@@ -97,27 +121,34 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-arn"
     },
     "CapacityProviderName": {
+      "description": "The name of the capacity provider. The name must be unique within your AWS account and region. If you don't specify a name, CloudFormation generates one.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-capacityprovidername"
     },
     "CapacityProviderScalingConfig": {
+      "description": "The scaling configuration for the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-capacityproviderscalingconfig"
     },
     "InstanceRequirements": {
+      "description": "Specifications for the types of EC2 instances that the capacity provider can use.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-instancerequirements"
     },
     "KmsKeyArn": {
+      "description": "The ARN of the AWS Key Management Service (KMS) key used by the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-kmskeyarn"
     },
     "PermissionsConfig": {
+      "description": "IAM permissions configuration for the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-permissionsconfig"
     },
     "State": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-state"
     },
     "Tags": {
+      "description": "A list of tags to apply to the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-tags"
     },
     "VpcConfig": {
+      "description": "VPC configuration for the capacity provider.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html#cfn-lambda-capacityprovider-vpcconfig"
     }
   },

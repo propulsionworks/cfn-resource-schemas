@@ -1,6 +1,6 @@
 {
   "$id": "aws-s3tables-tablebucket",
-  "$integrity": "sha512-PAvNoXTif/+f3VGj5hk9ttmPVFx7mg7iuucmP2Dc05/OP8pKjH/Y9BZWBD/d4Ez/jXCnS/8ZBblACT7s8EhJFw==",
+  "$integrity": "sha512-ksM62PI5pVERjxeLUwLdq6EUyPQGIMNT996vrg6P3hR95cAK7AnowC0FrVup+7662Cb7x9xHf8FP3i1iKYdvZQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TableBucketName"
@@ -35,6 +35,21 @@
           "enum": [
             "Enabled",
             "Disabled"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "StorageClassConfiguration": {
+      "additionalProperties": false,
+      "description": "Specifies storage class settings for the table bucket",
+      "properties": {
+        "StorageClass": {
+          "description": "The storage class for the table bucket",
+          "enum": [
+            "STANDARD",
+            "INTELLIGENT_TIERING"
           ],
           "type": "string"
         }
@@ -109,10 +124,12 @@
         "s3tables:PutTableBucketMaintenanceConfiguration",
         "s3tables:PutTableBucketMetricsConfiguration",
         "s3tables:PutTableBucketEncryption",
+        "s3tables:PutTableBucketStorageClass",
         "s3tables:GetTableBucket",
         "s3tables:GetTableBucketMaintenanceConfiguration",
         "s3tables:GetTableBucketMetricsConfiguration",
         "s3tables:GetTableBucketEncryption",
+        "s3tables:GetTableBucketStorageClass",
         "kms:DescribeKey",
         "s3tables:TagResource",
         "s3tables:ListTagsForResource"
@@ -134,6 +151,7 @@
         "s3tables:GetTableBucketMaintenanceConfiguration",
         "s3tables:GetTableBucketMetricsConfiguration",
         "s3tables:GetTableBucketEncryption",
+        "s3tables:GetTableBucketStorageClass",
         "s3tables:ListTagsForResource"
       ]
     },
@@ -143,9 +161,11 @@
         "s3tables:PutTableBucketMaintenanceConfiguration",
         "s3tables:PutTableBucketMetricsConfiguration",
         "s3tables:PutTableBucketEncryption",
+        "s3tables:PutTableBucketStorageClass",
         "s3tables:GetTableBucketMaintenanceConfiguration",
         "s3tables:GetTableBucketMetricsConfiguration",
         "s3tables:GetTableBucketEncryption",
+        "s3tables:GetTableBucketStorageClass",
         "s3tables:DeleteTableBucketEncryption",
         "s3tables:GetTableBucket",
         "kms:DescribeKey",
@@ -164,6 +184,9 @@
     },
     "MetricsConfiguration": {
       "$ref": "#/definitions/MetricsConfiguration"
+    },
+    "StorageClassConfiguration": {
+      "$ref": "#/definitions/StorageClassConfiguration"
     },
     "TableBucketARN": {
       "$ref": "#/definitions/TableBucketARN"

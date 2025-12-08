@@ -1,10 +1,11 @@
 {
   "$id": "aws-medialive-input",
-  "$integrity": "sha512-jF+lGjR3Eq0Dg3FPmOOSjJ+fw/W27sv5tNpmFJNiycEyY51xuNFn0Fwrf3w5TTs6LwMpqeY7K3fT72mJZTnSRA==",
+  "$integrity": "sha512-g/TxyiTpAouFF8Yf3/ZpIRaZgki0cJmwbfOUZkTReT1Td+YuhFCf0HS01ly4TqlP3mN1Rpv+aGwRbCYxWZgnTQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Vpc",
     "/properties/Type",
+    "/properties/RouterSettings",
     "/properties/InputNetworkLocation"
   ],
   "definitions": {
@@ -127,6 +128,34 @@
           "type": "string"
         },
         "Url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "RouterDestinationSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "AvailabilityZoneName": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "RouterSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "Destinations": {
+          "items": {
+            "$ref": "#/definitions/RouterDestinationSettings"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "EncryptionType": {
+          "type": "string"
+        },
+        "SecretArn": {
           "type": "string"
         }
       },
@@ -274,6 +303,9 @@
     },
     "RoleArn": {
       "type": "string"
+    },
+    "RouterSettings": {
+      "$ref": "#/definitions/RouterSettings"
     },
     "SdiSources": {
       "items": {

@@ -1,6 +1,6 @@
 {
   "$id": "aws-s3-storagelens",
-  "$integrity": "sha512-HDhVp/qOR77TpfatjvMvXtP7RcOBbySx5UnKUsIzZ2ESKgaTpwKNWpa3n0t/vw1LvsYV+fXC9Ou8i/HUPkDD9Q==",
+  "$integrity": "sha512-0prlt7qM7BeFISKs6GKUfguX67ypXCmzYlbbXC5zP/K/kR+vlNVdiFLXkwvO6JmSEtT1HYu5lg0Ki8m0k0G+1g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/StorageLensConfiguration/Id"
@@ -18,6 +18,9 @@
         },
         "AdvancedDataProtectionMetrics": {
           "$ref": "#/definitions/AdvancedDataProtectionMetrics"
+        },
+        "AdvancedPerformanceMetrics": {
+          "$ref": "#/definitions/AdvancedPerformanceMetrics"
         },
         "BucketLevel": {
           "$ref": "#/definitions/BucketLevel"
@@ -67,6 +70,17 @@
       },
       "type": "object"
     },
+    "AdvancedPerformanceMetrics": {
+      "additionalProperties": false,
+      "description": "Advanced Performance Metrics.",
+      "properties": {
+        "IsEnabled": {
+          "description": "Specifies whether the Advanced Performance Metrics is enabled or disabled.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "Arn": {
       "description": "The Amazon Resource Name (ARN) of the specified resource.",
       "type": "string"
@@ -96,6 +110,9 @@
         },
         "AdvancedDataProtectionMetrics": {
           "$ref": "#/definitions/AdvancedDataProtectionMetrics"
+        },
+        "AdvancedPerformanceMetrics": {
+          "$ref": "#/definitions/AdvancedPerformanceMetrics"
         },
         "DetailedStatusCodesMetrics": {
           "$ref": "#/definitions/DetailedStatusCodesMetrics"
@@ -153,6 +170,9 @@
         },
         "S3BucketDestination": {
           "$ref": "#/definitions/S3BucketDestination"
+        },
+        "StorageLensTableDestination": {
+          "$ref": "#/definitions/StorageLensTableDestination"
         }
       },
       "type": "object"
@@ -323,6 +343,9 @@
         "Exclude": {
           "$ref": "#/definitions/BucketsAndRegions"
         },
+        "ExpandedPrefixesDataExport": {
+          "$ref": "#/definitions/StorageLensExpandedPrefixesDataExport"
+        },
         "Id": {
           "$ref": "#/definitions/Id"
         },
@@ -332,6 +355,10 @@
         "IsEnabled": {
           "description": "Specifies whether the Amazon S3 Storage Lens configuration is enabled or disabled.",
           "type": "boolean"
+        },
+        "PrefixDelimiter": {
+          "description": "The delimiter to divide S3 key into hierarchy of prefixes.",
+          "type": "string"
         },
         "StorageLensArn": {
           "description": "The ARN for the Amazon S3 Storage Lens configuration.",
@@ -343,6 +370,19 @@
         "AccountLevel",
         "IsEnabled"
       ],
+      "type": "object"
+    },
+    "StorageLensExpandedPrefixesDataExport": {
+      "additionalProperties": false,
+      "description": "Expanded Prefixes Data Export.",
+      "properties": {
+        "S3BucketDestination": {
+          "$ref": "#/definitions/S3BucketDestination"
+        },
+        "StorageLensTableDestination": {
+          "$ref": "#/definitions/StorageLensTableDestination"
+        }
+      },
       "type": "object"
     },
     "StorageLensGroupArn": {
@@ -382,6 +422,23 @@
       },
       "type": "object"
     },
+    "StorageLensTableDestination": {
+      "additionalProperties": false,
+      "description": "S3 Tables destination settings for the Amazon S3 Storage Lens metrics export.",
+      "properties": {
+        "Encryption": {
+          "$ref": "#/definitions/Encryption"
+        },
+        "IsEnabled": {
+          "description": "Specifies whether the export to S3 Tables is enabled or disabled.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "IsEnabled"
+      ],
+      "type": "object"
+    },
     "Tag": {
       "additionalProperties": false,
       "properties": {
@@ -413,6 +470,8 @@
         "s3:PutStorageLensConfigurationTagging",
         "s3:GetStorageLensConfiguration",
         "s3:GetStorageLensConfigurationTagging",
+        "s3tables:CreateTableBucket",
+        "s3tables:PutTableBucketPolicy",
         "organizations:DescribeOrganization",
         "organizations:ListAccounts",
         "organizations:ListAWSServiceAccessForOrganization",
@@ -443,6 +502,8 @@
         "s3:PutStorageLensConfigurationTagging",
         "s3:GetStorageLensConfiguration",
         "s3:GetStorageLensConfigurationTagging",
+        "s3tables:CreateTableBucket",
+        "s3tables:PutTableBucketPolicy",
         "organizations:DescribeOrganization",
         "organizations:ListAccounts",
         "organizations:ListAWSServiceAccessForOrganization",

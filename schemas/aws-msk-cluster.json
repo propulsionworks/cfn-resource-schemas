@@ -1,6 +1,6 @@
 {
   "$id": "aws-msk-cluster",
-  "$integrity": "sha512-IHdOjnb7lrvDoMGi1AD2jESC5QwM34oa/QSKK1WSgyd4fn41fYomrkfvCkcqZnVigMh028vpSLy1Xft17Eai0A==",
+  "$integrity": "sha512-rom8IaxsMInKa+EGUnys5b9KmLQNwXD5gTL+Dk/VaTBF/llKt9H2huTV/UQZaVHHSKnOwtktOKTEeg8vDw1rNg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BrokerNodeGroupInfo/BrokerAZDistribution",
@@ -117,6 +117,9 @@
     "ConnectivityInfo": {
       "additionalProperties": false,
       "properties": {
+        "NetworkType": {
+          "$ref": "#/definitions/NetworkType"
+        },
         "PublicAccess": {
           "$ref": "#/definitions/PublicAccess"
         },
@@ -231,6 +234,13 @@
         "BrokerLogs"
       ],
       "type": "object"
+    },
+    "NetworkType": {
+      "enum": [
+        "IPV4",
+        "DUAL"
+      ],
+      "type": "string"
     },
     "NodeExporter": {
       "additionalProperties": false,
@@ -520,6 +530,7 @@
         "kafka:DescribeClusterOperation",
         "kafka:TagResource",
         "kafka:UntagResource",
+        "ec2:CreateTags",
         "ec2:DescribeSubnets",
         "ec2:DescribeVpcs",
         "ec2:DescribeSecurityGroups",

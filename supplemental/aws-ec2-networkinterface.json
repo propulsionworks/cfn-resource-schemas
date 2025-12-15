@@ -16,6 +16,9 @@
       },
       "VpcId": {
         "description": "The ID of the VPC."
+      },
+      "PublicIpDnsNameOptions": {
+        "description": "Describes the public hostname type options, including public hostname type, IPv4-enabled public hostname, IPv6-enabled public hostname, and dual-stack public hostname."
       }
     }
   },
@@ -81,6 +84,24 @@
       },
       "description": "Describes a secondary private IPv4 address for a network interface.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterface-privateipaddressspecification.html"
+    },
+    "PublicIpDnsNameOptions": {
+      "properties": {
+        "DnsHostnameType": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterface-publicipdnsnameoptions.html#cfn-ec2-networkinterface-publicipdnsnameoptions-dnshostnametype"
+        },
+        "PublicDualStackDnsName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterface-publicipdnsnameoptions.html#cfn-ec2-networkinterface-publicipdnsnameoptions-publicdualstackdnsname"
+        },
+        "PublicIpv4DnsName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterface-publicipdnsnameoptions.html#cfn-ec2-networkinterface-publicipdnsnameoptions-publicipv4dnsname"
+        },
+        "PublicIpv6DnsName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterface-publicipdnsnameoptions.html#cfn-ec2-networkinterface-publicipdnsnameoptions-publicipv6dnsname"
+        }
+      },
+      "description": "Describes the public hostname type options, including public hostname type, IPv4-enabled public hostname, IPv6-enabled public hostname, and dual-stack public hostname.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-networkinterface-publicipdnsnameoptions.html"
     },
     "Tag": {
       "properties": {
@@ -158,6 +179,13 @@
     "PrivateIpAddresses": {
       "description": "The private IPv4 addresses to assign to the network interface. You can specify a primary private IP address by setting the value of the `Primary` property to `true` in the `PrivateIpAddressSpecification` property. If you want EC2 to automatically assign private IP addresses, use the `SecondaryPrivateIpAddressCount` property and do not specify this property.\n\nWhen creating a network interface, you can't specify private IPv4 addresses if you've specified one of the following: a count of private IPv4 addresses, specific IPv4 prefixes, or a count of IPv4 prefixes.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterface.html#cfn-ec2-networkinterface-privateipaddresses"
+    },
+    "PublicIpDnsHostnameTypeSpecification": {
+      "description": "Public IP DNS hostname type",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterface.html#cfn-ec2-networkinterface-publicipdnshostnametypespecification"
+    },
+    "PublicIpDnsNameOptions": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterface.html#cfn-ec2-networkinterface-publicipdnsnameoptions"
     },
     "SecondaryPrivateIpAddressCount": {
       "description": "The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You can't specify this option and specify more than one private IP address using `privateIpAddresses` .\n\nWhen creating a Network Interface, you can't specify a count of private IPv4 addresses if you've specified one of the following: specific private IPv4 addresses, specific IPv4 prefixes, or a count of IPv4 prefixes.",

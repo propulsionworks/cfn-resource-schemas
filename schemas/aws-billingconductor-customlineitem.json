@@ -1,6 +1,6 @@
 {
   "$id": "aws-billingconductor-customlineitem",
-  "$integrity": "sha512-dF5PBBh+pzvG4LMLJpyb5E7jTikWS2ily08wCp7xVRXkvczusCc10aa9UWx/f6w25qwi2gbbkievdN9lQTKHnQ==",
+  "$integrity": "sha512-bLgVceB1GQT8c8Yq9aKjhPEmzHBMXkTDCZA0ViXzzkjtv8AhHCtjTiN6/GW62lhmg/iQ0e464FxwPfC9K89s/w==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BillingGroupArn",
@@ -12,6 +12,12 @@
     "/properties/CustomLineItemChargeDetails/Type"
   ],
   "definitions": {
+    "AttributeValue": {
+      "maxLength": 256,
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9]+$",
+      "type": "string"
+    },
     "BillingPeriodRange": {
       "additionalProperties": false,
       "properties": {
@@ -95,13 +101,23 @@
       "properties": {
         "Attribute": {
           "enum": [
-            "LINE_ITEM_TYPE"
+            "LINE_ITEM_TYPE",
+            "SERVICE"
           ],
           "type": "string"
         },
+        "AttributeValues": {
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/AttributeValue"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
         "MatchOption": {
           "enum": [
-            "NOT_EQUAL"
+            "NOT_EQUAL",
+            "EQUAL"
           ],
           "type": "string"
         },
@@ -116,8 +132,7 @@
       },
       "required": [
         "Attribute",
-        "MatchOption",
-        "Values"
+        "MatchOption"
       ],
       "type": "object"
     },
@@ -239,7 +254,8 @@
     "ComputationRule": {
       "description": "The display settings of the Custom Line Item.",
       "enum": [
-        "CONSOLIDATED"
+        "CONSOLIDATED",
+        "ITEMIZED"
       ],
       "type": "string"
     },

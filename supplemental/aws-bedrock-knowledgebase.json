@@ -23,6 +23,30 @@
     }
   },
   "definitions": {
+    "AudioConfiguration": {
+      "properties": {
+        "SegmentationConfiguration": {
+          "description": "Configuration for segmenting audio content during processing.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-audioconfiguration.html#cfn-bedrock-knowledgebase-audioconfiguration-segmentationconfiguration"
+        }
+      },
+      "description": "Configuration settings for processing audio content in multimodal knowledge bases.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-audioconfiguration.html"
+    },
+    "AudioConfigurations": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-audioconfigurations.html"
+    },
+    "AudioSegmentationConfiguration": {
+      "properties": {
+        "FixedLengthDuration": {
+          "description": "The duration in seconds for each audio segment. Audio files will be divided into chunks of this length for processing.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-audiosegmentationconfiguration.html#cfn-bedrock-knowledgebase-audiosegmentationconfiguration-fixedlengthduration"
+        }
+      },
+      "description": "Configuration for segmenting audio content during multimodal knowledge base ingestion. Determines how audio files are divided into chunks for processing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-audiosegmentationconfiguration.html"
+    },
     "AwsDataCatalogTableName": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-awsdatacatalogtablename.html"
@@ -33,6 +57,10 @@
     },
     "BedrockEmbeddingModelConfiguration": {
       "properties": {
+        "Audio": {
+          "description": "Configuration settings for processing audio content in multimodal knowledge bases.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-bedrockembeddingmodelconfiguration.html#cfn-bedrock-knowledgebase-bedrockembeddingmodelconfiguration-audio"
+        },
         "Dimensions": {
           "description": "The dimensions details for the vector configuration used on the Bedrock embeddings model.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-bedrockembeddingmodelconfiguration.html#cfn-bedrock-knowledgebase-bedrockembeddingmodelconfiguration-dimensions"
@@ -40,6 +68,10 @@
         "EmbeddingDataType": {
           "description": "The data type for the vectors when using a model to convert text into vector embeddings. The model must support the specified data type for vector embeddings. Floating-point (float32) is the default data type, and is supported by most models for vector embeddings. See [Supported embeddings models](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-supported.html) for information on the available models and their vector data types.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-bedrockembeddingmodelconfiguration.html#cfn-bedrock-knowledgebase-bedrockembeddingmodelconfiguration-embeddingdatatype"
+        },
+        "Video": {
+          "description": "Configuration settings for processing video content in multimodal knowledge bases.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-bedrockembeddingmodelconfiguration.html#cfn-bedrock-knowledgebase-bedrockembeddingmodelconfiguration-video"
         }
       },
       "description": "The vector configuration details for the Bedrock embeddings model.",
@@ -76,6 +108,10 @@
       },
       "description": "The configuration details for the embeddings model.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-embeddingmodelconfiguration.html"
+    },
+    "FixedLengthDuration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-fixedlengthduration.html"
     },
     "InclusionType": {
       "properties": {},
@@ -761,13 +797,13 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-supplementaldatastorageconfiguration.html#cfn-bedrock-knowledgebase-supplementaldatastorageconfiguration-supplementaldatastoragelocations"
         }
       },
-      "description": "Specifies configurations for the storage location of the images extracted from multimodal documents in your data source. These images can be retrieved and returned to the end user.",
+      "description": "Specifies configurations for the storage location of multimedia content (images, audio, and video) extracted from multimodal documents in your data source. This content can be retrieved and returned to the end user with timestamp references for audio and video segments.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-supplementaldatastorageconfiguration.html"
     },
     "SupplementalDataStorageLocation": {
       "properties": {
         "S3Location": {
-          "description": "Contains information about the Amazon S3 location for the extracted images.",
+          "description": "Contains information about the Amazon S3 location for the extracted multimedia content.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-supplementaldatastoragelocation.html#cfn-bedrock-knowledgebase-supplementaldatastoragelocation-s3location"
         },
         "SupplementalDataStorageLocationType": {
@@ -775,7 +811,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-supplementaldatastoragelocation.html#cfn-bedrock-knowledgebase-supplementaldatastoragelocation-supplementaldatastoragelocationtype"
         }
       },
-      "description": "Contains information about a storage location for images extracted from multimodal documents in your data source.",
+      "description": "Contains information about a storage location for multimedia content (images, audio, and video) extracted from multimodal documents in your data source.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-supplementaldatastoragelocation.html"
     },
     "SupplementalDataStorageLocationType": {
@@ -807,6 +843,30 @@
       },
       "description": "Contains details about the model used to create vector embeddings for the knowledge base.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-vectorknowledgebaseconfiguration.html"
+    },
+    "VideoConfiguration": {
+      "properties": {
+        "SegmentationConfiguration": {
+          "description": "Configuration for segmenting video content during processing.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-videoconfiguration.html#cfn-bedrock-knowledgebase-videoconfiguration-segmentationconfiguration"
+        }
+      },
+      "description": "Configuration settings for processing video content in multimodal knowledge bases.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-videoconfiguration.html"
+    },
+    "VideoConfigurations": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-videoconfigurations.html"
+    },
+    "VideoSegmentationConfiguration": {
+      "properties": {
+        "FixedLengthDuration": {
+          "description": "The duration in seconds for each video segment. Video files will be divided into chunks of this length for processing.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-videosegmentationconfiguration.html#cfn-bedrock-knowledgebase-videosegmentationconfiguration-fixedlengthduration"
+        }
+      },
+      "description": "Configuration for segmenting video content during multimodal knowledge base ingestion. Determines how video files are divided into chunks for processing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-knowledgebase-videosegmentationconfiguration.html"
     },
     "WorkgroupArn": {
       "properties": {},

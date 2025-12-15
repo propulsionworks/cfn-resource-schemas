@@ -1,6 +1,6 @@
 {
   "$id": "aws-paymentcryptography-key",
-  "$integrity": "sha512-me5mw2e5evzUA7LjdTKaw64SMyPX29Q1P/koxnPIsjv8TW5Uoi8JzS+m0/AIlbuoRWUOBi6TiqnxT5yh2aywkQ==",
+  "$integrity": "sha512-Ywqz2Q4R955xdIzibw9eHo7a4g8T9iB12x6BDEFGbK77KWQ0yQHfSpE/pNSH0jfSWuAdJBIERbb3ISwR4mN5Sw==",
   "additionalProperties": false,
   "definitions": {
     "DeriveKeyUsage": {
@@ -139,6 +139,16 @@
       ],
       "type": "string"
     },
+    "KeyReplicationState": {
+      "description": "Defines the replication state of a key",
+      "enum": [
+        "IN_PROGRESS",
+        "DELETE_IN_PROGRESS",
+        "FAILED",
+        "SYNCHRONIZED"
+      ],
+      "type": "string"
+    },
     "KeyState": {
       "description": "Defines the state of a key",
       "enum": [
@@ -176,6 +186,30 @@
         "TR31_K2_TR34_ASYMMETRIC_KEY"
       ],
       "type": "string"
+    },
+    "ReplicationStatus": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z]{2}-[a-z]{1,16}-[0-9]+$": {
+          "$ref": "#/definitions/ReplicationStatusType"
+        }
+      },
+      "type": "object"
+    },
+    "ReplicationStatusType": {
+      "additionalProperties": false,
+      "properties": {
+        "Status": {
+          "$ref": "#/definitions/KeyReplicationState"
+        },
+        "StatusMessage": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Status"
+      ],
+      "type": "object"
     },
     "Tag": {
       "additionalProperties": false,
@@ -231,7 +265,9 @@
         "payment-cryptography:TagResource",
         "payment-cryptography:UntagResource",
         "payment-cryptography:StartKeyUsage",
-        "payment-cryptography:StopKeyUsage"
+        "payment-cryptography:StopKeyUsage",
+        "payment-cryptography:AddKeyReplicationRegions",
+        "payment-cryptography:RemoveKeyReplicationRegions"
       ]
     }
   },
@@ -266,6 +302,16 @@
     "KeyState": {
       "$ref": "#/definitions/KeyState"
     },
+    "ReplicationRegions": {
+      "items": {
+        "pattern": "^[a-z]{2}-[a-z]{1,16}-[0-9]+$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "ReplicationStatus": {
+      "$ref": "#/definitions/ReplicationStatus"
+    },
     "Tags": {
       "insertionOrder": false,
       "items": {
@@ -279,7 +325,8 @@
   "readOnlyProperties": [
     "/properties/KeyIdentifier",
     "/properties/KeyOrigin",
-    "/properties/KeyState"
+    "/properties/KeyState",
+    "/properties/ReplicationStatus"
   ],
   "required": [
     "Exportable",
@@ -297,5 +344,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::PaymentCryptography::Key"
+  "typeName": "AWS::PaymentCryptography::Key",
+  "writeOnlyProperties": [
+    "/properties/ReplicationRegions"
+  ]
 }

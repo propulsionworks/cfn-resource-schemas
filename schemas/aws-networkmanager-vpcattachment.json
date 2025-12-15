@@ -1,6 +1,6 @@
 {
   "$id": "aws-networkmanager-vpcattachment",
-  "$integrity": "sha512-I5Zeia7PCcRu4kUTD/wzeUm4tIBHmXYLDXhu3dpA38RWzaDCo1it9lvQQHUycZly9uWwlPu0qTzO39E9ammizw==",
+  "$integrity": "sha512-AqenERho25gH5xZvM2AgD+gROcWLz0XY+qA6gEnqmIVbA5cJrakRH8NaKQBw3DQNCWws+3IgWjF11akkrSMb3w==",
   "additionalIdentifiers": [
     [
       "/properties/CoreNetworkId",
@@ -10,7 +10,8 @@
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/CoreNetworkId",
-    "/properties/VpcArn"
+    "/properties/VpcArn",
+    "/properties/RoutingPolicyLabel"
   ],
   "definitions": {
     "ProposedNetworkFunctionGroupChange": {
@@ -214,6 +215,10 @@
       "description": "The ARN of the Resource.",
       "type": "string"
     },
+    "RoutingPolicyLabel": {
+      "description": "Routing policy label",
+      "type": "string"
+    },
     "SegmentName": {
       "description": "The name of the segment attachment..",
       "type": "string"
@@ -281,5 +286,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::NetworkManager::VpcAttachment"
+  "typeName": "AWS::NetworkManager::VpcAttachment",
+  "writeOnlyProperties": [
+    "/properties/RoutingPolicyLabel"
+  ]
 }

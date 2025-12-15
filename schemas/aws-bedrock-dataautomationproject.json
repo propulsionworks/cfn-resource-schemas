@@ -1,9 +1,10 @@
 {
   "$id": "aws-bedrock-dataautomationproject",
-  "$integrity": "sha512-jgueIqHxCa3Kejud3iZ7tTH1QDedqC6bOu46nt9RFiJW4M1zFZX6GGXxEYBYIuFRxOxRVZlw3p1iuBpCvqudnQ==",
+  "$integrity": "sha512-Rdz+j1x/Waz1vuze7sQGP2ORveimqrc+ELzCgEnzkYYoEOPbZuv3Dg8+XMFVxIh4VpucvHMlYxx/8nKEJWxkZw==",
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/ProjectName"
+    "/properties/ProjectName",
+    "/properties/ProjectType"
   ],
   "definitions": {
     "AudioExtractionCategory": {
@@ -78,6 +79,9 @@
         },
         "ModalityProcessing": {
           "$ref": "#/definitions/ModalityProcessingConfiguration"
+        },
+        "SensitiveDataConfiguration": {
+          "$ref": "#/definitions/SensitiveDataConfiguration"
         }
       },
       "type": "object"
@@ -307,6 +311,9 @@
         "ModalityProcessing": {
           "$ref": "#/definitions/ModalityProcessingConfiguration"
         },
+        "SensitiveDataConfiguration": {
+          "$ref": "#/definitions/SensitiveDataConfiguration"
+        },
         "Splitter": {
           "$ref": "#/definitions/SplitterConfiguration"
         }
@@ -400,6 +407,9 @@
       "properties": {
         "ModalityProcessing": {
           "$ref": "#/definitions/ModalityProcessingConfiguration"
+        },
+        "SensitiveDataConfiguration": {
+          "$ref": "#/definitions/SensitiveDataConfiguration"
         }
       },
       "type": "object"
@@ -523,6 +533,95 @@
         }
       },
       "type": "object"
+    },
+    "PIIEntitiesConfiguration": {
+      "properties": {
+        "PiiEntityTypes": {
+          "items": {
+            "$ref": "#/definitions/PIIEntityTypes"
+          },
+          "type": "array"
+        },
+        "RedactionMaskMode": {
+          "$ref": "#/definitions/PIIRedactionMaskMode"
+        }
+      },
+      "type": "object"
+    },
+    "PIIEntityTypes": {
+      "enum": [
+        "ALL",
+        "ADDRESS",
+        "AGE",
+        "NAME",
+        "EMAIL",
+        "PHONE",
+        "USERNAME",
+        "PASSWORD",
+        "DRIVER_ID",
+        "LICENSE_PLATE",
+        "VEHICLE_IDENTIFICATION_NUMBER",
+        "CREDIT_DEBIT_CARD_CVV",
+        "CREDIT_DEBIT_CARD_EXPIRY",
+        "CREDIT_DEBIT_CARD_NUMBER",
+        "PIN",
+        "INTERNATIONAL_BANK_ACCOUNT_NUMBER",
+        "SWIFT_CODE",
+        "IP_ADDRESS",
+        "MAC_ADDRESS",
+        "URL",
+        "AWS_ACCESS_KEY",
+        "AWS_SECRET_KEY",
+        "US_BANK_ACCOUNT_NUMBER",
+        "US_BANK_ROUTING_NUMBER",
+        "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER",
+        "US_PASSPORT_NUMBER",
+        "US_SOCIAL_SECURITY_NUMBER",
+        "CA_HEALTH_NUMBER",
+        "CA_SOCIAL_INSURANCE_NUMBER",
+        "UK_NATIONAL_HEALTH_SERVICE_NUMBER",
+        "UK_NATIONAL_INSURANCE_NUMBER",
+        "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+      ],
+      "type": "string"
+    },
+    "PIIRedactionMaskMode": {
+      "enum": [
+        "PII",
+        "ENTITY_TYPE"
+      ],
+      "type": "string"
+    },
+    "SensitiveDataConfiguration": {
+      "properties": {
+        "DetectionMode": {
+          "$ref": "#/definitions/SensitiveDataDetectionMode"
+        },
+        "DetectionScope": {
+          "items": {
+            "$ref": "#/definitions/SensitiveDataDetectionScope"
+          },
+          "type": "array"
+        },
+        "PiiEntitiesConfiguration": {
+          "$ref": "#/definitions/PIIEntitiesConfiguration"
+        }
+      },
+      "type": "object"
+    },
+    "SensitiveDataDetectionMode": {
+      "enum": [
+        "DETECTION",
+        "DETECTION_AND_REDACTION"
+      ],
+      "type": "string"
+    },
+    "SensitiveDataDetectionScope": {
+      "enum": [
+        "STANDARD",
+        "CUSTOM"
+      ],
+      "type": "string"
     },
     "SpeakerLabelingConfiguration": {
       "additionalProperties": false,
@@ -657,6 +756,9 @@
       "properties": {
         "ModalityProcessing": {
           "$ref": "#/definitions/ModalityProcessingConfiguration"
+        },
+        "SensitiveDataConfiguration": {
+          "$ref": "#/definitions/SensitiveDataConfiguration"
         }
       },
       "type": "object"
@@ -824,6 +926,14 @@
     },
     "ProjectStage": {
       "$ref": "#/definitions/DataAutomationProjectStage"
+    },
+    "ProjectType": {
+      "description": "Type of the DataAutomationProject - Sync or Async",
+      "enum": [
+        "ASYNC",
+        "SYNC"
+      ],
+      "type": "string"
     },
     "StandardOutputConfiguration": {
       "$ref": "#/definitions/StandardOutputConfiguration"

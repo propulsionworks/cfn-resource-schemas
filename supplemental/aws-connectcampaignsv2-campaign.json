@@ -46,6 +46,10 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-campaignname.html"
     },
+    "CampaignType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-campaigntype.html"
+    },
     "Capacity": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-capacity.html"
@@ -63,6 +67,10 @@
         "Telephony": {
           "description": "The configuration of the telephony channel subtype.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-channelsubtypeconfig.html#cfn-connectcampaignsv2-campaign-channelsubtypeconfig-telephony"
+        },
+        "WhatsApp": {
+          "description": "WhatsApp Channel Subtype config",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-channelsubtypeconfig.html#cfn-connectcampaignsv2-campaign-channelsubtypeconfig-whatsapp"
         }
       },
       "description": "Contains channel subtype configuration for an outbound campaign.",
@@ -135,6 +143,10 @@
         "Telephony": {
           "description": "The communication time configuration for the telephony channel subtype.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-communicationtimeconfig.html#cfn-connectcampaignsv2-campaign-communicationtimeconfig-telephony"
+        },
+        "WhatsApp": {
+          "description": "Time window config",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-communicationtimeconfig.html#cfn-connectcampaignsv2-campaign-communicationtimeconfig-whatsapp"
         }
       },
       "description": "Communication time configuration for an outbound campaign.",
@@ -352,6 +364,10 @@
       "description": "Contains information about restricted periods.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-restrictedperiods.html"
     },
+    "RingTimeout": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-ringtimeout.html"
+    },
     "Schedule": {
       "properties": {
         "EndTime": {
@@ -480,6 +496,10 @@
         "ConnectSourcePhoneNumber": {
           "description": "The Amazon Connect source phone number.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-telephonyoutboundconfig.html#cfn-connectcampaignsv2-campaign-telephonyoutboundconfig-connectsourcephonenumber"
+        },
+        "RingTimeout": {
+          "description": "The ring timeout configuration for outbound calls. Specifies how long to wait for the call to be answered before timing out.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-telephonyoutboundconfig.html#cfn-connectcampaignsv2-campaign-telephonyoutboundconfig-ringtimeout"
         }
       },
       "description": "The outbound configuration for telephony.",
@@ -560,9 +580,51 @@
     "TimeoutDuration": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-timeoutduration.html"
+    },
+    "WhatsAppChannelSubtypeConfig": {
+      "properties": {
+        "Capacity": {
+          "description": "Allocates outbound capacity for the specific channel of this campaign between multiple active campaigns",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappchannelsubtypeconfig.html#cfn-connectcampaignsv2-campaign-whatsappchannelsubtypeconfig-capacity"
+        },
+        "DefaultOutboundConfig": {
+          "description": "Default WhatsApp outbound config",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappchannelsubtypeconfig.html#cfn-connectcampaignsv2-campaign-whatsappchannelsubtypeconfig-defaultoutboundconfig"
+        },
+        "OutboundMode": {
+          "description": "WhatsApp Outbound Mode",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappchannelsubtypeconfig.html#cfn-connectcampaignsv2-campaign-whatsappchannelsubtypeconfig-outboundmode"
+        }
+      },
+      "description": "WhatsApp Channel Subtype config",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappchannelsubtypeconfig.html"
+    },
+    "WhatsAppOutboundConfig": {
+      "properties": {
+        "ConnectSourcePhoneNumberArn": {
+          "description": "Arn",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappoutboundconfig.html#cfn-connectcampaignsv2-campaign-whatsappoutboundconfig-connectsourcephonenumberarn"
+        },
+        "WisdomTemplateArn": {
+          "description": "Arn",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappoutboundconfig.html#cfn-connectcampaignsv2-campaign-whatsappoutboundconfig-wisdomtemplatearn"
+        }
+      },
+      "description": "Default WhatsApp outbound config",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappoutboundconfig.html"
+    },
+    "WhatsAppOutboundMode": {
+      "properties": {
+        "AgentlessConfig": {
+          "description": "Agentless config",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappoutboundmode.html#cfn-connectcampaignsv2-campaign-whatsappoutboundmode-agentlessconfig"
+        }
+      },
+      "description": "WhatsApp Outbound Mode",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-connectcampaignsv2-campaign-whatsappoutboundmode.html"
     }
   },
-  "description": "Creates an outbound campaign.\n\n> - For users to be able to view or edit a campaign at a later date by using the Amazon Connect user interface, you must add the instance ID as a tag. For example, `{ \"tags\": {\"owner\": \"arn:aws:connect:{REGION}:{AWS_ACCOUNT_ID}:instance/{CONNECT_INSTANCE_ID}\"}}` .\n> - After a campaign is created, you can't add/remove source.",
+  "description": "Creates an outbound campaign.\n\n> - For users to be able to view or edit a campaign at a later date by using the Amazon Connect user interface, you must add the instance ID as a tag. For example, `{ \"tags\": {\"owner\": \"arn:aws:connect:{REGION}:{AWS_ACCOUNT_ID}:instance/{CONNECT_INSTANCE_ID}\"}}` .\n> - After a campaign is created, you can't add/remove source.\n> - Configuring maximum ring time is not supported for the Preview dial mode.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connectcampaignsv2-campaign.html",
   "id": "aws-connectcampaignsv2-campaign",
   "properties": {
@@ -604,6 +666,10 @@
     "Tags": {
       "description": "The tags used to organize, track, or control access for this resource. For example, `{ \"tags\": {\"key1\":\"value1\", \"key2\":\"value2\"} }` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connectcampaignsv2-campaign.html#cfn-connectcampaignsv2-campaign-tags"
+    },
+    "Type": {
+      "description": "Campaign type",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connectcampaignsv2-campaign.html#cfn-connectcampaignsv2-campaign-type"
     }
   },
   "typeName": "AWS::ConnectCampaignsV2::Campaign"

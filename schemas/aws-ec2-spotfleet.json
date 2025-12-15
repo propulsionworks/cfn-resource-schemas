@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-spotfleet",
-  "$integrity": "sha512-8jZTKELwKPGP80JapaPx3n2ySAsbksPnn7hEfJf+jVrpmXv5o+osgsAKwZj+RIGgHAsF3omp0ifZbhX+q7Zv6A==",
+  "$integrity": "sha512-Rzz8eWyZU0CaEB+yz1ynZ/cBB/lJNRLSD5qGIica4ehOtIpIyEaPBB7Td0THPr2LVR9Tf98y+1vPD2vbCkRqPw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/SpotFleetRequestConfigData/AllocationStrategy",
@@ -435,6 +435,9 @@
         },
         "OnDemandMaxPricePercentageOverLowestPrice": {
           "type": "integer"
+        },
+        "RequireEncryptionInTransit": {
+          "type": "boolean"
         },
         "RequireHibernateSupport": {
           "type": "boolean"
@@ -1008,6 +1011,14 @@
     },
     "SpotFleetRequestConfigData": {
       "$ref": "#/definitions/SpotFleetRequestConfigData"
+    },
+    "Tags": {
+      "description": "The tags to specify in SpotFleetRequestConfigData",
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": false
     }
   },
   "readOnlyProperties": [

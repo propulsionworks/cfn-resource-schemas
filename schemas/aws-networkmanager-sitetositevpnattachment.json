@@ -1,6 +1,6 @@
 {
   "$id": "aws-networkmanager-sitetositevpnattachment",
-  "$integrity": "sha512-vbw9GnCj1v8A19jxSReS3sxERF/RQB/LfpC0kVWraTT0TevRs4DRjiDPg1Jx6fe8hJxShMPiy7scb85wdrWvCg==",
+  "$integrity": "sha512-vplPjPaFD6kmyo/49xejA0LdYhOWwX+YtZCvZyysSWJVlbHn3INgYUkGh2cab4LTZAb95fBLKzkbv7NW/LLycw==",
   "additionalIdentifiers": [
     [
       "/properties/CoreNetworkId",
@@ -10,7 +10,8 @@
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/CoreNetworkId",
-    "/properties/VpnConnectionArn"
+    "/properties/VpnConnectionArn",
+    "/properties/RoutingPolicyLabel"
   ],
   "definitions": {
     "ProposedNetworkFunctionGroupChange": {
@@ -179,6 +180,10 @@
       "description": "The ARN of the Resource.",
       "type": "string"
     },
+    "RoutingPolicyLabel": {
+      "description": "Routing policy label",
+      "type": "string"
+    },
     "SegmentName": {
       "description": "The name of the segment that attachment is in.",
       "type": "string"
@@ -236,5 +241,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::NetworkManager::SiteToSiteVpnAttachment"
+  "typeName": "AWS::NetworkManager::SiteToSiteVpnAttachment",
+  "writeOnlyProperties": [
+    "/properties/RoutingPolicyLabel"
+  ]
 }

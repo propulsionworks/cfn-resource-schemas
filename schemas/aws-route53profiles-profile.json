@@ -1,6 +1,6 @@
 {
   "$id": "aws-route53profiles-profile",
-  "$integrity": "sha512-0nPX9xAau0iSAtshzLfUtX1hfXf0de8JzlsVp2m7eJteNXF1XDvCIpouyXhKTtEdVrhCJug2GUf/aq3lx2wC/A==",
+  "$integrity": "sha512-C1KRWf6zdQNu2l7n1Vt/gSqeGsROSRw6ALdnD8V5pjslB9C1kXQkEabDzqSrtBp86bAveaLnu9Db5vM4TFFBkg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -92,6 +92,15 @@
       "minLength": 1,
       "type": "string"
     },
+    "ShareStatus": {
+      "description": "The sharing status of the profile.",
+      "enum": [
+        "NOT_SHARED",
+        "SHARED_WITH_ME",
+        "SHARED_BY_ME"
+      ],
+      "type": "string"
+    },
     "Tags": {
       "description": "An array of key-value pairs to apply to this resource.",
       "insertionOrder": false,
@@ -105,7 +114,8 @@
   "readOnlyProperties": [
     "/properties/Arn",
     "/properties/Id",
-    "/properties/ClientToken"
+    "/properties/ClientToken",
+    "/properties/ShareStatus"
   ],
   "required": [
     "Name"

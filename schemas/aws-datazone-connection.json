@@ -1,6 +1,6 @@
 {
   "$id": "aws-datazone-connection",
-  "$integrity": "sha512-7c/CsVmE7oT0Iad0wPdkZN9ZtnR0s35L/y+NbUOjwDeTeFW9r0LZowXm5bNQ2iLjweFApAejILIoQVDS05NWjw==",
+  "$integrity": "sha512-RJdd4zNF+Jvwq8KgOV9WiPDbRLbrUYAwCziZFAw+QV2fU9YrDy+c2+Wwx2OjfGUp1ENMM+0N4RWVm/M/9eElzQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainIdentifier",
@@ -277,6 +277,19 @@
           ],
           "title": "S3Properties",
           "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "MlflowProperties": {
+              "$ref": "#/definitions/MlflowPropertiesInput"
+            }
+          },
+          "required": [
+            "MlflowProperties"
+          ],
+          "title": "MlflowProperties",
+          "type": "object"
         }
       ]
     },
@@ -439,6 +452,17 @@
       "properties": {
         "Schedule": {
           "pattern": "^cron\\((\\b[0-5]?[0-9]\\b) (\\b2[0-3]\\b|\\b[0-1]?[0-9]\\b) ([-?*,/\\dLW]){1,83} ([-*,/\\d]|[a-zA-Z]{3}){1,23} ([-?#*,/\\dL]|[a-zA-Z]{3}){1,13} ([^\\)]+)\\)$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MlflowPropertiesInput": {
+      "additionalProperties": false,
+      "description": "MLflow Properties Input",
+      "properties": {
+        "TrackingServerArn": {
+          "description": "The ARN of the MLflow tracking server",
           "type": "string"
         }
       },
@@ -692,7 +716,7 @@
       "properties": {
         "ComputeArn": {
           "maxLength": 2048,
-          "pattern": "^arn:aws(-(cn|us-gov|iso(-[bef])?))?:(elasticmapreduce|emr-serverless):.*",
+          "pattern": "^arn:aws(-(cn|us-gov|iso(-[bef])?))?:(elasticmapreduce|emr-serverless|emr-containers):.*",
           "type": "string"
         },
         "InstanceProfileArn": {
@@ -708,6 +732,10 @@
         "LogUri": {
           "maxLength": 2048,
           "pattern": "^s3://.+$",
+          "type": "string"
+        },
+        "ManagedEndpointArn": {
+          "maxLength": 2048,
           "type": "string"
         },
         "PythonVirtualEnv": {

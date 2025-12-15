@@ -27,7 +27,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parameterconfiguration.html#cfn-securityhub-configurationpolicy-parameterconfiguration-value"
         },
         "ValueType": {
-          "description": "Identifies whether a control parameter uses a custom user-defined value or subscribes to the default Security Hub behavior.\n\nWhen `ValueType` is set equal to `DEFAULT` , the default behavior can be a specific Security Hub default value, or the default behavior can be to ignore a specific parameter. When `ValueType` is set equal to `DEFAULT` , Security Hub ignores user-provided input for the `Value` field.\n\nWhen `ValueType` is set equal to `CUSTOM` , the `Value` field can't be empty.",
+          "description": "Identifies whether a control parameter uses a custom user-defined value or subscribes to the default AWS Security Hub CSPM behavior.\n\nWhen `ValueType` is set equal to `DEFAULT` , the default behavior can be a specific Security Hub CSPM default value, or the default behavior can be to ignore a specific parameter. When `ValueType` is set equal to `DEFAULT` , Security Hub CSPM ignores user-provided input for the `Value` field.\n\nWhen `ValueType` is set equal to `CUSTOM` , the `Value` field can't be empty.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-parameterconfiguration.html#cfn-securityhub-configurationpolicy-parameterconfiguration-valuetype"
         }
       },
@@ -79,7 +79,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-policy.html#cfn-securityhub-configurationpolicy-policy-securityhub"
         }
       },
-      "description": "An object that defines how Security Hub is configured. It includes whether Security Hub is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub enables all other controls (including newly released controls).",
+      "description": "An object that defines how AWS Security Hub CSPM is configured. It includes whether Security Hub CSPM is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub CSPM disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub CSPM enables all other controls (including newly released controls).",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-policy.html"
     },
     "SecurityControlCustomParameter": {
@@ -99,11 +99,11 @@
     "SecurityControlsConfiguration": {
       "properties": {
         "DisabledSecurityControlIdentifiers": {
-          "description": "A list of security controls that are disabled in the configuration policy.\n\nProvide only one of `EnabledSecurityControlIdentifiers` or `DisabledSecurityControlIdentifiers` .\n\nIf you provide `DisabledSecurityControlIdentifiers` , Security Hub enables all other controls not in the list, and enables [AutoEnableControls](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_UpdateSecurityHubConfiguration.html#securityhub-UpdateSecurityHubConfiguration-request-AutoEnableControls) .",
+          "description": "A list of security controls that are disabled in the configuration policy.\n\nProvide only one of `EnabledSecurityControlIdentifiers` or `DisabledSecurityControlIdentifiers` .\n\nIf you provide `DisabledSecurityControlIdentifiers` , Security Hub CSPM enables all other controls not in the list, and enables [AutoEnableControls](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_UpdateSecurityHubConfiguration.html#securityhub-UpdateSecurityHubConfiguration-request-AutoEnableControls) .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolsconfiguration.html#cfn-securityhub-configurationpolicy-securitycontrolsconfiguration-disabledsecuritycontrolidentifiers"
         },
         "EnabledSecurityControlIdentifiers": {
-          "description": "A list of security controls that are enabled in the configuration policy.\n\nProvide only one of `EnabledSecurityControlIdentifiers` or `DisabledSecurityControlIdentifiers` .\n\nIf you provide `EnabledSecurityControlIdentifiers` , Security Hub disables all other controls not in the list, and disables [AutoEnableControls](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_UpdateSecurityHubConfiguration.html#securityhub-UpdateSecurityHubConfiguration-request-AutoEnableControls) .",
+          "description": "A list of security controls that are enabled in the configuration policy.\n\nProvide only one of `EnabledSecurityControlIdentifiers` or `DisabledSecurityControlIdentifiers` .\n\nIf you provide `EnabledSecurityControlIdentifiers` , Security Hub CSPM disables all other controls not in the list, and disables [AutoEnableControls](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_UpdateSecurityHubConfiguration.html#securityhub-UpdateSecurityHubConfiguration-request-AutoEnableControls) .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolsconfiguration.html#cfn-securityhub-configurationpolicy-securitycontrolsconfiguration-enabledsecuritycontrolidentifiers"
         },
         "SecurityControlCustomParameters": {
@@ -111,7 +111,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolsconfiguration.html#cfn-securityhub-configurationpolicy-securitycontrolsconfiguration-securitycontrolcustomparameters"
         }
       },
-      "description": "An object that defines which security controls are enabled in an Security Hub configuration policy. The enablement status of a control is aligned across all of the enabled standards in an account.\n\nThis property is required only if `ServiceEnabled` is set to `true` in your configuration policy.",
+      "description": "An object that defines which security controls are enabled in an AWS Security Hub CSPM configuration policy. The enablement status of a control is aligned across all of the enabled standards in an account.\n\nThis property is required only if `ServiceEnabled` is set to `true` in your configuration policy.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securitycontrolsconfiguration.html"
     },
     "SecurityHubPolicy": {
@@ -125,11 +125,11 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securityhubpolicy.html#cfn-securityhub-configurationpolicy-securityhubpolicy-securitycontrolsconfiguration"
         },
         "ServiceEnabled": {
-          "description": "Indicates whether Security Hub is enabled in the policy.",
+          "description": "Indicates whether Security Hub CSPM is enabled in the policy.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securityhubpolicy.html#cfn-securityhub-configurationpolicy-securityhubpolicy-serviceenabled"
         }
       },
-      "description": "An object that defines how Security Hub is configured. The configuration policy includes whether Security Hub is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub enables all other controls (including newly released controls).",
+      "description": "An object that defines how AWS Security Hub CSPM is configured. The configuration policy includes whether Security Hub CSPM is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub CSPM disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub CSPM enables all other controls (including newly released controls).",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-securityhubpolicy.html"
     },
     "Tags": {
@@ -137,7 +137,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityhub-configurationpolicy-tags.html"
     }
   },
-  "description": "The `AWS::SecurityHub::ConfigurationPolicy` resource creates a central configuration policy with the defined settings. Only the Security Hub delegated administrator can create this resource in the home Region. For more information, see [Central configuration in Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html) in the *Security Hub User Guide* .",
+  "description": "The `AWS::SecurityHub::ConfigurationPolicy` resource creates a central configuration policy with the defined settings. Only the AWS Security Hub CSPM delegated administrator can create this resource in the home Region. For more information, see [Central configuration in Security Hub CSPM](https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html) in the *AWS Security Hub CSPM User Guide* .",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html",
   "id": "aws-securityhub-configurationpolicy",
   "properties": {
@@ -145,7 +145,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-arn"
     },
     "ConfigurationPolicy": {
-      "description": "An object that defines how Security Hub is configured. It includes whether Security Hub is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub enables all other controls (including newly released controls).",
+      "description": "An object that defines how AWS Security Hub CSPM is configured. It includes whether Security Hub CSPM is enabled or disabled, a list of enabled security standards, a list of enabled or disabled security controls, and a list of custom parameter values for specified controls. If you provide a list of security controls that are enabled in the configuration policy, Security Hub CSPM disables all other controls (including newly released controls). If you provide a list of security controls that are disabled in the configuration policy, Security Hub CSPM enables all other controls (including newly released controls).",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-configurationpolicy"
     },
     "CreatedAt": {
@@ -166,7 +166,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-serviceenabled"
     },
     "Tags": {
-      "description": "User-defined tags associated with a configuration policy. For more information, see [Tagging Security Hub resources](https://docs.aws.amazon.com/securityhub/latest/userguide/tagging-resources.html) in the *Security Hub user guide* .",
+      "description": "User-defined tags associated with a configuration policy. For more information, see [Tagging AWS Security Hub CSPM resources](https://docs.aws.amazon.com/securityhub/latest/userguide/tagging-resources.html) in the *Security Hub CSPM user guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-configurationpolicy.html#cfn-securityhub-configurationpolicy-tags"
     },
     "UpdatedAt": {

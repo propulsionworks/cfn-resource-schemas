@@ -18,16 +18,16 @@
         "description": "The latest version references of the image."
       },
       "LatestVersion.Arn": {
-        "description": "The Amazon Resource Name (ARN) of the image.\n\n> Semantic versioning is included in each object's Amazon Resource Name (ARN), at the level that applies to that object as follows:\n> \n> - Versionless ARNs and Name ARNs do not include specific values in any of the nodes. The nodes are either left off entirely, or they are specified as wildcards, for example: x.x.x.\n> - Version ARNs have only the first three nodes: <major>.<minor>.<patch>\n> - Build version ARNs have all four nodes, and point to a specific build for a specific version of an object."
+        "description": "The latest version Amazon Resource Name (ARN) of the Image Builder resource."
       },
       "LatestVersion.Major": {
-        "description": "The latest version ARN of the created image, with the same major version."
+        "description": "The latest version Amazon Resource Name (ARN) with the same `major` version of the Image Builder resource."
       },
       "LatestVersion.Minor": {
-        "description": "The latest version ARN of the created image, with the same minor version."
+        "description": "The latest version Amazon Resource Name (ARN) with the same `minor` version of the Image Builder resource."
       },
       "LatestVersion.Patch": {
-        "description": "The latest version ARN of the created image, with the same patch version."
+        "description": "The latest version Amazon Resource Name (ARN) with the same `patch` version of the Image Builder resource."
       }
     }
   },
@@ -35,11 +35,11 @@
     "DeletionSettings": {
       "properties": {
         "ExecutionRole": {
-          "description": "The execution role to use for deleting the image, as well as underlying resources.",
+          "description": "The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to delete the image and its underlying resources.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-deletionsettings.html#cfn-imagebuilder-image-deletionsettings-executionrole"
         }
       },
-      "description": "The deletion settings of the image, indicating whether to delete the underlying resources in addition to the image.",
+      "description": "Contains deletion settings of underlying resources of an image when it is replaced or deleted, including its Amazon Machine Images (AMIs), snapshots, or containers.\n\n> If you specify the `Retain` option in the [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-attribute-updatereplacepolicy.html) or [UpdateReplacePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-attribute-deletionpolicy.html) , the deletion of underlying resources will not be executed.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-deletionsettings.html"
     },
     "EcrConfiguration": {
@@ -69,15 +69,15 @@
     "ImagePipelineExecutionSettings": {
       "properties": {
         "DeploymentId": {
-          "description": "The deployment ID of the pipeline, used to trigger new image pipeline executions.",
+          "description": "The deployment identifier of the pipeline, utilized to initiate new image pipeline executions.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagepipelineexecutionsettings.html#cfn-imagebuilder-image-imagepipelineexecutionsettings-deploymentid"
         },
         "OnUpdate": {
-          "description": "Whether to trigger the image pipeline when the pipeline is updated. False by default.",
+          "description": "Defines whether the pipeline should be executed upon pipeline updates. False by default.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagepipelineexecutionsettings.html#cfn-imagebuilder-image-imagepipelineexecutionsettings-onupdate"
         }
       },
-      "description": "The settings for starting an image pipeline execution.",
+      "description": "Contains settings for starting an image pipeline execution.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagepipelineexecutionsettings.html"
     },
     "ImageScanningConfiguration": {
@@ -111,23 +111,23 @@
     "LatestVersion": {
       "properties": {
         "Arn": {
-          "description": "The Amazon Resource Name (ARN) of the image.\n\n> Semantic versioning is included in each object's Amazon Resource Name (ARN), at the level that applies to that object as follows:\n> \n> - Versionless ARNs and Name ARNs do not include specific values in any of the nodes. The nodes are either left off entirely, or they are specified as wildcards, for example: x.x.x.\n> - Version ARNs have only the first three nodes: <major>.<minor>.<patch>\n> - Build version ARNs have all four nodes, and point to a specific build for a specific version of an object.",
+          "description": "The latest version Amazon Resource Name (ARN) of the Image Builder resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-arn"
         },
         "Major": {
-          "description": "The latest version ARN of the created image, with the same major version.",
+          "description": "The latest version Amazon Resource Name (ARN) with the same `major` version of the Image Builder resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-major"
         },
         "Minor": {
-          "description": "The latest version ARN of the created image, with the same minor version.",
+          "description": "The latest version Amazon Resource Name (ARN) with the same `minor` version of the Image Builder resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-minor"
         },
         "Patch": {
-          "description": "The latest version ARN of the created image, with the same patch version.",
+          "description": "The latest version Amazon Resource Name (ARN) with the same `patch` version of the Image Builder resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-patch"
         }
       },
-      "description": "The latest version references of the image.",
+      "description": "The resource ARNs with different wildcard variations of semantic versioning.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html"
     },
     "WorkflowConfiguration": {
@@ -183,7 +183,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-containerrecipearn"
     },
     "DeletionSettings": {
-      "description": "The deletion settings of the image, indicating whether to delete the underlying resources in addition to the image.",
+      "description": "Enables deletion of underlying resources of an image when it is replaced or deleted, including its Amazon Machine Images (AMIs), snapshots, or containers.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-deletionsettings"
     },
     "DistributionConfigurationArn": {
@@ -202,7 +202,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-imageid"
     },
     "ImagePipelineExecutionSettings": {
-      "description": "The settings for starting an image pipeline execution.",
+      "description": "The image pipeline execution settings of the image.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-imagepipelineexecutionsettings"
     },
     "ImageRecipeArn": {

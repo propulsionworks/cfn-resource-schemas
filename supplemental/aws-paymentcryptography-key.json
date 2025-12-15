@@ -8,7 +8,8 @@
       },
       "KeyState": {
         "description": "The state of key that is being created or deleted."
-      }
+      },
+      "ReplicationStatus": {}
     }
   },
   "definitions": {
@@ -95,6 +96,10 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-keyorigin.html"
     },
+    "KeyReplicationState": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-keyreplicationstate.html"
+    },
     "KeyState": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-keystate.html"
@@ -102,6 +107,24 @@
     "KeyUsage": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-keyusage.html"
+    },
+    "ReplicationStatus": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatus.html"
+    },
+    "ReplicationStatusType": {
+      "properties": {
+        "Status": {
+          "description": "The current status of key replication in this AWS Region .\n\nThis field indicates whether the key replication is in progress, completed successfully, or has encountered an error. Possible values include states such as `SYNCRHONIZED` , `IN_PROGRESS` , `DELETE_IN_PROGRESS` , or `FAILED` . This provides visibility into the replication process for monitoring and troubleshooting purposes.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatustype.html#cfn-paymentcryptography-key-replicationstatustype-status"
+        },
+        "StatusMessage": {
+          "description": "A message that provides additional information about the current replication status of the key.\n\nThis field contains details about any issues or progress updates related to key replication operations. It may include information about replication failures, synchronization status, or other operational details.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatustype.html#cfn-paymentcryptography-key-replicationstatustype-statusmessage"
+        }
+      },
+      "description": "Represents the replication status information for a key in a replication region for [Multi-Region key replication](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-multi-region-replication.html) .\n\nThis structure contains details about the current state of key replication, including any status messages and operational information about the replication process.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatustype.html"
     },
     "Tag": {
       "properties": {
@@ -147,6 +170,13 @@
     },
     "KeyState": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-paymentcryptography-key.html#cfn-paymentcryptography-key-keystate"
+    },
+    "ReplicationRegions": {
+      "description": "The list of AWS Regions to remove from the key's replication configuration.\n\nThe key will no longer be available for cryptographic operations in these regions after removal. Ensure no active operations depend on the key in these regions before removal.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-paymentcryptography-key.html#cfn-paymentcryptography-key-replicationregions"
+    },
+    "ReplicationStatus": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-paymentcryptography-key.html#cfn-paymentcryptography-key-replicationstatus"
     },
     "Tags": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-paymentcryptography-key.html#cfn-paymentcryptography-key-tags"

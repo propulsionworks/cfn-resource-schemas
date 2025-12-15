@@ -1,6 +1,6 @@
 {
   "$id": "aws-transfer-connector",
-  "$integrity": "sha512-y8fNq001DDdYfSqxzRvCkHjF0ZSpoVKX9z51iGy3EPQl5IHn2SvDvPao+bcEHZRtM3E5GCd3s/rEis9ITt1XbA==",
+  "$integrity": "sha512-kz8juh4Yxuv0weN9MFbQM3jT8DOIJnPKiLh9tlcjk2ueuQmij2ZCyu+VLiOHBjHhTX0jdEG7dHkI2CyxaXDBYg==",
   "additionalProperties": false,
   "definitions": {
     "ConnectorEgressConfig": {
@@ -248,6 +248,11 @@
       "$ref": "#/definitions/ConnectorEgressType",
       "description": "Specifies the egress type for the connector."
     },
+    "ErrorMessage": {
+      "description": "Detailed error message when Connector in ERRORED status",
+      "maxLength": 2048,
+      "type": "string"
+    },
     "LoggingRole": {
       "description": "Specifies the logging role for the connector.",
       "maxLength": 2048,
@@ -323,7 +328,8 @@
     "/properties/Arn",
     "/properties/ConnectorId",
     "/properties/ServiceManagedEgressIpAddresses",
-    "/properties/Status"
+    "/properties/Status",
+    "/properties/ErrorMessage"
   ],
   "required": [
     "AccessRole"

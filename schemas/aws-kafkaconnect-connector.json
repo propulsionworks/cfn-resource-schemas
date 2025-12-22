@@ -1,6 +1,6 @@
 {
   "$id": "aws-kafkaconnect-connector",
-  "$integrity": "sha512-bX5sIS3IcYf6B0zRmlANA1PYY7ktA8t3ev75inOiYXrORpJeH/DVJI0NWNlqlmvK5FScM8oFTTCN1mfKtbt/6A==",
+  "$integrity": "sha512-WqiKN9sAvqwu0aFpu24KInZT3dmmE0+Erdqk4jPn05VnnSKNU/KayiMKrhnum2PlIWMWNEIVw+ZfK/oaXbJPbQ==",
   "additionalIdentifiers": [
     [
       "/properties/ConnectorName"
@@ -17,7 +17,8 @@
     "/properties/LogDelivery",
     "/properties/Plugins",
     "/properties/ServiceExecutionRoleArn",
-    "/properties/WorkerConfiguration"
+    "/properties/WorkerConfiguration",
+    "/properties/NetworkType"
   ],
   "definitions": {
     "ApacheKafkaCluster": {
@@ -520,6 +521,14 @@
     },
     "LogDelivery": {
       "$ref": "#/definitions/LogDelivery"
+    },
+    "NetworkType": {
+      "description": "The network type of the Connector.",
+      "enum": [
+        "IPV4",
+        "DUAL"
+      ],
+      "type": "string"
     },
     "Plugins": {
       "description": "List of plugins to use with the connector.",

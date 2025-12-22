@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-capacityprovider",
-  "$integrity": "sha512-5YCxxs9M6MHFXtE4F0gtF1C3Afx+hgAX9SzRAi/M7Aw2KrNE3kRa1Ck9PAsLcuQrsSMOiXp/VlYFumQlQIMbfA==",
+  "$integrity": "sha512-fck0DVcMhwDyizM/hW85Rj0O3SLkg1Oe+uC4zVsH8+C5kz3H+49Xo+lu0SAowEVVwnYBgk7Y8vp/0NnSMC4WLg==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/ManagedInstancesProvider/InstanceLaunchTemplate/CapacityOptionType"
@@ -79,6 +79,13 @@
     "InstanceLaunchTemplate": {
       "additionalProperties": false,
       "properties": {
+        "CapacityOptionType": {
+          "enum": [
+            "ON_DEMAND",
+            "SPOT"
+          ],
+          "type": "string"
+        },
         "Ec2InstanceProfileArn": {
           "type": "string"
         },

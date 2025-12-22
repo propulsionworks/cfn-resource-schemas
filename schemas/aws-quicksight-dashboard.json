@@ -1,6 +1,6 @@
 {
   "$id": "aws-quicksight-dashboard",
-  "$integrity": "sha512-kpe/Ph/PVeA2aYfZyf+wrZFlnIAdMFp1xWKnFWDddF63YJkyMYjAQbrGTuMo96BZyh3HiBkxOGmbNvF3nP7vOw==",
+  "$integrity": "sha512-PdcN9zwgT6TCmfpOfac4zdTE/RFg3gogiWhDT8MEH5N+mPGSi8uxG9T2s0EXB64vL7akkBXERXvt/hU69fmL9g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AwsAccountId",
@@ -2334,7 +2334,7 @@
           "items": {
             "$ref": "#/definitions/ParameterDeclaration"
           },
-          "maxItems": 200,
+          "maxItems": 400,
           "minItems": 0,
           "type": "array"
         },
@@ -4475,6 +4475,11 @@
         "BackgroundStyle": {
           "$ref": "#/definitions/FreeFormLayoutElementBackgroundStyle"
         },
+        "BorderRadius": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
         "BorderStyle": {
           "$ref": "#/definitions/FreeFormLayoutElementBorderStyle"
         },
@@ -4493,6 +4498,11 @@
         },
         "LoadingAnimation": {
           "$ref": "#/definitions/LoadingAnimation"
+        },
+        "Padding": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
         },
         "RenderingRules": {
           "items": {
@@ -4553,6 +4563,12 @@
         },
         "Visibility": {
           "$ref": "#/definitions/Visibility"
+        },
+        "Width": {
+          "description": "String to encapsulate the most generic way Width can be formatted with whatever units (px, em etc)",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
         }
       },
       "type": "object"
@@ -5695,6 +5711,17 @@
     "GridLayoutElement": {
       "additionalProperties": false,
       "properties": {
+        "BackgroundStyle": {
+          "$ref": "#/definitions/GridLayoutElementBackgroundStyle"
+        },
+        "BorderRadius": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "BorderStyle": {
+          "$ref": "#/definitions/GridLayoutElementBorderStyle"
+        },
         "ColumnIndex": {
           "maximum": 35,
           "minimum": 0,
@@ -5714,6 +5741,14 @@
         "ElementType": {
           "$ref": "#/definitions/LayoutElementType"
         },
+        "LoadingAnimation": {
+          "$ref": "#/definitions/LoadingAnimation"
+        },
+        "Padding": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
         "RowIndex": {
           "maximum": 9009,
           "minimum": 0,
@@ -5723,6 +5758,9 @@
           "maximum": 21,
           "minimum": 1,
           "type": "number"
+        },
+        "SelectedBorderStyle": {
+          "$ref": "#/definitions/GridLayoutElementBorderStyle"
         }
       },
       "required": [
@@ -5731,6 +5769,38 @@
         "ElementType",
         "RowSpan"
       ],
+      "type": "object"
+    },
+    "GridLayoutElementBackgroundStyle": {
+      "additionalProperties": false,
+      "properties": {
+        "Color": {
+          "pattern": "^#[A-F0-9]{6}(?:[A-F0-9]{2})?$",
+          "type": "string"
+        },
+        "Visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "type": "object"
+    },
+    "GridLayoutElementBorderStyle": {
+      "additionalProperties": false,
+      "properties": {
+        "Color": {
+          "pattern": "^#[A-F0-9]{6}(?:[A-F0-9]{2})?$",
+          "type": "string"
+        },
+        "Visibility": {
+          "$ref": "#/definitions/Visibility"
+        },
+        "Width": {
+          "description": "String to encapsulate the most generic way Width can be formatted with whatever units (px, em etc)",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "GridLayoutScreenCanvasSizeOptions": {

@@ -1,12 +1,13 @@
 {
   "$id": "aws-lex-botalias",
-  "$integrity": "sha512-F/MkTJEbzT4fRbd5vIyPkJcTHUsZs9HvWszV7b46HhjFzBKXDI8PsSRjGwiHr0naeupKJl2TxtiE7/+eCVlNTQ==",
+  "$integrity": "sha512-ZvXmx4eJS3PbnjlhoOsMj9+9Fghxe4mvYqZiuz0ZsZ0hMTdtIFbsu9prcW0ZY+jNPFKzpj9zbxaduAxXb+s1+g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BotId"
   ],
   "definitions": {
     "Arn": {
+      "description": "The Amazon Resource Name (ARN) of the bot alias.",
       "maxLength": 1000,
       "type": "string"
     },
@@ -304,12 +305,15 @@
       "uniqueItems": true
     }
   },
-  "description": "A Bot Alias enables you to change the version of a bot without updating applications that use the bot",
+  "description": "Resource Type definition for a Bot Alias, which enables you to change the version of a bot without updating applications that use the bot",
   "handlers": {
     "create": {
       "permissions": [
         "lex:CreateBotAlias",
-        "lex:DescribeBot"
+        "lex:DescribeBot",
+        "lex:DescribeBotAlias",
+        "lex:TagResource",
+        "lex:ListTagsForResource"
       ]
     },
     "delete": {
@@ -319,12 +323,14 @@
     },
     "list": {
       "permissions": [
-        "lex:ListBotAliases"
+        "lex:ListBotAliases",
+        "lex:ListTagsForResource"
       ]
     },
     "read": {
       "permissions": [
-        "lex:DescribeBotAlias"
+        "lex:DescribeBotAlias",
+        "lex:ListTagsForResource"
       ]
     },
     "update": {
@@ -404,9 +410,17 @@
     "BotAliasName"
   ],
   "sourceUrl": "https://docs.aws.amazon.com/lexv2/latest/dg/API_CreateBotAlias.html",
-  "taggable": false,
-  "typeName": "AWS::Lex::BotAlias",
-  "writeOnlyProperties": [
-    "/properties/BotAliasTags"
-  ]
+  "tagging": {
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "lex:ListTagsForResource",
+      "lex:TagResource",
+      "lex:UntagResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/BotAliasTags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
+  "typeName": "AWS::Lex::BotAlias"
 }

@@ -1,6 +1,6 @@
 {
   "$id": "aws-connect-hoursofoperation",
-  "$integrity": "sha512-4NWMIb8f500GeOkacjW3V+BKItEdafrjImFmrMalVH9NK/a4rXh2/ZT3tKXW7PuoN8aVgh8F9Z5b8nqAn8MRdQ==",
+  "$integrity": "sha512-N9zNzPlmqChKXr27iEalkvf/aOGBSmYp3scJCfQUb314tCCP+cJXk6FguFKbYThI1wuSYImgEhCFqNJSgOOfpg==",
   "additionalProperties": false,
   "definitions": {
     "EffectiveFrom": {
@@ -67,6 +67,12 @@
         },
         "OverrideName": {
           "$ref": "#/definitions/OverrideName"
+        },
+        "OverrideType": {
+          "$ref": "#/definitions/OverrideType"
+        },
+        "RecurrenceConfig": {
+          "$ref": "#/definitions/RecurrenceConfig"
         }
       },
       "required": [
@@ -138,6 +144,44 @@
       ],
       "type": "object"
     },
+    "HoursOfOperationsIdentifier": {
+      "additionalProperties": false,
+      "description": "Identifier for hours of operation.",
+      "properties": {
+        "Id": {
+          "description": "The identifier for the hours of operation.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "The name of the hours of operation.",
+          "maxLength": 127,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "Id"
+      ],
+      "type": "object"
+    },
+    "MonthDayList": {
+      "description": "List of month days (-1 to 31) for recurrence pattern.",
+      "items": {
+        "maximum": 31,
+        "minimum": -1,
+        "type": "integer"
+      },
+      "type": "array"
+    },
+    "MonthList": {
+      "description": "List of months (1-12) for recurrence pattern.",
+      "items": {
+        "maximum": 12,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "type": "array"
+    },
     "OverrideConfig": {
       "description": "Configuration information for the hours of operation override: day, start time, and end time.",
       "insertionOrder": false,
@@ -181,6 +225,68 @@
         "Hours",
         "Minutes"
       ],
+      "type": "object"
+    },
+    "OverrideType": {
+      "description": "The type of hours of operation override.",
+      "enum": [
+        "STANDARD",
+        "OPEN",
+        "CLOSED"
+      ],
+      "type": "string"
+    },
+    "RecurrenceConfig": {
+      "additionalProperties": false,
+      "description": "Configuration for recurring hours of operation overrides.",
+      "properties": {
+        "RecurrencePattern": {
+          "$ref": "#/definitions/RecurrencePattern"
+        }
+      },
+      "required": [
+        "RecurrencePattern"
+      ],
+      "type": "object"
+    },
+    "RecurrenceFrequency": {
+      "description": "The frequency of recurrence for hours of operation overrides.",
+      "enum": [
+        "WEEKLY",
+        "MONTHLY",
+        "YEARLY"
+      ],
+      "type": "string"
+    },
+    "RecurrencePattern": {
+      "additionalProperties": false,
+      "description": "Pattern for recurring hours of operation overrides.",
+      "properties": {
+        "ByMonth": {
+          "$ref": "#/definitions/MonthList"
+        },
+        "ByMonthDay": {
+          "$ref": "#/definitions/MonthDayList"
+        },
+        "ByWeekdayOccurrence": {
+          "items": {
+            "maximum": 4,
+            "minimum": -1,
+            "type": "integer"
+          },
+          "maxItems": 1,
+          "minItems": 0,
+          "type": "array"
+        },
+        "Frequency": {
+          "$ref": "#/definitions/RecurrenceFrequency"
+        },
+        "Interval": {
+          "maximum": 6,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
       "type": "object"
     },
     "Tag": {
@@ -240,7 +346,8 @@
     "read": {
       "permissions": [
         "connect:DescribeHoursOfOperation",
-        "connect:ListHoursOfOperationOverrides"
+        "connect:ListHoursOfOperationOverrides",
+        "connect:ListChildHoursOfOperations"
       ]
     },
     "update": {
@@ -251,7 +358,9 @@
         "connect:DeleteHoursOfOperationOverride",
         "connect:ListHoursOfOperationOverrides",
         "connect:TagResource",
-        "connect:UntagResource"
+        "connect:UntagResource",
+        "connect:AssociateHoursOfOperations",
+        "connect:DisassociateHoursOfOperations"
       ]
     }
   },
@@ -259,6 +368,14 @@
     "/properties/HoursOfOperationArn"
   ],
   "properties": {
+    "ChildHoursOfOperations": {
+      "description": "List of child hours of operations.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/HoursOfOperationsIdentifier"
+      },
+      "type": "array"
+    },
     "Config": {
       "description": "Configuration information for the hours of operation: day, start time, and end time.",
       "insertionOrder": false,
@@ -299,6 +416,14 @@
       "maxLength": 127,
       "minLength": 1,
       "type": "string"
+    },
+    "ParentHoursOfOperations": {
+      "description": "List of parent hours of operations.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/HoursOfOperationsIdentifier"
+      },
+      "type": "array"
     },
     "Tags": {
       "description": "One or more tags.",

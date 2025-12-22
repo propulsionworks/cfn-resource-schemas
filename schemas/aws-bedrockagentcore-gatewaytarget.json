@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-gatewaytarget",
-  "$integrity": "sha512-0lL1jczjZ9GjF7QLh33yL1o5KU8UAQxeBXAIXTZd0xMx2o+hGyQc05xFLb0N4Ff6F9rpWPiOlGLKpaVPW0B42w==",
+  "$integrity": "sha512-3ZgGOfzn4bhjOlTJA5wXzAX+KgIEi+kBQCJbHBAdbvNefEQHgx//RE8RcPY+A866RawdFIkl2aH8lh7UBvZwxw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/GatewayIdentifier"
@@ -216,6 +216,16 @@
         "CustomParameters": {
           "$ref": "#/definitions/OAuthCustomParameters"
         },
+        "DefaultReturnUrl": {
+          "description": "Return URL for OAuth callback.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "pattern": "\\w+:(\\/?\\/?)[^\\s]+",
+          "type": "string"
+        },
+        "GrantType": {
+          "$ref": "#/definitions/OAuthGrantType"
+        },
         "ProviderArn": {
           "pattern": "^arn:([^:]*):([^:]*):([^:]*):([0-9]{12})?:(.+)$",
           "type": "string"
@@ -248,6 +258,13 @@
         }
       },
       "type": "object"
+    },
+    "OAuthGrantType": {
+      "enum": [
+        "AUTHORIZATION_CODE",
+        "CLIENT_CREDENTIALS"
+      ],
+      "type": "string"
     },
     "S3Configuration": {
       "additionalProperties": false,
@@ -397,7 +414,7 @@
       ]
     }
   },
-  "description": "Definition of AWS::BedrockAgentCore::GatewayTarget Resource Type",
+  "description": "Resource Type definition for AWS::BedrockAgentCore::GatewayTarget",
   "handlers": {
     "create": {
       "permissions": [

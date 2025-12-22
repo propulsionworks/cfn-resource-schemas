@@ -1,7 +1,10 @@
 {
   "$id": "aws-fms-notificationchannel",
-  "$integrity": "sha512-SCFmbT/UWZV3EEgPDOQbDItU/hGBk7NfpMmGGcrcWNfM2C7I0+bSQIT3JKEObBSXHuHDvIBihFO/QIl6uIaIxQ==",
+  "$integrity": "sha512-xBs3MKQVTGRSEw9RIXfcItru9TA6dQsY7pbRmUsopcbMqGISsz4IiupRgDcQokFNpFAPiDlYj6y1YooYMFuT3w==",
   "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/SnsTopicArn"
+  ],
   "definitions": {
     "ResourceArn": {
       "description": "A resource ARN.",
@@ -16,11 +19,13 @@
     "create": {
       "permissions": [
         "fms:PutNotificationChannel",
-        "iam:PassRole"
+        "iam:PassRole",
+        "fms:GetNotificationChannel"
       ]
     },
     "delete": {
       "permissions": [
+        "fms:GetNotificationChannel",
         "fms:DeleteNotificationChannel"
       ]
     },
@@ -37,7 +42,8 @@
     "update": {
       "permissions": [
         "fms:PutNotificationChannel",
-        "iam:PassRole"
+        "iam:PassRole",
+        "fms:GetNotificationChannel"
       ]
     }
   },

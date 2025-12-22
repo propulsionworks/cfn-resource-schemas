@@ -1,6 +1,6 @@
 {
   "$id": "aws-logs-transformer",
-  "$integrity": "sha512-smWHrUWI3iHv+FhRoXVsJHKZRP92twjOQfs/6eIhToNlCGT19GgVBtQzI/om1yxauqkEnFNXwqj6067iy43GCA==",
+  "$integrity": "sha512-zt1HzGJcbOMNtZ7kp3aBNSGdCOJQszncXtgv1SIkPnGDPE4RygFi0CW8X1RlGPZCy5p/95bQumPB+h9dEKzHBg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/LogGroupIdentifier"
@@ -59,6 +59,12 @@
       ],
       "type": "string"
     },
+    "MappingVersion": {
+      "maxLength": 10,
+      "minLength": 1,
+      "pattern": "^v\\d+\\.\\d+(\\.\\d+)?$",
+      "type": "string"
+    },
     "MatchPattern": {
       "$ref": "#/definitions/NonEmptyString"
     },
@@ -96,7 +102,8 @@
     },
     "OcsfVersion": {
       "enum": [
-        "V1.1"
+        "V1.1",
+        "V1.5"
       ],
       "type": "string"
     },
@@ -132,6 +139,9 @@
       "properties": {
         "EventSource": {
           "$ref": "#/definitions/EventSource"
+        },
+        "MappingVersion": {
+          "$ref": "#/definitions/MappingVersion"
         },
         "OcsfVersion": {
           "$ref": "#/definitions/OcsfVersion"

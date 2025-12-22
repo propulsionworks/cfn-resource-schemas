@@ -1,6 +1,6 @@
 {
   "$id": "aws-route53resolver-resolverendpoint",
-  "$integrity": "sha512-G2dYdlaHWQ8mBkuuthKE0vDbFBnw0HQRQ1yngd4VllHyONlWWGc9HxjCtFRS87hk1k9BG2SNGyj948U+A7ymZw==",
+  "$integrity": "sha512-aGc8x0kK15gYlnxzauzADLVXhtBUPbLeQrxM7+9uZEUyIHrojEHV/ZCsckXpEBpGXhQJHHl4Px4vbY9cf98grA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Direction",
@@ -171,6 +171,10 @@
       ],
       "type": "string"
     },
+    "RniEnhancedMetricsEnabled": {
+      "description": "Specifies whether RNI enhanced metrics are enabled for the Resolver Endpoints. When set to true, one-minute granular metrics are published in CloudWatch for each RNI associated with this endpoint. When set to false, metrics are not published. Default is false.",
+      "type": "boolean"
+    },
     "SecurityGroupIds": {
       "description": "The ID of one or more security groups that control access to this VPC. The security group must include one or more inbound rules (for inbound endpoints) or outbound rules (for outbound endpoints). Inbound and outbound rules must allow TCP and UDP access. For inbound access, open port 53. For outbound access, open the port that you're using for DNS queries on your network.",
       "insertionOrder": false,
@@ -188,6 +192,10 @@
       },
       "type": "array",
       "uniqueItems": false
+    },
+    "TargetNameServerMetricsEnabled": {
+      "description": "Specifies whether target name server metrics are enabled for the Outbound Resolver Endpoint. When set to true, one-minute granular metrics are published in CloudWatch for each target name server associated with this endpoint. When set to false, metrics are not published. Default is false.",
+      "type": "boolean"
     }
   },
   "readOnlyProperties": [

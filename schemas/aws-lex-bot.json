@@ -1,6 +1,6 @@
 {
   "$id": "aws-lex-bot",
-  "$integrity": "sha512-7fvqqN1YIhyxcg1yPphJmQ6KV0uihV4DyzwG3djv/byOjt9QaxxwPbIXrspv3UBzBFxFtrR7p233EejIdJymsg==",
+  "$integrity": "sha512-v8pocSYk0ZusQBZHVtoPLLDJ+KRG2/X/9S2/hZgAAq/ZybDi/RqiLVjzO5ncSaQOK4VbX5muHN2BL07MpXmw7Q==",
   "additionalProperties": false,
   "definitions": {
     "AdvancedRecognitionSetting": {
@@ -283,6 +283,12 @@
           "maxItems": 250,
           "type": "array",
           "uniqueItems": true
+        },
+        "SpeechDetectionSensitivity": {
+          "$ref": "#/definitions/SpeechDetectionSensitivity"
+        },
+        "UnifiedSpeechSettings": {
+          "$ref": "#/definitions/UnifiedSpeechSettings"
         },
         "VoiceSettings": {
           "$ref": "#/definitions/VoiceSettings"
@@ -677,6 +683,11 @@
       },
       "type": "object"
     },
+    "DisplayName": {
+      "maxLength": 100,
+      "minLength": 1,
+      "type": "string"
+    },
     "ElicitationCodeHookInvocationSetting": {
       "additionalProperties": false,
       "properties": {
@@ -846,8 +857,18 @@
             "NluImprovementSpecification": {
               "additionalProperties": false,
               "properties": {
+                "AssistedNluMode": {
+                  "enum": [
+                    "Primary",
+                    "Fallback"
+                  ],
+                  "type": "string"
+                },
                 "Enabled": {
                   "type": "boolean"
+                },
+                "IntentDisambiguationSettings": {
+                  "$ref": "#/definitions/IntentDisambiguationSettings"
                 }
               },
               "required": [
@@ -990,10 +1011,13 @@
         },
         "Description": {
           "$ref": "#/definitions/Description",
-          "description": "Description of thr intent."
+          "description": "Resource Type definition for the intent."
         },
         "DialogCodeHook": {
           "$ref": "#/definitions/DialogCodeHookSetting"
+        },
+        "DisplayName": {
+          "$ref": "#/definitions/DisplayName"
         },
         "FulfillmentCodeHook": {
           "$ref": "#/definitions/FulfillmentCodeHookSetting"
@@ -1112,6 +1136,28 @@
       },
       "required": [
         "PromptSpecification"
+      ],
+      "type": "object"
+    },
+    "IntentDisambiguationSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "CustomDisambiguationMessage": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Enabled": {
+          "type": "boolean"
+        },
+        "MaxDisambiguationIntents": {
+          "maximum": 5,
+          "minimum": 2,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Enabled"
       ],
       "type": "object"
     },
@@ -2064,19 +2110,41 @@
     },
     "Specifications": {
       "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "SlotTypeId"
+          ]
+        },
+        {
+          "required": [
+            "SlotTypeName"
+          ]
+        }
+      ],
       "properties": {
         "SlotTypeId": {
           "$ref": "#/definitions/SlotTypeId"
+        },
+        "SlotTypeName": {
+          "$ref": "#/definitions/SlotTypeName"
         },
         "ValueElicitationSetting": {
           "$ref": "#/definitions/SubSlotValueElicitationSetting"
         }
       },
       "required": [
-        "SlotTypeId",
         "ValueElicitationSetting"
       ],
       "type": "object"
+    },
+    "SpeechDetectionSensitivity": {
+      "enum": [
+        "Default",
+        "HighNoiseTolerance",
+        "MaximumNoiseTolerance"
+      ],
+      "type": "string"
     },
     "StillWaitingResponseFrequency": {
       "maximum": 300,
@@ -2136,6 +2204,18 @@
     },
     "SubSlotTypeComposition": {
       "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "SlotTypeId"
+          ]
+        },
+        {
+          "required": [
+            "SlotTypeName"
+          ]
+        }
+      ],
       "properties": {
         "Name": {
           "maxLength": 100,
@@ -2145,11 +2225,13 @@
         },
         "SlotTypeId": {
           "$ref": "#/definitions/SlotTypeId"
+        },
+        "SlotTypeName": {
+          "$ref": "#/definitions/SlotTypeName"
         }
       },
       "required": [
-        "Name",
-        "SlotTypeId"
+        "Name"
       ],
       "type": "object"
     },
@@ -2276,6 +2358,30 @@
       "type": "array",
       "uniqueItems": true
     },
+    "UnifiedSpeechSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "SpeechFoundationModel": {
+          "additionalProperties": false,
+          "properties": {
+            "ModelArn": {
+              "type": "string"
+            },
+            "VoiceId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ModelArn"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeechFoundationModel"
+      ],
+      "type": "object"
+    },
     "Utterance": {
       "type": "string"
     },
@@ -2323,7 +2429,7 @@
       "type": "object"
     }
   },
-  "description": "Amazon Lex conversational bot performing automated tasks such as ordering a pizza, booking a hotel, and so on.",
+  "description": "Resource Type definition for an Amazon Lex conversational bot performing automated tasks such as ordering a pizza, booking a hotel, and so on.",
   "handlers": {
     "create": {
       "permissions": [
@@ -2334,6 +2440,7 @@
         "lex:DescribeImport",
         "lex:ListTagsForResource",
         "lex:TagResource",
+        "lex:UntagResource",
         "lex:CreateBot",
         "lex:CreateBotLocale",
         "lex:CreateIntent",
@@ -2361,13 +2468,26 @@
         "iam:GetRole",
         "lex:CreateBotReplica",
         "lex:DescribeBotReplica",
-        "lex:DeleteBotReplica"
+        "lex:DeleteBotReplica",
+        "lex:CreateBotAlias",
+        "lex:DescribeBotAlias",
+        "lex:ListBotAliases",
+        "lex:BuildBotLocale",
+        "s3:PutObject",
+        "kms:GenerateDataKey",
+        "kms:Decrypt",
+        "cloudwatch:PutMetricData",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
       ]
     },
     "delete": {
       "permissions": [
         "lex:DeleteBot",
+        "lex:BatchDeleteCustomVocabularyItem",
         "lex:DescribeBot",
+        "lex:DescribeBotAlias",
         "lex:DeleteBotLocale",
         "lex:DeleteIntent",
         "lex:DeleteSlotType",
@@ -2376,20 +2496,43 @@
         "lex:DeleteBotChannel",
         "lex:DeleteBotAlias",
         "lex:DeleteCustomVocabulary",
-        "lex:DeleteBotReplica"
+        "lex:DeleteBotReplica",
+        "lex:DeleteExport",
+        "lex:DeleteUtterances",
+        "lex:DeleteImport",
+        "lex:DeleteSession",
+        "lex:DeleteTestSet",
+        "lex:DeleteResourcePolicyStatement",
+        "lex:DeleteResourcePolicy",
+        "lex:UntagResource"
       ]
     },
     "list": {
       "permissions": [
         "lex:ListBots",
-        "lex:ListBotReplicas"
+        "lex:ListBotReplicas",
+        "lex:ListBotAliases",
+        "lex:ListBotLocales",
+        "lex:ListIntents",
+        "lex:ListSlots",
+        "lex:ListSlotTypes",
+        "lex:ListCustomVocabularies",
+        "lex:ListTagsForResource"
       ]
     },
     "read": {
       "permissions": [
         "lex:DescribeBot",
         "lex:ListTagsForResource",
-        "lex:DescribeBotReplica"
+        "lex:DescribeBotReplica",
+        "lex:ListBotAliases",
+        "lex:ListBotLocales",
+        "lex:ListIntents",
+        "lex:ListSlots",
+        "lex:ListSlotTypes",
+        "lex:ListCustomVocabularies",
+        "lex:DescribeBotAlias",
+        "lex:GetBotAlias"
       ]
     },
     "update": {
@@ -2427,7 +2570,12 @@
         "lex:UpdateBotAlias",
         "lex:CreateBotReplica",
         "lex:DescribeBotReplica",
-        "lex:DeleteBotReplica"
+        "lex:DeleteBotReplica",
+        "lex:CreateBotAlias",
+        "lex:DescribeBotAlias",
+        "lex:ListBotAliases",
+        "lex:UpdateBotAlias",
+        "s3:PutObject"
       ]
     }
   },
@@ -2529,14 +2677,25 @@
     "IdleSessionTTLInSeconds"
   ],
   "sourceUrl": "https://docs.aws.amazon.com/lexv2/latest/dg/build-create.html",
-  "taggable": true,
+  "tagging": {
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "lex:ListTagsForResource",
+      "lex:TagResource",
+      "lex:UntagResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/BotTags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::Lex::Bot",
   "writeOnlyProperties": [
     "/properties/BotLocales",
     "/properties/BotFileS3Location",
     "/properties/AutoBuildBotLocales",
-    "/properties/BotTags",
     "/properties/TestBotAliasTags",
-    "/properties/Replication"
+    "/properties/Replication",
+    "/properties/TestBotAliasSettings"
   ]
 }

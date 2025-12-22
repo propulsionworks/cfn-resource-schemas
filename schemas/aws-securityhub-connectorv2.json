@@ -1,6 +1,6 @@
 {
   "$id": "aws-securityhub-connectorv2",
-  "$integrity": "sha512-KyfFb5CuBGugmiUzF63n/2VkXX28jGQzXw5ihuOOw3N7vMQphfTcdI6cH6SIyOtcGsjrccSC/80CnRJI5tKntQ==",
+  "$integrity": "sha512-1KBTn7QZ4/TuZmS5Tz4M0Fkgvekss2Dj6N1rJls0GDnvSCf31ia1+NP4lk1ep65AWWrevNtwYL1Jb6ofVjRFpQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -9,7 +9,7 @@
   ],
   "definitions": {
     "AuthStatus": {
-      "description": "The auth status of the connector",
+      "description": "The authorization status of the connector",
       "enum": [
         "ACTIVE",
         "FAILED"
@@ -21,39 +21,30 @@
       "pattern": "^(\\d\\d\\d\\d)-([0][1-9]|[1][0-2])-([0][1-9]|[1-2](\\d)|[3][0-1])[T](?:([0-1](\\d)|[2][0-3]):[0-5](\\d):[0-5](\\d)|23:59:60)(?:\\.(\\d)+)?([Z]|[+-](\\d\\d)(:?(\\d\\d))?)$",
       "type": "string"
     },
+    "JiraCloudProviderConfiguration": {
+      "additionalProperties": false,
+      "description": "The initial configuration settings required to establish an integration between Security Hub and Jira Cloud",
+      "properties": {
+        "ProjectKey": {
+          "description": "The project key for a Jira Cloud instance",
+          "maxLength": 10,
+          "minLength": 2,
+          "type": "string"
+        }
+      },
+      "required": [
+        "ProjectKey"
+      ],
+      "type": "object"
+    },
     "Provider": {
-      "description": "The provider configuration of the connector",
+      "description": "The third-party provider configuration for the connector",
       "oneOf": [
         {
           "additionalProperties": false,
           "properties": {
             "JiraCloud": {
-              "additionalProperties": false,
-              "properties": {
-                "AuthStatus": {
-                  "$ref": "#/definitions/AuthStatus"
-                },
-                "AuthUrl": {
-                  "description": "The authUrl of the JiraCloud connector",
-                  "pattern": ".*\\S.*",
-                  "type": "string"
-                },
-                "CloudId": {
-                  "type": "string"
-                },
-                "Domain": {
-                  "type": "string"
-                },
-                "ProjectKey": {
-                  "maxLength": 10,
-                  "minLength": 2,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "ProjectKey"
-              ],
-              "type": "object"
+              "$ref": "#/definitions/JiraCloudProviderConfiguration"
             }
           },
           "required": [
@@ -65,29 +56,7 @@
           "additionalProperties": false,
           "properties": {
             "ServiceNow": {
-              "additionalProperties": false,
-              "properties": {
-                "AuthStatus": {
-                  "$ref": "#/definitions/AuthStatus"
-                },
-                "InstanceName": {
-                  "maxLength": 128,
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "SecretArn": {
-                  "description": "The ARN of secrets manager containing ClientId and ClientSecret",
-                  "maxLength": 2048,
-                  "minLength": 20,
-                  "pattern": ".*\\S.*",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "InstanceName",
-                "SecretArn"
-              ],
-              "type": "object"
+              "$ref": "#/definitions/ServiceNowProviderConfiguration"
             }
           },
           "required": [
@@ -95,6 +64,30 @@
           ],
           "type": "object"
         }
+      ],
+      "type": "object"
+    },
+    "ServiceNowProviderConfiguration": {
+      "additionalProperties": false,
+      "description": "The initial configuration settings required to establish an integration between Security Hub and ServiceNow ITSM",
+      "properties": {
+        "InstanceName": {
+          "description": "The instance name of ServiceNow ITSM",
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "SecretArn": {
+          "description": "The Amazon Resource Name (ARN) of the AWS Secrets Manager secret that contains the ServiceNow credentials",
+          "maxLength": 2048,
+          "minLength": 20,
+          "pattern": ".*\\S.*",
+          "type": "string"
+        }
+      },
+      "required": [
+        "InstanceName",
+        "SecretArn"
       ],
       "type": "object"
     },
@@ -225,12 +218,7 @@
     "/properties/ConnectorStatus",
     "/properties/LastUpdatedAt",
     "/properties/LastCheckedAt",
-    "/properties/CreatedAt",
-    "/properties/Provider/JiraCloud/Domain",
-    "/properties/Provider/JiraCloud/AuthUrl",
-    "/properties/Provider/JiraCloud/CloudId",
-    "/properties/Provider/JiraCloud/AuthStatus",
-    "/properties/Provider/ServiceNow/AuthStatus"
+    "/properties/CreatedAt"
   ],
   "required": [
     "Name",

@@ -3,13 +3,13 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-layout.html#aws-resource-cases-layout-return-values",
     "properties": {
       "CreatedTime": {
-        "description": "The time at which the layout was created."
+        "description": "Timestamp at which the resource was created."
       },
       "LastModifiedTime": {
-        "description": "The time at which the layout was created or last modified."
+        "description": "Timestamp at which the resource was created or last modified."
       },
       "LayoutArn": {
-        "description": "The Amazon Resource Name (ARN) of the layout."
+        "description": "The Amazon Resource Name (ARN) of the newly created layout."
       },
       "LayoutId": {
         "description": "The unique identifier of the layout."
@@ -20,59 +20,59 @@
     "BasicLayout": {
       "properties": {
         "MoreInfo": {
-          "description": "Sections within a panel or tab of the page layout.",
+          "description": "This represents sections in a tab of the page layout.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-basiclayout.html#cfn-cases-layout-basiclayout-moreinfo"
         },
         "TopPanel": {
-          "description": "Sections within a panel or tab of the page layout.",
+          "description": "This represents sections in a panel of the page layout.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-basiclayout.html#cfn-cases-layout-basiclayout-toppanel"
         }
       },
-      "description": "Defines the field layout for the agent's case interface. Configures which fields appear in the top panel (immediately visible) and More Info tab (expandable section) of the case view, allowing customization of the agent experience.",
+      "description": "Content specific to `BasicLayout` type. It configures fields in the top panel and More Info tab of agent application.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-basiclayout.html"
     },
     "FieldGroup": {
       "properties": {
         "Fields": {
-          "description": "An ordered list of fields to display in this group. The order determines the sequence in which fields appear in the agent interface. Each field is referenced by its unique field ID.",
+          "description": "Represents an ordered list containing field related information.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-fieldgroup.html#cfn-cases-layout-fieldgroup-fields"
         },
         "Name": {
-          "description": "A descriptive name for the field group. Helps organize related fields together in the layout interface.",
+          "description": "Name of the field group.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-fieldgroup.html#cfn-cases-layout-fieldgroup-name"
         }
       },
-      "description": "Consists of a group of fields and associated properties.",
+      "description": "Object for a group of fields and associated properties.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-fieldgroup.html"
     },
     "FieldItem": {
       "properties": {
         "Id": {
-          "description": "The unique identifier of a field.",
+          "description": "Unique identifier of a field.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-fielditem.html#cfn-cases-layout-fielditem-id"
         }
       },
-      "description": "Field specific properties.",
+      "description": "Object for field related information.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-fielditem.html"
     },
     "LayoutContent": {
       "properties": {},
-      "description": "Defines the layout structure and field organization for the case interface. Specifies which fields appear in the top panel and More Info tab, and their display order.",
+      "description": "Object to store union of different versions of layout content.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-layoutcontent.html"
     },
     "LayoutSections": {
       "properties": {
         "Sections": {
-          "description": "Defines the sections within a panel or tab. Contains field groups that organize related fields together.",
+          "description": "Ordered list containing different kinds of sections that can be added. A LayoutSections object can only contain one section.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-layoutsections.html#cfn-cases-layout-layoutsections-sections"
         }
       },
-      "description": "Sections within a panel or tab of the page layout.",
+      "description": "Ordered list containing different kinds of sections that can be added. A LayoutSections object can only contain one section.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-layoutsections.html"
     },
     "Section": {
       "properties": {},
-      "description": "A section can be a grouped list of fields.",
+      "description": "This represents a sections within a panel or tab of the page layout.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-section.html"
     },
     "Tag": {
@@ -91,12 +91,12 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-layout-tags.html"
     }
   },
-  "description": "A layout in the Cases domain. Layouts define the following configuration in the top section and More Info tab of the Cases user interface: Fields to display to the users and Field ordering.",
+  "description": "Creates a layout in the Cases domain. Layouts define the following configuration in the top section and More Info tab of the Cases user interface:\n\n- Fields to display to the users\n- Field ordering\n\n> Title and Status fields cannot be part of layouts since they are not configurable.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-layout.html",
   "id": "aws-cases-layout",
   "properties": {
     "Content": {
-      "description": "Defines the layout structure and field organization for the case interface. Specifies which fields appear in the top panel and More Info tab, and their display order.",
+      "description": "Object to store union of different versions of layout content.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-layout.html#cfn-cases-layout-content"
     },
     "CreatedTime": {
@@ -116,11 +116,11 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-layout.html#cfn-cases-layout-layoutid"
     },
     "Name": {
-      "description": "A descriptive name for the layout. Must be unique within the Cases domain and should clearly indicate the layout's purpose and field organization.",
+      "description": "The name of the layout.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-layout.html#cfn-cases-layout-name"
     },
     "Tags": {
-      "description": "The tags that you attach to this layout.",
+      "description": "An array of key-value pairs to apply to this resource.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-layout.html#cfn-cases-layout-tags"
     }
   },

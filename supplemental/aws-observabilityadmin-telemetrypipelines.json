@@ -2,10 +2,16 @@
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html#aws-resource-observabilityadmin-telemetrypipelines-return-values",
     "properties": {
-      "Arn": {},
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the created telemetry pipeline."
+      },
       "Pipeline": {},
-      "PipelineIdentifier": {},
-      "Status": {},
+      "PipelineIdentifier": {
+        "description": "The Amazon Resource Name (ARN) of the telemetry pipeline."
+      },
+      "Status": {
+        "description": "The current status of the telemetry pipeline."
+      },
       "StatusReason": {}
     }
   },
@@ -28,7 +34,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-observabilityadmin-telemetrypipelines-telemetrypipeline.html#cfn-observabilityadmin-telemetrypipelines-telemetrypipeline-arn"
         },
         "Configuration": {
-          "description": "The configuration that defines how the telemetry pipeline processes data.",
+          "description": "The configuration that defines how the telemetry pipeline processes data. For more information, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Creating-pipelines.html) .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-observabilityadmin-telemetrypipelines-telemetrypipeline.html#cfn-observabilityadmin-telemetrypipelines-telemetrypipeline-configuration"
         },
         "CreatedTimeStamp": {
@@ -88,7 +94,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-observabilityadmin-telemetrypipelines-unit.html"
     }
   },
-  "description": "Resource Type definition for AWS::ObservabilityAdmin::TelemetryPipelines",
+  "description": "Creates a telemetry pipeline for processing and transforming telemetry data. The pipeline defines how data flows from sources through processors to destinations, enabling data transformation and delivering capabilities.\n\n**Using CloudWatch as a pipeline source** The following is an example of a `Body` property value for the `Configuration` object. { \"Type\": \"AWS::ObservabilityAdmin::TelemetryPipelines\", \"Properties\": { \"Configuration\": { \"Body\": \"pipeline:\\n source:\\n cloudwatch_logs:\\n log_event_metadata:\\n data_source_name: \\\"my_data_source\\\"\\n data_source_type: \\\"default\\\"\\n aws:\\n sts_role_arn: \\\"arn:aws:iam::123456789012:role/MyPipelineAccessRole\\\"\\n processor:\\n - parse_json: {}\\n sink:\\n - cloudwatch_logs:\\n log_group: \\\"@original\\\"\" } }\n} Type: AWS::ObservabilityAdmin::TelemetryPipelines\nProperties: Configuration: Body: | pipeline: source: cloudwatch_logs: log_event_metadata: data_source_name: \"my_data_source\" data_source_type: \"default\" aws: sts_role_arn: \"arn:aws:iam::123456789012:role/MyPipelineAccessRole\" processor: - parse_json: {} sink: - cloudwatch_logs: log_group: \"@original\" **Using Amazon S3 as a pipeline source** The following is an example of a `Body` property value for the `Configuration` object. { \"Type\": \"AWS::ObservabilityAdmin::TelemetryPipelines\", \"Properties\": { \"Configuration\": { \"Body\": \"pipeline:\\n source:\\n s3:\\n sqs:\\n visibility_timeout: \\\"PT60S\\\"\\n visibility_duplication_protection: true\\n maximum_messages: 10\\n queue_url: \\\"https://sqs.us-east-1.amazonaws.com/123456789012/my-sqs-queue\\\"\\n notification_type: \\\"sqs\\\"\\n codec:\\n ndjson: {}\\n aws:\\n region: \\\"us-east-1\\\"\\n sts_role_arn: \\\"arn:aws:iam::123456789012:role/MyAccessRole\\\"\\n data_source_name: \\\"crowdstrike_falcon\\\"\\n processor:\\n - ocsf:\\n version: \\\"1.5\\\"\\n mapping_version: \\\"1.5.0\\\"\\n schema:\\n crowdstrike_falcon:\\n sink:\\n - cloudwatch_logs:\\n log_group: \\\"my-log-group\\\"\" } }\n} Type: AWS::ObservabilityAdmin::TelemetryPipelines\nProperties: Configuration: Body: | pipeline: source: s3: sqs: visibility_timeout: \"PT60S\" visibility_duplication_protection: true maximum_messages: 10 queue_url: \"https://sqs.us-east-1.amazonaws.com/123456789012/my-sqs-queue\" notification_type: \"sqs\" codec: ndjson: {} aws: region: \"us-east-1\" sts_role_arn: \"arn:aws:iam::123456789012:role/MyAccessRole\" data_source_name: \"crowdstrike_falcon\" processor: - ocsf: version: \"1.5\" mapping_version: \"1.5.0\" schema: crowdstrike_falcon: sink: - cloudwatch_logs: log_group: \"my-log-group\"",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html",
   "id": "aws-observabilityadmin-telemetrypipelines",
   "properties": {
@@ -96,9 +102,11 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html#cfn-observabilityadmin-telemetrypipelines-arn"
     },
     "Configuration": {
+      "description": "The configuration that defines how the telemetry pipeline processes data, including sources, processors, and destinations. For more information, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Creating-pipelines.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html#cfn-observabilityadmin-telemetrypipelines-configuration"
     },
     "Name": {
+      "description": "The name of the telemetry pipeline to create. The name must be unique within your account.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html#cfn-observabilityadmin-telemetrypipelines-name"
     },
     "Pipeline": {
@@ -114,7 +122,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html#cfn-observabilityadmin-telemetrypipelines-statusreason"
     },
     "Tags": {
-      "description": "An array of key-value pairs to apply to this resource",
+      "description": "The key-value pairs to associate with the telemetry pipeline resource for categorization and management purposes.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html#cfn-observabilityadmin-telemetrypipelines-tags"
     }
   },

@@ -3,16 +3,16 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#aws-resource-cases-template-return-values",
     "properties": {
       "CreatedTime": {
-        "description": "The time at which the template was created."
+        "description": "Timestamp at which the resource was created."
       },
       "LastModifiedTime": {
-        "description": "The time at which the template was created or last modified."
+        "description": "Timestamp at which the resource was created or last modified."
       },
       "TemplateArn": {
         "description": "The Amazon Resource Name (ARN) of the template."
       },
       "TemplateId": {
-        "description": "The unique identifier of a template."
+        "description": "A unique identifier of a template."
       }
     }
   },
@@ -20,21 +20,21 @@
     "LayoutConfiguration": {
       "properties": {
         "DefaultLayout": {
-          "description": "The unique identifier of a layout.",
+          "description": "Unique identifier of a layout.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-template-layoutconfiguration.html#cfn-cases-template-layoutconfiguration-defaultlayout"
         }
       },
-      "description": "Specifies the default layout to use when displaying cases created from this template. The layout determines which fields are visible and their arrangement in the agent interface.",
+      "description": "Object to store configuration of layouts associated to the template.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-template-layoutconfiguration.html"
     },
     "RequiredField": {
       "properties": {
         "FieldId": {
-          "description": "The unique identifier of a field.",
+          "description": "Unique identifier of a field.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-template-requiredfield.html#cfn-cases-template-requiredfield-fieldid"
         }
       },
-      "description": "Wrapper object containing a field identifier",
+      "description": "List of fields that must have a value provided to create a case.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-template-requiredfield.html"
     },
     "Tag": {
@@ -51,15 +51,15 @@
     "TemplateRule": {
       "properties": {
         "CaseRuleId": {
-          "description": "The unique identifier of a case rule.",
+          "description": "Unique identifier of a case rule.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-template-templaterule.html#cfn-cases-template-templaterule-caseruleid"
         },
         "FieldId": {
-          "description": "The ID of the field that this rule applies to.",
+          "description": "Unique identifier of a field.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-template-templaterule.html#cfn-cases-template-templaterule-fieldid"
         }
       },
-      "description": "Links a case rule to a specific field within this template. When specified, the rule's conditions will be evaluated for the associated field, controlling behavior like required status, visibility, or available options.",
+      "description": "An association representing a case rule acting upon a field. In the Amazon Connect admin website, case rules are known as *case field conditions* . For more information about case field conditions, see [Add case field conditions to a case template](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-template-templaterule.html"
     },
     "TemplateStatus": {
@@ -67,7 +67,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cases-template-templatestatus.html"
     }
   },
-  "description": "A template in the Cases domain. This template is used to define the case object model (that is, to define what data can be captured on cases) in a Cases domain. A template must have a unique name within a domain, and it must reference existing field IDs and layout IDs.",
+  "description": "Creates a template in the Cases domain. This template is used to define the case object model (that is, to define what data can be captured on cases) in a Cases domain. A template must have a unique name within a domain, and it must reference existing field IDs and layout IDs. Additionally, multiple fields with same IDs are not allowed within the same Template. A template can be either Active or Inactive, as indicated by its status. Inactive templates cannot be used to create cases.\n\nOther template APIs are:\n\n- [DeleteTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteTemplate.html)\n- [GetTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetTemplate.html)\n- [ListTemplates](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListTemplates.html)\n- [UpdateTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateTemplate.html)",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html",
   "id": "aws-cases-template",
   "properties": {
@@ -75,7 +75,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-createdtime"
     },
     "Description": {
-      "description": "A description explaining the purpose and use case for this template. Should indicate what types of cases this template is designed for and any specific workflow it supports.",
+      "description": "A brief description of the template.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-description"
     },
     "DomainId": {
@@ -86,11 +86,11 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-lastmodifiedtime"
     },
     "LayoutConfiguration": {
-      "description": "Specifies the default layout to use when displaying cases created from this template. The layout determines which fields are visible and their arrangement in the agent interface.",
+      "description": "Object to store configuration of layouts associated to the template.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-layoutconfiguration"
     },
     "Name": {
-      "description": "A name for the template. It must be unique per domain.",
+      "description": "The template name.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-name"
     },
     "RequiredFields": {
@@ -98,15 +98,15 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-requiredfields"
     },
     "Rules": {
-      "description": "A list of case rules (also known as case field conditions) on a template.",
+      "description": "A list of case rules (also known as [case field conditions](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html) ) on a template.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-rules"
     },
     "Status": {
-      "description": "The current status of the template. Active templates can be used to create new cases, while Inactive templates are disabled but preserved for existing cases.",
+      "description": "The status of the template.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-status"
     },
     "Tags": {
-      "description": "The tags that you attach to this template.",
+      "description": "An array of key-value pairs to apply to this resource.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html#cfn-cases-template-tags"
     },
     "TemplateArn": {

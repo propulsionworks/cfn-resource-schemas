@@ -133,10 +133,11 @@
     "InstanceLifecyclePolicy": {
       "properties": {
         "RetentionTriggers": {
-          "description": "",
+          "description": "Specifies the conditions that trigger instance retention behavior. These triggers determine when instances should move to a `Retained` state instead of automatic termination. This allows you to maintain control over instance management when lifecycles transition and operations fail.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-instancelifecyclepolicy.html#cfn-autoscaling-autoscalinggroup-instancelifecyclepolicy-retentiontriggers"
         }
       },
+      "description": "The instance lifecycle policy for the Auto Scaling group. This policy controls instance behavior when an instance transitions through its lifecycle states. Configure retention triggers to specify when instances should move to a `Retained` state instead of automatic termination.\n\nFor more information, see [Control instance retention with instance lifecycle policies](https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-lifecycle-policy.html) in the *Amazon EC2 Auto Scaling User Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-instancelifecyclepolicy.html"
     },
     "InstanceMaintenancePolicy": {
@@ -306,7 +307,7 @@
     "LaunchTemplateOverrides": {
       "properties": {
         "ImageId": {
-          "description": "",
+          "description": "The ID of the Amazon Machine Image (AMI) to use for instances launched with this override. When using Instance Refresh with `ReplaceRootVolume` strategy, this specifies the AMI for root volume replacement operations.\n\nFor `ReplaceRootVolume` operations:\n\n- All overrides in the `MixedInstancesPolicy` must specify an ImageId\n- The AMI must contain only a single root volume\n- Root volume replacement doesn't support multi-volume AMIs",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplateoverrides.html#cfn-autoscaling-autoscalinggroup-launchtemplateoverrides-imageid"
         },
         "InstanceRequirements": {
@@ -496,9 +497,11 @@
     "RetentionTriggers": {
       "properties": {
         "TerminateHookAbandon": {
+          "description": "Specifies the action when a termination lifecycle hook is abandoned due to failure, timeout, or explicit abandonment (calling CompleteLifecycleAction).\n\nSet to `Retain` to move instances to a `Retained` state. Set to `Terminate` for default termination behavior.\n\nRetained instances don't count toward desired capacity and remain until you call `TerminateInstanceInAutoScalingGroup` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-retentiontriggers.html#cfn-autoscaling-autoscalinggroup-retentiontriggers-terminatehookabandon"
         }
       },
+      "description": "Defines the specific triggers that cause instances to be retained in a Retained state rather than terminated. Each trigger corresponds to a different failure scenario during the instance lifecycle. This allows fine-grained control over when to preserve instances for manual intervention.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-retentiontriggers.html"
     },
     "TagProperty": {
@@ -626,7 +629,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html#cfn-autoscaling-autoscalinggroup-instanceid"
     },
     "InstanceLifecyclePolicy": {
-      "description": "",
+      "description": "The instance lifecycle policy for the Auto Scaling group.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html#cfn-autoscaling-autoscalinggroup-instancelifecyclepolicy"
     },
     "InstanceMaintenancePolicy": {

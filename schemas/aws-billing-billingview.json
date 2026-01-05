@@ -1,9 +1,8 @@
 {
   "$id": "aws-billing-billingview",
-  "$integrity": "sha512-R+KMsgOThTejLRkHNFeyHPDRhmDhkmaoEH5sW6L6SFYlq+ANor5E+OulpOac9gkhZC+cWNlFaghM8hDmbBiubw==",
+  "$integrity": "sha512-5NM8z4MgYfzQ1MYpJZFReQcc3e4SLIvfo5+HObOp9/YmFBcWFL9plTV0u5PC72e3W73VIo9svNgnh+oKsGFHgg==",
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/SourceViews",
     "/properties/Description",
     "/properties/Name"
   ],
@@ -48,6 +47,11 @@
         "Value"
       ],
       "type": "object"
+    },
+    "Timestamp": {
+      "description": "The time in ISO 8601 format, UTC time (YYYY-MM-DDTHH:MM:SSZ).",
+      "format": "date-time",
+      "type": "string"
     }
   },
   "description": "A billing view is a container of cost & usage metadata.",
@@ -55,10 +59,12 @@
     "create": {
       "permissions": [
         "billing:CreateBillingView",
+        "billing:AssociateSourceViews",
         "billing:TagResource",
         "billing:ListTagsForResource",
         "billing:GetBillingView",
-        "billing:ListSourceViewsForBillingView"
+        "billing:ListSourceViewsForBillingView",
+        "billing:UseSourceView"
       ]
     },
     "delete": {
@@ -82,10 +88,13 @@
     "update": {
       "permissions": [
         "billing:UpdateBillingView",
+        "billing:DisassociateSourceViews",
+        "billing:AssociateSourceViews",
         "billing:GetBillingView",
         "billing:ListTagsForResource",
         "billing:TagResource",
         "billing:UntagResource",
+        "billing:UseSourceView",
         "billing:ListSourceViewsForBillingView"
       ]
     }
@@ -143,6 +152,18 @@
               "maxItems": 200,
               "minItems": 1,
               "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "TimeRange": {
+          "additionalProperties": false,
+          "properties": {
+            "BeginDateInclusive": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "EndDateInclusive": {
+              "$ref": "#/definitions/Timestamp"
             }
           },
           "type": "object"

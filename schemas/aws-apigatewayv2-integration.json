@@ -1,6 +1,6 @@
 {
   "$id": "aws-apigatewayv2-integration",
-  "$integrity": "sha512-uJL6g432KSs7/nxBkhUCz/VTsfRlj5fTdXQkLtDdtjqgNSfEF5AK1hq2kdw3dRhIusEXz8h2OkhMujc9QKU39A==",
+  "$integrity": "sha512-Fqv7FrCUoHC8yu+xeXFdZUkQFu+U6IS7pnUtcn0m0ziU+LLxLnWTwd+wjHU16FDGc5zhHjVjYKL/X01ZimyHgA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ApiId"
@@ -70,7 +70,7 @@
       "type": "object"
     }
   },
-  "description": "An example resource schema demonstrating some basic constructs and validation rules.",
+  "description": "Resource Type definition for AWS::ApiGatewayV2::Integration",
   "handlers": {
     "create": {
       "permissions": [
@@ -136,6 +136,7 @@
     },
     "CredentialsArn": {
       "description": "Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string arn:aws:iam::*:user/*. To use resource-based permissions on supported AWS services, don't specify this parameter.",
+      "pattern": "arn:(aws|aws-cn|aws-us-gov):iam::[0-9]*:(role|user|group)\\/.*",
       "type": "string"
     },
     "Description": {

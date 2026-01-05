@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-memory",
-  "$integrity": "sha512-0LzGinfMQD+QCFF7HaEMCVyags6vXZx6Y4IZSX8wKMf5b6K4S/q194kMOQXTq3BVN5GVmean00UIbiHRkV0jew==",
+  "$integrity": "sha512-ItwI/rzPcKBYBACiatMZEXZx1tL96QV7UXjKErvJMhaC2Bs1Nv7xz63t8abTYIu6A6AUOBRbgbpu6tZoIc2kaA==",
   "additionalIdentifiers": [
     [
       "/properties/MemoryId"
@@ -30,6 +30,9 @@
       "maxProperties": 1,
       "minProperties": 1,
       "properties": {
+        "EpisodicOverride": {
+          "$ref": "#/definitions/EpisodicOverride"
+        },
         "SelfManagedConfiguration": {
           "$ref": "#/definitions/SelfManagedConfiguration"
         },
@@ -112,7 +115,8 @@
             "SEMANTIC",
             "SUMMARIZATION",
             "USER_PREFERENCE",
-            "CUSTOM"
+            "CUSTOM",
+            "EPISODIC"
           ],
           "type": "string"
         },
@@ -130,6 +134,142 @@
     "Description": {
       "description": "Description of the Memory resource",
       "type": "string"
+    },
+    "EpisodicMemoryStrategy": {
+      "additionalProperties": false,
+      "properties": {
+        "CreatedAt": {
+          "description": "Creation timestamp of the memory strategy",
+          "format": "date-time",
+          "type": "string"
+        },
+        "Description": {
+          "$ref": "#/definitions/Description"
+        },
+        "Name": {
+          "$ref": "#/definitions/Name"
+        },
+        "Namespaces": {
+          "$ref": "#/definitions/NamespacesList"
+        },
+        "ReflectionConfiguration": {
+          "$ref": "#/definitions/EpisodicReflectionConfigurationInput"
+        },
+        "Status": {
+          "description": "Status of the memory strategy",
+          "enum": [
+            "CREATING",
+            "ACTIVE",
+            "DELETING",
+            "FAILED"
+          ],
+          "type": "string"
+        },
+        "StrategyId": {
+          "description": "Unique identifier for the memory strategy",
+          "minLength": 12,
+          "pattern": "^[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}$",
+          "type": "string"
+        },
+        "Type": {
+          "description": "Type of memory strategy",
+          "enum": [
+            "SEMANTIC",
+            "SUMMARIZATION",
+            "USER_PREFERENCE",
+            "CUSTOM",
+            "EPISODIC"
+          ],
+          "type": "string"
+        },
+        "UpdatedAt": {
+          "description": "Last update timestamp of the memory strategy",
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Name"
+      ],
+      "type": "object"
+    },
+    "EpisodicOverride": {
+      "additionalProperties": false,
+      "properties": {
+        "Consolidation": {
+          "$ref": "#/definitions/EpisodicOverrideConsolidationConfigurationInput"
+        },
+        "Extraction": {
+          "$ref": "#/definitions/EpisodicOverrideExtractionConfigurationInput"
+        },
+        "Reflection": {
+          "$ref": "#/definitions/EpisodicOverrideReflectionConfigurationInput"
+        }
+      },
+      "type": "object"
+    },
+    "EpisodicOverrideConsolidationConfigurationInput": {
+      "additionalProperties": false,
+      "properties": {
+        "AppendToPrompt": {
+          "$ref": "#/definitions/Prompt"
+        },
+        "ModelId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "AppendToPrompt",
+        "ModelId"
+      ],
+      "type": "object"
+    },
+    "EpisodicOverrideExtractionConfigurationInput": {
+      "additionalProperties": false,
+      "properties": {
+        "AppendToPrompt": {
+          "$ref": "#/definitions/Prompt"
+        },
+        "ModelId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "AppendToPrompt",
+        "ModelId"
+      ],
+      "type": "object"
+    },
+    "EpisodicOverrideReflectionConfigurationInput": {
+      "additionalProperties": false,
+      "properties": {
+        "AppendToPrompt": {
+          "$ref": "#/definitions/Prompt"
+        },
+        "ModelId": {
+          "type": "string"
+        },
+        "Namespaces": {
+          "$ref": "#/definitions/NamespacesList"
+        }
+      },
+      "required": [
+        "AppendToPrompt",
+        "ModelId"
+      ],
+      "type": "object"
+    },
+    "EpisodicReflectionConfigurationInput": {
+      "additionalProperties": false,
+      "properties": {
+        "Namespaces": {
+          "$ref": "#/definitions/NamespacesList"
+        }
+      },
+      "required": [
+        "Namespaces"
+      ],
+      "type": "object"
     },
     "ExtractionConfiguration": {
       "oneOf": [
@@ -188,6 +328,9 @@
       "properties": {
         "CustomMemoryStrategy": {
           "$ref": "#/definitions/CustomMemoryStrategy"
+        },
+        "EpisodicMemoryStrategy": {
+          "$ref": "#/definitions/EpisodicMemoryStrategy"
         },
         "SemanticMemoryStrategy": {
           "$ref": "#/definitions/SemanticMemoryStrategy"
@@ -327,7 +470,8 @@
             "SEMANTIC",
             "SUMMARIZATION",
             "USER_PREFERENCE",
-            "CUSTOM"
+            "CUSTOM",
+            "EPISODIC"
           ],
           "type": "string"
         },
@@ -400,7 +544,8 @@
           "enum": [
             "SEMANTIC_OVERRIDE",
             "SUMMARY_OVERRIDE",
-            "USER_PREFERENCE_OVERRIDE"
+            "USER_PREFERENCE_OVERRIDE",
+            "EPISODIC"
           ],
           "type": "string"
         }
@@ -463,7 +608,8 @@
             "SEMANTIC",
             "SUMMARIZATION",
             "USER_PREFERENCE",
-            "CUSTOM"
+            "CUSTOM",
+            "EPISODIC"
           ],
           "type": "string"
         },
@@ -640,7 +786,8 @@
             "SEMANTIC",
             "SUMMARIZATION",
             "USER_PREFERENCE",
-            "CUSTOM"
+            "CUSTOM",
+            "EPISODIC"
           ],
           "type": "string"
         },
@@ -821,7 +968,12 @@
     "/properties/MemoryStrategies/*/CustomMemoryStrategy/UpdatedAt",
     "/properties/MemoryStrategies/*/CustomMemoryStrategy/StrategyId",
     "/properties/MemoryStrategies/*/CustomMemoryStrategy/Status",
-    "/properties/MemoryStrategies/*/CustomMemoryStrategy/Type"
+    "/properties/MemoryStrategies/*/CustomMemoryStrategy/Type",
+    "/properties/MemoryStrategies/*/EpisodicMemoryStrategy/CreatedAt",
+    "/properties/MemoryStrategies/*/EpisodicMemoryStrategy/UpdatedAt",
+    "/properties/MemoryStrategies/*/EpisodicMemoryStrategy/StrategyId",
+    "/properties/MemoryStrategies/*/EpisodicMemoryStrategy/Status",
+    "/properties/MemoryStrategies/*/EpisodicMemoryStrategy/Type"
   ],
   "required": [
     "Name",

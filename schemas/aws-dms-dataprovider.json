@@ -1,6 +1,6 @@
 {
   "$id": "aws-dms-dataprovider",
-  "$integrity": "sha512-UfYq0Zp2eo5H59zJwQL8emBKCVOc14JE9efZRZ0O79IMtDsRIhPQUsK+w0au5/DNSxowXAjP0TTbGZFqX+NgoA==",
+  "$integrity": "sha512-jw+xeEffuH/aZoyZtszIpFwqCFEaxPaR4J/1UHL45gmAC5yzx04Z+ZxpAB+c+/+8iSNDnViApgZsra/SpMjkkQ==",
   "additionalIdentifiers": [
     [
       "/properties/DataProviderName"
@@ -44,6 +44,14 @@
         "none",
         "require",
         "verify-full"
+      ],
+      "type": "string"
+    },
+    "SybaseSslModeValue": {
+      "enum": [
+        "none",
+        "require",
+        "verify-ca"
       ],
       "type": "string"
     },
@@ -161,7 +169,8 @@
         "mongodb",
         "docdb",
         "db2",
-        "db2_zos"
+        "db2_zos",
+        "sybase"
       ],
       "type": "string"
     },
@@ -221,6 +230,11 @@
         {
           "required": [
             "IbmDb2zOsSettings"
+          ]
+        },
+        {
+          "required": [
+            "SybaseAseSettings"
           ]
         }
       ],
@@ -509,6 +523,36 @@
             "ServerName",
             "Port",
             "DatabaseName"
+          ],
+          "type": "object"
+        },
+        "SybaseAseSettings": {
+          "additionalProperties": false,
+          "description": "SybaseAseSettings property identifier.",
+          "properties": {
+            "CertificateArn": {
+              "type": "string"
+            },
+            "DatabaseName": {
+              "type": "string"
+            },
+            "EncryptPassword": {
+              "type": "boolean"
+            },
+            "Port": {
+              "type": "integer"
+            },
+            "ServerName": {
+              "type": "string"
+            },
+            "SslMode": {
+              "$ref": "#/definitions/SybaseSslModeValue"
+            }
+          },
+          "required": [
+            "ServerName",
+            "Port",
+            "SslMode"
           ],
           "type": "object"
         }

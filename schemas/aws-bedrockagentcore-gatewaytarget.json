@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-gatewaytarget",
-  "$integrity": "sha512-3ZgGOfzn4bhjOlTJA5wXzAX+KgIEi+kBQCJbHBAdbvNefEQHgx//RE8RcPY+A866RawdFIkl2aH8lh7UBvZwxw==",
+  "$integrity": "sha512-SM44vYAvextLeAxmffDb35qkkLcQRqmJamxjk8ibD21ddQxQPOBk1acCo1Ce8nbMWJUwEWMnR8VjBatkV7Gr0g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/GatewayIdentifier"
@@ -209,6 +209,30 @@
           "type": "object"
         }
       ]
+    },
+    "MetadataConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "AllowedQueryParameters": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "AllowedRequestHeaders": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "AllowedResponseHeaders": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
     },
     "OAuthCredentialProvider": {
       "additionalProperties": false,
@@ -497,6 +521,9 @@
     "LastSynchronizedAt": {
       "format": "date-time",
       "type": "string"
+    },
+    "MetadataConfiguration": {
+      "$ref": "#/definitions/MetadataConfiguration"
     },
     "Name": {
       "pattern": "^([0-9a-zA-Z][-]?){1,100}$",

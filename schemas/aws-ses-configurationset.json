@@ -1,6 +1,6 @@
 {
   "$id": "aws-ses-configurationset",
-  "$integrity": "sha512-Mgu6p/QY1PFOQLQzsorsFZ/o5kk0/i0VEfoCOM2X5AWQQ75CsoEuqj+HOIf+Qh4fHvorHW64b2UFt9YlT9rAtg==",
+  "$integrity": "sha512-0apkDbT2B/IRSCJtLfhmhgtEEJOXQPEa1hxWowR1ufHXlH7Spm6oTbJkftp+pOQ1XofNNoMH92dbJWm3Oht/vQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -95,6 +95,46 @@
           },
           "type": "array",
           "uniqueItems": false
+        },
+        "ValidationOptions": {
+          "additionalProperties": false,
+          "description": "An object that contains information about the validation options for your account.",
+          "properties": {
+            "ConditionThreshold": {
+              "additionalProperties": false,
+              "description": "The condition threshold settings for suppression validation.",
+              "properties": {
+                "ConditionThresholdEnabled": {
+                  "description": "Whether the condition threshold is enabled or disabled.",
+                  "pattern": "ENABLED|DISABLED",
+                  "type": "string"
+                },
+                "OverallConfidenceThreshold": {
+                  "additionalProperties": false,
+                  "description": "The overall confidence threshold settings.",
+                  "properties": {
+                    "ConfidenceVerdictThreshold": {
+                      "description": "The confidence verdict threshold level.",
+                      "pattern": "MEDIUM|HIGH|MANAGED",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ConfidenceVerdictThreshold"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "ConditionThresholdEnabled"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "ConditionThreshold"
+          ],
+          "type": "object"
         }
       },
       "type": "object"

@@ -1,6 +1,6 @@
 {
   "$id": "aws-dynamodb-globaltable",
-  "$integrity": "sha512-1LzteE6XI74Aauw8368g1ZvluEetprxEcnWoUuPyu37rJELrFF51qPm/e7AKooLmTmXsM2EzejkMEgfZHtwWNw==",
+  "$integrity": "sha512-0F7T8BGDrSdqXp6AxtSUbZryGTjc5GALFuDuRy+S/OJoXZgIH4bHY519RzutIWw3xV3ur+DJjaQ1aED3FOS4dQ==",
   "additionalIdentifiers": [
     [
       "/properties/Arn"
@@ -731,6 +731,9 @@
     "WriteProvisionedThroughputSettings": {
       "$ref": "#/definitions/WriteProvisionedThroughputSettings"
     }
+  },
+  "propertyTransform": {
+    "/properties/Replicas/*/GlobalTableSettingsReplicationMode": "GlobalTableSettingsReplicationMode $OR ($exists(GlobalTableSettingsReplicationMode) ? null : \"DISABLED\") $OR ($exists(GlobalTableSettingsReplicationMode) ? null : \"ENABLED_WITH_OVERRIDES\")"
   },
   "readOnlyProperties": [
     "/properties/Arn",

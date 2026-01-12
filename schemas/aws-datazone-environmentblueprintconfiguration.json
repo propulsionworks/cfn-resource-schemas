@@ -1,6 +1,6 @@
 {
   "$id": "aws-datazone-environmentblueprintconfiguration",
-  "$integrity": "sha512-lgGHdi1aajEkiOguST5cY10GSWXCODuVHdeZQEem27eviWDY1p7RJyn5/Ubj3FjEkyIWWmjbNo0vc8vFwDPcLw==",
+  "$integrity": "sha512-otTsqeL4whAGuN/4y7zMWCjNUhhhmrUe4ahx7lgOzLXrVjr2oKpwQHdRqfwoW4xGM6hZdK6I1vgxqa7fA2Ay+w==",
   "additionalIdentifiers": [
     [
       "/properties/DomainIdentifier",
@@ -159,6 +159,16 @@
       "pattern": "^arn:aws[^:]*:iam::(aws|\\d{12}):policy/[\\w+=,.@-]*$",
       "type": "string"
     },
+    "GlobalParameters": {
+      "additionalProperties": false,
+      "description": "Region-agnostic environment blueprint parameters.",
+      "patternProperties": {
+        ".+": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ManageAccessRoleArn": {
       "pattern": "^arn:aws[^:]*:iam::\\d{12}:role(/[a-zA-Z0-9+=,.@_-]+)*/[a-zA-Z0-9+=,.@_-]+$",
       "type": "string"
@@ -206,6 +216,7 @@
     "/properties/DomainIdentifier",
     "/properties/EnvironmentBlueprintIdentifier",
     "/properties/EnvironmentRolePermissionBoundary",
+    "/properties/GlobalParameters",
     "/properties/ProvisioningConfigurations"
   ]
 }

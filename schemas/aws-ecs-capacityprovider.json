@@ -1,12 +1,13 @@
 {
   "$id": "aws-ecs-capacityprovider",
-  "$integrity": "sha512-fck0DVcMhwDyizM/hW85Rj0O3SLkg1Oe+uC4zVsH8+C5kz3H+49Xo+lu0SAowEVVwnYBgk7Y8vp/0NnSMC4WLg==",
+  "$integrity": "sha512-bX3Fb5yrU1EjEok+s2VXVwBiWnxXmdgXmNTV3aXGlAbwW87oEBoXfq/Hx/SH3UOVH7VjZILtkeWFfYmYg2r/9Q==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/ManagedInstancesProvider/InstanceLaunchTemplate/CapacityOptionType"
   ],
   "createOnlyProperties": [
     "/properties/AutoScalingGroupProvider/AutoScalingGroupArn",
+    "/properties/ManagedInstancesProvider/InstanceLaunchTemplate/FipsEnabled",
     "/properties/Name",
     "/properties/ClusterName"
   ],
@@ -88,6 +89,9 @@
         },
         "Ec2InstanceProfileArn": {
           "type": "string"
+        },
+        "FipsEnabled": {
+          "type": "boolean"
         },
         "InstanceRequirements": {
           "$ref": "#/definitions/InstanceRequirementsRequest"
@@ -307,6 +311,7 @@
         }
       },
       "required": [
+        "SecurityGroups",
         "Subnets"
       ],
       "type": "object"

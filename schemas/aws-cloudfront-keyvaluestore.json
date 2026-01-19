@@ -1,6 +1,6 @@
 {
   "$id": "aws-cloudfront-keyvaluestore",
-  "$integrity": "sha512-zFz/AZxQfCNipnjw8t44Aoq3avVGjr6A9iaCF2L5Ylz2D6BpzNuBgYyvZUm/+cVgYimYGe+oF75bxTa1FmvDZA==",
+  "$integrity": "sha512-grug3e7CRmvo87uZpCpn/VCzuk2NCHhgGZ/ma7lPQNALNv6KDJaWAZxeRjIySr8ry3+u5xvedXnSeBHeXVRDhw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -24,6 +24,29 @@
         "SourceArn"
       ],
       "type": "object"
+    },
+    "Tag": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "Key": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$",
+          "type": "string"
+        },
+        "Value": {
+          "maxLength": 256,
+          "minLength": 0,
+          "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
     }
   },
   "description": "The key value store. Use this to separate data from function code, allowing you to update data without having to publish a new version of a function. The key value store holds keys and their corresponding values.",
@@ -32,6 +55,7 @@
       "permissions": [
         "cloudfront:CreateKeyValueStore",
         "cloudfront:DescribeKeyValueStore",
+        "cloudfront:TagResource",
         "s3:GetObject",
         "s3:HeadObject",
         "s3:GetBucketLocation"
@@ -50,13 +74,16 @@
     },
     "read": {
       "permissions": [
-        "cloudfront:DescribeKeyValueStore"
+        "cloudfront:DescribeKeyValueStore",
+        "cloudfront:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
         "cloudfront:UpdateKeyValueStore",
-        "cloudfront:DescribeKeyValueStore"
+        "cloudfront:DescribeKeyValueStore",
+        "cloudfront:TagResource",
+        "cloudfront:UntagResource"
       ]
     }
   },
@@ -87,6 +114,14 @@
     "Status": {
       "description": "",
       "type": "string"
+    },
+    "Tags": {
+      "description": "",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array"
     }
   },
   "readOnlyProperties": [
@@ -99,9 +134,15 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": false,
-    "tagOnCreate": false,
-    "tagUpdatable": false,
-    "taggable": false
+    "permissions": [
+      "cloudfront:TagResource",
+      "cloudfront:UntagResource",
+      "cloudfront:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
   },
   "typeName": "AWS::CloudFront::KeyValueStore",
   "writeOnlyProperties": [

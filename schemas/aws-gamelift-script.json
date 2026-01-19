@@ -1,8 +1,11 @@
 {
   "$id": "aws-gamelift-script",
-  "$integrity": "sha512-abwzPcw8hhF1hUKtU/VuI3tl9nWwNFc9ZOF/ftCy5+PSoJ1AVJW7etRbwWCnnti5ef0snae7R0k88j9ndG4VKA==",
+  "$integrity": "sha512-FS1qi549Dv3DAdIR7XkturOLgkbj9Qiu2Pbvlp05KIm4WD5A40x65Z1BLflUF/hDxlIxgieQUtlk9PCkaKNSTw==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
+  "createOnlyProperties": [
+    "/properties/NodeJsVersion"
+  ],
   "definitions": {
     "S3Location": {
       "$comment": "Contains object details present in the S3 Bucket",
@@ -122,6 +125,11 @@
       "description": "A descriptive label that is associated with a script. Script names do not need to be unique.",
       "maxLength": 1024,
       "minLength": 1,
+      "type": "string"
+    },
+    "NodeJsVersion": {
+      "description": "The Node.js version used for execution of the Realtime script.",
+      "pattern": "^\\d+\\.[x0-9]+$",
       "type": "string"
     },
     "SizeOnDisk": {

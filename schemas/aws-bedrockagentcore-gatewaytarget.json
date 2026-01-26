@@ -1,11 +1,94 @@
 {
   "$id": "aws-bedrockagentcore-gatewaytarget",
-  "$integrity": "sha512-SM44vYAvextLeAxmffDb35qkkLcQRqmJamxjk8ibD21ddQxQPOBk1acCo1Ce8nbMWJUwEWMnR8VjBatkV7Gr0g==",
+  "$integrity": "sha512-KC3SU/cWBipsWxrg16Gx5RfWVFQvOk5Kr/KGaobPPgnPT35rFjMZmvicB3+8wwftikDR6KJoh2ATrBCKZDPEfw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/GatewayIdentifier"
   ],
   "definitions": {
+    "ApiGatewayTargetConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "ApiGatewayToolConfiguration": {
+          "$ref": "#/definitions/ApiGatewayToolConfiguration"
+        },
+        "RestApiId": {
+          "type": "string"
+        },
+        "Stage": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "RestApiId",
+        "Stage",
+        "ApiGatewayToolConfiguration"
+      ],
+      "type": "object"
+    },
+    "ApiGatewayToolConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "ToolFilters": {
+          "items": {
+            "$ref": "#/definitions/ApiGatewayToolFilter"
+          },
+          "type": "array"
+        },
+        "ToolOverrides": {
+          "items": {
+            "$ref": "#/definitions/ApiGatewayToolOverride"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "ToolFilters"
+      ],
+      "type": "object"
+    },
+    "ApiGatewayToolFilter": {
+      "additionalProperties": false,
+      "properties": {
+        "FilterPath": {
+          "type": "string"
+        },
+        "Methods": {
+          "items": {
+            "$ref": "#/definitions/RestApiMethod"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "FilterPath",
+        "Methods"
+      ],
+      "type": "object"
+    },
+    "ApiGatewayToolOverride": {
+      "additionalProperties": false,
+      "properties": {
+        "Description": {
+          "type": "string"
+        },
+        "Method": {
+          "$ref": "#/definitions/RestApiMethod"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Name",
+        "Path",
+        "Method"
+      ],
+      "type": "object"
+    },
     "ApiKeyCredentialLocation": {
       "enum": [
         "HEADER",
@@ -207,6 +290,19 @@
           ],
           "title": "McpServer",
           "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "ApiGateway": {
+              "$ref": "#/definitions/ApiGatewayTargetConfiguration"
+            }
+          },
+          "required": [
+            "ApiGateway"
+          ],
+          "title": "ApiGateway",
+          "type": "object"
         }
       ]
     },
@@ -287,6 +383,18 @@
       "enum": [
         "AUTHORIZATION_CODE",
         "CLIENT_CREDENTIALS"
+      ],
+      "type": "string"
+    },
+    "RestApiMethod": {
+      "enum": [
+        "GET",
+        "DELETE",
+        "HEAD",
+        "OPTIONS",
+        "PATCH",
+        "PUT",
+        "POST"
       ],
       "type": "string"
     },
@@ -442,6 +550,7 @@
   "handlers": {
     "create": {
       "permissions": [
+        "apigateway:GET",
         "bedrock-agentcore:CreateGatewayTarget",
         "bedrock-agentcore:GetGatewayTarget",
         "bedrock-agentcore:GetResourceOauth2Token",
@@ -475,6 +584,7 @@
     },
     "update": {
       "permissions": [
+        "apigateway:GET",
         "bedrock-agentcore:GetGatewayTarget",
         "bedrock-agentcore:GetResourceOauth2Token",
         "bedrock-agentcore:GetWorkloadAccessToken",
@@ -562,7 +672,6 @@
     "/properties/UpdatedAt"
   ],
   "required": [
-    "CredentialProviderConfigurations",
     "Name",
     "TargetConfiguration"
   ],

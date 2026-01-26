@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchserverless-collection",
-  "$integrity": "sha512-LznHXHlPW2intKZo4YRV52zos27APhDJtTeWm0Z5sPr+11h8IIcOmmVAd/u8z/gviiQ4WuMP9kAyHszIChNGfw==",
+  "$integrity": "sha512-FS/rFsK1VA1qt8NnLp5ZkV7vp9E5ylP6XQ+jbdgwGVe0Z6dT+NUc3SEimb/razEWRcTfYLN8yeiahJptthpHQA==",
   "additionalIdentifiers": [
     [
       "/properties/Name"
@@ -14,7 +14,9 @@
     "/properties/Name",
     "/properties/Tags",
     "/properties/Type",
-    "/properties/StandbyReplicas"
+    "/properties/StandbyReplicas",
+    "/properties/CollectionGroupName",
+    "/properties/EncryptionConfig"
   ],
   "definitions": {
     "CollectionType": {
@@ -25,6 +27,21 @@
         "VECTORSEARCH"
       ],
       "type": "string"
+    },
+    "EncryptionConfig": {
+      "additionalProperties": false,
+      "description": "Encryption settings for the collection",
+      "properties": {
+        "AWSOwnedKey": {
+          "description": "Indicates whether to use an AWS owned key for encryption.",
+          "type": "boolean"
+        },
+        "KmsKeyArn": {
+          "description": "Key Management Service key used to encrypt the collection.",
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "StandbyReplicas": {
       "description": "The possible standby replicas for the collection",
@@ -64,7 +81,10 @@
       "permissions": [
         "aoss:CreateCollection",
         "aoss:BatchGetCollection",
-        "iam:CreateServiceLinkedRole"
+        "aoss:AddCollectionToCollectionGroup",
+        "iam:CreateServiceLinkedRole",
+        "kms:CreateGrant",
+        "kms:DescribeKey"
       ]
     },
     "delete": {
@@ -102,6 +122,10 @@
       "description": "The endpoint for the collection.",
       "type": "string"
     },
+    "CollectionGroupName": {
+      "description": "The name of the collection group to associate with the collection.",
+      "type": "string"
+    },
     "DashboardEndpoint": {
       "description": "The OpenSearch Dashboards endpoint for the collection.",
       "type": "string"
@@ -111,6 +135,9 @@
       "maxLength": 1000,
       "type": "string"
     },
+    "EncryptionConfig": {
+      "$ref": "#/definitions/EncryptionConfig"
+    },
     "Id": {
       "description": "The identifier of the collection",
       "maxLength": 40,
@@ -118,7 +145,7 @@
       "type": "string"
     },
     "KmsKeyArn": {
-      "description": "The ARN of the AWS KMS key used to encrypt the collection.",
+      "description": "Key Management Service key used to encrypt the collection.",
       "type": "string"
     },
     "Name": {
@@ -164,6 +191,7 @@
   },
   "typeName": "AWS::OpenSearchServerless::Collection",
   "writeOnlyProperties": [
-    "/properties/Tags"
+    "/properties/Tags",
+    "/properties/EncryptionConfig"
   ]
 }

@@ -3,7 +3,26 @@
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-logging.html#aws-resource-iot-logging-return-values",
     "properties": {}
   },
-  "definitions": {},
+  "definitions": {
+    "EventConfiguration": {
+      "properties": {
+        "EventType": {
+          "description": "The type of event to log. These include event types like Connect, Publish, and Disconnect.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-logging-eventconfiguration.html#cfn-iot-logging-eventconfiguration-eventtype"
+        },
+        "LogDestination": {
+          "description": "CloudWatch Log Group for event-based logging. Specifies where log events should be sent. The log destination for event-based logging overrides default Log Group for the specified event type and applies to all resources associated with that event.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-logging-eventconfiguration.html#cfn-iot-logging-eventconfiguration-logdestination"
+        },
+        "LogLevel": {
+          "description": "The logging level for the specified event type. Determines the verbosity of log messages generated for this event type.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-logging-eventconfiguration.html#cfn-iot-logging-eventconfiguration-loglevel"
+        }
+      },
+      "description": "Configuration for event-based logging that specifies which event types to log and their logging settings. Used for account-level logging overrides.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-logging-eventconfiguration.html"
+    }
+  },
   "description": "Configure logging.\n\n> If you already set the log function of AWS IoT Core , you can't deploy the Cloud Development Kit  to change the logging settings. You can change the logging settings by either:\n> \n> - Importing the existing logging resource into your CloudFormation stack, such as with the [infrastructure as code generator (IaC generator)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/generate-IaC.html) .\n> - Calling `aws iot set-v2-logging-options --disable-all-logs` before creating a new CloudFormation stack. This command disables all AWS IoT logging. As a result, no AWS IoT logs will be delivered to Amazon CloudWatch until you re-enable logging.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-logging.html",
   "id": "aws-iot-logging",
@@ -15,6 +34,10 @@
     "DefaultLogLevel": {
       "description": "The default log level. Valid Values: `DEBUG | INFO | ERROR | WARN | DISABLED`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-logging.html#cfn-iot-logging-defaultloglevel"
+    },
+    "EventConfigurations": {
+      "description": "Configurations for event-based logging that specifies which event types to log and their logging settings. Overrides account-level logging for the specified event",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-logging.html#cfn-iot-logging-eventconfigurations"
     },
     "RoleArn": {
       "description": "The role ARN used for the log.",

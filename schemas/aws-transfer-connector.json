@@ -1,8 +1,32 @@
 {
   "$id": "aws-transfer-connector",
-  "$integrity": "sha512-kz8juh4Yxuv0weN9MFbQM3jT8DOIJnPKiLh9tlcjk2ueuQmij2ZCyu+VLiOHBjHhTX0jdEG7dHkI2CyxaXDBYg==",
+  "$integrity": "sha512-jup9wIlE1J8S3fqqzRIJQDDDBteVlKTMkpfd/Rx4ejalK7Ig7NLliEW5bhKu0KNePwMHqHDps+mNAfjFtDpMKQ==",
   "additionalProperties": false,
   "definitions": {
+    "ConnectorAsyncMdnConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "ServerIds": {
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/ServerId"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "Url": {
+          "description": "URL of the server to receive the MDN response on",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Url",
+        "ServerIds"
+      ],
+      "type": "object"
+    },
     "ConnectorEgressConfig": {
       "additionalProperties": false,
       "properties": {
@@ -51,6 +75,13 @@
         "ResourceConfigurationArn"
       ],
       "type": "object"
+    },
+    "ServerId": {
+      "description": "A unique identifier for the server.",
+      "maxLength": 19,
+      "minLength": 19,
+      "pattern": "^s-([0-9a-f]{17})$",
+      "type": "string"
     },
     "SftpConnectorTrustedHostKey": {
       "description": "The public host key for the external server to which you are connecting.",
@@ -145,6 +176,10 @@
       "additionalProperties": false,
       "description": "Configuration for an AS2 connector.",
       "properties": {
+        "AsyncMdnConfig": {
+          "$ref": "#/definitions/ConnectorAsyncMdnConfig",
+          "description": "Configuration for an AS2 connector with ASYNC MDN Response"
+        },
         "BasicAuthSecretId": {
           "description": "ARN or name of the secret in AWS Secrets Manager which contains the credentials for Basic authentication. If empty, Basic authentication is disabled for the AS2 connector",
           "maxLength": 2048,
@@ -181,6 +216,7 @@
           "description": "MDN Response setting for this AS2 connector configuration.",
           "enum": [
             "SYNC",
+            "ASYNC",
             "NONE"
           ],
           "type": "string"

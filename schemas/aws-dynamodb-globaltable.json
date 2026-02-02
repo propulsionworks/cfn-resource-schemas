@@ -1,6 +1,6 @@
 {
   "$id": "aws-dynamodb-globaltable",
-  "$integrity": "sha512-0F7T8BGDrSdqXp6AxtSUbZryGTjc5GALFuDuRy+S/OJoXZgIH4bHY519RzutIWw3xV3ur+DJjaQ1aED3FOS4dQ==",
+  "$integrity": "sha512-CJrtUYgUa53axkYZfxS56eQgNHblXC51bZvexKHKwEeY1Vg34o0zteLM32x5B9KQ+/s9hFVIOIbn1zPsnF/LUg==",
   "additionalIdentifiers": [
     [
       "/properties/Arn"
@@ -10,10 +10,12 @@
     ]
   ],
   "additionalProperties": false,
-  "createOnlyProperties": [
+  "conditionalCreateOnlyProperties": [
     "/properties/LocalSecondaryIndexes",
-    "/properties/TableName",
     "/properties/KeySchema"
+  ],
+  "createOnlyProperties": [
+    "/properties/TableName"
   ],
   "definitions": {
     "AttributeDefinition": {
@@ -77,6 +79,16 @@
       "required": [
         "Enabled"
       ],
+      "type": "object"
+    },
+    "GlobalReadProvisionedThroughputSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "ReadCapacityUnits": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
       "type": "object"
     },
     "GlobalSecondaryIndex": {
@@ -661,6 +673,12 @@
       "type": "array",
       "uniqueItems": true
     },
+    "GlobalTableReadOnDemandThroughputSettings": {
+      "$ref": "#/definitions/ReadOnDemandThroughputSettings"
+    },
+    "GlobalTableReadProvisionedThroughputSettings": {
+      "$ref": "#/definitions/GlobalReadProvisionedThroughputSettings"
+    },
     "GlobalTableWitnesses": {
       "insertionOrder": false,
       "items": {
@@ -741,8 +759,6 @@
     "/properties/TableId"
   ],
   "required": [
-    "KeySchema",
-    "AttributeDefinitions",
     "Replicas"
   ],
   "typeName": "AWS::DynamoDB::GlobalTable",

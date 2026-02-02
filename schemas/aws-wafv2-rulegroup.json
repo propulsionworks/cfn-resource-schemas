@@ -1,6 +1,6 @@
 {
   "$id": "aws-wafv2-rulegroup",
-  "$integrity": "sha512-IWX5zB2Ba60d5yUKtFXL1e0Ph3v5EUyMRnGlsj0+NQH9BZzCPeaef1b8t/TuWS+RH+KaLAOEqPR8zKyCBsV0fg==",
+  "$integrity": "sha512-sC+ALV2XRAvFNMtX0vZg6H2er+iVAlLdHH6jJfsIzXWdsnt+EaUTL8W/zIi75P0Sbh7MznpEy+FnLPROtxyYQQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -349,6 +349,9 @@
         "Cookies": {
           "$ref": "#/definitions/Cookies"
         },
+        "HeaderOrder": {
+          "$ref": "#/definitions/HeaderOrder"
+        },
         "Headers": {
           "$ref": "#/definitions/Headers"
         },
@@ -473,6 +476,19 @@
           "type": "array"
         }
       },
+      "type": "object"
+    },
+    "HeaderOrder": {
+      "additionalProperties": false,
+      "description": "The string containing the list of a web request's header names, ordered as they appear in the web request, separated by colons.",
+      "properties": {
+        "OversizeHandling": {
+          "$ref": "#/definitions/OversizeHandling"
+        }
+      },
+      "required": [
+        "OversizeHandling"
+      ],
       "type": "object"
     },
     "Headers": {

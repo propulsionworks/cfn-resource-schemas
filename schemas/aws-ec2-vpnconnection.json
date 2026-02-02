@@ -1,14 +1,11 @@
 {
   "$id": "aws-ec2-vpnconnection",
-  "$integrity": "sha512-bLbkrJ429klqg3USd4PATP508EaX67rp/wM4LzE+ITHAbzUk43MiVSSHwMqL9s7tWp+ucdTHHEXQcLvjoQh3HQ==",
+  "$integrity": "sha512-YPYZed4+TFUDiDSkEWKReCoVjX4kcS0PiYehAMESIYm88qxz/d9O+yDEPCvT/Y4hHfKZ7EwaeR31CBNHyWv8cg==",
   "$schema": "https://raw.githubusercontent.com/aws-cloudformation/cloudformation-resource-schema/blob/master/src/main/resources/schema/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Type",
-    "/properties/CustomerGatewayId",
-    "/properties/VpnGatewayId",
     "/properties/VpnConcentratorId",
-    "/properties/TransitGatewayId",
     "/properties/EnableAcceleration",
     "/properties/LocalIpv4NetworkCidr",
     "/properties/LocalIpv6NetworkCidr",
@@ -396,6 +393,9 @@
     "update": {
       "permissions": [
         "ec2:DescribeVpnConnections",
+        "ec2:ModifyVpnConnection",
+        "ec2:ModifyVpnConnectionOptions",
+        "ec2:ModifyVpnTunnelOptions",
         "ec2:CreateTags",
         "ec2:DeleteTags"
       ]

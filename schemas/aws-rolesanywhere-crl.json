@@ -1,6 +1,6 @@
 {
   "$id": "aws-rolesanywhere-crl",
-  "$integrity": "sha512-PgWfB4vVFRU4sMRdrLHtA+s1xJYbOBGaaPVHFKUbavTR8BNMd6AYQhJi6soMuwFitR2dsJPYzvd7yahbOb9mkw==",
+  "$integrity": "sha512-I6OOQkCErvlQYJGfeAXO3mDqmvuCvsCGTNxenEEiTECofwJRdiecmfxE9aQf28wBJZXZ+kI6lUkc1tM3YtjCJQ==",
   "additionalProperties": false,
   "definitions": {
     "Tag": {
@@ -89,6 +89,9 @@
       "pattern": "^arn:aws(-[^:]+)?:rolesanywhere(:.*){2}(:trust-anchor.*)$",
       "type": "string"
     }
+  },
+  "propertyTransform": {
+    "/properties/CrlData": "$replace(CrlData, /\\s+$/, '')"
   },
   "readOnlyProperties": [
     "/properties/CrlId"

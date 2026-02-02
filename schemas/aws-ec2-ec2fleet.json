@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-ec2fleet",
-  "$integrity": "sha512-4IY49AIZpNPSONz95GRZ/htbBPiwQCsbAV+zS6TAcPLkIKYCeemxAtvU1kMIGaS+ArPrkqfRjuwFUBfHVGPB+g==",
+  "$integrity": "sha512-yrzi/PfwrPyDSfreQYsMrYz9x7O3Jta6r2sLKNVN2cdhoCBWxTkMBOdA0k+1J1/omVpkQXUN2LaUbS0XOp7TZg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/LaunchTemplateConfigs",
@@ -738,9 +738,12 @@
     "delete": {
       "permissions": [
         "ec2:DescribeFleets",
+        "ec2:DescribeFleetInstances",
+        "ec2:DescribeInstanceStatus",
         "ec2:DeleteFleets",
         "ec2:TerminateInstances"
-      ]
+      ],
+      "timeoutInMinutes": 40
     },
     "list": {
       "handlerSchema": {

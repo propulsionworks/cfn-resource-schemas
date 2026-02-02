@@ -1,16 +1,21 @@
 {
   "$id": "aws-ec2-volumeattachment",
-  "$integrity": "sha512-x4wX5fCI3GCDOHdZjOnUcPmAgAIlBlmhcHcmciM+gQ1daaXTPWLqs4kwyh1sW/18uzIPEfAvena/Hrg5fRAPEA==",
+  "$integrity": "sha512-SRpYX3si7fKXF1mYCe7OfnSkkKYRwe1jntJYRJfHKbTgTVZSwCLUVFm4g+ePWPLSWqjRLIRy8XHHxPuQI19aUQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Device",
     "/properties/InstanceId",
-    "/properties/VolumeId"
+    "/properties/VolumeId",
+    "/properties/EbsCardIndex"
   ],
   "definitions": {
     "Device": {
       "description": "The device name",
       "type": "string"
+    },
+    "EbsCardIndex": {
+      "description": "The index of the EBS card. Some instance types support multiple EBS cards. The default EBS card index is 0.",
+      "type": "integer"
     },
     "Id": {
       "description": "",
@@ -58,6 +63,10 @@
     "Device": {
       "$ref": "#/definitions/Device",
       "description": "The device name (for example, ``/dev/sdh`` or ``xvdh``)."
+    },
+    "EbsCardIndex": {
+      "$ref": "#/definitions/EbsCardIndex",
+      "description": ""
     },
     "InstanceId": {
       "$ref": "#/definitions/InstanceId",

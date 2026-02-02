@@ -1,6 +1,6 @@
 {
   "$id": "aws-gamelift-fleet",
-  "$integrity": "sha512-l6aob01R8jfzvr65/YsY76Qs6ie9ljpojN0fcokICQOiAyq6ZGhKCh+NoxXsgTFPToo2PLVjIAfAOxW4d39sTg==",
+  "$integrity": "sha512-KByKQz3XnQRIMGbp9NXWMdiBAbxHcnp+gH33QX09dEnJTcLK9WJJkGpEcJDb6+GEGh2rbgHgWhbOrDucOnSJfw==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
@@ -105,6 +105,10 @@
           "minimum": 0,
           "type": "integer"
         },
+        "ManagedCapacityConfiguration": {
+          "$ref": "#/definitions/ManagedCapacityConfiguration",
+          "description": "Configuration options for Amazon GameLift Servers-managed capacity behavior."
+        },
         "MaxSize": {
           "description": "The maximum value that is allowed for the fleet's instance count for a location. When creating a new fleet, GameLift automatically sets this value to \"1\". Once the fleet is active, you can change this value.",
           "minimum": 0,
@@ -134,6 +138,30 @@
       },
       "required": [
         "Location"
+      ],
+      "type": "object"
+    },
+    "ManagedCapacityConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration options for Amazon GameLift Servers-managed capacity behavior.",
+      "properties": {
+        "ScaleInAfterInactivityMinutes": {
+          "description": "Length of time, in minutes, that Amazon GameLift Servers will wait before scaling in your MinSize and DesiredInstances to 0 after a period with no game session activity.",
+          "maximum": 1440,
+          "minimum": 5,
+          "type": "integer"
+        },
+        "ZeroCapacityStrategy": {
+          "description": "The strategy Amazon GameLift Servers will use to automatically scale your capacity to and from zero in response to game session activity. Game session activity refers to any active running sessions or game session requests. When set to SCALE_TO_AND_FROM_ZERO, MinSize must not be specified and will be managed automatically. When set to MANUAL, MinSize is required.",
+          "enum": [
+            "SCALE_TO_AND_FROM_ZERO",
+            "MANUAL"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "ZeroCapacityStrategy"
       ],
       "type": "object"
     },

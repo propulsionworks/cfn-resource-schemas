@@ -1,23 +1,48 @@
 {
   "$id": "aws-licensemanager-grant",
-  "$integrity": "sha512-145twQ3BJ3Px47YeO10XXy5ZezH5wQka4JKdqT/lpdgrvM5K17wXUckzi0d9lMOGPMSkw7FGJ9lAVLYe7zFy3A==",
+  "$integrity": "sha512-i2yFvGcJlm/rAYHhHpxY/U5XzyF/lX4Yx8i0ls7zleRQ8WAV83KkRrhr5zM2rG5lAvRtbW/JMteNFiHsDgIlTg==",
   "additionalProperties": false,
   "definitions": {
     "Arn": {
       "maxLength": 2048,
       "type": "string"
+    },
+    "Tag": {
+      "additionalProperties": false,
+      "description": "A key-value pair to associate with a resource.",
+      "properties": {
+        "Key": {
+          "description": "The key name of the tag.",
+          "type": "string"
+        },
+        "Value": {
+          "description": "The value for the tag.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
     }
   },
   "description": "An example resource schema demonstrating some basic constructs and validation rules.",
   "handlers": {
     "create": {
       "permissions": [
-        "license-manager:CreateGrant"
+        "license-manager:CreateGrant",
+        "license-manager:CreateGrantVersion",
+        "license-manager:GetGrant",
+        "license-manager:TagResource",
+        "license-manager:ListTagsForResource"
       ]
     },
     "delete": {
       "permissions": [
-        "license-manager:DeleteGrant"
+        "license-manager:DeleteGrant",
+        "license-manager:GetGrant",
+        "license-manager:ListTagsForResource"
       ]
     },
     "list": {
@@ -27,12 +52,17 @@
     },
     "read": {
       "permissions": [
-        "license-manager:GetGrant"
+        "license-manager:GetGrant",
+        "license-manager:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
-        "license-manager:CreateGrantVersion"
+        "license-manager:CreateGrantVersion",
+        "license-manager:GetGrant",
+        "license-manager:TagResource",
+        "license-manager:UntagResource",
+        "license-manager:ListTagsForResource"
       ]
     }
   },
@@ -73,6 +103,15 @@
     "Status": {
       "type": "string"
     },
+    "Tags": {
+      "description": "A list of tags to attach.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
     "Version": {
       "description": "The version of the grant.",
       "type": "string"
@@ -84,6 +123,18 @@
   ],
   "required": [],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
+  "tagging": {
+    "cloudFormationSystemTags": false,
+    "permissions": [
+      "license-manager:TagResource",
+      "license-manager:UntagResource",
+      "license-manager:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::LicenseManager::Grant",
   "writeOnlyProperties": [
     "/properties/Principals",

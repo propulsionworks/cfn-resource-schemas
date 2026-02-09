@@ -1,6 +1,6 @@
 {
   "$id": "aws-groundstation-config",
-  "$integrity": "sha512-kKPPi9NO/10MlPp7etpwgNOcxfV2POom23V8un8OtAL1URBjSiDxJl+meKaLKVkv2I/IxPlS/PhYNePD6ijcrA==",
+  "$integrity": "sha512-6nRWAMOpMZ879azNSoWX4J98RBUvCUOqqsXrhipaqvhBkQy/k5lBwXVIGKxThvTsUfDQF62sZLz0BL3JWUaeuw==",
   "additionalProperties": false,
   "definitions": {
     "AntennaDownlinkConfig": {
@@ -73,6 +73,9 @@
         },
         "S3RecordingConfig": {
           "$ref": "#/definitions/S3RecordingConfig"
+        },
+        "TelemetrySinkConfig": {
+          "$ref": "#/definitions/TelemetrySinkConfig"
         },
         "TrackingConfig": {
           "$ref": "#/definitions/TrackingConfig"
@@ -167,6 +170,26 @@
       "pattern": "^[{}\\[\\]:.,\"0-9A-z\\-_\\s]{1,8192}$",
       "type": "string"
     },
+    "KinesisDataStreamArn": {
+      "pattern": "^arn:[a-z0-9-.]{1,63}:kinesis:[-a-z0-9]{1,50}:[0-9]{12}:stream/[a-zA-Z0-9_.-]{1,128}$",
+      "type": "string"
+    },
+    "KinesisDataStreamData": {
+      "additionalProperties": false,
+      "properties": {
+        "KinesisDataStreamArn": {
+          "$ref": "#/definitions/KinesisDataStreamArn"
+        },
+        "KinesisRoleArn": {
+          "$ref": "#/definitions/RoleArn"
+        }
+      },
+      "required": [
+        "KinesisRoleArn",
+        "KinesisDataStreamArn"
+      ],
+      "type": "object"
+    },
     "Polarization": {
       "enum": [
         "LEFT_HAND",
@@ -226,6 +249,44 @@
         }
       },
       "type": "object"
+    },
+    "TelemetrySinkConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "TelemetrySinkData": {
+          "$ref": "#/definitions/TelemetrySinkData"
+        },
+        "TelemetrySinkType": {
+          "$ref": "#/definitions/TelemetrySinkType"
+        }
+      },
+      "required": [
+        "TelemetrySinkType",
+        "TelemetrySinkData"
+      ],
+      "type": "object"
+    },
+    "TelemetrySinkData": {
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "KinesisDataStreamData"
+          ]
+        }
+      ],
+      "properties": {
+        "KinesisDataStreamData": {
+          "$ref": "#/definitions/KinesisDataStreamData"
+        }
+      },
+      "type": "object"
+    },
+    "TelemetrySinkType": {
+      "enum": [
+        "KINESIS_DATA_STREAM"
+      ],
+      "type": "string"
     },
     "TrackingConfig": {
       "additionalProperties": false,

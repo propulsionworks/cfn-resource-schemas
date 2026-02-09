@@ -1,6 +1,6 @@
 {
   "$id": "aws-cognito-userpool",
-  "$integrity": "sha512-oG1dYLkFWsHaXv32o9QFCz4O24/OjmcimAMLWQ+UI2NXusZ/NdLk727vkMiINNVJQ0SuGBuE+kcj5+OhwvJ+Dw==",
+  "$integrity": "sha512-Iq2jLPh13T6UuO/5b9RSIyBQ2oJv4YvA+ijIQloJ/xVhN3ThuWl8a37RLX69uNLkHaNbMMmL4PJ+CEo4VdKAww==",
   "additionalProperties": false,
   "definitions": {
     "AccountRecoverySetting": {
@@ -96,6 +96,18 @@
       },
       "type": "object"
     },
+    "InboundFederation": {
+      "additionalProperties": false,
+      "properties": {
+        "LambdaArn": {
+          "type": "string"
+        },
+        "LambdaVersion": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "InviteMessageTemplate": {
       "additionalProperties": false,
       "properties": {
@@ -128,6 +140,9 @@
         },
         "DefineAuthChallenge": {
           "type": "string"
+        },
+        "InboundFederation": {
+          "$ref": "#/definitions/InboundFederation"
         },
         "KMSKeyID": {
           "type": "string"

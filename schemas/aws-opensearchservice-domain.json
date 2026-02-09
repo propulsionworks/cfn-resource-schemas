@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchservice-domain",
-  "$integrity": "sha512-ko0aLmOIv4ts7MTDVzADnlzcBtkKUBmI8IzW0TnoNfbQ10ByvZ2IxOerDSALApisrvPJlQEvhxNmkTqX2s9Gfw==",
+  "$integrity": "sha512-a+aggXHqTYUzu7jcLSOokCBAW9IeDPn0Mb6BjubB8ovGFml4C7psFOkcT6VVgko9Vv9Hn6Y44bixxV6H4B6XfA==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/EncryptionAtRestOptions/properties",
@@ -15,6 +15,9 @@
       "properties": {
         "S3VectorsEngine": {
           "$ref": "#/definitions/S3VectorsEngine"
+        },
+        "ServerlessVectorAcceleration": {
+          "$ref": "#/definitions/ServerlessVectorAcceleration"
         }
       },
       "type": "object"
@@ -391,6 +394,16 @@
         },
         "SubjectKey": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ServerlessVectorAcceleration": {
+      "additionalProperties": false,
+      "properties": {
+        "Enabled": {
+          "description": "Whether to enable serverless vector acceleration.",
+          "type": "boolean"
         }
       },
       "type": "object"

@@ -1,6 +1,6 @@
 {
   "$id": "aws-customerprofiles-domain",
-  "$integrity": "sha512-MJYTBrAd2ywuEcnTCIwsXc4UEQIatn4MFwDioNesvB8nJFgivlDc8PVv9eQ2NXw7ivOgQMBKLeF+KjbgAiyj3Q==",
+  "$integrity": "sha512-pk3e6kq4tJhR54eO967a8k7uMW4JdStl4QfTBn1oQHQz162S7WEbpoPzGss5WOBcu7jXwUl1EI/VpDBROEj7Wg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainName"
@@ -127,7 +127,6 @@
       "type": "object"
     },
     "DataStore": {
-      "additionalProperties": false,
       "description": "Configuration and status of the data store for the domain.",
       "properties": {
         "Enabled": {
@@ -262,7 +261,6 @@
       "type": "array"
     },
     "Readiness": {
-      "additionalProperties": false,
       "description": "Progress information for data store setup.",
       "properties": {
         "Message": {
@@ -401,7 +399,12 @@
     },
     "list": {
       "permissions": [
-        "profile:ListDomains"
+        "profile:ListDomains",
+        "kms:CreateGrant",
+        "kms:DescribeKey",
+        "kms:GetKeyPolicy",
+        "kms:PutKeyPolicy",
+        "kms:ListGrants"
       ]
     },
     "read": {

@@ -1,20 +1,97 @@
 {
   "$id": "aws-devopsagent-agentspace",
-  "$integrity": "sha512-6Zyd3vmM9/xT2eKWD+nJLmGONjyWK+WuiczvL8965p8PfTXk/I1RtsFXyzVt6VIjr/vs6MBzMqjcc8WRlrYmVg==",
+  "$integrity": "sha512-Z2D4Im13kK9Bb7anlA3m4dv0wnRjBwO0yxXzaSAmQ7rQBFmO2FCUyTnrQUUwz9pHc4/KJG1hAGW656xEe6StKA==",
   "additionalProperties": false,
-  "definitions": {},
+  "definitions": {
+    "IamAuthConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "CreatedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "OperatorAppRoleArn": {
+          "type": "string"
+        },
+        "UpdatedAt": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "OperatorAppRoleArn"
+      ],
+      "type": "object"
+    },
+    "IdcAuthConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "CreatedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "IdcApplicationArn": {
+          "type": "string"
+        },
+        "IdcInstanceArn": {
+          "type": "string"
+        },
+        "OperatorAppRoleArn": {
+          "type": "string"
+        },
+        "UpdatedAt": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "OperatorAppRoleArn",
+        "IdcInstanceArn"
+      ],
+      "type": "object"
+    },
+    "OperatorApp": {
+      "additionalProperties": false,
+      "properties": {
+        "Iam": {
+          "$ref": "#/definitions/IamAuthConfiguration"
+        },
+        "Idc": {
+          "$ref": "#/definitions/IdcAuthConfiguration"
+        }
+      },
+      "type": "object"
+    }
+  },
   "description": "Resource Type definition for AWS::DevOpsAgent::AgentSpace",
   "handlers": {
     "create": {
       "permissions": [
         "aidevops:CreateAgentSpace",
-        "aidevops:GetAgentSpace"
+        "aidevops:GetAgentSpace",
+        "aidevops:EnableOperatorApp",
+        "aidevops:GetOperatorAppTeams",
+        "iam:PassRole",
+        "sso:CreateApplication",
+        "sso:DeleteApplication",
+        "sso:PutApplicationAccessScope",
+        "sso:PutApplicationGrant",
+        "sso:PutApplicationAuthenticationMethod",
+        "sso:PutApplicationAssignmentConfiguration",
+        "sso:DeleteApplicationAccessScope",
+        "sso:DeleteApplicationAuthenticationMethod",
+        "sso:DeleteApplicationGrant"
       ]
     },
     "delete": {
       "permissions": [
         "aidevops:DeleteAgentSpace",
-        "aidevops:GetAgentSpace"
+        "aidevops:GetAgentSpace",
+        "aidevops:DisableOperatorApp",
+        "sso:DeleteApplication",
+        "sso:DeleteApplicationAccessScope",
+        "sso:DeleteApplicationAuthenticationMethod",
+        "sso:DeleteApplicationGrant"
       ]
     },
     "list": {
@@ -24,13 +101,27 @@
     },
     "read": {
       "permissions": [
-        "aidevops:GetAgentSpace"
+        "aidevops:GetAgentSpace",
+        "aidevops:GetOperatorAppTeams"
       ]
     },
     "update": {
       "permissions": [
         "aidevops:UpdateAgentSpace",
-        "aidevops:GetAgentSpace"
+        "aidevops:GetAgentSpace",
+        "aidevops:EnableOperatorApp",
+        "aidevops:DisableOperatorApp",
+        "aidevops:GetOperatorAppTeams",
+        "iam:PassRole",
+        "sso:CreateApplication",
+        "sso:DeleteApplication",
+        "sso:PutApplicationAccessScope",
+        "sso:PutApplicationGrant",
+        "sso:PutApplicationAuthenticationMethod",
+        "sso:PutApplicationAssignmentConfiguration",
+        "sso:DeleteApplicationAccessScope",
+        "sso:DeleteApplicationAuthenticationMethod",
+        "sso:DeleteApplicationGrant"
       ]
     }
   },
@@ -65,6 +156,9 @@
       "minLength": 1,
       "type": "string"
     },
+    "OperatorApp": {
+      "$ref": "#/definitions/OperatorApp"
+    },
     "UpdatedAt": {
       "description": "The timestamp when the resource was last updated.",
       "format": "date-time",
@@ -75,7 +169,12 @@
     "/properties/AgentSpaceId",
     "/properties/CreatedAt",
     "/properties/UpdatedAt",
-    "/properties/Arn"
+    "/properties/Arn",
+    "/properties/OperatorApp/Iam/CreatedAt",
+    "/properties/OperatorApp/Iam/UpdatedAt",
+    "/properties/OperatorApp/Idc/IdcApplicationArn",
+    "/properties/OperatorApp/Idc/CreatedAt",
+    "/properties/OperatorApp/Idc/UpdatedAt"
   ],
   "required": [
     "Name"

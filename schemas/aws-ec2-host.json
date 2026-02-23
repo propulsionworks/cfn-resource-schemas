@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-host",
-  "$integrity": "sha512-cta8peEsWN7HA1KrmB/Jhf+g2TZe4GVPhzyOYWc5ariWZkrdZCMTY1GF1VxDN+Y/gT0sMayv2kSf9+HfvRmYlA==",
+  "$integrity": "sha512-IVlPhAPSe6AKnRfP1Y4nUTSAjEsoqvTpH8VesTB7sLYgg9A1hEU0c5L59lNMKvCgMs0LfPr71WCn1T0y71QtmA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AvailabilityZone",
@@ -70,7 +70,12 @@
       "type": "string"
     },
     "AutoPlacement": {
+      "default": "on",
       "description": "Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID.",
+      "enum": [
+        "on",
+        "off"
+      ],
       "type": "string"
     },
     "AvailabilityZone": {
@@ -82,11 +87,21 @@
       "type": "string"
     },
     "HostMaintenance": {
+      "default": "off",
       "description": "Automatically allocates a new dedicated host and moves your instances on to it if a degradation is detected on your current host.",
+      "enum": [
+        "on",
+        "off"
+      ],
       "type": "string"
     },
     "HostRecovery": {
+      "default": "off",
       "description": "Indicates whether to enable or disable host recovery for the Dedicated Host. Host recovery is disabled by default.",
+      "enum": [
+        "on",
+        "off"
+      ],
       "type": "string"
     },
     "InstanceFamily": {
@@ -120,6 +135,10 @@
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-ec2.git",
   "tagging": {
     "cloudFormationSystemTags": true,
+    "permissions": [
+      "ec2:CreateTags",
+      "ec2:DeleteTags"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,

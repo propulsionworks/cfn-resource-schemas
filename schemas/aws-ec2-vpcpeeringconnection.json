@@ -1,12 +1,13 @@
 {
   "$id": "aws-ec2-vpcpeeringconnection",
-  "$integrity": "sha512-u/ezAIchGwZJZBrudl89DuDClhyHLGgx12H/PCbXf6Bm3qpeGs/g50fKMWaTHCBdHjvy8v3wcZmuVfi57phaPw==",
+  "$integrity": "sha512-RQn3EbCi1M+pytJb0grobvD0f4gIRiWwXziJK5tefaOIGxOusLAQzEgMl6bsxYLxR5Vb0MHY8iojGJCQQkU+8g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/PeerRegion",
     "/properties/PeerOwnerId",
     "/properties/PeerVpcId",
     "/properties/PeerRoleArn",
+    "/properties/AssumeRoleRegion",
     "/properties/VpcId"
   ],
   "definitions": {
@@ -69,6 +70,10 @@
     "/properties/Id"
   ],
   "properties": {
+    "AssumeRoleRegion": {
+      "description": "The Region code to use when calling Security Token Service (STS) to assume the PeerRoleArn, if provided.",
+      "type": "string"
+    },
     "Id": {
       "type": "string"
     },
@@ -122,6 +127,7 @@
   },
   "typeName": "AWS::EC2::VPCPeeringConnection",
   "writeOnlyProperties": [
-    "/properties/PeerRoleArn"
+    "/properties/PeerRoleArn",
+    "/properties/AssumeRoleRegion"
   ]
 }

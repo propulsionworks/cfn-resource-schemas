@@ -1,6 +1,6 @@
 {
   "$id": "aws-medialive-channel",
-  "$integrity": "sha512-+q6otxXhFjrw9yG8rvNEz1ocGtbvGl194Z2A4Rlhg+RRI9gAkk1u5hBYHDdINi7SqJi6xdzS+H0qYmMb8AUK3A==",
+  "$integrity": "sha512-T6kl0a5DMXo6QtH2nRklZoTLeZk73LtADYJEsnbX5KcVF525fkcjtj76AWZjMwdIhhzlZ1VRZ2605TkVxvRbrQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Vpc"
@@ -454,6 +454,9 @@
       "additionalProperties": false,
       "properties": {
         "AfdSignaling": {
+          "type": "string"
+        },
+        "BitDepth": {
           "type": "string"
         },
         "Bitrate": {
@@ -3391,8 +3394,14 @@
     "SrtOutputDestinationSettings": {
       "additionalProperties": false,
       "properties": {
+        "ConnectionMode": {
+          "type": "string"
+        },
         "EncryptionPassphraseSecretArn": {
           "type": "string"
+        },
+        "ListenerPort": {
+          "type": "integer"
         },
         "StreamId": {
           "type": "string"
@@ -3751,6 +3760,13 @@
     },
     "ChannelEngineVersion": {
       "$ref": "#/definitions/ChannelEngineVersionRequest"
+    },
+    "ChannelSecurityGroups": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": false
     },
     "Destinations": {
       "items": {

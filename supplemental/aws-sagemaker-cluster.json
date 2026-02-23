@@ -91,6 +91,38 @@
       "description": "Defines the configuration for attaching an additional Amazon Elastic Block Store (EBS) volume to each instance of the SageMaker HyperPod cluster instance group. To learn more, see [SageMaker HyperPod release notes: June 20, 2024](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-release-notes.html#sagemaker-hyperpod-release-notes-20240620) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterebsvolumeconfig.html"
     },
+    "ClusterFsxLustreConfig": {
+      "properties": {
+        "DnsName": {
+          "description": "The DNS name of the FSx for Lustre file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterfsxlustreconfig.html#cfn-sagemaker-cluster-clusterfsxlustreconfig-dnsname"
+        },
+        "MountName": {
+          "description": "The mount name of the FSx for Lustre file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterfsxlustreconfig.html#cfn-sagemaker-cluster-clusterfsxlustreconfig-mountname"
+        },
+        "MountPath": {
+          "description": "The mount path for the FSx for Lustre file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterfsxlustreconfig.html#cfn-sagemaker-cluster-clusterfsxlustreconfig-mountpath"
+        }
+      },
+      "description": "Configuration for mounting an Amazon FSx Lustre file system to the instances in the SageMaker HyperPod cluster instance group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterfsxlustreconfig.html"
+    },
+    "ClusterFsxOpenZfsConfig": {
+      "properties": {
+        "DnsName": {
+          "description": "The DNS name of the FSx for OpenZFS file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterfsxopenzfsconfig.html#cfn-sagemaker-cluster-clusterfsxopenzfsconfig-dnsname"
+        },
+        "MountPath": {
+          "description": "The mount path for the FSx for OpenZFS file system.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterfsxopenzfsconfig.html#cfn-sagemaker-cluster-clusterfsxopenzfsconfig-mountpath"
+        }
+      },
+      "description": "Configuration for mounting an Amazon FSx OpenZFS file system to the instances in the SageMaker HyperPod cluster instance group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterfsxopenzfsconfig.html"
+    },
     "ClusterInstanceGroup": {
       "properties": {
         "CapacityRequirements": {
@@ -148,6 +180,10 @@
         "ScheduledUpdateConfig": {
           "description": "The configuration object of the schedule that SageMaker follows when updating the AMI.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterinstancegroup.html#cfn-sagemaker-cluster-clusterinstancegroup-scheduledupdateconfig"
+        },
+        "SlurmConfig": {
+          "description": "Slurm configuration for the instance group.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterinstancegroup.html#cfn-sagemaker-cluster-clusterinstancegroup-slurmconfig"
         },
         "ThreadsPerCore": {
           "description": "The number of threads per CPU core you specified under `CreateCluster` .",
@@ -242,6 +278,16 @@
       "description": "The configuration for the Amazon EKS cluster that is used as the orchestrator for the SageMaker HyperPod cluster. This includes the Amazon Resource Name (ARN) of the EKS cluster",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterorchestratoreksconfig.html"
     },
+    "ClusterOrchestratorSlurmConfig": {
+      "properties": {
+        "SlurmConfigStrategy": {
+          "description": "The strategy for managing Slurm configuration on the cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterorchestratorslurmconfig.html#cfn-sagemaker-cluster-clusterorchestratorslurmconfig-slurmconfigstrategy"
+        }
+      },
+      "description": "Specifies parameter(s) related to Slurm as orchestrator.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterorchestratorslurmconfig.html"
+    },
     "ClusterRestrictedInstanceGroup": {
       "properties": {
         "CurrentCount": {
@@ -295,6 +341,20 @@
     "ClusterRestrictedInstanceGroupsList": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterrestrictedinstancegroupslist.html"
+    },
+    "ClusterSlurmConfig": {
+      "properties": {
+        "NodeType": {
+          "description": "The type of Slurm node for this instance group.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterslurmconfig.html#cfn-sagemaker-cluster-clusterslurmconfig-nodetype"
+        },
+        "PartitionNames": {
+          "description": "The Slurm partitions that this instance group belongs to. Maximum of 1 partition.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterslurmconfig.html#cfn-sagemaker-cluster-clusterslurmconfig-partitionnames"
+        }
+      },
+      "description": "Slurm configuration for the instance group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-clusterslurmconfig.html"
     },
     "ClusterSpotOptions": {
       "properties": {},
@@ -367,12 +427,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-onstartdeephealthchecks.html"
     },
     "Orchestrator": {
-      "properties": {
-        "Eks": {
-          "description": "The configuration of the Amazon EKS orchestrator cluster for the SageMaker HyperPod cluster.",
-          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-orchestrator.html#cfn-sagemaker-cluster-orchestrator-eks"
-        }
-      },
+      "properties": {},
       "description": "The orchestrator for a SageMaker HyperPod cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-orchestrator.html"
     },

@@ -1,6 +1,6 @@
 {
   "$id": "aws-customerprofiles-integration",
-  "$integrity": "sha512-tA6gg+hHzlvg8b6Gj0qX4zU5rjUxEPdjtKerE5iveLlPaA0DlixmXXZ8g5LKySI6rig6EgZvIcDe9pm1i/cjjA==",
+  "$integrity": "sha512-95/xbyn4ZQoIAm9fMgdQVlEteBYQIWOkU+OKeArrKqc8e1lI0fyCz0WZXzpulV51mLzyUNjohiUPvFVeVP6ofA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainName",
@@ -682,6 +682,17 @@
         "$ref": "#/definitions/ObjectTypeMapping"
       },
       "type": "array"
+    },
+    "Scope": {
+      "description": "Scope of the integration, such as 'PROFILE' or 'DOMAIN'",
+      "enum": [
+        "PROFILE",
+        "DOMAIN"
+      ],
+      "maxLength": 255,
+      "minLength": 1,
+      "pattern": "^[a-zA-Z_][a-zA-Z_0-9-]*$",
+      "type": "string"
     },
     "Tags": {
       "description": "The tags (keys and values) associated with the integration",

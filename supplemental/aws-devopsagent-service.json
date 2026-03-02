@@ -1,7 +1,17 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html#aws-resource-devopsagent-service-return-values",
-    "properties": {}
+    "properties": {
+      "ServiceId": {
+        "description": "The unique identifier of the service"
+      },
+      "AccessibleResources": {
+        "description": "List of accessible resources for this service"
+      },
+      "AdditionalServiceDetails": {
+        "description": "Additional details specific to the service type returned after registration"
+      }
+    }
   },
   "definitions": {
     "AdditionalServiceDetails": {
@@ -11,65 +21,83 @@
     "ApiKeyDetails": {
       "properties": {
         "ApiKeyHeader": {
+          "description": "HTTP header name to send the API key",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-apikeydetails.html#cfn-devopsagent-service-apikeydetails-apikeyheader"
         },
         "ApiKeyName": {
+          "description": "User friendly API key name",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-apikeydetails.html#cfn-devopsagent-service-apikeydetails-apikeyname"
         },
         "ApiKeyValue": {
+          "description": "API key value",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-apikeydetails.html#cfn-devopsagent-service-apikeydetails-apikeyvalue"
         }
       },
+      "description": "API key authentication details",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-apikeydetails.html"
     },
     "BearerTokenDetails": {
       "properties": {
         "AuthorizationHeader": {
+          "description": "HTTP header name to send the bearer token",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-bearertokendetails.html#cfn-devopsagent-service-bearertokendetails-authorizationheader"
         },
         "TokenName": {
+          "description": "User friendly bearer token name",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-bearertokendetails.html#cfn-devopsagent-service-bearertokendetails-tokenname"
         },
         "TokenValue": {
+          "description": "Bearer token value",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-bearertokendetails.html#cfn-devopsagent-service-bearertokendetails-tokenvalue"
         }
       },
+      "description": "Bearer token authentication details",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-bearertokendetails.html"
     },
     "DynatraceAuthorizationConfig": {
       "properties": {
         "OAuthClientCredentials": {
+          "description": "OAuth client credentials",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-dynatraceauthorizationconfig.html#cfn-devopsagent-service-dynatraceauthorizationconfig-oauthclientcredentials"
         }
       },
+      "description": "Dynatrace OAuth authorization configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-dynatraceauthorizationconfig.html"
     },
     "DynatraceServiceDetails": {
       "properties": {
         "AccountUrn": {
+          "description": "Dynatrace resource account URN",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-dynatraceservicedetails.html#cfn-devopsagent-service-dynatraceservicedetails-accounturn"
         },
         "AuthorizationConfig": {
+          "description": "Dynatrace OAuth authorization configuration",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-dynatraceservicedetails.html#cfn-devopsagent-service-dynatraceservicedetails-authorizationconfig"
         }
       },
+      "description": "Dynatrace service configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-dynatraceservicedetails.html"
     },
     "GitLabDetails": {
       "properties": {
         "GroupId": {
+          "description": "Optional GitLab group ID for group-level access tokens",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-gitlabdetails.html#cfn-devopsagent-service-gitlabdetails-groupid"
         },
         "TargetUrl": {
+          "description": "GitLab instance URL",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-gitlabdetails.html#cfn-devopsagent-service-gitlabdetails-targeturl"
         },
         "TokenType": {
+          "description": "Type of GitLab access token",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-gitlabdetails.html#cfn-devopsagent-service-gitlabdetails-tokentype"
         },
         "TokenValue": {
+          "description": "GitLab access token value",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-gitlabdetails.html#cfn-devopsagent-service-gitlabdetails-tokenvalue"
         }
       },
+      "description": "GitLab service configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-gitlabdetails.html"
     },
     "MCPServerAuthorizationConfig": {
@@ -79,182 +107,234 @@
     "MCPServerDetails": {
       "properties": {
         "AuthorizationConfig": {
+          "description": "MCP server authorization configuration",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserverdetails.html#cfn-devopsagent-service-mcpserverdetails-authorizationconfig"
         },
         "Description": {
+          "description": "Optional description for the MCP server",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserverdetails.html#cfn-devopsagent-service-mcpserverdetails-description"
         },
         "Endpoint": {
+          "description": "MCP server endpoint URL",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserverdetails.html#cfn-devopsagent-service-mcpserverdetails-endpoint"
         },
         "Name": {
+          "description": "MCP server name",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserverdetails.html#cfn-devopsagent-service-mcpserverdetails-name"
         }
       },
+      "description": "MCP server configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserverdetails.html"
     },
     "MCPServerOAuthClientCredentialsConfig": {
       "properties": {
         "ClientId": {
+          "description": "OAuth client ID",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserveroauthclientcredentialsconfig.html#cfn-devopsagent-service-mcpserveroauthclientcredentialsconfig-clientid"
         },
         "ClientName": {
+          "description": "User friendly OAuth client name",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserveroauthclientcredentialsconfig.html#cfn-devopsagent-service-mcpserveroauthclientcredentialsconfig-clientname"
         },
         "ClientSecret": {
+          "description": "OAuth client secret",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserveroauthclientcredentialsconfig.html#cfn-devopsagent-service-mcpserveroauthclientcredentialsconfig-clientsecret"
         },
         "ExchangeParameters": {
+          "description": "OAuth token exchange parameters",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserveroauthclientcredentialsconfig.html#cfn-devopsagent-service-mcpserveroauthclientcredentialsconfig-exchangeparameters"
         },
         "ExchangeUrl": {
+          "description": "OAuth token exchange URL",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserveroauthclientcredentialsconfig.html#cfn-devopsagent-service-mcpserveroauthclientcredentialsconfig-exchangeurl"
         },
         "Scopes": {
+          "description": "OAuth scopes",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserveroauthclientcredentialsconfig.html#cfn-devopsagent-service-mcpserveroauthclientcredentialsconfig-scopes"
         }
       },
+      "description": "MCP server OAuth client credentials configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserveroauthclientcredentialsconfig.html"
     },
     "MCPServerSplunkAuthorizationConfig": {
       "properties": {},
+      "description": "MCP server splunk authorization configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserversplunkauthorizationconfig.html"
     },
     "MCPServerSplunkDetails": {
       "properties": {
         "AuthorizationConfig": {
+          "description": "MCP server splunk authorization configuration",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserversplunkdetails.html#cfn-devopsagent-service-mcpserversplunkdetails-authorizationconfig"
         },
         "Description": {
+          "description": "Optional description for the MCP server",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserversplunkdetails.html#cfn-devopsagent-service-mcpserversplunkdetails-description"
         },
         "Endpoint": {
+          "description": "MCP server endpoint URL",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserversplunkdetails.html#cfn-devopsagent-service-mcpserversplunkdetails-endpoint"
         },
         "Name": {
+          "description": "MCP server name",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserversplunkdetails.html#cfn-devopsagent-service-mcpserversplunkdetails-name"
         }
       },
+      "description": "Splunk MCP server configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-mcpserversplunkdetails.html"
     },
     "NewRelicApiKeyConfig": {
       "properties": {
         "AccountId": {
+          "description": "New Relic Account ID",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicapikeyconfig.html#cfn-devopsagent-service-newrelicapikeyconfig-accountid"
         },
         "AlertPolicyIds": {
+          "description": "List of alert policy IDs",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicapikeyconfig.html#cfn-devopsagent-service-newrelicapikeyconfig-alertpolicyids"
         },
         "ApiKey": {
+          "description": "New Relic User API Key",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicapikeyconfig.html#cfn-devopsagent-service-newrelicapikeyconfig-apikey"
         },
         "ApplicationIds": {
+          "description": "List of monitored APM application IDs",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicapikeyconfig.html#cfn-devopsagent-service-newrelicapikeyconfig-applicationids"
         },
         "EntityGuids": {
+          "description": "List of globally unique IDs for New Relic resources",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicapikeyconfig.html#cfn-devopsagent-service-newrelicapikeyconfig-entityguids"
         },
         "Region": {
+          "description": "New Relic region",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicapikeyconfig.html#cfn-devopsagent-service-newrelicapikeyconfig-region"
         }
       },
+      "description": "New Relic API key configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicapikeyconfig.html"
     },
     "NewRelicAuthorizationConfig": {
       "properties": {
         "ApiKey": {
+          "description": "New Relic API key configuration",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicauthorizationconfig.html#cfn-devopsagent-service-newrelicauthorizationconfig-apikey"
         }
       },
+      "description": "New Relic authorization configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicauthorizationconfig.html"
     },
     "NewRelicServiceDetails": {
       "properties": {
         "AuthorizationConfig": {
+          "description": "New Relic authorization configuration",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicservicedetails.html#cfn-devopsagent-service-newrelicservicedetails-authorizationconfig"
         }
       },
+      "description": "New Relic service configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-newrelicservicedetails.html"
     },
     "OAuthClientDetails": {
       "properties": {
         "ClientId": {
+          "description": "OAuth client ID",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-oauthclientdetails.html#cfn-devopsagent-service-oauthclientdetails-clientid"
         },
         "ClientName": {
+          "description": "User friendly OAuth client name",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-oauthclientdetails.html#cfn-devopsagent-service-oauthclientdetails-clientname"
         },
         "ClientSecret": {
+          "description": "OAuth client secret",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-oauthclientdetails.html#cfn-devopsagent-service-oauthclientdetails-clientsecret"
         },
         "ExchangeParameters": {
+          "description": "OAuth token exchange parameters",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-oauthclientdetails.html#cfn-devopsagent-service-oauthclientdetails-exchangeparameters"
         }
       },
+      "description": "OAuth client credentials",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-oauthclientdetails.html"
     },
     "RegisteredDynatraceDetails": {
       "properties": {
         "AccountUrn": {
+          "description": "Dynatrace resource account URN",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registereddynatracedetails.html#cfn-devopsagent-service-registereddynatracedetails-accounturn"
         }
       },
+      "description": "Dynatrace service details returned after registration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registereddynatracedetails.html"
     },
     "RegisteredGitLabServiceDetails": {
       "properties": {
         "GroupId": {
+          "description": "Optional GitLab group ID for group-level access tokens",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredgitlabservicedetails.html#cfn-devopsagent-service-registeredgitlabservicedetails-groupid"
         },
         "TargetUrl": {
+          "description": "GitLab instance URL",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredgitlabservicedetails.html#cfn-devopsagent-service-registeredgitlabservicedetails-targeturl"
         },
         "TokenType": {
+          "description": "Type of GitLab access token",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredgitlabservicedetails.html#cfn-devopsagent-service-registeredgitlabservicedetails-tokentype"
         }
       },
+      "description": "GitLab service details returned after registration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredgitlabservicedetails.html"
     },
     "RegisteredMCPServerDetails": {
       "properties": {
         "ApiKeyHeader": {
+          "description": "API key header name if using API key authentication",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredmcpserverdetails.html#cfn-devopsagent-service-registeredmcpserverdetails-apikeyheader"
         },
         "AuthorizationMethod": {
+          "description": "MCP server authorization method",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredmcpserverdetails.html#cfn-devopsagent-service-registeredmcpserverdetails-authorizationmethod"
         },
         "Description": {
+          "description": "Optional description for the MCP server",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredmcpserverdetails.html#cfn-devopsagent-service-registeredmcpserverdetails-description"
         },
         "Endpoint": {
+          "description": "MCP server endpoint URL",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredmcpserverdetails.html#cfn-devopsagent-service-registeredmcpserverdetails-endpoint"
         },
         "Name": {
+          "description": "MCP server name",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredmcpserverdetails.html#cfn-devopsagent-service-registeredmcpserverdetails-name"
         }
       },
+      "description": "MCP server details returned after registration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredmcpserverdetails.html"
     },
     "RegisteredNewRelicDetails": {
       "properties": {
         "AccountId": {
+          "description": "New Relic account ID",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registerednewrelicdetails.html#cfn-devopsagent-service-registerednewrelicdetails-accountid"
         },
         "Description": {
+          "description": "Optional user description",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registerednewrelicdetails.html#cfn-devopsagent-service-registerednewrelicdetails-description"
         },
         "Region": {
+          "description": "New Relic region",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registerednewrelicdetails.html#cfn-devopsagent-service-registerednewrelicdetails-region"
         }
       },
+      "description": "New Relic service details returned after registration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registerednewrelicdetails.html"
     },
     "RegisteredServiceNowDetails": {
       "properties": {
         "InstanceUrl": {
+          "description": "ServiceNow instance URL",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredservicenowdetails.html#cfn-devopsagent-service-registeredservicenowdetails-instanceurl"
         }
       },
+      "description": "ServiceNow service details returned after registration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-registeredservicenowdetails.html"
     },
     "ServiceDetails": {
@@ -268,20 +348,25 @@
     "ServiceNowAuthorizationConfig": {
       "properties": {
         "OAuthClientCredentials": {
+          "description": "OAuth client credentials",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-servicenowauthorizationconfig.html#cfn-devopsagent-service-servicenowauthorizationconfig-oauthclientcredentials"
         }
       },
+      "description": "ServiceNow OAuth authorization configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-servicenowauthorizationconfig.html"
     },
     "ServiceNowServiceDetails": {
       "properties": {
         "AuthorizationConfig": {
+          "description": "ServiceNow OAuth authorization configuration",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-servicenowservicedetails.html#cfn-devopsagent-service-servicenowservicedetails-authorizationconfig"
         },
         "InstanceUrl": {
+          "description": "ServiceNow instance URL",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-servicenowservicedetails.html#cfn-devopsagent-service-servicenowservicedetails-instanceurl"
         }
       },
+      "description": "ServiceNow service configuration",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-servicenowservicedetails.html"
     },
     "ServiceType": {
@@ -289,6 +374,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-service-servicetype.html"
     }
   },
+  "description": "The AWS::DevOpsAgent::Service resource registers external services (like Dynatrace, MCP servers, GitLab) for integration with DevOpsAgent.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html",
   "id": "aws-devopsagent-service",
   "properties": {
@@ -299,12 +385,14 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html#cfn-devopsagent-service-additionalservicedetails"
     },
     "ServiceDetails": {
+      "description": "Service-specific configuration details",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html#cfn-devopsagent-service-servicedetails"
     },
     "ServiceId": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html#cfn-devopsagent-service-serviceid"
     },
     "ServiceType": {
+      "description": "The type of service being registered",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html#cfn-devopsagent-service-servicetype"
     }
   },

@@ -1,6 +1,6 @@
 {
   "$id": "aws-batch-computeenvironment",
-  "$integrity": "sha512-2noHZlWqRrfMn2kk5hFjczVeKgiUbRM5e3SD88Qix5QB9u2hCgWnoObgG6dJ5sYifF0BOqos9qv6y7Pg7uNw+w==",
+  "$integrity": "sha512-/D4pCgLeKqzcUSdh5vZzlALJZXi13XYGPbmnKsazdNl4Cz3Gh3KRVt9G5FZEwIbDq0V4ugwvXmGzxjARVz+DeA==",
   "additionalIdentifiers": [
     [
       "/properties/ComputeEnvironmentName"
@@ -17,6 +17,7 @@
     "/properties/ComputeResources/InstanceTypes",
     "/properties/ComputeResources/LaunchTemplate",
     "/properties/ComputeResources/PlacementGroup",
+    "/properties/ComputeResources/ScalingPolicy",
     "/properties/ComputeResources/SecurityGroupIds",
     "/properties/ComputeResources/Subnets",
     "/properties/ComputeResources/Tags",
@@ -79,6 +80,9 @@
         "PlacementGroup": {
           "type": "string"
         },
+        "ScalingPolicy": {
+          "$ref": "#/definitions/ComputeScalingPolicy"
+        },
         "SecurityGroupIds": {
           "insertionOrder": false,
           "items": {
@@ -121,6 +125,15 @@
         "Type",
         "MaxvCpus"
       ],
+      "type": "object"
+    },
+    "ComputeScalingPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "MinScaleDownDelayMinutes": {
+          "type": "integer"
+        }
+      },
       "type": "object"
     },
     "Ec2ConfigurationObject": {

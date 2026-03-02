@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchservice-application",
-  "$integrity": "sha512-K2KVwHePXKU0HTUG2+zUjpkYPCC19+L/Eosux72/jC/hRvNyAKMwINP20Fi14u+14SWk+dU5+0Tws+nVtdM3bQ==",
+  "$integrity": "sha512-ce8iPuZhcUyA6B5MOGQpP/fd6bg+rd5BRXl0DFFiEXQWf3aDXnKRebZ6LlKL+7bhRErGr7waJtMT5sC+nfsonw==",
   "additionalIdentifiers": [
     [
       "/properties/Arn"
@@ -8,7 +8,8 @@
   ],
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/Name"
+    "/properties/Name",
+    "/properties/KmsKeyArn"
   ],
   "definitions": {
     "AppConfig": {
@@ -173,6 +174,13 @@
       "minLength": 3,
       "type": "string"
     },
+    "KmsKeyArn": {
+      "description": "The ARN of the KMS key used to encrypt the application.",
+      "maxLength": 2048,
+      "minLength": 20,
+      "pattern": "^arn:aws(-[a-z]+)*:kms:[a-z0-9-]+:\\d{12}:key/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+      "type": "string"
+    },
     "Name": {
       "description": "The name of the application.",
       "maxLength": 40,
@@ -208,5 +216,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::OpenSearchService::Application"
+  "typeName": "AWS::OpenSearchService::Application",
+  "writeOnlyProperties": [
+    "/properties/KmsKeyArn"
+  ]
 }

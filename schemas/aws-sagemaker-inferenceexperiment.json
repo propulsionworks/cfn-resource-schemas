@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-inferenceexperiment",
-  "$integrity": "sha512-+getdmRA3hzTdZds4LgTTOyeeyk1WRIQY/b3rUIbhlR81j5Uih3n0g4/g8Rlp2p5H+ZmpY3Pw4/o/IGpmFglAg==",
+  "$integrity": "sha512-IbanTqMe9DgcZu7LpSD4bzaoUfm8EnArVvKCfKd0r+IozsGCRKJsrCOMEmFBcQ4LwYT1ZLtlKcIWCW8n/gTEmw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -433,10 +433,20 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": false,
+    "permissions": [
+      "sagemaker:AddTags",
+      "sagemaker:DeleteTags",
+      "sagemaker:ListTags"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::SageMaker::InferenceExperiment"
+  "typeName": "AWS::SageMaker::InferenceExperiment",
+  "writeOnlyProperties": [
+    "/properties/StatusReason",
+    "/properties/DesiredState",
+    "/properties/Schedule"
+  ]
 }

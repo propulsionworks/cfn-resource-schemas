@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-vpnconnection",
-  "$integrity": "sha512-YPYZed4+TFUDiDSkEWKReCoVjX4kcS0PiYehAMESIYm88qxz/d9O+yDEPCvT/Y4hHfKZ7EwaeR31CBNHyWv8cg==",
+  "$integrity": "sha512-F7Ppx/cu1d74bf8+YclgRjoaIEcjiN168XqoivxybJzPz2gzyDGdcxWj7qB2KzRD8ZEJ5xu15r0fc0wXjNdCxQ==",
   "$schema": "https://raw.githubusercontent.com/aws-cloudformation/cloudformation-resource-schema/blob/master/src/main/resources/schema/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
@@ -16,8 +16,7 @@
     "/properties/TransportTransitGatewayAttachmentId",
     "/properties/TunnelInsideIpVersion",
     "/properties/PreSharedKeyStorage",
-    "/properties/TunnelBandwidth",
-    "/properties/VpnTunnelOptionsSpecifications"
+    "/properties/TunnelBandwidth"
   ],
   "definitions": {
     "CloudwatchLogOptionsSpecification": {
@@ -371,7 +370,15 @@
       "permissions": [
         "ec2:DescribeVpnConnections",
         "ec2:CreateVpnConnection",
-        "ec2:CreateTags"
+        "ec2:CreateTags",
+        "logs:CreateLogDelivery",
+        "logs:GetLogDelivery",
+        "logs:UpdateLogDelivery",
+        "logs:DeleteLogDelivery",
+        "logs:ListLogDeliveries",
+        "logs:PutResourcePolicy",
+        "logs:DescribeResourcePolicies",
+        "logs:DescribeLogGroups"
       ]
     },
     "delete": {
@@ -397,7 +404,15 @@
         "ec2:ModifyVpnConnectionOptions",
         "ec2:ModifyVpnTunnelOptions",
         "ec2:CreateTags",
-        "ec2:DeleteTags"
+        "ec2:DeleteTags",
+        "logs:CreateLogDelivery",
+        "logs:GetLogDelivery",
+        "logs:UpdateLogDelivery",
+        "logs:DeleteLogDelivery",
+        "logs:ListLogDeliveries",
+        "logs:PutResourcePolicy",
+        "logs:DescribeResourcePolicies",
+        "logs:DescribeLogGroups"
       ]
     }
   },

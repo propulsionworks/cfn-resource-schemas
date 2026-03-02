@@ -1,6 +1,6 @@
 {
   "$id": "aws-servicecatalog-portfolio",
-  "$integrity": "sha512-YcmyRN95/b43xq+WJH5Hq5K5xFrjbifDVq8Tf5g2ameNNAjoFBSbit6R4FwOqpx88dUCFwVQs+VmAlmoJjxTNg==",
+  "$integrity": "sha512-y/cmRsMuwYsOX0HodgMXS1V4AtDLPwZaeEiVxZzEc+xrUzTpEEob4cknwt5RRJIqDpvmA6VXn6hbox9zYGxszA==",
   "additionalProperties": false,
   "definitions": {
     "Tag": {
@@ -20,7 +20,43 @@
       "type": "object"
     }
   },
-  "description": "Resource Type definition for AWS::ServiceCatalog::Portfolio",
+  "description": "Resource type definition for AWS::ServiceCatalog::Portfolio",
+  "handlers": {
+    "create": {
+      "permissions": [
+        "servicecatalog:CreatePortfolio",
+        "servicecatalog:DescribePortfolio",
+        "servicecatalog:TagResource",
+        "servicecatalog:ListTagsForResource"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "servicecatalog:DeletePortfolio",
+        "servicecatalog:DescribePortfolio"
+      ]
+    },
+    "list": {
+      "permissions": [
+        "servicecatalog:ListPortfolios"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "servicecatalog:DescribePortfolio",
+        "servicecatalog:ListTagsForResource"
+      ]
+    },
+    "update": {
+      "permissions": [
+        "servicecatalog:UpdatePortfolio",
+        "servicecatalog:DescribePortfolio",
+        "servicecatalog:TagResource",
+        "servicecatalog:UntagResource",
+        "servicecatalog:ListTagsForResource"
+      ]
+    }
+  },
   "primaryIdentifier": [
     "/properties/Id"
   ],
@@ -59,5 +95,15 @@
     "DisplayName",
     "ProviderName"
   ],
-  "typeName": "AWS::ServiceCatalog::Portfolio"
+  "tagging": {
+    "cloudFormationSystemTags": false,
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
+  "typeName": "AWS::ServiceCatalog::Portfolio",
+  "writeOnlyProperties": [
+    "/properties/AcceptLanguage"
+  ]
 }

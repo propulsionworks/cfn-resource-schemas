@@ -1,53 +1,77 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html#aws-resource-ec2-ipamprefixlistresolver-return-values",
-    "properties": {}
+    "properties": {
+      "IpamArn": {
+        "description": "The Amazon Resource Name (ARN) of the IPAM this Prefix List Resolver is a part of."
+      },
+      "IpamPrefixListResolverId": {
+        "description": "Id of the IPAM Prefix List Resolver."
+      },
+      "IpamPrefixListResolverArn": {
+        "description": "The Amazon Resource Name (ARN) of the IPAM Prefix List Resolver"
+      }
+    }
   },
   "definitions": {
     "IpamPrefixListResolverRule": {
       "properties": {
         "Conditions": {
+          "description": "Two of the rule types allow you to add conditions to the rules. (1) For IPAM Pool CIDR rules, you can specify an ipamPoolId; if not specified, the rule will apply to all IPAM Pool CIDRs in the scope.  (2) For IPAM Resource CIDR rules, you can specify resourceId, resourceOwner, resourceRegion, cidr, or resourceTag.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule-conditions"
         },
         "IpamScopeId": {
+          "description": "This rule will only match resources that are in this IPAM Scope.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule-ipamscopeid"
         },
         "ResourceType": {
+          "description": "The resourceType property only applies to ipam-resource-cidr rules; this property specifies what type of resources this rule will apply to, such as VPCs or Subnets.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule-resourcetype"
         },
         "RuleType": {
+          "description": "There are three rule types: (1) Static CIDR: A fixed list of CIDRs that don't change (like a manual list replicated across Regions). (2) IPAM pool CIDR: CIDRs from specific IPAM pools (like all CIDRs from your IPAM production pool).  (3) IPAM resource CIDR: CIDRs for AWS resources like VPCs, subnets, and EIPs within a specific IPAM scope.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule-ruletype"
         },
         "StaticCidr": {
+          "description": "A fixed CIDR that doesn't change",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule-staticcidr"
         }
       },
+      "description": "CIDR selection rules define the business logic for selecting CIDRs from IPAM.  If a CIDR matches any of the rules, it will be included. If a rule has multiple conditions, the CIDR has to match every condition of that rule. You can create a prefix list resolver without rules, but you'll need to add at least one rule before it can actually automate your prefix list updates.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrule.html"
     },
     "IpamPrefixListResolverRuleCondition": {
       "properties": {
         "Cidr": {
+          "description": "Condition for the IPAM Resource CIDR rule type.  CIDR (like 10.24.34.0/23).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition-cidr"
         },
         "IpamPoolId": {
+          "description": "Condition for the IPAM Pool CIDR rule type.  If not chosen, the resolver applies to all IPAM Pool CIDRs in the scope.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition-ipampoolid"
         },
         "Operation": {
+          "description": "Equals, Not equals, or Subnet Of.  The subnet-of operation only applies to cidr conditions.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition-operation"
         },
         "ResourceId": {
+          "description": "Condition for the IPAM Resource CIDR rule type.  The unique ID of a resource (like vpc-1234567890abcdef0).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition-resourceid"
         },
         "ResourceOwner": {
+          "description": "Condition for the IPAM Resource CIDR rule type.  Resource owner (like 111122223333).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition-resourceowner"
         },
         "ResourceRegion": {
+          "description": "Condition for the IPAM Resource CIDR rule type.  Resource region (like us-east-1).",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition-resourceregion"
         },
         "ResourceTag": {
+          "description": "A key-value pair to associate with a resource.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition-resourcetag"
         }
       },
+      "description": "Two of the rule types allow you to add conditions to the rules. (1) For IPAM Pool CIDR rules, you can specify an ipamPoolId; if not specified, the rule will apply to all IPAM Pool CIDRs in the scope.  (2) For IPAM Resource CIDR rules, you can specify resourceId, resourceOwner, resourceRegion, cidr, or resourceTag.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-ipamprefixlistresolverrulecondition.html"
     },
     "Tag": {
@@ -62,10 +86,12 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ipamprefixlistresolver-tag.html"
     }
   },
+  "description": "Resource Type definition for AWS::EC2::IPAMPrefixListResolver",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html",
   "id": "aws-ec2-ipamprefixlistresolver",
   "properties": {
     "AddressFamily": {
+      "description": "The address family of the address space in this Prefix List Resolver. Either IPv4 or IPv6.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html#cfn-ec2-ipamprefixlistresolver-addressfamily"
     },
     "Description": {
@@ -75,6 +101,7 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html#cfn-ec2-ipamprefixlistresolver-ipamarn"
     },
     "IpamId": {
+      "description": "The Id of the IPAM this Prefix List Resolver is a part of.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html#cfn-ec2-ipamprefixlistresolver-ipamid"
     },
     "IpamPrefixListResolverArn": {
@@ -84,9 +111,11 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html#cfn-ec2-ipamprefixlistresolver-ipamprefixlistresolverid"
     },
     "Rules": {
+      "description": "Rules define the business logic for selecting CIDRs from IPAM.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html#cfn-ec2-ipamprefixlistresolver-rules"
     },
     "Tags": {
+      "description": "An array of key-value pairs to apply to this resource.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html#cfn-ec2-ipamprefixlistresolver-tags"
     }
   },

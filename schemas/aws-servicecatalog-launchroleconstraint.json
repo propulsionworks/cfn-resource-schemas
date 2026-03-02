@@ -1,35 +1,98 @@
 {
   "$id": "aws-servicecatalog-launchroleconstraint",
-  "$integrity": "sha512-9Y9c0t4xzaF7rpp+qOqIc4LANwlmbPKzyCh0nnz5wUhArx3R9QDO2BxQjvdEvkibWDaVEfrkV04VK/fN6YpSkQ==",
+  "$integrity": "sha512-KTVjSKk7fxKMZ/pXuxxcyKS92cO+JUr3OS2TrK7D3PBlSAdE5w5N08oAGZ8+H28oc0bD1/LDbB/+Nun7QZVPEg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/PortfolioId",
     "/properties/ProductId"
   ],
   "description": "Resource Type definition for AWS::ServiceCatalog::LaunchRoleConstraint",
+  "handlers": {
+    "create": {
+      "permissions": [
+        "servicecatalog:CreateConstraint",
+        "servicecatalog:DescribeConstraint",
+        "iam:GetRole",
+        "iam:PassRole"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "servicecatalog:DeleteConstraint"
+      ]
+    },
+    "list": {
+      "handlerSchema": {
+        "properties": {
+          "PortfolioId": {
+            "$ref": "resource-schema.json#/properties/PortfolioId"
+          }
+        },
+        "required": [
+          "PortfolioId"
+        ]
+      },
+      "permissions": [
+        "servicecatalog:ListConstraintsForPortfolio"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "servicecatalog:DescribeConstraint"
+      ]
+    },
+    "update": {
+      "permissions": [
+        "servicecatalog:UpdateConstraint",
+        "servicecatalog:DescribeConstraint",
+        "iam:GetRole",
+        "iam:PassRole"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "LocalRoleName"
+      ]
+    },
+    {
+      "required": [
+        "RoleArn"
+      ]
+    }
+  ],
   "primaryIdentifier": [
     "/properties/Id"
   ],
   "properties": {
     "AcceptLanguage": {
+      "description": "The language code for the constraint.",
       "type": "string"
     },
     "Description": {
+      "description": "The description of the launch role constraint.",
       "type": "string"
     },
     "Id": {
+      "description": "The unique identifier for the launch role constraint.",
       "type": "string"
     },
     "LocalRoleName": {
+      "description": "The local IAM role name to use in the launch constraint.",
       "type": "string"
     },
     "PortfolioId": {
+      "description": "The ID of the portfolio to which this launch role constraint applies.",
       "type": "string"
     },
     "ProductId": {
+      "description": "The ID of the product to which this launch role constraint applies.",
       "type": "string"
     },
     "RoleArn": {
+      "description": "The ARN of the IAM role used for the launch constraint.",
+      "pattern": "arn:(aws|aws-cn|aws-us-gov):iam::[0-9]*:(role)\\/.*",
       "type": "string"
     }
   },
@@ -40,5 +103,12 @@
     "PortfolioId",
     "ProductId"
   ],
-  "typeName": "AWS::ServiceCatalog::LaunchRoleConstraint"
+  "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-servicecatalog/tree/master/aws-servicecatalog-launchroleconstraint.git",
+  "tagging": {
+    "taggable": false
+  },
+  "typeName": "AWS::ServiceCatalog::LaunchRoleConstraint",
+  "writeOnlyProperties": [
+    "/properties/AcceptLanguage"
+  ]
 }

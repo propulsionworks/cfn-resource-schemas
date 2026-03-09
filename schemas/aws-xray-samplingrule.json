@@ -1,6 +1,6 @@
 {
   "$id": "aws-xray-samplingrule",
-  "$integrity": "sha512-Pmg88t09FK+xUS9ImgIK/rxsavDAPhKecM+t7LhKWfxNFBe1C2uH7YLqfhe8JZp/5mkaNI65pep7JNuROFQYgQ==",
+  "$integrity": "sha512-6g1A4NEcuNVqfhndY66hR5ytkEpxlFWgqL0q0BjTRbd5DyLGTPTdRv/PNyQKnmMFpWRXf0tthMPd5LXnPH7raw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/SamplingRule/Version"
@@ -15,6 +15,27 @@
       "maxLength": 32,
       "minLength": 1,
       "type": "string"
+    },
+    "SamplingRateBoost": {
+      "additionalProperties": false,
+      "properties": {
+        "CooldownWindowMinutes": {
+          "description": "Time window (in minutes) in which only one sampling rate boost can be triggered. After a boost occurs, no further boosts are allowed until the next window.",
+          "minimum": 1,
+          "type": "integer"
+        },
+        "MaxRate": {
+          "description": "The maximum sampling rate X-Ray will apply when it detects anomalies. X-Ray determines the appropriate rate between your baseline and the maximum, depending on anomaly activity.",
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "required": [
+        "MaxRate",
+        "CooldownWindowMinutes"
+      ],
+      "type": "object"
     },
     "SamplingRule": {
       "additionalProperties": false,
@@ -67,6 +88,9 @@
         },
         "RuleName": {
           "$ref": "#/definitions/RuleName"
+        },
+        "SamplingRateBoost": {
+          "$ref": "#/definitions/SamplingRateBoost"
         },
         "ServiceName": {
           "description": "Matches the name that the service uses to identify itself in segments.",
@@ -170,6 +194,9 @@
         },
         "RuleName": {
           "$ref": "#/definitions/RuleName"
+        },
+        "SamplingRateBoost": {
+          "$ref": "#/definitions/SamplingRateBoost"
         },
         "ServiceName": {
           "description": "Matches the name that the service uses to identify itself in segments.",

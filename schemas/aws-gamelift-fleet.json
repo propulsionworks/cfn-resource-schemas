@@ -1,6 +1,6 @@
 {
   "$id": "aws-gamelift-fleet",
-  "$integrity": "sha512-KByKQz3XnQRIMGbp9NXWMdiBAbxHcnp+gH33QX09dEnJTcLK9WJJkGpEcJDb6+GEGh2rbgHgWhbOrDucOnSJfw==",
+  "$integrity": "sha512-rLKnuXC/b04cQuCIHNm2Fo3CWw+7Ecyf0ut6nHDdXfZqUvGu8EuF/TT5Qfj0CRCZmir321mW7qwc93cocXKulg==",
   "$schema": "https://schema.cloudformation.us-east-1.amazonaws.com/provider.definition.schema.v1.json",
   "additionalProperties": false,
   "createOnlyProperties": [
@@ -16,7 +16,9 @@
     "/properties/ScriptId",
     "/properties/ServerLaunchParameters",
     "/properties/ServerLaunchPath",
-    "/properties/ComputeType"
+    "/properties/ComputeType",
+    "/properties/PlayerGatewayMode",
+    "/properties/PlayerGatewayConfiguration"
   ],
   "definitions": {
     "AnywhereConfiguration": {
@@ -134,6 +136,14 @@
         },
         "LocationCapacity": {
           "$ref": "#/definitions/LocationCapacity"
+        },
+        "PlayerGatewayStatus": {
+          "description": "The player gateway status for the location.",
+          "enum": [
+            "DISABLED",
+            "ENABLED"
+          ],
+          "type": "string"
         }
       },
       "required": [
@@ -163,6 +173,21 @@
       "required": [
         "ZeroCapacityStrategy"
       ],
+      "type": "object"
+    },
+    "PlayerGatewayConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for player gateway.",
+      "properties": {
+        "GameServerIpProtocolSupported": {
+          "description": "The IP protocol supported by the game server.",
+          "enum": [
+            "IPv4",
+            "DUAL_STACK"
+          ],
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "ResourceCreationLimitPolicy": {
@@ -613,6 +638,19 @@
       "pattern": "^vpc-\\S+",
       "type": "string"
     },
+    "PlayerGatewayConfiguration": {
+      "$ref": "#/definitions/PlayerGatewayConfiguration",
+      "description": "Configuration for player gateway."
+    },
+    "PlayerGatewayMode": {
+      "description": "The player gateway mode for the fleet.",
+      "enum": [
+        "DISABLED",
+        "ENABLED",
+        "REQUIRED"
+      ],
+      "type": "string"
+    },
     "ResourceCreationLimitPolicy": {
       "$ref": "#/definitions/ResourceCreationLimitPolicy",
       "description": "A policy that limits the number of game sessions an individual player can create over a span of time for this fleet."
@@ -663,7 +701,8 @@
   },
   "readOnlyProperties": [
     "/properties/FleetId",
-    "/properties/FleetArn"
+    "/properties/FleetArn",
+    "/properties/Locations/*/PlayerGatewayStatus"
   ],
   "required": [
     "Name"

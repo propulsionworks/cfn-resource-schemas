@@ -1,6 +1,6 @@
 {
   "$id": "aws-connect-securityprofile",
-  "$integrity": "sha512-CQjVgZE/qKf9yPiZjMfB4IB/qhx9kA6DO0cHvsuMVwyglC5HJKtnrsfsJy3UuR2zpW9pJdale8FiBNtm59Q/3g==",
+  "$integrity": "sha512-s/if7ZD5Iel6qOR+IWl6YaF9KQZCnuyVckEyBP1JZ8kQRaLu7GN2JCmnjYCA+E48jBBBz/UL5hI4wwOYGnNbAg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/SecurityProfileName",
@@ -26,6 +26,14 @@
           "maxLength": 128,
           "minLength": 1,
           "type": "string"
+        },
+        "Type": {
+          "description": "The type of the application.",
+          "enum": [
+            "MCP",
+            "THIRD_PARTY_APPLICATION"
+          ],
+          "type": "string"
         }
       },
       "required": [
@@ -48,6 +56,29 @@
           "$ref": "#/definitions/PrimaryAttributeAccessControlConfigurationItem"
         }
       },
+      "type": "object"
+    },
+    "FlowModule": {
+      "additionalProperties": false,
+      "description": "A first-party application's metadata.",
+      "properties": {
+        "FlowModuleId": {
+          "description": "The identifier of the application that you want to give access to.",
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Type": {
+          "description": "The type of the first-party application",
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "Type",
+        "FlowModuleId"
+      ],
       "type": "object"
     },
     "Permission": {
@@ -179,6 +210,7 @@
       "permissions": [
         "connect:DescribeSecurityProfile",
         "connect:ListSecurityProfileApplications",
+        "connect:ListSecurityProfileFlowModules",
         "connect:ListSecurityProfilePermissions"
       ]
     },
@@ -208,6 +240,16 @@
         "$ref": "#/definitions/Tag"
       },
       "maxItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "AllowedFlowModules": {
+      "description": "The list of flow-module resources to be linked to a security profile in Amazon Connect.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/FlowModule"
+      },
+      "maxItems": 10,
       "type": "array",
       "uniqueItems": true
     },

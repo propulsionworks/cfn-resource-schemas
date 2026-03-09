@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-memory",
-  "$integrity": "sha512-Rjt5LwQnqcqQ3wFZaL9tV9AiqSRWnV4n+dUMeEbywRyEJ446/2AuooStEhHxASyChEau9wcU5Fp6SmH8bXuL4g==",
+  "$integrity": "sha512-FLYgMkAyiAc4npR/6JsTAq0IaA1XzFmisrkbp/hmrhovhmsbl+ZeTBiLU3ZFAk0EaRAYdeHkoFLLIfCUNjjzRw==",
   "additionalIdentifiers": [
     [
       "/properties/MemoryId"
@@ -22,6 +22,30 @@
         {
           "$ref": "#/definitions/CustomConsolidationConfiguration"
         }
+      ],
+      "type": "object"
+    },
+    "ContentConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "Level": {
+          "description": "The level of content detail to deliver",
+          "enum": [
+            "METADATA_ONLY",
+            "FULL_CONTENT"
+          ],
+          "type": "string"
+        },
+        "Type": {
+          "description": "The type of content to deliver",
+          "enum": [
+            "MEMORY_RECORDS"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "Type"
       ],
       "type": "object"
     },
@@ -292,6 +316,28 @@
       },
       "type": "object"
     },
+    "KinesisResource": {
+      "additionalProperties": false,
+      "properties": {
+        "ContentConfigurations": {
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/ContentConfiguration"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array"
+        },
+        "DataStreamArn": {
+          "$ref": "#/definitions/Arn"
+        }
+      },
+      "required": [
+        "DataStreamArn",
+        "ContentConfigurations"
+      ],
+      "type": "object"
+    },
     "MemoryArn": {
       "description": "ARN of the Memory resource",
       "pattern": "^arn:aws:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:memory/[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}$",
@@ -550,6 +596,34 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "StreamDeliveryResource": {
+      "additionalProperties": false,
+      "maxProperties": 1,
+      "minProperties": 1,
+      "properties": {
+        "Kinesis": {
+          "$ref": "#/definitions/KinesisResource"
+        }
+      },
+      "type": "object"
+    },
+    "StreamDeliveryResources": {
+      "additionalProperties": false,
+      "properties": {
+        "Resources": {
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/StreamDeliveryResource"
+          },
+          "maxItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "Resources"
+      ],
       "type": "object"
     },
     "SummaryConsolidationOverride": {
@@ -868,7 +942,10 @@
     "delete": {
       "permissions": [
         "bedrock-agentcore:DeleteMemory",
-        "bedrock-agentcore:GetMemory"
+        "bedrock-agentcore:GetMemory",
+        "kms:Decrypt",
+        "kms:DescribeKey",
+        "kms:GenerateDataKey"
       ]
     },
     "list": {
@@ -879,7 +956,10 @@
     "read": {
       "permissions": [
         "bedrock-agentcore:GetMemory",
-        "bedrock-agentcore:ListTagsForResource"
+        "bedrock-agentcore:ListTagsForResource",
+        "kms:Decrypt",
+        "kms:DescribeKey",
+        "kms:GenerateDataKey"
       ]
     },
     "update": {
@@ -889,7 +969,13 @@
         "iam:PassRole",
         "bedrock-agentcore:TagResource",
         "bedrock-agentcore:UntagResource",
-        "bedrock-agentcore:ListTagsForResource"
+        "bedrock-agentcore:ListTagsForResource",
+        "kms:DescribeKey",
+        "kms:Decrypt",
+        "kms:GenerateDataKeyWithoutPlaintext",
+        "kms:ReEncryptTo",
+        "kms:ReEncryptFrom",
+        "kms:GenerateDataKey"
       ]
     }
   },
@@ -933,6 +1019,9 @@
     },
     "Status": {
       "$ref": "#/definitions/MemoryStatus"
+    },
+    "StreamDeliveryResources": {
+      "$ref": "#/definitions/StreamDeliveryResources"
     },
     "Tags": {
       "$ref": "#/definitions/TagsMap"

@@ -1,8 +1,9 @@
 {
   "$id": "aws-mediaconnect-flowentitlement",
-  "$integrity": "sha512-SiV/8BaBXULFQqNRPGtAHgSETfn3e1qD7mrIQGphp44PEiuvVfHO9mq8+umjdxK8dx3tOz4jefjS+0AAWhtLBQ==",
+  "$integrity": "sha512-9Tp1nYY8BgLB6sVFxCG7mHHgOgRxaIFSO+0PoC7x4ZUVWwzGh4UNB9Dob/iM59DjsvGqRDy3NuC4wBVxgGexPQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
+    "/properties/FlowArn",
     "/properties/DataTransferSubscriberFeePercent",
     "/properties/Name"
   ],
@@ -47,10 +48,12 @@
         },
         "RoleArn": {
           "description": "The ARN of the role that you created during setup (when you set up AWS Elemental MediaConnect as a trusted entity).",
+          "pattern": "^arn:(aws[a-zA-Z-]*):iam::[0-9]{12}:role/[a-zA-Z0-9_+=,.@-]+$",
           "type": "string"
         },
         "SecretArn": {
           "description": " The ARN of the secret that you created in AWS Secrets Manager to store the encryption key. This parameter is required for static key encryption and is not valid for SPEKE encryption.",
+          "pattern": "^arn:(aws[a-zA-Z-]*):secretsmanager:[a-z0-9-]+:[0-9]{12}:secret:[a-zA-Z0-9/_+=.@-]+$",
           "type": "string"
         },
         "Url": {
@@ -63,14 +66,40 @@
         "RoleArn"
       ],
       "type": "object"
+    },
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
     }
   },
+  "deprecatedProperties": [
+    "/properties/Encryption/ResourceId",
+    "/properties/Encryption/ConstantInitializationVector",
+    "/properties/Encryption/DeviceId",
+    "/properties/Encryption/Region",
+    "/properties/Encryption/Url"
+  ],
   "description": "Resource schema for AWS::MediaConnect::FlowEntitlement",
   "handlers": {
     "create": {
       "permissions": [
         "iam:PassRole",
-        "mediaconnect:GrantFlowEntitlements"
+        "mediaconnect:GrantFlowEntitlements",
+        "mediaconnect:DescribeFlow",
+        "mediaconnect:TagResource",
+        "mediaconnect:ListTagsForResource"
       ]
     },
     "delete": {
@@ -81,6 +110,16 @@
       ]
     },
     "list": {
+      "handlerSchema": {
+        "properties": {
+          "FlowArn": {
+            "$ref": "resource-schema.json#/properties/FlowArn"
+          }
+        },
+        "required": [
+          "FlowArn"
+        ]
+      },
       "permissions": [
         "mediaconnect:DescribeFlow",
         "mediaconnect:ListFlows"
@@ -89,13 +128,18 @@
     "read": {
       "permissions": [
         "mediaconnect:DescribeFlow",
-        "mediaconnect:ListFlows"
+        "mediaconnect:ListFlows",
+        "mediaconnect:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
+        "iam:PassRole",
         "mediaconnect:DescribeFlow",
-        "mediaconnect:UpdateFlowEntitlement"
+        "mediaconnect:UpdateFlowEntitlement",
+        "mediaconnect:TagResource",
+        "mediaconnect:UntagResource",
+        "mediaconnect:ListTagsForResource"
       ]
     }
   },
@@ -118,6 +162,7 @@
     },
     "EntitlementArn": {
       "description": "The ARN of the entitlement.",
+      "pattern": "^arn:(aws[a-zA-Z-]*):mediaconnect:[a-z0-9-]+:[0-9]{12}:entitlement:[a-zA-Z0-9-]+:[a-zA-Z0-9_-]+$",
       "type": "string"
     },
     "EntitlementStatus": {
@@ -142,6 +187,15 @@
         "type": "string"
       },
       "type": "array"
+    },
+    "Tags": {
+      "description": "Key-value pairs that can be used to tag and organize this flow entitlement.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": true
     }
   },
   "readOnlyProperties": [
@@ -154,5 +208,17 @@
     "Description"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-mediaconnect.git",
+  "tagging": {
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "mediaconnect:TagResource",
+      "mediaconnect:UntagResource",
+      "mediaconnect:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::MediaConnect::FlowEntitlement"
 }

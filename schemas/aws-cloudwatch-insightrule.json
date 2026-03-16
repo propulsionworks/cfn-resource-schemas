@@ -1,13 +1,25 @@
 {
   "$id": "aws-cloudwatch-insightrule",
-  "$integrity": "sha512-MkfK+LrIwVTqJro+ZJ4PQiUTuPGv1HN+imzLAs+eEhOUjKiw15MtVuKoQSuEfvO8BZxVGTKGLqQ7YwnFo2ulBg==",
+  "$integrity": "sha512-KrWH2lmWIPO2+Zl9ZXQ94tkRq0sq+iAEHZUxINaehnurzlsZtP19HssJSaJltXRN2pjHEpDcF3Ekdxl0j/m5Cg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/RuleName"
   ],
   "definitions": {
-    "Tags": {
+    "Tag": {
       "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Value",
+        "Key"
+      ],
       "type": "object"
     }
   },
@@ -35,7 +47,11 @@
       "type": "string"
     },
     "Tags": {
-      "$ref": "#/definitions/Tags"
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": false
     }
   },
   "readOnlyProperties": [

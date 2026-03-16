@@ -1,6 +1,6 @@
 {
   "$id": "aws-ec2-ec2fleet",
-  "$integrity": "sha512-yrzi/PfwrPyDSfreQYsMrYz9x7O3Jta6r2sLKNVN2cdhoCBWxTkMBOdA0k+1J1/omVpkQXUN2LaUbS0XOp7TZg==",
+  "$integrity": "sha512-dXCknovaZyAcTiohW8Hx29NVdyFK+vZhfP+G3GJRnRBqA42aqmebMGGaok1OACugnXkj3NIYa/WDkjIgz/biQw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/LaunchTemplateConfigs",
@@ -538,6 +538,22 @@
       },
       "type": "object"
     },
+    "ReservedCapacityOptionsRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "ReservationTypes": {
+          "items": {
+            "enum": [
+              "interruptible-capacity-reservation"
+            ],
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "type": "object"
+    },
     "SpotOptionsRequest": {
       "additionalProperties": false,
       "properties": {
@@ -671,7 +687,8 @@
         "DefaultTargetCapacityType": {
           "enum": [
             "on-demand",
-            "spot"
+            "spot",
+            "reserved-capacity"
           ],
           "type": "string"
         },

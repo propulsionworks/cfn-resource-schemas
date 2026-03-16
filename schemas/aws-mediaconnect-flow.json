@@ -1,6 +1,6 @@
 {
   "$id": "aws-mediaconnect-flow",
-  "$integrity": "sha512-cqf+2XNgQzfkN7ECV4mDYc/WVsDvQDy6eVXHybYAeyom0Z+1zg/4G+ylJlwzw7TY82zD2RH/V0bHnj+I6O8OSQ==",
+  "$integrity": "sha512-WupWv0Qk5t7SAbgNIPyaALB5R9On8uBbG7/O0Z9HarRTdO1y2iOAiOrU9EOX4mHKXIvLwtCtU+QMfKVJU13vyA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -41,6 +41,27 @@
         }
       },
       "type": "object"
+    },
+    "EncodingConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "EncodingProfile": {
+          "$ref": "#/definitions/EncodingProfile"
+        },
+        "VideoMaxBitrate": {
+          "description": "The maximum video bitrate to use when transcoding the NDI source to a Transport Stream. This parameter enables you to override the default video bitrate within the encoding profile's supported range. The supported range is 10,000,000 - 50,000,000 bits per second (bps). If you do not specify a value, MediaConnect uses the default value of 20,000,000 bps.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "EncodingProfile": {
+      "description": "The encoding profile to use when transcoding the NDI source to a Transport Stream. You can change this value while a flow is running.",
+      "enum": [
+        "DISTRIBUTION_H264_DEFAULT",
+        "CONTRIBUTION_H264_DEFAULT"
+      ],
+      "type": "string"
     },
     "Encryption": {
       "additionalProperties": false,
@@ -83,10 +104,12 @@
         },
         "RoleArn": {
           "description": "The ARN of the role that you created during setup (when you set up AWS Elemental MediaConnect as a trusted entity).",
+          "pattern": "^arn:(aws[a-zA-Z-]*):iam::[0-9]{12}:role/[a-zA-Z0-9_+=,.@-]+$",
           "type": "string"
         },
         "SecretArn": {
           "description": " The ARN of the secret that you created in AWS Secrets Manager to store the encryption key. This parameter is required for static key encryption and is not valid for SPEKE encryption.",
+          "pattern": "^arn:(aws[a-zA-Z-]*):secretsmanager:[a-z0-9-]+:[0-9]{12}:secret:[a-zA-Z0-9/_+=.@-]+$",
           "type": "string"
         },
         "Url": {
@@ -283,6 +306,7 @@
       "properties": {
         "BridgeArn": {
           "description": "The ARN of the bridge feeding this flow.",
+          "pattern": "^arn:(aws[a-zA-Z-]*):mediaconnect:[a-z0-9-]+:[0-9]{12}:bridge:[a-zA-Z0-9-]+:[a-zA-Z0-9_-]+$",
           "type": "string"
         },
         "VpcInterfaceAttachment": {
@@ -393,6 +417,14 @@
           ],
           "type": "string"
         },
+        "Tags": {
+          "description": "Key-value pairs that can be used to tag this media stream.",
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/Tag"
+          },
+          "type": "array"
+        },
         "VideoFormat": {
           "description": "The resolution of the video.",
           "enum": [
@@ -461,7 +493,7 @@
     },
     "NdiConfig": {
       "additionalProperties": false,
-      "description": "Specifies the configuration settings for NDI outputs. Required when the flow includes NDI outputs.",
+      "description": "Specifies the configuration settings for NDI sources and outputs. Required when the flow includes NDI sources or outputs.",
       "properties": {
         "MachineName": {
           "description": "A prefix for the names of the NDI sources that the flow creates. If a custom name isn't specified, MediaConnect generates a unique 12-character ID as the prefix.",
@@ -475,12 +507,8 @@
           "type": "array"
         },
         "NdiState": {
-          "description": "A setting that controls whether NDI outputs can be used in the flow. Must be ENABLED to add NDI outputs. Default is DISABLED.",
-          "enum": [
-            "ENABLED",
-            "DISABLED"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/NdiState",
+          "description": "A setting that controls whether NDI sources or outputs can be used in the flow. The default value is DISABLED. This value must be set as ENABLED for your flow to support NDI sources or outputs."
         }
       },
       "type": "object"
@@ -495,7 +523,6 @@
         },
         "DiscoveryServerPort": {
           "description": "The port for the NDI discovery server. Defaults to 5959 if a custom port isn't specified.",
-          "format": "int32",
           "type": "integer"
         },
         "VpcInterfaceAdapter": {
@@ -508,6 +535,22 @@
         "VpcInterfaceAdapter"
       ],
       "type": "object"
+    },
+    "NdiSourceSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "SourceName": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "NdiState": {
+      "enum": [
+        "ENABLED",
+        "DISABLED"
+      ],
+      "type": "string"
     },
     "SecretsManagerEncryptionKeyConfiguration": {
       "additionalProperties": false,
@@ -563,6 +606,7 @@
         },
         "EntitlementArn": {
           "description": "The ARN of the entitlement that allows you to subscribe to content that comes from another AWS account. The entitlement is set by the content originator and the ARN is generated as part of the originator's flow.",
+          "pattern": "^arn:(aws[a-zA-Z-]*):mediaconnect:[a-z0-9-]+:[0-9]{12}:entitlement:[a-zA-Z0-9-]+:[a-zA-Z0-9_-]+$",
           "type": "string"
         },
         "GatewayBridgeSource": {
@@ -604,6 +648,10 @@
           "description": "The name of the source.",
           "type": "string"
         },
+        "NdiSourceSettings": {
+          "$ref": "#/definitions/NdiSourceSettings",
+          "description": "The settings for the NDI flow source. This includes the exact name of the upstream NDI sender that you want to connect to your flow source."
+        },
         "Protocol": {
           "description": "The protocol that is used by the source.",
           "enum": [
@@ -611,11 +659,11 @@
             "rtp-fec",
             "rtp",
             "rist",
-            "fujitsu-qos",
             "srt-listener",
             "srt-caller",
             "st2110-jpegxs",
-            "cdi"
+            "cdi",
+            "ndi-speed-hq"
           ],
           "type": "string"
         },
@@ -639,6 +687,7 @@
         },
         "SourceArn": {
           "description": "The ARN of the source.",
+          "pattern": "^arn:(aws[a-zA-Z-]*):mediaconnect:[a-z0-9-]+:[0-9]{12}:source:[a-zA-Z0-9-]+:[a-zA-Z0-9_-]+$",
           "type": "string"
         },
         "SourceIngestPort": {
@@ -656,6 +705,14 @@
         "StreamId": {
           "description": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.",
           "type": "string"
+        },
+        "Tags": {
+          "description": "Key-value pairs that can be used to tag this source.",
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/Tag"
+          },
+          "type": "array"
         },
         "VpcInterfaceName": {
           "description": "The name of the VPC Interface this Source is configured with.",
@@ -705,6 +762,22 @@
       },
       "type": "object"
     },
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
+    },
     "VideoMonitoringSetting": {
       "additionalProperties": false,
       "description": "Specifies the configuration for video stream metrics monitoring.",
@@ -743,6 +816,7 @@
         },
         "RoleArn": {
           "description": "Role Arn MediaConnect can assume to create ENIs in customer's account.",
+          "pattern": "^arn:(aws[a-zA-Z-]*):iam::[0-9]{12}:role/[a-zA-Z0-9_+=,.@-]+$",
           "type": "string"
         },
         "SecurityGroupIds": {
@@ -755,6 +829,14 @@
         "SubnetId": {
           "description": "Subnet must be in the AZ of the Flow",
           "type": "string"
+        },
+        "Tags": {
+          "description": "Key-value pairs that can be used to tag this VPC interface.",
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/Tag"
+          },
+          "type": "array"
         }
       },
       "required": [
@@ -777,7 +859,16 @@
       "type": "object"
     }
   },
-  "description": "Resource schema for AWS::MediaConnect::Flow",
+  "deprecatedProperties": [
+    "/properties/Source/SenderIpAddress",
+    "/properties/Source/SenderControlPort",
+    "/properties/Source/Decryption/ResourceId",
+    "/properties/Source/Decryption/ConstantInitializationVector",
+    "/properties/Source/Decryption/DeviceId",
+    "/properties/Source/Decryption/Region",
+    "/properties/Source/Decryption/Url"
+  ],
+  "description": "Resource Type definition for AWS::MediaConnect::Flow",
   "handlers": {
     "create": {
       "permissions": [
@@ -785,6 +876,9 @@
         "mediaconnect:AddFlowMediaStreams",
         "mediaconnect:AddFlowSources",
         "mediaconnect:AddFlowVpcInterfaces",
+        "mediaconnect:DescribeFlow",
+        "mediaconnect:TagResource",
+        "mediaconnect:ListTagsForResource",
         "iam:PassRole"
       ]
     },
@@ -806,7 +900,8 @@
     },
     "read": {
       "permissions": [
-        "mediaconnect:DescribeFlow"
+        "mediaconnect:DescribeFlow",
+        "mediaconnect:ListTagsForResource"
       ]
     },
     "update": {
@@ -818,7 +913,10 @@
         "mediaconnect:AddFlowMediaStreams",
         "mediaconnect:RemoveFlowMediaStream",
         "mediaconnect:AddFlowVpcInterfaces",
-        "mediaconnect:RemoveFlowVpcInterface"
+        "mediaconnect:RemoveFlowVpcInterface",
+        "mediaconnect:TagResource",
+        "mediaconnect:UntagResource",
+        "mediaconnect:ListTagsForResource"
       ]
     }
   },
@@ -834,8 +932,13 @@
       "description": "The IP address from which video will be sent to output destinations.",
       "type": "string"
     },
+    "EncodingConfig": {
+      "$ref": "#/definitions/EncodingConfig",
+      "description": "The encoding configuration to apply to the NDI source content when transcoding it to a transport stream (TS) for downstream distribution. You can choose between several predefined encoding profiles based on common use cases."
+    },
     "FlowArn": {
       "description": "The Amazon Resource Name (ARN), a unique identifier for any AWS resource, of the flow.",
+      "pattern": "^arn:(aws[a-zA-Z-]*):mediaconnect:[a-z0-9-]+:[0-9]{12}:flow:[a-zA-Z0-9-]+:[a-zA-Z0-9_-]+$",
       "type": "string"
     },
     "FlowAvailabilityZone": {
@@ -847,10 +950,11 @@
       "type": "string"
     },
     "FlowSize": {
-      "description": "Determines the processing capacity and feature set of the flow. Set this optional parameter to LARGE if you want to enable NDI outputs on the flow.",
+      "description": "Determines the processing capacity and feature set of the flow. Set this optional parameter to LARGE if you want to enable NDI sources or outputs on the flow.",
       "enum": [
         "MEDIUM",
-        "LARGE"
+        "LARGE",
+        "LARGE_4X"
       ],
       "type": "string"
     },
@@ -871,7 +975,7 @@
     },
     "NdiConfig": {
       "$ref": "#/definitions/NdiConfig",
-      "description": "Specifies the configuration settings for NDI outputs. Required when the flow includes NDI outputs."
+      "description": "Specifies the configuration settings for NDI sources and outputs. Required when the flow includes NDI sources or outputs."
     },
     "Source": {
       "$ref": "#/definitions/Source",
@@ -884,6 +988,14 @@
     "SourceMonitoringConfig": {
       "$ref": "#/definitions/SourceMonitoringConfig",
       "description": "The source monitoring config of the flow."
+    },
+    "Tags": {
+      "description": "Key-value pairs that can be used to tag this flow.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array"
     },
     "VpcInterfaces": {
       "description": "The VPC interfaces that you added to this flow.",
@@ -899,8 +1011,6 @@
     "/properties/Source/SourceArn",
     "/properties/Source/IngestIp",
     "/properties/Source/SourceIngestPort",
-    "/properties/VpcInterfaces/*/NetworkInterfaceIds",
-    "/properties/MediaStreams/*/Fmt",
     "/properties/EgressIp",
     "/properties/FlowNdiMachineName"
   ],
@@ -915,5 +1025,17 @@
     "templateUri": "/mediaconnect/home?region=${awsRegion}#/flows/${flowArn}"
   },
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-mediaconnect.git",
+  "tagging": {
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "mediaconnect:ListTagsForResource",
+      "mediaconnect:TagResource",
+      "mediaconnect:UntagResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::MediaConnect::Flow"
 }

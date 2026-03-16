@@ -1,9 +1,10 @@
 {
   "$id": "aws-mediaconnect-flowoutput",
-  "$integrity": "sha512-RZ+p1mUtqPS2XI9fertKGwqoeORGKDiOOX+Lx13RIpSpC76Remm9vlmxlqhVUo/TC2v935gRMBprrDLv4A9JLA==",
+  "$integrity": "sha512-10EokG4c+sAzEMU0CcIbhplep206g0Ie9r3973WOG0G2qwtpQgNroSw/GOANBlA/7jgsq85GqsZrZJ6SR9/hxQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/Name"
+    "/properties/Name",
+    "/properties/FlowArn"
   ],
   "definitions": {
     "AutomaticEncryptionKeyConfiguration": {
@@ -81,10 +82,12 @@
         },
         "RoleArn": {
           "description": "The ARN of the role that you created during setup (when you set up AWS Elemental MediaConnect as a trusted entity).",
+          "pattern": "^arn:(aws[a-zA-Z-]*):iam::[0-9]{12}:role/[a-zA-Z0-9_+=,.@-]+$",
           "type": "string"
         },
         "SecretArn": {
           "description": " The ARN of the secret that you created in AWS Secrets Manager to store the encryption key. This parameter is required for static key encryption and is not valid for SPEKE encryption.",
+          "pattern": "^arn:(aws[a-zA-Z-]*):secretsmanager:[a-z0-9-]+:[0-9]{12}:secret:[a-zA-Z0-9/_+=.@-]+$",
           "type": "string"
         }
       },
@@ -219,6 +222,22 @@
       ],
       "type": "object"
     },
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
+    },
     "VpcInterfaceAttachment": {
       "additionalProperties": false,
       "description": "The settings for attaching a VPC interface to an output.",
@@ -236,7 +255,10 @@
     "create": {
       "permissions": [
         "iam:PassRole",
-        "mediaconnect:AddFlowOutputs"
+        "mediaconnect:AddFlowOutputs",
+        "mediaconnect:DescribeFlow",
+        "mediaconnect:TagResource",
+        "mediaconnect:ListTagsForResource"
       ]
     },
     "delete": {
@@ -247,6 +269,16 @@
       ]
     },
     "list": {
+      "handlerSchema": {
+        "properties": {
+          "FlowArn": {
+            "$ref": "resource-schema.json#/properties/FlowArn"
+          }
+        },
+        "required": [
+          "FlowArn"
+        ]
+      },
       "permissions": [
         "mediaconnect:DescribeFlow",
         "mediaconnect:ListFlows"
@@ -255,13 +287,18 @@
     "read": {
       "permissions": [
         "mediaconnect:DescribeFlow",
-        "mediaconnect:ListFlows"
+        "mediaconnect:ListFlows",
+        "mediaconnect:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
+        "iam:PassRole",
         "mediaconnect:DescribeFlow",
-        "mediaconnect:UpdateFlowOutput"
+        "mediaconnect:UpdateFlowOutput",
+        "mediaconnect:TagResource",
+        "mediaconnect:UntagResource",
+        "mediaconnect:ListTagsForResource"
       ]
     }
   },
@@ -290,6 +327,7 @@
     },
     "FlowArn": {
       "description": "The Amazon Resource Name (ARN), a unique identifier for any AWS resource, of the flow.",
+      "pattern": "^arn:(aws[a-zA-Z-]*):mediaconnect:[a-z0-9-]+:[0-9]{12}:flow:[a-zA-Z0-9-]+:[a-zA-Z0-9_-]+$",
       "type": "string"
     },
     "MaxLatency": {
@@ -321,6 +359,7 @@
     },
     "OutputArn": {
       "description": "The ARN of the output.",
+      "pattern": "^arn:(aws[a-zA-Z-]*):mediaconnect:[a-z0-9-]+:[0-9]{12}:output:[a-zA-Z0-9-]+:[a-zA-Z0-9_-]+$",
       "type": "string"
     },
     "OutputStatus": {
@@ -343,7 +382,6 @@
         "rtp",
         "zixi-pull",
         "rist",
-        "fujitsu-qos",
         "srt-listener",
         "srt-caller",
         "st2110-jpegxs",
@@ -374,6 +412,15 @@
       "description": "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.",
       "type": "string"
     },
+    "Tags": {
+      "description": "Key-value pairs that can be used to tag and organize this flow output.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Tag"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
     "VpcInterfaceAttachment": {
       "$ref": "#/definitions/VpcInterfaceAttachment",
       "description": "The name of the VPC interface attachment to use for this output."
@@ -386,5 +433,17 @@
     "FlowArn"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-mediaconnect.git",
+  "tagging": {
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "mediaconnect:TagResource",
+      "mediaconnect:UntagResource",
+      "mediaconnect:ListTagsForResource"
+    ],
+    "tagOnCreate": true,
+    "tagProperty": "/properties/Tags",
+    "tagUpdatable": true,
+    "taggable": true
+  },
   "typeName": "AWS::MediaConnect::FlowOutput"
 }

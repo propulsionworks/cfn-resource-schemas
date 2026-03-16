@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchservice-domain",
-  "$integrity": "sha512-a+aggXHqTYUzu7jcLSOokCBAW9IeDPn0Mb6BjubB8ovGFml4C7psFOkcT6VVgko9Vv9Hn6Y44bixxV6H4B6XfA==",
+  "$integrity": "sha512-drcDjok7XKdDq8ISOEGgEee86wQq6fWEW5IKlx6sNuK3DUAYwbe7QmStXgKrVgd0YkEBM8eiQAK4y2rG4MWXSg==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/EncryptionAtRestOptions/properties",
@@ -123,6 +123,19 @@
       "properties": {
         "Enabled": {
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "DeploymentStrategyOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "DeploymentStrategy": {
+          "enum": [
+            "Default",
+            "CapacityOptimized"
+          ],
+          "type": "string"
         }
       },
       "type": "object"
@@ -603,6 +616,9 @@
     },
     "CognitoOptions": {
       "$ref": "#/definitions/CognitoOptions"
+    },
+    "DeploymentStrategyOptions": {
+      "$ref": "#/definitions/DeploymentStrategyOptions"
     },
     "DomainArn": {
       "type": "string"

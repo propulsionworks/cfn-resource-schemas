@@ -1,6 +1,6 @@
 {
   "$id": "aws-glue-securityconfiguration",
-  "$integrity": "sha512-nC2kYsi8uN6icC8bVwof6I7Qugvo/3QwggxDVV2zlikrnxeG8kHpzNU3Vr6C+4tVbYvKVHducZUMhNVr3iOGqg==",
+  "$integrity": "sha512-3hU2Y+mCCM1Nu94Lk4TbAzib19G2ymnD8G06lEtiInBpd4B++R6UfWGJFAZMec9a7CY9Pf0hBSfb7oSC4LIU7g==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -28,7 +28,11 @@
           "$ref": "#/definitions/JobBookmarksEncryption"
         },
         "S3Encryptions": {
-          "$ref": "#/definitions/S3Encryptions"
+          "items": {
+            "$ref": "#/definitions/S3Encryption"
+          },
+          "type": "array",
+          "uniqueItems": false
         }
       },
       "type": "object"
@@ -45,8 +49,16 @@
       },
       "type": "object"
     },
-    "S3Encryptions": {
+    "S3Encryption": {
       "additionalProperties": false,
+      "properties": {
+        "KmsKeyArn": {
+          "type": "string"
+        },
+        "S3EncryptionMode": {
+          "type": "string"
+        }
+      },
       "type": "object"
     }
   },

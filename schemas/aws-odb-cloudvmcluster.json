@@ -1,6 +1,6 @@
 {
   "$id": "aws-odb-cloudvmcluster",
-  "$integrity": "sha512-AetAjsjmFDJck5Uea1vwKLNuk1cDdKyvO+VPBZ3vIruB98g7d+NI4cdIekpkITQZT82LSiR5HuUFTsBRZ7ua9Q==",
+  "$integrity": "sha512-OvO1o0ARls4s4Bv42iAjvxz7s9NJpP9XYSSHgGceULDRV4/6aCD/aK7Wl2xrUtmyjkYHDmXOwu8QuZfEwhpZ4g==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/DbNodes"
@@ -125,6 +125,25 @@
       ],
       "type": "object"
     },
+    "IamRole": {
+      "additionalProperties": false,
+      "description": "An AWS Identity and Access Management (IAM) service role associated with the VM cluster.",
+      "properties": {
+        "AwsIntegration": {
+          "description": "The AWS integration configuration settings for the AWS Identity and Access Management (IAM) service role.",
+          "type": "string"
+        },
+        "IamRoleArn": {
+          "description": "The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role.",
+          "type": "string"
+        },
+        "Status": {
+          "description": "The current status of the AWS Identity and Access Management (IAM) service role.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Tag": {
       "additionalProperties": false,
       "description": "A key-value pair to associate with a resource.",
@@ -153,6 +172,7 @@
     "create": {
       "permissions": [
         "iam:CreateServiceLinkedRole",
+        "iam:PassRole",
         "odb:CreateCloudVmCluster",
         "odb:TagResource",
         "odb:GetCloudVmCluster",
@@ -162,7 +182,8 @@
         "ec2:DescribeAvailabilityZones",
         "odb:ListDbNodes",
         "odb:GetDbNode",
-        "odb:CreateDbNode"
+        "odb:CreateDbNode",
+        "odb:AssociateIamRoleToResource"
       ],
       "timeoutInMinutes": 2160
     },
@@ -197,6 +218,7 @@
     },
     "update": {
       "permissions": [
+        "iam:PassRole",
         "odb:TagResource",
         "odb:UntagResource",
         "odb:GetCloudVmCluster",
@@ -204,7 +226,9 @@
         "odb:ListTagsForResource",
         "odb:ListDbNodes",
         "odb:GetDbNode",
-        "sts:GetCallerIdentity"
+        "sts:GetCallerIdentity",
+        "odb:AssociateIamRoleToResource",
+        "odb:DisassociateIamRoleFromResource"
       ]
     }
   },
@@ -298,6 +322,15 @@
       "minLength": 1,
       "pattern": "^[a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9]$",
       "type": "string"
+    },
+    "IamRoles": {
+      "description": "The AWS Identity and Access Management (IAM) service roles associated with the VM cluster.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/IamRole"
+      },
+      "type": "array",
+      "uniqueItems": true
     },
     "IsLocalBackupEnabled": {
       "description": "Indicates whether database backups to local Exadata storage is enabled for the VM cluster.",
@@ -440,7 +473,8 @@
     "/properties/DbNodes/*/BackupVnic2Id",
     "/properties/DbNodes/*/VnicId",
     "/properties/DbNodes/*/Vnic2Id",
-    "/properties/DbNodes/*/HostIpId"
+    "/properties/DbNodes/*/HostIpId",
+    "/properties/IamRoles/*/Status"
   ],
   "replacementStrategy": "delete_then_create",
   "tagging": {

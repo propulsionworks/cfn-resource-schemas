@@ -1,6 +1,6 @@
 {
   "$id": "aws-odb-cloudautonomousvmcluster",
-  "$integrity": "sha512-xx33wp8/ewRP8OQXkLXTk3/ptprbNeWnRm2T+aph8AtqUJOsi5eqEZzJdO3mdpSvkdoZ+9mqTjcrQxvqHmHU0w==",
+  "$integrity": "sha512-hUFZH4ysOgd8riGb+jKTngNPAfUav0T9M07REfHpqCdcsr6lNpyrK+PUNJHenc1+JrhDq5D8cFm+EZsTK/yJQg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/OdbNetworkId",
@@ -20,6 +20,25 @@
     "/properties/TotalContainerDatabases"
   ],
   "definitions": {
+    "IamRole": {
+      "additionalProperties": false,
+      "description": "An AWS Identity and Access Management (IAM) service role associated with the Autonomous VM cluster.",
+      "properties": {
+        "AwsIntegration": {
+          "description": "The AWS integration configuration settings for the AWS Identity and Access Management (IAM) service role.",
+          "type": "string"
+        },
+        "IamRoleArn": {
+          "description": "The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role.",
+          "type": "string"
+        },
+        "Status": {
+          "description": "The current status of the AWS Identity and Access Management (IAM) service role.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "MaintenanceWindow": {
       "additionalProperties": false,
       "description": "The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window.",
@@ -125,11 +144,13 @@
       "permissions": [
         "ec2:DescribeAvailabilityZones",
         "iam:CreateServiceLinkedRole",
+        "iam:PassRole",
         "odb:CreateCloudAutonomousVmCluster",
         "odb:GetCloudAutonomousVmCluster",
         "odb:ListCloudAutonomousVmClusters",
         "odb:ListTagsForResource",
         "odb:TagResource",
+        "odb:AssociateIamRoleToResource",
         "sts:GetCallerIdentity"
       ],
       "timeoutInMinutes": 2160
@@ -160,11 +181,14 @@
     },
     "update": {
       "permissions": [
+        "iam:PassRole",
         "odb:TagResource",
         "odb:UntagResource",
         "odb:GetCloudAutonomousVmCluster",
         "odb:ListCloudAutonomousVmClusters",
         "odb:ListTagsForResource",
+        "odb:AssociateIamRoleToResource",
+        "odb:DisassociateIamRoleFromResource",
         "sts:GetCallerIdentity"
       ]
     }
@@ -267,6 +291,15 @@
     "Hostname": {
       "description": "The hostname for the Autonomous VM cluster.",
       "type": "string"
+    },
+    "IamRoles": {
+      "description": "The AWS Identity and Access Management (IAM) service roles associated with the Autonomous VM cluster.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/IamRole"
+      },
+      "type": "array",
+      "uniqueItems": true
     },
     "IsMtlsEnabledVmCluster": {
       "description": "Indicates whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster.",
@@ -408,7 +441,8 @@
     "/properties/ProvisionedCpus",
     "/properties/ReclaimableCpus",
     "/properties/ReservedCpus",
-    "/properties/Shape"
+    "/properties/Shape",
+    "/properties/IamRoles/*/Status"
   ],
   "replacementStrategy": "delete_then_create",
   "tagging": {

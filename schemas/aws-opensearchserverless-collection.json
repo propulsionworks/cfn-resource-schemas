@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchserverless-collection",
-  "$integrity": "sha512-FS/rFsK1VA1qt8NnLp5ZkV7vp9E5ylP6XQ+jbdgwGVe0Z6dT+NUc3SEimb/razEWRcTfYLN8yeiahJptthpHQA==",
+  "$integrity": "sha512-Nj7pn29z+pOIJnnE9IGOIZP/MJ+Ve2f9weHJngsX70gw7mkXaX++rFaZmo2z3NZTDukDGxpSw8oGzRMuudxP3A==",
   "additionalIdentifiers": [
     [
       "/properties/Name"
@@ -16,7 +16,9 @@
     "/properties/Type",
     "/properties/StandbyReplicas",
     "/properties/CollectionGroupName",
-    "/properties/EncryptionConfig"
+    "/properties/EncryptionConfig",
+    "/properties/VectorOptions",
+    "/properties/VectorOptions/ServerlessVectorAcceleration"
   ],
   "definitions": {
     "CollectionType": {
@@ -42,6 +44,15 @@
         }
       },
       "type": "object"
+    },
+    "ServerlessVectorAcceleration": {
+      "description": "Indicates whether GPU acceleration is enabled for vector indexing",
+      "enum": [
+        "ENABLED",
+        "DISABLED",
+        "ALLOWED"
+      ],
+      "type": "string"
     },
     "StandbyReplicas": {
       "description": "The possible standby replicas for the collection",
@@ -72,6 +83,16 @@
         "Key",
         "Value"
       ],
+      "type": "object"
+    },
+    "VectorOptions": {
+      "additionalProperties": false,
+      "description": "Vector search configuration options for the collection",
+      "properties": {
+        "ServerlessVectorAcceleration": {
+          "$ref": "#/definitions/ServerlessVectorAcceleration"
+        }
+      },
       "type": "object"
     }
   },
@@ -170,6 +191,9 @@
     },
     "Type": {
       "$ref": "#/definitions/CollectionType"
+    },
+    "VectorOptions": {
+      "$ref": "#/definitions/VectorOptions"
     }
   },
   "readOnlyProperties": [

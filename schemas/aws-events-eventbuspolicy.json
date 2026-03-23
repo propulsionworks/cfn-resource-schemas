@@ -1,6 +1,6 @@
 {
   "$id": "aws-events-eventbuspolicy",
-  "$integrity": "sha512-BHY+nmYeBtb+JHGsJbNm1t5TvB6ABkRH/SectpUOhkTw+zQaEYZHUAKIp8wu2s97F2sudQMOynARmFMNLSTQcg==",
+  "$integrity": "sha512-gff+v0tMydyVEQD/QuHfYBMdNnepzwi+7ujCqyhhC4u30/L3sbDsRHqej2J8sgL3IsTOMEquaMVlUlvMCyLbHw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/EventBusName",
@@ -110,6 +110,9 @@
       "pattern": "[a-zA-Z0-9-_]+",
       "type": "string"
     }
+  },
+  "propertyTransform": {
+    "/properties/Statement": "$merge([{\"Sid\": StatementId}, Statement])"
   },
   "required": [
     "StatementId"

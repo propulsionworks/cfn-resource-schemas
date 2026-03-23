@@ -1,6 +1,6 @@
 {
   "$id": "aws-batch-schedulingpolicy",
-  "$integrity": "sha512-IvtC6+s7CKTMdUZ/ljLDmmE3QxtwUc5lPYLFgrX5lxUCgT7C7Y5CnaROd27S3fTuO8d4e6ebHSHZZRq9bkH2GA==",
+  "$integrity": "sha512-Hoz6lUwrLPXS7YxpO5rO8eYRginuVnUAwEtOa+/AVa6oCROkp2yd0Aw6mxwa5zloYahuPNs2HefTOF9cZkJsSQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -31,6 +31,19 @@
         }
       },
       "required": [],
+      "type": "object"
+    },
+    "QuotaSharePolicy": {
+      "additionalProperties": false,
+      "description": "Quota Share Policy for the Job Queue.",
+      "properties": {
+        "IdleResourceAssignmentStrategy": {
+          "enum": [
+            "FIFO"
+          ],
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "ResourceArn": {
@@ -86,6 +99,18 @@
       ]
     }
   },
+  "oneOf": [
+    {
+      "required": [
+        "FairsharePolicy"
+      ]
+    },
+    {
+      "required": [
+        "QuotaSharePolicy"
+      ]
+    }
+  ],
   "primaryIdentifier": [
     "/properties/Arn"
   ],
@@ -100,6 +125,9 @@
       "description": "Name of Scheduling Policy.",
       "pattern": "",
       "type": "string"
+    },
+    "QuotaSharePolicy": {
+      "$ref": "#/definitions/QuotaSharePolicy"
     },
     "Tags": {
       "additionalProperties": false,

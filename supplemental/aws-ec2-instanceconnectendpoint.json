@@ -4,10 +4,72 @@
     "properties": {
       "Id": {
         "description": "The ID of the EC2 Instance Connect Endpoint."
+      },
+      "AvailabilityZone": {
+        "description": "The Availability Zone of the EC2 Instance Connect Endpoint"
+      },
+      "AvailabilityZoneId": {
+        "description": "The ID of the Availability Zone of the EC2 Instance Connect Endpoint"
+      },
+      "CreatedAt": {
+        "description": "The date and time that the EC2 Instance Connect Endpoint was created"
+      },
+      "InstanceConnectEndpointArn": {
+        "description": "The Amazon Resource Name (ARN) of the EC2 Instance Connect Endpoint"
+      },
+      "NetworkInterfaceIds": {
+        "description": "The ID of the elastic network interface that Amazon EC2 automatically created when creating the EC2 Instance Connect Endpoint"
+      },
+      "OwnerId": {
+        "description": "The ID of the AWS account that created the EC2 Instance Connect Endpoint"
+      },
+      "PublicDnsNames": {
+        "description": "The public DNS names of the endpoint, including IPv4-only and dualstack DNS names."
+      },
+      "State": {
+        "description": "The current state of the EC2 Instance Connect Endpoint"
+      },
+      "StateMessage": {
+        "description": "The message for the current state of the EC2 Instance Connect Endpoint. Can include a failure message"
+      },
+      "VpcId": {
+        "description": "The ID of the VPC in which the EC2 Instance Connect Endpoint was created"
       }
     }
   },
   "definitions": {
+    "InstanceConnectEndpointDnsNames": {
+      "properties": {
+        "DnsName": {
+          "description": "The DNS name of the EC2 Instance Connect Endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instanceconnectendpoint-instanceconnectendpointdnsnames.html#cfn-ec2-instanceconnectendpoint-instanceconnectendpointdnsnames-dnsname"
+        },
+        "FipsDnsName": {
+          "description": "The Federal Information Processing Standards (FIPS) compliant DNS name of the EC2 Instance Connect Endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instanceconnectendpoint-instanceconnectendpointdnsnames.html#cfn-ec2-instanceconnectendpoint-instanceconnectendpointdnsnames-fipsdnsname"
+        }
+      },
+      "description": "The DNS names of the endpoint.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instanceconnectendpoint-instanceconnectendpointdnsnames.html"
+    },
+    "InstanceConnectEndpointPublicDnsNames": {
+      "properties": {
+        "Dualstack": {
+          "description": "The DNS names of the endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instanceconnectendpoint-instanceconnectendpointpublicdnsnames.html#cfn-ec2-instanceconnectendpoint-instanceconnectendpointpublicdnsnames-dualstack"
+        },
+        "Ipv4": {
+          "description": "The DNS names of the endpoint.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instanceconnectendpoint-instanceconnectendpointpublicdnsnames.html#cfn-ec2-instanceconnectendpoint-instanceconnectendpointpublicdnsnames-ipv4"
+        }
+      },
+      "description": "The public DNS names of the endpoint, including IPv4-only and dualstack DNS names.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instanceconnectendpoint-instanceconnectendpointpublicdnsnames.html"
+    },
+    "NetworkInterfaceId": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instanceconnectendpoint-networkinterfaceid.html"
+    },
     "SecurityGroupId": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instanceconnectendpoint-securitygroupid.html"
@@ -28,20 +90,47 @@
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html",
   "id": "aws-ec2-instanceconnectendpoint",
   "properties": {
+    "AvailabilityZone": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-availabilityzone"
+    },
+    "AvailabilityZoneId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-availabilityzoneid"
+    },
     "ClientToken": {
       "description": "Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-clienttoken"
     },
+    "CreatedAt": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-createdat"
+    },
     "Id": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-id"
+    },
+    "InstanceConnectEndpointArn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-instanceconnectendpointarn"
+    },
+    "NetworkInterfaceIds": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-networkinterfaceids"
+    },
+    "OwnerId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-ownerid"
     },
     "PreserveClientIp": {
       "description": "Indicates whether the client IP address is preserved as the source. The following are the possible values.\n\n- `true` - Use the client IP address as the source.\n- `false` - Use the network interface IP address as the source.\n\n> `PreserveClientIp` is only supported on IPv4 EC2 Instance Connect Endpoints. To use `PreserveClientIp` , the value for `IpAddressType` must be `ipv4` . \n\nDefault: `false`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-preserveclientip"
     },
+    "PublicDnsNames": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-publicdnsnames"
+    },
     "SecurityGroupIds": {
       "description": "One or more security groups to associate with the endpoint. If you don't specify a security group, the default security group for your VPC will be associated with the endpoint.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-securitygroupids"
+    },
+    "State": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-state"
+    },
+    "StateMessage": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-statemessage"
     },
     "SubnetId": {
       "description": "The ID of the subnet in which to create the EC2 Instance Connect Endpoint.",
@@ -50,6 +139,9 @@
     "Tags": {
       "description": "The tags to apply to the EC2 Instance Connect Endpoint during creation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-tags"
+    },
+    "VpcId": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instanceconnectendpoint.html#cfn-ec2-instanceconnectendpoint-vpcid"
     }
   },
   "typeName": "AWS::EC2::InstanceConnectEndpoint"

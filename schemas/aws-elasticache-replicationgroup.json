@@ -1,6 +1,6 @@
 {
   "$id": "aws-elasticache-replicationgroup",
-  "$integrity": "sha512-E3MfI4XIWERKnXbWAD11mjHfhsrwLjNZZxpI5G905+qnDOYiOHzcOSP6Mo6dZxPg8EopCq29G31f6t/1ABYiPQ==",
+  "$integrity": "sha512-9Vkl5DxivblXFZSo7Y9dCIiWCmICXPiyzMRpYYjU702lQzgHkOZYCig0oA5fVbDIT7shez0XeRlW/uO5NmN0Ww==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/AuthToken",
@@ -120,7 +120,7 @@
             "type": "string"
           },
           "type": "array",
-          "uniqueItems": true
+          "uniqueItems": false
         },
         "ReplicaCount": {
           "description": "The number of read replica nodes in this node group (shard).",
@@ -180,13 +180,15 @@
         "kms:CreateGrant",
         "kms:DescribeKey",
         "s3:GetObject"
-      ]
+      ],
+      "timeoutInMinutes": 300
     },
     "delete": {
       "permissions": [
         "elasticache:DeleteReplicationGroup",
         "elasticache:DescribeReplicationGroups"
-      ]
+      ],
+      "timeoutInMinutes": 300
     },
     "list": {
       "permissions": [
@@ -227,7 +229,8 @@
         "kms:CreateGrant",
         "kms:DescribeKey",
         "iam:CreateServiceLinkedRole"
-      ]
+      ],
+      "timeoutInMinutes": 1440
     }
   },
   "primaryIdentifier": [

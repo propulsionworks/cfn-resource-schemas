@@ -1,6 +1,6 @@
 {
   "$id": "aws-fsx-filesystem",
-  "$integrity": "sha512-efTh+InX/edP6UAG7mc9ppaOebsZ1zb8XEpALhDfHUKZeke0lFc96aqbG+oLkgNyQ71gMpOR4mp4u7TOio47xA==",
+  "$integrity": "sha512-Ja2jEUxvZCH/AjRY93RAYQODGuuaqJ/Rlzhnx0hstz/hrScHYTHCkqihk82X9mDnlD4DSCO1aHdpGeUs+L7aPg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/KmsKeyId",
@@ -67,6 +67,21 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "FsrmConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "EventLogDestination": {
+          "type": "string"
+        },
+        "FsrmServiceEnabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "FsrmServiceEnabled"
+      ],
       "type": "object"
     },
     "LustreConfiguration": {
@@ -398,6 +413,9 @@
         },
         "DiskIopsConfiguration": {
           "$ref": "#/definitions/DiskIopsConfiguration"
+        },
+        "FsrmConfiguration": {
+          "$ref": "#/definitions/FsrmConfiguration"
         },
         "PreferredSubnetId": {
           "type": "string"

@@ -1,6 +1,6 @@
 {
   "$id": "aws-opensearchserverless-collection",
-  "$integrity": "sha512-Nj7pn29z+pOIJnnE9IGOIZP/MJ+Ve2f9weHJngsX70gw7mkXaX++rFaZmo2z3NZTDukDGxpSw8oGzRMuudxP3A==",
+  "$integrity": "sha512-zaEIxdiZNcxv/k/27vdv2waH3J2w7phOkb4px0ixJ0B42DZpYng5w54X8o6sBFBVa1ivrFmzYnTMxghad8oQUA==",
   "additionalIdentifiers": [
     [
       "/properties/Name"
@@ -40,6 +40,18 @@
         },
         "KmsKeyArn": {
           "description": "Key Management Service key used to encrypt the collection.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "FipsEndpoints": {
+      "additionalProperties": false,
+      "properties": {
+        "CollectionEndpoint": {
+          "type": "string"
+        },
+        "DashboardEndpoint": {
           "type": "string"
         }
       },
@@ -159,6 +171,9 @@
     "EncryptionConfig": {
       "$ref": "#/definitions/EncryptionConfig"
     },
+    "FipsEndpoints": {
+      "$ref": "#/definitions/FipsEndpoints"
+    },
     "Id": {
       "description": "The identifier of the collection",
       "maxLength": 40,
@@ -201,6 +216,7 @@
     "/properties/Arn",
     "/properties/CollectionEndpoint",
     "/properties/DashboardEndpoint",
+    "/properties/FipsEndpoints",
     "/properties/KmsKeyArn"
   ],
   "required": [

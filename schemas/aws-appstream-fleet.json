@@ -1,6 +1,6 @@
 {
   "$id": "aws-appstream-fleet",
-  "$integrity": "sha512-JloXrsvwmjeQq1CtldqI01eHxuri4VYjbZpAdCC8nFeATXMPbTcmEs7UGbtQ0FN98+Nx0pTUWaMnZqMtbToq0Q==",
+  "$integrity": "sha512-4HuXP2tfd3hZ5dkRiL9K4SD/QfIgeUWqsf9QbOtR6Z85WMcdylaUoEtsdOgUoZYP/JGrno2XdSKOqELtUVRmRA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -63,6 +63,15 @@
       ],
       "type": "object"
     },
+    "VolumeConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "VolumeSizeInGb": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "VpcConfig": {
       "additionalProperties": false,
       "properties": {
@@ -94,6 +103,9 @@
     },
     "Description": {
       "type": "string"
+    },
+    "DisableIMDSV1": {
+      "type": "boolean"
     },
     "DisconnectTimeoutInSeconds": {
       "type": "integer"
@@ -142,6 +154,9 @@
     },
     "Platform": {
       "type": "string"
+    },
+    "RootVolumeConfig": {
+      "$ref": "#/definitions/VolumeConfig"
     },
     "SessionScriptS3Location": {
       "$ref": "#/definitions/S3Location"

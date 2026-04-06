@@ -1,6 +1,6 @@
 {
   "$id": "aws-customerprofiles-segmentdefinition",
-  "$integrity": "sha512-/z3pQXq7i914pBocTFhPyZeKv2RNJCYc3HL0YWBoubstzd3B25Cz187x+FcMj6V3IU7rFFYm7co8dunkEgbsrA==",
+  "$integrity": "sha512-UYdsMg7NqYLaFc/aANKe3M3Fn9r3xjrgsIuQw/CL3nve6ABxuH0UGSqbsX9gS5Fgdy5CVugWdMV+WRRAfqPCXQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainName",
@@ -442,6 +442,77 @@
       },
       "type": "object"
     },
+    "SegmentSort": {
+      "additionalProperties": false,
+      "description": "Defines how segments should be sorted and ordered in the results.",
+      "properties": {
+        "Attributes": {
+          "description": "A list of attributes used to sort the segments and their ordering preferences.",
+          "items": {
+            "$ref": "#/definitions/SortAttribute"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "Attributes"
+      ],
+      "type": "object"
+    },
+    "SegmentSortDataType": {
+      "description": "The data type of the sort attribute (e.g., string, number, date).",
+      "enum": [
+        "STRING",
+        "NUMBER",
+        "DATE"
+      ],
+      "type": "string"
+    },
+    "SegmentSortOrder": {
+      "description": "The sort order for the attribute (ascending or descending).",
+      "enum": [
+        "ASC",
+        "DESC"
+      ],
+      "type": "string"
+    },
+    "SortAttribute": {
+      "additionalProperties": false,
+      "description": "Defines the characteristics and rules for sorting by a specific attribute.",
+      "properties": {
+        "DataType": {
+          "$ref": "#/definitions/SegmentSortDataType"
+        },
+        "Name": {
+          "description": "The name of the attribute to sort by.",
+          "maxLength": 255,
+          "minLength": 1,
+          "type": "string"
+        },
+        "Order": {
+          "$ref": "#/definitions/SegmentSortOrder"
+        },
+        "Type": {
+          "$ref": "#/definitions/SortAttributeType",
+          "default": "PROFILE"
+        }
+      },
+      "required": [
+        "Name",
+        "Order"
+      ],
+      "type": "object"
+    },
+    "SortAttributeType": {
+      "description": "The type of attribute (e.g., profile, calculated).",
+      "enum": [
+        "PROFILE",
+        "CALCULATED"
+      ],
+      "type": "string"
+    },
     "SourceSegment": {
       "additionalProperties": false,
       "description": "The base segment to build the segment on.",
@@ -540,6 +611,7 @@
     "read": {
       "permissions": [
         "profile:GetSegmentDefinition",
+        "profile:ListTagsForResource",
         "kms:CreateGrant",
         "kms:DescribeKey",
         "kms:GetKeyPolicy",
@@ -551,6 +623,7 @@
     "update": {
       "permissions": [
         "profile:GetSegmentDefinition",
+        "profile:ListTagsForResource",
         "profile:UntagResource",
         "profile:TagResource",
         "kms:CreateGrant",
@@ -607,6 +680,10 @@
     "SegmentGroups": {
       "$ref": "#/definitions/SegmentGroup",
       "description": "An array that defines the set of segment criteria to evaluate when handling segment groups for the segment."
+    },
+    "SegmentSort": {
+      "$ref": "#/definitions/SegmentSort",
+      "description": "The segment sort configuration for ordering segment results."
     },
     "SegmentSqlQuery": {
       "description": "The SQL query that defines the segment criteria.",

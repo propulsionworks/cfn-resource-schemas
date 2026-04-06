@@ -152,6 +152,32 @@
       },
       "description": "The update configuration for the node group.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-updateconfig.html"
+    },
+    "WarmPoolConfig": {
+      "properties": {
+        "Enabled": {
+          "description": "Enable or disable warm pool for the node group.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-warmpoolconfig.html#cfn-eks-nodegroup-warmpoolconfig-enabled"
+        },
+        "MaxGroupPreparedCapacity": {
+          "description": "The maximum number of instances that are allowed to be in the warm pool.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-warmpoolconfig.html#cfn-eks-nodegroup-warmpoolconfig-maxgrouppreparedcapacity"
+        },
+        "MinSize": {
+          "description": "The minimum number of instances to maintain in the warm pool.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-warmpoolconfig.html#cfn-eks-nodegroup-warmpoolconfig-minsize"
+        },
+        "PoolState": {
+          "description": "The desired state of warm pool instances.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-warmpoolconfig.html#cfn-eks-nodegroup-warmpoolconfig-poolstate"
+        },
+        "ReuseOnScaleIn": {
+          "description": "Whether to return instances to the warm pool during scale-in instead of terminating them.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-warmpoolconfig.html#cfn-eks-nodegroup-warmpoolconfig-reuseonscalein"
+        }
+      },
+      "description": "The warm pool configuration for the node group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-nodegroup-warmpoolconfig.html"
     }
   },
   "description": "Creates a managed node group for an Amazon EKS cluster.\n\nYou can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster. All node groups are created with the latest AMI release version for the respective minor Kubernetes version of the cluster, unless you deploy a custom AMI using a launch template.\n\nFor later updates, you will only be able to update a node group using a launch template only if it was originally deployed with a launch template. Additionally, the launch template ID or name must match what was used when the node group was created. You can update the launch template version with necessary changes. For more information about using launch templates, see [Customizing managed nodes with launch templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html) .\n\nAn Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and associated Amazon EC2 instances that are managed by AWS for an Amazon EKS cluster. For more information, see [Managed node groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html) in the *Amazon EKS User Guide* .\n\n> Windows AMI types are only supported for commercial AWS Regions that support Windows on Amazon EKS.",
@@ -239,6 +265,10 @@
     "Version": {
       "description": "The Kubernetes version to use for your managed nodes. By default, the Kubernetes version of the cluster is used, and this is the only accepted specified value. If you specify `launchTemplate` , and your launch template uses a custom AMI, then don't specify `version` , or the node group deployment will fail. For more information about using launch templates with Amazon EKS, see [Launch template support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html) in the *Amazon EKS User Guide* .\n\n> You can't update other properties at the same time as updating `Version` .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-nodegroup.html#cfn-eks-nodegroup-version"
+    },
+    "WarmPoolConfig": {
+      "description": "The warm pool configuration for the node group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-nodegroup.html#cfn-eks-nodegroup-warmpoolconfig"
     }
   },
   "typeName": "AWS::EKS::Nodegroup"

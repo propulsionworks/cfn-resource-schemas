@@ -1,6 +1,6 @@
 {
   "$id": "aws-datazone-project",
-  "$integrity": "sha512-Eamj6RYDHxTq9MoSt48pL5ACS5bA6vBY1Ha3asVjVCohbxus5ye2VyjIOJflNyjhlyCXIvacKs3JfOCxUtfhhA==",
+  "$integrity": "sha512-vBdfG9R2e6cDAwz/7yBlawXKQarcssFnZcRouG0YtJcRbl6gc2uEMh80ttp1yWkkq8vktwAA4UkU95E7YJGL6g==",
   "additionalIdentifiers": [
     [
       "/properties/DomainIdentifier"
@@ -144,6 +144,28 @@
       ],
       "type": "string"
     },
+    "ResourceTag": {
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[\\w \\.:/=+@-]+$",
+          "type": "string"
+        },
+        "Value": {
+          "maxLength": 256,
+          "minLength": 0,
+          "pattern": "^[\\w \\.:/=+@-]*$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Key",
+        "Value"
+      ],
+      "type": "object"
+    },
     "Tags": {
       "additionalProperties": false,
       "patternProperties": {
@@ -271,6 +293,13 @@
     "ProjectStatus": {
       "$ref": "#/definitions/ProjectStatus",
       "description": "The status of the project."
+    },
+    "ResourceTags": {
+      "description": "The resource tags of the project.",
+      "items": {
+        "$ref": "#/definitions/ResourceTag"
+      },
+      "type": "array"
     },
     "UserParameters": {
       "description": "The user parameters of the project.",

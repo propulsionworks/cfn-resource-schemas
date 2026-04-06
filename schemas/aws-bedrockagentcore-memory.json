@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-memory",
-  "$integrity": "sha512-FLYgMkAyiAc4npR/6JsTAq0IaA1XzFmisrkbp/hmrhovhmsbl+ZeTBiLU3ZFAk0EaRAYdeHkoFLLIfCUNjjzRw==",
+  "$integrity": "sha512-zwrlNe3+MT5jpCT6RG8cKIC9FvUfS61wfP3Reur+q/k7JFfO+gnwC/+TYF4hGJrinMVOfrvQO9kv1g5pvaDe2A==",
   "additionalIdentifiers": [
     [
       "/properties/MemoryId"
@@ -14,7 +14,7 @@
   "definitions": {
     "Arn": {
       "description": "ARN format",
-      "pattern": "^arn:aws:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[^/].{0,1023}$",
+      "pattern": "^arn:(aws(?:-cn|-us-gov|-iso(?:-[bef])?)?):[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[^/].{0,1023}$",
       "type": "string"
     },
     "ConsolidationConfiguration": {
@@ -114,6 +114,9 @@
         "Name": {
           "$ref": "#/definitions/Name"
         },
+        "NamespaceTemplates": {
+          "$ref": "#/definitions/NamespacesList"
+        },
         "Namespaces": {
           "$ref": "#/definitions/NamespacesList"
         },
@@ -172,6 +175,9 @@
         },
         "Name": {
           "$ref": "#/definitions/Name"
+        },
+        "NamespaceTemplates": {
+          "$ref": "#/definitions/NamespacesList"
         },
         "Namespaces": {
           "$ref": "#/definitions/NamespacesList"
@@ -273,6 +279,9 @@
         "ModelId": {
           "type": "string"
         },
+        "NamespaceTemplates": {
+          "$ref": "#/definitions/NamespacesList"
+        },
         "Namespaces": {
           "$ref": "#/definitions/NamespacesList"
         }
@@ -286,13 +295,13 @@
     "EpisodicReflectionConfigurationInput": {
       "additionalProperties": false,
       "properties": {
+        "NamespaceTemplates": {
+          "$ref": "#/definitions/NamespacesList"
+        },
         "Namespaces": {
           "$ref": "#/definitions/NamespacesList"
         }
       },
-      "required": [
-        "Namespaces"
-      ],
       "type": "object"
     },
     "ExtractionConfiguration": {
@@ -340,7 +349,7 @@
     },
     "MemoryArn": {
       "description": "ARN of the Memory resource",
-      "pattern": "^arn:aws:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:memory/[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}$",
+      "pattern": "^arn:(aws(?:-cn|-us-gov|-iso(?:-[bef])?)?):bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:memory/[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}$",
       "type": "string"
     },
     "MemoryId": {
@@ -490,6 +499,9 @@
         },
         "Name": {
           "$ref": "#/definitions/Name"
+        },
+        "NamespaceTemplates": {
+          "$ref": "#/definitions/NamespacesList"
         },
         "Namespaces": {
           "$ref": "#/definitions/NamespacesList"
@@ -656,6 +668,9 @@
         },
         "Name": {
           "$ref": "#/definitions/Name"
+        },
+        "NamespaceTemplates": {
+          "$ref": "#/definitions/NamespacesList"
         },
         "Namespaces": {
           "$ref": "#/definitions/NamespacesList"
@@ -834,6 +849,9 @@
         },
         "Name": {
           "$ref": "#/definitions/Name"
+        },
+        "NamespaceTemplates": {
+          "$ref": "#/definitions/NamespacesList"
         },
         "Namespaces": {
           "$ref": "#/definitions/NamespacesList"

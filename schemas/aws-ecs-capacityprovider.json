@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-capacityprovider",
-  "$integrity": "sha512-bBn+Wlp63Pg9yAVmFU7hXnhOKCakIbWxFUn8pOF8aZgxTny0q99VBt2sAomfdqP4zCoZxenSuxv8VbREtb9+AQ==",
+  "$integrity": "sha512-nmUA6rTG+kavAqJnZmHk6RUMP2hg97bz9TtghDEPCV8dwxNHY/lCV4syq61Ffg5WnbbpBoSMS1EI9xGX6BgR5A==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/ManagedInstancesProvider/InstanceLaunchTemplate/CapacityOptionType"
@@ -119,6 +119,9 @@
         },
         "InstanceRequirements": {
           "$ref": "#/definitions/InstanceRequirementsRequest"
+        },
+        "LocalStorageConfiguration": {
+          "$ref": "#/definitions/ManagedInstancesLocalStorageConfiguration"
         },
         "Monitoring": {
           "$ref": "#/definitions/ManagedInstancesMonitoringOptions"
@@ -309,6 +312,15 @@
         "VCpuCount",
         "MemoryMiB"
       ],
+      "type": "object"
+    },
+    "ManagedInstancesLocalStorageConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "UseLocalStorage": {
+          "type": "boolean"
+        }
+      },
       "type": "object"
     },
     "ManagedInstancesMonitoringOptions": {

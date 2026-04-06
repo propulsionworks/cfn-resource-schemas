@@ -1,6 +1,6 @@
 {
   "$id": "aws-datazone-connection",
-  "$integrity": "sha512-RJdd4zNF+Jvwq8KgOV9WiPDbRLbrUYAwCziZFAw+QV2fU9YrDy+c2+Wwx2OjfGUp1ENMM+0N4RWVm/M/9eElzQ==",
+  "$integrity": "sha512-1RN3eF4/WiRnsu80FSwmSjT7bhWvdERAHrnQBE2XmjxgiRjrbP+a3BA30sFYCpet0DByP9gPj3RfcuUPnzDUNQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainIdentifier",
@@ -289,6 +289,32 @@
             "MlflowProperties"
           ],
           "title": "MlflowProperties",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "WorkflowsMwaaProperties": {
+              "$ref": "#/definitions/WorkflowsMwaaPropertiesInput"
+            }
+          },
+          "required": [
+            "WorkflowsMwaaProperties"
+          ],
+          "title": "WorkflowsMwaaProperties",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "WorkflowsServerlessProperties": {
+              "$ref": "#/definitions/WorkflowsServerlessPropertiesInput"
+            }
+          },
+          "required": [
+            "WorkflowsServerlessProperties"
+          ],
+          "title": "WorkflowsServerlessProperties",
           "type": "object"
         }
       ]
@@ -846,6 +872,22 @@
         "Password",
         "Username"
       ],
+      "type": "object"
+    },
+    "WorkflowsMwaaPropertiesInput": {
+      "additionalProperties": false,
+      "description": "Workflows MWAA Properties Input",
+      "properties": {
+        "MwaaEnvironmentName": {
+          "description": "The name of the MWAA environment.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "WorkflowsServerlessPropertiesInput": {
+      "additionalProperties": false,
+      "description": "Workflows Serverless Properties Input",
       "type": "object"
     }
   },

@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-taskdefinition",
-  "$integrity": "sha512-VipLY1VFSVL3mKAj8TSTHbinE36tFGcYM1vbD298JNG9B6ubvqvmPzyRs+fvlO8tKPuVLX2L0HfJBX9X5CyGAA==",
+  "$integrity": "sha512-Cwi9kn7PyTfi9RdtV24KEJLOkOkHJjj5e4QCybncb36Os7RHcSDIsfrvyK5JGr3VUo1x+Qf4PTYZBY85Ke90YQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Family",
@@ -842,6 +842,28 @@
       },
       "type": "object"
     },
+    "S3FilesVolumeConfiguration": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "AccessPointArn": {
+          "type": "string"
+        },
+        "FileSystemArn": {
+          "type": "string"
+        },
+        "RootDirectory": {
+          "type": "string"
+        },
+        "TransitEncryptionPort": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "FileSystemArn"
+      ],
+      "type": "object"
+    },
     "Secret": {
       "additionalProperties": false,
       "description": "An object representing the secret to expose to your container. Secrets can be exposed to a container in the following ways:\n  +  To inject sensitive data into your containers as environment variables, use the ``secrets`` container definition parameter.\n  +  To reference sensitive information in the log configuration of a container, use the ``secretOptions`` container definition parameter.\n  \n For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.",
@@ -986,6 +1008,10 @@
         "Name": {
           "description": "The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed.\n When using a volume configured at launch, the ``name`` is required and must also be specified as the volume name in the ``ServiceVolumeConfiguration`` or ``TaskVolumeConfiguration`` parameter when creating your service or standalone task.\n For all other types of volumes, this name is referenced in the ``sourceVolume`` parameter of the ``mountPoints`` object in the container definition.\n When a volume is using the ``efsVolumeConfiguration``, the name is required.",
           "type": "string"
+        },
+        "S3FilesVolumeConfiguration": {
+          "$ref": "#/definitions/S3FilesVolumeConfiguration",
+          "description": ""
         }
       },
       "type": "object"

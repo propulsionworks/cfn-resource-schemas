@@ -1,6 +1,6 @@
 {
   "$id": "aws-transfer-connector",
-  "$integrity": "sha512-jup9wIlE1J8S3fqqzRIJQDDDBteVlKTMkpfd/Rx4ejalK7Ig7NLliEW5bhKu0KNePwMHqHDps+mNAfjFtDpMKQ==",
+  "$integrity": "sha512-QaDcwqSyuRhF9tOIVWcQOqGlMp0mm6UR4Q6RlaGG7sSgb8oro95UhA9Gd1i+xhTovBlQk3m/nPLB063cZiUBpg==",
   "additionalProperties": false,
   "definitions": {
     "ConnectorAsyncMdnConfig": {
@@ -75,6 +75,14 @@
         "ResourceConfigurationArn"
       ],
       "type": "object"
+    },
+    "IpAddressType": {
+      "description": "IP address type for Connector",
+      "enum": [
+        "IPV4",
+        "DUALSTACK"
+      ],
+      "type": "string"
     },
     "ServerId": {
       "description": "A unique identifier for the server.",
@@ -288,6 +296,9 @@
       "description": "Detailed error message when Connector in ERRORED status",
       "maxLength": 2048,
       "type": "string"
+    },
+    "IpAddressType": {
+      "$ref": "#/definitions/IpAddressType"
     },
     "LoggingRole": {
       "description": "Specifies the logging role for the connector.",

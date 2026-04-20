@@ -1,6 +1,6 @@
 {
   "$id": "aws-organizations-account",
-  "$integrity": "sha512-8tTbJLsRIxsgToCdzGCK/hHkNN5lgnEsXSu3pLCZozBCookTFTAn/KHFnROnVGygeQoJuxoFdNkgjBlZfCpjWg==",
+  "$integrity": "sha512-Lt0WYyUi+2vXArKjedGlxlewv/91Q6GLFQRIWQUP9do+v4OuLnlMnc9YOMZoCfZ44OBu+/X5ajev/J42meCs/g==",
   "additionalProperties": false,
   "definitions": {
     "Tag": {
@@ -123,6 +123,14 @@
       "type": "array",
       "uniqueItems": true
     },
+    "Paths": {
+      "description": "The paths in the organization where the account exists.",
+      "items": {
+        "pattern": "^(o-[a-z0-9]{10,32}/r-[0-9a-z]{4,32}(/ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})*(/\\d{12})*)/",
+        "type": "string"
+      },
+      "type": "array"
+    },
     "RoleName": {
       "default": "OrganizationAccountAccessRole",
       "description": "The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. Default name is OrganizationAccountAccessRole if not specified.",
@@ -167,7 +175,8 @@
     "/properties/State",
     "/properties/JoinedTimestamp",
     "/properties/JoinedMethod",
-    "/properties/Arn"
+    "/properties/Arn",
+    "/properties/Paths"
   ],
   "required": [
     "AccountName",

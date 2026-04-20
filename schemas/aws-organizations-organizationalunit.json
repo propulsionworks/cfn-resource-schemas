@@ -1,6 +1,6 @@
 {
   "$id": "aws-organizations-organizationalunit",
-  "$integrity": "sha512-GwnXs45ZWke4DgiFp1dMvSqgHpqLM9SFdoMKPwdgvph9LwnRJIUvcs9+3LrzWe8YlO2DyEgkipOy/d+uHJYh8w==",
+  "$integrity": "sha512-vnbF4CBIH3UUdACZZPKafGhOH19Kur9K5it/8qWQ7zwGk9oK8BKr+/cZBttLH970iv1CsFXQQwuuaeRvEfrekQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ParentId"
@@ -108,6 +108,11 @@
       "pattern": "^(r-[0-9a-z]{4,32})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$",
       "type": "string"
     },
+    "Path": {
+      "description": "The path in the organization where this OU exists.",
+      "pattern": "^(o-[a-z0-9]{10,32}/r-[0-9a-z]{4,32}(/ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})*(/\\d{12})*)/",
+      "type": "string"
+    },
     "Tags": {
       "description": "A list of tags that you want to attach to the newly created OU.",
       "insertionOrder": false,
@@ -120,7 +125,8 @@
   },
   "readOnlyProperties": [
     "/properties/Arn",
-    "/properties/Id"
+    "/properties/Id",
+    "/properties/Path"
   ],
   "required": [
     "Name",

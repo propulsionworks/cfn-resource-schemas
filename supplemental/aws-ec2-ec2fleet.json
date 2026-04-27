@@ -178,6 +178,9 @@
           "description": "The block device mappings, which define the EBS volumes and instance store volumes to attach to the instance at launch.\n\nSupported only for fleets of type `instant` .\n\nFor more information, see [Block device mappings for volumes on Amazon EC2 instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html) in the *Amazon EC2 User Guide* .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-blockdevicemappings"
         },
+        "IamInstanceProfile": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-iaminstanceprofile"
+        },
         "InstanceRequirements": {
           "description": "The attributes for the instance types. When you specify instance attributes, Amazon EC2 will identify instance types with those attributes.\n\n> If you specify `InstanceRequirements` , you can't specify `InstanceType` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-instancerequirements"
@@ -186,9 +189,18 @@
           "description": "The instance type.\n\n`mac1.metal` is not supported as a launch template override.\n\n> If you specify `InstanceType` , you can't specify `InstanceRequirements` .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-instancetype"
         },
+        "KeyName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-keyname"
+        },
         "MaxPrice": {
           "description": "The maximum price per unit hour that you are willing to pay for a Spot Instance. We do not recommend using this parameter because it can lead to increased interruptions. If you do not specify this parameter, you will pay the current Spot price.\n\n> If you specify a maximum price, your instances will be interrupted more frequently than if you do not specify this parameter.\n> \n> If you specify a maximum price, it must be more than USD $0.001. Specifying a value below USD $0.001 will result in an `InvalidParameterValue` error message.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-maxprice"
+        },
+        "MetadataOptions": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-metadataoptions"
+        },
+        "NetworkInterfaces": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplateoverridesrequest-networkinterfaces"
         },
         "Placement": {
           "description": "The location where the instance launched, if applicable.",
@@ -220,6 +232,9 @@
           "description": "The name of the launch template.\n\nYou must specify the `LaunchTemplateName` or the `LaunchTemplateId` , but not both.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest-launchtemplatename"
         },
+        "LaunchTemplateSpecificationUserData": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest-launchtemplatespecificationuserdata"
+        },
         "Version": {
           "description": "The launch template version number, `$Latest` , or `$Default` . You must specify a value, otherwise the request fails.\n\nIf the value is `$Latest` , Amazon EC2 uses the latest version of the launch template.\n\nIf the value is `$Default` , Amazon EC2 uses the default version of the launch template.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest.html#cfn-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest-version"
@@ -227,6 +242,31 @@
       },
       "description": "Specifies the launch template to be used by the EC2 Fleet for configuring Amazon EC2 instances.\n\nYou must specify the following:\n\n- The ID or the name of the launch template, but not both.\n- The version of the launch template.\n\n`FleetLaunchTemplateSpecificationRequest` is a property of the [FleetLaunchTemplateConfigRequest](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplateconfigrequest.html) property type.\n\nFor information about creating a launch template, see [AWS::EC2::LaunchTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html) and [Create a launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template) in the *Amazon EC2 User Guide* .\n\nFor examples of launch templates, see [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html#aws-resource-ec2-launchtemplate--examples) .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-fleetlaunchtemplatespecificationrequest.html"
+    },
+    "IamInstanceProfileSpecification": {
+      "properties": {
+        "Arn": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-iaminstanceprofilespecification.html#cfn-ec2-ec2fleet-iaminstanceprofilespecification-arn"
+        },
+        "Name": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-iaminstanceprofilespecification.html#cfn-ec2-ec2fleet-iaminstanceprofilespecification-name"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-iaminstanceprofilespecification.html"
+    },
+    "InstanceMetadataOptionsRequest": {
+      "properties": {
+        "HttpEndpoint": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancemetadataoptionsrequest.html#cfn-ec2-ec2fleet-instancemetadataoptionsrequest-httpendpoint"
+        },
+        "HttpPutResponseHopLimit": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancemetadataoptionsrequest.html#cfn-ec2-ec2fleet-instancemetadataoptionsrequest-httpputresponsehoplimit"
+        },
+        "HttpTokens": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancemetadataoptionsrequest.html#cfn-ec2-ec2fleet-instancemetadataoptionsrequest-httptokens"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancemetadataoptionsrequest.html"
     },
     "InstanceRequirementsRequest": {
       "properties": {
@@ -338,6 +378,14 @@
       "description": "The attributes for the instance types. When you specify instance attributes, Amazon EC2 will identify instance types with these attributes.\n\nYou must specify `VCpuCount` and `MemoryMiB` . All other attributes are optional. Any unspecified optional attribute is set to its default.\n\nWhen you specify multiple attributes, you get instance types that satisfy all of the specified attributes. If you specify multiple values for an attribute, you get instance types that satisfy any of the specified values.\n\nTo limit the list of instance types from which Amazon EC2 can identify matching instance types, you can use one of the following parameters, but not both in the same request:\n\n- `AllowedInstanceTypes` - The instance types to include in the list. All other instance types are ignored, even if they match your specified attributes.\n- `ExcludedInstanceTypes` - The instance types to exclude from the list, even if they match your specified attributes.\n\n> If you specify `InstanceRequirements` , you can't specify `InstanceType` .\n> \n> Attribute-based instance type selection is only supported when using Auto Scaling groups, EC2 Fleet, and Spot Fleet to launch instances. If you plan to use the launch template in the [launch instance wizard](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-instance-wizard.html) , or with the [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) API or [AWS::EC2::Instance](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html) AWS CloudFormation resource, you can't specify `InstanceRequirements` . \n\nFor more information, see [Specify attributes for instance type selection for EC2 Fleet or Spot Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-attribute-based-instance-type-selection.html) and [Spot placement score](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html) in the *Amazon EC2 User Guide* .",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-instancerequirementsrequest.html"
     },
+    "Ipv6AddressRequest": {
+      "properties": {
+        "Ipv6Address": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ipv6addressrequest.html#cfn-ec2-ec2fleet-ipv6addressrequest-ipv6address"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-ipv6addressrequest.html"
+    },
     "MaintenanceStrategies": {
       "properties": {
         "CapacityRebalance": {
@@ -403,6 +451,53 @@
       },
       "description": "The minimum and maximum number of network interfaces.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacecountrequest.html"
+    },
+    "NetworkInterfaceSpecificationRequest": {
+      "properties": {
+        "AssociatePublicIpAddress": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-associatepublicipaddress"
+        },
+        "DeleteOnTermination": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-deleteontermination"
+        },
+        "Description": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-description"
+        },
+        "DeviceIndex": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-deviceindex"
+        },
+        "Groups": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-groups"
+        },
+        "InterfaceType": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-interfacetype"
+        },
+        "Ipv6AddressCount": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-ipv6addresscount"
+        },
+        "Ipv6Addresses": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-ipv6addresses"
+        },
+        "NetworkCardIndex": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-networkcardindex"
+        },
+        "NetworkInterfaceId": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-networkinterfaceid"
+        },
+        "PrivateIpAddress": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-privateipaddress"
+        },
+        "PrivateIpAddresses": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-privateipaddresses"
+        },
+        "SecondaryPrivateIpAddressCount": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-secondaryprivateipaddresscount"
+        },
+        "SubnetId": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html#cfn-ec2-ec2fleet-networkinterfacespecificationrequest-subnetid"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-networkinterfacespecificationrequest.html"
     },
     "OnDemandOptionsRequest": {
       "properties": {
@@ -481,6 +576,17 @@
       },
       "description": "Describes the placement of an instance.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-placement.html"
+    },
+    "PrivateIpAddressSpecificationRequest": {
+      "properties": {
+        "Primary": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-privateipaddressspecificationrequest.html#cfn-ec2-ec2fleet-privateipaddressspecificationrequest-primary"
+        },
+        "PrivateIpAddress": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-privateipaddressspecificationrequest.html#cfn-ec2-ec2fleet-privateipaddressspecificationrequest-privateipaddress"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ec2fleet-privateipaddressspecificationrequest.html"
     },
     "ReservedCapacityOptionsRequest": {
       "properties": {

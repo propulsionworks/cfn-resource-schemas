@@ -1,6 +1,6 @@
 {
   "$id": "aws-batch-jobdefinition",
-  "$integrity": "sha512-Dq76rJuFh8vP96k47qOTDOkoFO3xJ51+PDT0hQvah0uvafToJ94Q6cSa/A5cTgxLhRc8DTGAdFtsqw3LOVHh/w==",
+  "$integrity": "sha512-asoJ0lvTsGWuXOsp78hm13i20POVtbXLcJ4/1HjjrfBXTWGr8saXkwm5+sHR1qjUbpwQCPpGyhBUjuGjifj1Og==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/JobDefinitionName"
@@ -1027,6 +1027,27 @@
       },
       "type": "object"
     },
+    "S3FilesVolumeConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "AccessPointArn": {
+          "type": "string"
+        },
+        "FileSystemArn": {
+          "type": "string"
+        },
+        "RootDirectory": {
+          "type": "string"
+        },
+        "TransitEncryptionPort": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "FileSystemArn"
+      ],
+      "type": "object"
+    },
     "Secret": {
       "additionalProperties": false,
       "properties": {
@@ -1155,6 +1176,12 @@
           "type": "array",
           "uniqueItems": false
         },
+        "StartTimeout": {
+          "type": "integer"
+        },
+        "StopTimeout": {
+          "type": "integer"
+        },
         "Ulimits": {
           "insertionOrder": false,
           "items": {
@@ -1227,6 +1254,9 @@
         },
         "Name": {
           "type": "string"
+        },
+        "S3FilesVolumeConfiguration": {
+          "$ref": "#/definitions/S3FilesVolumeConfiguration"
         }
       },
       "type": "object"
@@ -1353,7 +1383,7 @@
     "cloudFormationSystemTags": true,
     "permissions": [
       "Batch:TagResource",
-      "Batch:UnTagResource"
+      "Batch:UntagResource"
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",

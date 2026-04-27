@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-capacityprovider",
-  "$integrity": "sha512-nmUA6rTG+kavAqJnZmHk6RUMP2hg97bz9TtghDEPCV8dwxNHY/lCV4syq61Ffg5WnbbpBoSMS1EI9xGX6BgR5A==",
+  "$integrity": "sha512-Ijuh6hxrTOP85IuCnUZYRgAzh9MMLZwo0/QHKSragXYuTuIKO9djG4P5527OlKEIFL8D1W9OoWqfMJU4/dXZ8A==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/ManagedInstancesProvider/InstanceLaunchTemplate/CapacityOptionType"
@@ -32,6 +32,19 @@
         },
         "Min": {
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "AutoRepairConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "ActionsStatus": {
+          "enum": [
+            "ENABLED",
+            "DISABLED"
+          ],
+          "type": "string"
         }
       },
       "type": "object"
@@ -355,6 +368,9 @@
     "ManagedInstancesProvider": {
       "additionalProperties": false,
       "properties": {
+        "AutoRepairConfiguration": {
+          "$ref": "#/definitions/AutoRepairConfiguration"
+        },
         "InfrastructureOptimization": {
           "additionalProperties": false,
           "description": "Defines how Amazon ECS Managed Instances optimizes the infrastructure in your capacity provider. Configure it to turn on or off the infrastructure optimization in your capacity provider, and to control the idle EC2 instances optimization delay.",

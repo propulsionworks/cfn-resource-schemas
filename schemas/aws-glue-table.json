@@ -1,8 +1,9 @@
 {
   "$id": "aws-glue-table",
-  "$integrity": "sha512-RQZDKY3csV4oKYAngC7W4o04GiLzTNGfgYFF8pvkKceK3an7aPbVv2aOQ0VVlUOTlw31yEPFd81xrjL16LUMhg==",
+  "$integrity": "sha512-KecZlg+LvLOSnS3jTQl/wAa96ges+Y7yG5qyzcFpiYSZPt+54FO179f+HiWDArUZsStOuVUEfDJl8c4Gycp01w==",
   "additionalProperties": false,
   "createOnlyProperties": [
+    "/properties/Name",
     "/properties/DatabaseName",
     "/properties/CatalogId"
   ],
@@ -28,6 +29,9 @@
     "IcebergInput": {
       "additionalProperties": false,
       "properties": {
+        "IcebergTableInput": {
+          "$ref": "#/definitions/IcebergTableInput"
+        },
         "MetadataOperation": {
           "$ref": "#/definitions/MetadataOperation"
         },
@@ -35,6 +39,173 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "IcebergPartitionField": {
+      "additionalProperties": false,
+      "properties": {
+        "FieldId": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "SourceId": {
+          "type": "integer"
+        },
+        "Transform": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "SourceId",
+        "Transform",
+        "Name"
+      ],
+      "type": "object"
+    },
+    "IcebergPartitionSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "Fields": {
+          "items": {
+            "$ref": "#/definitions/IcebergPartitionField"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "SpecId": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Fields"
+      ],
+      "type": "object"
+    },
+    "IcebergSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "Fields": {
+          "items": {
+            "$ref": "#/definitions/IcebergStructField"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "IdentifierFieldIds": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "SchemaId": {
+          "type": "integer"
+        },
+        "Type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Fields"
+      ],
+      "type": "object"
+    },
+    "IcebergSortField": {
+      "additionalProperties": false,
+      "properties": {
+        "Direction": {
+          "type": "string"
+        },
+        "NullOrder": {
+          "type": "string"
+        },
+        "SourceId": {
+          "type": "integer"
+        },
+        "Transform": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "SourceId",
+        "NullOrder",
+        "Transform",
+        "Direction"
+      ],
+      "type": "object"
+    },
+    "IcebergSortOrder": {
+      "additionalProperties": false,
+      "properties": {
+        "Fields": {
+          "items": {
+            "$ref": "#/definitions/IcebergSortField"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "OrderId": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Fields",
+        "OrderId"
+      ],
+      "type": "object"
+    },
+    "IcebergStructField": {
+      "additionalProperties": false,
+      "properties": {
+        "Doc": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Required": {
+          "type": "boolean"
+        },
+        "Type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Type",
+        "Required",
+        "Id",
+        "Name"
+      ],
+      "type": "object"
+    },
+    "IcebergTableInput": {
+      "additionalProperties": false,
+      "properties": {
+        "Location": {
+          "type": "string"
+        },
+        "PartitionSpec": {
+          "$ref": "#/definitions/IcebergPartitionSpec"
+        },
+        "Properties": {
+          "type": "object"
+        },
+        "Schema": {
+          "$ref": "#/definitions/IcebergSchema"
+        },
+        "WriteOrder": {
+          "$ref": "#/definitions/IcebergSortOrder"
+        }
+      },
+      "required": [
+        "Schema",
+        "Location"
+      ],
       "type": "object"
     },
     "MetadataOperation": {
@@ -243,6 +414,56 @@
         "TargetTable": {
           "$ref": "#/definitions/TableIdentifier"
         },
+        "ViewDefinition": {
+          "$ref": "#/definitions/ViewDefinition"
+        },
+        "ViewExpandedText": {
+          "type": "string"
+        },
+        "ViewOriginalText": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ViewDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "Definer": {
+          "type": "string"
+        },
+        "IsProtected": {
+          "type": "boolean"
+        },
+        "Representations": {
+          "items": {
+            "$ref": "#/definitions/ViewRepresentation"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "SubObjects": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "type": "object"
+    },
+    "ViewRepresentation": {
+      "additionalProperties": false,
+      "properties": {
+        "Dialect": {
+          "type": "string"
+        },
+        "DialectVersion": {
+          "type": "string"
+        },
+        "ValidationConnection": {
+          "type": "string"
+        },
         "ViewExpandedText": {
           "type": "string"
         },
@@ -267,6 +488,9 @@
     "Id": {
       "type": "string"
     },
+    "Name": {
+      "type": "string"
+    },
     "OpenTableFormatInput": {
       "$ref": "#/definitions/OpenTableFormatInput"
     },
@@ -278,7 +502,6 @@
     "/properties/Id"
   ],
   "required": [
-    "TableInput",
     "DatabaseName",
     "CatalogId"
   ],

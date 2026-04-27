@@ -21,8 +21,44 @@
       "description": "Details of an Amazon MSK Cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-amazonmskcluster.html"
     },
+    "ApacheKafkaCluster": {
+      "properties": {
+        "ApacheKafkaClusterId": {
+          "description": "The ID of the Apache Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-apachekafkacluster.html#cfn-msk-replicator-apachekafkacluster-apachekafkaclusterid"
+        },
+        "BootstrapBrokerString": {
+          "description": "The bootstrap broker string of the Apache Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-apachekafkacluster.html#cfn-msk-replicator-apachekafkacluster-bootstrapbrokerstring"
+        }
+      },
+      "description": "Details of an Apache Kafka cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-apachekafkacluster.html"
+    },
+    "CloudWatchLogs": {
+      "properties": {
+        "Enabled": {
+          "description": "Whether log delivery to CloudWatch Logs is enabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-cloudwatchlogs.html#cfn-msk-replicator-cloudwatchlogs-enabled"
+        },
+        "LogGroup": {
+          "description": "The CloudWatch log group that is the destination for log delivery.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-cloudwatchlogs.html#cfn-msk-replicator-cloudwatchlogs-loggroup"
+        }
+      },
+      "description": "Details about delivering logs to CloudWatch Logs.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-cloudwatchlogs.html"
+    },
+    "ConsumerGroupOffsetSyncMode": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupoffsetsyncmode.html"
+    },
     "ConsumerGroupReplication": {
       "properties": {
+        "ConsumerGroupOffsetSyncMode": {
+          "description": "The consumer group offset synchronization mode.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupreplication.html#cfn-msk-replicator-consumergroupreplication-consumergroupoffsetsyncmode"
+        },
         "ConsumerGroupsToExclude": {
           "description": "List of regular expression patterns indicating the consumer groups that should not be replicated.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupreplication.html#cfn-msk-replicator-consumergroupreplication-consumergroupstoexclude"
@@ -43,11 +79,37 @@
       "description": "Details about consumer group replication.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-consumergroupreplication.html"
     },
+    "Firehose": {
+      "properties": {
+        "DeliveryStream": {
+          "description": "The Firehose delivery stream that is the destination for log delivery.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-firehose.html#cfn-msk-replicator-firehose-deliverystream"
+        },
+        "Enabled": {
+          "description": "Whether log delivery to Firehose is enabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-firehose.html#cfn-msk-replicator-firehose-enabled"
+        }
+      },
+      "description": "Details about delivering logs to Firehose.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-firehose.html"
+    },
     "KafkaCluster": {
       "properties": {
         "AmazonMskCluster": {
           "description": "Details of an Amazon MSK Cluster.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkacluster.html#cfn-msk-replicator-kafkacluster-amazonmskcluster"
+        },
+        "ApacheKafkaCluster": {
+          "description": "Details of an Apache Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkacluster.html#cfn-msk-replicator-kafkacluster-apachekafkacluster"
+        },
+        "ClientAuthentication": {
+          "description": "Details of the client authentication used by the Apache Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkacluster.html#cfn-msk-replicator-kafkacluster-clientauthentication"
+        },
+        "EncryptionInTransit": {
+          "description": "Details of encryption in transit to the Apache Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkacluster.html#cfn-msk-replicator-kafkacluster-encryptionintransit"
         },
         "VpcConfig": {
           "description": "Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster.",
@@ -56,6 +118,16 @@
       },
       "description": "Information about Kafka Cluster to be used as source / target for replication.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkacluster.html"
+    },
+    "KafkaClusterClientAuthentication": {
+      "properties": {
+        "SaslScram": {
+          "description": "Details for SASL/SCRAM client authentication.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterclientauthentication.html#cfn-msk-replicator-kafkaclusterclientauthentication-saslscram"
+        }
+      },
+      "description": "Details of the client authentication used by the Apache Kafka cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterclientauthentication.html"
     },
     "KafkaClusterClientVpcConfig": {
       "properties": {
@@ -71,6 +143,52 @@
       "description": "Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterclientvpcconfig.html"
     },
+    "KafkaClusterEncryptionInTransit": {
+      "properties": {
+        "EncryptionType": {
+          "description": "The type of encryption in transit to the Apache Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterencryptionintransit.html#cfn-msk-replicator-kafkaclusterencryptionintransit-encryptiontype"
+        },
+        "RootCaCertificate": {
+          "description": "The root CA certificate.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterencryptionintransit.html#cfn-msk-replicator-kafkaclusterencryptionintransit-rootcacertificate"
+        }
+      },
+      "description": "Details of encryption in transit to the Apache Kafka cluster.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterencryptionintransit.html"
+    },
+    "KafkaClusterEncryptionInTransitType": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclusterencryptionintransittype.html"
+    },
+    "KafkaClusterSaslScramAuthentication": {
+      "properties": {
+        "Mechanism": {
+          "description": "The SASL/SCRAM authentication mechanism.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclustersaslscramauthentication.html#cfn-msk-replicator-kafkaclustersaslscramauthentication-mechanism"
+        },
+        "SecretArn": {
+          "description": "The Amazon Resource Name (ARN) of the Secrets Manager secret.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclustersaslscramauthentication.html#cfn-msk-replicator-kafkaclustersaslscramauthentication-secretarn"
+        }
+      },
+      "description": "Details for SASL/SCRAM client authentication.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclustersaslscramauthentication.html"
+    },
+    "KafkaClusterSaslScramMechanism": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-kafkaclustersaslscrammechanism.html"
+    },
+    "LogDelivery": {
+      "properties": {
+        "ReplicatorLogDelivery": {
+          "description": "Details of the log delivery for the replicator.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-logdelivery.html#cfn-msk-replicator-logdelivery-replicatorlogdelivery"
+        }
+      },
+      "description": "Configuration for log delivery for the replicator.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-logdelivery.html"
+    },
     "ReplicationInfo": {
       "properties": {
         "ConsumerGroupReplication": {
@@ -81,6 +199,10 @@
           "description": "The ARN of the source Kafka cluster.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-sourcekafkaclusterarn"
         },
+        "SourceKafkaClusterId": {
+          "description": "The ID of the source Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-sourcekafkaclusterid"
+        },
         "TargetCompressionType": {
           "description": "The compression type to use when producing records to target cluster.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-targetcompressiontype"
@@ -88,6 +210,10 @@
         "TargetKafkaClusterArn": {
           "description": "The ARN of the target Kafka cluster.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-targetkafkaclusterarn"
+        },
+        "TargetKafkaClusterId": {
+          "description": "The ID of the target Kafka cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationinfo.html#cfn-msk-replicator-replicationinfo-targetkafkaclusterid"
         },
         "TopicReplication": {
           "description": "Configuration relating to topic replication.",
@@ -124,6 +250,42 @@
     "ReplicationTopicNameConfigurationType": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicationtopicnameconfigurationtype.html"
+    },
+    "ReplicatorLogDelivery": {
+      "properties": {
+        "CloudWatchLogs": {
+          "description": "Details about delivering logs to CloudWatch Logs.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicatorlogdelivery.html#cfn-msk-replicator-replicatorlogdelivery-cloudwatchlogs"
+        },
+        "Firehose": {
+          "description": "Details about delivering logs to Firehose.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicatorlogdelivery.html#cfn-msk-replicator-replicatorlogdelivery-firehose"
+        },
+        "S3": {
+          "description": "Details about delivering logs to S3.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicatorlogdelivery.html#cfn-msk-replicator-replicatorlogdelivery-s3"
+        }
+      },
+      "description": "Details of the log delivery for the replicator.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-replicatorlogdelivery.html"
+    },
+    "S3": {
+      "properties": {
+        "Bucket": {
+          "description": "The S3 bucket that is the destination for log delivery.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-s3.html#cfn-msk-replicator-s3-bucket"
+        },
+        "Enabled": {
+          "description": "Whether log delivery to S3 is enabled.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-s3.html#cfn-msk-replicator-s3-enabled"
+        },
+        "Prefix": {
+          "description": "The S3 prefix that is the destination for log delivery.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-s3.html#cfn-msk-replicator-s3-prefix"
+        }
+      },
+      "description": "Details about delivering logs to S3.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-msk-replicator-s3.html"
     },
     "Tag": {
       "properties": {
@@ -185,6 +347,10 @@
     "KafkaClusters": {
       "description": "Kafka Clusters to use in setting up sources / targets for replication.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-kafkaclusters"
+    },
+    "LogDelivery": {
+      "description": "Configuration for log delivery for the replicator.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-replicator.html#cfn-msk-replicator-logdelivery"
     },
     "ReplicationInfoList": {
       "description": "A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.",

@@ -1,6 +1,6 @@
 {
   "$id": "aws-batch-computeenvironment",
-  "$integrity": "sha512-/D4pCgLeKqzcUSdh5vZzlALJZXi13XYGPbmnKsazdNl4Cz3Gh3KRVt9G5FZEwIbDq0V4ugwvXmGzxjARVz+DeA==",
+  "$integrity": "sha512-2vNYOjX1BLM4mqeX1xyXx3WRNbkKs2agEP19Z121CJSODa2zM64zqQ/Yw4lnVBtK7YbeW23Bf91ExRUIQ/vh8w==",
   "additionalIdentifiers": [
     [
       "/properties/ComputeEnvironmentName"
@@ -139,6 +139,9 @@
     "Ec2ConfigurationObject": {
       "additionalProperties": false,
       "properties": {
+        "BatchImageStatus": {
+          "type": "string"
+        },
         "ImageIdOverride": {
           "type": "string"
         },
@@ -342,7 +345,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/ComputeEnvironmentArn"
+    "/properties/ComputeEnvironmentArn",
+    "/properties/ComputeResources/Ec2Configuration/*/BatchImageStatus"
   ],
   "required": [
     "Type"

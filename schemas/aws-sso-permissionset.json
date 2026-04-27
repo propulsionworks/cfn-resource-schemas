@@ -1,6 +1,6 @@
 {
   "$id": "aws-sso-permissionset",
-  "$integrity": "sha512-uhjbebBOZdwHKndCxmqy3LAVbQnqss6XtEBMKzRL/EuFDBYOvhlOX/UrXJhotGfUqiWR6//WYNty4BezsxQsgA==",
+  "$integrity": "sha512-SQb7cBuVMtpfw48wBXIqqkb/Ce0bkIJEd7xBvtrvfqh4kYrVQ2pGnil4MUtSF03W1azphmYhuRMQGNQU9KRy8A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/InstanceArn",
@@ -98,18 +98,14 @@
         "properties": {
           "InstanceArn": {
             "$ref": "resource-schema.json#/properties/InstanceArn"
-          },
-          "PermissionSetArn": {
-            "$ref": "resource-schema.json#/properties/PermissionSetArn"
           }
         },
         "required": [
-          "InstanceArn",
-          "PermissionSetArn"
+          "InstanceArn"
         ]
       },
       "permissions": [
-        "sso:DescribePermissionSet"
+        "sso:ListPermissionSets"
       ]
     },
     "read": {
@@ -242,7 +238,8 @@
     "cloudFormationSystemTags": true,
     "permissions": [
       "sso:TagResource",
-      "sso:UntagResource"
+      "sso:UntagResource",
+      "sso:ListTagsForResource"
     ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",

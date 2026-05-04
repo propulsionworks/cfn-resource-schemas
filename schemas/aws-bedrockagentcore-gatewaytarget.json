@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-gatewaytarget",
-  "$integrity": "sha512-dqCfmpkAmnpoa/fVhUACb+3yy/YgpOZfJa38MtodwwjyGfDpTBxapJwuKM5ArOuxANt5efp58Qb5hLJ4MxojYw==",
+  "$integrity": "sha512-GwiLLA3uBgu/0b40VT1py7sg3DaF+V3y2vNfBDedMU7Z74WDKkEdnEdG37arhv19l3F6+gTF8gnGXavDheDIgw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/GatewayIdentifier"
@@ -258,12 +258,22 @@
       ],
       "type": "object"
     },
+    "McpServerListingMode": {
+      "enum": [
+        "DEFAULT",
+        "DYNAMIC"
+      ],
+      "type": "string"
+    },
     "McpServerTargetConfiguration": {
       "additionalProperties": false,
       "properties": {
         "Endpoint": {
           "pattern": "^https://.*",
           "type": "string"
+        },
+        "ListingMode": {
+          "$ref": "#/definitions/McpServerListingMode"
         }
       },
       "required": [

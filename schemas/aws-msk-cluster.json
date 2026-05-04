@@ -1,6 +1,6 @@
 {
   "$id": "aws-msk-cluster",
-  "$integrity": "sha512-rom8IaxsMInKa+EGUnys5b9KmLQNwXD5gTL+Dk/VaTBF/llKt9H2huTV/UQZaVHHSKnOwtktOKTEeg8vDw1rNg==",
+  "$integrity": "sha512-ugz3+eYJckgZPgcDH9KAB2L3vt9Y3ayaMZyf4RM5w6GoQOowGPpYCXUL5iIW2izvrMP0EVVw2Hmwro6m07kUkQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BrokerNodeGroupInfo/BrokerAZDistribution",
@@ -465,6 +465,15 @@
         "Enabled"
       ],
       "type": "object"
+    },
+    "ZookeeperAccess": {
+      "additionalProperties": false,
+      "properties": {
+        "Enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
     }
   },
   "description": "Resource Type definition for AWS::MSK::Cluster",
@@ -629,6 +638,9 @@
         }
       },
       "type": "object"
+    },
+    "ZookeeperAccess": {
+      "$ref": "#/definitions/ZookeeperAccess"
     }
   },
   "readOnlyProperties": [
@@ -653,5 +665,8 @@
     "tagUpdatable": true,
     "taggable": true
   },
-  "typeName": "AWS::MSK::Cluster"
+  "typeName": "AWS::MSK::Cluster",
+  "writeOnlyProperties": [
+    "/properties/ZookeeperAccess"
+  ]
 }

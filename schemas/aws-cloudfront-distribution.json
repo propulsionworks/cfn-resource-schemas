@@ -1,6 +1,6 @@
 {
   "$id": "aws-cloudfront-distribution",
-  "$integrity": "sha512-ZrVkfV/HGQhWU7w/ws/kLc5TGJ16K59wUppdapPvWjG+8Vqb2ylAO8BUYI2BSiw5MfuuugQvNnkv04Vvo8MJiw==",
+  "$integrity": "sha512-KjI/YPV+WjISd1r8RVdqj/PIrjnL4sFeOyubu/RrTyDsR1ySRt2vVIDo77BETJo14AbKmG+wWeJEVn0ECisDQA==",
   "additionalProperties": false,
   "definitions": {
     "CacheBehavior": {
@@ -134,6 +134,19 @@
         "PathPattern",
         "TargetOriginId",
         "ViewerProtocolPolicy"
+      ],
+      "type": "object"
+    },
+    "CacheTagConfig": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "HeaderName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "HeaderName"
       ],
       "type": "object"
     },
@@ -430,6 +443,10 @@
           },
           "type": "array",
           "uniqueItems": false
+        },
+        "CacheTagConfig": {
+          "$ref": "#/definitions/CacheTagConfig",
+          "description": ""
         },
         "Comment": {
           "default": "",
@@ -1254,6 +1271,9 @@
       "type": "array",
       "uniqueItems": false
     }
+  },
+  "propertyTransform": {
+    "/properties/DistributionConfig/CacheTagConfig/HeaderName": "$lowercase(HeaderName)"
   },
   "readOnlyProperties": [
     "/properties/Id",

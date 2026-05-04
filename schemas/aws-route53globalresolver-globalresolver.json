@@ -1,6 +1,6 @@
 {
   "$id": "aws-route53globalresolver-globalresolver",
-  "$integrity": "sha512-ZRSfDIZbptC+hGL60l+Qu+tg7q/PjNFHj7JfsQSOGQWwa1ZKOt1k6wUHx4OMtxef9Bg2+EB6onO+BbJ++OpfzA==",
+  "$integrity": "sha512-//O2BXXn2/s5qPcZ1mzkkuafnyN5A9OSW6qi/TNBzLXaqsNwvwoRd4iBmD69N9qsFy4n/ySYBaFSYqyIDRoAMQ==",
   "additionalIdentifiers": [
     [
       "/properties/Arn"
@@ -8,7 +8,6 @@
   ],
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/Regions",
     "/properties/ClientToken"
   ],
   "definitions": {
@@ -37,7 +36,7 @@
     "IPv6Address": {
       "maxLength": 39,
       "minLength": 1,
-      "pattern": "(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}",
+      "pattern": "(?:[A-Fa-f0-9]{1,4}:){7}[A-Fa-f0-9]{1,4}",
       "type": "string"
     },
     "Region": {
@@ -167,6 +166,7 @@
       "$ref": "#/definitions/Region"
     },
     "Regions": {
+      "description": "A list of regions the Global Resolver will exist in. This list cannot be updated and will stay fixed for the duration of the Global Resolver.",
       "items": {
         "$ref": "#/definitions/Region"
       },

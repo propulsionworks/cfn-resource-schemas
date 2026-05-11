@@ -14,9 +14,8 @@
       "RedisEndpoint.Port": {
         "description": "The port number of the configuration endpoint for the Valkey or Redis OSS cache cluster."
       },
-      "Id": {
-        "description": "The resource name."
-      }
+      "ConfigurationEndpoint": {},
+      "RedisEndpoint": {}
     }
   },
   "definitions": {
@@ -43,6 +42,17 @@
       },
       "description": "Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-cachecluster-destinationdetails.html"
+    },
+    "Endpoint": {
+      "properties": {
+        "Address": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-cachecluster-endpoint.html#cfn-elasticache-cachecluster-endpoint-address"
+        },
+        "Port": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-cachecluster-endpoint.html#cfn-elasticache-cachecluster-endpoint-port"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-cachecluster-endpoint.html"
     },
     "KinesisFirehoseDestinationDetails": {
       "properties": {
@@ -120,11 +130,8 @@
       "description": "A name for the cache cluster. If you don't specify a name, CloudFormation generates a unique physical ID and uses that ID for the cache cluster. For more information, see [Name Type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html) .\n\nThe name must contain 1 to 50 alphanumeric characters or hyphens. The name must start with a letter and cannot end with a hyphen or contain two consecutive hyphens.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-clustername"
     },
-    "ConfigurationEndpointAddress": {
-      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-configurationendpointaddress"
-    },
-    "ConfigurationEndpointPort": {
-      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-configurationendpointport"
+    "ConfigurationEndpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-configurationendpoint"
     },
     "Engine": {
       "description": "The name of the cache engine to be used for this cluster.\n\nValid values for this parameter are: `memcached` | valkey | `redis`",
@@ -133,9 +140,6 @@
     "EngineVersion": {
       "description": "The version number of the cache engine to be used for this cluster. To view the supported cache engine versions, use the DescribeCacheEngineVersions operation.\n\n*Important:* You can upgrade to a newer engine version (see [Selecting a Cache Engine and Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement) ), but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cluster or replication group and create it anew with the earlier engine version.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-engineversion"
-    },
-    "Id": {
-      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-id"
     },
     "IpDiscovery": {
       "description": "The network type you choose when modifying a cluster, either `ipv4` | `ipv6` . IPv6 is supported for workloads using Valkey 7.2 and above, Redis OSS engine version 6.2 to 7.1 and Memcached engine version 1.6.6 and above on all instances built on the [Nitro system](https://docs.aws.amazon.com/ec2/nitro/) .",
@@ -173,11 +177,8 @@
       "description": "Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period.\n\nValid values for `ddd` are:\n\n- `sun`\n- `mon`\n- `tue`\n- `wed`\n- `thu`\n- `fri`\n- `sat`\n\nExample: `sun:23:00-mon:01:30`",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-preferredmaintenancewindow"
     },
-    "RedisEndpointAddress": {
-      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-redisendpointaddress"
-    },
-    "RedisEndpointPort": {
-      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-redisendpointport"
+    "RedisEndpoint": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html#cfn-elasticache-cachecluster-redisendpoint"
     },
     "SnapshotArns": {
       "description": "A single-element string list containing an Amazon Resource Name (ARN) that uniquely identifies a Valkey or Redis OSS RDB snapshot file stored in Amazon S3. The snapshot file is used to populate the node group (shard). The Amazon S3 object name in the ARN cannot contain any commas.\n\n> This parameter is only valid if the `Engine` parameter is `redis` . \n\nExample of an Amazon S3 ARN: `arn:aws:s3:::my_bucket/snapshot1.rdb`",

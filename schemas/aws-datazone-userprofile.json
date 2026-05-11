@@ -1,6 +1,6 @@
 {
   "$id": "aws-datazone-userprofile",
-  "$integrity": "sha512-8a5H/XxIoO2bbhFPoMqegjU7Q7NPi4f/V2U7e/k3IUJqfYq3qAkrPegamS/tbEQxprpGefENKWR/E4/x4W80Pg==",
+  "$integrity": "sha512-uEFrLcFpUJRFk3EW6VZgnm7ksllR8+SD6f5G+qVI6QSRhz5TOVf0nDSKAeH65UAznqDx1yOW6zKpQMNUGqZYuQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainIdentifier",
@@ -14,6 +14,14 @@
       "properties": {
         "Arn": {
           "description": "The ARN of the IAM User Profile.",
+          "type": "string"
+        },
+        "GroupProfileId": {
+          "description": "The group profile ID of the IAM User Profile.",
+          "type": "string"
+        },
+        "SessionName": {
+          "description": "The session name of the IAM User Profile.",
           "type": "string"
         }
       },
@@ -94,7 +102,8 @@
       "enum": [
         "IAM_USER",
         "IAM_ROLE",
-        "SSO_USER"
+        "SSO_USER",
+        "IAM_ROLE_SESSION"
       ],
       "type": "string"
     }
@@ -188,6 +197,12 @@
       "description": "The ID of the Amazon DataZone user profile.",
       "type": "string"
     },
+    "SessionName": {
+      "description": "The session name of the user profile.",
+      "maxLength": 64,
+      "minLength": 2,
+      "type": "string"
+    },
     "Status": {
       "$ref": "#/definitions/UserProfileStatus"
     },
@@ -224,6 +239,7 @@
   "writeOnlyProperties": [
     "/properties/DomainIdentifier",
     "/properties/UserIdentifier",
-    "/properties/UserType"
+    "/properties/UserType",
+    "/properties/SessionName"
   ]
 }

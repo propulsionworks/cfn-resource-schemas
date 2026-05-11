@@ -1,6 +1,6 @@
 {
   "$id": "aws-vpclattice-resourcegateway",
-  "$integrity": "sha512-YFZCDGTEb1R9ZN4tBK4nuGfmrG1G7xc7IPv0VPCdjknRnsFAoEZW3Stb5/4IpzVe/EfJPWw1trcCCHhiAeaW3g==",
+  "$integrity": "sha512-mOvqtjzvmhpoBNRXOwnI6clWkQ9dkOH5LZU2VsqW36b2i2A29BROrNKYU/dFTh7Jsy0snqPBU77Si1YZGhvpwg==",
   "additionalIdentifiers": [
     [
       "/properties/Id"
@@ -11,7 +11,8 @@
     "/properties/VpcIdentifier",
     "/properties/SubnetIds",
     "/properties/IpAddressType",
-    "/properties/Name"
+    "/properties/Name",
+    "/properties/ResourceConfigDnsResolution"
   ],
   "definitions": {
     "Tag": {
@@ -110,6 +111,13 @@
       "maxLength": 40,
       "minLength": 3,
       "pattern": "^(?!rgw-)(?![-])(?!.*[-]$)(?!.*[-]{2})[a-z0-9-]+$",
+      "type": "string"
+    },
+    "ResourceConfigDnsResolution": {
+      "enum": [
+        "IN_VPC",
+        "PUBLIC"
+      ],
       "type": "string"
     },
     "SecurityGroupIds": {

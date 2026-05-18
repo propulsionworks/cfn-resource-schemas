@@ -1,6 +1,6 @@
 {
   "$id": "aws-elasticache-replicationgroup",
-  "$integrity": "sha512-aOHAClYuYFfGPyO2gyaMtuFi9HKUuGzLwnkx6+X84SICl+sYk+bbnxJyHjVclxwbkUxicyrNDFHLJB0kTfgNRw==",
+  "$integrity": "sha512-KyHKHNFqXY2SuSUTiB8PE7K/bCxWsWvxz5ec12hD6PDt7Jil7ZUOV0XB+fGq0iEh/TlbEqcsPvZj2iav3nSY6A==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/AuthToken",
@@ -15,7 +15,6 @@
     "/properties/NetworkType",
     "/properties/Port",
     "/properties/PreferredCacheClusterAZs",
-    "/properties/ReplicasPerNodeGroup",
     "/properties/ReplicationGroupId",
     "/properties/SnapshotArns",
     "/properties/SnapshotName"
@@ -206,6 +205,8 @@
       "permissions": [
         "elasticache:ModifyReplicationGroup",
         "elasticache:ModifyReplicationGroupShardConfiguration",
+        "elasticache:IncreaseReplicaCount",
+        "elasticache:DecreaseReplicaCount",
         "elasticache:DescribeReplicationGroups",
         "elasticache:ListTagsForResource",
         "elasticache:AddTagsToResource",
@@ -403,7 +404,7 @@
       "description": "The endpoint of the reader node in the replication group."
     },
     "ReplicasPerNodeGroup": {
-      "description": "An optional parameter that specifies the number of replica nodes in each node group (shard). Valid values are 0 to 5.",
+      "description": "An optional parameter that specifies the number of replica nodes in each node group (shard). Valid values are 0 to 5.\n\n**Note:** Using ReplicasPerNodeGroup with NodeGroupConfiguration results in resource replacement. For online scaling, use ReplicasPerNodeGroup alone.",
       "type": "integer"
     },
     "ReplicationGroupDescription": {
@@ -519,7 +520,6 @@
     "/properties/SnapshotName",
     "/properties/NodeGroupConfiguration",
     "/properties/NumNodeGroups",
-    "/properties/ReplicasPerNodeGroup",
     "/properties/KmsKeyId",
     "/properties/PrimaryClusterId",
     "/properties/PreferredCacheClusterAZs"

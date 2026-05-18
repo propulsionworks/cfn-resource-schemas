@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-endpointconfig",
-  "$integrity": "sha512-JZdhRmNnStGiIrTBxt1CCm93ClMF4oqp1NtJc1ukTCzNNpVLrMV3YQ5OWw7BO9YbBzqB1aSLvZ0FJlcoA4P2bQ==",
+  "$integrity": "sha512-eICvppzh4NXetWRgnLpFdL3ZSlSnhk2v8oF9PEUgKVbiUrTjSxX95/r1f/S+IwXebdLvM57u5kKUIbicugrxBA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/KmsKeyId",
@@ -294,6 +294,25 @@
       },
       "type": "object"
     },
+    "InstancePools": {
+      "additionalProperties": false,
+      "properties": {
+        "InstanceType": {
+          "type": "string"
+        },
+        "ModelNameOverride": {
+          "type": "string"
+        },
+        "Priority": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Priority",
+        "InstanceType"
+      ],
+      "type": "object"
+    },
     "ManagedInstanceScaling": {
       "additionalProperties": false,
       "properties": {
@@ -330,6 +349,13 @@
         "InitialVariantWeight": {
           "type": "number"
         },
+        "InstancePools": {
+          "items": {
+            "$ref": "#/definitions/InstancePools"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
         "InstanceType": {
           "type": "string"
         },
@@ -347,6 +373,9 @@
         },
         "ServerlessConfig": {
           "$ref": "#/definitions/ServerlessConfig"
+        },
+        "VariantInstanceProvisionTimeoutInSeconds": {
+          "type": "integer"
         },
         "VariantName": {
           "type": "string"

@@ -1,6 +1,6 @@
 {
   "$id": "aws-entityresolution-matchingworkflow",
-  "$integrity": "sha512-O2E+s7Ja29iLZWhG6ODCozQ+RjU+h2A67NZXvAPp3nQC8jTCrum3BIfcVRZrPS21c6EqBe1n20aZKsLB4mhgaA==",
+  "$integrity": "sha512-kdg+Wlu1U3U05aBy3c7nb9SaU91jBqDIrFURZXOwo8yRwDcBrgPu4FmweCYrXQuYW/3oWzdMTBEpcElpN1IujA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/WorkflowName"
@@ -17,11 +17,13 @@
       "type": "string"
     },
     "CustomerProfilesDomainArn": {
+      "description": "The Amazon Resource Name (ARN) of the Customer Profiles domain",
       "pattern": "^arn:(aws|aws-us-gov|aws-cn):profile:[a-z]{2}-[a-z]{1,10}-[0-9]:[0-9]{12}:(domains/[a-zA-Z_0-9-]{1,255})$",
       "type": "string"
     },
     "CustomerProfilesIntegrationConfig": {
       "additionalProperties": false,
+      "description": "The Customer Profiles integration configuration for the output source",
       "properties": {
         "DomainArn": {
           "$ref": "#/definitions/CustomerProfilesDomainArn"
@@ -37,6 +39,7 @@
       "type": "object"
     },
     "CustomerProfilesObjectTypeArn": {
+      "description": "The Amazon Resource Name (ARN) of the Customer Profiles object type",
       "pattern": "^arn:(aws|aws-us-gov|aws-cn):profile:[a-z]{2}-[a-z]{1,10}-[0-9]:[0-9]{12}:(domains/[a-zA-Z_0-9-]{1,255}/object-types/[a-zA-Z_0-9-]{1,255})$",
       "type": "string"
     },
@@ -104,6 +107,17 @@
     "KMSArn": {
       "pattern": "^arn:(aws|aws-us-gov|aws-cn):kms:.*:[0-9]+:.*$",
       "type": "string"
+    },
+    "MatchingConfig": {
+      "additionalProperties": false,
+      "description": "Configuration for matching behavior within rule condition properties",
+      "properties": {
+        "EnableTransitiveMatching": {
+          "description": "Enables transitive matching to process records across all rule levels and connect unmatched records to existing match groups",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
     },
     "MatchingWorkflowArn": {
       "description": "The default MatchingWorkflow arn",
@@ -282,6 +296,9 @@
     "RuleConditionProperties": {
       "additionalProperties": false,
       "properties": {
+        "MatchingConfig": {
+          "$ref": "#/definitions/MatchingConfig"
+        },
         "Rules": {
           "insertionOrder": false,
           "items": {

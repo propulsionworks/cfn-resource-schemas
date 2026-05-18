@@ -1,6 +1,6 @@
 {
   "$id": "aws-cloudfront-keyvaluestore",
-  "$integrity": "sha512-grug3e7CRmvo87uZpCpn/VCzuk2NCHhgGZ/ma7lPQNALNv6KDJaWAZxeRjIySr8ry3+u5xvedXnSeBHeXVRDhw==",
+  "$integrity": "sha512-Uf5ILJABt3EnxerNQwxcSFr/wQsUqy8fmd/aPf8pONweUIimCY8Uhr88ptOZ/IW5Qc1cRJHPzTaTV7GgCvR2Rg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -27,15 +27,17 @@
     },
     "Tag": {
       "additionalProperties": false,
-      "description": "",
+      "description": "A complex type that contains ``Tag`` key and ``Tag`` value.",
       "properties": {
         "Key": {
+          "description": "A string that contains ``Tag`` key.\n The string length should be between 1 and 128 characters. Valid characters include ``a-z``, ``A-Z``, ``0-9``, space, and the special characters ``_ - . : / = + @``.",
           "maxLength": 128,
           "minLength": 1,
           "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$",
           "type": "string"
         },
         "Value": {
+          "description": "A string that contains an optional ``Tag`` value.\n The string length should be between 0 and 256 characters. Valid characters include ``a-z``, ``A-Z``, ``0-9``, space, and the special characters ``_ - . : / = + @``.",
           "maxLength": 256,
           "minLength": 0,
           "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$",
@@ -96,7 +98,7 @@
       "type": "string"
     },
     "Comment": {
-      "description": "A comment for the key value store.",
+      "description": "A comment to describe the Key Value Store. Omitting ``Comment`` from the template during updates will clear the existing comment (set to empty string). To preserve an existing comment, you must explicitly include it in the template.",
       "type": "string"
     },
     "Id": {
@@ -116,7 +118,7 @@
       "type": "string"
     },
     "Tags": {
-      "description": "",
+      "description": "A complex type that contains zero or more ``Tag`` elements.",
       "insertionOrder": false,
       "items": {
         "$ref": "#/definitions/Tag"

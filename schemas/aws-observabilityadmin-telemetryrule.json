@@ -1,9 +1,10 @@
 {
   "$id": "aws-observabilityadmin-telemetryrule",
-  "$integrity": "sha512-5qWTxDj5T4DYFzO3fKC7+/+ym9JqbobM8dA9cRBBhUYWFTbyKgOVU+uzF6vEQpDCpK7c/AN0+10y/uTMSMT/Hg==",
+  "$integrity": "sha512-UodCoCqN0s+v/HHqV3QFOVmn0adxeIxKZVbS8qf32zwIaFMYqGpj+U2P+eVTCe8py2jvBAecnUHcAs3mYnaETg==",
   "additionalProperties": false,
   "createOnlyProperties": [
-    "/properties/RuleName"
+    "/properties/RuleName",
+    "/properties/Rule/AllRegions"
   ],
   "definitions": {
     "Action": {
@@ -115,6 +116,11 @@
         }
       },
       "type": "object"
+    },
+    "AllowFieldUpdates": {
+      "default": false,
+      "description": "When true, configuration drift in managed telemetry resources will be detected and remediated for resource-level fields.",
+      "type": "boolean"
     },
     "CloudtrailParameters": {
       "additionalProperties": false,
@@ -282,6 +288,25 @@
       "type": "array",
       "uniqueItems": true
     },
+    "RegionStatus": {
+      "additionalProperties": false,
+      "description": "Status of a telemetry rule in a specific region",
+      "properties": {
+        "Region": {
+          "description": "The AWS region code",
+          "type": "string"
+        },
+        "RuleArn": {
+          "description": "The ARN of the rule in this region",
+          "type": "string"
+        },
+        "Status": {
+          "description": "The replication status of the rule in this region",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ResourceType": {
       "description": "Resource Type associated with the Telemetry Rule",
       "enum": [
@@ -401,8 +426,24 @@
       "additionalProperties": false,
       "description": "The telemetry rule",
       "properties": {
+        "AllRegions": {
+          "description": "When true, the rule is replicated to all supported regions",
+          "type": "boolean"
+        },
+        "AllowFieldUpdates": {
+          "$ref": "#/definitions/AllowFieldUpdates"
+        },
         "DestinationConfiguration": {
           "$ref": "#/definitions/TelemetryDestinationConfiguration"
+        },
+        "Regions": {
+          "description": "List of AWS region codes where the rule should be replicated",
+          "insertionOrder": false,
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
         },
         "ResourceType": {
           "$ref": "#/definitions/ResourceType"
@@ -546,6 +587,14 @@
     "/properties/RuleArn"
   ],
   "properties": {
+    "RegionStatuses": {
+      "description": "Per-region replication status of the rule",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/RegionStatus"
+      },
+      "type": "array"
+    },
     "Rule": {
       "$ref": "#/definitions/TelemetryRule"
     },
@@ -574,7 +623,8 @@
     }
   },
   "readOnlyProperties": [
-    "/properties/RuleArn"
+    "/properties/RuleArn",
+    "/properties/RegionStatuses"
   ],
   "required": [
     "RuleName",

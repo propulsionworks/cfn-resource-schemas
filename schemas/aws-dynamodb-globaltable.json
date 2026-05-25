@@ -1,6 +1,6 @@
 {
   "$id": "aws-dynamodb-globaltable",
-  "$integrity": "sha512-VPDpwE0rjvUDXQXZ+baSwB3j4xZ4G/f5Qm3+2fcTmBK7FwVM54LEhMNyzkIQL8iyDjiQWC+67Eo+b8946RyuFQ==",
+  "$integrity": "sha512-gou0WDtXOxtMZdGndxqWSR2ZwI9D0NXeWoE4ZWA9HQCjlarBETOBFsa/+UWBzw02vG8uGv6R25bkPqWtgQSTGA==",
   "additionalIdentifiers": [
     [
       "/properties/Arn"
@@ -768,7 +768,8 @@
     }
   },
   "propertyTransform": {
-    "/properties/Replicas/*/GlobalTableSettingsReplicationMode": "GlobalTableSettingsReplicationMode $OR ($exists(GlobalTableSettingsReplicationMode) ? null : \"DISABLED\") $OR ($exists(GlobalTableSettingsReplicationMode) ? null : \"ENABLED_WITH_OVERRIDES\")"
+    "/properties/Replicas/*/GlobalTableSettingsReplicationMode": "GlobalTableSettingsReplicationMode $OR ($exists(GlobalTableSettingsReplicationMode) ? null : \"DISABLED\") $OR ($exists(GlobalTableSettingsReplicationMode) ? null : \"ENABLED_WITH_OVERRIDES\")",
+    "/properties/Replicas/*/SSESpecification/KMSMasterKeyId": "$split(KMSMasterKeyId, '/')[-1]"
   },
   "readOnlyProperties": [
     "/properties/Arn",

@@ -1,10 +1,9 @@
 {
   "$id": "aws-bcmdataexports-export",
-  "$integrity": "sha512-PdmD8hktgn4z6T3tgr3tceYwXQvKPskMMoAODLlEtiq9ftNBgdT9swWxL1UX035JyYcSiKw5dHS7riPh1/mKAQ==",
+  "$integrity": "sha512-RmIEo2EOCz2Edpgi+TqwyuJ4qocTx/qCRA2ppLKtFm7ddFFPvkYpCN8TEbnzOlU6l1VECi7QIevy+GrvWzpR7Q==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Export/Name",
-    "/properties/Export/DataQuery/TableConfigurations",
     "/properties/Export/RefreshCadence"
   ],
   "definitions": {
@@ -201,7 +200,9 @@
     },
     "S3OutputType": {
       "enum": [
-        "CUSTOM"
+        "CUSTOM",
+        "ATHENA",
+        "REDSHIFT"
       ],
       "type": "string"
     },
@@ -295,7 +296,7 @@
     "Export"
   ],
   "tagging": {
-    "cloudFormationSystemTags": false,
+    "cloudFormationSystemTags": true,
     "permissions": [
       "bcm-data-exports:ListTagsForResource",
       "bcm-data-exports:TagResource",

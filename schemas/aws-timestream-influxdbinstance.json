@@ -1,6 +1,6 @@
 {
   "$id": "aws-timestream-influxdbinstance",
-  "$integrity": "sha512-M7MDvcqHLNcPxPBwlI6tqgjGitRvpnm11VydoFxzf42BMzN5klFf82+TV6s9esfW2dWPhqdfUk4aPaIzXsEA6A==",
+  "$integrity": "sha512-D+TcNy8espNzaENEK5NuuIjKolc3Oybm6qalgKGjVWciqEt2FVT8If7ySINqGcBdj3kLmiAfaYJ43nh3LhwMNA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -14,6 +14,31 @@
     "/properties/NetworkType"
   ],
   "definitions": {
+    "MaintenanceSchedule": {
+      "additionalProperties": false,
+      "description": "The maintenance schedule for the InfluxDB instance.",
+      "properties": {
+        "PreferredMaintenanceWindow": {
+          "description": "The preferred maintenance window in format ddd:HH:MM-ddd:HH:MM.",
+          "maxLength": 19,
+          "minLength": 0,
+          "pattern": "^$|^(Mon|Tue|Wed|Thu|Fri|Sat|Sun):([01]\\d|2[0-3]):[0-5]\\d-(Mon|Tue|Wed|Thu|Fri|Sat|Sun):([01]\\d|2[0-3]):[0-5]\\d$",
+          "type": "string"
+        },
+        "Timezone": {
+          "description": "The IANA timezone identifier for the maintenance schedule.",
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^(UTC|[A-Za-z_]+/[A-Za-z0-9_]+(/[A-Za-z0-9_]+)?)$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Timezone",
+        "PreferredMaintenanceWindow"
+      ],
+      "type": "object"
+    },
     "Tag": {
       "additionalProperties": false,
       "description": "A key-value pair to associate with a resource.",
@@ -209,6 +234,10 @@
       ],
       "type": "object"
     },
+    "MaintenanceSchedule": {
+      "$ref": "#/definitions/MaintenanceSchedule",
+      "description": "The maintenance schedule for the InfluxDB instance."
+    },
     "Name": {
       "description": "The unique name that is associated with the InfluxDB instance.",
       "maxLength": 40,
@@ -222,6 +251,11 @@
         "IPV4",
         "DUAL"
       ],
+      "type": "string"
+    },
+    "NextMaintenanceTime": {
+      "description": "The timestamp of the next scheduled maintenance event.",
+      "format": "date-time",
       "type": "string"
     },
     "Organization": {
@@ -315,7 +349,8 @@
     "/properties/AvailabilityZone",
     "/properties/Endpoint",
     "/properties/SecondaryAvailabilityZone",
-    "/properties/InfluxAuthParametersSecretArn"
+    "/properties/InfluxAuthParametersSecretArn",
+    "/properties/NextMaintenanceTime"
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-timestream.git",
   "tagging": {

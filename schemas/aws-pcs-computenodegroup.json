@@ -1,6 +1,6 @@
 {
   "$id": "aws-pcs-computenodegroup",
-  "$integrity": "sha512-UE2Mbn8jT53anlEP0BQJu1AlxmqDAaFLxM7PoAjNQv2JylL2JkEXsJYKhDAEf5eWSEKfkGObP05TifNbk10u8g==",
+  "$integrity": "sha512-Q6/ry8II6qAb5mjPnXspVBPGL36mjeCmZ7Sb6Jedou5ADqYHywB3eDSPO+Xjo/d3kcPHQc8k9TT7dDEqPfJnsQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name",
@@ -250,6 +250,12 @@
       "additionalProperties": false,
       "description": "Additional options related to the Slurm scheduler.",
       "properties": {
+        "ScaleDownIdleTimeInSeconds": {
+          "description": "The time before an idle node is scaled down.",
+          "maximum": 10000000,
+          "minimum": 1,
+          "type": "integer"
+        },
         "SlurmCustomSettings": {
           "description": "Additional Slurm-specific configuration that directly maps to Slurm settings.",
           "insertionOrder": false,

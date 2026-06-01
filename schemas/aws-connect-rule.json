@@ -1,6 +1,6 @@
 {
   "$id": "aws-connect-rule",
-  "$integrity": "sha512-HYLzOIpdUfPJk6qXD6CpE+Djk1yMCygFrOpN0LvoyOeNpzCbG1QF35WfhzSDuOM2j/c4OnJ1PENu/qV7tuItLw==",
+  "$integrity": "sha512-+2GCyrSp5zAvial/MGSK2nM1F16W38l7HTB/yMNXyawth34gUMzlyHP0A6gs52XPIOTcwN6c8fYyGj2Zl+4OXg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TriggerEventSource",
@@ -208,7 +208,7 @@
           "additionalProperties": false,
           "description": "The tags used to organize, track, or control access for this resource. For example, { \"tags\": {\"key1\":\"value1\", \"key2\":\"value2\"} }. CON users with the specified tags will be notified.",
           "patternProperties": {
-            "^(?=.{1,128}$).+$": {
+            "^.{1,128}$": {
               "type": "string"
             }
           }
@@ -364,7 +364,7 @@
           "description": "The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -",
           "maxLength": 128,
           "minLength": 1,
-          "pattern": "^(?!aws:)[a-zA-Z+-=._:/]+$",
+          "pattern": "^[a-zA-Z+-=._:/]+$",
           "type": "string"
         },
         "Value": {
@@ -404,7 +404,7 @@
           "additionalProperties": false,
           "description": "Information about the reference when the ``referenceType`` is ``URL``. Otherwise, null. ``URL`` is the only accepted type. (Supports variable injection in the ``Value`` field.)",
           "patternProperties": {
-            "^(?=.{1,4096}$).+$": {
+            "^.+$": {
               "$ref": "#/definitions/Reference"
             }
           }
@@ -465,13 +465,30 @@
         "connect:CreateRule",
         "cases:GetTemplate",
         "cases:ListFields",
-        "cases:ListFieldOptions"
+        "cases:ListFieldOptions",
+        "connect:TagResource",
+        "connect:DeleteRule"
       ]
     },
     "delete": {
       "permissions": [
         "connect:DeleteRule",
         "connect:UntagResource"
+      ]
+    },
+    "list": {
+      "handlerSchema": {
+        "properties": {
+          "InstanceArn": {
+            "$ref": "resource-schema.json#/properties/InstanceArn"
+          }
+        },
+        "required": [
+          "InstanceArn"
+        ]
+      },
+      "permissions": [
+        "connect:ListRules"
       ]
     },
     "read": {

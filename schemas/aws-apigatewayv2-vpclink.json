@@ -1,6 +1,6 @@
 {
   "$id": "aws-apigatewayv2-vpclink",
-  "$integrity": "sha512-oTtvJg6fmtS5R41VDreEnu9wi+TZ4hKcvJV/1uR3SYz1D6fVDeE5CNL8IFvD5Sm6qPnjS6Ha4bg7AzKPICSelw==",
+  "$integrity": "sha512-mk1h6UIBv7FPNxCJD1gkp1dqYCCNyKop9n5YsnPcv14jW1Tk9WiMkj6cZrN07JbCfDKEdFNibRXobjDb5jQBMg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/SecurityGroupIds",
@@ -46,7 +46,9 @@
     "update": {
       "permissions": [
         "apigateway:PATCH",
+        "apigateway:POST",
         "apigateway:GET",
+        "apigateway:DELETE",
         "apigateway:TagResource",
         "apigateway:unTagResource",
         "iam:CreateServiceLinkedRole",
@@ -65,6 +67,7 @@
     },
     "SecurityGroupIds": {
       "description": "A list of security group IDs for the VPC link.",
+      "insertionOrder": false,
       "items": {
         "type": "string"
       },
@@ -73,6 +76,7 @@
     },
     "SubnetIds": {
       "description": "A list of subnet IDs to include in the VPC link.",
+      "insertionOrder": false,
       "items": {
         "type": "string"
       },
@@ -103,6 +107,12 @@
   ],
   "tagging": {
     "cloudFormationSystemTags": true,
+    "permissions": [
+      "apigateway:GET",
+      "apigateway:PUT",
+      "apigateway:PATCH",
+      "apigateway:DELETE"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
     "tagUpdatable": true,

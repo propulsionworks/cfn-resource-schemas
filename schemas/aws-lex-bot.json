@@ -1,6 +1,6 @@
 {
   "$id": "aws-lex-bot",
-  "$integrity": "sha512-1pc8IgCcK5293GqTPVnLqnI3LMumMCCc6EwpYZIfjbOlqPc8D+eX7icMUl2NRoMv3kNz73SK/wPOh7zfOZvSCw==",
+  "$integrity": "sha512-Lp2tdqA1+3ZZe1rZdv8pawH1YwquxnFyKTIdBNxFv9fz2QsCEtIg1Nlya3s6fOoveCNlE22Z9qK9jeMbLbUQkw==",
   "additionalProperties": false,
   "definitions": {
     "AdvancedRecognitionSetting": {
@@ -54,6 +54,45 @@
       },
       "required": [
         "StartTimeoutMs"
+      ],
+      "type": "object"
+    },
+    "AudioFillerSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "AudioType": {
+          "enum": [
+            "MELODY_CHIPPER_CHIME",
+            "MELODY_CURIOUS_CRAWL",
+            "MELODY_RISING_RIPPLE",
+            "MELODY_PATIENT_PING",
+            "MELODY_PONDERING_PONG",
+            "TYPING_KINETIC_KEYS",
+            "TYPING_QUIET_QWERTY"
+          ],
+          "type": "string"
+        },
+        "Enabled": {
+          "type": "boolean"
+        },
+        "MinimumPlayDurationInMilliseconds": {
+          "maximum": 5000,
+          "minimum": 1000,
+          "type": "integer"
+        },
+        "ResponseDeliveryDelayInMilliseconds": {
+          "maximum": 1000,
+          "minimum": 200,
+          "type": "integer"
+        },
+        "StartDelayInMilliseconds": {
+          "maximum": 5000,
+          "minimum": 500,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Enabled"
       ],
       "type": "object"
     },
@@ -251,6 +290,9 @@
     "BotLocale": {
       "additionalProperties": false,
       "properties": {
+        "AudioFillerSettings": {
+          "$ref": "#/definitions/AudioFillerSettings"
+        },
         "CustomVocabulary": {
           "$ref": "#/definitions/CustomVocabulary"
         },
@@ -2190,7 +2232,7 @@
         "Standard",
         "Neural",
         "Deepgram",
-        "Enhanced"
+        "Advanced"
       ],
       "type": "string"
     },

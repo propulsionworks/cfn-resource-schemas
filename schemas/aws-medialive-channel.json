@@ -1,6 +1,6 @@
 {
   "$id": "aws-medialive-channel",
-  "$integrity": "sha512-jI99Po/hDvhylxjT97jGiELq+24Zc6+lYlWTEZGTSpR/DaP/B3vrIvGenJo93YWnKKUBDkaMISlpCl/5d7+H3Q==",
+  "$integrity": "sha512-H9ogqo+2FotLZzlTRcI9Kox240C4CnEVBoBMDizOOo0gOhr4pgmJTlWbyJKlB138tQMtw2xlQs7AB0Se2HjsBw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Vpc"
@@ -2555,6 +2555,67 @@
       },
       "type": "object"
     },
+    "MediaConnectRouterContainerSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "M2tsSettings": {
+          "$ref": "#/definitions/M2tsSettings"
+        }
+      },
+      "type": "object"
+    },
+    "MediaConnectRouterGroupSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "AvailabilityZones": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "type": "object"
+    },
+    "MediaConnectRouterOutputConnectionMap": {
+      "additionalProperties": false,
+      "properties": {
+        "Pipeline0": {
+          "type": "string"
+        },
+        "Pipeline1": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MediaConnectRouterOutputDestinationSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "EncryptionType": {
+          "type": "string"
+        },
+        "SecretArn": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MediaConnectRouterOutputSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "ConnectedRouterInputs": {
+          "$ref": "#/definitions/MediaConnectRouterOutputConnectionMap"
+        },
+        "ContainerSettings": {
+          "$ref": "#/definitions/MediaConnectRouterContainerSettings"
+        },
+        "Destination": {
+          "$ref": "#/definitions/OutputLocationRef"
+        }
+      },
+      "type": "object"
+    },
     "MediaPackageAdditionalDestinations": {
       "additionalProperties": false,
       "properties": {
@@ -3056,6 +3117,13 @@
           "type": "array",
           "uniqueItems": false
         },
+        "MediaConnectRouterSettings": {
+          "items": {
+            "$ref": "#/definitions/MediaConnectRouterOutputDestinationSettings"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
         "MediaPackageSettings": {
           "items": {
             "$ref": "#/definitions/MediaPackageOutputDestinationSettings"
@@ -3135,6 +3203,9 @@
         "HlsGroupSettings": {
           "$ref": "#/definitions/HlsGroupSettings"
         },
+        "MediaConnectRouterGroupSettings": {
+          "$ref": "#/definitions/MediaConnectRouterGroupSettings"
+        },
         "MediaPackageGroupSettings": {
           "$ref": "#/definitions/MediaPackageGroupSettings"
         },
@@ -3194,6 +3265,9 @@
         },
         "HlsOutputSettings": {
           "$ref": "#/definitions/HlsOutputSettings"
+        },
+        "MediaConnectRouterOutputSettings": {
+          "$ref": "#/definitions/MediaConnectRouterOutputSettings"
         },
         "MediaPackageOutputSettings": {
           "$ref": "#/definitions/MediaPackageOutputSettings"

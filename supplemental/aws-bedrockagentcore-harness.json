@@ -1,7 +1,30 @@
 {
   "attributes": {
     "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#aws-resource-bedrockagentcore-harness-return-values",
-    "properties": {}
+    "properties": {
+      "Arn": {
+        "description": "The Amazon Resource Name (ARN) of the harness."
+      },
+      "HarnessId": {
+        "description": "The unique identifier of the harness."
+      },
+      "Status": {},
+      "CreatedAt": {
+        "description": "The timestamp when the harness was created."
+      },
+      "UpdatedAt": {
+        "description": "The timestamp when the harness was last updated."
+      },
+      "Environment.AgentCoreRuntimeEnvironment.AgentRuntimeArn": {
+        "description": "The ARN of the underlying AgentCore Runtime."
+      },
+      "Environment.AgentCoreRuntimeEnvironment.AgentRuntimeName": {
+        "description": "The name of the underlying AgentCore Runtime."
+      },
+      "Environment.AgentCoreRuntimeEnvironment.AgentRuntimeId": {
+        "description": "The ID of the underlying AgentCore Runtime."
+      }
+    }
   },
   "definitions": {
     "AuthorizerConfiguration": {
@@ -37,6 +60,7 @@
     "ContainerConfiguration": {
       "properties": {
         "ContainerUri": {
+          "description": "The ECR URI of the container.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-containerconfiguration.html#cfn-bedrockagentcore-harness-containerconfiguration-containeruri"
         }
       },
@@ -145,12 +169,15 @@
     "HarnessAgentCoreRuntimeEnvironment": {
       "properties": {
         "AgentRuntimeArn": {
+          "description": "The ARN of the underlying AgentCore Runtime.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessagentcoreruntimeenvironment.html#cfn-bedrockagentcore-harness-harnessagentcoreruntimeenvironment-agentruntimearn"
         },
         "AgentRuntimeId": {
+          "description": "The ID of the underlying AgentCore Runtime.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessagentcoreruntimeenvironment.html#cfn-bedrockagentcore-harness-harnessagentcoreruntimeenvironment-agentruntimeid"
         },
         "AgentRuntimeName": {
+          "description": "The name of the underlying AgentCore Runtime.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessagentcoreruntimeenvironment.html#cfn-bedrockagentcore-harness-harnessagentcoreruntimeenvironment-agentruntimename"
         },
         "FilesystemConfigurations": {
@@ -241,6 +268,7 @@
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessinlinefunctionconfig.html#cfn-bedrockagentcore-harness-harnessinlinefunctionconfig-description"
         },
         "InputSchema": {
+          "description": "JSON Schema describing the tool's input parameters.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessinlinefunctionconfig.html#cfn-bedrockagentcore-harness-harnessinlinefunctionconfig-inputschema"
         }
       },
@@ -302,6 +330,7 @@
     "HarnessSkill": {
       "properties": {
         "Path": {
+          "description": "The filesystem path to the skill definition.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessskill.html#cfn-bedrockagentcore-harness-harnessskill-path"
         }
       },
@@ -336,6 +365,7 @@
     "HarnessSystemContentBlock": {
       "properties": {
         "Text": {
+          "description": "The text content of the system prompt block.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnesssystemcontentblock.html#cfn-bedrockagentcore-harness-harnesssystemcontentblock-text"
         }
       },
@@ -470,10 +500,12 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-vpcconfig.html"
     }
   },
+  "description": "Definition of AWS::BedrockAgentCore::Harness resource type - a managed agentic loop service that provides a turnkey solution for running stateful, tool-equipped AI agents.",
   "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html",
   "id": "aws-bedrockagentcore-harness",
   "properties": {
     "AllowedTools": {
+      "description": "The tools that the agent is allowed to use.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-allowedtools"
     },
     "Arn": {
@@ -492,21 +524,26 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-environmentartifact"
     },
     "EnvironmentVariables": {
+      "description": "Environment variables to set in the harness runtime environment.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-environmentvariables"
     },
     "ExecutionRoleArn": {
+      "description": "The ARN of the IAM role that the harness assumes when running.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-executionrolearn"
     },
     "HarnessId": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-harnessid"
     },
     "HarnessName": {
+      "description": "The name of the harness.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-harnessname"
     },
     "MaxIterations": {
+      "description": "The maximum number of iterations the agent loop can execute per invocation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-maxiterations"
     },
     "MaxTokens": {
+      "description": "The maximum number of tokens the agent can generate per iteration.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-maxtokens"
     },
     "Memory": {
@@ -516,21 +553,26 @@
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-model"
     },
     "Skills": {
+      "description": "The skills available to the agent.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-skills"
     },
     "Status": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-status"
     },
     "SystemPrompt": {
+      "description": "The system prompt that defines the agent's behavior.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-systemprompt"
     },
     "Tags": {
+      "description": "Tags to apply to the harness resource.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-tags"
     },
     "TimeoutSeconds": {
+      "description": "The maximum duration in seconds for the agent loop execution per invocation.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-timeoutseconds"
     },
     "Tools": {
+      "description": "The tools available to the agent.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-tools"
     },
     "Truncation": {

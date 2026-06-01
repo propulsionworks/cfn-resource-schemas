@@ -1,6 +1,6 @@
 {
   "$id": "aws-apigatewayv2-domainname",
-  "$integrity": "sha512-4F1bMNsbS32L7LZliujWorM7MJbpTD5Z906GIgBlMD2bd+1jO+O3XHAwRRQjIzue2faxQFqU4yBB8ACyp9UVUQ==",
+  "$integrity": "sha512-GgsG5rlAixPiLCcrJoblcTre57lIrfn/EjIyII2yi/p924mLjNvK9QLHn+Gj3GEeACveGVhxwMDZ0vGRrONltw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DomainName"
@@ -82,7 +82,9 @@
       "permissions": [
         "apigateway:PATCH",
         "apigateway:GET",
-        "apigateway:PUT"
+        "apigateway:PUT",
+        "apigateway:POST",
+        "apigateway:DELETE"
       ]
     }
   },
@@ -149,10 +151,16 @@
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-apigatewayv2.git",
   "tagging": {
-    "cloudFormationSystemTags": false,
+    "cloudFormationSystemTags": true,
+    "permissions": [
+      "apigateway:PUT",
+      "apigateway:PATCH",
+      "apigateway:GET",
+      "apigateway:DELETE"
+    ],
     "tagOnCreate": true,
     "tagProperty": "/properties/Tags",
-    "tagUpdatable": false,
+    "tagUpdatable": true,
     "taggable": true
   },
   "typeName": "AWS::ApiGatewayV2::DomainName"

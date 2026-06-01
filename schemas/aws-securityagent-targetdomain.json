@@ -1,6 +1,6 @@
 {
   "$id": "aws-securityagent-targetdomain",
-  "$integrity": "sha512-2ooC8nTvVc/GA4X3Q3Urs3FfnJE7jDasUsjyojZ1tlq5yccMSVrtB9MLKgqMRXXATHJWM/ox6tWbI89ip0ty4w==",
+  "$integrity": "sha512-fVZxrkQwzSddAlSO5D2Iz5JUJouWJcjo8HrdF17dK4E5Yk8pldB18D5qPngm6z16AP2OUpgC+1duZyWHc85Y1A==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TargetDomainName"
@@ -80,7 +80,8 @@
           "description": "Type of domain ownership verification method",
           "enum": [
             "DNS_TXT",
-            "HTTP_ROUTE"
+            "HTTP_ROUTE",
+            "PRIVATE_VPC"
           ],
           "type": "string"
         }
@@ -158,7 +159,8 @@
       "description": "Verification method for the target domain",
       "enum": [
         "DNS_TXT",
-        "HTTP_ROUTE"
+        "HTTP_ROUTE",
+        "PRIVATE_VPC"
       ],
       "type": "string"
     },
@@ -172,6 +174,10 @@
       ],
       "type": "string"
     },
+    "VerificationStatusReason": {
+      "description": "Reason for the current target domain verification status",
+      "type": "string"
+    },
     "VerifiedAt": {
       "description": "Timestamp when the target domain was last successfully verified",
       "format": "date-time",
@@ -181,6 +187,7 @@
   "readOnlyProperties": [
     "/properties/TargetDomainId",
     "/properties/VerificationStatus",
+    "/properties/VerificationStatusReason",
     "/properties/VerificationDetails",
     "/properties/CreatedAt",
     "/properties/VerifiedAt"

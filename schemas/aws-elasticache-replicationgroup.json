@@ -1,6 +1,6 @@
 {
   "$id": "aws-elasticache-replicationgroup",
-  "$integrity": "sha512-KyHKHNFqXY2SuSUTiB8PE7K/bCxWsWvxz5ec12hD6PDt7Jil7ZUOV0XB+fGq0iEh/TlbEqcsPvZj2iav3nSY6A==",
+  "$integrity": "sha512-jG68PK3zaskieVCZTmdggSwAQpJKAESD1fkuPyS0obHrmB4pbOPEywy9AfYfeifVzKnFjEd06uTWlPTst6zo7Q==",
   "additionalProperties": false,
   "conditionalCreateOnlyProperties": [
     "/properties/AuthToken",
@@ -289,6 +289,25 @@
       "description": "Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes.",
       "type": "boolean"
     },
+    "Durability": {
+      "description": "The durability setting for the replication group. Valid values: default, async, sync, disabled. Enabling durability on an existing non-durable cluster or disabling durability on an existing durable cluster is not currently supported and will result in an error; specify the desired durability at create time. The resolved state is returned in EffectiveDurability.",
+      "enum": [
+        "default",
+        "async",
+        "sync",
+        "disabled"
+      ],
+      "type": "string"
+    },
+    "EffectiveDurability": {
+      "description": "The resolved durability state of the replication group after resolving the default value. This is a read-only property.",
+      "enum": [
+        "async",
+        "sync",
+        "disabled"
+      ],
+      "type": "string"
+    },
     "Engine": {
       "description": "The name of the cache engine to be used for the clusters in this replication group.",
       "type": "string"
@@ -488,7 +507,8 @@
     "/properties/ReadEndPoint/PortsList",
     "/properties/ReaderEndPoint",
     "/properties/ReaderEndPoint/Address",
-    "/properties/ReaderEndPoint/Port"
+    "/properties/ReaderEndPoint/Port",
+    "/properties/EffectiveDurability"
   ],
   "required": [
     "ReplicationGroupDescription"

@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-gateway",
-  "$integrity": "sha512-eUTjY4Jj3r4Rh8bTawob1SfbGbuOTb/bddvlir7z/EqLZFB9tBrGdAuepgqvjh+756bHqBUleiUazhtFdfSG8g==",
+  "$integrity": "sha512-4t+Czm78eg45C6qp0sw7cA5JYvxonzpBQxi1yJDc0dZz944dk7u7wX366UdMYIW5rhNS4G+ok175KLtOW1Sqpw==",
   "additionalProperties": false,
   "definitions": {
     "AllowedScope": {
@@ -29,7 +29,8 @@
       "enum": [
         "CUSTOM_JWT",
         "AWS_IAM",
-        "NONE"
+        "NONE",
+        "AUTHENTICATE_ONLY"
       ],
       "type": "string"
     },
@@ -485,7 +486,14 @@
       "$ref": "#/definitions/GatewayProtocolConfiguration"
     },
     "ProtocolType": {
-      "$ref": "#/definitions/GatewayProtocolType"
+      "allOf": [
+        {
+          "$ref": "#/definitions/GatewayProtocolType"
+        },
+        {
+          "default": "MCP"
+        }
+      ]
     },
     "RoleArn": {
       "maxLength": 2048,
@@ -528,11 +536,10 @@
   "required": [
     "AuthorizerType",
     "Name",
-    "ProtocolType",
     "RoleArn"
   ],
   "tagging": {
-    "cloudFormationSystemTags": false,
+    "cloudFormationSystemTags": true,
     "permissions": [
       "bedrock-agentcore:ListTagsForResource",
       "bedrock-agentcore:TagResource",

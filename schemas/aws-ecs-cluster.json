@@ -1,6 +1,6 @@
 {
   "$id": "aws-ecs-cluster",
-  "$integrity": "sha512-9d5qQbZxS6YFSd7IU0BtpQTE9Y3rORnrQrw4vm6FjlONGve+9OUVoFLtQfD06yp2AyD6c4zZSrKoojo08bgIbg==",
+  "$integrity": "sha512-s4SL0jXhrjZWDztsBeOYGHxGrNGAjD3eqL1TcyNjbW/KLKHt6JaKtWPiFg87DN0U7/98KCHYOJakoR67LI/iGQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/ClusterName"
@@ -238,7 +238,7 @@
     }
   },
   "propertyTransform": {
-    "/properties/Configuration/ManagedStorageConfiguration/FargateEphemeralStorageKmsKeyId": "$join([\"arn:aws[-a-z]*:kms:[a-z0-9-]+:[0-9]{12}:key/\", FargateEphemeralStorageKmsKeyId])"
+    "/properties/Configuration/ManagedStorageConfiguration/FargateEphemeralStorageKmsKeyId": "FargateEphemeralStorageKmsKeyId $OR $join([\"arn:aws[-a-z]*:kms:[a-z0-9-]+:[0-9]{12}:key/\", FargateEphemeralStorageKmsKeyId])"
   },
   "readOnlyProperties": [
     "/properties/Arn"

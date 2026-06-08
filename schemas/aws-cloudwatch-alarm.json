@@ -1,6 +1,6 @@
 {
   "$id": "aws-cloudwatch-alarm",
-  "$integrity": "sha512-zm1oQBPr1GP5FQUEQsMyb58lkWT0Cj4D9Nzn94dz5DMNbKlcEfDMlg6Ml2wVYgobn8Cf79nv192BO7pjiMCk2A==",
+  "$integrity": "sha512-fOOPIfobOq6SuKuUrhMys4INzie4JtCd0JJuZXW+Gf3Ewdaiupnn3Q7YV26MERjlasvQwo7v5CqIq3UNOskDew==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/AlarmName"
@@ -8,18 +8,18 @@
   "definitions": {
     "AlarmPromQLCriteria": {
       "additionalProperties": false,
-      "description": "",
+      "description": "Contains the configuration that determines how a PromQL alarm evaluates its contributors, including the query to run and the durations that define when contributors transition between states.",
       "properties": {
         "PendingPeriod": {
-          "description": "The pending period for the alarm.",
+          "description": "The duration, in seconds, that a contributor must be continuously breaching before it transitions to the ``ALARM`` state.",
           "type": "integer"
         },
         "Query": {
-          "description": "The PromQL query string.",
+          "description": "The PromQL query that the alarm evaluates. The query must return a result of vector type. Each entry in the vector result represents an alarm contributor.",
           "type": "string"
         },
         "RecoveryPeriod": {
-          "description": "The recovery period for the alarm.",
+          "description": "The duration, in seconds, that a contributor must continuously not be breaching before it transitions back to the ``OK`` state.",
           "type": "integer"
         }
       },
@@ -46,10 +46,11 @@
     },
     "EvaluationCriteria": {
       "additionalProperties": false,
-      "description": "",
+      "description": "The evaluation criteria for an alarm. This is a union type that currently supports ``PromQLCriteria``.",
       "properties": {
         "PromQLCriteria": {
-          "$ref": "#/definitions/AlarmPromQLCriteria"
+          "$ref": "#/definitions/AlarmPromQLCriteria",
+          "description": "The PromQL criteria for the alarm evaluation."
         }
       },
       "type": "object"
@@ -255,10 +256,10 @@
     },
     "EvaluationCriteria": {
       "$ref": "#/definitions/EvaluationCriteria",
-      "description": ""
+      "description": "The evaluation criteria for the alarm."
     },
     "EvaluationInterval": {
-      "description": "",
+      "description": "The frequency, in seconds, at which the alarm is evaluated.",
       "type": "integer"
     },
     "EvaluationPeriods": {

@@ -1,6 +1,6 @@
 {
   "$id": "aws-rds-dbproxy",
-  "$integrity": "sha512-1iL59nGRaWNAtWN3hQkoKB0sMxquqiP+xaCA6WSHJqqhh6YFdBhQbWLRcVMZEIpXNVwJemvEPIqQuV1wltu4qw==",
+  "$integrity": "sha512-S78mg8DmATs3NHwjcJBXa/2w9WWNmBy5foF3EAXHTFnUyPhVhjllUyK1u1t+fFdAwwvxNOK94wlA2KbhKY2PyQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/DBProxyName",
@@ -74,6 +74,7 @@
       "permissions": [
         "rds:CreateDBProxy",
         "rds:DescribeDBProxies",
+        "rds:AddTagsToResource",
         "iam:PassRole"
       ]
     },
@@ -90,12 +91,14 @@
     },
     "read": {
       "permissions": [
-        "rds:DescribeDBProxies"
+        "rds:DescribeDBProxies",
+        "rds:ListTagsForResource"
       ]
     },
     "update": {
       "permissions": [
         "rds:ModifyDBProxy",
+        "rds:DescribeDBProxies",
         "rds:AddTagsToResource",
         "rds:RemoveTagsFromResource",
         "iam:PassRole"

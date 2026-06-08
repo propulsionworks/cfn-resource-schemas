@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-gatewaytarget",
-  "$integrity": "sha512-GwiLLA3uBgu/0b40VT1py7sg3DaF+V3y2vNfBDedMU7Z74WDKkEdnEdG37arhv19l3F6+gTF8gnGXavDheDIgw==",
+  "$integrity": "sha512-U1tyzJ3hJboxpaxyD83plnCcBfESPCCwLD1y+7yTFg9IzoRHV8E1HhM1tzeQE9HDyP47RoxIxKedTv0vgyveCA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/GatewayIdentifier"
@@ -152,6 +152,23 @@
         }
       ]
     },
+    "AuthorizationData": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Oauth2": {
+              "$ref": "#/definitions/OAuth2AuthorizationData"
+            }
+          },
+          "required": [
+            "Oauth2"
+          ],
+          "title": "Oauth2",
+          "type": "object"
+        }
+      ]
+    },
     "CredentialProvider": {
       "oneOf": [
         {
@@ -214,9 +231,35 @@
       "enum": [
         "GATEWAY_IAM_ROLE",
         "OAUTH",
-        "API_KEY"
+        "API_KEY",
+        "CALLER_IAM_CREDENTIALS",
+        "JWT_PASSTHROUGH"
       ],
       "type": "string"
+    },
+    "EndpointIpAddressType": {
+      "enum": [
+        "IPV4",
+        "IPV6"
+      ],
+      "type": "string"
+    },
+    "HttpTargetConfiguration": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "AgentcoreRuntime": {
+              "$ref": "#/definitions/RuntimeTargetConfiguration"
+            }
+          },
+          "required": [
+            "AgentcoreRuntime"
+          ],
+          "title": "AgentcoreRuntime",
+          "type": "object"
+        }
+      ]
     },
     "IamCredentialProvider": {
       "additionalProperties": false,
@@ -236,6 +279,63 @@
       },
       "required": [
         "Service"
+      ],
+      "type": "object"
+    },
+    "ManagedResourceDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "Domain": {
+          "type": "string"
+        },
+        "ResourceAssociationArn": {
+          "pattern": "^(arn:[a-z0-9\\-]+:vpc-lattice:[a-zA-Z0-9\\-]+:\\d{12}:servicenetworkresourceassociation/)?snra-[0-9a-f]{17}$",
+          "type": "string"
+        },
+        "ResourceGatewayArn": {
+          "pattern": "^arn:[a-z0-9\\-]+:vpc-lattice:[a-zA-Z0-9\\-]+:\\d{12}:resourcegateway/rgw-[0-9a-z]{17}$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ManagedVpcResource": {
+      "additionalProperties": false,
+      "properties": {
+        "EndpointIpAddressType": {
+          "$ref": "#/definitions/EndpointIpAddressType"
+        },
+        "RoutingDomain": {
+          "maxLength": 255,
+          "minLength": 3,
+          "type": "string"
+        },
+        "SecurityGroupIds": {
+          "items": {
+            "pattern": "^sg-(([0-9a-z]{8})|([0-9a-z]{17}))$",
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 0,
+          "type": "array"
+        },
+        "SubnetIds": {
+          "items": {
+            "pattern": "^subnet-[0-9a-zA-Z]{8,17}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "VpcIdentifier": {
+          "pattern": "^vpc-(([0-9a-z]{8})|([0-9a-z]{17}))$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "EndpointIpAddressType",
+        "SubnetIds",
+        "VpcIdentifier"
       ],
       "type": "object"
     },
@@ -274,6 +374,9 @@
         },
         "ListingMode": {
           "$ref": "#/definitions/McpServerListingMode"
+        },
+        "McpToolSchema": {
+          "$ref": "#/definitions/McpToolSchemaConfiguration"
         }
       },
       "required": [
@@ -350,6 +453,36 @@
         }
       ]
     },
+    "McpToolSchemaConfiguration": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "S3": {
+              "$ref": "#/definitions/S3Configuration"
+            }
+          },
+          "required": [
+            "S3"
+          ],
+          "title": "S3",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "InlinePayload": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "InlinePayload"
+          ],
+          "title": "InlinePayload",
+          "type": "object"
+        }
+      ]
+    },
     "MetadataConfiguration": {
       "additionalProperties": false,
       "properties": {
@@ -374,6 +507,24 @@
       },
       "type": "object"
     },
+    "OAuth2AuthorizationData": {
+      "additionalProperties": false,
+      "properties": {
+        "AuthorizationUrl": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "UserId": {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "AuthorizationUrl"
+      ],
+      "type": "object"
+    },
     "OAuthCredentialProvider": {
       "additionalProperties": false,
       "properties": {
@@ -396,7 +547,7 @@
         },
         "Scopes": {
           "items": {
-            "maxLength": 64,
+            "maxLength": 128,
             "minLength": 1,
             "type": "string"
           },
@@ -426,9 +577,40 @@
     "OAuthGrantType": {
       "enum": [
         "AUTHORIZATION_CODE",
-        "CLIENT_CREDENTIALS"
+        "CLIENT_CREDENTIALS",
+        "TOKEN_EXCHANGE"
       ],
       "type": "string"
+    },
+    "PrivateEndpoint": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "SelfManagedLatticeResource": {
+              "$ref": "#/definitions/SelfManagedLatticeResource"
+            }
+          },
+          "required": [
+            "SelfManagedLatticeResource"
+          ],
+          "title": "SelfManagedLatticeResource",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "ManagedVpcResource": {
+              "$ref": "#/definitions/ManagedVpcResource"
+            }
+          },
+          "required": [
+            "ManagedVpcResource"
+          ],
+          "title": "ManagedVpcResource",
+          "type": "object"
+        }
+      ]
     },
     "RestApiMethod": {
       "enum": [
@@ -441,6 +623,23 @@
         "POST"
       ],
       "type": "string"
+    },
+    "RuntimeTargetConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "Arn": {
+          "pattern": "^arn:aws(-[^:]+)?:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:runtime/[a-zA-Z][a-zA-Z0-9_]{0,47}-[a-zA-Z0-9]{10}$",
+          "type": "string"
+        },
+        "Qualifier": {
+          "pattern": "^(([1-9][0-9]{0,4})|([a-zA-Z][a-zA-Z0-9_]{0,47}))$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Arn"
+      ],
+      "type": "object"
     },
     "S3Configuration": {
       "additionalProperties": false,
@@ -503,6 +702,26 @@
       ],
       "type": "string"
     },
+    "SelfManagedLatticeResource": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "ResourceConfigurationIdentifier": {
+              "maxLength": 2048,
+              "minLength": 20,
+              "pattern": "^((rcfg-[0-9a-z]{17})|(arn:[a-z0-9\\-]+:vpc-lattice:[a-zA-Z0-9\\-]+:\\d{12}:resourceconfiguration/rcfg-[0-9a-z]{17}))$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "ResourceConfigurationIdentifier"
+          ],
+          "title": "ResourceConfigurationIdentifier",
+          "type": "object"
+        }
+      ]
+    },
     "TargetConfiguration": {
       "oneOf": [
         {
@@ -517,8 +736,28 @@
           ],
           "title": "Mcp",
           "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Http": {
+              "$ref": "#/definitions/HttpTargetConfiguration"
+            }
+          },
+          "required": [
+            "Http"
+          ],
+          "title": "Http",
+          "type": "object"
         }
       ]
+    },
+    "TargetProtocolType": {
+      "enum": [
+        "MCP",
+        "HTTP"
+      ],
+      "type": "string"
     },
     "TargetStatus": {
       "enum": [
@@ -529,7 +768,10 @@
         "READY",
         "FAILED",
         "SYNCHRONIZING",
-        "SYNCHRONIZE_UNSUCCESSFUL"
+        "SYNCHRONIZE_UNSUCCESSFUL",
+        "CREATE_PENDING_AUTH",
+        "UPDATE_PENDING_AUTH",
+        "SYNCHRONIZE_PENDING_AUTH"
       ],
       "type": "string"
     },
@@ -599,12 +841,28 @@
         "bedrock-agentcore:GetGatewayTarget",
         "bedrock-agentcore:GetResourceOauth2Token",
         "bedrock-agentcore:GetWorkloadAccessToken",
+        "bedrock-agentcore:GetWorkloadAccessTokenForUserId",
         "bedrock-agentcore:SynchronizeGatewayTargets",
         "kms:Decrypt",
         "kms:GenerateDataKey",
         "kms:ListGrants",
         "s3:GetObject",
-        "secretsmanager:GetSecretValue"
+        "secretsmanager:GetSecretValue",
+        "iam:CreateServiceLinkedRole",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups",
+        "ec2:CreateNetworkInterface",
+        "vpc-lattice:AssociateViaAWSService",
+        "vpc-lattice:GetResourceConfiguration",
+        "vpc-lattice:CreateResourceConfiguration",
+        "vpc-lattice:CreateResourceGateway",
+        "vpc-lattice:DeleteResourceConfiguration",
+        "vpc-lattice:DeleteResourceGateway",
+        "vpc-lattice:GetServiceNetworkResourceAssociation",
+        "vpc-lattice:CreateServiceNetworkResourceAssociation",
+        "vpc-lattice:DeleteServiceNetworkResourceAssociation",
+        "vpc-lattice:ListServiceNetworkResourceAssociations"
       ]
     },
     "delete": {
@@ -613,7 +871,10 @@
         "bedrock-agentcore:GetGatewayTarget",
         "kms:Decrypt",
         "kms:GenerateDataKey",
-        "kms:ListGrants"
+        "kms:ListGrants",
+        "vpc-lattice:DeleteResourceConfiguration",
+        "vpc-lattice:DeleteResourceGateway",
+        "vpc-lattice:DeleteServiceNetworkResourceAssociation"
       ]
     },
     "list": {
@@ -632,13 +893,29 @@
         "bedrock-agentcore:GetGatewayTarget",
         "bedrock-agentcore:GetResourceOauth2Token",
         "bedrock-agentcore:GetWorkloadAccessToken",
+        "bedrock-agentcore:GetWorkloadAccessTokenForUserId",
         "bedrock-agentcore:SynchronizeGatewayTargets",
         "bedrock-agentcore:UpdateGatewayTarget",
         "kms:Decrypt",
         "kms:GenerateDataKey",
         "kms:ListGrants",
         "s3:GetObject",
-        "secretsmanager:GetSecretValue"
+        "secretsmanager:GetSecretValue",
+        "iam:CreateServiceLinkedRole",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups",
+        "ec2:CreateNetworkInterface",
+        "vpc-lattice:AssociateViaAWSService",
+        "vpc-lattice:GetResourceConfiguration",
+        "vpc-lattice:CreateResourceConfiguration",
+        "vpc-lattice:CreateResourceGateway",
+        "vpc-lattice:DeleteResourceConfiguration",
+        "vpc-lattice:DeleteResourceGateway",
+        "vpc-lattice:GetServiceNetworkResourceAssociation",
+        "vpc-lattice:CreateServiceNetworkResourceAssociation",
+        "vpc-lattice:DeleteServiceNetworkResourceAssociation",
+        "vpc-lattice:ListServiceNetworkResourceAssociations"
       ]
     }
   },
@@ -647,6 +924,9 @@
     "/properties/TargetId"
   ],
   "properties": {
+    "AuthorizationData": {
+      "$ref": "#/definitions/AuthorizationData"
+    },
     "CreatedAt": {
       "format": "date-time",
       "type": "string"
@@ -683,6 +963,18 @@
       "pattern": "^([0-9a-zA-Z][-]?){1,100}$",
       "type": "string"
     },
+    "PrivateEndpoint": {
+      "$ref": "#/definitions/PrivateEndpoint"
+    },
+    "PrivateEndpointManagedResources": {
+      "items": {
+        "$ref": "#/definitions/ManagedResourceDetails"
+      },
+      "type": "array"
+    },
+    "ProtocolType": {
+      "$ref": "#/definitions/TargetProtocolType"
+    },
     "Status": {
       "$ref": "#/definitions/TargetStatus"
     },
@@ -713,7 +1005,10 @@
     "/properties/Status",
     "/properties/StatusReasons",
     "/properties/TargetId",
-    "/properties/UpdatedAt"
+    "/properties/PrivateEndpointManagedResources",
+    "/properties/UpdatedAt",
+    "/properties/AuthorizationData",
+    "/properties/ProtocolType"
   ],
   "required": [
     "Name",

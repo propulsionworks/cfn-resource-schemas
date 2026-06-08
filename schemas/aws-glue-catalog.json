@@ -1,6 +1,6 @@
 {
   "$id": "aws-glue-catalog",
-  "$integrity": "sha512-H0U4xxRUIX7mDuK31uUtyNwj3QKSS18fjeaiKKiZXGwGP7jFaoj5Nld43KzdzuzF1NAYlGH2kYEzhDjGmKLquQ==",
+  "$integrity": "sha512-BOw3Hid5X/vL0V33NjjQe7o7tyu8LlU5ifl4ZVRk32CyXssg5WdZPpcJFRMIkOTyaNlo8CB3l4pguxsoEPmwvQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -172,6 +172,9 @@
         "glue:TagResource",
         "glue:GetTags",
         "iam:PassRole",
+        "kms:Decrypt",
+        "kms:Encrypt",
+        "kms:GenerateDataKey",
         "redshift-serverless:CreateNamespace",
         "redshift-serverless:GetNamespace",
         "redshift-serverless:CreateWorkgroup",
@@ -195,6 +198,7 @@
       "permissions": [
         "glue:DeleteCatalog",
         "glue:GetCatalog",
+        "kms:Decrypt",
         "redshift-serverless:DeleteNamespace",
         "redshift-serverless:GetNamespace",
         "redshift-serverless:DeleteWorkgroup",
@@ -206,13 +210,15 @@
     },
     "list": {
       "permissions": [
-        "glue:GetCatalogs"
+        "glue:GetCatalogs",
+        "kms:Decrypt"
       ]
     },
     "read": {
       "permissions": [
         "glue:GetCatalog",
-        "glue:GetTags"
+        "glue:GetTags",
+        "kms:Decrypt"
       ]
     },
     "update": {
@@ -223,6 +229,9 @@
         "glue:UntagResource",
         "glue:GetTags",
         "iam:PassRole",
+        "kms:Decrypt",
+        "kms:Encrypt",
+        "kms:GenerateDataKey",
         "redshift-serverless:UpdateNamespace",
         "redshift-serverless:GetNamespace",
         "redshift-serverless:UpdateWorkgroup",

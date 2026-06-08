@@ -1,6 +1,6 @@
 {
   "$id": "aws-observabilityadmin-telemetrypipelines",
-  "$integrity": "sha512-P3zPHsTU6OKhBn2apB4Czujz5KoH86UcawJqW3DbH5jvpmb1cJQ+HzLzM0YXAV0q/Zrs857URjIWJ1A1xlKZ9Q==",
+  "$integrity": "sha512-vrwvTlKUvwkZuDDqowsMs5gQBFCsUk3Wf9wAmraYq2Oj78xPMhDp24D8fQmjD051KH/e9XpaKVq4i6eKm0505Q==",
   "additionalIdentifiers": [
     [
       "/properties/Name"
@@ -118,6 +118,7 @@
   "handlers": {
     "create": {
       "permissions": [
+        "cloudwatch:PutPipelineRule",
         "iam:PassRole",
         "logs:PutPipelineRule",
         "observabilityadmin:CreateTelemetryPipeline",
@@ -128,6 +129,7 @@
     },
     "delete": {
       "permissions": [
+        "cloudwatch:DeletePipelineRule",
         "logs:DeletePipelineRule",
         "observabilityadmin:DeleteTelemetryPipeline",
         "observabilityadmin:GetTelemetryPipeline"
@@ -147,6 +149,7 @@
     },
     "update": {
       "permissions": [
+        "cloudwatch:PutPipelineRule",
         "iam:PassRole",
         "logs:DeletePipelineRule",
         "logs:PutPipelineRule",

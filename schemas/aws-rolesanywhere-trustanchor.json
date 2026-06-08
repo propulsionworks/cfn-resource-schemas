@@ -1,6 +1,6 @@
 {
   "$id": "aws-rolesanywhere-trustanchor",
-  "$integrity": "sha512-uX9HdGkKT0pWx34wP/Y9B4jpjP4/1qGCzz+1xtC8HWlkd/+2TAruCn1hq+aKzVNO/BNhNKTIncT1kqUG2QJIAg==",
+  "$integrity": "sha512-RdOiQ013cD8JUZk+BlHrLEwTDDLPdsHQ/4xZCzX6K7gFcWAI61slHviSZ7wKJzJrmSaRjdLh/gzNiWyscXwkGg==",
   "additionalProperties": false,
   "definitions": {
     "NotificationChannel": {
@@ -192,6 +192,9 @@
       "pattern": "[a-f0-9]{8}-([a-z0-9]{4}-){3}[a-z0-9]{12}",
       "type": "string"
     }
+  },
+  "propertyTransform": {
+    "/properties/Source/SourceData/X509CertificateData": "$replace(X509CertificateData, /\\s+$/, '')"
   },
   "readOnlyProperties": [
     "/properties/TrustAnchorId",

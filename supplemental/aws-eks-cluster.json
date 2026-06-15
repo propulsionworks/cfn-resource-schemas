@@ -86,6 +86,10 @@
         "GroupName": {
           "description": "The name of the placement group for the Kubernetes control plane instances. This property is only used for a local cluster on an AWS Outpost.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-cluster-controlplaneplacement.html#cfn-eks-cluster-controlplaneplacement-groupname"
+        },
+        "SpreadLevel": {
+          "description": "Optional parameter to specify the placement group spread level for control plane instances. If not provided, EKS will deploy control plane instances without a placement group.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-cluster-controlplaneplacement.html#cfn-eks-cluster-controlplaneplacement-spreadlevel"
         }
       },
       "description": "The placement configuration for all the control plane instances of your local Amazon EKS cluster on an AWS Outpost. For more information, see [Capacity considerations](https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-capacity-considerations.html) in the *Amazon EKS User Guide* .",
@@ -132,6 +136,16 @@
       },
       "description": "The encryption configuration for the cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-cluster-encryptionconfig.html"
+    },
+    "EtcdPlacement": {
+      "properties": {
+        "SpreadLevel": {
+          "description": "Optional parameter to specify the placement group spread level for etcd instances. If not provided, EKS will deploy etcd instances without a placement group.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-cluster-etcdplacement.html#cfn-eks-cluster-etcdplacement-spreadlevel"
+        }
+      },
+      "description": "The placement configuration for the etcd instances of your local Amazon EKS cluster on an AWS Outpost.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-cluster-etcdplacement.html"
     },
     "KubernetesNetworkConfig": {
       "properties": {
@@ -184,6 +198,14 @@
         "ControlPlanePlacement": {
           "description": "An object representing the placement configuration for all the control plane instances of your local Amazon EKS cluster on an AWS Outpost. For more information, see [Capacity considerations](https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-capacity-considerations.html) in the *Amazon EKS User Guide* .",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-cluster-outpostconfig.html#cfn-eks-cluster-outpostconfig-controlplaneplacement"
+        },
+        "EtcdInstanceType": {
+          "description": "The EC2 instance type for etcd instances of your local Amazon EKS cluster on AWS Outposts. This instance type applies to all etcd instances and cannot be changed after cluster creation.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-cluster-outpostconfig.html#cfn-eks-cluster-outpostconfig-etcdinstancetype"
+        },
+        "EtcdPlacement": {
+          "description": "The placement configuration for the etcd instances of your local Amazon EKS cluster on an AWS Outpost.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-eks-cluster-outpostconfig.html#cfn-eks-cluster-outpostconfig-etcdplacement"
         },
         "OutpostArns": {
           "description": "The ARN of the Outpost that you want to use for your local Amazon EKS cluster on Outposts. Only a single Outpost ARN is supported.",

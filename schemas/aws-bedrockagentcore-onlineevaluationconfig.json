@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-onlineevaluationconfig",
-  "$integrity": "sha512-9tddaRDfxPgl20kZPjW8FOJJKrkfDaV9FyYyvuWsv9XEzJa3yWXSz6sWni0VetvmDEo/t7Ai/Yd4ZwAoW6Tm/A==",
+  "$integrity": "sha512-dyrUbEWpwNRPm4ZxJwQrCDJeKWtSQJ7JemPuwwn/7D3hN4pSRM9DyF0YBowz5eO6W7aTTu9njZHqOXKEhKReCA==",
   "additionalIdentifiers": [
     [
       "/properties/OnlineEvaluationConfigId"
@@ -58,6 +58,35 @@
         }
       },
       "type": "object"
+    },
+    "ClusteringConfig": {
+      "additionalProperties": false,
+      "description": "The configuration for clustering analysis of evaluation results.",
+      "properties": {
+        "Frequencies": {
+          "description": "The list of frequencies at which clustering reports are generated.",
+          "insertionOrder": false,
+          "items": {
+            "$ref": "#/definitions/ClusteringFrequency"
+          },
+          "maxItems": 3,
+          "minItems": 0,
+          "type": "array"
+        }
+      },
+      "required": [
+        "Frequencies"
+      ],
+      "type": "object"
+    },
+    "ClusteringFrequency": {
+      "description": "The frequency at which clustering reports are generated.",
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY"
+      ],
+      "type": "string"
     },
     "DataSourceConfig": {
       "additionalProperties": false,
@@ -149,6 +178,23 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "Insight": {
+      "additionalProperties": false,
+      "description": "An insight configuration for failure analysis.",
+      "properties": {
+        "InsightId": {
+          "description": "The unique identifier of the insight.",
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z][a-zA-Z0-9._]+$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "InsightId"
+      ],
       "type": "object"
     },
     "OnlineEvaluationConfigStatus": {
@@ -303,6 +349,10 @@
     "/properties/OnlineEvaluationConfigArn"
   ],
   "properties": {
+    "ClusteringConfig": {
+      "$ref": "#/definitions/ClusteringConfig",
+      "description": "The configuration for clustering analysis of evaluation results."
+    },
     "CreatedAt": {
       "description": "The timestamp when the online evaluation configuration was created.",
       "format": "date-time",
@@ -332,12 +382,22 @@
         "$ref": "#/definitions/EvaluatorReference"
       },
       "maxItems": 10,
-      "minItems": 1,
+      "minItems": 0,
       "type": "array"
     },
     "ExecutionStatus": {
       "$ref": "#/definitions/ExecutionStatus",
       "description": "The execution status indicating whether the online evaluation is currently running."
+    },
+    "Insights": {
+      "description": "The list of insights to enable for failure analysis.",
+      "insertionOrder": false,
+      "items": {
+        "$ref": "#/definitions/Insight"
+      },
+      "maxItems": 10,
+      "minItems": 0,
+      "type": "array"
     },
     "OnlineEvaluationConfigArn": {
       "description": "The Amazon Resource Name (ARN) of the online evaluation configuration.",
@@ -391,7 +451,6 @@
     "OnlineEvaluationConfigName",
     "DataSourceConfig",
     "EvaluationExecutionRoleArn",
-    "Evaluators",
     "Rule"
   ],
   "tagging": {

@@ -1,6 +1,6 @@
 {
   "$id": "aws-wisdom-aiguardrail",
-  "$integrity": "sha512-ahcutHxYVaeAzmLNxqBzuBzcALJJkF+0CdxnTYQ++Sc3Kd/Cvbmz8qE11OAg+5dt+/C2YyuuMeHmZkfyq3GgJQ==",
+  "$integrity": "sha512-tWFmYHYTvArIti8uuYP9PbeS4RgZ37NGN7uOVjAebJwdC7qx6Xb0kAQx+kGEgezGLsjDb+QSMxvoAW08xCeh+A==",
   "additionalIdentifiers": [
     [
       "/properties/AIGuardrailArn",
@@ -418,7 +418,7 @@
   ],
   "properties": {
     "AIGuardrailArn": {
-      "pattern": "^arn:[a-z-]*?:wisdom:[a-z0-9-]*?:[0-9]{12}:[a-z-]*?/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}(?:/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}){0,2}$",
+      "pattern": "^arn:[a-z-]*?:wisdom:[a-z0-9-]*?:[0-9]{12}:[a-z-]*?/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}(?:/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}){0,2}(:[A-Z0-9_$]+){0,1}$",
       "type": "string"
     },
     "AIGuardrailId": {
@@ -457,6 +457,9 @@
       "minLength": 1,
       "type": "string"
     },
+    "ModifiedTimeSeconds": {
+      "type": "number"
+    },
     "Name": {
       "maxLength": 255,
       "minLength": 1,
@@ -479,7 +482,8 @@
   "readOnlyProperties": [
     "/properties/AIGuardrailArn",
     "/properties/AIGuardrailId",
-    "/properties/AssistantArn"
+    "/properties/AssistantArn",
+    "/properties/ModifiedTimeSeconds"
   ],
   "required": [
     "AssistantId",

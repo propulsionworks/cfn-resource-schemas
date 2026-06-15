@@ -1,6 +1,6 @@
 {
   "$id": "aws-cloudtrail-trail",
-  "$integrity": "sha512-mDJPwAQQFtpI0rQK3ufYaKM8tXrz6IDurn4CyzcNbvFaTOou9uN9y0P5zGSHxpKnPzjD04/OHP74JoFzmdkC+A==",
+  "$integrity": "sha512-2f8TNCbFUAJxll5EA48nUzj+pv9s0RVqZ1V3imBmQdbp+KGeaIWQYJ8mqk7vMN8D48WFM5RRZsLcQwNVm+yVJg==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/TrailName"
@@ -447,7 +447,7 @@
     }
   },
   "propertyTransform": {
-    "/properties/KMSKeyId": "$join([\"arn:(aws)[-]{0,1}[a-z]{0,2}[-]{0,1}[a-z]{0,3}:kms:[a-z]{2}[-]{1}[a-z]{3,10}[-]{0,1}[a-z]{0,10}[-]{1}[1-3]{1}:[0-9]{12}[:]{1}key\\/\", KMSKeyId])"
+    "/properties/KMSKeyId": "KMSKeyId $OR $join([\"arn:(aws)[-]{0,1}[a-z]{0,2}[-]{0,1}[a-z]{0,3}:kms:[a-z]{2}[-]{1}[a-z]{3,10}[-]{0,1}[a-z]{0,10}[-]{1}[1-3]{1}:[0-9]{12}[:]{1}key\\/\", KMSKeyId])"
   },
   "readOnlyProperties": [
     "/properties/Arn",

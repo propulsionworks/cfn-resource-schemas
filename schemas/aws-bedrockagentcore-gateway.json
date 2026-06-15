@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrockagentcore-gateway",
-  "$integrity": "sha512-4t+Czm78eg45C6qp0sw7cA5JYvxonzpBQxi1yJDc0dZz944dk7u7wX366UdMYIW5rhNS4G+ok175KLtOW1Sqpw==",
+  "$integrity": "sha512-xq7um9UnxtMc5xfU1TSMuk8s+aQGWDyEzmulpjyWnrVCqLvSJzR33H8OrTQw949qntRiJZG7GSLAhbRRJUtcVA==",
   "additionalProperties": false,
   "definitions": {
     "AllowedScope": {
@@ -315,6 +315,12 @@
         "SearchType": {
           "$ref": "#/definitions/SearchType"
         },
+        "SessionConfiguration": {
+          "$ref": "#/definitions/SessionConfiguration"
+        },
+        "StreamingConfiguration": {
+          "$ref": "#/definitions/StreamingConfiguration"
+        },
         "SupportedVersions": {
           "items": {
             "default": "2025-03-26",
@@ -345,6 +351,26 @@
         "SEMANTIC"
       ],
       "type": "string"
+    },
+    "SessionConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "SessionTimeoutInSeconds": {
+          "maximum": 28800,
+          "minimum": 900,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "StreamingConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "EnableResponseStreaming": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
     },
     "TagsMap": {
       "additionalProperties": false,

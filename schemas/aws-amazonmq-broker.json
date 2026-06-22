@@ -1,6 +1,6 @@
 {
   "$id": "aws-amazonmq-broker",
-  "$integrity": "sha512-tjDJ8ZtcsFR4+4Kl6mhGJqce1uId7gJGf6h4+azoio3NCI0Nso8zfMSjoaAufIwvD0j6P3+DuWqIevf4/TXMdg==",
+  "$integrity": "sha512-SI/gnnaLi27fUtCCrsadUc4NsBD8EuO3UZ1ka0LqrQwoHMdT3F7YVxWM3MWPj2AU8USM8qK1ITjETyNYTtnRKw==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/BrokerName",
@@ -227,6 +227,9 @@
         "mq:CreateBroker",
         "mq:CreateReplicaBroker",
         "mq:DescribeBroker",
+        "mq:DescribeSharedResources",
+        "mq:UpdateBroker",
+        "mq:RebootBroker",
         "mq:CreateTags",
         "kms:CreateGrant",
         "kms:DescribeKey",
@@ -244,6 +247,8 @@
         "ec2:DescribeVpcEndpoints",
         "ec2:ModifyNetworkInterfaceAttribute",
         "iam:CreateServiceLinkedRole",
+        "ram:AssociateResourceShare",
+        "vpc-lattice:PutResourcePolicy",
         "route53:AssociateVPCWithHostedZone",
         "ec2:DeleteNetworkInterface",
         "ec2:DeleteNetworkInterfacePermission",
@@ -268,12 +273,14 @@
     },
     "read": {
       "permissions": [
-        "mq:DescribeBroker"
+        "mq:DescribeBroker",
+        "mq:DescribeSharedResources"
       ]
     },
     "update": {
       "permissions": [
         "mq:DescribeBroker",
+        "mq:DescribeSharedResources",
         "mq:UpdateBroker",
         "mq:RebootBroker",
         "mq:DescribeUser",
@@ -300,6 +307,8 @@
         "ec2:DescribeVpcEndpoints",
         "ec2:ModifyNetworkInterfaceAttribute",
         "iam:CreateServiceLinkedRole",
+        "ram:AssociateResourceShare",
+        "vpc-lattice:PutResourcePolicy",
         "route53:AssociateVPCWithHostedZone"
       ]
     }
@@ -465,6 +474,16 @@
     },
     "PubliclyAccessible": {
       "type": "boolean"
+    },
+    "ResourceShareArns": {
+      "description": "The ARNs of the resource shares to be associated with the broker.\n",
+      "insertionOrder": false,
+      "items": {
+        "pattern": "^arn:.*",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
     },
     "SecurityGroups": {
       "insertionOrder": false,

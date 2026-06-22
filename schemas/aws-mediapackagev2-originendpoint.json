@@ -1,6 +1,6 @@
 {
   "$id": "aws-mediapackagev2-originendpoint",
-  "$integrity": "sha512-uEvx3GIrN8gpn7gRQD7R35aTpQKYelHnVuNt4EPG6jYa3DUN7PqtNRcPnGy+skRFnpZISo7EWZ4RmO8Fju0NTg==",
+  "$integrity": "sha512-NRTrN+P3HKxCuP+ASSh4oBSysgO+q1KujrNdqO60jYghsvHKDeeZnw3VSjpX0gdfeHUSo2Bog2fS+4t4bjGOqQ==",
   "additionalIdentifiers": [
     [
       "/properties/ChannelGroupName",
@@ -51,6 +51,13 @@
         "UNSCHEDULED_EVENT",
         "ALTERNATE_CONTENT_OPPORTUNITY",
         "NETWORK"
+      ],
+      "type": "string"
+    },
+    "DashAudioTimelinePattern": {
+      "enum": [
+        "NONE",
+        "PATTERNED"
       ],
       "type": "string"
     },
@@ -191,6 +198,9 @@
       "additionalProperties": false,
       "description": "<p>Retrieve the DASH manifest configuration.</p>",
       "properties": {
+        "AudioTimelinePattern": {
+          "$ref": "#/definitions/DashAudioTimelinePattern"
+        },
         "AvailabilityStartTimeConfiguration": {
           "$ref": "#/definitions/DashAvailabilityStartTimeConfiguration"
         },
@@ -763,7 +773,9 @@
         "PROVIDER_PROMO",
         "DISTRIBUTOR_PROMO",
         "PROVIDER_AD_BLOCK",
-        "DISTRIBUTOR_AD_BLOCK"
+        "DISTRIBUTOR_AD_BLOCK",
+        "CONTENT_IDENTIFICATION",
+        "CALL_AD_SERVER"
       ],
       "type": "string"
     },

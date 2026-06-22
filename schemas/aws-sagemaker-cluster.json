@@ -1,6 +1,6 @@
 {
   "$id": "aws-sagemaker-cluster",
-  "$integrity": "sha512-bixqVFzEZJaQap6tbdUbc2qxPQPSY/YN5/ddL7pQSWf/B8porsIjBGNY7DN4ESTgelFONf7p9TKshSSB5J40nQ==",
+  "$integrity": "sha512-PgvW40yz7tlSqgF5NsyGTwt2Qn+NoJ/FC8cW+w+7ggU6Yn3wB1OkGORxJ7+duP2inPSmxxXkRw6yxWxDxCiEMg==",
   "additionalIdentifiers": [
     [
       "/properties/ClusterName"
@@ -506,8 +506,7 @@
         "ExecutionRole",
         "InstanceCount",
         "InstanceGroupName",
-        "InstanceType",
-        "EnvironmentConfig"
+        "InstanceType"
       ],
       "type": "object"
     },
@@ -695,6 +694,19 @@
       ],
       "type": "object"
     },
+    "RestrictedInstanceGroupsConfig": {
+      "additionalProperties": false,
+      "description": "The cluster-level configuration for restricted instance groups, including shared environment settings for inter-RIG communication and FSx Lustre sharing.",
+      "properties": {
+        "SharedEnvironmentConfig": {
+          "$ref": "#/definitions/SharedEnvironmentConfig"
+        }
+      },
+      "required": [
+        "SharedEnvironmentConfig"
+      ],
+      "type": "object"
+    },
     "RollingUpdatePolicy": {
       "additionalProperties": false,
       "description": "The policy that SageMaker uses when updating the AMI versions of the cluster.",
@@ -728,6 +740,27 @@
       },
       "required": [
         "ScheduleExpression"
+      ],
+      "type": "object"
+    },
+    "SharedEnvironmentConfig": {
+      "additionalProperties": false,
+      "description": "The shared environment configuration for restricted instance groups that use cluster-level shared FSx Lustre storage.",
+      "properties": {
+        "FSxLustreConfig": {
+          "$ref": "#/definitions/FSxLustreConfig"
+        },
+        "FSxLustreDeletionPolicy": {
+          "description": "The deletion policy for the shared FSx Lustre file system. Keep retains the FSx when RIGs are deleted. DeleteIfNotUsed deletes the FSx when no RIGs reference it.",
+          "enum": [
+            "Keep",
+            "DeleteIfNotUsed"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "FSxLustreDeletionPolicy"
       ],
       "type": "object"
     },
@@ -960,6 +993,9 @@
     },
     "RestrictedInstanceGroups": {
       "$ref": "#/definitions/ClusterRestrictedInstanceGroupsList"
+    },
+    "RestrictedInstanceGroupsConfig": {
+      "$ref": "#/definitions/RestrictedInstanceGroupsConfig"
     },
     "Tags": {
       "description": "Custom tags for managing the SageMaker HyperPod cluster as an AWS resource. You can add tags to your cluster in the same way you add them in other AWS services that support tagging.",

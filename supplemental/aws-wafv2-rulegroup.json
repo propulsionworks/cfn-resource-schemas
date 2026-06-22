@@ -54,6 +54,10 @@
       },
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-blockaction.html"
     },
+    "BlockchainChain": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-blockchainchain.html"
+    },
     "Body": {
       "properties": {
         "OversizeHandling": {
@@ -173,6 +177,24 @@
         }
       },
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-countaction.html"
+    },
+    "CryptoConfig": {
+      "properties": {
+        "PaymentNetworks": {
+          "description": "List of payment network configurations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-cryptoconfig.html#cfn-wafv2-rulegroup-cryptoconfig-paymentnetworks"
+        }
+      },
+      "description": "Configures cryptocurrency payment settings.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-cryptoconfig.html"
+    },
+    "CryptoCurrency": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-cryptocurrency.html"
+    },
+    "CurrencyMode": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-currencymode.html"
     },
     "CustomHTTPHeader": {
       "properties": {
@@ -550,6 +572,30 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-mapmatchscope.html"
     },
+    "MonetizationConfig": {
+      "properties": {
+        "CryptoConfig": {
+          "description": "Configures cryptocurrency payment settings.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-monetizationconfig.html#cfn-wafv2-rulegroup-monetizationconfig-cryptoconfig"
+        },
+        "CurrencyMode": {
+          "description": "The currency mode for monetization. Use REAL for production payments and TEST for testing with testnet currencies.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-monetizationconfig.html#cfn-wafv2-rulegroup-monetizationconfig-currencymode"
+        }
+      },
+      "description": "Configures monetization for the web ACL or rule group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-monetizationconfig.html"
+    },
+    "MonetizeAction": {
+      "properties": {
+        "PriceMultiplier": {
+          "description": "The price multiplier for the monetize action.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-monetizeaction.html#cfn-wafv2-rulegroup-monetizeaction-pricemultiplier"
+        }
+      },
+      "description": "Monetize action for rules.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-monetizeaction.html"
+    },
     "NotStatement": {
       "properties": {
         "Statement": {
@@ -574,9 +620,57 @@
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-oversizehandling.html"
     },
+    "PaymentNetwork": {
+      "properties": {
+        "Chain": {
+          "description": "The blockchain chain to use.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-paymentnetwork.html#cfn-wafv2-rulegroup-paymentnetwork-chain"
+        },
+        "Prices": {
+          "description": "List of price configurations.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-paymentnetwork.html#cfn-wafv2-rulegroup-paymentnetwork-prices"
+        },
+        "WalletAddress": {
+          "description": "The wallet address for receiving payments.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-paymentnetwork.html#cfn-wafv2-rulegroup-paymentnetwork-walletaddress"
+        }
+      },
+      "description": "Configuration for a single payment network.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-paymentnetwork.html"
+    },
+    "PaymentNetworks": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-paymentnetworks.html"
+    },
     "PositionalConstraint": {
       "properties": {},
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-positionalconstraint.html"
+    },
+    "Price": {
+      "properties": {
+        "Amount": {
+          "description": "The price amount.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-price.html#cfn-wafv2-rulegroup-price-amount"
+        },
+        "Currency": {
+          "description": "The cryptocurrency to use for payment.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-price.html#cfn-wafv2-rulegroup-price-currency"
+        }
+      },
+      "description": "A price configuration.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-price.html"
+    },
+    "PriceAmount": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-priceamount.html"
+    },
+    "PriceMultiplier": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-pricemultiplier.html"
+    },
+    "Prices": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-prices.html"
     },
     "RateBasedStatement": {
       "properties": {
@@ -885,6 +979,10 @@
         "Count": {
           "description": "Instructs AWS WAF to count the web request and then continue evaluating the request using the remaining rules in the web ACL.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-ruleaction.html#cfn-wafv2-rulegroup-ruleaction-count"
+        },
+        "Monetize": {
+          "description": "Monetize action for rules.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-ruleaction.html#cfn-wafv2-rulegroup-ruleaction-monetize"
         }
       },
       "description": "The action that AWS WAF should take on a web request when it matches a rule's statement. Settings at the web ACL level can override the rule action setting.",
@@ -1099,6 +1197,10 @@
       "description": "Defines and enables Amazon CloudWatch metrics and web request sample collection.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-visibilityconfig.html"
     },
+    "WalletAddress": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-walletaddress.html"
+    },
     "XssMatchStatement": {
       "properties": {
         "FieldToMatch": {
@@ -1146,6 +1248,10 @@
     },
     "LabelNamespace": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-rulegroup.html#cfn-wafv2-rulegroup-labelnamespace"
+    },
+    "MonetizationConfig": {
+      "description": "Configures monetization for the web ACL or rule group.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-rulegroup.html#cfn-wafv2-rulegroup-monetizationconfig"
     },
     "Name": {
       "description": "The name of the rule group. You cannot change the name of a rule group after you create it.",

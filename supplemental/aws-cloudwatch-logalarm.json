@@ -1,0 +1,136 @@
+{
+  "attributes": {
+    "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#aws-resource-cloudwatch-logalarm-return-values",
+    "properties": {
+      "Arn": {
+        "description": "The ARN of the log alarm."
+      }
+    }
+  },
+  "definitions": {
+    "ScheduleConfiguration": {
+      "properties": {
+        "EndTimeOffset": {
+          "description": "The number of seconds into the past to end the query window.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduleconfiguration.html#cfn-cloudwatch-logalarm-scheduleconfiguration-endtimeoffset"
+        },
+        "ScheduleExpression": {
+          "description": "The expression that defines when the scheduled query runs, e.g. rate(1 minute).",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduleconfiguration.html#cfn-cloudwatch-logalarm-scheduleconfiguration-scheduleexpression"
+        },
+        "StartTimeOffset": {
+          "description": "The number of seconds into the past to start the query window.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduleconfiguration.html#cfn-cloudwatch-logalarm-scheduleconfiguration-starttimeoffset"
+        }
+      },
+      "description": "The schedule configuration for the scheduled query.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduleconfiguration.html"
+    },
+    "ScheduledQueryConfiguration": {
+      "properties": {
+        "AggregationExpression": {
+          "description": "The aggregation expression for the scheduled query, e.g. count(*) or avg(latency) by host.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduledqueryconfiguration.html#cfn-cloudwatch-logalarm-scheduledqueryconfiguration-aggregationexpression"
+        },
+        "LogGroupIdentifiers": {
+          "description": "The log groups to query.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduledqueryconfiguration.html#cfn-cloudwatch-logalarm-scheduledqueryconfiguration-loggroupidentifiers"
+        },
+        "QueryString": {
+          "description": "The query string to execute against the specified log groups.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduledqueryconfiguration.html#cfn-cloudwatch-logalarm-scheduledqueryconfiguration-querystring"
+        },
+        "ScheduleConfiguration": {
+          "description": "The schedule configuration for the scheduled query.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduledqueryconfiguration.html#cfn-cloudwatch-logalarm-scheduledqueryconfiguration-scheduleconfiguration"
+        },
+        "ScheduledQueryRoleARN": {
+          "description": "The ARN of the IAM role that grants permissions to execute the scheduled query.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduledqueryconfiguration.html#cfn-cloudwatch-logalarm-scheduledqueryconfiguration-scheduledqueryrolearn"
+        }
+      },
+      "description": "The scheduled query configuration for the log alarm.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-scheduledqueryconfiguration.html"
+    },
+    "Tag": {
+      "properties": {
+        "Key": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-tag.html#cfn-cloudwatch-logalarm-tag-key"
+        },
+        "Value": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-tag.html#cfn-cloudwatch-logalarm-tag-value"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-logalarm-tag.html"
+    }
+  },
+  "description": "Resource Type definition for AWS::CloudWatch::LogAlarm. A LogAlarm evaluates scheduled query results from CloudWatch Logs and triggers actions when thresholds are breached.",
+  "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html",
+  "id": "aws-cloudwatch-logalarm",
+  "properties": {
+    "ActionLogLineCount": {
+      "description": "The number of log lines to include in alarm notifications. Valid values are 0 to 50.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-actionloglinecount"
+    },
+    "ActionLogLineRoleArn": {
+      "description": "The ARN of the IAM role that grants CloudWatch permissions to fetch log lines for alarm notifications. Required when ActionLogLineCount is greater than 0.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-actionloglinerolearn"
+    },
+    "ActionsEnabled": {
+      "description": "Indicates whether actions should be executed during any changes to the alarm state. The default is TRUE.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-actionsenabled"
+    },
+    "AlarmActions": {
+      "description": "The list of actions to execute when this alarm transitions into an ALARM state from any other state.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-alarmactions"
+    },
+    "AlarmDescription": {
+      "description": "The description of the log alarm.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-alarmdescription"
+    },
+    "AlarmName": {
+      "description": "The name of the log alarm.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-alarmname"
+    },
+    "Arn": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-arn"
+    },
+    "ComparisonOperator": {
+      "description": "The arithmetic operation to use when comparing the specified threshold and the query results. Valid values are GreaterThanOrEqualToThreshold, GreaterThanThreshold, LessThanThreshold, and LessThanOrEqualToThreshold.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-comparisonoperator"
+    },
+    "InsufficientDataActions": {
+      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-insufficientdataactions"
+    },
+    "OKActions": {
+      "description": "The actions to execute when this alarm transitions to the OK state from any other state.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-okactions"
+    },
+    "QueryResultsToAlarm": {
+      "description": "The number of query results that must be breaching to trigger the alarm.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-queryresultstoalarm"
+    },
+    "QueryResultsToEvaluate": {
+      "description": "The number of query results over which data is compared to the specified threshold.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-queryresultstoevaluate"
+    },
+    "ScheduledQueryConfiguration": {
+      "description": "The scheduled query configuration for the log alarm.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-scheduledqueryconfiguration"
+    },
+    "Tags": {
+      "description": "A list of key-value pairs to associate with the log alarm.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-tags"
+    },
+    "Threshold": {
+      "description": "The value to compare against the results of the scheduled query evaluation.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-threshold"
+    },
+    "TreatMissingData": {
+      "description": "Sets how this alarm is to handle missing data points. Valid values are breaching, notBreaching, ignore, and missing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-logalarm.html#cfn-cloudwatch-logalarm-treatmissingdata"
+    }
+  },
+  "typeName": "AWS::CloudWatch::LogAlarm"
+}

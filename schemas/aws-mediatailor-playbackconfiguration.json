@@ -1,6 +1,6 @@
 {
   "$id": "aws-mediatailor-playbackconfiguration",
-  "$integrity": "sha512-rxeCTph9X3CIsXaRB5XBkgUUZSZ9VqGqJOajiMxLoIvj6MkhNAKNPjUfXsKfcGbakfF2R7FV1CcAqqb7LIURLw==",
+  "$integrity": "sha512-ZiyGnw/Av+4y+mEI80tHiQV/3ZAq+sVxOGMhnUGc3IB4zV8qldotJf6lb5vE+Fzo7syk1hUToEOivKmbvF3UaA==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/Name"
@@ -376,6 +376,16 @@
       "$ref": "#/definitions/DashConfiguration",
       "description": "The configuration for DASH content."
     },
+    "FunctionMapping": {
+      "additionalProperties": false,
+      "description": "A map of event names to function identifiers for custom processing during session lifecycle events.",
+      "patternProperties": {
+        ".*": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "HlsConfiguration": {
       "$ref": "#/definitions/HlsConfiguration",
       "description": "The configuration for HLS content."
@@ -455,7 +465,7 @@
   ],
   "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-mediatailor.git",
   "tagging": {
-    "cloudFormationSystemTags": false,
+    "cloudFormationSystemTags": true,
     "permissions": [
       "mediatailor:TagResource",
       "mediatailor:UntagResource"

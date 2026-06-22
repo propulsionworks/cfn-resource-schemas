@@ -311,6 +311,17 @@
       },
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiodolbyedecode.html"
     },
+    "AudioFeedInput": {
+      "properties": {
+        "AudioSelectorName": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiofeedinput.html#cfn-medialive-channel-audiofeedinput-audioselectorname"
+        },
+        "FeedInput": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiofeedinput.html#cfn-medialive-channel-audiofeedinput-feedinput"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiofeedinput.html"
+    },
     "AudioHlsRenditionSelection": {
       "properties": {
         "GroupId": {
@@ -349,6 +360,12 @@
           "description": "When set to correctAudio, the output audio is corrected using the chosen algorithm. If set to measureOnly, the audio is measured but not adjusted.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audionormalizationsettings.html#cfn-medialive-channel-audionormalizationsettings-algorithmcontrol"
         },
+        "PeakCalculation": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audionormalizationsettings.html#cfn-medialive-channel-audionormalizationsettings-peakcalculation"
+        },
+        "PeakLimiterThreshold": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audionormalizationsettings.html#cfn-medialive-channel-audionormalizationsettings-peaklimiterthreshold"
+        },
         "TargetLkfs": {
           "description": "The Target LKFS(loudness) to adjust volume to. If no value is entered, a default value is used according to the chosen algorithm. The CALM Act (1770-1) recommends a target of -24 LKFS. The EBU R-128 specification (1770-2) recommends a target of -23 LKFS.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audionormalizationsettings.html#cfn-medialive-channel-audionormalizationsettings-targetlkfs"
@@ -379,15 +396,49 @@
       "description": "The configuration of an audio-only HLS output.\n\nThe parent of this entity is HlsSettings.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audioonlyhlssettings.html"
     },
+    "AudioPid": {
+      "properties": {
+        "DolbyEDecode": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopid.html#cfn-medialive-channel-audiopid-dolbyedecode"
+        },
+        "Pid": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopid.html#cfn-medialive-channel-audiopid-pid"
+        },
+        "PremixSettings": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopid.html#cfn-medialive-channel-audiopid-premixsettings"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopid.html"
+    },
     "AudioPidSelection": {
       "properties": {
         "Pid": {
           "description": "Select the audio by this PID.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopidselection.html#cfn-medialive-channel-audiopidselection-pid"
+        },
+        "Pids": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopidselection.html#cfn-medialive-channel-audiopidselection-pids"
         }
       },
       "description": "Used to extract audio by The PID.\n\nThe parent of this entity is AudioSelectorSettings.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopidselection.html"
+    },
+    "AudioPreMixerSettings": {
+      "properties": {
+        "AudioNormalizationSettings": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopremixersettings.html#cfn-medialive-channel-audiopremixersettings-audionormalizationsettings"
+        },
+        "Channels": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopremixersettings.html#cfn-medialive-channel-audiopremixersettings-channels"
+        },
+        "GainDb": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopremixersettings.html#cfn-medialive-channel-audiopremixersettings-gaindb"
+        },
+        "RemixSettings": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopremixersettings.html#cfn-medialive-channel-audiopremixersettings-remixsettings"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiopremixersettings.html"
     },
     "AudioSelector": {
       "properties": {
@@ -441,6 +492,9 @@
     },
     "AudioTrack": {
       "properties": {
+        "PremixSettings": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiotrack.html#cfn-medialive-channel-audiotrack-premixsettings"
+        },
         "Track": {
           "description": "1-based integer value that maps to a specific audio track",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-audiotrack.html#cfn-medialive-channel-audiotrack-track"
@@ -925,6 +979,9 @@
         "Scte27SourceSettings": {
           "description": "Information about the SCTE-27 captions to extract from the input.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-captionselectorsettings.html#cfn-medialive-channel-captionselectorsettings-scte27sourcesettings"
+        },
+        "SmartSubtitleSourceSettings": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-captionselectorsettings.html#cfn-medialive-channel-captionselectorsettings-smartsubtitlesourcesettings"
         },
         "TeletextSourceSettings": {
           "description": "Information about the Teletext captions to extract from the input.",
@@ -2484,6 +2541,9 @@
     },
     "InferenceSettings": {
       "properties": {
+        "AudioFeedInputs": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-inferencesettings.html#cfn-medialive-channel-inferencesettings-audiofeedinputs"
+        },
         "FeedArn": {
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-inferencesettings.html#cfn-medialive-channel-inferencesettings-feedarn"
         }
@@ -3921,6 +3981,17 @@
       },
       "description": "The settings for the SCTE-35 time signal APOS mode.\n\nThe parent of this entity is AvailSettings.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-scte35timesignalapos.html"
+    },
+    "SmartSubtitleSourceSettings": {
+      "properties": {
+        "CaptionSynchronizationMode": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-smartsubtitlesourcesettings.html#cfn-medialive-channel-smartsubtitlesourcesettings-captionsynchronizationmode"
+        },
+        "InferenceFeedOutput": {
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-smartsubtitlesourcesettings.html#cfn-medialive-channel-smartsubtitlesourcesettings-inferencefeedoutput"
+        }
+      },
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-smartsubtitlesourcesettings.html"
     },
     "SmpteTtDestinationSettings": {
       "properties": {},

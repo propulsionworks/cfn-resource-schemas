@@ -1,6 +1,6 @@
 {
   "$id": "aws-connect-tasktemplate",
-  "$integrity": "sha512-w+5PT9nfPdLO7d/vwcD6TaNsLkEY6+T5zO1p9cL+EeU/ZdmJtPShLFUnJ2exIK+c+nmPObXgMftZihIlf1PUGg==",
+  "$integrity": "sha512-xzdR+CJkkBOKVQvxEVW9UtIhWd5tB70zPnfD/YgZ09Fs8tMS1z98WcEQNDNM8BTCsraXVEmjGd8RvLRk0e+6zg==",
   "additionalProperties": false,
   "definitions": {
     "ClientToken": {
@@ -76,7 +76,6 @@
       "description": "Single select field identifier",
       "maxLength": 100,
       "minLength": 1,
-      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9_.,\\s-]*[A-Za-z0-9_.,-])?$",
       "type": "string"
     },
     "FieldType": {
@@ -205,6 +204,8 @@
     "create": {
       "permissions": [
         "connect:CreateTaskTemplate",
+        "connect:DeleteTaskTemplate",
+        "connect:ListTaskTemplates",
         "connect:TagResource"
       ]
     },
@@ -273,7 +274,7 @@
     },
     "ContactFlowArn": {
       "description": "The identifier of the contact flow.",
-      "pattern": "^$|arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/contact-flow/[-a-zA-Z0-9]*$",
+      "pattern": "^$|arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/contact-flow/[-a-zA-Z0-9]*(:[a-zA-Z0-9-]+)?$",
       "type": "string"
     },
     "Defaults": {
@@ -311,7 +312,7 @@
     },
     "SelfAssignContactFlowArn": {
       "description": "The identifier of the contact flow.",
-      "pattern": "^$|arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/contact-flow/[-a-zA-Z0-9]*$",
+      "pattern": "^$|arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/contact-flow/[-a-zA-Z0-9]*(:[a-zA-Z0-9-]+)?$",
       "type": "string"
     },
     "Status": {

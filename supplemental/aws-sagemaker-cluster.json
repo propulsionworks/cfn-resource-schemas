@@ -463,6 +463,16 @@
       "description": "The orchestrator for a SageMaker HyperPod cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-orchestrator.html"
     },
+    "RestrictedInstanceGroupsConfig": {
+      "properties": {
+        "SharedEnvironmentConfig": {
+          "description": "The shared environment configuration for restricted instance groups that use cluster-level shared FSx Lustre storage.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-restrictedinstancegroupsconfig.html#cfn-sagemaker-cluster-restrictedinstancegroupsconfig-sharedenvironmentconfig"
+        }
+      },
+      "description": "The cluster-level configuration for restricted instance groups, including shared environment settings for inter-RIG communication and FSx Lustre sharing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-restrictedinstancegroupsconfig.html"
+    },
     "RollingUpdatePolicy": {
       "properties": {
         "MaximumBatchSize": {
@@ -490,6 +500,20 @@
       },
       "description": "The configuration object of the schedule that SageMaker follows when updating the AMI.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-scheduledupdateconfig.html"
+    },
+    "SharedEnvironmentConfig": {
+      "properties": {
+        "FSxLustreConfig": {
+          "description": "Configuration settings for an Amazon FSx for Lustre file system to be used with the cluster.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-sharedenvironmentconfig.html#cfn-sagemaker-cluster-sharedenvironmentconfig-fsxlustreconfig"
+        },
+        "FSxLustreDeletionPolicy": {
+          "description": "The deletion policy for the shared FSx Lustre file system. Keep retains the FSx when RIGs are deleted. DeleteIfNotUsed deletes the FSx when no RIGs reference it.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-sharedenvironmentconfig.html#cfn-sagemaker-cluster-sharedenvironmentconfig-fsxlustredeletionpolicy"
+        }
+      },
+      "description": "The shared environment configuration for restricted instance groups that use cluster-level shared FSx Lustre storage.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-cluster-sharedenvironmentconfig.html"
     },
     "Tag": {
       "properties": {
@@ -578,6 +602,10 @@
     "RestrictedInstanceGroups": {
       "description": "The restricted instance groups of the SageMaker HyperPod cluster.",
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-cluster.html#cfn-sagemaker-cluster-restrictedinstancegroups"
+    },
+    "RestrictedInstanceGroupsConfig": {
+      "description": "The cluster-level configuration for restricted instance groups, including shared environment settings for inter-RIG communication and FSx Lustre sharing.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-cluster.html#cfn-sagemaker-cluster-restrictedinstancegroupsconfig"
     },
     "Tags": {
       "description": "A tag object that consists of a key and an optional value, used to manage metadata for SageMaker AWS resources.\n\nYou can add tags to notebook instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams, endpoint configurations, and endpoints. For more information on adding tags to SageMaker resources, see [AddTags](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html) .\n\nFor more information on adding metadata to your AWS resources with tagging, see [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) . For advice on best practices for managing AWS resources with tagging, see [Tagging Best Practices: Implement an Effective AWS Resource Tagging Strategy](https://docs.aws.amazon.com/https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf) .",

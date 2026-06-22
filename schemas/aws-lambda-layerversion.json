@@ -1,6 +1,6 @@
 {
   "$id": "aws-lambda-layerversion",
-  "$integrity": "sha512-Ev+QRBswsvmLj+aRs2dICSY/qhWEEX/oUaz05p0KcXTZKJL8aeAvm+PYM/vQ5027u9b5uOZn4QPPlxuO1Ygvnw==",
+  "$integrity": "sha512-pxqJrJatLCpJTae6aVJlGf77bUkWbAK3KyPNEdcH+ZJD02fIIACXzCXCPYEpD37IxSjLusPBvpXIuy2RMnOLag==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/CompatibleRuntimes",
@@ -20,6 +20,14 @@
         },
         "S3Key": {
           "description": "The Amazon S3 key of the layer archive.",
+          "type": "string"
+        },
+        "S3ObjectStorageMode": {
+          "description": "Specifies whether Lambda should copy the deployment package to its internal storage (COPY) or reference it directly from your S3 bucket (REFERENCE).",
+          "enum": [
+            "COPY",
+            "REFERENCE"
+          ],
           "type": "string"
         },
         "S3ObjectVersion": {

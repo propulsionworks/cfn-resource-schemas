@@ -1,6 +1,6 @@
 {
   "$id": "aws-bedrock-datasource",
-  "$integrity": "sha512-EFJNIoiab82nLAtt8VePL7iabKkOr5zCa9jtzQUBLvjMTpiKOIX7X8I3KspKTHi1m6Rl3xFpysyP/xEODkFSJA==",
+  "$integrity": "sha512-ov+BGSDwRf3d5w9JJ5HYksCI8ovLjw2uzYMecmw3VwVsyzGunKst2YUFIXDV6/1HDa9qnd/x+r2zvMe7ykCqqQ==",
   "additionalProperties": false,
   "createOnlyProperties": [
     "/properties/KnowledgeBaseId",
@@ -9,6 +9,19 @@
     "/properties/DataSourceConfiguration/Type"
   ],
   "definitions": {
+    "AudioExtractionConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for audio extraction.",
+      "properties": {
+        "AudioExtractionStatus": {
+          "$ref": "#/definitions/EnabledOrDisabledState"
+        }
+      },
+      "required": [
+        "AudioExtractionStatus"
+      ],
+      "type": "object"
+    },
     "BedrockDataAutomationConfiguration": {
       "additionalProperties": false,
       "description": "Settings for a Bedrock Data Automation used to parse documents for a data source.",
@@ -235,6 +248,9 @@
         "ConfluenceConfiguration": {
           "$ref": "#/definitions/ConfluenceDataSourceConfiguration"
         },
+        "ManagedKnowledgeBaseConnectorConfiguration": {
+          "$ref": "#/definitions/ManagedKnowledgeBaseConnectorConfiguration"
+        },
         "S3Configuration": {
           "$ref": "#/definitions/S3DataSourceConfiguration"
         },
@@ -261,7 +277,10 @@
       "enum": [
         "AVAILABLE",
         "DELETING",
-        "DELETE_UNSUCCESSFUL"
+        "DELETE_UNSUCCESSFUL",
+        "CREATING",
+        "UPDATING",
+        "FAILED"
       ],
       "type": "string"
     },
@@ -274,7 +293,36 @@
         "SHAREPOINT",
         "WEB",
         "CUSTOM",
-        "REDSHIFT_METADATA"
+        "REDSHIFT_METADATA",
+        "MANAGED_KNOWLEDGE_BASE_CONNECTOR"
+      ],
+      "type": "string"
+    },
+    "DeletionProtectionConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for deletion protection.",
+      "properties": {
+        "DeletionProtectionStatus": {
+          "$ref": "#/definitions/EnabledOrDisabledState"
+        },
+        "DeletionProtectionThreshold": {
+          "default": 15,
+          "description": "Threshold for deletion protection.",
+          "maximum": 100,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "DeletionProtectionStatus"
+      ],
+      "type": "object"
+    },
+    "EnabledOrDisabledState": {
+      "description": "Indicates whether a feature is enabled or disabled.",
+      "enum": [
+        "ENABLED",
+        "DISABLED"
       ],
       "type": "string"
     },
@@ -374,6 +422,19 @@
       ],
       "type": "object"
     },
+    "ImageExtractionConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for image extraction.",
+      "properties": {
+        "ImageExtractionStatus": {
+          "$ref": "#/definitions/EnabledOrDisabledState"
+        }
+      },
+      "required": [
+        "ImageExtractionStatus"
+      ],
+      "type": "object"
+    },
     "IntermediateStorage": {
       "additionalProperties": false,
       "description": "A location for storing content from data sources temporarily as it is processed by custom components in the ingestion pipeline.",
@@ -385,6 +446,39 @@
       "required": [
         "S3Location"
       ],
+      "type": "object"
+    },
+    "ManagedKnowledgeBaseConnectorConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for managed knowledge base connector data sources.",
+      "properties": {
+        "ConnectorParameters": {
+          "description": "Connector-specific parameters.",
+          "type": "object"
+        },
+        "DeletionProtectionConfiguration": {
+          "$ref": "#/definitions/DeletionProtectionConfiguration"
+        },
+        "MediaExtractionConfiguration": {
+          "$ref": "#/definitions/MediaExtractionConfiguration"
+        }
+      },
+      "type": "object"
+    },
+    "MediaExtractionConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for media extraction settings.",
+      "properties": {
+        "AudioExtractionConfiguration": {
+          "$ref": "#/definitions/AudioExtractionConfiguration"
+        },
+        "ImageExtractionConfiguration": {
+          "$ref": "#/definitions/ImageExtractionConfiguration"
+        },
+        "VideoExtractionConfiguration": {
+          "$ref": "#/definitions/VideoExtractionConfiguration"
+        }
+      },
       "type": "object"
     },
     "ModelArn": {
@@ -440,7 +534,8 @@
       "description": "The parsing strategy for the data source.",
       "enum": [
         "BEDROCK_FOUNDATION_MODEL",
-        "BEDROCK_DATA_AUTOMATION"
+        "BEDROCK_DATA_AUTOMATION",
+        "SMART_PARSING"
       ],
       "type": "string"
     },
@@ -833,6 +928,19 @@
       },
       "type": "object"
     },
+    "VideoExtractionConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for video extraction.",
+      "properties": {
+        "VideoExtractionStatus": {
+          "$ref": "#/definitions/EnabledOrDisabledState"
+        }
+      },
+      "required": [
+        "VideoExtractionStatus"
+      ],
+      "type": "object"
+    },
     "WebCrawlerConfiguration": {
       "additionalProperties": false,
       "description": "Configuration for the web crawler.",
@@ -927,7 +1035,8 @@
         "bedrock:CreateDataSource",
         "bedrock:GetDataSource",
         "bedrock:GetKnowledgeBase",
-        "kms:GenerateDataKey"
+        "kms:GenerateDataKey",
+        "kms:Decrypt"
       ]
     },
     "delete": {
@@ -960,7 +1069,8 @@
       "permissions": [
         "bedrock:GetDataSource",
         "bedrock:UpdateDataSource",
-        "kms:GenerateDataKey"
+        "kms:GenerateDataKey",
+        "kms:Decrypt"
       ]
     }
   },

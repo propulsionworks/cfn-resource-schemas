@@ -9,11 +9,17 @@
         "description": "The unique identifier of the harness."
       },
       "Status": {},
+      "Version": {
+        "description": "The version of the harness. Incremented on every successful update."
+      },
       "CreatedAt": {
         "description": "The timestamp when the harness was created."
       },
       "UpdatedAt": {
         "description": "The timestamp when the harness was last updated."
+      },
+      "Memory.ManagedMemoryConfiguration.Arn": {
+        "description": "The ARN of the managed memory resource. Read-only, populated by the service."
       },
       "Environment.AgentCoreRuntimeEnvironment.AgentRuntimeArn": {
         "description": "The ARN of the underlying AgentCore Runtime."
@@ -242,6 +248,10 @@
       },
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessbedrockmodelconfig.html"
     },
+    "HarnessDisabledMemoryConfiguration": {
+      "properties": {},
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessdisabledmemoryconfiguration.html"
+    },
     "HarnessEnvironmentArtifact": {
       "properties": {
         "ContainerConfiguration": {
@@ -333,10 +343,40 @@
       },
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnesslitellmmodelconfig.html"
     },
+    "HarnessManagedMemoryConfiguration": {
+      "properties": {
+        "Arn": {
+          "description": "The ARN of the managed memory resource. Read-only, populated by the service.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmanagedmemoryconfiguration.html#cfn-bedrockagentcore-harness-harnessmanagedmemoryconfiguration-arn"
+        },
+        "EncryptionKeyArn": {
+          "description": "Customer-managed KMS key ARN. Defaults to AWS-owned key. Not updatable after creation.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmanagedmemoryconfiguration.html#cfn-bedrockagentcore-harness-harnessmanagedmemoryconfiguration-encryptionkeyarn"
+        },
+        "EventExpiryDuration": {
+          "description": "Event retention in days. Defaults to 30.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmanagedmemoryconfiguration.html#cfn-bedrockagentcore-harness-harnessmanagedmemoryconfiguration-eventexpiryduration"
+        },
+        "Strategies": {
+          "description": "Strategy types to enable. Defaults to [SEMANTIC, SUMMARIZATION].",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmanagedmemoryconfiguration.html#cfn-bedrockagentcore-harness-harnessmanagedmemoryconfiguration-strategies"
+        }
+      },
+      "description": "Configuration for managed memory. The harness creates and manages a memory resource in the customer's account.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmanagedmemoryconfiguration.html"
+    },
     "HarnessMemoryConfiguration": {
       "properties": {
         "AgentCoreMemoryConfiguration": {
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmemoryconfiguration.html#cfn-bedrockagentcore-harness-harnessmemoryconfiguration-agentcorememoryconfiguration"
+        },
+        "Disabled": {
+          "description": "Explicitly opt out of memory.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmemoryconfiguration.html#cfn-bedrockagentcore-harness-harnessmemoryconfiguration-disabled"
+        },
+        "ManagedMemoryConfiguration": {
+          "description": "Configuration for managed memory. The harness creates and manages a memory resource in the customer's account.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmemoryconfiguration.html#cfn-bedrockagentcore-harness-harnessmemoryconfiguration-managedmemoryconfiguration"
         }
       },
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessmemoryconfiguration.html"
@@ -397,6 +437,10 @@
     },
     "HarnessSkill": {
       "properties": {
+        "AwsSkills": {
+          "description": "AWS Skills baked into the Harness's underlying Runtime.",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessskill.html#cfn-bedrockagentcore-harness-harnessskill-awsskills"
+        },
         "Git": {
           "description": "A git repository containing the skill, cloned over HTTPS.",
           "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessskill.html#cfn-bedrockagentcore-harness-harnessskill-git"
@@ -411,6 +455,16 @@
         }
       },
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessskill.html"
+    },
+    "HarnessSkillAwsSkillsSource": {
+      "properties": {
+        "Paths": {
+          "description": "Optionally filter allowed skills with glob syntax, e.g., ['core-skills/*'].",
+          "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessskillawsskillssource.html#cfn-bedrockagentcore-harness-harnessskillawsskillssource-paths"
+        }
+      },
+      "description": "AWS Skills baked into the Harness's underlying Runtime.",
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-harness-harnessskillawsskillssource.html"
     },
     "HarnessSkillGitAuth": {
       "properties": {
@@ -770,6 +824,9 @@
     },
     "UpdatedAt": {
       "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-updatedat"
+    },
+    "Version": {
+      "documentationUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html#cfn-bedrockagentcore-harness-version"
     }
   },
   "typeName": "AWS::BedrockAgentCore::Harness"
